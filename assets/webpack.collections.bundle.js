@@ -122,7 +122,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _bas
 },
 /******/ __webpack_require__ => { // webpackRuntimeModules
 /******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-/******/ __webpack_require__.O(0, ["npm.core-js","npm.react-dom","npm.react","npm.scheduler","npm.styled-components","npm.prop-types","npm.regenerator-runtime","npm.emotion","npm.pubsub-js","npm.react-is","npm.style-loader","npm.css-loader","npm.hoist-non-react-statics","npm.object-assign","npm.shallowequal","scripts_utils_optimizely_index_js","scripts_Components_Icons_index_js-scripts_utils_index_js","scripts_Components_Media_index_js","scripts_Components_VideoPlayer_js-scripts_base_css","scripts_Components_ColorSwatch_js","scripts_Components_PLPItem_js"], () => (__webpack_exec__("./scripts/collections.js")));
+/******/ __webpack_require__.O(0, ["npm.core-js","npm.react-dom","npm.react","npm.scheduler","npm.styled-components","npm.prop-types","npm.regenerator-runtime","npm.emotion","npm.pubsub-js","npm.react-is","npm.style-loader","npm.css-loader","npm.hoist-non-react-statics","npm.object-assign","npm.shallowequal","scripts_utils_index_js","scripts_utils_optimizely_index_js","scripts_base_css","scripts_Components_Icons_index_js","scripts_Components_Media_index_js","scripts_Components_ColorSwatch_js","scripts_Components_PLPItem_js"], () => (__webpack_exec__("./scripts/collections.js")));
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);

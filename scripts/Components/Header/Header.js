@@ -20,29 +20,37 @@ const Header = (props) => {
   return (
     <div>
       <HeaderContainer sticky={sticky}>
-        <nav className="flex w-full justify-between max-w-screen-xxl mx-auto bg-white h-full">
+        <nav className="flex w-full justify-between container mx-auto bg-white h-full">
           <div className="block lg:hidden">
             <MobileNav settings={mobileNavSettings} themeSettings={themeSettings} />
           </div>
           <a className="flex items-center" href="/">
             <LogoImage
-              src="//cdn.shopify.com/s/files/1/0492/6321/4743/files/levity_logo_grande.png?v=1619011426"
+              src="https://i.ibb.co/DMpK1q6/logo.png"
               alt="Levity"
             />
           </a>
           <div className="hidden lg:flex">
-            <ul className="flex text-center ml-40 items-center">
+            <ul className="flex text-center items-center">
               <li onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>
-                <LinkItem href="/collections/all">Shop</LinkItem>
+                <LinkItem href="/collections/all">SIZE</LinkItem>
                 <NavWrapper isShown={isShown}>
                   <Nav themeSettings={themeSettings} newsettings={newsettings} />
                 </NavWrapper>
               </li>
               <li>
-                <LinkItem href="/about">About</LinkItem>
+                <LinkItem href="/about">SUBJECT</LinkItem>
               </li>
               <li>
-                <LinkItem href="/pages/how-it-works">How it works</LinkItem>
+                <LinkItem href="/pages/how-it-works">MOOD</LinkItem>
+              </li>
+
+              <li>
+                <LinkItem href="/pages/how-it-works">STYLE</LinkItem>
+              </li>
+
+              <li>
+                <LinkItem href="/pages/how-it-works">HIDE IT WORK</LinkItem>
               </li>
             </ul>
           </div>
@@ -50,7 +58,7 @@ const Header = (props) => {
             <div className="hidden lg:block">
               <div id="header-search" className="desktop-3 tablet-hide mobile-hide">
                 <form action="/search" method="get">
-                  <input id="header-search-input" type="text" z name="q" placeholder="Search" />
+                  <img src='https://i.ibb.co/YNvzb2s/Vector.png' className='search_icon' />
                 </form>
               </div>
             </div>
@@ -63,10 +71,10 @@ const Header = (props) => {
                 aria-expanded="false"
               >
                 <img
-                  src="https://cdn.shopify.com/s/files/1/0492/6321/4743/files/shopping_cart.svg?v=1612396990"
+                  src="https://i.ibb.co/8dPZN7G/cart-icon.png"
                   alt="cart"
                 />
-                <div className="cart-count font-serif text-sm">0</div>
+                {/* <div className="cart-count font-serif text-sm"></div> */}
                 <CartHighlight cartCount={cartCount} />
               </a>
             </div>
