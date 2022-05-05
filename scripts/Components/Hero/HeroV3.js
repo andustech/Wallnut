@@ -28,7 +28,7 @@ const HeroV3 = ({ settings }) => {
       <div className='banner_content'>
         <div className='container'>
           <div className="overlay">
-            <h1 className="">Taking the work <br /> out of artwork.</h1>
+            <h1 className="">Taking the work out of artwork.</h1>
             <a href="#" className="primary_btn">Shop All</a>
             <a href="#" className="secondary_btn">HOW IT WORKS</a>
           </div>
@@ -38,31 +38,10 @@ const HeroV3 = ({ settings }) => {
   );
 };
 
-const HeroImage = styled.div.attrs({
-  className: 'bg-bottom bg-cover w-full h-100 hidden lg:grid lg:grid-cols-3 relative',
-})`
-  background-image: url(${(props) => props.img});
-`;
 
-const TabletHero = styled.div.attrs({
-  className: 'relative bg-white h-full hidden w-full bg-cover bg-bottom md:grid lg:hidden',
-})`
 
-  background-image: url(${(props) => props.img});
-  height: 768px;
-`;
 
-const VideoContainer = styled.div.attrs({
-  className:
-    'relative h-72 md:h-96 lg:h-100 lg:block lg:absolute justify-self-center lg:justify-self-start',
-})``;
 
-const MobileHero = styled.div.attrs({
-  className: 'h-full relative bg-white w-full bg-cover bg-center md:hidden bg-no-repeat',
-})`
-  background-image: url(${(props) => props.img});
-  height: 650px;
-`;
 
 const ButtonLinkContainer = styled.div.attrs(({ text_color, mobile_text_color }) => {
   const className = `w-full my-10 lg:my-0 relative w-9/12 lg:w-6.5/12 lg:absolute flex flex-col lg:h-full items-center lg:justify-center justify-items-center lg:right-0 px-6 md:px-36 lg:px-26 text-${mobile_text_color} lg:text-${text_color}`;
