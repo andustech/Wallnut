@@ -1,7 +1,8 @@
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import VideoPlayer from '../VideoPlayer';
+// import VideoPlayer from '../VideoPlayer';
 
 const ButtonLink = ({ settings }) => {
   const { title, button_text, button_link, subheading, text_color, mobile_text_color } = settings;
@@ -22,27 +23,16 @@ const ButtonLink = ({ settings }) => {
 const HeroV3 = ({ settings }) => {
   const { image, video_url } = settings;
   return (
-    <div className="w-full">
-      <div className="max-w-screen-xxl m-auto flex lg:flex-row">
-        <HeroImage img={image}>
-          <VideoContainer>
-            <VideoPlayer link={video_url} autoPlay height loop />
-          </VideoContainer>
-          <ButtonLink settings={settings} />
-        </HeroImage>
-
-        <TabletHero>
-          <VideoContainer>
-            <VideoPlayer link={video_url} autoPlay height loop />
-          </VideoContainer>
-          <ButtonLink settings={settings} />
-        </TabletHero>
-        <MobileHero>
-          <VideoContainer>
-            <VideoPlayer link={video_url} autoPlay height loop />
-          </VideoContainer>
-          <ButtonLink settings={settings} />
-        </MobileHero>
+    <div className="main_banner">
+      <img src="https://i.ibb.co/7b5YjcC/banner.png" className='bannr_img' alt="Banner" />
+      <div className='banner_content'>
+        <div className='container'>
+          <div className="overlay">
+            <h1 className="">Taking the work <br /> out of artwork.</h1>
+            <a href="#" className="primary_btn">Shop All</a>
+            <a href="#" className="secondary_btn">HOW IT WORKS</a>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -57,6 +47,7 @@ const HeroImage = styled.div.attrs({
 const TabletHero = styled.div.attrs({
   className: 'relative bg-white h-full hidden w-full bg-cover bg-bottom md:grid lg:hidden',
 })`
+
   background-image: url(${(props) => props.img});
   height: 768px;
 `;

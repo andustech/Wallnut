@@ -1,56 +1,73 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import {
-  MachineWashableIconColored,
-  StainIconColored,
-  InterchangableIconColored,
-  ComfortableIconColored,
-} from '../Icons';
 
 const ValuePropSection = () => {
   const valueProps = [
     {
-      text: 'Machine-Washable',
-      icon: <MachineWashableIconColored bgCircleFill="#FFFFFF" />,
+      name: 'shop best sellers',
+      img: 'https://i.ibb.co/PFjVJV6/Rectangle-2.png',
     },
     {
-      text: 'Stain-Resistant',
-      icon: <StainIconColored bgCircleFill="#FFFFFF" />,
+      name: 'shop Collection 1',
+      img: 'https://i.ibb.co/9257W5S/Rectangle-3.png',
     },
     {
-      text: 'Interchangeable',
-      icon: <InterchangableIconColored bgCircleFill="#FFFFFF" />,
-    },
-    {
-      text: 'Comfortable',
-      icon: <ComfortableIconColored bgCircleFill="#FFFFFF" />,
+      name: 'shop Collection 2',
+      img: 'https://i.ibb.co/828wz72/Rectangle-4.png',
     },
   ];
 
   return (
-    <ValuePropContainer>
-      {valueProps.map((item, i) => (
-        <ValuePropColumn key={i}>
-          <div className="h-14 w-14 md:h-18 md:w-18 lg:h-20 lg:w-20">{item.icon}</div>
-          <div className="flex items-center text-base ml-4 md:ml-0 text-center whitespace-nowrap">
-            {item.text}
-          </div>
-        </ValuePropColumn>
-      ))}
-    </ValuePropContainer>
+    <PremiumMainContainer>
+      <SectionTiltle>
+        <h2>Premium art</h2>
+        <p>that’s painless to hang</p>
+      </SectionTiltle>
+      <ValuePropContainer>
+
+        {valueProps.map((item, i) => (
+          <ValuePropColumn key={i}>
+            <div className="premium_img_box">
+              <img className='premium_img' src={item.img} />
+            </div>
+            <div className="flex items-center text-base text-center whitespace-nowrap absolute left-0 bottom-0">
+              <a className='premium_link bg-milk' href=''>{item.name}</a>
+            </div>
+          </ValuePropColumn>
+        ))}
+      </ValuePropContainer>
+    </PremiumMainContainer>
   );
 };
 
 export default ValuePropSection;
 
+const PremiumMainContainer = styled.div`
+  padding: 72px 0 0 0;
+`
+
+export const SectionTiltle = styled.div`
+  text-align: center;
+
+  h2 {
+    font-size: 36px !important;
+    margin-bottom: 15px !important;
+  }
+
+  p {
+    font-size: 36px !important;
+    margin-bottom: 40px !important;
+  }
+`
+
 const ValuePropContainer = styled.div.attrs({
   className:
-    'items-center justify-center h-full py-8 md:py-4 flex flex-col md:flex-row max-w-screen-xxl m-auto bg-offwhite-cream',
+    'items-center justify-between h-full py-5 flex flex-col md:flex-row container m-auto',
 })``;
 
 const ValuePropColumn = styled.div.attrs({
-  className: 'font-serif flex md:w-44 items-center md:flex-col md:mx-5 lg:mx-14 py-2 md:py-0',
+  className: 'font-serif flex items-center md:flex-col relative',
 })`
   @media screen and (max-width: 768px) {
     width: 240px;
