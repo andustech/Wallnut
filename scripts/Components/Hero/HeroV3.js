@@ -21,16 +21,16 @@ const ButtonLink = ({ settings }) => {
 };
 
 const HeroV3 = ({ settings }) => {
-  const { image, video_url } = settings;
+  const { image, video_url, title, button_text_1, button_link_1, button_text_2, button_link_2 } = settings;
   return (
-    <div className="main_banner">
-      <img src="https://i.ibb.co/7b5YjcC/banner.png" className='bannr_img' alt="Banner" />
+    <div className="main_banner relative">
+      <img src={image} className='bannr_img' alt="Banner" />
       <div className='banner_content'>
         <div className='container'>
           <div className="overlay">
-            <h1 className="">Taking the work out of artwork.</h1>
-            <a href="#" className="primary_btn">Shop All</a>
-            <a href="#" className="secondary_btn">HOW IT WORKS</a>
+            <h1 className="">{title}</h1>
+            <a href={button_link_1} className="primary_btn">{button_text_1}</a>
+            <a href={button_link_2} className="secondary_btn">{button_text_2}</a>
           </div>
         </div>
       </div>
