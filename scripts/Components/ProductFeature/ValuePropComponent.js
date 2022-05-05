@@ -63,7 +63,7 @@ export const SectionTiltle = styled.div`
 
 const ValuePropContainer = styled.div.attrs({
   className:
-    'items-center justify-between h-full py-5 flex flex-col md:flex-row container m-auto',
+    'items-center justify-between h-full flex flex-col md:flex-row container m-auto',
 })``;
 
 const ValuePropColumn = styled.div.attrs({
