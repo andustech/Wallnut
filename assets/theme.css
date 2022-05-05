@@ -300,6 +300,13 @@ body {
 
 .item_box {
   text-align: center;
+  height: 100%;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  display: flex;
+  padding: 20px;
   background-color: #80A0A0;
 }
 
@@ -308,12 +315,45 @@ body {
   width: 100%;
 }
 
+.title_top {
+  position: absolute;
+  top: 34px;
+  font-size: 16px;
+  font-weight: 500;
+}
 
+#react-index-betterway {
+  margin-top: 112px;
+}
 
+.mood_card_container {
+  margin-top: 40px;
+}
 
+.mood_card_container a {
+  width: 100%;
+  max-width: 644px;
+  margin: 0 12px;
+  position: relative;
+}
 
+.mood_card_container a:first-child {
+  margin-left: 0;
+}
 
+.mood_card_container a:last-child {
+  margin-right: 0;
+}
 
+.by_mood_card img {
+  height: 608px !important;
+}
+
+.by_mood_card a {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
 
 
 

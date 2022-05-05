@@ -28,14 +28,6 @@ const trendData = [
 
 const ProductRecommendation = () => {
 
-
-  // const TrendCardRow = styled.div.attrs({
-  //   className: 'font-serif flex items-center md:flex-col relative',
-  // })``
-
-
-
-
   return (
 
     <TrendingMainContainer>
