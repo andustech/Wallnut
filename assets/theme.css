@@ -62,8 +62,11 @@ a:hover {
 	text-decoration: none;
 }
 h1, .h1, h2, .h2, h4, .h4 {
-	font-family: 'Attila Sans Uniform';
+	font-family: 'GoodSans-Bold';
 	color: #000 !important;
+}
+p {
+	font-family: 'GoodSans-Light';
 }
 h1, .h1 {
   font-style: normal;
@@ -73,7 +76,7 @@ h1, .h1 {
   letter-spacing: -0.005em;
 }
 .h1-nib-pro {
-  font-family: 'Nib Pro';
+  font-family: 'Nib-bold-pro';
   font-style: normal;
   font-weight: 700;
   font-size: 60px;
@@ -92,7 +95,7 @@ h2, .h2 {
   letter-spacing: -0.005em;
 }
 .h2-nib-pro {
-  font-family: 'Nib Pro';
+  font-family: 'Nib-bold-pro';
   font-style: normal;
   font-weight: 700;
   font-size: 36px;
@@ -100,7 +103,7 @@ h2, .h2 {
   letter-spacing: -0.02em;
 }
 h3, .h3 {
-  font-family: 'Nib Pro';
+  font-family: 'Nib-bold-pro';
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
@@ -128,11 +131,15 @@ h6, .h6 {
   text-transform: uppercase;
 }
 button, a {
+  font-family: 'GoodSans-Medium' !important;
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+}
+.font-good-sans-medium {
+    font-family: 'GoodSans-Medium';
 }
 body {
   font-family: 'Good Sans' !important;
@@ -181,6 +188,9 @@ body {
 #mini-cart-container .cart-count {
   width: 34px !important;
 }
+.Header__HeaderContainer-sc-yhlp3e-0.jbWOEQ.flex.items-center.justify-center.w-full {
+    background: white;
+}
 
 .overlay {
     position: absolute;
@@ -188,6 +198,10 @@ body {
 }
 
 .main_banner {
+  	left: 12.2%;
+}
+
+#shopify-section-1651467216097f7c5a {
     position: relative;
 }
 
@@ -344,3 +358,5 @@ body {
     margin-bottom: 12px;
   }
 }
+
+
