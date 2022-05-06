@@ -21,13 +21,13 @@ const ValuePropSection = () => {
   return (
     <PremiumMainContainer>
       <SectionTiltle>
-        <h2>Premium art</h2>
-        <p>that’s painless to hang</p>
+        <h2 className="font-bold">Premium art</h2>
+        <p className="font-medium">that’s painless to hang</p>
       </SectionTiltle>
       <ValuePropContainer>
 
         {valueProps.map((item, i) => (
-          <ValuePropColumn key={i}>
+          <ValuePropColumn key={i} style={{marginTop: '40px'}}>
             <div className="premium_img_box">
               <img className='premium_img' src={item.img} />
             </div>
@@ -52,24 +52,30 @@ export const SectionTiltle = styled.div`
 
   h2 {
     font-size: 36px !important;
+    line-height: 50px !important;
     margin-bottom: 15px !important;
+    letter-spacing: -0.02em !important;
   }
 
   p {
     font-size: 36px !important;
-    margin-bottom: 40px !important;
+    margin-bottom: 5px !important;
+    letter-spacing: -0.005em !important;
+    line-height: 44px !important;
+    font-family: 'AttilaSansUniform-Medium' !important;
   }
 `
 
 const ValuePropContainer = styled.div.attrs({
   className:
-    'items-center justify-between h-full flex flex-col md:flex-row container m-auto',
+    'items-center justify-between h-full flex container m-auto',
 })``;
 
-const ValuePropColumn = styled.div.attrs({
-  className: 'font-serif flex items-center md:flex-col relative',
+const ValuePropColumn = styled.div/* `
+  margin-top: 40px !important;
+  
+` */.attrs({
+  className: 'font-serif flex items-center relative',
 })`
-  @media screen and (max-width: 768px) {
-    width: 240px;
-  }
+
 `;

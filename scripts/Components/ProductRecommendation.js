@@ -22,7 +22,7 @@ const trendData = [
   {
     title: 'Art Name',
     price: '$27 - $88',
-    img:  'https://i.ibb.co/R4rNrfV/Rectangle-13.png',
+    img: 'https://i.ibb.co/R4rNrfV/Rectangle-13.png',
   }
 ];
 
@@ -38,13 +38,19 @@ const ProductRecommendation = () => {
       <TrendCardContainer className='container'>
         {trendData.map((value, i) => (
 
-            <TrendCardRow key={i}>
-              <div className='trend_card'>
-                <img src={value.img} />
-                <h6>{value.title}</h6>
-                <p>{value.price}</p>
-              </div>
-            </TrendCardRow>
+          <TrendCardRow key={i}>
+            <div className='trend_card'>
+              <img src={value.img} />
+              <h6>{value.title}</h6>
+              <p>{value.price}</p>
+
+              <RadioChoice>
+                <input type="radio" id="html" name="fav_language" value="HTML" />
+                <input type="radio" id="html" name="fav_language" value="HTML" />
+                <input type="radio" id="html" name="fav_language" value="HTML" />
+              </RadioChoice>
+            </div>
+          </TrendCardRow>
         )
         )}
       </TrendCardContainer>
@@ -74,7 +80,21 @@ const TrendCardRow = styled.div`
  position: relative;
 `;
 
+const RadioChoice = styled.div`
+  input {
+    margin: 0 4px;
+    cursor: pointer;
+  }
+
+  input:first-child {
+    margin-left: 0;
+  }
+
+  input:last-child {
+    margin-right: 0;
+  }
+`;
+
 
 export default ProductRecommendation;
-
 

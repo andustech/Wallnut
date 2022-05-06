@@ -253,7 +253,24 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
             </ImageContainer>
           )}
         </a>
-        <HoverContainer isHovered={hover}>
+      </div>
+      <a
+        className="no-underline test"
+        href={getProductUrl(
+          product,
+          colorOption,
+          legOption,
+          collectionTitle,
+          chairCoverByCollection
+        )}
+      >
+        <TitlePriceContainer>
+          <span className="text-base lg:text-xl font-normal">{product.title}</span>
+          <span className="text-base lg:text-xl font-medium">
+            {getPriceInRanges(product.price_min, product.price_max)}
+          </span>
+        </TitlePriceContainer>
+      </a>
           {!noColorSelector && (
             <ColorContainer>
               <div>
@@ -323,57 +340,6 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
               )}
             </ColorContainer>
           )}
-          <AddToCartContainer>
-            <CounterContainer>
-              <div
-                onClick={() => handleClick('sub')}
-                className="self-center"
-                onKeyUp={() => {}}
-                role="button"
-                tabIndex="0"
-              >
-                <MinusIcon fill={qty > 1 ? '#000000' : '#D5D5D5'} />
-              </div>
-              <span className="self-center">{qty.toString()}</span>
-              <div
-                onClick={() => handleClick('add')}
-                className="self-center"
-                onKeyPress={() => {}}
-                role="button"
-                tabIndex="0"
-              >
-                <PlusIcon height="10" width="10" />
-              </div>
-            </CounterContainer>
-            <ButtonWrapper>
-              <PLPButton
-                className="bg-white text-base whitespace-nowrap px-4 md:px-12"
-                buttonAction={handleSubmit}
-                brown
-              >
-                Add to cart
-              </PLPButton>
-            </ButtonWrapper>
-          </AddToCartContainer>
-        </HoverContainer>
-      </div>
-      <a
-        className="no-underline"
-        href={getProductUrl(
-          product,
-          colorOption,
-          legOption,
-          collectionTitle,
-          chairCoverByCollection
-        )}
-      >
-        <TitlePriceContainer>
-          <span className="text-base lg:text-xl font-normal">{product.title}</span>
-          <span className="text-base lg:text-xl font-medium">
-            {getPriceInRanges(product.price_min, product.price_max)}
-          </span>
-        </TitlePriceContainer>
-      </a>
       <span className="text-sm lg:text-base text-orange-burnt capitalize text-left">
         {colorOption}
       </span>

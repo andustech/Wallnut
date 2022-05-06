@@ -46,7 +46,7 @@ const VideoPromoSection = () => {
           {bymoodData.map((value, i) => (
             <a className='by_mood_card' key={i}>
               <img src={value.img} />
-              <a href='#'>{value.link}</a>
+              <a href='#' className='premium_link bg-milk text-center'>{value.link}</a>
             </a>  
           ))}
         </div>
@@ -60,7 +60,7 @@ const VideoPromoSection = () => {
 
 
 const WhiteCollectionContainer = styled.div`
-  /* display: flex; */
+
 `;
 
 const MiddContent = styled.div`
@@ -77,13 +77,14 @@ const MiddContent = styled.div`
 
   a {
     position: relative;
+    padding: 14px 63px 14px 30px;
   }
 
   a:after {
   content: '';
   width: 17px;
   height: 10px;
-  right: 25px;
+  right: 30px;
   top: 18px;
   position: absolute;
   background-image: url('https://i.ibb.co/mhJXcrZ/Vector.png');
