@@ -24,6 +24,32 @@
 ================================================== -->
   {{ 'alice-carousel.css' | asset_url | stylesheet_tag }}
   {{ 'stylesheet.css' | asset_url | stylesheet_tag }}
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
+
+  <style>
+  @font-face {
+    font-family: 'GoodSans-Light';
+    font-style: normal;
+    font-weight: normal;
+    src: url({{ "GoodSans-Light.woff2" | asset_url }}) format("woff2"), 
+    url({{ "GoodSans-Light.woff" | asset_url }}) format("woff"); 
+  }
+  @font-face {
+    font-family: 'GoodSans-Bold';
+    src: url({{ "GoodSans-Bold.woff2" | asset_url }}) format("woff2"), 
+    url({{ "GoodSans-Bold.woff" | asset_url }}) format("woff"); 
+  }
+   @font-face {
+    font-family: 'GoodSans-Medium';
+    src: url({{ "GoodSans-Medium.woff2" | asset_url }}) format("woff2"), 
+    url({{ "GoodSans-Medium.woff" | asset_url }}) format("woff"); 
+  }
+   @font-face {
+    font-family: 'Nib-bold-pro';
+    src: url({{ "nib-bold-pro.woff2" | asset_url }}) format("woff2"), 
+    url({{ "nib-bold-pro.woff" | asset_url }}) format("woff"); 
+  }
+  </style>
 
   {% if page_title == 'Interchangeability' %}
     {{ 'landing-page.scss' | asset_url | stylesheet_tag }}

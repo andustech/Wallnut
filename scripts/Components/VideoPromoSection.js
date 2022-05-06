@@ -1,229 +1,100 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import styled from 'styled-components';
+import { SectionTiltle } from './ProductFeature/ValuePropComponent';
 
-const VideoPromoSection = ({ assetUrls }) => {
-  const { promoVideoImage, arrowGif, playButtonImage } = assetUrls;
-  const [isPlaying, setIsPlaying] = useState(false);
+const VideoPromoSection = () => {
+
+  const bymoodData = [
+
+    {
+      img: 'https://i.ibb.co/Lgzd5b9/Rectangle-14.png',
+      link: 'Playful',
+    },
+
+    {
+      img: 'https://i.ibb.co/b27wX67/Rectangle-15.png',
+      link: 'Sophisticated',
+    }
+  ];
 
   return (
-    <VideoPromoContainer>
-      <LeftContainer>
-        <YoutubeContainer isPlaying={isPlaying}>
-          {isPlaying && (
-            <iframe
-              title="promo-video"
-              width="100%"
-              height="100%"
-              src="https://www.youtube.com/embed/q-ZoXJlBSz0/?autoplay=1&loop=1&rel=0&wmode=transparent"
-              frameBorder="0"
-              allow="autoplay"
-              allowFullScreen
-              wmode="Opaque"
-            />
-          )}
-        </YoutubeContainer>
-        <PromoImage isPlaying={isPlaying} src={promoVideoImage} />
-        <VideoPlayerIcon onClick={() => setIsPlaying(!isPlaying)} isPlaying={isPlaying}>
-          <img src={playButtonImage} alt="" />
-        </VideoPlayerIcon>
-      </LeftContainer>
-      <RightContainer>
-        <div className="main-container">
-          <GifArrow src={arrowGif} />
-          <Text>
-            <h2>Don&apos;t sweat it</h2>
-            <p>
-              Remove our upholstered chair covers, throw them in the wash, and easily reattach
-              them—no rocket science here.
-            </p>
-            <div className="cta">
-              <a href="/collections/all-chairs" className="button">
-                Shop Collection
-              </a>
-            </div>
-          </Text>
+    <>
+      <WhiteCollectionContainer className='container flex'>
+        <div className='white_coll_left'>
+          <img src='https://i.ibb.co/vBp3wH6/Rectangle-7.png' />
         </div>
-      </RightContainer>
-    </VideoPromoContainer>
-  );
+        <div className='white_coll_right'>
+          <div className='item_box'>
+            <div className='title_top'>NEW IN</div>
+
+            <MiddContent>
+              <h2>White </h2>
+              <p>Collection</p>
+              <a className='premium_link bg-milk' href=''>Shop Collection</a>
+            </MiddContent>
+          </div>
+        </div>
+      </WhiteCollectionContainer>
+
+
+      <ShopByMood className='container'>
+        <SectionTiltle>
+          <h2>Shop by mood</h2>
+        </SectionTiltle>
+
+        <div className='mood_card_container flex '>
+          {bymoodData.map((value, i) => (
+            <a className='by_mood_card' key={i}>
+              <img src={value.img} />
+              <a href='#'>{value.link}</a>
+            </a>  
+          ))}
+        </div>
+      </ShopByMood>
+
+    </>
+  )
+
 };
 
-const VideoPromoContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
 
-  @media only screen and (max-width: 1200px) {
-    grid-template-columns: 2fr 1fr;
-  }
 
-  @media only screen and (max-width: 980px) {
-    grid-template-columns: 1fr;
-  }
+const WhiteCollectionContainer = styled.div`
+  /* display: flex; */
 `;
 
-const LeftContainer = styled.div`
-  position: relative;
-  width: 75%;
-  cursor: pointer;
-  height: 100%;
-
-  @media only screen and (max-width: 1200px) {
-    width: 100%;
-  }
-
-  @media only screen and (max-width: 980px) {
-    padding-left: 20px;
-  }
-`;
-
-const PromoImage = styled.img`
-  opacity: ${({ isPlaying }) => (isPlaying ? 0 : 1)};
-`;
-
-const YoutubeContainer = styled.div`
-  position: absolute;
-  top: 111px;
-  left: 35px;
-  width: 87%;
-  height: 72%;
-  z-index: ${({ isPlaying }) => (isPlaying ? 1 : -1)};
-
-  @media only screen and (max-width: 1200px) {
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-  }
-`;
-
-const VideoPlayerIcon = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  place-items: center;
-  opacity: ${({ isPlaying }) => (isPlaying ? 0 : 1)};
-
-  img {
-    width: 120px;
-
-    @media only screen and (max-width: 980px) {
-      width: 50px;
-    }
-  }
-`;
-
-const RightContainer = styled.div.attrs({
-  className: 'xs:grid xs:justify-items-center',
-})`
-  position: relative;
-
-  @media only screen and (max-width: 1200px) {
-    background: #acbfdad9;
-  }
+const MiddContent = styled.div`
 
   h2 {
+    font-size: 48px !important;
     margin-bottom: 20px;
   }
 
-  .main-container {
-    position: absolute;
-    right: 0;
-    bottom: 10rem;
-    padding: 40px 70px 10px 130px;
-    background: #acbfdad9;
-    width: 40vw;
-    max-width: 670px;
-
-    @media (min-width: 1440px) {
-      bottom: 12.5rem;
-    }
-
-    @media only screen and (max-width: 1200px) {
-      position: initial;
-      padding-left: 30px;
-      padding-top: 125px;
-      bottom: 10rem;
-      width: 100%;
-      background: none;
-    }
-
-    @media only screen and (max-width: 1074px) {
-      bottom: 12vh;
-      padding-top: 7rem;
-      padding-left: 2.5rem;
-      padding-right: 0px;
-    }
-
-    @media only screen and (max-width: 980px) {
-      display: grid;
-      grid-template-columns: 1fr;
-      position: initial;
-      width: 94%;
-      justify-items: center;
-      padding: 30px 15px 15px;
-    }
+  p {
+    font-size: 48px !important;
+    margin-bottom: 31px !important;
   }
 
-  .button {
-    padding-right: 2vw;
-    padding-left: 2vw;
-    color: inherit;
-    white-space: nowrap;
-    max-width: 22.5rem;
-
-    @media only screen and (max-width: 1200px) {
-      padding: 5px 1em;
-      font-size: 1rem;
-    }
-
-    @media only screen and (max-width: 980px) {
-      font-size: 1rem;
-      padding: 7px 30px;
-    }
+  a {
+    position: relative;
   }
-`;
 
-const Text = styled.div`
-  @media (min-width: 1500px) {
-    padding-left: 4rem;
-  }
-  @media (min-width: 1600px) {
-    padding-left: 7rem;
-  }
-  @media only screen and (max-width: 980px) {
-    text-align: center;
-  }
-`;
-
-const GifArrow = styled.img`
+  a:after {
+  content: '';
+  width: 17px;
+  height: 10px;
+  right: 25px;
+  top: 18px;
   position: absolute;
-  width: 15vw;
-  max-width: 250px;
-  transform: rotate(30deg);
-  bottom: 17rem;
-  right: 12rem;
-  ${
-    '' /* @media screen and (max-width: 1400px) {
-    bottom: 18rem;
-  } */
-  }
-
-  @media screen and (max-width: 1220px) {
-    display: none;
-  }
+  background-image: url('https://i.ibb.co/mhJXcrZ/Vector.png');
+}
 `;
 
-VideoPromoSection.propTypes = {
-  assetUrls: PropTypes.shape({
-    promoVideoImage: PropTypes.string.isRequired,
-    arrowGif: PropTypes.string.isRequired,
-    playButtonImage: PropTypes.string.isRequired,
-  }).isRequired,
-};
+
+
+const ShopByMood = styled.div`
+  margin-top: 112px;
+`
+
 
 export default VideoPromoSection;
