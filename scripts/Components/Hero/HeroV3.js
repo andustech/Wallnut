@@ -28,10 +28,10 @@ const HeroV3 = ({ settings }) => {
       <div className='banner_content'>
         <div className='container'>
           <div className="overlay">
-            <h1 className="">{title}</h1>
-            <span className="">{subheading}</span>
-            <a href={button_link_1} className="primary_btn">{button_text_1}</a>
-            <a href={button_link_2} className="secondary_btn">{button_text_2}</a>
+            { title && <h1 className="">{title}</h1> }
+            { subheading && <span className="">{subheading}</span> }
+            { button_text_1 && <a href={button_link_1} className="primary_btn">{button_text_1}</a> }
+            { button_text_2 && <a href={button_link_2} className="secondary_btn">{button_text_2}</a> }
           </div>
         </div>
       </div>

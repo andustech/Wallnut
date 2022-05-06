@@ -21,8 +21,8 @@ const ValuePropSection = () => {
   return (
     <PremiumMainContainer>
       <SectionTiltle>
-        <h2>Premium art</h2>
-        <p>that’s painless to hang</p>
+        <h2 className="font-bold">Premium art</h2>
+        <p className="font-medium">that’s painless to hang</p>
       </SectionTiltle>
       <ValuePropContainer>
 
@@ -61,6 +61,7 @@ export const SectionTiltle = styled.div`
     font-size: 36px !important;
     margin-bottom: 5px !important;
     letter-spacing: -0.005em !important;
+    line-height: 44px !important;
     font-family: 'AttilaSansUniform-Medium' !important;
   }
 `

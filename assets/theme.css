@@ -192,7 +192,7 @@ body {
   font-family: 'GoodSans-Medium' !important;
   font-weight: 500 !important;
   font-size: 12px !important;
-  line-height: 20px;
+  line-height: 20px !important;
   letter-spacing: 0.05em !important;
 }
 
@@ -240,6 +240,7 @@ body {
     font-weight: 700 !important;
     margin-bottom: 0 !important;
     font-family: 'Nib-bold-pro' !important;
+    letter-spacing: -0.02em;
 }
 
 .overlay span {
@@ -250,11 +251,12 @@ body {
   margin-bottom: 35px !important;
   font-weight: 500 !important;
   font-family: 'AttilaSansUniform-Medium' !important;
+  letter-spacing: -0.005em;
 
 }
 
 .primary_btn {
-  padding: 14px 31px;
+  padding: 17px 31px;
   margin-right: 24px;
   font-size: 12px;
   color: #000;
@@ -267,14 +269,14 @@ body {
 }
 
 .secondary_btn {
-  padding: 14px 31px;
+  padding: 17px 31px;
   font-size: 12px;
   color: black;
   transition: 0.6s;
   background-color: #FFFFFF !important;
 }
 
-.secondary_btn {
+.secondary_btn:hover {
   background-color: #ffffffd2 !important;
 }
 
@@ -295,9 +297,9 @@ body {
   width: 240px;
   font-family: 'GoodSans-Medium' !important;
   font-size: 12px !important;
-  font-weight: 700 !important;
+  /* font-weight: 700 !important; */
   padding: 14px 27px 14px 0px;
-  letter-spacing: 1px;
+  letter-spacing: 0.05em;
 }
 
 .premium_link:after {

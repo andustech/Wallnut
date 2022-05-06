@@ -1,6 +1,6 @@
 import React from 'react';
 
-const IndexBetterWay = () => {
+const IndexBetterWay = ({ settings }) => {
 
   return (
     <div className="bg-deep-moss py-16 text-white">
