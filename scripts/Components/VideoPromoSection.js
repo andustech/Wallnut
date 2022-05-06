@@ -46,7 +46,7 @@ const VideoPromoSection = () => {
           {bymoodData.map((value, i) => (
             <a className='by_mood_card' key={i}>
               <img src={value.img} />
-              <a href='#'>{value.link}</a>
+              <a href='#' className='premium_link bg-milk text-center'>{value.link}</a>
             </a>  
           ))}
         </div>
@@ -60,7 +60,7 @@ const VideoPromoSection = () => {
 
 
 const WhiteCollectionContainer = styled.div`
-  /* display: flex; */
+
 `;
 
 const MiddContent = styled.div`

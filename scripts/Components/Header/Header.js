@@ -31,7 +31,7 @@ const Header = (props) => {
             />
           </a>
           <div className="hidden lg:flex">
-            <ul className="flex text-center items-center">
+            <ul className="nav_menu_opt flex text-center items-center">
               <li onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>
                 <LinkItem href="/collections/all">SIZE</LinkItem>
                 <NavWrapper isShown={isShown}>
@@ -108,7 +108,7 @@ const NavWrapper = styled.div.attrs(({ isShown }) => {
 
 const LinkItem = styled.a.attrs({
   className:
-    'relative hover:no-underline font-serif text-base font-normal text-blue-dark uppercase pb-7 px-4',
+    'relative hover:no-underline text-blue-dark uppercase',
 })`
   &:hover {
     &:after {
