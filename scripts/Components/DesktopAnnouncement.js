@@ -59,7 +59,7 @@ const DesktopAnnouncement = ({ settings, themeSettings }) => {
         announcement && 
         <div
           id="message"
-          className="bg-milk center font-normal font-serif mx-0 lg:py-2 text-xs lg:text-base text-white w-full"
+          className="bg-milk center font-normal font-serif mx-0 lg:py-3 text-xs lg:text-base text-white w-full"
           >
           <div className="text-pine relative max-w-screen-xxl mx-auto">
             {announcement}

@@ -77,13 +77,14 @@ const MiddContent = styled.div`
 
   a {
     position: relative;
+    padding: 14px 63px 14px 30px;
   }
 
   a:after {
   content: '';
   width: 17px;
   height: 10px;
-  right: 25px;
+  right: 30px;
   top: 18px;
   position: absolute;
   background-image: url('https://i.ibb.co/mhJXcrZ/Vector.png');
