@@ -21,7 +21,7 @@ const ButtonLink = ({ settings }) => {
 };
 
 const HeroV3 = ({ settings }) => {
-  const { image, video_url, title, button_text_1, button_link_1, button_text_2, button_link_2 } = settings;
+  const { image, video_url, title, subheading, button_text_1, button_link_1, button_text_2, button_link_2 } = settings;
   return (
     <div className="main_banner relative">
       <img src={image} className='bannr_img' alt="Banner" />
@@ -29,6 +29,7 @@ const HeroV3 = ({ settings }) => {
         <div className='container'>
           <div className="overlay">
             <h1 className="">{title}</h1>
+            <span className="">{subheading}</span>
             <a href={button_link_1} className="primary_btn">{button_text_1}</a>
             <a href={button_link_2} className="secondary_btn">{button_text_2}</a>
           </div>
