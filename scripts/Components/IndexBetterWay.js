@@ -1,6 +1,9 @@
 import React from 'react';
 
-const IndexBetterWay = () => {
+const IndexBetterWay = ({ settings }) => {
+  const { blocks } = settings;
+
+  console.log('vidhi' ,{blocks});
 
   return (
     <div className="bg-deep-moss py-16 text-white">

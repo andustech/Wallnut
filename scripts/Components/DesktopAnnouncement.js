@@ -54,17 +54,22 @@ const DesktopAnnouncement = ({ settings, themeSettings }) => {
   }
 
   return (
-    <div
-      id="message"
-      className="bg-milk center font-normal font-serif mx-0 lg:py-2 text-xs lg:text-base text-white w-full"
-    >
-      <div className="text-pine relative max-w-screen-xxl mx-auto">
-        {announcement}
-        <div className="absolute top-1/2 xxl:right-0 right-10 transform -translate-y-1/2 hidden lg:block">
-    
+    <React.Fragment>
+      {
+        announcement && 
+        <div
+          id="message"
+          className="bg-milk center font-normal font-serif mx-0 lg:py-2 text-xs lg:text-base text-white w-full"
+          >
+          <div className="text-pine relative max-w-screen-xxl mx-auto">
+            {announcement}
+            <div className="absolute top-1/2 xxl:right-0 right-10 transform -translate-y-1/2 hidden lg:block">
+        
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      }
+    </React.Fragment>
   );
 };
 

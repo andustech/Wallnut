@@ -58,6 +58,7 @@ export const SectionTiltle = styled.div`
   p {
     font-size: 36px !important;
     margin-bottom: 40px !important;
+    font-family: 'AttilaSansUniform-Medium' !important;
   }
 `
 
@@ -69,7 +70,5 @@ const ValuePropContainer = styled.div.attrs({
 const ValuePropColumn = styled.div.attrs({
   className: 'font-serif flex items-center md:flex-col relative',
 })`
-  @media screen and (max-width: 768px) {
-    width: 240px;
-  }
+
 `;
