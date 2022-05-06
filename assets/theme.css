@@ -192,16 +192,14 @@ body {
   font-family: 'GoodSans-Medium' !important;
   font-weight: 500 !important;
   font-size: 12px !important;
-  letter-spacing: 1px;
+  line-height: 20px;
+  letter-spacing: 0.05em !important;
 }
 
 .search_icon {
   width: 27px !important;
 }
 
-#mini-cart-container .cart-count {
-  width: 34px !important;
-}
 .Header__HeaderContainer-sc-yhlp3e-0.jbWOEQ.flex.items-center.justify-center.w-full {
     background: white;
 }
@@ -238,10 +236,21 @@ body {
 .overlay h1 {
   	color: white !important;
   	font-size: 56px !important;
-    line-height: 60px !important;
-    margin-bottom: 35px;
+    line-height: 78px !important;
     font-weight: 700 !important;
+    margin-bottom: 0 !important;
     font-family: 'Nib-bold-pro' !important;
+}
+
+.overlay span {
+  display: block;
+  color: white !important;
+  font-size: 56px !important;
+  line-height: 51px !important;
+  margin-bottom: 35px !important;
+  font-weight: 500 !important;
+  font-family: 'AttilaSansUniform-Medium' !important;
+
 }
 
 .primary_btn {
@@ -284,19 +293,27 @@ body {
 
 .premium_link {
   width: 240px;
+  font-family: 'GoodSans-Medium' !important;
   font-size: 12px !important;
+  font-weight: 700 !important;
   padding: 14px 27px 14px 0px;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
 
 .premium_link:after {
   content: '';
   width: 17px;
   height: 10px;
-  right: 25px;
-  top: 18px;
+  right: 19px;
+  top: 19px;
   position: absolute;
-  background-image: url('https://i.ibb.co/mhJXcrZ/Vector.png');
+  background-image: url(https://i.ibb.co/mhJXcrZ/Vector.png);
+}
+
+.bg-deep-moss p {
+  line-height: 24px;
+  font-weight: 300 !important;
+  font-family: 'GoodSans-Light' !important;
 }
 
 .trend_card {
@@ -316,12 +333,16 @@ body {
 .trend_card h6 {
   margin-top: 12px;
   font-size: 14px;
+  font-weight: 600 !important;
   margin-bottom: 0px !important;
+  font-family: 'AttilaSansUniform-semibold';
 }
 
 .trend_card p {
   font-size: 12px;
+  font-weight: 500 !important;
   margin-bottom: 7px !important;
+  font-family: 'AttilaSansUniform-semibold' !important;
 }
 
 .white_coll_left {
@@ -356,6 +377,8 @@ body {
   top: 34px;
   font-size: 16px;
   font-weight: 500;
+  letter-spacing: 0.14em !important;
+  font-family: 'AttilaSansUniform-semibold' !important;
 }
 
 #react-index-betterway {
@@ -396,6 +419,21 @@ body {
 }
 
 
+@media only screen and (max-width: 1350px) {
+
+  .video_content {
+    padding: 0 2rem !important;
+  }
+}
+
+
+@media only screen and (max-width: 1156px) {
+
+  .video_content h2, .how_it_work_content h2 {
+
+    font-size: 38px !important;
+  }
+}
 
 
 @media only screen and (max-width: 991px) {
@@ -409,6 +447,19 @@ body {
   .banner_content {
     background-color: #376043;
   }
+
+  .video_items_container {
+    flex-direction: column-reverse !important;
+  }
+  
+  .video_items_container .w-6\/12 {
+    width: 100% !important;
+  }
+
+  .video_content {
+    padding: 0 !important;
+  }
+  
 
 }
 

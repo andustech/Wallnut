@@ -27,7 +27,7 @@ const ValuePropSection = () => {
       <ValuePropContainer>
 
         {valueProps.map((item, i) => (
-          <ValuePropColumn key={i}>
+          <ValuePropColumn key={i} style={{marginTop: '40px'}}>
             <div className="premium_img_box">
               <img className='premium_img' src={item.img} />
             </div>
@@ -52,23 +52,29 @@ export const SectionTiltle = styled.div`
 
   h2 {
     font-size: 36px !important;
+    line-height: 50px !important;
     margin-bottom: 15px !important;
+    letter-spacing: -0.02em !important;
   }
 
   p {
     font-size: 36px !important;
-    margin-bottom: 40px !important;
+    margin-bottom: 5px !important;
+    letter-spacing: -0.005em !important;
     font-family: 'AttilaSansUniform-Medium' !important;
   }
 `
 
 const ValuePropContainer = styled.div.attrs({
   className:
-    'items-center justify-between h-full flex flex-col md:flex-row container m-auto',
+    'items-center justify-between h-full flex container m-auto',
 })``;
 
-const ValuePropColumn = styled.div.attrs({
-  className: 'font-serif flex items-center md:flex-col relative',
+const ValuePropColumn = styled.div/* `
+  margin-top: 40px !important;
+  
+` */.attrs({
+  className: 'font-serif flex items-center relative',
 })`
 
 `;
