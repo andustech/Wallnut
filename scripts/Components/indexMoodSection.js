@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { SectionTiltle } from './ProductFeature/ValuePropComponent';
 
-const VideoPromoSection = ({ settings }) => {
+const indexMoodSection = ({ settings }) => {
   const { image, section_title, title, subheading, button_text, button_link } = settings;
   const bymoodData = [
 
@@ -14,18 +14,18 @@ const VideoPromoSection = ({ settings }) => {
     {
       img: 'https://i.ibb.co/b27wX67/Rectangle-15.png',
       link: 'Sophisticated',
-    }
+    } 
   ];
 
   return (
     <>
-      <WhiteCollectionContainer className='container white_main_container'>
+      <WhiteCollectionContainer className='container flex'>
         <div className='white_coll_left'>
           <img src={image} alt="Collection" />
-        </div> 
+        </div>
         <div className='white_coll_right'>
           <div className='item_box'>
-            { section_title && <div className='title_top uppercase'>{section_title}</div> }
+            { section_title && <div className='title_top'>{section_title}</div> }
           
             <MiddContent>
               { title && <h2 className="font-bold">{title}</h2> }
@@ -104,4 +104,4 @@ const ShopByMood = styled.div`
 `
 
 
-export default VideoPromoSection;
+export default indexMoodSection;

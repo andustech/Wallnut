@@ -273,10 +273,10 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
       </a>
           {!noColorSelector && (
             <ColorContainer>
-              <div>
-                <ColorTitleWrapper>
+              <div> 
+                {/* <ColorTitleWrapper>
                   <span className="text-sm">Washable Fabric Color</span>
-                </ColorTitleWrapper>
+                </ColorTitleWrapper> */}
                 <div className="flex">
                   {colors.map((color) => {
                     if (
@@ -298,7 +298,7 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
                       </ColorSwatchWrapper>
                     );
                   })}
-                  <div className="self-center">
+                  {/* <div className="self-center">
                     <a
                       className="flex items-center justify-center gap-1 text-base"
                       href={getProductUrl(
@@ -312,15 +312,15 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
                       <PlusIcon height="10" width="10" />
                       <span>{getColorTotal(colors, product)}</span>
                     </a>
-                  </div>
+                  </div> */}
                 </div>
               </div>
-              {product.options.length > 1 && !product.title.includes('The Classic Lounge Chair') && (
-                <div>
-                  <ColorTitleWrapper>
+              {/* {product.options.length > 1 && !product.title.includes('The Classic Lounge Chair') && (
+                <div> */}
+                  {/* <ColorTitleWrapper>
                     <span className="text-sm">Leg Color</span>
-                  </ColorTitleWrapper>
-                  <div className="flex justify-center">
+                  </ColorTitleWrapper> */}
+                  {/* <div className="flex justify-center">
                     {legOptions.map((option, i) => (
                       <div
                         key={i}
@@ -332,17 +332,17 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
                         role="button"
                         tabIndex="0"
                       >
-                        <div className={`h-8 w-8 rounded-full wood-color-swatch ${option}`} />
+                        <div className={`h-3 w-3 rounded-full wood-color-swatch ${option}`} />
                       </div>
                     ))}
                   </div>
                 </div>
-              )}
+              )} */}
             </ColorContainer>
           )}
-      <span className="text-sm lg:text-base text-orange-burnt capitalize text-left">
+      {/* <span className="text-sm lg:text-base text-orange-burnt capitalize text-left">
         {colorOption}
-      </span>
+      </span> */}
     </ItemContainer>
   );
 };
@@ -418,13 +418,15 @@ const CounterContainer = styled.div.attrs({
   background: white;
 `;
 const ColorContainer = styled.div.attrs({
-  className: 'flex w-full justify-between px-3 py-2 bg-lynxwhite',
+  className: 'flex w-full justify-between pr-3 py-2',
 })``;
 
 const ColorSwatchWrapper = styled.div.attrs(({ border }) => {
-  const borderStyle = border ? 'border-2 border-blue' : 'border border-gray-300';
+  const borderStyle = border ? 'border border-black' : '';
+  const marginStyle = border ? 'mr-1.5' : 'mr-2';
   return {
-    className: `w-9 h-9 border-solid border-2 mr-1 lg:mr-0 xxl:mr-1 rounded-full grid justify-items-center items-center ${borderStyle} `,
+    // className: `w-4.5 h-4.5 border-solid border-2 mr-1 lg:mr-0 xxl:mr-1 rounded-full grid justify-items-center items-center ${borderStyle} `,
+    className: `border-solid flex h-4.5 items-center justify-center rounded-full w-4.5 ${borderStyle} ${marginStyle}`,
   };
 })``;
 
