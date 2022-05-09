@@ -77,5 +77,5 @@ ProductRecommendation.propTypes = {
   }),
   title: PropTypes.string,
 };
-
+ 
 export default ProductRecommendation;

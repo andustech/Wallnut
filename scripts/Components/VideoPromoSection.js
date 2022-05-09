@@ -18,8 +18,8 @@ const VideoPromoSection = ({ settings }) => {
   ];
 
   return (
-    <> 
-      <WhiteCollectionContainer className='container flex'>
+    <>
+      <WhiteCollectionContainer className='container white_main_container'>
         <div className='white_coll_left'>
           <img src={image} alt="Collection" />
         </div> 

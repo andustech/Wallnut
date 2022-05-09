@@ -19,15 +19,15 @@ const ValuePropSection = () => {
   ];
 
   return (
-    <PremiumMainContainer>
-      <SectionTiltle>
+    <PremiumMainContainer className='premium_main_container'>
+      <SectionTiltle className='section_titile'>
         <h2 className="font-bold">Premium art</h2>
         <p className="font-medium">that’s painless to hang</p>
       </SectionTiltle>
       <ValuePropContainer>
 
         {valueProps.map((item, i) => (
-          <ValuePropColumn key={i} style={{marginTop: '40px'}}>
+          <ValuePropColumn key={i} className='premium_card_container'>
             <div className="premium_img_box">
               <img className='premium_img' src={item.img} />
             </div>
@@ -50,31 +50,14 @@ const PremiumMainContainer = styled.div`
 export const SectionTiltle = styled.div`
   text-align: center;
 
-  h2 {
-    font-size: 36px !important;
-    line-height: 50px !important;
-    margin-bottom: 15px !important;
-    letter-spacing: -0.02em !important;
-  }
-
-  p {
-    font-size: 36px !important;
-    margin-bottom: 5px !important;
-    letter-spacing: -0.005em !important;
-    line-height: 44px !important;
-    font-family: 'AttilaSansUniform-Medium' !important;
-  }
 `
 
 const ValuePropContainer = styled.div.attrs({
   className:
-    'items-center justify-between h-full flex container m-auto',
+    'h-full  container m-auto',
 })``;
 
-const ValuePropColumn = styled.div/* `
-  margin-top: 40px !important;
-  
-` */.attrs({
+const ValuePropColumn = styled.div.attrs({
   className: 'font-serif flex items-center relative',
 })`
 
