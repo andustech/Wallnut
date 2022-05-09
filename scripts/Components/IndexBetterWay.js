@@ -5,7 +5,7 @@ const IndexBetterWay = ({ settings }) => {
   return (
     <div className="bg-deep-moss py-16 text-white">
       <div className="container mx-auto py-2 px-5 lg:px-0">
-        <div className="video_items_container flex items-center flex-col lg:flex-row">
+        <div className="video_items_container flex items-center flex-col lg:flex-row md:flex-col-reverse md:items-start">
           <div className="video_content lg:w-6/12 lg:px-16 pb-5 lg:pb-5">
             <h2 className="h2-nib-pro text-5xl font-bold text-white mb-4">A better way to art</h2>
             <p className="mb-7">We believe art can transform a house into a home. So why is art so difficult to find, frustrating to frame, and impossible to hang? That’s why we created an all-in-one solution for finding, framing, and hanging art, mess-free and stress-free. Your walls will thank you.</p>
@@ -16,7 +16,7 @@ const IndexBetterWay = ({ settings }) => {
             {/* <a href="https://ibb.co/j8frZ7t"><img src="https://i.ibb.co/Cw8HsxL/better-way.png" alt="better-way" border="0"></a> */}
           </div>
         </div>
-        <div className="how_it_work_items_container flex items-center flex-col lg:flex-row">
+        <div className="how_it_work_items_container flex items-center flex-col lg:flex-row md:flex-col-reverse md:items-start">
           <div className="w-6/12">
             <img src="https://i.ibb.co/Cw8HsxL/better-way.png" alt="how-it-works" />
           </div>
@@ -30,7 +30,7 @@ const IndexBetterWay = ({ settings }) => {
       </div>
 
       <div tabindex="-1" aria-hidden="true" className="hidden overflow-y-auto overflow-x-hidden fixed left-1/2 top-1/2 translate-y-2/4 z-50">
-        <div class="flex items-start modal-body pr-4">
+        <div class="flex md:flex-col-reverse items-start modal-body pr-4">
           <video width="100%" height="100%" controls autoplay class="pr-3">
             <source src="https://cdn.shopify.com/s/files/1/1564/7647/files/monthly_packages.mp4?v=1614849415" type="video/mp4" />
             Your browser does not support the video tag.

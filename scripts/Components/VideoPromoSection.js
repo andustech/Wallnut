@@ -19,7 +19,7 @@ const VideoPromoSection = () => {
 
   return (
     <>
-      <WhiteCollectionContainer className='container flex'>
+      <WhiteCollectionContainer className='container white_main_container'>
         <div className='white_coll_left'>
           <img src='https://i.ibb.co/vBp3wH6/Rectangle-7.png' />
         </div>
@@ -65,20 +65,7 @@ const WhiteCollectionContainer = styled.div`
 
 const MiddContent = styled.div`
 
-  h2 {
-    font-size: 48px !important;
-    margin-bottom: 20px;
-  }
 
-  p {
-    font-size: 48px !important;
-    margin-bottom: 31px !important;
-  }
-
-  a {
-    position: relative;
-    padding: 14px 63px 14px 30px;
-  }
 
   a:after {
   content: '';

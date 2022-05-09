@@ -38,17 +38,17 @@ const ProductRecommendation = () => {
       <TrendCardContainer className='container'>
         {trendData.map((value, i) => (
 
-          <TrendCardRow key={i}>
+          <TrendCardRow className='trend_row' key={i}>
             <div className='trend_card'>
               <img src={value.img} />
               <h6>{value.title}</h6>
               <p>{value.price}</p>
 
-              <RadioChoice>
+              {/* <RadioChoice>
                 <input type="radio" id="html" name="fav_language" value="HTML" />
                 <input type="radio" id="html" name="fav_language" value="HTML" />
                 <input type="radio" id="html" name="fav_language" value="HTML" />
-              </RadioChoice>
+              </RadioChoice> */}
             </div>
           </TrendCardRow>
         )
@@ -75,25 +75,25 @@ const TrendCardContainer = styled.div`
 `
 // const TrendCardRow = styled.div``
 const TrendCardRow = styled.div`
- display: flex;
+ /* display: flex;
  align-items: center;
- position: relative;
+ position: relative; */
 `;
 
-const RadioChoice = styled.div`
-  input {
-    margin: 0 4px;
-    cursor: pointer;
-  }
+// const RadioChoice = styled.div`
+//   input {
+//     margin: 0 4px;
+//     cursor: pointer;
+//   }
 
-  input:first-child {
-    margin-left: 0;
-  }
+//   input:first-child {
+//     margin-left: 0;
+//   }
 
-  input:last-child {
-    margin-right: 0;
-  }
-`;
+//   input:last-child {
+//     margin-right: 0;
+//   }
+// `;
 
 
 export default ProductRecommendation;
