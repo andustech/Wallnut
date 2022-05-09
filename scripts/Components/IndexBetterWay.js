@@ -11,14 +11,14 @@ const IndexBetterWay = ({ settings }) => {
             <p className="mb-7">We believe art can transform a house into a home. So why is art so difficult to find, frustrating to frame, and impossible to hang? That’s why we created an all-in-one solution for finding, framing, and hanging art, mess-free and stress-free. Your walls will thank you.</p>
             <a href="#" className="flex items-center text-white hover:text-red-100"><img src="https://i.ibb.co/PFvTSLq/video-play.png" alt="Video Play" className="mr-3" /> Watch the video</a>
           </div>
-          <div className="w-6/12">
-            <img src="https://i.ibb.co/VQc3QV1/how-it-works.png" alt="how-it-works" />
+          <div className="w-6/12"> 
+            <img src="https://i.ibb.co/VQc3QV1/how-it-works.png" alt="how-it-works" className="w-full" />
             {/* <a href="https://ibb.co/j8frZ7t"><img src="https://i.ibb.co/Cw8HsxL/better-way.png" alt="better-way" border="0"></a> */}
           </div>
         </div>
         <div className="how_it_work_items_container flex items-center flex-col lg:flex-row">
           <div className="w-6/12">
-            <img src="https://i.ibb.co/Cw8HsxL/better-way.png" alt="how-it-works" />
+            <img src="https://i.ibb.co/Cw8HsxL/better-way.png" alt="how-it-works" className="w-full" />
           </div>
           <div className="how_it_work_content lg:w-6/12 lg:px-16 pt-5 lg:pt-5">
             <h2 className="h2-nib-pro text-5xl font-bold text-white mb-4">How it works</h2>
