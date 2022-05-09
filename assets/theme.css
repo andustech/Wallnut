@@ -280,6 +280,32 @@ body {
   background-color: #ffffffd2 !important;
 }
 
+.section_titile h2 {
+  font-size: 36px !important;
+  line-height: 50px !important;
+  margin-bottom: 5px !important;
+  letter-spacing: -0.02em !important;
+}
+
+.section_titile p {
+  font-size: 36px !important;
+  margin-bottom: 0 !important;
+  letter-spacing: -0.005em !important;
+  line-height: 44px !important;
+  font-family: 'AttilaSansUniform-Medium' !important;
+}
+
+.ValuePropComponent__ValuePropContainer-sc-1587g2s-2.h-full.container.m-auto {
+  display: flex;
+}
+
+.premium_card_container {
+  display: flex !important;
+  align-items: center;
+  margin-top: 40px;
+  justify-content: space-between;
+}
+
 .premium_img_box {
   margin: 0 12px !important;
 }
@@ -331,6 +357,11 @@ body {
   margin-right: 0 !important;
 }
 
+.trend_row {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
 
 .trend_card h6 {
   margin-top: 12px;
@@ -413,12 +444,56 @@ body {
 .by_mood_card {
   position: relative;
 }
+
 .by_mood_card a {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
 }
+
+.white_main_container {
+  display: flex;
+}
+
+
+.white_coll_right h2 {
+  font-size: 48px;
+  line-height: 66px !important;
+}
+
+.white_coll_right p {
+  font-size: 48px !important;
+  margin-bottom: 0 !important;
+  line-height: 56px !important;
+  font-family: 'AttilaSansUniform-Medium' !important;
+}
+
+.white_coll_right a {
+  position: relative;
+  padding: 14px 63px 14px 30px;
+  margin-top: 30px !important;
+  padding-bottom: 50px;
+}
+
+
+.video_content h2, .how_it_work_content h2 {
+  margin-top: 0 !important;
+  line-height: 66px !important;
+}
+
+
+.video_content p {
+  line-height: 24px !important;
+}
+
+.video_content {
+  font-size: 12px !important;
+  line-height: 20px !important;
+}
+
+
+
 
 
 @media only screen and (max-width: 1350px) {
@@ -427,6 +502,9 @@ body {
     padding: 0 2rem !important;
   }
 }
+
+
+
 
 
 @media only screen and (max-width: 1156px) {
@@ -461,8 +539,82 @@ body {
   .video_content {
     padding: 0 !important;
   }
-  
 
+  .white_main_container {
+    flex-direction: column-reverse !important;
+  }
+
+  .white_coll_right {
+    max-width: 100%;
+    width: 100%;
+  }
+
+.item_box {
+  padding: 16px;
+  height: 235px;
+}
+
+.title_top {
+  letter-spacing: 0.14em !important;
+  line-height: 20px !important;
+  margin-bottom: 30px !important;
+}
+
+.white_coll_right h2 {
+  font-size: 40px !important;
+  margin-top: 30px !important;
+}
+
+.white_coll_right p {
+  font-size: 40px !important;
+  line-height: 40px !important;
+  margin-bottom: 30px !important;
+}
+
+.video_items_container {
+  flex-direction: column-reverse !important;
+}
+
+.how_it_work_items_container {
+  flex-direction: column-reverse !important;
+  align-items: flex-start !important;
+}
+
+.video_content {
+    margin-top: 24px;
+}
+
+.video_content h2 {
+  font-size: 24px;
+line-height: 33px;
+}
+
+.how_it_work_content p, .video_content p {
+  font-weight: 300 !important;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+/* .how_it_work_items_container img {
+  width: 100%;
+} */
+}
+
+
+
+
+
+@media only screen and (max-width: 768px) {
+
+  .ProductRecommendation__TrendCardContainer-sc-1bfw787-1.dnwXiG.container {
+    overflow-x: scroll !important;
+    display: -webkit-box !important;
+  }
+
+  .ValuePropComponent__ValuePropContainer-sc-1587g2s-2 {
+    overflow-x: scroll !important;
+    display: -webkit-box !important;
+  }
 }
 
 
@@ -472,20 +624,69 @@ body {
 
   .overlay h1 {
     font-size: 28px !important;
-    margin-bottom: 24px !important;
+    line-height: 39px !important;
+  }
 
+  .overlay span {
+    font-size: 28px !important;
+    margin-bottom: 24px !important;
+    line-height: 25px !important;
   }
 
   .overlay {
-    padding: 35px;
+    padding: 32px 0 !important;
   }
 
   .primary_btn {
     display: inherit;
-    width: fit-content;
+    width: 100%;
     margin: 0 auto;
+    font-size: 10px;
+    max-width: 142px;
     margin-bottom: 12px;
+    padding: 8px !important;
   }
+
+  .secondary_btn {
+    display: inherit;
+    width: 100%;
+    margin: 0 auto;
+    font-size: 10px;
+    max-width: 142px;
+    padding: 8px !important;
+  }
+  
+  .premium_card_container {
+    margin-bottom: 20px;
+  }
+  
+  .premium_main_container {
+    padding: 57px 0 !important;
+  }
+
+  .premium_card_container {
+    margin-top: 20px !important;
+  }
+
+  .section_titile h2 {
+    font-size: 20px !important;
+    line-height: 26px !important;
+  }
+
+  .section_titile p {
+    font-weight: 500 !important;
+    font-size: 20px !important;
+    line-height: 26px !important;
+  }
+
+  .premium_link {
+    font-weight: 500 !important;
+    font-size: 10px !important;
+      line-height: 16px !important;
+  }
+
+
+
 }
 
 
