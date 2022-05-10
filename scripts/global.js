@@ -9,6 +9,8 @@ import { setOptimizelySession } from './utils/optimizely';
 import BestSellers from './Components/BestSellers';
 import DesktopAnnouncement from './Components/DesktopAnnouncement';
 import IndexBetterWay from './Components/IndexBetterWay';
+import indexMoodSection from './Components/indexMoodSection';
+import indexTestimonialSection from './Components/indexTestimonialSection';
 import ChairCoverUpsell from './Components/ChairCoverUpsell';
 import AfterPayCopy from './Components/AfterPayCopy';
 import Sale from './Components/Sale';
@@ -56,6 +58,8 @@ const components = [
   { id: 'react-header', module: Header },
   { id: 'react-product-recommendation', module: ProductRecommendation },
   { id: 'react-index-betterway', module: IndexBetterWay },
+  { id: 'react-index-mood-section', module: indexMoodSection },
+  { id: 'react-index-testimonial-section', module: indexTestimonialSection },
 ];
 
 createReactComponents(components);

@@ -2962,7 +2962,7 @@
           "9a710559-b7cf-4de9-a660-28361849ad98": {
             "type": "navigation",
             "settings": {
-              "main_nav": "mobile-menu",
+              "main_nav": "",
               "full_width_nav": true,
               "nav_top_level_bg": "#000000",
               "nav_top_level_links": "#000000",
@@ -2995,97 +2995,68 @@
             "type": "sub_menu",
             "settings": {
               "menu_title": "Shop",
-              "feature_collection": "dining-chairs",
-              "hero_image": "shopify:\/\/shop_images\/01_DiningRoomHero_ParsonBeige_0186_Hero_1120.png",
-              "hero_image_small": "shopify:\/\/shop_images\/01_DiningRoomHero_ParsonBeige_0186_Hero_Large_5039afd2-c796-4c17-9a99-2a647b7b36b7.png",
-              "hero_image_medium": "shopify:\/\/shop_images\/01_DiningRoomHero_ParsonBeige_0186_Hero_1440.png",
-              "sale_hero_image": "shopify:\/\/shop_images\/Mask_Group.png"
+              "feature_collection": "dining-chairs"
             }
           },
           "72de42b6-f0d6-4591-8097-87a6298fb5af": {
             "type": "color_menu",
             "settings": {
-              "hero_image": "shopify:\/\/shop_images\/02_Moments_1219_1_2.png",
               "hero_link_text": "Shop By Color",
               "hero_link": "shopify:\/\/pages\/all-chair-colors",
               "color1_name": "Neutrals",
-              "color1_pic": "shopify:\/\/shop_images\/Neutrals_d9f7e74f-73fa-40a0-b276-56ffce6d612b.png",
               "color1_link": "\/collections\/all?colors=off+white&colors=dusty+rose&colors=sand&colors=ash+brown",
               "color2_name": "Multicolor",
-              "color2_pic": "shopify:\/\/shop_images\/Multicolour_0b50ead0-2fd8-4894-8751-81bf6876be6d.png",
               "color2_link": "\/collections\/all?colors=houndstooth&colors=gingham+powder+blue&colors=sedona+ivory&colors=kali+ikat+blue",
               "color3_name": "Grays",
-              "color3_pic": "shopify:\/\/shop_images\/Grays_f869f19e-8d52-4569-b172-4c0304a8aad6.png",
               "color3_link": "\/collections\/all?colors=charcoal+gray&colors=light+gray",
               "color4_name": "Greens",
-              "color4_pic": "shopify:\/\/shop_images\/Greens_8d3eb4ab-7979-4fac-bd75-d211c356a04e.png",
               "color4_link": "\/collections\/all?colors=light+sage&colors=soft+chartreuse&colors=dark+sage",
               "color5_name": "Blues",
-              "color5_pic": "shopify:\/\/shop_images\/Blues_7b27b22a-b3b3-4c72-ab27-8af02fa574e7.png",
               "color5_link": "\/collections\/all?colors=arctic+blue&colors=cerulean&colors=dark+denim+blue",
               "color6_name": "Reds & Yellows",
-              "color6_pic": "shopify:\/\/shop_images\/Reds_Yellows_9cda15e9-7b0b-4a11-81de-63deca895784.png",
               "color6_link": "\/collections\/all?colors=maroon&colors=chili+red&colors=burnt+orange&colors=mustard+yellow"
             }
           },
           "44fea3e2-3f9c-4a66-b35d-9997b6553a3b": {
             "type": "new_nav",
             "settings": {
-              "image_link_1": "shopify:\/\/shop_images\/Nav_StudioImage_2x_4d7fe6c3-587b-45f8-a857-88d7bc0ec8df.jpg",
               "text_link_1": "Scandinavian Dining Chair",
               "url_link_1": "shopify:\/\/products\/the-scandinavian-dining-chair",
-              "image_link_2": "shopify:\/\/shop_images\/Nav_StudioImage_2x_1.jpg",
               "text_link_2": "Classic Dining Chair",
               "url_link_2": "shopify:\/\/products\/the-classic-dining-chair-walnut",
-              "image_link_3": "shopify:\/\/shop_images\/Nav_StudioImage_2x_2.jpg",
               "text_link_3": "Scandinavian Lounge Chair",
               "url_link_3": "shopify:\/\/products\/the-scandinavian-lounge-chair",
-              "image_link_4": "shopify:\/\/shop_images\/Nav_StudioImage_2x_4.jpg",
               "text_link_4": "Classic Lounge Chair",
               "url_link_4": "shopify:\/\/products\/the-classic-lounge-chair",
-              "image_link_5": "shopify:\/\/shop_images\/Nav_StudioImage_2x_3.jpg",
               "text_link_5": "Extra Covers",
               "url_link_5": "shopify:\/\/products\/scandinavian-lounge-extra-chair-cover",
-              "image_link_6": "shopify:\/\/shop_images\/all-nav_525b6f24-cf30-4181-98b9-96b4a226adf2.jpg",
               "text_link_6": "Shop All Chairs",
               "url_link_6": "shopify:\/\/collections\/all",
-              "hero_image": "shopify:\/\/shop_images\/Desktop-nav-promo.jpg",
               "hero_link": "shopify:\/\/pages\/white-chairs",
               "hero_link_text": "Shop Washable Whites",
-              "sale_hero_image": "shopify:\/\/shop_images\/Desktop-Nav_promo.png",
               "sale_hero_link": "\/collections\/fresh-start-event",
               "show_sale_hero_button": false,
-              "black_friday_sale_hero_image": "shopify:\/\/shop_images\/Nav_Promo_2x_1.jpg",
               "black_friday_sale_hero_link": "shopify:\/\/collections\/black-friday-sale",
-              "cyber_monday_sale_hero_image": "shopify:\/\/shop_images\/Nav_Promo_2x_5a6d901c-723b-48f2-a8d5-ef043705f7c8.jpg",
               "cyber_monday_sale_hero_link": "shopify:\/\/collections\/cyber-monday-sale"
             }
           },
           "c1584ce2-22d2-4cc3-8d84-d7a604761cdb": {
             "type": "mobile_nav",
             "settings": {
-              "image_link_1": "shopify:\/\/shop_images\/Scandinavian-dining-chair-off-white-three-quarter-view_800x_5c2cfd10-b1dc-4ed1-b00d-5cdf32c7a83d.jpg",
               "text_link_1": "The Scandinavian Dining Chair",
               "url_link_1": "shopify:\/\/products\/the-scandinavian-dining-chair",
-              "image_link_2": "shopify:\/\/shop_images\/Classic-dining-chair-blue-walnut-three-quarter-view_800x_8ff93ddd-3f09-4934-a4c6-984b9eeb285d.jpg",
               "text_link_2": "The Classic Dining Chair",
               "url_link_2": "shopify:\/\/products\/the-classic-dining-chair-walnut",
-              "image_link_3": "shopify:\/\/shop_images\/Scandinavian-lounge-chair-mustard-yellow-three-quarter-view_800x_5ac1b666-9452-4817-a64c-9908d2244c0e.jpg",
               "text_link_3": "The Scandinavian Lounge Chair",
               "url_link_3": "shopify:\/\/products\/the-scandinavian-lounge-chair",
-              "image_link_4": "shopify:\/\/shop_images\/Lounge_Classic_Cerulean_Walnut_Hero_1.jpg",
               "text_link_4": "The Classic Lounge Chair",
               "url_link_4": "shopify:\/\/products\/the-classic-lounge-chair",
-              "image_link_5": "shopify:\/\/shop_images\/Scandinavian-lounge-chair-chartreuse-three-quarter-view_3.png",
               "text_link_5": "Extra Covers",
               "url_link_5": "shopify:\/\/products\/scandinavian-lounge-extra-chair-cover",
               "show_hero_all": true,
-              "sale_hero_image": "shopify:\/\/shop_images\/mobile-nav-promo.jpg",
               "sale_hero_link": "shopify:\/\/pages\/herringbone-chairs",
               "show_hero_button": false,
-              "black_friday_sale_hero_image": "shopify:\/\/shop_images\/Mobile-Nav-promo.png",
               "black_friday_sale_hero_link": "shopify:\/\/collections\/black-friday-sale",
-              "cyber_monday_sale_hero_image": "shopify:\/\/shop_images\/Frame_547_2x_35ce813d-461c-4e23-b6a1-aa7688e407f0.jpg",
               "cyber_monday_sale_hero_link": "shopify:\/\/collections\/cyber-monday-sale"
             }
           }
@@ -3108,7 +3079,6 @@
           "nav_border_color": "#d5d5d5",
           "absolute_header": false,
           "homepage_nav_color": "#ffffff",
-          "logo": "shopify:\/\/shop_images\/levity_logo.png",
           "logo_max_width": 125,
           "logo_size": 21,
           "logo_position": "inline_left",
@@ -3124,21 +3094,21 @@
           "9f42d3ee-acda-44e2-be04-ade9b19e776c": {
             "type": "menu",
             "settings": {
-              "footer_nav": "company",
+              "footer_nav": "",
               "title": "Company"
             }
           },
           "1520914258601": {
             "type": "menu",
             "settings": {
-              "footer_nav": "collections",
+              "footer_nav": "",
               "title": "Shop"
             }
           },
           "b3cf7b94-cbb3-4fed-acd2-cb2f942f0ada": {
             "type": "menu",
             "settings": {
-              "footer_nav": "support-menu",
+              "footer_nav": "",
               "title": "Support"
             }
           },
@@ -4040,7 +4010,6 @@
       "160246744642def47d": {
         "type": "image-with-text",
         "settings": {
-          "image": "shopify:\/\/shop_images\/BodyImage01.jpg",
           "layout": "right",
           "image_width": "50%",
           "text_align": "center",
@@ -4053,7 +4022,6 @@
       "16024674901e4c0873": {
         "type": "image-with-text",
         "settings": {
-          "image": "shopify:\/\/shop_images\/BodyImage02.jpg",
           "layout": "left",
           "image_width": "50%",
           "text_align": "center",
@@ -4066,7 +4034,6 @@
       "1602467713b92e9c76": {
         "type": "image-with-text",
         "settings": {
-          "image": "shopify:\/\/shop_images\/BodyImage04.jpg",
           "layout": "right",
           "image_width": "50%",
           "text_align": "center",
@@ -4404,12 +4371,17 @@
       "162144687750a492d8": {
         "type": "react-promo-video",
         "settings": {
+          "section_title": "New in",
+          "image": "shopify:\/\/shop_images\/white-collection.png",
+          "title": "White",
+          "subheading": "Collection",
+          "button_text": "Shop Collection",
+          "button_link": ""
         }
       },
       "16218796845014f478": {
         "type": "image-with-text",
         "settings": {
-          "image": "shopify:\/\/shop_images\/LP-Image4.jpg",
           "layout": "left",
           "image_width": "50%",
           "text_align": "center",
@@ -4423,11 +4395,8 @@
         "type": "hero",
         "settings": {
           "version": "v3",
-          "image": "shopify:\/\/shop_images\/hero-bg-desktop_7fcd8f5d-4fba-47e1-b890-ad74e691cdfa.jpg",
+          "image": "shopify:\/\/shop_images\/home-banner.jpg",
           "video_url": "https:\/\/levity-products.s3.us-west-2.amazonaws.com\/videos\/22_01+WW+Hero+Vid+Asset.mp4",
-          "image_left": "shopify:\/\/shop_images\/Frame_542_2x_240f6b0b-b956-4532-9329-cce173cbae68.jpg",
-          "tablet_image": "shopify:\/\/shop_images\/Frame_543_2x_9fc52805-f46a-4759-a105-8c1712fa8d66.jpg",
-          "mobile_image": "shopify:\/\/shop_images\/Frame_540_2x_bcff31b2-2da4-4843-9baf-e811b25fdbde.jpg",
           "mobile_text_color": "navy",
           "text_color": "navy",
           "subheading_size": "",
@@ -4435,21 +4404,17 @@
           "title_size": "",
           "title_mobile_size": "",
           "title_tablet_size": "",
-          "title": "Washable Whites",
-          "subheading": "Finally, Chairs that Stay Bright & White!",
-          "button_text": "Shop The Collection",
-          "button_link": "shopify:\/\/pages\/white-chairs"
+          "title": "Taking the work",
+          "subheading": "out of artwork",
+          "button_text_1": "Shop All",
+          "button_link_1": "#",
+          "button_text_2": "How it works",
+          "button_link_2": "#"
         }
       },
       "collections-hero": {
         "type": "collections-hero",
         "settings": {
-          "lounge_image": "shopify:\/\/shop_images\/Dining_Room_Hero_Image_-_Washable_Scandinavian_Lounge_Chair_Blue.jpg",
-          "lounge_tablet_image": "shopify:\/\/shop_images\/Dining_Room_Hero_Image_-_Washable_Scandinavian_Lounge_Chair_Blue.jpg",
-          "lounge_mobile_image": "shopify:\/\/shop_images\/Dining_Room_Hero_Image_-_Washable_Scandinavian_Lounge_Chair_Blue_415628a5-1e27-4e92-aa8f-ec3688f526af.jpg",
-          "dining_image": "shopify:\/\/shop_images\/DiningChairs_2x_a7c7bd40-141e-46c7-9129-5987fc118e00.png",
-          "dining_tablet_image": "shopify:\/\/shop_images\/DiningChairs-tab_2x_1f0f4b38-893a-4af3-bb30-166ec5387007.png",
-          "dining_mobile_image": "shopify:\/\/shop_images\/DiningChairs-mobile_2x_e74f0562-521b-4b2d-bdba-10396d5a9397.png",
           "title": "Add a title to your image",
           "subheading": "",
           "button_text": "",
@@ -4630,6 +4595,11 @@
       "162500318474b8d8ee": {
         "type": "react-value-prop",
         "settings": {
+          "title": "Premium art",
+          "subheading": "that’s painless to hang",
+          "collection_1": "best-selling-collection",
+          "collection_2": "frontpage",
+          "collection_3": "new-collection"
         }
       },
       "sales-hero": {
@@ -4659,13 +4629,7 @@
           "hero_button_link": "\/collections\/fresh-start-sale",
           "hero_button_link_color": "text-blue",
           "under_button_text": "*Exclusions apply. See our <a class=\"underline\" href=\"\/pages\/terms-conditions\"> terms<\/a>.",
-          "hero_image": "shopify:\/\/shop_images\/Desktop-LP.jpg",
-          "hero_tablet_image": "shopify:\/\/shop_images\/Tablet-LP.jpg",
-          "hero_mobile_image": "shopify:\/\/shop_images\/Mobile-LP.jpg",
           "collection_hero_toggle": true,
-          "collection_hero_image": "shopify:\/\/shop_images\/Desktop-PLP.jpg",
-          "collection_hero_tablet_image": "shopify:\/\/shop_images\/Tablet-PLP.jpg",
-          "collection_hero_mobile_image": "shopify:\/\/shop_images\/Mobile-PLP.jpg",
           "collection_hero_title": "LOUNGE CHAIRS*",
           "collection_hero_title_font": "font-serif",
           "collection_hero_secondary_title": "Enjoy The Fresh Start Event with code",
@@ -4912,12 +4876,6 @@
           "hero_button_link": "shopify:\/\/collections\/cyber-monday-sale",
           "hero_button_link_color": "text-white",
           "under_button_text": "*All chairs & covers, excluding gift cards.",
-          "hero_image": "shopify:\/\/shop_images\/cyber-moday-hero-desktop.png",
-          "hero_tablet_image": "shopify:\/\/shop_images\/cyber-moday-hero-tablet.png",
-          "hero_mobile_image": "shopify:\/\/shop_images\/cyber-moday-hero-mobile.png",
-          "collection_hero_image": "shopify:\/\/shop_images\/cyber-moday-collections-hero-desktop.png",
-          "collection_hero_tablet_image": "shopify:\/\/shop_images\/cyber-moday-collections-hero-tablet.png",
-          "collection_hero_mobile_image": "shopify:\/\/shop_images\/cyber-moday-collections-hero-mobile.png",
           "collection_hero_title": "Sitewide",
           "collection_hero_title_font": "font-sans",
           "collection_hero_secondary_title": "Includes all chairs & covers* with code",
@@ -4947,12 +4905,6 @@
           "hero_button_link": "shopify:\/\/collections\/black-friday-sale",
           "hero_button_link_color": "text-blue",
           "under_button_text": "*All chairs & covers, excluding gift cards.",
-          "hero_image": "shopify:\/\/shop_images\/Mask_Group_3.png",
-          "hero_tablet_image": "shopify:\/\/shop_images\/Tablet-BF-Hero.jpg",
-          "hero_mobile_image": "shopify:\/\/shop_images\/Mobile-BF-Hero.jpg",
-          "collection_hero_image": "shopify:\/\/shop_images\/Mask_Group_8.png",
-          "collection_hero_tablet_image": "shopify:\/\/shop_images\/Tablet-BF-PLP.jpg",
-          "collection_hero_mobile_image": "shopify:\/\/shop_images\/Mobile-BF-PLP.jpg",
           "collection_hero_title": "Sitewide",
           "collection_hero_title_font": "font-sans",
           "collection_hero_secondary_title": "Includes all chairs & covers* with code",
@@ -4965,21 +4917,12 @@
         "settings": {
           "title": "Explore the Latest",
           "image_left_text": "Hello Herringbone",
-          "image_left": "shopify:\/\/shop_images\/LP-rec-desktop_21fdc8c7-69d4-46d0-87bd-cb1808b6d8f4.gif",
-          "image_left_tablet": "shopify:\/\/shop_images\/LP-rec-tablet_4510d0ad-75c3-4bc0-9db0-5e0d2665b8e3.gif",
-          "image_left_mobile": "shopify:\/\/shop_images\/LP-rec-mobile_0a885542-166d-457c-94fd-9642f31812de.gif",
           "left_button_text": "Shop The Collection",
           "left_button_link": "shopify:\/\/pages\/herringbone-chairs",
           "image_tr_text": "Get Inspired",
-          "image_top_right": "shopify:\/\/shop_images\/rec2-desktop.jpg",
-          "image_top_right_tablet": "shopify:\/\/shop_images\/rec2-tablet.jpg",
-          "image_top_right_mobile": "shopify:\/\/shop_images\/rec2-mobile.jpg",
           "tr_button_text": "Shop Lounge Chairs",
           "tr_button_link": "shopify:\/\/collections\/lounge-chairs",
           "image_br_text": "Cover For Every Mood",
-          "image_bottom_right": "shopify:\/\/shop_images\/rec3-desktop_daa26c72-bf88-4b1a-8ccd-3746c4843051.jpg",
-          "image_bottom_right_tablet": "shopify:\/\/shop_images\/rec3-tablet_71699ab9-8da6-48c9-818e-ae8282ec4ccf.jpg",
-          "image_bottom_right_mobile": "shopify:\/\/shop_images\/rec2-mobile_a6c9d4af-bb4c-414a-baf8-1ae1639f5d77.jpg",
           "br_button_text": "Shop Extra Covers",
           "br_button_link": "shopify:\/\/products\/scandinavian-lounge-extra-chair-cover"
         }
@@ -5189,19 +5132,15 @@
       "1641913103096bfe6c": {
         "type": "featured-in",
         "settings": {
-          "logo_image_1": "shopify:\/\/shop_images\/apt-therapy-logo_2x_40da9674-0be7-46de-92f9-6606964b4efc.png",
           "quote_1": "<p>“I love knowing that it can handle my lifestyle, whatever spills may come.”<\/p>",
           "author_1": "-Apartment Therapy",
           "link_1": "https:\/\/www.apartmenttherapy.com\/levity-classic-lounge-chair-review-36990790",
-          "logo_image_2": "shopify:\/\/shop_images\/vice-logo.png",
           "quote_2": "<p>“made out of durable, machine-washable covers that were designed to take a beating”<\/p>",
           "author_2": "-Vice",
           "link_2": "https:\/\/www.vice.com\/en\/article\/k78ddy\/best-cat-proof-couches",
-          "logo_image_3": "shopify:\/\/shop_images\/hunker-vector-logo_2x_efde48f1-8e8d-4318-bae6-e1bfd93fa7af.png",
           "quote_3": "<p> “modern style when it comes to your home shouldn't mean an inability to live in it”<\/p>",
           "author_3": "-Hunker",
           "link_3": "https:\/\/www.hunker.com\/13767610\/best-places-to-shop-for-contemporary-style-furniture-and-decor",
-          "logo_image_4": "shopify:\/\/shop_images\/house-beautiful-vector-logo_1_2x_ce361d9d-62a3-4636-a52b-97acf85f17a8.png",
           "quote_4": "<p> “there's a perfect chair design for your lifestyle.”<\/p>",
           "author_4": "-House Beautiful",
           "link_4": "https:\/\/www.housebeautiful.com\/shopping\/g37910969\/family-approved-awards-2021\/"
@@ -5295,11 +5234,70 @@
           "mobile_images_5_image": "shopify:\/\/shop_images\/mobile-instagram5_2x_5f2289a1-63e2-45f1-8025-fdd886739f53.jpg",
           "mobile_images_6_image": "shopify:\/\/shop_images\/mobile-instagram6_2x_a5334ab6-57bc-43e0-99da-db10cbb511dc.jpg"
         }
+      },
+      "16521560987a5dd475": {
+        "type": "index-betterway",
+        "settings": {
+        }
+      },
+      "16521585491041f1df": {
+        "type": "react-index-mood",
+        "settings": {
+          "section_title": "Shop by mood",
+          "image_1": "shopify:\/\/shop_images\/playful-mood.png",
+          "button_text_1": "Playful",
+          "button_link_1": "#",
+          "image_2": "shopify:\/\/shop_images\/sophisticated-mood.png",
+          "button_text_2": "Sophisticated",
+          "button_link_2": "#"
+        }
+      },
+      "165217627403d30c85": {
+        "type": "react-index-testimonial",
+        "blocks": {
+          "f4c63136-5574-4092-8089-4d65a3a0f46e": {
+            "type": "section",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/testimonial-1.png",
+              "rating": "5",
+              "content": "“This is the review. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, porta in vitae sed ac convallis.”",
+              "name": "-Sarah Smith1"
+            }
+          },
+          "f6809036-239a-4c42-aaa2-d5c951bb9b5f": {
+            "type": "section",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/testimonial-2.png",
+              "rating": "5",
+              "content": "“This is the review. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, porta in vitae sed ac convallis.”",
+              "name": "-Sarah Smith2"
+            }
+          },
+          "659b788d-11c5-4644-8a3d-27ad260ddb65": {
+            "type": "section",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/testimonial-2.png",
+              "rating": "5",
+              "content": "“This is the review. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, porta in vitae sed ac convallis.”",
+              "name": "-Sarah Smith"
+            }
+          }
+        },
+        "block_order": [
+          "f4c63136-5574-4092-8089-4d65a3a0f46e",
+          "f6809036-239a-4c42-aaa2-d5c951bb9b5f",
+          "659b788d-11c5-4644-8a3d-27ad260ddb65"
+        ],
+        "settings": {
+          "title": "Rated excellent by you",
+          "content": "Don’t just take it from us. Explore the most loved, easy-to-hang art pieces that everyone is talking about."
+        }
       }
     },
     "content_for_index": [
       "162430614931fcd803",
       "162500318474b8d8ee",
+      "16521560987a5dd475",
       "1540224911099",
       "1641913103096bfe6c",
       "1639449782bb7d049d",
@@ -5307,7 +5305,9 @@
       "16024674901e4c0873",
       "1602467713b92e9c76",
       "16218796845014f478",
-      "162144687750a492d8"
+      "162144687750a492d8",
+      "16521585491041f1df",
+      "165217627403d30c85"
     ]
   }
 }

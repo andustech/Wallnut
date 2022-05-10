@@ -147,6 +147,9 @@ button, a {
 .font-good-sans-medium {
     font-family: 'GoodSans-Medium';
 }
+.font-attila-sans-medium {
+  font-family: 'AttilaSansUniform-Medium';
+}
 body {
   font-family: 'Good Sans' !important;
   font-style: normal !important;

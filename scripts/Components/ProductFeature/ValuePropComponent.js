@@ -2,7 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 
-const ValuePropSection = () => {
+const ValuePropSection = ({settings}) => {
+console.log({settings});
+  const { title, subheading, collection_1, collection_2, collection_3 } = settings;
+
   const valueProps = [
     {
       name: 'shop best sellers',
@@ -21,8 +24,8 @@ const ValuePropSection = () => {
   return (
     <PremiumMainContainer className='premium_main_container'>
       <SectionTiltle className='section_titile'>
-        <h2 className="font-bold">Premium art</h2>
-        <p className="font-medium">that’s painless to hang</p>
+        { title && <h2 className="font-bold">{title}</h2> }
+        { subheading && <p className="font-medium">{subheading}</p> }
       </SectionTiltle>
       <ValuePropContainer>
 
