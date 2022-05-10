@@ -11,6 +11,8 @@ export { default as CollectionsHero } from './CollectionsHero';
 export { default as PopUpModal } from './PopUpModal';
 export { default as DesktopAnnouncement } from './DesktopAnnouncement';
 export { default as IndexBetterWay } from './IndexBetterWay';
+export { default as indexMoodSection } from './indexMoodSection';
+export { default as indexTestimonialSection } from './indexTestimonialSection';
 export { default as BestSellers } from './BestSellers/BestSellers';
 export { default as EmptyCart } from './EmptyCart';
 export { default as ChairCoverUpsell } from './ChairCoverUpsell/index';

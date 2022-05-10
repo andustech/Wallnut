@@ -147,6 +147,9 @@ button, a {
 .font-good-sans-medium {
     font-family: 'GoodSans-Medium';
 }
+.font-attila-sans-medium {
+  font-family: 'AttilaSansUniform-Medium';
+}
 body {
   font-family: 'Good Sans' !important;
   font-style: normal !important;
@@ -689,4 +692,15 @@ line-height: 33px;
 
 }
 
-
+.footer-section .top h2 {
+  font-size: 36px;
+  line-height: 44px;
+  font-family: 'AttilaSansUniform-Medium' !important;
+}
+.footer-section .top p {
+  font-size: 16px;
+}
+.footer-section .top .newsletter p {
+  font-size: 10px;
+  line-height: 14px;
+}

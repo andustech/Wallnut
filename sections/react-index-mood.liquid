@@ -1,0 +1,64 @@
+<div id="react-index-mood-section">
+  <script type="application/json">
+  {
+    "settings": {{ section.settings | json }}
+  }
+  </script>
+</div>
+{% schema %}
+{
+  "name": "Shop by Mood",
+  "settings" : [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Shop by mood"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image 1"
+    },
+    {
+      "type": "text",
+      "id": "button_text_1",
+      "label": "Button Text 1",
+      "default": "Playful"
+    },    
+    {
+      "type": "url",
+      "id": "button_link_1",
+      "label": "Button Link 1"
+    },    
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image 2"
+    },
+    {
+      "type": "text",
+      "id": "button_text_2",
+      "label": "Button Text 2",
+      "default": "Sophisticated"
+    },    
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "Button Link 2"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop by Mood",
+      "category": "React Components"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
