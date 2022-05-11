@@ -2904,13 +2904,17 @@
     "free_shipping_threshold": "0",
     "free_shipping_bg": "#f4cd6f",
     "free_shipping_text": "#ffffff",
+    "email_text": "@wallnut",
+    "email_url": "",
     "twitter_url": "",
-    "facebook_url": "https:\/\/www.facebook.com\/levityhome",
+    "facebook_img": "https:\/\/cdn.shopify.com\/s\/files\/1\/0627\/3476\/2207\/files\/facebook.svg?v=1652272128",
+    "facebook_url": "https:\/\/www.facebook.com\/WallnutHome",
+    "instagram_img": "https:\/\/cdn.shopify.com\/s\/files\/1\/0627\/3476\/2207\/files\/instagram.svg?v=1652273696",
+    "instagram_url": "https:\/\/www.instagram.com\/wallnut\/",
     "pinterest_url": "",
     "tumblr_url": "",
     "youtube_url": "https:\/\/www.youtube.com\/channel\/UCwv8vQut7G94whIvHzTfQYg?view_as=subscriber",
     "googleplus_url": "",
-    "instagram_url": "https:\/\/www.instagram.com\/levityhome\/",
     "snapchat_id": "",
     "weibo_id": "",
     "popup": false,
@@ -3091,42 +3095,37 @@
       "footer": {
         "type": "footer",
         "blocks": {
-          "9f42d3ee-acda-44e2-be04-ade9b19e776c": {
-            "type": "menu",
-            "settings": {
-              "footer_nav": "",
-              "title": "Company"
-            }
-          },
           "1520914258601": {
             "type": "menu",
             "settings": {
-              "footer_nav": "",
-              "title": "Shop"
+              "footer_nav": "support-menu",
+              "title": "Support"
             }
           },
           "b3cf7b94-cbb3-4fed-acd2-cb2f942f0ada": {
             "type": "menu",
             "settings": {
-              "footer_nav": "",
-              "title": "Support"
+              "footer_nav": "shop-menu",
+              "title": "Shop"
             }
           },
-          "1520914313408": {
-            "type": "newsletter",
+          "2bb41f54-d101-4707-98a4-fac151f7b286": {
+            "type": "menu",
             "settings": {
-              "title": "Connect",
-              "mailing_subheading": "<p>Sign up to receive 10% off your first order, exclusive offers, and design updates.<\/p>"
+              "footer_nav": "need-hand-menu",
+              "title": "Need a hand?"
             }
           }
         },
         "block_order": [
-          "9f42d3ee-acda-44e2-be04-ade9b19e776c",
           "1520914258601",
           "b3cf7b94-cbb3-4fed-acd2-cb2f942f0ada",
-          "1520914313408"
+          "2bb41f54-d101-4707-98a4-fac151f7b286"
         ],
         "settings": {
+          "logo_icon": "https:\/\/cdn.shopify.com\/s\/files\/1\/0627\/3476\/2207\/files\/wallnut-logo.svg?v=1652269777",
+          "title": "ART WORK WITHOUT WORK",
+          "social_media_title": "CONNECT ON SOCIAL",
           "footer_text_align": "left",
           "footer_title_size": 13,
           "show_credit_cards": false,
@@ -5261,7 +5260,7 @@
               "image": "shopify:\/\/shop_images\/testimonial-1.png",
               "rating": "5",
               "content": "“This is the review. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, porta in vitae sed ac convallis.”",
-              "name": "-Sarah Smith1"
+              "name": "-Sarah Smith"
             }
           },
           "f6809036-239a-4c42-aaa2-d5c951bb9b5f": {
@@ -5270,7 +5269,7 @@
               "image": "shopify:\/\/shop_images\/testimonial-2.png",
               "rating": "5",
               "content": "“This is the review. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, porta in vitae sed ac convallis.”",
-              "name": "-Sarah Smith2"
+              "name": "-Sarah Smith"
             }
           },
           "659b788d-11c5-4644-8a3d-27ad260ddb65": {

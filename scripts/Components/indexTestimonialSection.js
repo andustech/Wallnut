@@ -17,11 +17,22 @@ const indexTestimonialSection = ({ settings, blocks }) => {
                     <div className="right">
                         {blocks.map((block, index)=>{
                             const {settings} = block;
+                            let rating_img;
+                            if (settings.rating == '1')
+                                rating_img = 'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/1-star.svg?v=1652253480';
+                            else if (settings.rating == '2')
+                                rating_img = 'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/2-star.svg?v=1652253480';
+                            else if (settings.rating == '3')
+                                rating_img = 'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/3-star.svg?v=1652253480';
+                            else if (settings.rating == '4')
+                                rating_img = 'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/4-star.svg?v=1652253480';
+                            else
+                                rating_img = 'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/5-star.svg?v=1652253480';
                             return (
                                 <div className="review_card">
                                     <div className="img"><img src={settings.image} alt="Testimonial" /></div>
                                     <div className="rating_start">
-                                        <img src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/5-star.svg?v=1652188676" alt="5 star" />
+                                        <img src={rating_img} alt="Rating" />
                                     </div>
                                     { settings.content && <p>{settings.content}</p> }
                                     { settings.name && <span>{settings.name}</span> }
