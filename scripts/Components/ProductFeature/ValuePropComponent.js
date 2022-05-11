@@ -2,11 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 
-const ValuePropSection = ({settings}) => {
-console.log({settings});
+const ValuePropSection = ({settings, collection_handle_1}) => {
+  console.log({settings});
+  console.log({collection_handle_1});
   const { title, subheading, collection_1, collection_2, collection_3 } = settings;
 
-  const valueProps = [
+  const valueProps = [  
     {
       name: 'shop best sellers',
       img: 'https://i.ibb.co/PFjVJV6/Rectangle-2.png',
