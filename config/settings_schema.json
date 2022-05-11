@@ -1151,9 +1151,29 @@
       },
       {
         "type": "text",
+        "id": "email_text",
+        "label": "Email Text"
+      },
+      {
+        "type": "text",
+        "id": "email_url",
+        "label": "Enter Email"
+      },
+      {
+        "type": "text",
+        "id": "twitter_img",
+        "label": "Twitter Image"
+      },
+      {
+        "type": "text",
         "id": "twitter_url",
         "label": "Twitter link",
         "info": "https:\/\/twitter.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "facebook_img",
+        "label": "Facebook Image"
       },
       {
         "type": "text",
@@ -1163,27 +1183,8 @@
       },
       {
         "type": "text",
-        "id": "pinterest_url",
-        "label": "Pinterest link",
-        "info": "https:\/\/www.pinterest.com\/shopify"
-      },
-      {
-        "type": "text",
-        "id": "tumblr_url",
-        "label": "Tumblr link",
-        "info": "http:\/\/shopify.tumblr.com"
-      },
-      {
-        "type": "text",
-        "id": "youtube_url",
-        "label": "YouTube Link",
-        "info": "https:\/\/www.youtube.com\/user\/shopify"
-      },
-      {
-        "type": "text",
-        "id": "googleplus_url",
-        "label": "GooglePlus link",
-        "info": "https:\/\/plus.google.com\/+shopify"
+        "id": "instagram_img",
+        "label": "Instagram Image"
       },
       {
         "type": "text",
@@ -1193,9 +1194,63 @@
       },
       {
         "type": "text",
+        "id": "pinterest_img",
+        "label": "Pinterest Image"
+      },
+      {
+        "type": "text",
+        "id": "pinterest_url",
+        "label": "Pinterest link",
+        "info": "https:\/\/www.pinterest.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "tumblr_img",
+        "label": "Tumblr Image"
+      },
+      {
+        "type": "text",
+        "id": "tumblr_url",
+        "label": "Tumblr link",
+        "info": "http:\/\/shopify.tumblr.com"
+      },
+      {
+        "type": "text",
+        "id": "youtube_img",
+        "label": "YouTube Image"
+      },
+      {
+        "type": "text",
+        "id": "youtube_url",
+        "label": "YouTube Link",
+        "info": "https:\/\/www.youtube.com\/user\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "googleplus_img",
+        "label": "GooglePlus Image"
+      },
+      {
+        "type": "text",
+        "id": "googleplus_url",
+        "label": "GooglePlus link",
+        "info": "https:\/\/plus.google.com\/+shopify"
+      },
+      {
+        "type": "text",
+        "id": "snapchat_img",
+        "label": "Snapchat Image"
+      },
+      {
+        "type": "text",
         "id": "snapchat_id",
         "label": "Your Snapchat ID",
         "default": "Enter ID only"
+      },
+      {
+        "type": "text",
+        "id": "weibo_img",
+        "label": "Weibo Image"
       },
       {
         "type": "text",

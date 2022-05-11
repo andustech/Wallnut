@@ -1,7 +1,8 @@
 <div id="react-value-prop-section">
   <script type="application/json">
     {
-      "settings": {{ section.settings | json }}
+      "settings": {{ section.settings | json }},
+      "collection_handle_1": {{ collections[section.settings.collection_1] | json }}
     }
   </script>
 </div>
@@ -10,13 +11,13 @@
   "name": "Premium Art Collections",
   "settings": [
     {
-      "type": "text",
+      "type": "text", 
       "id": "title",
       "label": "Title`",
       "default": "Premium art"
     },
     {
-      "type": "text",
+      "type": "text", 
       "id": "subheading",
       "label": "Subheading",
       "default": "that’s painless to hang"

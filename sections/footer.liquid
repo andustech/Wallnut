@@ -43,13 +43,27 @@
     <div class='footer_bg'>
         <div class='container'>
           <div class='footer_logo'>
-            <img src='https://i.ibb.co/HPdHPCq/Vector.png'>
-            <p>art work without work</p>
+            <img src='{{ section.settings.logo_icon }}'>
+            <p>{{ section.settings.title }}</p>
           </div>
 
           <div class='footer_opt_container'>
-            <div class='left'>
-              <div clsaa='footer_opt'>
+            <div class='footer_left'>
+            {% for block in section.blocks %}
+              {% if forloop.index < 3 %}
+                {% assign menu_handle = block.settings.footer_nav %}
+                <div class='footer_opt'>
+                  <p class='footer_title'>{{ block.settings.title }}</p>
+                  <ul>
+                    {% for link in linklists[menu_handle].links %}
+                      <li><a href='{{ link.url }}' class='normal-case'>{{ link.title }}</a></li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% endif %}
+            {% endfor %}
+              <!--
+              <div class='footer_opt'>
                 <p class='footer_title'>Support</p>
                 <ul>
                   <li><a href='#'>FAQS</a></li>
@@ -60,192 +74,356 @@
                   <li><a href='#'>Afterpay</a></li>
                 </ul>
               </div>
+
+              <div class='footer_opt'>
+                <p class='footer_title'>Shop</p>
+                <ul>
+                  <li><a href='#'>Shop by Size</a></li>
+                  <li><a href='#'>Shop by Subject</a></li>
+                  <li><a href='#'>Shop by Mood</a></li>
+                  <li><a href='#'>Shop by Style</a></li>
+                </ul>
+              </div> -->
             </div>
-            <div class='right'>
-            
+            <div class='footer_right'>            
+              {% for block in section.blocks %}
+                {% if forloop.index == 3 %}
+                  {% assign menu_handle = block.settings.footer_nav %}
+                  <div class='contact_footer_opt footer_opt mr-0 contact'>
+                    <p class='footer_title'>{{ block.settings.title }}</p>
+                    <ul>
+                      {% for link in linklists[menu_handle].links %}
+                        <li><a href='{{ link.url }}' class='contact normal-case'>{{ link.title }}</a></li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                  <p class='on_social_media'>{{ section.settings.social_media_title }}</p>
+
+                  <div class='social_media_icon'>
+                      {% if settings.email_text != '' %}
+                      <div class='soc_ico'><a href='emailto:{{ settings.email_url }}'>{{ settings.email_text }}</a></div>
+                      {% endif %}
+                      {% if settings.twitter_img != '' %}
+                      <div class='soc_ico'><a href='{{ settings.twitter_url }}'><i><img src='{{ settings.twitter_img }}' alt="Social Icons"></i></a></div>
+                      {% endif %}
+                      {% if settings.facebook_img != '' %}
+                      <div class='soc_ico'><a href='{{ settings.facebook_url }}'><i><img src='{{ settings.facebook_img }}' alt="Social Icons"></i></a></div>
+                      {% endif %}
+                      {% if settings.instagram_img != '' %}
+                      <div class='soc_ico'><a href='{{ settings.instagram_url }}'><i><img src='{{ settings.instagram_img }}' alt="Social Icons"></i></a></div>
+                      {% endif %}
+                      {% if settings.pinterest_img != '' %}
+                      <div class='soc_ico'><a href='{{ settings.pinterest_url }}'><i><img src='{{ settings.pinterest_img }}' alt="Social Icons"></i></a></div>
+                      {% endif %}
+                      {% if settings.tumblr_img != '' %}
+                      <div class='soc_ico'><a href='{{ settings.tumblr_url }}'><i><img src='{{ settings.tumblr_img }}' alt="Social Icons"></i></a></div>
+                      {% endif %}
+                      {% if settings.youtube_img != '' %}
+                      <div class='soc_ico'><a href='{{ settings.youtube_url }}'><i><img src='{{ settings.youtube_img }}' alt="Social Icons"></i></a></div>
+                      {% endif %}
+                      {% if settings.googleplus_img != '' %}
+                      <div class='soc_ico'><a href='{{ settings.googleplus_url }}'><i><img src='{{ settings.googleplus_img }}' alt="Social Icons"></i></a></div>
+                      {% endif %}
+                      {% if settings.snapchat_img != '' %}
+                      <div class='soc_ico'><a href='{{ settings.snapchat_id }}'><i><img src='{{ settings.snapchat_img }}' alt="Social Icons"></i></a></div>
+                      {% endif %}
+                      {% if settings.weibo_img != '' %}
+                      <div class='soc_ico'><a href='{{ settings.weibo_id }}'><i><img src='{{ settings.weibo_img }}' alt="Social Icons"></i></a></div>
+                      {% endif %}
+                  </div>
+                {% endif %}
+              {% endfor %}
             </div>
           </div>
 
         </div>
     </div>
   </div>
+  
 
-
-  <style>
-  .fast_order_main_container {
-  padding: 72px 64px;
-}
-
-.fast_order_inner {
-  padding: 75px 115px;
-}
-
-.footer-section .top h2 {
-  font-size: 36px;
-  line-height: 44px;
-  font-family: 'AttilaSansUniform-Medium' !important;
-}
-
-.footer-section .top .newsletter p {
-  font-size: 10px;
-  line-height: 14px;
-}
-
-  .fast_order_inner h2 {
-    font-weight: 500;
-    font-size: 36px;
-    line-height: 44px;
-    letter-spacing: -0.005em;
-   margin: 0 15px 0 0;
-    font-family: 'AttilaSansUniform-Medium' !important;
+<style>
+    .fast_order_main_container {
+        padding: 72px 64px;
     }
 
-      .fast_order_inner p {
-          font-weight: 300;
-          font-size: 16px;
-          line-height: 24px;
-          letter-spacing: -0.01em;
-          margin: 0 15px 0 0;
-          font-family: 'GoodSans-Light' !important;
+    .fast_order_inner {
+        padding: 75px 115px;
+    }
+
+    .footer-section .top h2 {
+        font-size: 36px;
+        line-height: 44px;
+        font-family: "AttilaSansUniform-Medium" !important;
+    }
+
+    .footer-section .top .newsletter p {
+        font-size: 10px;
+        line-height: 14px;
+    }
+
+    .fast_order_inner h2 {
+        font-weight: 500;
+        font-size: 36px;
+        line-height: 44px;
+        letter-spacing: -0.005em;
+        margin: 0 15px 0 0;
+        font-family: "AttilaSansUniform-Medium" !important;
+    }
+
+    .fast_order_inner p {
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: -0.01em;
+        margin: 0 15px 0 0;
+        font-family: "GoodSans-Light" !important;
     }
 
     .klaviyo-form-SxEnPF p {
-      font-weight: 300;
-      font-size: 10px;
-      line-height: 14px;
-      letter-spacing: -0.01em;
-      margin-bottom: 0;
-      font-family: 'GoodSans-Light' !important;
+        font-weight: 300;
+        font-size: 10px;
+        line-height: 14px;
+        letter-spacing: -0.01em;
+        margin-bottom: 0;
+        font-family: "GoodSans-Light" !important;
     }
 
     .email_input {
-      width: 100%;
-      font-size: 16px;
-      font-weight: 300;
-      position: relative;
-      line-height: 24px;
-      margin-bottom: 16px;
-      background: transparent;
-      border-bottom: 1px solid black;
-      font-family: 'GoodSans-Light' !important;
+        width: 100%;
+        font-size: 16px;
+        font-weight: 300;
+        position: relative;
+        line-height: 24px;
+        margin-bottom: 16px;
+        background: transparent;
+        border-bottom: 1px solid black;
+        font-family: "GoodSans-Light" !important;
     }
 
     .email_input::-webkit-input-placeholder {
-      color: black;
-      font-size: 16px;
-      font-weight: 300;
-      line-height: 24px;
-      font-family: 'GoodSans-Light' !important;
+        color: black;
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 24px;
+        font-family: "GoodSans-Light" !important;
     }
 
-        .email_input:after {
-          content: '';
-            width: 17px;
-  height: 10px;
-  right: 19px;
-  top: 19px;
-  position: absolute;
-  background-image: url(https://i.ibb.co/mhJXcrZ/Vector.png);
-        }
+    .email_input:after {
+        content: "";
+        width: 17px;
+        height: 10px;
+        right: 19px;
+        top: 19px;
+        position: absolute;
+        background-image: url(https://i.ibb.co/mhJXcrZ/Vector.png);
+    }
 
-
-
-
-
-
-
-
-        @media only screen and (max-width: 1354px) {
-
-          .fast_order_inner {
+    @media only screen and (max-width: 1354px) {
+        .fast_order_inner {
             padding: 70px 70px;
-          }
-
-            .fast_order_inner h2 {
-              font-size: 30px;
-            }
         }
 
+        .fast_order_inner h2 {
+            font-size: 30px;
+        }
+    }
 
+    @media only screen and (max-width: 1263px) {
+        .footer-section .top h2 {
+            font-size: 30px;
+            line-height: 35px;
+        }
 
-        @media only screen and (max-width: 1263px) {
-
-          .footer-section .top h2 {
-              font-size: 30px;
-              line-height: 35px;
-          }
-
-          .fast_order_main_container {
-              padding: 60px 40px;
-          }
+        .fast_order_main_container {
+            padding: 60px 40px;
+        }
 
         .fast_order_inner {
             padding: 60px 60px;
         }
+    }
 
+    @media only screen and (max-width: 1149px) {
+        .fast_order_main_container {
+            padding: 54px 20px;
         }
 
+        .fast_order_main_container {
+            padding: 54px 35px;
+        }
+        .fast_order_inner {
+            padding: 50px 30px;
+        }
 
-        @media only screen and (max-width: 1149px) {
+        .footer-section .top h2 {
+            font-size: 25px;
+            line-height: 29px;
+        }
+    }
 
-          .fast_order_main_container {
-              padding: 54px 20px;
-            }
+    @media only screen and (max-width: 991px) {
+        .fast_order_inner {
+            flex-direction: column;
+        }
+    }
 
-            .fast_order_main_container {
-                padding: 54px 35px;
-            }
-            .fast_order_inner {
-                padding: 50px 30px;
-            }
+    .footer_bg {
+        padding: 55px 64px 72px 64px;
+        background-color: #376043;
+    }
 
-            .footer-section .top h2 {
-                font-size: 25px;
-                line-height: 29px;
-            }
-         }
+    .footer_logo {
+        display: flex;
+        align-items: center;
+    }
 
-         @media only screen and (max-width: 991px) {
+    .footer_logo p {
+        margin-left: 20px;
+        margin-bottom: 0;
+        color: white;
+        font-weight: 300;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        font-family: "AttilaSansUniform-semibold" !important;
+    }
 
-            .fast_order_inner {
-                flex-direction: column;
-            }
-         }
+    .footer_left {
+        display: flex;
+        align-items: flex-start;
+    }
 
+    .footer_opt:first-child {
+        margin-right: 137px;
+    }
 
+    .footer_opt_container {
+        margin-top: 72px;
+    }
 
-         .footer_bg {
-           padding: 55px 64px 72px 64px;
-           background-color: #376043;
-         }
+    .footer_title {
+        text-transform: uppercase;
+        color: white;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 0.14em;
+        margin-bottom: 16px;
+        font-family: "AttilaSansUniform-Medium" !important;
+    }
 
-         .footer_logo {
-           display: flex;
-           align-items: center;
-         }
+    .footer_opt ul li {
+        margin-bottom: 8px;
+    }
 
-          .footer_logo p {
-            margin-left: 20px;
-            margin-bottom: 0;
-            color: white;
-            font-weight: 300;
-            letter-spacing: 3px;
-            text-transform: uppercase;        
-            font-family: 'AttilaSansUniform-semibold' !important;
-          }
-    
-  </style>
+    .footer_opt ul li a {
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 24px;
+        letter-spacing: -0.01em;
+        color: #ffffff;
+        transition: 0.8s;
+        border-bottom: 1px solid transparent;
+        font-family: "GoodSans-Light" !important;
+    }
 
-  {% comment %} {% endcomment %}
+    .footer_opt ul li a:hover {
+        color: #ffffff54;
+        border-bottom: 1px solid #ffffff54;
+    }
 
+    .footer_opt_container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
 
+    .footer_right {
+        padding: 0 64px;
+        border-left: 1px solid white;
+    }
+
+    .contact {
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 24px;
+        letter-spacing: -0.01em;
+        color: #ffffff;
+        margin-bottom: 32px;
+        font-family: "GoodSans-Light" !important;
+    }
+
+    .on_social_media {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 0.14em;
+        margin-bottom: 17px;
+        text-transform: uppercase;
+        color: white;
+        font-family: "AttilaSansUniform-Medium" !important;
+    }
+
+    .social_media_icon {
+        display: flex;
+    }
+
+    .soc_ico a:first-child {
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 18px;
+        letter-spacing: -0.01em;
+        color: white;
+        text-transform: lowercase;
+        transition: 0.8s;
+        font-family: "GoodSans-Light" !important;
+    }
+
+    .soc_ico a:first-child:hover {
+        color: #ffffff54;
+    }
+
+    .soc_ico {
+        margin-right: 20px;
+    }
+
+    .soc_ico:last-child {
+        margin-right: 0;
+    }
+
+    .soc_ico a img {
+        height: 20px;
+        width: 20px;
+        transition: 0.7s;
+    }
+
+    .soc_ico a img:hover {
+        opacity: 0.4;
+    }
+</style>
 
 
 {% schema %}
 {
   "name": "Footer",
-  "max_blocks": 4,
+  "max_blocks": 3,
   "settings": [
+    {
+      "type": "text",
+      "id": "logo_icon",
+      "label": "Logo"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "ART WORK WITHOUT WORK"
+    },
+    {
+      "type": "text",
+      "id": "social_media_title",
+      "label": "Social Media Title",
+      "default": "CONNECT ON SOCIAL"
+    },
     {
       "type": "select",
       "id": "footer_text_align",
@@ -359,7 +537,7 @@
       "type": "newsletter",
       "name": "Newsletter signup",
       "limit": 1,
-      "settings":[
+      "settings":[ 
         {
           "type": "text",
           "id": "title",

@@ -264,6 +264,26 @@
           $('header').stickUp();
         });
       }
+
+
+      var check = false;
+  	  var ga_interval = setInterval(checkApp, 100);
+      function checkApp() {
+      if (typeof GloboMenuConfig == 'object' && $('.gm-menu').length) {
+        check = true;
+        clearInterval(ga_interval);
+      }
+      if (check) {
+        $('.MobileNavIcon__NavIcon-sc-xv1kjn-1.lhmnGm').click(function(){
+          if(!$('.globo-menu-mobile').hasClass('active')){
+            $('.globo-menu-mobile').addClass('active');
+          }else{
+            $('.globo-menu-mobile').removeClass('active');
+          }
+        })
+
+      }
+    }
     });
   </script>
 
@@ -298,3 +318,5 @@
   </script>
 </body>
 </html>
+
+{% include 'globo.menu.script' %}

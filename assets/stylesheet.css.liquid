@@ -12154,3 +12154,36 @@ button[aria-controls="write-review-tabpanel-main-widget"].yotpo-icon-btn {
   margin-left: auto;
   margin-right: auto;
 }
+
+/* Globo css */
+
+@media(min-width:1025px){
+  .globo-menu-mobile{
+    display:none !important;
+  }
+}
+
+@media(max-width:1024px){
+  .globo-menu-mobile{
+    position: fixed;
+    top: 83px;
+    bottom: 0;
+    left: 0;
+    right:0;
+    max-width: 400px;
+    z-index: 9999999;
+    background: #fff; 
+    transition:0.3s all ease-out;
+    opacity:0;
+    visibility:hidden;
+  }
+  
+  .globo-menu-mobile.active{
+    opacity:1;
+    visibility:visible;
+  }
+}
+
+body.gm-menu-installed nav > .hidden.lg\:flex > ul{
+  margin-left:0 !important;
+}
