@@ -31,7 +31,7 @@ const ValuePropSection = ({settings, collection_handle_1}) => {
       <ValuePropContainer>
 
         {valueProps.map((item, i) => (
-          <ValuePropColumn key={i} className='premium_card_container'>
+          <ValuePropColumn key={i} className='premium_card_container premium_pos'>
             <div className="premium_img_box">
               <img className='premium_img' src={item.img} />
             </div>

@@ -20,7 +20,7 @@ const indexMoodSection = ({ settings }) => {
   return (
     <>
       <ShopByMood className='container'>
-        <SectionTiltle>
+        <SectionTiltle className='section_titile'>
             { section_title && <h2 className="">{section_title}</h2> }
         </SectionTiltle>
 
@@ -32,9 +32,11 @@ const indexMoodSection = ({ settings }) => {
             </a>  
           ))}
         </div> */}
-
         <div className='mood_card_container '>
-           
+            <a className='by_mood_card'>
+              { image_1 && <img src={image_1} /> }
+              { button_text_1 && <a href={button_link_1} className='premium_link bg-milk text-center'>{button_text_1}</a> }
+            </a>
             <a className='by_mood_card'>
               { image_2 && <img src={image_2} /> }
               { button_text_2 && <a href={button_link_2} className='premium_link bg-milk text-center'>{button_text_2}</a> }
