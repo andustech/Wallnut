@@ -33,8 +33,11 @@ const indexMoodSection = ({ settings }) => {
           ))}
         </div> */}
 
-        <div className='mood_card_container '>
-           
+        <div className='mood_card_container flex '>
+            <a className='by_mood_card'>
+              { image_1 && <img src={image_1} /> }
+              { button_text_1 && <a href={button_link_1} className='premium_link bg-milk text-center'>{button_text_1}</a> }
+            </a>
             <a className='by_mood_card'>
               { image_2 && <img src={image_2} /> }
               { button_text_2 && <a href={button_link_2} className='premium_link bg-milk text-center'>{button_text_2}</a> }

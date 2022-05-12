@@ -13,26 +13,21 @@
   {%- assign locale_selector = true -%}
 {%- endif -%}
 
-
-
-
 <div class="footer-section footer-template" data-section-id="{{ section.id }}" data-section-type="footer-section">
   <div class="clear"></div>
   <div class="fast_order_main_container top" style='background-color: #133744,'>
     <div class="container">
       <!-- <div class="bg-white grid grid-center grid-cols-3 items-center"> -->
       <div class="fast_order_inner justify-between flex items-start" style='background: #F4F2EC;'>
-        <h2 class="font-attila-sans-medium font-medium">Get 10% off <br>your first order</h2>
-        <p class="">Sign up to receive 10% off your <br>first order, exclusive offers and <br>design updates.</p>
+        <h2 class="font-attila-sans-medium font-medium">{{ section.settings.title }}</h2>
+        <p class="">{{ section.settings.subheading }}</p>
         <div class="newsletter">
-          {% comment %} <div class="klaviyo-form-SxEnPF"></div> {% endcomment %}
+          <div class="klaviyo-form-SxEnPF"></div>
 
-          <form action=''>
+          {% comment %} <form action=''>
             <input class='email_input' placeholder='Enter Email' type='emai'>
-          </form>
-          <p>By entering your email, you agree to Wallnut's Privacy Policy and Terms of <br>
-          Service. You also agree to receive Wallnut offers, promotions, and other <br>commercial messages. 
-          You may unsubscribe from our marketing emails at any <br>time.</p>
+          </form> {% endcomment %}
+          <p>{{ section.settings.content }}</p>
         </div>
       </div>
 
@@ -44,7 +39,7 @@
         <div class='container'>
           <div class='footer_logo'>
             <img src='{{ section.settings.logo_icon }}'>
-            <p>{{ section.settings.title }}</p>
+            <p>{{ section.settings.logo_title }}</p>
           </div>
 
           <div class='footer_opt_container'>
@@ -101,7 +96,7 @@
 
                   <div class='social_media_icon'>
                       {% if settings.email_text != '' %}
-                      <div class='soc_ico'><a href='emailto:{{ settings.email_url }}'>{{ settings.email_text }}</a></div>
+                      <div class='soc_ico'><a href='{% if settings.email_url %} mailto:{{ settings.email_url }} {% endif %}'>{{ settings.email_text }}</a></div>
                       {% endif %}
                       {% if settings.twitter_img != '' %}
                       <div class='soc_ico'><a href='{{ settings.twitter_url }}'><i><img src='{{ settings.twitter_img }}' alt="Social Icons"></i></a></div>
@@ -139,39 +134,11 @@
         </div>
     </div>
   </div>
-  
+
 
   <style>
-  .fast_order_main_container {
-  padding: 72px 64px;
-}
-
-.fast_order_inner {
-  padding: 75px 115px;
-}
-
-.footer-section .top h2 {
-  font-size: 36px;
-  line-height: 44px;
-  font-family: 'AttilaSansUniform-Medium' !important;
-}
-
-.footer-section .top .newsletter p {
-  font-size: 10px;
-  line-height: 14px;
-}
-
-  .fast_order_inner h2 {
-    font-weight: 500;
-    font-size: 36px;
-    line-height: 44px;
-    letter-spacing: -0.005em;
-   margin: 0 15px 0 0;
-    font-family: 'AttilaSansUniform-Medium' !important;
-  }
-<style>
     .fast_order_main_container {
-        padding: 72px 64px;
+      padding: 72px 64px;
     }
 
     .fast_order_inner {
@@ -343,130 +310,16 @@
         margin-bottom: 8px;
     }
 
-          .footer_logo p {
-            margin-left: 20px;
-            margin-bottom: 0;
-            color: white;
-            font-weight: 300;
-            letter-spacing: 3px;
-            text-transform: uppercase;        
-            font-family: 'AttilaSansUniform-semibold' !important;
-          }
-
-          .footer_left {
-            display: flex;
-            align-items: flex-start;
-          }
-
-            .footer_opt:first-child {
-                margin-right: 137px;
-            }
-
-          .footer_opt_container {
-            margin-top: 72px;
-          }
-
-          .footer_title {
-            text-transform: uppercase;
-            color: white;
-            font-weight: 500;
-            font-size: 14px;
-            line-height: 20px;
-            letter-spacing: 0.14em;
-            margin-bottom: 16px;
-            font-family: 'AttilaSansUniform-Medium' !important;
-          }
-
-          .footer_opt ul li {
-            margin-bottom: 8px;
-          } 
-
-          .footer_opt ul li a {
-            font-weight: 300;
-            font-size: 14px;
-            line-height: 24px;
-            letter-spacing: -0.01em;
-            color: #FFFFFF;
-            transition: 0.8s;
-            border-bottom: 1px solid transparent;
-            font-family: 'GoodSans-Light' !important;
-          }
-
-               .footer_opt ul li a:hover {
-                 color: #ffffff54;
-                  border-bottom: 1px solid #ffffff54;
-               }
-
-          .footer_opt_container {
-             display: flex;
-              justify-content: space-between;
-              align-items: flex-start;
-          }
-
-          .contact_footer_opt {
-            padding: 0 64px;
-            border-left: 1px solid white;
-          }
-
-          .contact {
-              font-weight: 300;
-              font-size: 14px;
-              line-height: 24px;
-              letter-spacing: -0.01em;
-              color: #FFFFFF;
-              margin-bottom: 32px;              
-              font-family: 'GoodSans-Light' !important;
-            }
-
-          .on_social_media {
-              font-weight: 500;
-              font-size: 14px;
-              line-height: 20px;
-              letter-spacing: 0.14em;
-              margin-bottom: 17px;              
-              text-transform: uppercase;
-              color: white;
-              font-family: 'AttilaSansUniform-Medium' !important;
-          }
-
-          .social_media_icon {
-            display: flex;
-          }
-
-
-          .soc_ico a:first-child {
-            font-weight: 300;
-            font-size: 14px;
-            line-height: 18px;
-            letter-spacing: -0.01em;
-            color: white;
-            text-transform: lowercase;
-            transition: 0.8s;
-            font-family: 'GoodSans-Light' !important;
-          }
-
-          .soc_ico a:first-child:hover {
-            color: #ffffff54;
-          }
-          
-          .soc_ico {
-            margin-right: 20px;
-          }
-          
-          .soc_ico:last-child {
-            margin-right: 0;
-          }
-
-            .soc_ico a img {
-              height: 20px;
-              width: 20px;
-              transition:0.7s;
-            }
-    
-          .soc_ico a img:hover {
-            opacity: 0.4;
-          }
-  </style>
+    .footer_opt ul li a {
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 24px;
+        letter-spacing: -0.01em;
+        color: #ffffff;
+        transition: 0.8s;
+        border-bottom: 1px solid transparent;
+        font-family: "GoodSans-Light" !important;
+    }
 
     .footer_opt ul li a:hover {
         color: #ffffff54;
@@ -541,7 +394,8 @@
     .soc_ico a img:hover {
         opacity: 0.4;
     }
-</style>
+     
+  </style>
 
 
 {% schema %}
@@ -551,12 +405,30 @@
   "settings": [
     {
       "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Get 10% off your first order"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Sign up to receive 10% off your first order, exclusive offers and design updates."
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "Content",
+      "default": "By entering your email, you agree to Wallnut's Privacy Policy and Terms of Service. You also agree to receive Wallnut offers, promotions, and other commercial messages. You may unsubscribe from our marketing emails at any time."
+    },
+    {
+      "type": "text",
       "id": "logo_icon",
       "label": "Logo"
     },
     {
       "type": "text",
-      "id": "title",
+      "id": "logo_title",
       "label": "Heading",
       "default": "ART WORK WITHOUT WORK"
     },

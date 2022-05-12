@@ -1,38 +1,80 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const IndexBetterWay = ({ settings }) => {
-
+const IndexBetterWay = ({ blocks }) => {
   return (
-    <div className="better_way_main_container bg-deep-moss text-white">
-      <div className="container">
-        <div className='main_section_container'>
-          <div className="video_items_containe">
-            <div className="video_content ">
-              <h2 className="">A better way to art</h2>
-              <p className="">We believe art can transform a house into a home. So <br />why is art so difficult to find, frustrating to frame, and  <br />impossible to hang? That’s why we created an all-in- <br />one solution for finding, framing, and hanging art, mess- <br />free and stress-free. Your walls will thank you.</p>
-              <a href="#" className=""><img src="https://i.ibb.co/PFvTSLq/video-play.png" alt="Video Play" className="mr-3" /> Watch the video</a>
-            </div>
-            <div className="sec_img">
-              <img src="https://i.ibb.co/VQc3QV1/how-it-works.png" alt="how-it-works" className="w-full" />
-              {/* <a href="https://ibb.co/j8frZ7t"><img src="https://i.ibb.co/Cw8HsxL/better-way.png" alt="better-way" border="0"></a> */}
-            </div>
-          </div>
-          <div className="how_it_work_items_containe">
-            <div className="sec_img">
-              <img src="https://i.ibb.co/Cw8HsxL/better-way.png" alt="how-it-works" className="w-full" />
-            </div>
-            <div className="how_it_work_content">
-              <h2 className="">How it works</h2>
-              <p className="">It's easy. Just pick a piece you love from our curated  <br />collection of high quality prints. Then, it’s made to order <br />and delivered to you, fully assembled in the frame of <br />your choice. The best part? Hanging is a breeze with <br />our innovative Wallnut Mounting System™. It’s an <br />adhesive-based wall mount with a built-in bubble level, <br />so your frame slides right into place, super straight and <br />damage-free. We’ve rethought everything, so all you <br />have to do is enjoy it.</p>
-              <a href="#" className="primary_btn">Shop All</a>
-              <a href="#" className=" ">Learn more <img src="https://i.ibb.co/f9QMBy5/arrow-right-white.png" alt="Arrow Right" className="ml-6" /></a>
-            </div>
-          </div>
-        </div>
+    <div className="bg-deep-moss py-16 text-white">
+      <div className="container mx-auto py-2 px-5 lg:px-0">
+      
+        {blocks.map((block, index)=>{
+            const {settings} = block;
+            return (
+              <>
+              {index % 2 === 0 ? (
+                <div className="video_items_container flex items-center flex-col lg:flex-row">
+                  <div className="video_content lg:w-6/12 lg:px-16 pb-5 lg:pb-5">
+                    {settings.title &&
+                      <h2 className="h2-nib-pro text-5xl font-bold text-white mb-4">{settings.title}</h2>
+                    }
+                    {settings.content &&
+                      <p className="mb-7">{settings.content}</p>
+                    }
+                    {settings.button_text &&
+                      <a href={settings.button_link} className="primary_btn">{settings.button_text}</a>
+                    }
+                    {settings.link_text &&
+                      <a href={settings.link_url} className="text-white hover:text-red-100">
+                        {settings.link_icon_position == 'before' &&
+                          <img src={settings.link_icon} alt="Video Play" className="mr-3" />
+                        }
+                        {settings.link_text}
+                        {settings.link_icon_position == 'after' &&
+                          <img src={settings.link_icon} alt="Video Play" className="mr-3" />
+                        }
+                      </a>
+                    }
+                  </div>
+                  <div className="w-6/12">
+                    <img src={settings.image} alt="how-it-works" />
+                  </div>
+                </div>
+              ):(
+                <div className="how_it_work_items_container flex items-center flex-col lg:flex-row">
+                  <div className="w-6/12">
+                    <img src={settings.image} alt="how-it-works" />
+                  </div>
+                  <div className="how_it_work_content lg:w-6/12 lg:px-16 pt-5 lg:pt-5">
+                    {settings.title &&
+                      <h2 className="h2-nib-pro text-5xl font-bold text-white mb-4">{settings.title}</h2>
+                    }
+                    {settings.content &&
+                      <p className="mb-7">{settings.content}</p>
+                    }
+                    {settings.button_text &&
+                      <a href={settings.button_link} className="primary_btn">{settings.button_text}</a>
+                    }
+                    {settings.link_text &&
+                      <a href={settings.link_url} className="text-white hover:text-red-100">
+                        {settings.link_icon_position == 'before' &&
+                          <img src={settings.link_icon} alt="Video Play" className="mr-3" />
+                        }
+                        {settings.link_text}
+                        {settings.link_icon_position == 'after' &&
+                          <img src={settings.link_icon} alt="Video Play" className="mr-3" />
+                        }
+                      </a>
+                    }
+                  </div>
+                </div>
+              )}
+              </>
+            )
+        })}
+        
       </div>
 
       <div tabindex="-1" aria-hidden="true" className="hidden overflow-y-auto overflow-x-hidden fixed left-1/2 top-1/2 translate-y-2/4 z-50">
-        <div class="flex md:flex-col-reverse items-start modal-body pr-4">
+        <div class="flex items-start modal-body pr-4">
           <video width="100%" height="100%" controls autoplay class="pr-3">
             <source src="https://cdn.shopify.com/s/files/1/1564/7647/files/monthly_packages.mp4?v=1614849415" type="video/mp4" />
             Your browser does not support the video tag.
@@ -46,6 +88,5 @@ const IndexBetterWay = ({ settings }) => {
     </div>
   );
 };
-
 
 export default IndexBetterWay;

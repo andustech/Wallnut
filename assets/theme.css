@@ -563,6 +563,12 @@ body {
 }
 
 
+.premium_pos {
+  width: 100%;
+  max-width: calc(100% / 3 - 10px);
+}
+
+
 
 
 @media only screen and (max-width: 1156px) {
@@ -774,7 +780,11 @@ line-height: 33px;
   .mood_card_container {
     display: -webkit-box;
     overflow-x: scroll;
-}
+  }
+
+  .premium_pos {
+    max-width: calc(100% / 2);
+  }
 }
 
 
@@ -917,6 +927,14 @@ font-size: 12px;
 line-height: 18px;
 margin-bottom: 13px !important;
 letter-spacing: 0.14em;
+}
+
+.premium_pos {
+  max-width: calc(100% / 1);
+}
+.premium_img {
+  max-width: 100%;
+  width: 100%;
 }
 
 }
