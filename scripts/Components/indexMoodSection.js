@@ -20,7 +20,7 @@ const indexMoodSection = ({ settings }) => {
   return (
     <>
       <ShopByMood className='container'>
-        <SectionTiltle>
+        <SectionTiltle className='section_titile'>
             { section_title && <h2 className="">{section_title}</h2> }
         </SectionTiltle>
 

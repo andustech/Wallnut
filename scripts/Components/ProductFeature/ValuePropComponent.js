@@ -52,8 +52,8 @@ const ValuePropSection = ({settings, collection_handle_1, collection_handle_2, c
       </SectionTiltle>
       <ValuePropContainer>
 
-        {/* {valueProps.map((item, i) => (
-          <ValuePropColumn key={i} className='premium_card_container'>
+        {valueProps.map((item, i) => (
+          <ValuePropColumn key={i} className='premium_card_container premium_pos'>
             <div className="premium_img_box">
               <img className='premium_img' src={item.img} />
             </div>

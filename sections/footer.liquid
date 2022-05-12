@@ -1,18 +1,14 @@
 {% if settings.show_notfication and settings.notification_position == 'above-footer' -%}
   {% render 'notification' %}
 {% endif %}
-
 {%- assign locale_selector = false -%}
 {%- assign currency_selector = false -%}
-
 {%- if section.settings.show_currency_selector and shop.enabled_currencies.size > 1 -%}
   {%- assign currency_selector = true -%}
 {%- endif -%}
-
 {%- if section.settings.show_locale_selector and shop.published_locales.size > 1 -%}
   {%- assign locale_selector = true -%}
 {%- endif -%}
-
 <div class="footer-section footer-template" data-section-id="{{ section.id }}" data-section-type="footer-section">
   <div class="clear"></div>
   <div class="fast_order_main_container top" style='background-color: #133744,'>
@@ -30,18 +26,14 @@
           <p>{{ section.settings.content }}</p>
         </div>
       </div>
-
     </div>
   </div>
-
-
     <div class='footer_bg'>
         <div class='container'>
           <div class='footer_logo'>
             <img src='{{ section.settings.logo_icon }}'>
             <p>{{ section.settings.logo_title }}</p>
           </div>
-
           <div class='footer_opt_container'>
             <div class='footer_left'>
             {% for block in section.blocks %}
@@ -69,7 +61,6 @@
                   <li><a href='#'>Afterpay</a></li>
                 </ul>
               </div>
-
               <div class='footer_opt'>
                 <p class='footer_title'>Shop</p>
                 <ul>
@@ -93,7 +84,6 @@
                     </ul>
                   </div>
                   <p class='on_social_media'>{{ section.settings.social_media_title }}</p>
-
                   <div class='social_media_icon'>
                       {% if settings.email_text != '' %}
                       <div class='soc_ico'><a href='{% if settings.email_url %} mailto:{{ settings.email_url }} {% endif %}'>{{ settings.email_text }}</a></div>
@@ -130,32 +120,26 @@
               {% endfor %}
             </div>
           </div>
-
         </div>
     </div>
   </div>
-
 
   <style>
     .fast_order_main_container {
       padding: 72px 64px;
     }
-
     .fast_order_inner {
         padding: 75px 115px;
     }
-
     .footer-section .top h2 {
         font-size: 36px;
         line-height: 44px;
         font-family: "AttilaSansUniform-Medium" !important;
     }
-
     .footer-section .top .newsletter p {
         font-size: 10px;
         line-height: 14px;
     }
-
     .fast_order_inner h2 {
         font-weight: 500;
         font-size: 36px;
@@ -164,7 +148,6 @@
         margin: 0 15px 0 0;
         font-family: "AttilaSansUniform-Medium" !important;
     }
-
     .fast_order_inner p {
         font-weight: 300;
         font-size: 16px;
@@ -173,7 +156,6 @@
         margin: 0 15px 0 0;
         font-family: "GoodSans-Light" !important;
     }
-
     .klaviyo-form-SxEnPF p {
         font-weight: 300;
         font-size: 10px;
@@ -182,7 +164,6 @@
         margin-bottom: 0;
         font-family: "GoodSans-Light" !important;
     }
-
     .email_input {
         width: 100%;
         font-size: 16px;
@@ -194,7 +175,6 @@
         border-bottom: 1px solid black;
         font-family: "GoodSans-Light" !important;
     }
-
     .email_input::-webkit-input-placeholder {
         color: black;
         font-size: 16px;
@@ -202,7 +182,6 @@
         line-height: 24px;
         font-family: "GoodSans-Light" !important;
     }
-
     .email_input:after {
         content: "";
         width: 17px;
@@ -212,66 +191,54 @@
         position: absolute;
         background-image: url(https://i.ibb.co/mhJXcrZ/Vector.png);
     }
-
     @media only screen and (max-width: 1354px) {
         .fast_order_inner {
             padding: 70px 70px;
         }
-
         .fast_order_inner h2 {
             font-size: 30px;
         }
     }
-
     @media only screen and (max-width: 1263px) {
         .footer-section .top h2 {
             font-size: 30px;
             line-height: 35px;
         }
-
         .fast_order_main_container {
             padding: 60px 40px;
         }
-
         .fast_order_inner {
             padding: 60px 60px;
         }
     }
-
     @media only screen and (max-width: 1149px) {
         .fast_order_main_container {
             padding: 54px 20px;
         }
-
         .fast_order_main_container {
             padding: 54px 35px;
         }
         .fast_order_inner {
             padding: 50px 30px;
         }
-
         .footer-section .top h2 {
             font-size: 25px;
             line-height: 29px;
         }
     }
-
     @media only screen and (max-width: 991px) {
         .fast_order_inner {
             flex-direction: column;
         }
     }
-
     .footer_bg {
         padding: 55px 64px 72px 64px;
         background-color: #376043;
     }
-
     .footer_logo {
         display: flex;
         align-items: center;
     }
-
     .footer_logo p {
         margin-left: 20px;
         margin-bottom: 0;
@@ -281,20 +248,16 @@
         text-transform: uppercase;
         font-family: "AttilaSansUniform-semibold" !important;
     }
-
     .footer_left {
         display: flex;
         align-items: flex-start;
     }
-
     .footer_opt:first-child {
         margin-right: 137px;
     }
-
     .footer_opt_container {
         margin-top: 72px;
     }
-
     .footer_title {
         text-transform: uppercase;
         color: white;
@@ -305,11 +268,9 @@
         margin-bottom: 16px;
         font-family: "AttilaSansUniform-Medium" !important;
     }
-
     .footer_opt ul li {
         margin-bottom: 8px;
     }
-
     .footer_opt ul li a {
         font-weight: 300;
         font-size: 14px;
@@ -320,23 +281,19 @@
         border-bottom: 1px solid transparent;
         font-family: "GoodSans-Light" !important;
     }
-
     .footer_opt ul li a:hover {
         color: #ffffff54;
         border-bottom: 1px solid #ffffff54;
     }
-
     .footer_opt_container {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
     }
-
     .footer_right {
         padding: 0 64px;
         border-left: 1px solid white;
     }
-
     .contact {
         font-weight: 300;
         font-size: 14px;
@@ -346,7 +303,6 @@
         margin-bottom: 32px;
         font-family: "GoodSans-Light" !important;
     }
-
     .on_social_media {
         font-weight: 500;
         font-size: 14px;
@@ -357,11 +313,9 @@
         color: white;
         font-family: "AttilaSansUniform-Medium" !important;
     }
-
     .social_media_icon {
         display: flex;
     }
-
     .soc_ico a:first-child {
         font-weight: 300;
         font-size: 14px;
@@ -372,31 +326,25 @@
         transition: 0.8s;
         font-family: "GoodSans-Light" !important;
     }
-
     .soc_ico a:first-child:hover {
         color: #ffffff54;
     }
-
     .soc_ico {
         margin-right: 20px;
     }
-
     .soc_ico:last-child {
         margin-right: 0;
     }
-
     .soc_ico a img {
         height: 20px;
         width: 20px;
         transition: 0.7s;
     }
-
     .soc_ico a img:hover {
         opacity: 0.4;
     }
      
   </style>
-
 
 {% schema %}
 {
@@ -565,7 +513,19 @@
           "default": "<p>Join our mailing list for updates</p>"
         }
       ]
-	  }
+      }
   ]
 }
 {% endschema %}
+
+
+
+
+
+
+
+
+
+
+
+
