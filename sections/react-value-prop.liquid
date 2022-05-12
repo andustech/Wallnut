@@ -2,7 +2,9 @@
   <script type="application/json">
     {
       "settings": {{ section.settings | json }},
-      "collection_handle_1": {{ collections[section.settings.collection_1] | json }}
+      "collection_handle_1": {{ collections[section.settings.collection_1] | json }},
+      "collection_handle_2": {{ collections[section.settings.collection_2] | json }},
+      "collection_handle_3": {{ collections[section.settings.collection_3] | json }}
     }
   </script>
 </div>
@@ -21,6 +23,12 @@
       "id": "subheading",
       "label": "Subheading",
       "default": "that’s painless to hang"
+    },
+    {
+      "type": "image_picker",
+      "id": "default_image",
+      "label": "Select Default Image",
+      "info": "Add image to show default image if there's no collection image"
     },
     {
       "type": "collection",

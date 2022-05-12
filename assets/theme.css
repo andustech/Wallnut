@@ -569,6 +569,12 @@ body {
 
 
 
+.premium_pos {
+  width: 100%;
+  max-width: calc(100% / 3 - 10px);
+}
+
+
 
 
 @media only screen and (max-width: 1156px) {
@@ -804,7 +810,7 @@ line-height: 33px;
 
   .premium_pos {
     max-width: calc(100% / 2);
-}
+  }
 }
 
 

@@ -1,8 +1,17 @@
 <div id="react-index-betterway">
   <script type="application/json">
     {
-      "themeSettings": {{ settings | json }},
-      "settings": {{ section.settings | json }}
+      "settings": {{ section.settings | json }},
+      "blocks": [
+        {% for block in section.blocks %}
+            {
+                "settings": {{ block.settings | json }},
+                "type": {{ block.type | json }},
+                "shopify_attributes": {{ block.shopify_attributes | json }}
+            }
+            {% if forloop.last != true %},{% endif %}
+        {% endfor %}
+      ]
     }
   </script>
 </div>

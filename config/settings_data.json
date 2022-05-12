@@ -3123,8 +3123,11 @@
           "2bb41f54-d101-4707-98a4-fac151f7b286"
         ],
         "settings": {
+          "title": "Get 10% off <br> your first order",
+          "subheading": "Sign up to receive 10% off your <br> first order, exclusive offers and <br> design updates.",
+          "content": "By entering your email, you agree to Wallnut's Privacy Policy and Terms of <br> Service. You also agree to receive Wallnut offers, promotions, and other <br> commercial messages. You may unsubscribe from our marketing emails at any <br> time.",
           "logo_icon": "https:\/\/cdn.shopify.com\/s\/files\/1\/0627\/3476\/2207\/files\/wallnut-logo.svg?v=1652269777",
-          "title": "ART WORK WITHOUT WORK",
+          "logo_title": "ART WORK WITHOUT WORK",
           "social_media_title": "CONNECT ON SOCIAL",
           "footer_text_align": "left",
           "footer_title_size": 13,
@@ -4596,6 +4599,7 @@
         "settings": {
           "title": "Premium art",
           "subheading": "that’s painless to hang",
+          "default_image": "shopify:\/\/shop_images\/default-collection-image.png",
           "collection_1": "best-selling-collection",
           "collection_2": "frontpage",
           "collection_3": "new-collection"
@@ -5236,6 +5240,40 @@
       },
       "16521560987a5dd475": {
         "type": "index-betterway",
+        "blocks": {
+          "31488042-a1ac-4840-aa1a-fb2a9e68b5bb": {
+            "type": "section",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/better-way_797b25cb-ffa3-46f9-86c4-fa6ea666826e.png",
+              "title": "A better way to art",
+              "content": "We believe art can transform a house into a home. So\nwhy is art so difficult to find, frustrating to frame, and\nimpossible to hang? That’s why we created an all-in-\none solution for finding, framing, and hanging art, mess-\nfree and stress-free. Your walls will thank you.",
+              "button_text": "",
+              "button_link": "",
+              "link_icon": "https:\/\/cdn.shopify.com\/s\/files\/1\/0627\/3476\/2207\/files\/video-play.svg?v=1651814299",
+              "link_icon_position": "before",
+              "link_text": "Watch the video",
+              "link_url": "#"
+            }
+          },
+          "f511cbc7-01f1-477f-9c02-cf7e29af1f3d": {
+            "type": "section",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/how-it-works_d5918321-545d-434c-b8fb-f053ad9aebbc.png",
+              "title": "How it works",
+              "content": "It's easy. Just pick a piece you love from our curated\ncollection of high quality prints. Then, it’s made to order\nand delivered to you, fully assembled in the frame of\nyour choice. The best part? Hanging is a breeze with\nour innovative Wallnut Mounting System™. It’s an\nadhesive-based wall mount with a built-in bubble level,\nso your frame slides right into place, super straight and\ndamage-free. We’ve rethought everything, so all you\nhave to do is enjoy it.",
+              "button_text": "Shop All",
+              "button_link": "#",
+              "link_icon": "https:\/\/cdn.shopify.com\/s\/files\/1\/0627\/3476\/2207\/files\/arrow-right-white.svg?v=1651814299",
+              "link_icon_position": "after",
+              "link_text": "Learn more",
+              "link_url": "#"
+            }
+          }
+        },
+        "block_order": [
+          "31488042-a1ac-4840-aa1a-fb2a9e68b5bb",
+          "f511cbc7-01f1-477f-9c02-cf7e29af1f3d"
+        ],
         "settings": {
         }
       },

@@ -15,16 +15,15 @@
     <div class="container">
       <!-- <div class="bg-white grid grid-center grid-cols-3 items-center"> -->
       <div class="fast_order_inner justify-between flex items-start" style='background: #F4F2EC;'>
-        <h2 class="font-attila-sans-medium font-medium">Get 10% off <br>your first order</h2>
-        <p class="">Sign up to receive 10% off your <br>first order, exclusive offers and <br>design updates.</p>
+        <h2 class="font-attila-sans-medium font-medium">{{ section.settings.title }}</h2>
+        <p class="">{{ section.settings.subheading }}</p>
         <div class="newsletter">
-          {% comment %} <div class="klaviyo-form-SxEnPF"></div> {% endcomment %}
-          <form action=''>
+          <div class="klaviyo-form-SxEnPF"></div>
+
+          {% comment %} <form action=''>
             <input class='email_input' placeholder='Enter Email' type='emai'>
-          </form>
-          <p>By entering your email, you agree to Wallnut's Privacy Policy and Terms of <br>
-          Service. You also agree to receive Wallnut offers, promotions, and other <br>commercial messages. 
-          You may unsubscribe from our marketing emails at any <br>time.</p>
+          </form> {% endcomment %}
+          <p>{{ section.settings.content }}</p>
         </div>
       </div>
     </div>
@@ -33,7 +32,7 @@
         <div class='container'>
           <div class='footer_logo'>
             <img src='{{ section.settings.logo_icon }}'>
-            <p>{{ section.settings.title }}</p>
+            <p>{{ section.settings.logo_title }}</p>
           </div>
           <div class='footer_opt_container'>
             <div class='footer_left'>
@@ -124,6 +123,7 @@
         </div>
     </div>
   </div>
+
   <style>
     .fast_order_main_container {
       padding: 72px 64px;
@@ -345,6 +345,7 @@
     }
      
   </style>
+
 {% schema %}
 {
   "name": "Footer",
@@ -352,12 +353,30 @@
   "settings": [
     {
       "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Get 10% off your first order"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Sign up to receive 10% off your first order, exclusive offers and design updates."
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "Content",
+      "default": "By entering your email, you agree to Wallnut's Privacy Policy and Terms of Service. You also agree to receive Wallnut offers, promotions, and other commercial messages. You may unsubscribe from our marketing emails at any time."
+    },
+    {
+      "type": "text",
       "id": "logo_icon",
       "label": "Logo"
     },
     {
       "type": "text",
-      "id": "title",
+      "id": "logo_title",
       "label": "Heading",
       "default": "ART WORK WITHOUT WORK"
     },
