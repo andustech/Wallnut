@@ -200,6 +200,10 @@ body {
   width: 27px !important;
 }
 
+.gm-menu-installed .gm-menu {
+  position:initial !important;
+}
+
 .Header__HeaderContainer-sc-yhlp3e-0.jbWOEQ.flex.items-center.justify-center.w-full {
     background: white;
 }
@@ -349,16 +353,23 @@ body {
   font-family: 'GoodSans-Light' !important;
 }
 
-.trend_card {
+
+.hkkjzZ {
   margin: 0 12px !important;
 }
 
 
-.trend_card:first-child {
+.hkkjzZ:first-child {
   margin-left: 0 !important;
 }
 
-.trend_card:last-child {
+.ProductRecommendation__RecommendationContainer-sc-1bfw787-1.container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.hkkjzZ:last-child {
   margin-right: 0 !important;
 }
 
@@ -368,15 +379,15 @@ body {
   position: relative;
 }
 
-.trend_card h6 {
+.hkkjzZ .pro_title{
   margin-top: 12px;
   font-size: 14px;
   font-weight: 600 !important;
-  margin-bottom: 0px !important;
+  margin-bottom: 4px !important;
   font-family: 'AttilaSansUniform-semibold';
 }
 
-.trend_card p {
+.hkkjzZ .pro_price {
   font-size: 12px;
   font-weight: 500 !important;
   margin-bottom: 7px !important;
@@ -973,3 +984,63 @@ letter-spacing: 0.14em;
 
 
 
+
+
+
+
+
+/* ===============product_detail==== */
+
+.hkkjzZ {
+  width: 100%;
+  max-width: calc(100% / 4 );
+}
+
+.fDsfjh {
+  margin: 0 !important;
+}
+
+
+@media only screen and (max-width: 991px) {
+
+  .ProductRecommendation__RecommendationContainer-sc-1bfw787-1.container {
+    display: -webkit-box;
+    overflow-x: scroll;
+  }
+
+  .hkkjzZ {
+    width: 100%;
+    max-width: calc(100% / 3 );
+  }
+}
+.videoBack.fade-out{
+  transition: opacity linear 0.15s;
+  -webkit-transform: scale(0.7);
+  -moz-transform: scale(0.7);
+  -ms-transform: scale(0.7);
+  transform: scale(0.7);
+  opacity: 0;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.videoBack.fade-in {
+    opacity: 1;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0,0,0,0.5);
+    height: 100%;
+    z-index: 10;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    transition: all 0.3s;
+}
+.videoBack .modal-body {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
