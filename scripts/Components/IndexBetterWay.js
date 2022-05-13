@@ -60,7 +60,7 @@ const IndexBetterWay = ({ blocks }) => {
                         }
                         {settings.link_text}
                         {settings.link_icon_position == 'after' &&
-                          <img src={settings.link_icon} alt="Video Play" className="mr-3" />
+                          <img src={settings.link_icon} alt="Video Play" className="ml-6" />
                         }
                       </a>
                     }
