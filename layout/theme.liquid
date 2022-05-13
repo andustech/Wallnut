@@ -60,7 +60,13 @@
     font-family: 'AttilaSansUniform-Semibold';
     src: url({{ "AttilaSansUniform-Semibold.woff2" | asset_url }}) format("woff2"), 
     url({{ "AttilaSansUniform-Semibold.woff" | asset_url }}) format("woff"); 
-  }                                     
+  }      
+
+  @font-face {
+    font-family: 'GoodSans';
+    src: url({{ "https://cdn.shopify.com/s/files/1/0627/3476/2207/files/GoodSans-Regular.woff2?v=1652105277" }}) format("woff2"), 
+    url({{ "https://cdn.shopify.com/s/files/1/0627/3476/2207/files/GoodSans-Regular.woff?v=1652105277" }}) format("woff"); 
+  }                               
   </style>
 
   {% if page_title == 'Interchangeability' %}
@@ -284,6 +290,12 @@
 
       }
     }
+     const myInterval = setInterval(function() {
+      	$('.gm-menu .gm-heading span:contains(Default)').addClass('default-title');
+        if ($('.gm-menu .gm-heading span').hasClass('default-title')) {
+          clearInterval(myInterval);
+        }
+      }, 200);
     });
   </script>
 

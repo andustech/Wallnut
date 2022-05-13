@@ -188,8 +188,8 @@ body {
 }
 
 #message {
-  font-family: 'GoodSans-Medium' !important;
-  font-weight: 500 !important;
+  font-family: 'GoodSans' !important;
+  font-weight: 400 !important;
   font-size: 12px !important;
   line-height: 20px !important;
   letter-spacing: 0.05em !important;
@@ -302,7 +302,6 @@ body {
 .premium_card_container {
   display: flex !important;
   align-items: center;
-  margin-top: 40px;
   justify-content: space-between;
 }
 

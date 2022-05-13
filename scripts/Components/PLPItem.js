@@ -137,11 +137,14 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
 
   const handleColorChange = (color) => {
     const newVariant = product.variants.find((item) => {
-      if (item.option2) {
-        return item.option1.toLowerCase() === color && item.option2 === legOption;
-      }
+      // if (item.option2) {
+      //   console.log('if')
+      //   return item.option1.toLowerCase() === color;
+      // }
       return item.option1.toLowerCase() === color;
     });
+    // console.log('product.variants ', product.variants)
+    console.log('newvariant ', newVariant)
     setCurrentOption(newVariant);
     setColorOption(color);
   };
@@ -166,7 +169,7 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
     if (colorFilters && colorFilters.length > 0) return null;
 
     const variantName = product.tags.includes('Extra Cover') ? chairCoverVariant : 'e-gift-card';
-
+    
     return (
       <ItemContainer
         ref={PLPItemRef}
@@ -227,7 +230,9 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
       </ItemContainer>
     );
   }
-
+  const productImage = product.images.find((item) => {
+    return currentOption.id === item.variant_ids[0]
+    })
   return (
     <ItemContainer
       ref={PLPItemRef}
@@ -245,17 +250,17 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
           )}
         >
           {currentOption && (
-            <ImageContainer isHovered={hover} noColorSelector={noColorSelector}>
-              <Media
-                alt={`${product.handle}-${currentOption.options.join(' ').toLowerCase().trim()}`}
-                image={getSingleViewImage(product, currentOption)}
-              />
-            </ImageContainer>
+              <ImageContainer isHovered={hover} noColorSelector={noColorSelector}>
+                <Media
+                  alt={`${product.handle}-${currentOption.options.join(' ').toLowerCase().trim()}`}
+                  image={productImage.src}
+                />
+              </ImageContainer>
           )}
         </a>
       </div>
       <a
-        className="no-underline test"
+        className="no-underline"
         href={getProductUrl(
           product,
           colorOption,
@@ -271,78 +276,34 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
           </span>
         </TitlePriceContainer>
       </a>
-          {!noColorSelector && (
-            <ColorContainer>
-              <div> 
-                {/* <ColorTitleWrapper>
-                  <span className="text-sm">Washable Fabric Color</span>
-                </ColorTitleWrapper> */}
-                <div className="flex">
-                  {colors.map((color) => {
-                    if (
-                      (color === 'sedona ivory' && product.tags.includes('Scandinavian')) ||
-                      (color === 'kali ikat blue' && product.tags.includes('Classic'))
-                    ) {
-                      return null;
-                    }
-                    return (
-                      <ColorSwatchWrapper
-                        border={color === colorOption}
-                        onClick={() => handleColorChange(color)}
-                        onKeyUp={() => {}}
-                        role="button"
-                        tabIndex="0"
-                        key={color}
-                      >
-                        <ColorSwatch option={color} small />
-                      </ColorSwatchWrapper>
-                    );
-                  })}
-                  {/* <div className="self-center">
-                    <a
-                      className="flex items-center justify-center gap-1 text-base"
-                      href={getProductUrl(
-                        product,
-                        colorOption,
-                        legOption,
-                        collectionTitle,
-                        chairCoverByCollection
-                      )}
-                    >
-                      <PlusIcon height="10" width="10" />
-                      <span>{getColorTotal(colors, product)}</span>
-                    </a>
-                  </div> */}
-                </div>
-              </div>
-              {/* {product.options.length > 1 && !product.title.includes('The Classic Lounge Chair') && (
-                <div> */}
-                  {/* <ColorTitleWrapper>
-                    <span className="text-sm">Leg Color</span>
-                  </ColorTitleWrapper> */}
-                  {/* <div className="flex justify-center">
-                    {legOptions.map((option, i) => (
-                      <div
-                        key={i}
-                        className={`w-9 h-9 border-solid border-2 mr-1 lg:mr-0 xxl:mr-1 rounded-full grid justify-items-center items-center ${
-                          option === legOption ? ' border-blue' : 'border-lynxwhite'
-                        }`}
-                        onClick={() => handleLegChange(option)}
-                        onKeyUp={() => {}}
-                        role="button"
-                        tabIndex="0"
-                      >
-                        <div className={`h-3 w-3 rounded-full wood-color-swatch ${option}`} />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )} */}
-            </ColorContainer>
-          )}
-      {/* <span className="text-sm lg:text-base text-orange-burnt capitalize text-left">
-        {colorOption}
-      </span> */}
+      {!noColorSelector && (
+        <ColorContainer>
+          <div>
+            <div className="flex">
+              {colors.map((color) => {
+                if (
+                  (color === 'sedona ivory' && product.tags.includes('Scandinavian')) ||
+                  (color === 'kali ikat blue' && product.tags.includes('Classic'))
+                ) {
+                  return null;
+                }
+                return (
+                  <ColorSwatchWrapper
+                    border={color === colorOption}
+                    onClick={() => handleColorChange(color.toLowerCase())}
+                    onKeyUp={() => { }}
+                    role="button"
+                    tabIndex="0"
+                    key={color}
+                  >
+                    <ColorSwatch option={color} small />
+                  </ColorSwatchWrapper>
+                );
+              })}
+            </div>
+          </div>
+        </ColorContainer>
+      )}
     </ItemContainer>
   );
 };
@@ -418,15 +379,13 @@ const CounterContainer = styled.div.attrs({
   background: white;
 `;
 const ColorContainer = styled.div.attrs({
-  className: 'flex w-full justify-between pr-3 py-2',
+  className: 'flex w-full justify-between px-3 py-2 bg-lynxwhite',
 })``;
 
 const ColorSwatchWrapper = styled.div.attrs(({ border }) => {
-  const borderStyle = border ? 'border border-black' : '';
-  const marginStyle = border ? 'mr-1.5' : 'mr-2';
+  const borderStyle = border ? 'border-2 border-blue' : 'border border-gray-300';
   return {
-    // className: `w-4.5 h-4.5 border-solid border-2 mr-1 lg:mr-0 xxl:mr-1 rounded-full grid justify-items-center items-center ${borderStyle} `,
-    className: `border-solid flex h-4.5 items-center justify-center rounded-full w-4.5 ${borderStyle} ${marginStyle}`,
+    className: `w-9 h-9 border-solid border-2 mr-1 lg:mr-0 xxl:mr-1 rounded-full grid justify-items-center items-center ${borderStyle} `,
   };
 })``;
 
