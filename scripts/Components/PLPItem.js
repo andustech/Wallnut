@@ -161,9 +161,9 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
     setLegOption(leg);
   };
 
-  if (product.handle.includes('exclusive')) {
-    return null;
-  }
+  // if (product.handle.includes('exclusive')) {
+  //   return null;
+  // }
 
   if (product.tags.includes('Gift card') || product.tags.includes('Extra Cover')) {
     if (colorFilters && colorFilters.length > 0) return null;

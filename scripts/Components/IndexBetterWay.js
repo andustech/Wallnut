@@ -3,6 +3,35 @@ import PropTypes from 'prop-types';
 
 const IndexBetterWay = ({ blocks }) => {
   return (
+    <>
+    {/* <div className="better_way_main_container bg-deep-moss text-white">
+      <div className="container">
+        <div className='main_section_container'>
+          <div className="video_items_containe">
+            <div className="video_content ">
+              <h2 className="">A better way to art</h2>
+              <p className="">We believe art can transform a house into a home. So <br />why is art so difficult to find, frustrating to frame, and  <br />impossible to hang? That’s why we created an all-in- <br />one solution for finding, framing, and hanging art, mess- <br />free and stress-free. Your walls will thank you.</p>
+              <a href="#" className=""><img src="https://i.ibb.co/PFvTSLq/video-play.png" alt="Video Play" className="mr-3" /> Watch the video</a>
+            </div>
+            <div className="sec_img">
+              <img src="https://i.ibb.co/VQc3QV1/how-it-works.png" alt="how-it-works" className="w-full" />
+            </div>
+          </div>
+          <div className="how_it_work_items_containe">
+            <div className="sec_img">
+              <img src="https://i.ibb.co/Cw8HsxL/better-way.png" alt="how-it-works" className="w-full" />
+            </div>
+            <div className="how_it_work_content">
+              <h2 className="">How it works</h2>
+              <p className="">It's easy. Just pick a piece you love from our curated  <br />collection of high quality prints. Then, it’s made to order <br />and delivered to you, fully assembled in the frame of <br />your choice. The best part? Hanging is a breeze with <br />our innovative Wallnut Mounting System™. It’s an <br />adhesive-based wall mount with a built-in bubble level, <br />so your frame slides right into place, super straight and <br />damage-free. We’ve rethought everything, so all you <br />have to do is enjoy it.</p>
+              <a href="#" className="primary_btn">Shop All</a>
+              <a href="#" className=" ">Learn more <img src="https://i.ibb.co/f9QMBy5/arrow-right-white.png" alt="Arrow Right" className="ml-6" /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> */}
+
     <div className="bg-deep-moss py-16 text-white">
       <div className="container mx-auto py-2 px-5 lg:px-0">
       
@@ -86,6 +115,7 @@ const IndexBetterWay = ({ blocks }) => {
       </div>
 
     </div>
+  </>
   );
 };
 
