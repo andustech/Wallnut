@@ -192,11 +192,12 @@ body {
 }
 
 #message {
-  font-family: 'GoodSans-Medium' !important;
-  font-weight: 500 !important;
+  font-family: 'GoodSans' !important;
+  font-weight: 400 !important;
   font-size: 12px !important;
   line-height: 20px !important;
   letter-spacing: 0.05em !important;
+  padding: 12px 0 !important;
 }
 
 .search_icon {
@@ -811,6 +812,13 @@ line-height: 33px;
   .premium_pos {
     max-width: calc(100% / 2);
   }
+
+  #message {
+    font-size: 10px !important;
+    line-height: 14px !important;
+    letter-spacing: 0.05em !important;
+  }
+  
 }
 
 
