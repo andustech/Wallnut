@@ -26,8 +26,8 @@ const Header = (props) => {
           </div>
           <a className="flex items-center" href="/">
             <LogoImage
-              src="https://i.ibb.co/DMpK1q6/logo.png"
-              alt="Levity"
+              src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/logo-wallnut.png?v=1652438735"
+              alt="Wallnut"
             />
           </a>
           <div className="hidden lg:flex">
