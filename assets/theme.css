@@ -175,10 +175,6 @@ body {
   padding: 11px 0;
 }
 
-/* #message {
-	display: none !important;
-} */
-
 .bannr_img{
     width: 100%;
 }
@@ -197,6 +193,7 @@ body {
   font-size: 12px !important;
   line-height: 20px !important;
   letter-spacing: 0.05em !important;
+  padding: 12px 0 !important;
 }
 
 .search_icon {
@@ -569,12 +566,6 @@ body {
 
 
 
-.premium_pos {
-  width: 100%;
-  max-width: calc(100% / 3 - 10px);
-}
-
-
 
 
 @media only screen and (max-width: 1156px) {
@@ -810,7 +801,13 @@ line-height: 33px;
 
   .premium_pos {
     max-width: calc(100% / 2);
-  }
+}
+
+#message {
+  font-size: 10px !important;
+  line-height: 14px !important;
+  letter-spacing: 0.05em !important;
+}
 }
 
 
