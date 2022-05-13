@@ -161,9 +161,9 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
     setLegOption(leg);
   };
 
-  if (product.handle.includes('exclusive')) {
-    return null;
-  }
+  // if (product.handle.includes('exclusive')) {
+  //   return null;
+  // }
 
   if (product.tags.includes('Gift card') || product.tags.includes('Extra Cover')) {
     if (colorFilters && colorFilters.length > 0) return null;
@@ -176,7 +176,7 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
       >
-        <div className="relative overflow-hidden">
+        <div className="relative overflow-hidden trend_card">
           <a
             href={getProductUrl(
               product,
@@ -205,8 +205,8 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
           )}
         >
           <TitlePriceContainer>
-            <span className="text-base lg:text-xl font-normal">{product.title}</span>
-            <span className="text-base lg:text-xl font-medium">
+            <span className="">{product.title}</span>
+            <span className="">
               {product.compare_at_price ? (
                 <div>
                   <span className="text-errorRed">
@@ -270,10 +270,10 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
         )}
       >
         <TitlePriceContainer>
-          <span className="text-base lg:text-xl font-normal">{product.title}</span>
-          <span className="text-base lg:text-xl font-medium">
+          <h6 className="pro_title">{product.title}</h6>
+          <p className="pro_price">
             {getPriceInRanges(product.price_min, product.price_max)}
-          </span>
+          </p>
         </TitlePriceContainer>
       </a>
       {!noColorSelector && (
@@ -379,13 +379,13 @@ const CounterContainer = styled.div.attrs({
   background: white;
 `;
 const ColorContainer = styled.div.attrs({
-  className: 'flex w-full justify-between px-3 py-2 bg-lynxwhite',
+  className: 'flex w-full justify-between',
 })``;
 
 const ColorSwatchWrapper = styled.div.attrs(({ border }) => {
   const borderStyle = border ? 'border-2 border-blue' : 'border border-gray-300';
   return {
-    className: `w-9 h-9 border-solid border-2 mr-1 lg:mr-0 xxl:mr-1 rounded-full grid justify-items-center items-center ${borderStyle} `,
+    className: `w-6 h-6 border-solid border-2 mr-1 lg:mr-0 xxl:mr-1 rounded-full grid justify-items-center items-center ${borderStyle} `,
   };
 })``;
 

@@ -48,10 +48,10 @@ const ProductRecommendation = ({ blocks, settings }) => {
 
   return (
     <ProductRecommendationContainer>
-      <SectionTiltle>
+      <SectionTiltle className='section_titile'>
           <h2 className="font-bold">{settings.title}</h2>
       </SectionTiltle>
-      <div className="grid grid-cols-1 overflow-hidden md:justify-items-center">
+      <div className="">
         <RecommendationContainer recommendations={recommendations}>
         {recommendations &&
           <>
@@ -93,6 +93,8 @@ const ProductRecommendation = ({ blocks, settings }) => {
 
 };
 
+
+
 const ProductRecommendationContainer = styled.div.attrs({
   className: 'px-2 py-8 mb-8 md:px-0 md:py-10 md:text-center',
 })`
@@ -103,7 +105,7 @@ const ProductRecommendationContainer = styled.div.attrs({
 `;
 
 const RecommendationContainer = styled.div.attrs(({ recommendations }) => ({
-  className: `grid grid-col-1 justify-items-center md:justify-items-start md:grid-cols-2 xl:grid-cols-${recommendations.length} gap-2 md:w-10/12 max-w-screen-xxl`,
+  className: `container`,
 }))``;
 
 const TrendingMainContainer = styled.div`

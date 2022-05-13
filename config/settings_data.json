@@ -3027,7 +3027,7 @@
               "text_link_1": "Scandinavian Dining Chair",
               "url_link_1": "shopify:\/\/products\/the-scandinavian-dining-chair",
               "text_link_2": "Classic Dining Chair",
-              "url_link_2": "shopify:\/\/products\/the-classic-dining-chair-walnut",
+              "url_link_2": "shopify:\/\/products\/the-classic-lounge-chair-exclusive",
               "text_link_3": "Scandinavian Lounge Chair",
               "url_link_3": "shopify:\/\/products\/the-scandinavian-lounge-chair",
               "text_link_4": "Classic Lounge Chair",
@@ -3050,7 +3050,7 @@
               "text_link_1": "The Scandinavian Dining Chair",
               "url_link_1": "shopify:\/\/products\/the-scandinavian-dining-chair",
               "text_link_2": "The Classic Dining Chair",
-              "url_link_2": "shopify:\/\/products\/the-classic-dining-chair-walnut",
+              "url_link_2": "shopify:\/\/products\/the-classic-lounge-chair-exclusive",
               "text_link_3": "The Scandinavian Lounge Chair",
               "url_link_3": "shopify:\/\/products\/the-scandinavian-lounge-chair",
               "text_link_4": "The Classic Lounge Chair",
@@ -3177,7 +3177,7 @@
               "exclusive_template": false,
               "direct_response_text": "Exclusive Offer!",
               "direct_response_discount": "15",
-              "product": "the-classic-dining-chair-walnut",
+              "product": "the-classic-lounge-chair-exclusive",
               "about_heading": "Overview",
               "about_desktop_heading": "We've got you covered.",
               "about_paragraph": "Unlike your typical upholstered dining chair, you don't have to worry about sticky fingers with this one. The Classic Dining Chair features removable upholstery that is machine-washable and stain-resistant. Better yet, the Chair Covers come in 30+ interchangeable colors, so you’ll never get bored with one look.",
@@ -3993,11 +3993,40 @@
       },
       "1540224911099": {
         "type": "featured-collection",
+        "blocks": {
+          "aca09c97-8882-4e30-bb5a-fa1dc9cc7abb": {
+            "type": "section",
+            "settings": {
+              "product": "the-classic-dining-chair"
+            }
+          },
+          "617f207c-dcc0-4b1f-b0c4-d744a155ef59": {
+            "type": "section",
+            "settings": {
+              "product": "the-classic-lounge-chair"
+            }
+          },
+          "b9072066-8c43-40d2-8284-e533d2e1c720": {
+            "type": "section",
+            "settings": {
+              "product": "the-classic-lounge-chair-exclusive"
+            }
+          },
+          "3227e2f0-9228-40bd-9271-07bee6faf178": {
+            "type": "section",
+            "settings": {
+              "product": "the-scandinavian-lounge-chair"
+            }
+          }
+        },
+        "block_order": [
+          "aca09c97-8882-4e30-bb5a-fa1dc9cc7abb",
+          "617f207c-dcc0-4b1f-b0c4-d744a155ef59",
+          "b9072066-8c43-40d2-8284-e533d2e1c720",
+          "3227e2f0-9228-40bd-9271-07bee6faf178"
+        ],
         "settings": {
-          "title": "4 washable chair styles, 20 colors",
-          "collection": "all-chairs",
-          "grid": 4,
-          "rows": 1
+          "title": "Trending art"
         }
       },
       "product-recommendations": {
@@ -4642,7 +4671,7 @@
       "desktop-announcement": {
         "type": "desktop-announcement",
         "settings": {
-          "announcement": "FREE SHIPPING ON ALL ORDERS!*",
+          "announcement": "FREE SHIPPING ON ALL ORDERS",
           "referral_link_text": "Refer and Save $25!",
           "sale_announcement": "The Fresh Start Event: $100 Off Lounge Chairs with code FRESHSTART",
           "sale_link": "\/collections\/fresh-start-event",

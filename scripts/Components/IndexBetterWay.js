@@ -63,6 +63,7 @@ const IndexBetterWay = ({ blocks }) => {
                           <img src={settings.link_icon} alt="Video Play" className="ml-6" />
                         }
                       </a>
+                      
                     }
                   </div>
                 </div>

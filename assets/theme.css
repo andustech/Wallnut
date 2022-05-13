@@ -200,6 +200,10 @@ body {
   width: 27px !important;
 }
 
+.gm-menu-installed .gm-menu {
+  position:initial !important;
+}
+
 .Header__HeaderContainer-sc-yhlp3e-0.jbWOEQ.flex.items-center.justify-center.w-full {
     background: white;
 }
@@ -280,6 +284,10 @@ body {
   background-color: #ffffffd2 !important;
 }
 
+.section_titile {
+  margin-bottom: 40px !important;
+}
+
 .section_titile h2 {
   font-size: 36px !important;
   line-height: 50px !important;
@@ -345,16 +353,23 @@ body {
   font-family: 'GoodSans-Light' !important;
 }
 
-.trend_card {
+
+.hkkjzZ {
   margin: 0 12px !important;
 }
 
 
-.trend_card:first-child {
+.hkkjzZ:first-child {
   margin-left: 0 !important;
 }
 
-.trend_card:last-child {
+.ProductRecommendation__RecommendationContainer-sc-1bfw787-1.container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.hkkjzZ:last-child {
   margin-right: 0 !important;
 }
 
@@ -364,15 +379,15 @@ body {
   position: relative;
 }
 
-.trend_card h6 {
+.hkkjzZ .pro_title{
   margin-top: 12px;
   font-size: 14px;
   font-weight: 600 !important;
-  margin-bottom: 0px !important;
+  margin-bottom: 4px !important;
   font-family: 'AttilaSansUniform-semibold';
 }
 
-.trend_card p {
+.hkkjzZ .pro_price {
   font-size: 12px;
   font-weight: 500 !important;
   margin-bottom: 7px !important;
@@ -417,9 +432,7 @@ body {
   margin-top: 112px;
 }
 
-.mood_card_container {
-  margin-top: 40px;
-}
+
 
 .mood_card_container a:first-child {
   width: 100%;
@@ -757,9 +770,7 @@ line-height: 33px;
   margin-top: 56px !important;
 }
 
-.mood_card_container {
-  margin-top: 19px !important;
-}
+
 }
 
 
@@ -856,9 +867,10 @@ line-height: 33px;
     padding-top: 57px !important;
   }
 
-  .premium_card_container {
-    margin-top: 20px !important;
-  }
+  .section_titile {
+    margin-bottom: 20px !important;
+}
+
 
   .section_titile h2 {
     font-size: 20px !important;
@@ -972,3 +984,32 @@ letter-spacing: 0.14em;
 
 
 
+
+
+
+
+
+/* ===============product_detail==== */
+
+.hkkjzZ {
+  width: 100%;
+  max-width: calc(100% / 4 );
+}
+
+.fDsfjh {
+  margin: 0 !important;
+}
+
+
+@media only screen and (max-width: 991px) {
+
+  .ProductRecommendation__RecommendationContainer-sc-1bfw787-1.container {
+    display: -webkit-box;
+    overflow-x: scroll;
+  }
+
+  .hkkjzZ {
+    width: 100%;
+    max-width: calc(100% / 3 );
+  }
+}
