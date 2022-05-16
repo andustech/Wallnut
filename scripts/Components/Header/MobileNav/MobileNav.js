@@ -76,7 +76,7 @@ const MobileNav = ({ settings, themeSettings }) => {
         onKeyPress={() => {}}
         role="button"
         tabIndex="0"
-        className="h-6 flex justify-center lg:hidden"
+        className="h-4 flex justify-center lg:hidden toggle-button"
       >
         <MobileNavIcon isOpen={open} setOpen={setOpen} />
       </div>
@@ -85,7 +85,7 @@ const MobileNav = ({ settings, themeSettings }) => {
 };
 
 const MobileNavWrapper = styled.div.attrs({
-  className: 'flex items-center pl-1.5 lg:hidden h-full',
+  className: 'flex items-center lg:hidden h-full',
 })``;
 
 const BgOverlay = styled.div(({ isOpen }) => [

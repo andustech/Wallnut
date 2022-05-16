@@ -314,8 +314,8 @@ body {
 }
 
 .premium_img_box {
-  margin: 0 12px !important;
-}
+  margin: 0 24px !important;
+} 
 
 .premium_img_box:first-child {
   margin-left: 0 !important;

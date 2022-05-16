@@ -10,7 +10,7 @@
     max-width: 100% !important;
   }
 }
-.gm-menu-installed .gm-menu {
+.gm-menu-installed .gm-menu { 
   line-height: 1.4;
   background-color: rgba(255, 255, 255, 1) !important;
   color: rgba(0, 0, 0, 1);
@@ -18,10 +18,10 @@
   font-size: 14px;
 }
 .gm-menu-installed .gm-menu.gm-bordered:not(.gm-menu-mobile) > .gm-level-0 + .gm-level-0 {
-  border-left: 1px solid rgba(221, 16, 16, 1) !important;
+  border-left: 1px solid rgba(226, 218, 205, 1) !important;
 }
 .gm-menu-installed .gm-menu.gm-mobile-bordered.gm-menu-mobile > .gm-level-0 + .gm-level-0:not(.searchItem){
-  border-top: 1px solid rgba(221, 16, 16, 1) !important;
+  border-top: 1px solid rgba(226, 218, 205, 1) !important;
 }
 .gm-menu-installed .gm-item.gm-level-0 > .gm-target > .gm-text{
   font-family: "Lato", sans-serif !important;
@@ -34,7 +34,7 @@
   font-size: 12px !important;
   font-weight: 400 !important;
   font-style: normal !important;
-  line-height: 20px !important; 
+  line-height: 20px !important;
 }
 
 .gm-submenu.gm-search-form input{

@@ -12171,6 +12171,7 @@ button[aria-controls="write-review-tabpanel-main-widget"].yotpo-icon-btn {
     left: 0;
     right:0;
     max-width: 400px;
+    border-top: 1px solid #E2DACD;
     z-index: 9999999;
     background: #fff; 
     transition:0.3s all ease-out;
@@ -12182,6 +12183,62 @@ button[aria-controls="write-review-tabpanel-main-widget"].yotpo-icon-btn {
     opacity:1;
     visibility:visible;
   }
+  
+  .gm-menu-installed .gm-menu {
+    margin: auto 20px !important;
+  }
+  .gm-menu-installed .gm-menu.gm-menu-mobile .gm-item.gm-level-0>.gm-target {
+    padding: 16px 0!important;
+  }
+
+  .gm-menu-installed .gm-menu.gm-menu-mobile .gm-level-0>.gm-target>.gm-retractor {
+    justify-content: flex-end !important;
+  }
+  .gm-menu-installed .gm-menu.gm-menu-mobile .gm-level-0>.gm-target>.gm-retractor:after {
+    font-size: 15px !important;
+  }
+  .gm-menu-mobile.gm-menu .gm-retractor:after {
+    content: "\f105" !important;
+  }
+  .gm-menu-mobile.gm-menu .gm-active>.gm-target>.gm-retractor:after {
+    content: "\f107"!important;
+  }
+  .gm-menu-installed .gm-menu-mobile .gm-submenu.gm-submenu-bordered:not(.gm-aliexpress) {
+    border: none !important;
+  }
+  .gm-menu-installed .gm-menu-mobile .gm-grid-item {
+    padding: 0 !important;
+  }
+  .gm-menu-installed .gm-menu-mobile .gm-item.gm-heading {
+    display: none !important;
+  }
+  .gm-menu-installed .gm-menu-mobile .gm-links {
+    padding: 0!important;
+  }
+  .gm-menu-installed .gm-menu-mobile .gm-submenu .gm-item.gmcol-6 {
+    display: none;
+  }
+  .gm-menu-installed .gm-menu.gm-mobile-bordered.gm-menu-mobile>.gm-level-0+.gm-level-0:last-child:not(.searchItem) {
+    border-bottom: 1px solid rgba(226,218,205,1)!important;
+  }
+  .gm-menu-installed .gm-menu-mobile .gm-submenu .gm-has-submenu .gm-item:not(.gm-heading) .gm-target {
+    font-size: 12px !important;
+  }
+  .toggle-button .top-2 {
+    top: 0.4rem !important;
+  }
+  .toggle-button .top-4 {
+    top: 0.8rem !important;
+  }
+  .gm-menu-installed .gm-menu-mobile .gm-submenu .gm-has-submenu .gm-item:not(.gm-heading) .gm-target {
+    padding: 0 0 16px 0;
+  }
+  .globo-menu-mobile .soc_ico a:first-child {
+    color: #000;
+  }
+  .globo-menu-mobile .soc_ico a img {
+    border: none !important;
+  } 
 }
 
 body.gm-menu-installed nav > .hidden.lg\:flex > ul{
@@ -12202,10 +12259,9 @@ body.gm-menu-installed nav > .hidden.lg\:flex > ul{
     text-transform: uppercase;
     font-family: 'GoodSans' !important;
     line-height: 20px;
-    display: flex;
-    align-items: center;
     letter-spacing: 0.05em;
     padding-bottom: 0;
+    text-align: left;
 }
 .gm-menu-installed .gm-menu .gm-submenu .gm-has-submenu .gm-item:not(.gm-heading) .gm-target .gm-text {
   font-family: 'GoodSans';
@@ -12246,7 +12302,7 @@ body.gm-menu-installed nav > .hidden.lg\:flex > ul{
 .gm-menu .searchItem {
     display: none;
 }
-.gm-menu:not(.gm-menu-mobile) .iTbbpu {
+.gm-menu:not(.gm-menu-mobile) .iTbbpu, .gm-menu-mobile .fyRDfx {
   display: none;
 }
 .gm-menu-installed .gm-menu .gm-submenu .gm-heading .gm-target .gm-text.default-title, .gm-menu-installed .gm-menu .gm-submenu .gm-heading .gm-target:hover .gm-text.default-title {
