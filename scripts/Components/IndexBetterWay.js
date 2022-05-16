@@ -51,8 +51,8 @@ const IndexBetterWay = ({ blocks }) => {
                       </a>
                     }
                   </div>
-                  <div className="w-6/12">
-                    <img src={settings.image} alt="how-it-works" />
+                  <div className="w-6/12"> 
+                    <img src={settings.image} alt="how-it-works" class="w-full" />
                   </div>
                   {settings.video_link &&
                     <div tabindex="-1" aria-hidden="true" className={`videoBack fixed ${videoActive}`}>
@@ -72,7 +72,7 @@ const IndexBetterWay = ({ blocks }) => {
               ):(
                 <div className="how_it_work_items_container flex items-center flex-col lg:flex-row">
                   <div className="w-6/12">
-                    <img src={settings.image} alt="how-it-works" />
+                    <img src={settings.image} alt="how-it-works" class="w-full" />
                   </div>
                   <div className="how_it_work_content lg:w-6/12 lg:px-16 pt-5 lg:pt-5">
                     {settings.title &&

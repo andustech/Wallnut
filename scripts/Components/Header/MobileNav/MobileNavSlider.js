@@ -13,6 +13,17 @@ const MobileNavSlider = ({ isOpen, links, themeSettings, settings }) => {
     black_friday_sale_end,
     cyber_monday_sale_start,
     cyber_monday_sale_end,
+    email_text,
+    email_url,
+    twitter_url,
+    facebook_url,
+    instagram_url,
+    pinterest_url,
+    tumblr_url,
+    youtube_url,
+    googleplus_url,
+    snapchat_id,
+    weibo_id,
   } = themeSettings;
 
   const [openShop, setOpenShop] = useState(true);
@@ -68,6 +79,27 @@ const MobileNavSlider = ({ isOpen, links, themeSettings, settings }) => {
         </div>
       </Container>
       <BgOverlay isOpen={isOpen} />
+
+      <div class="globo-menu-mobile">
+        <ul></ul>
+
+        <div class="mx-5 mt-10">
+          { email_text && <div class='soc_ico mb-3.5'><a href={`mailto:${email_url}`}>{ email_text }</a></div> }
+          <div class='social_media_icon'>
+            { twitter_url && <div class='soc_ico'><a href={twitter_url }><i></i></a></div> }
+            { facebook_url && <div class='soc_ico'><a href={facebook_url }>
+             <i><img src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/facebook-black.svg?v=1652709438" alt="Social icon" /></i>
+            </a></div> }
+            { instagram_url && <div class='soc_ico'><a href={instagram_url }><i><img src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/instagram-svg.svg?v=1652711813" alt="Social icon" /></i></a></div> }
+            { pinterest_url && <div class='soc_ico'><a href={pinterest_url }><i></i></a></div> }
+            { tumblr_url && <div class='soc_ico'><a href={tumblr_url }><i></i></a></div> }
+            { youtube_url && <div class='soc_ico'><a href={youtube_url }><i></i></a></div> }
+            { googleplus_url && <div class='soc_ico'><a href={googleplus_url }><i></i></a></div> }
+            { snapchat_id && <div class='soc_ico'><a href={snapchat_id }><i></i></a></div> }
+            { weibo_id && <div class='soc_ico'><a href={weibo_id }><i></i></a></div> }
+        </div>
+      </div>
+      </div>
     </>
   );
 };

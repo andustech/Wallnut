@@ -21,10 +21,10 @@ const Header = (props) => {
     <div>
       <HeaderContainer sticky={sticky}>
         <nav className="flex w-full justify-between container mx-auto bg-white h-full">
-          <div className="block lg:hidden">
+          <div className="block lg:hidden" style={{"flex": "1"}}>
             <MobileNav settings={mobileNavSettings} themeSettings={themeSettings} />
           </div>
-          <a className="flex items-center" href="/">
+          <a className="flex items-center justify-center" style={{"flex": "1"}} href="/">
             <LogoImage
               src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/logo-wallnut.png?v=1652438735"
               alt="Wallnut"
@@ -54,8 +54,8 @@ const Header = (props) => {
               </li>
             </ul>
           </div>
-          <div className="header-search-minicart-container">
-            <div className="hidden lg:block">
+          <div className="header-search-minicart-container" style={{"flex": "1"}}>
+            <div className="">
               <div id="header-search" className="desktop-3 tablet-hide mobile-hide">
                 <form action="/search" method="get">
                   <img src='https://i.ibb.co/YNvzb2s/Vector.png' className='search_icon' />
@@ -75,7 +75,7 @@ const Header = (props) => {
                   alt="cart"
                 />
                 {/* <div className="cart-count font-serif text-sm"></div> */}
-                <CartHighlight cartCount={cartCount} />
+                {/* <CartHighlight cartCount={cartCount} /> */}
               </a>
             </div>
           </div>
@@ -92,6 +92,9 @@ const HeaderContainer = styled.div.attrs(({ sticky }) => {
 })`
   height: 70px;
   border-bottom: 1px solid #d5d5d5;
+  @media screen and (max-width: 1024px) {
+    height: 50px;
+  }
 `;
 
 const NavWrapper = styled.div.attrs(({ isShown }) => {
@@ -124,9 +127,9 @@ const LinkItem = styled.a.attrs({
 `;
 
 const LogoImage = styled.img`
-  @media screen and (max-width: 1024px) {
-    max-width: 83px;
-  }
+  // @media screen and (max-width: 1024px) {
+  //   max-width: 83px;
+  // }
   @media screen and (min-width: 1024px) {
     max-width: 130px;
   }
