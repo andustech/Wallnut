@@ -1,0 +1,105 @@
+<div id="react-index-betterway">
+  <script type="application/json">
+    {
+      "settings": {{ section.settings | json }},
+      "blocks": [
+        {% for block in section.blocks %}
+            {
+                "settings": {{ block.settings | json }},
+                "type": {{ block.type | json }},
+                "shopify_attributes": {{ block.shopify_attributes | json }}
+            }
+            {% if forloop.last != true %},{% endif %}
+        {% endfor %}
+      ]
+    }
+  </script>
+</div>
+
+{% schema %}
+{
+  "name": "Better way/how it works",
+  "settings": [
+  ],
+  "blocks": [
+      {
+        "name": "Image With Text",
+        "type": "section",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "textarea",
+            "id": "content",
+            "label": "Content"
+          },
+          {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button Text"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button Link"
+          }, 
+          {
+            "type": "text",
+            "id": "link_icon",
+            "label": "Icon with Link",
+            "info": "Icon to add before/after the link"
+          },
+          {
+            "type": "text",
+            "id": "video_btn_text",
+            "label": "Video Button Text"
+          },
+          {
+            "type": "text",
+            "id": "video_link",
+            "label": "Video Link"
+          },
+          {
+            "type": "select",
+            "id": "link_icon_position",
+            "label": "Icon Position",
+            "options": [
+                {
+                    "value": "before",
+                    "label": "Before Link Text"
+                },
+                {
+                    "value": "after",
+                    "label": "After Link Text"
+                }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "link_text",
+            "label": "Link Text"
+          },
+          {
+            "type": "url",
+            "id": "link_url",
+            "label": "Link URL"
+          }
+        ]
+      }
+  ],
+  "presets": [
+    {
+      "name": "Better way/how it works",
+      "category": "Content"
+    }
+  ]
+}
+{% endschema %}

@@ -1,10 +1,18 @@
-{%- assign collection = collections[section.settings.collection] -%}
-
 <div class="index-section" data-section-id="{{ section.id }}" data-section-type="featured-collection" data-aos="{{ settings.scroll_animation }}">
   <div id="react-product-recommendation">
     <script type="application/json">
       {
-        "title": "4 washable chair styles, 40+ colors"
+        "settings": {{ section.settings | json }},        
+        "blocks": [
+          {% for block in section.blocks %}
+              {
+                  "settings": {{ block.settings.product | json }},
+                  "type": {{ block.type | json }},
+                  "shopify_attributes": {{ block.shopify_attributes | json }}
+              }
+              {% if forloop.last != true %},{% endif %}
+          {% endfor %}
+        ]
       }
     </script>
   </div>
@@ -14,41 +22,31 @@
 
 {% schema %}
 {
-  "name": "Featured collection",
+  "name": "Product Grid",
   "settings": [
     {
       "type": "text",
       "id": "title",
       "label": "Heading",
       "default": "Featured Collection"
-    },
+    }
+  ],
+  "blocks": [
     {
-      "id": "collection",
-      "type": "collection",
-      "label": "Collection"
-    },
-    {
-      "type": "range",
-      "id": "grid",
-      "min": 2,
-      "max": 4,
-      "step": 1,
-      "label": "Products per row",
-      "default": 3
-    },
-    {
-      "type": "range",
-      "id": "rows",
-      "min": 1,
-      "max": 5,
-      "step": 1,
-      "label": "Rows shown",
-      "default": 2
+      "name": "Product",
+      "type": "section",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        }
+      ]
     }
   ],
   "presets": [
     {
-      "name": "Featured collection",
+      "name": "Product Grid",
       "category": "Collection"
     }
   ]

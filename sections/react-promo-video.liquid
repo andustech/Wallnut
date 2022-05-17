@@ -1,20 +1,52 @@
 <div id="react-promo-video-section">
   <script type="application/json">
-    {
-      "assetUrls": {
-        "promoVideoImage": "{{ 'promo-video-image.png' | asset_url }}",
-        "arrowGif": "{{ 'Arrow.gif' | asset_url }}",
-        "playButtonImage": "{{ 'play-button.png' | asset_url }}"
-      }
-    }
+  {
+    "settings": {{ section.settings | json }}
+  }
   </script>
 </div>
 {% schema %}
 {
-  "name": "Promo Video",
+  "name": "White Collection",
+  "settings" : [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "New in"
+    }, 
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "White"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Collection"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Shop Collection"
+    },    
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
   "presets": [
     {
-      "name": "Promo Video",
+      "name": "White Collection",
       "category": "React Components"
     }
   ]

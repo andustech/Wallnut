@@ -1,78 +1,79 @@
-import React, { useState, useRef, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+// import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import Media from '../Media';
+// import Media from '../Media';
 
-const CarouselA = ({ images, watchForReset, overlayImage, overlayImageMobile }) => {
-  const containerRef = useRef();
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+const CarouselA = () => {
+  // const containerRef = useRef();
+  // const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const handleOnScroll = () => {
-    const scrollPos = containerRef.current.scrollLeft;
-    const threshold = 5;
-    const eachImageWidth = containerRef.current.scrollWidth / containerRef.current.children.length;
-    const imagePositions = Array.from(containerRef.current.children).map((_child, i) =>
-      Math.round(i * eachImageWidth)
-    );
+  // const handleOnScroll = () => {
+  //   const scrollPos = containerRef.current.scrollLeft;
+  //   const threshold = 5;
+  //   const eachImageWidth = containerRef.current.scrollWidth / containerRef.current.children.length;
+  //   const imagePositions = Array.from(containerRef.current.children).map((_child, i) =>
+  //     Math.round(i * eachImageWidth)
+  //   );
 
-    const index = imagePositions.findIndex(
-      (pos) => pos - threshold > scrollPos || scrollPos < pos + threshold
-    );
+  //   const index = imagePositions.findIndex(
+  //     (pos) => pos - threshold > scrollPos || scrollPos < pos + threshold
+  //   );
 
-    setCurrentImageIndex(index);
-  };
+  //   setCurrentImageIndex(index);
+  // };
 
-  const handleThumbnailClick = (i) => {
-    const pos = containerRef.current.children[i].getBoundingClientRect();
+  // const handleThumbnailClick = (i) => {
+  //   const pos = containerRef.current.children[i].getBoundingClientRect();
 
-    containerRef.current.scrollTo(containerRef.current.scrollLeft + pos.left, 0);
-    setCurrentImageIndex(i);
-  };
+  //   containerRef.current.scrollTo(containerRef.current.scrollLeft + pos.left, 0);
+  //   setCurrentImageIndex(i);
+  // };
 
-  useEffect(() => {
-    handleThumbnailClick(0);
-  }, [watchForReset]);
+  // useEffect(() => {
+  //   handleThumbnailClick(0);
+  // }, [watchForReset]);
 
   return (
-    <div className="w-full h-full">
-      <CarouselContainer ref={containerRef} onScroll={handleOnScroll}>
-        {images.map((image, i) => (
-          <Media
-            key={i}
-            image={image.url}
-            alt={image.alt}
-            backgroundImage
-            bgCover={image.url.includes('color-swatch')}
-            overlayImage={i === 0 ? overlayImage : null}
-            overlayImageMobile={i === 0 ? overlayImageMobile : null}
-          />
-        ))}
-      </CarouselContainer>
-      {images.length > 1 && (
-        <>
-          <div className="flex justify-center space-x-1 mt-2">
-            {images.map((image, i) => (
-              <Media
-                key={i}
-                image={image.url}
-                currentImage={currentImageIndex === i}
-                onClick={() => handleThumbnailClick(i)}
-                onMouseOver={() => handleThumbnailClick(i)}
-                thumbnail
-                alt={image.alt}
-              />
-            ))}
-          </div>
-          <div
-            className="absolute bg-white -bottom-15
-             px-3 rounded text-sm font-serif left-2 md:-bottom-8 lg:bottom-26"
-          >
-            {currentImageIndex + 1}/{images.length}
-          </div>
-        </>
-      )}
-    </div>
+    <h1>hello carousel</h1>
+    // <div className="w-full h-full">
+    //   <CarouselContainer ref={containerRef} onScroll={handleOnScroll}>
+    //     {images.map((image, i) => (
+    //       <Media
+    //         key={i}
+    //         image={image.url}
+    //         alt={image.alt}
+    //         backgroundImage
+    //         bgCover={image.url.includes('color-swatch')}
+    //         overlayImage={i === 0 ? overlayImage : null}
+    //         overlayImageMobile={i === 0 ? overlayImageMobile : null}
+    //       />
+    //     ))}
+    //   </CarouselContainer>
+    //   {images.length > 1 && (
+    //     <>
+    //       <div className="flex justify-center space-x-1 mt-2">
+    //         {images.map((image, i) => (
+    //           <Media
+    //             key={i}
+    //             image={image.url}
+    //             currentImage={currentImageIndex === i}
+    //             onClick={() => handleThumbnailClick(i)}
+    //             onMouseOver={() => handleThumbnailClick(i)}
+    //             thumbnail
+    //             alt={image.alt}
+    //           />
+    //         ))}
+    //       </div>
+    //       <div
+    //         className="absolute bg-white -bottom-15
+    //          px-3 rounded text-sm font-serif left-2 md:-bottom-8 lg:bottom-26"
+    //       >
+    //         {currentImageIndex + 1}/{images.length}
+    //       </div>
+    //     </>
+    //   )}
+    // </div>
   );
 };
 

@@ -1151,6 +1151,16 @@
       },
       {
         "type": "text",
+        "id": "email_text",
+        "label": "Email Text"
+      },
+      {
+        "type": "text",
+        "id": "email_url",
+        "label": "Enter Email"
+      },
+      {
+        "type": "text",
         "id": "twitter_url",
         "label": "Twitter link",
         "info": "https:\/\/twitter.com\/shopify"
@@ -1160,6 +1170,12 @@
         "id": "facebook_url",
         "label": "Facebook link",
         "info": "https:\/\/www.facebook.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "instagram_url",
+        "label": "Instagram link",
+        "info": "https:\/\/instagram.com\/shopify"
       },
       {
         "type": "text",
@@ -1184,12 +1200,6 @@
         "id": "googleplus_url",
         "label": "GooglePlus link",
         "info": "https:\/\/plus.google.com\/+shopify"
-      },
-      {
-        "type": "text",
-        "id": "instagram_url",
-        "label": "Instagram link",
-        "info": "https:\/\/instagram.com\/shopify"
       },
       {
         "type": "text",

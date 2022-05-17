@@ -11,14 +11,14 @@
   {%- assign hd_locale_selector = true -%}
 {%- endif -%}
 
-<div id="react-desktop-announcement">
+{% comment %} <div id="react-desktop-announcement">
   <script type="application/json">
     {
       "themeSettings": {{ settings | json }},
       "settings": {{ section.settings | json }}
     }
   </script>
-</div>
+</div> {% endcomment %}
 {%assign sub_menu = section.blocks | where: "type", "sub_menu" | first %}
 {%assign new_nav = section.blocks | where: "type", "new_nav" | first %}
 {%assign mobile_nav = section.blocks | where: "type", "mobile_nav" | first %}
@@ -30,7 +30,8 @@
       "newsettings": {{ new_nav.settings | json }},
       "mobileNavSettings": {{ mobile_nav.settings | json }},
       "id": {{ section.id | json }},
-      "cartCount": {{ cart.item_count | json }}
+      "cartCount": {{ cart.item_count | json }},
+      "settings": {{ section.settings | json }}
     }
   </script>
 </div>

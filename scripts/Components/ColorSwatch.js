@@ -12,10 +12,10 @@ const ColorSwatch = ({ option, small }) => (
 );
 
 const ColorSwatchContainer = styled.div.attrs(({ small }) => {
-  const size = small ? 'h-8 w-8' : 'h-7 w-7 md:h-9 md:w-9';
+  const size = small ? 'h-3 w-3' : 'h-7 w-7 md:h-9 md:w-9';
   return {
     className: `bg-white bg-no-repeat rounded-full ${size}`,
-  };
+  }; 
 })`
   ${({ option }) => `
     background-image: url(${getColorSwatchThumbImageUrl(option)});

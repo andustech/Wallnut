@@ -779,7 +779,7 @@ export const fetchProductByHandle = async (handle, metafields) => {
   const fetchResponse = await fetch(`/products/${handle}.json`).then((res) => res.json());
 
   return mappedProducts([
-    { ...fetchResponse.product, handle: metafields.productHandleName, metafields },
+    { ...fetchResponse.product, handle: metafields, metafields },
   ])[0];
 };
 

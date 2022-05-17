@@ -1,29 +1,54 @@
 <div id="react-value-prop-section">
   <script type="application/json">
     {
-      "valueProps": [
-        {
-          "text": "Free Shipping On All Orders"
-        },
-        {
-          "text": "Comfortable Support"
-        },
-        {
-          "text": "30 Day Return Guarantee"
-        },
-        {
-          "text": "Interchangeable Covers"
-        }
-      ]
+      "settings": {{ section.settings | json }},
+      "collection_handle_1": {{ collections[section.settings.collection_1] | json }},
+      "collection_handle_2": {{ collections[section.settings.collection_2] | json }},
+      "collection_handle_3": {{ collections[section.settings.collection_3] | json }}
     }
   </script>
 </div>
 {% schema %}
 {
-  "name": "Value Prop",
+  "name": "Premium Art Collections",
+  "settings": [
+    {
+      "type": "text", 
+      "id": "title",
+      "label": "Title",
+      "default": "Premium art"
+    }, 
+    {
+      "type": "text", 
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "that’s painless to hang"
+    },
+    {
+      "type": "image_picker",
+      "id": "default_image",
+      "label": "Select Default Image",
+      "info": "Add image to show default image if there's no collection image"
+    },
+    {
+      "type": "collection",
+      "id": "collection_1",
+      "label": "Select Collection 1"
+    },
+    {
+      "type": "collection",
+      "id": "collection_2",
+      "label": "Select Collection 2"
+    },
+    {
+      "type": "collection",
+      "id": "collection_3",
+      "label": "Select Collection 3"
+    }
+  ],
   "presets": [
     {
-      "name": "Value Prop",
+      "name": "Premium Art Collections",
       "category": "React Components"
     }
   ]

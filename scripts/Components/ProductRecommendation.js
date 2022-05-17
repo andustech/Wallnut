@@ -1,57 +1,99 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { SectionTiltle } from './ProductFeature/ValuePropComponent';
 
-import { fetchRecommendations } from '../utils';
+import { fetchProductByHandle } from '../utils';
 import PLPItem from './PLPItem';
 
-const ProductRecommendation = ({ product, title }) => {
+const ProductRecommendation = ({ blocks, settings }) => {
   const [recommendations, setRecommendations] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetchRecommendations(product?.id);
-
-        setRecommendations(response);
+        {
+          blocks.map(async (block, index) => {
+            const { settings } = block;
+            const response = await fetchProductByHandle(settings, settings);
+            setRecommendations(oldArray => [...oldArray, response]);
+          })
+        }
       } catch (err) {
         console.log(err.message);
       }
     };
-
     fetchData();
-  }, [product.id]);
+  }, [blocks, setRecommendations]);
 
-  const getVariant = (recommendation) => {
-    const productVariant = recommendation.variants.find(
-      (variant) => variant.option1.toLowerCase() === recommendation.colors[0]
-    );
-
-    return productVariant;
+  const getVariant = (recommendation, colorsArr, colorIndex) => {
+    if(colorIndex === 0) {
+      const productVariant = recommendation.variants.find(
+        (variant) => variant.option1 === colorsArr[0]
+      );
+      return productVariant;
+    }
+    else if(colorIndex === 1) {
+      const productVariant = recommendation.variants.find(
+        (variant) => variant.option2 === colorsArr[0]
+      );
+      return productVariant;
+    }
+    else if(colorIndex === 2) {
+      const productVariant = recommendation.variants.find(
+        (variant) => variant.option3 === colorsArr[0]
+      );
+      return productVariant;
+    }
   };
 
   return (
     <ProductRecommendationContainer>
-      <h2 className="font-normal text-center font-serif mb-1 md:pb-5 md:text-2xl md:text-base">
-        {title}
-      </h2>
-      <div className="grid grid-cols-1 overflow-hidden md:justify-items-center">
+      <SectionTiltle className='section_titile'>
+          <h2 className="font-bold">{settings.title}</h2>
+      </SectionTiltle>
+      <div className="">
         <RecommendationContainer recommendations={recommendations}>
-          {recommendations.map((recommendation) => {
-            const newProduct = { ...recommendation, variant: getVariant(recommendation) };
-            return (
-              <PLPItem
-                key={recommendation.id}
-                product={newProduct}
-                colors={recommendation.colors}
-              />
-            );
-          })}
+        {recommendations &&
+          <>
+            {recommendations.map((product, index) => {
+              let colorsArr = [];
+              const colorIndex = product.options.findIndex(option => option === "Color");
+              var color = '';
+              {product.variants.map((variant, index) => {
+                if(colorIndex === 0) {
+                  color = variant.option1;
+                }
+                else if(colorIndex === 1) {
+                  color = variant.option2;
+                }
+                else if(colorIndex === 2) {
+                  color = variant.option3;
+                }
+
+                if (colorsArr.indexOf(color) === -1 && colorsArr.length <= 3) {
+                  colorsArr.push(color);
+                }
+              })}
+              const newProduct = { ...product, variant: getVariant(product, colorsArr, colorIndex) };
+              return (
+                <PLPItem
+                  key={[product.id]}
+                  product={newProduct}
+                  colors={colorsArr}
+                />
+              );
+            })}
+          </>
+        }
+          
         </RecommendationContainer>
       </div>
     </ProductRecommendationContainer>
   );
+
 };
+
+
 
 const ProductRecommendationContainer = styled.div.attrs({
   className: 'px-2 py-8 mb-8 md:px-0 md:py-10 md:text-center',
@@ -63,19 +105,41 @@ const ProductRecommendationContainer = styled.div.attrs({
 `;
 
 const RecommendationContainer = styled.div.attrs(({ recommendations }) => ({
-  className: `grid grid-col-1 justify-items-center md:justify-items-start md:grid-cols-2 xl:grid-cols-${recommendations.length} gap-2 md:w-10/12 max-w-screen-xxl`,
+  className: `container`,
 }))``;
 
-ProductRecommendation.defaultProps = {
-  product: {},
-  title: '',
-};
+const TrendingMainContainer = styled.div`
+padding: 112px 0;
+`
 
-ProductRecommendation.propTypes = {
-  product: PropTypes.shape({
-    id: PropTypes.number,
-  }),
-  title: PropTypes.string,
-};
+const TrendCardContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 30px !important;
+  justify-content: space-between;
+
+`
+// const TrendCardRow = styled.div``
+const TrendCardRow = styled.div`
+ display: flex;
+ align-items: center;
+ position: relative;
+`;
+
+const RadioChoice = styled.div`
+  input {
+    margin: 0 4px;
+    cursor: pointer;
+  }
+
+  input:first-child {
+    margin-left: 0;
+  }
+
+  input:last-child {
+    margin-right: 0;
+  }
+`;
+
 
 export default ProductRecommendation;

@@ -20,37 +20,45 @@ const Header = (props) => {
   return (
     <div>
       <HeaderContainer sticky={sticky}>
-        <nav className="flex w-full justify-between max-w-screen-xxl mx-auto bg-white h-full">
-          <div className="block lg:hidden">
+        <nav className="flex w-full justify-between container mx-auto bg-white h-full">
+          <div className="block lg:hidden" style={{"flex": "1"}}>
             <MobileNav settings={mobileNavSettings} themeSettings={themeSettings} />
           </div>
-          <a className="flex items-center" href="/">
+          <a className="flex items-center justify-center" style={{"flex": "1"}} href="/">
             <LogoImage
-              src="//cdn.shopify.com/s/files/1/0492/6321/4743/files/levity_logo_grande.png?v=1619011426"
-              alt="Levity"
+              src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/logo-wallnut.png?v=1652438735"
+              alt="Wallnut"
             />
           </a>
           <div className="hidden lg:flex">
-            <ul className="flex text-center ml-40 items-center">
+            <ul className="nav_menu_opt flex text-center items-center">
               <li onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>
-                <LinkItem href="/collections/all">Shop</LinkItem>
+                <LinkItem href="/collections/all">SIZE</LinkItem>
                 <NavWrapper isShown={isShown}>
                   <Nav themeSettings={themeSettings} newsettings={newsettings} />
                 </NavWrapper>
               </li>
               <li>
-                <LinkItem href="/about">About</LinkItem>
+                <LinkItem href="/about">SUBJECT</LinkItem>
               </li>
               <li>
-                <LinkItem href="/pages/how-it-works">How it works</LinkItem>
+                <LinkItem href="/pages/how-it-works">MOOD</LinkItem>
+              </li>
+
+              <li>
+                <LinkItem href="/pages/how-it-works">STYLE</LinkItem>
+              </li>
+
+              <li>
+                <LinkItem href="/pages/how-it-works">HIDE IT WORK</LinkItem>
               </li>
             </ul>
           </div>
-          <div className="header-search-minicart-container">
-            <div className="hidden lg:block">
+          <div className="header-search-minicart-container" style={{"flex": "1"}}>
+            <div className="">
               <div id="header-search" className="desktop-3 tablet-hide mobile-hide">
                 <form action="/search" method="get">
-                  <input id="header-search-input" type="text" z name="q" placeholder="Search" />
+                  <img src='https://i.ibb.co/YNvzb2s/Vector.png' className='search_icon' />
                 </form>
               </div>
             </div>
@@ -63,11 +71,11 @@ const Header = (props) => {
                 aria-expanded="false"
               >
                 <img
-                  src="https://cdn.shopify.com/s/files/1/0492/6321/4743/files/shopping_cart.svg?v=1612396990"
+                  src="https://i.ibb.co/8dPZN7G/cart-icon.png"
                   alt="cart"
                 />
-                <div className="cart-count font-serif text-sm">0</div>
-                <CartHighlight cartCount={cartCount} />
+                {/* <div className="cart-count font-serif text-sm"></div> */}
+                {/* <CartHighlight cartCount={cartCount} /> */}
               </a>
             </div>
           </div>
@@ -84,6 +92,9 @@ const HeaderContainer = styled.div.attrs(({ sticky }) => {
 })`
   height: 70px;
   border-bottom: 1px solid #d5d5d5;
+  @media screen and (max-width: 1024px) {
+    height: 50px;
+  }
 `;
 
 const NavWrapper = styled.div.attrs(({ isShown }) => {
@@ -100,7 +111,7 @@ const NavWrapper = styled.div.attrs(({ isShown }) => {
 
 const LinkItem = styled.a.attrs({
   className:
-    'relative hover:no-underline font-serif text-base font-normal text-blue-dark uppercase pb-7 px-4',
+    'relative hover:no-underline text-blue-dark uppercase',
 })`
   &:hover {
     &:after {
@@ -116,9 +127,9 @@ const LinkItem = styled.a.attrs({
 `;
 
 const LogoImage = styled.img`
-  @media screen and (max-width: 1024px) {
-    max-width: 83px;
-  }
+  // @media screen and (max-width: 1024px) {
+  //   max-width: 83px;
+  // }
   @media screen and (min-width: 1024px) {
     max-width: 130px;
   }

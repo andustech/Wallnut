@@ -24,6 +24,50 @@
 ================================================== -->
   {{ 'alice-carousel.css' | asset_url | stylesheet_tag }}
   {{ 'stylesheet.css' | asset_url | stylesheet_tag }}
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
+
+  <style>
+  @font-face {
+    font-family: 'GoodSans-Light';
+    font-style: normal;
+    font-weight: normal;
+    src: url({{ "GoodSans-Light.woff2" | asset_url }}) format("woff2"), 
+    url({{ "GoodSans-Light.woff" | asset_url }}) format("woff"); 
+  }
+  @font-face {
+    font-family: 'GoodSans-Bold';
+    src: url({{ "GoodSans-Bold.woff2" | asset_url }}) format("woff2"), 
+    url({{ "GoodSans-Bold.woff" | asset_url }}) format("woff"); 
+  }
+   @font-face {
+    font-family: 'GoodSans-Medium';
+    src: url({{ "GoodSans-Medium.woff2" | asset_url }}) format("woff2"), 
+    url({{ "GoodSans-Medium.woff" | asset_url }}) format("woff"); 
+  }
+   @font-face {
+    font-family: 'Nib-bold-pro';
+    src: url({{ "nib-bold-pro.woff2" | asset_url }}) format("woff2"), 
+    url({{ "nib-bold-pro.woff" | asset_url }}) format("woff"); 
+  }
+
+     @font-face {
+    font-family: 'AttilaSansUniform-Medium';
+    src: url({{ "AttilaSansUniform-Medium.woff2" | asset_url }}) format("woff2"), 
+    url({{ "AttilaSansUniform-Medium.woff" | asset_url }}) format("woff"); 
+  }     
+
+       @font-face {
+    font-family: 'AttilaSansUniform-Semibold';
+    src: url({{ "AttilaSansUniform-Semibold.woff2" | asset_url }}) format("woff2"), 
+    url({{ "AttilaSansUniform-Semibold.woff" | asset_url }}) format("woff"); 
+  }      
+
+  @font-face {
+    font-family: 'GoodSans';
+    src: url({{ "https://cdn.shopify.com/s/files/1/0627/3476/2207/files/GoodSans-Regular.woff2?v=1652105277" }}) format("woff2"), 
+    url({{ "https://cdn.shopify.com/s/files/1/0627/3476/2207/files/GoodSans-Regular.woff?v=1652105277" }}) format("woff"); 
+  }                               
+  </style>
 
   {% if page_title == 'Interchangeability' %}
     {{ 'landing-page.scss' | asset_url | stylesheet_tag }}
@@ -226,6 +270,32 @@
           $('header').stickUp();
         });
       }
+
+
+      var check = false;
+  	  var ga_interval = setInterval(checkApp, 100);
+      function checkApp() {
+      if (typeof GloboMenuConfig == 'object' && $('.gm-menu').length) {
+        check = true;
+        clearInterval(ga_interval);
+      }
+      if (check) {
+        $('.MobileNavIcon__NavIcon-sc-xv1kjn-1.lhmnGm').click(function(){
+          if(!$('.globo-menu-mobile').hasClass('active')){
+            $('.globo-menu-mobile').addClass('active');
+          }else{
+            $('.globo-menu-mobile').removeClass('active');
+          }
+        })
+
+      }
+    }
+     const myInterval = setInterval(function() {
+      	$('.gm-menu .gm-heading span:contains(Default)').addClass('default-title');
+        if ($('.gm-menu .gm-heading span').hasClass('default-title')) {
+          clearInterval(myInterval);
+        }
+      }, 200);
     });
   </script>
 
@@ -260,3 +330,5 @@
   </script>
 </body>
 </html>
+
+{% include 'globo.menu.script' %}

@@ -1,58 +1,127 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import {
-  MachineWashableIconColored,
-  StainIconColored,
-  InterchangableIconColored,
-  ComfortableIconColored,
-} from '../Icons';
 
-const ValuePropSection = () => {
-  const valueProps = [
+const ValuePropSection = ({settings, collection_handle_1, collection_handle_2, collection_handle_3}) => {
+  const { title, subheading } = settings;
+  let handle_1, handle_2, handle_3 = '';
+  if (collection_handle_1) {
+    handle_1 = `/collections/${collection_handle_1.handle}`;
+  }
+  if (collection_handle_2) {
+    handle_2 = `/collections/${collection_handle_2.handle}`;
+  }
+  if (collection_handle_3) {
+    handle_3 = `/collections/${collection_handle_3.handle}`;
+  }
+
+
+ let coll_image_1 = settings.default_image;
+ let coll_image_2 = settings.default_image;
+ let coll_image_3 = settings.default_image;
+  if (collection_handle_1.image) {
+    coll_image_1 = collection_handle_1.image.src;
+  }
+  if (collection_handle_2.image) {
+    coll_image_2 = collection_handle_2.image.src;
+  }
+  if (collection_handle_3.image) {
+    coll_image_3 = collection_handle_3.image.src;
+  }
+
+  const valueProps = [  
     {
-      text: 'Machine-Washable',
-      icon: <MachineWashableIconColored bgCircleFill="#FFFFFF" />,
+      name: 'shop best sellers',
+      img: 'https://i.ibb.co/PFjVJV6/Rectangle-2.png',
     },
     {
-      text: 'Stain-Resistant',
-      icon: <StainIconColored bgCircleFill="#FFFFFF" />,
+      name: 'shop Collection 1',
+      img: 'https://i.ibb.co/9257W5S/Rectangle-3.png',
     },
     {
-      text: 'Interchangeable',
-      icon: <InterchangableIconColored bgCircleFill="#FFFFFF" />,
-    },
-    {
-      text: 'Comfortable',
-      icon: <ComfortableIconColored bgCircleFill="#FFFFFF" />,
+      name: 'shop Collection 2',
+      img: 'https://i.ibb.co/828wz72/Rectangle-4.png',
     },
   ];
 
   return (
-    <ValuePropContainer>
-      {valueProps.map((item, i) => (
-        <ValuePropColumn key={i}>
-          <div className="h-14 w-14 md:h-18 md:w-18 lg:h-20 lg:w-20">{item.icon}</div>
-          <div className="flex items-center text-base ml-4 md:ml-0 text-center whitespace-nowrap">
-            {item.text}
-          </div>
-        </ValuePropColumn>
-      ))}
-    </ValuePropContainer>
+    <PremiumMainContainer className='premium_main_container'>
+      <SectionTiltle className='section_titile'>
+        { title && <h2 className="font-bold">{title}</h2> }
+        { subheading && <p className="font-medium">{subheading}</p> }
+      </SectionTiltle>
+      <ValuePropContainer>
+
+        {/* {valueProps.map((item, i) => (
+          <ValuePropColumn key={i} className='premium_card_container premium_pos'>
+            <div className="premium_img_box">
+              <img className='premium_img' src={item.img} />
+            </div>
+            <div className="flex items-center text-base text-center whitespace-nowrap absolute left-0 bottom-0">
+              <a className='premium_link bg-milk' href=''>{item.name}</a>
+            </div>
+          </ValuePropColumn>
+        ))} */}
+
+        { collection_handle_1.handle && 
+          <ValuePropColumn className='premium_card_container premium_pos'>
+              <div className="premium_img_box">
+                <img className='premium_img' src={coll_image_1} />
+              </div>
+              { collection_handle_1.title && 
+                <div className="flex items-center text-base text-center whitespace-nowrap absolute left-0 bottom-0">
+                  <a className='premium_link bg-milk' href={handle_1}>{collection_handle_1.title}</a>
+                </div>
+              }
+            </ValuePropColumn>
+        }
+        { collection_handle_2.handle &&
+          <ValuePropColumn className='premium_card_container premium_pos'>
+            <div className="premium_img_box">
+              <img className='premium_img' src={coll_image_2} />
+            </div>
+            { collection_handle_2.title && 
+              <div className="flex items-center text-base text-center whitespace-nowrap absolute left-0 bottom-0">
+                <a className='premium_link bg-milk' href={handle_2}>{collection_handle_2.title}</a>
+              </div>
+            }
+          </ValuePropColumn>
+        }
+        { collection_handle_3.handle && 
+          <ValuePropColumn className='premium_card_container premium_pos'>
+            <div className="premium_img_box">
+              <img className='premium_img' src={coll_image_3} />
+            </div>
+            { collection_handle_3.title && 
+              <div className="flex items-center text-base text-center whitespace-nowrap absolute left-0 bottom-0">
+                <a className='premium_link bg-milk' href={handle_3}>{collection_handle_3.title}</a>
+              </div>
+            }
+          </ValuePropColumn>
+        }
+      </ValuePropContainer>
+    </PremiumMainContainer>
   );
 };
 
 export default ValuePropSection;
 
+const PremiumMainContainer = styled.div`
+  padding: 72px 0 0 0;
+`
+
+export const SectionTiltle = styled.div`
+  text-align: center;
+
+`
+
 const ValuePropContainer = styled.div.attrs({
   className:
-    'items-center justify-center h-full py-8 md:py-4 flex flex-col md:flex-row max-w-screen-xxl m-auto bg-offwhite-cream',
+    'h-full  container m-auto',
 })``;
 
 const ValuePropColumn = styled.div.attrs({
-  className: 'font-serif flex md:w-44 items-center md:flex-col md:mx-5 lg:mx-14 py-2 md:py-0',
+  className: 'font-serif flex items-center relative',
 })`
-  @media screen and (max-width: 768px) {
-    width: 240px;
-  }
+
 `;
