@@ -32,24 +32,28 @@ const IndexBetterWay = ({ blocks }) => {
                     }
                     {settings.video_btn_text &&
                       <>
+                      <a onClick={() => handleVideoPopup()} href="javascript:void(0);" className="text-white hover:text-red-100 flex items-center">
                       <img src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/video-play.svg?v=1651814299" alt="Video Play" className="mr-3" />
-                      <a onClick={() => handleVideoPopup()} href="javascript:void(0);" className="text-white hover:text-red-100">{settings.video_btn_text}</a>
+                      {settings.video_btn_text}
+                      </a>
                       </>
                     }
+                    <div class="flex items-center">
                     {settings.button_text &&
                       <a href={settings.button_link} className="primary_btn">{settings.button_text}</a>
                     }
                     {settings.link_text &&
-                      <a href={settings.link_url} className="text-white hover:text-red-100">
+                      <a href={settings.link_url} className="text-white hover:text-red-100 flex items-center">
                         {settings.link_icon_position == 'before' &&
                           <img src={settings.link_icon} alt="Video Play" className="mr-3" />
                         }
                         {settings.link_text}
                         {settings.link_icon_position == 'after' &&
-                          <img src={settings.link_icon} alt="Video Play" className="mr-3" />
+                          <img src={settings.link_icon} alt="Video Play" className="ml-6" />
                         }
                       </a>
                     }
+                    </div>
                   </div>
                   <div className="w-6/12"> 
                     <img src={settings.image} alt="how-it-works" class="w-full" />
@@ -81,11 +85,12 @@ const IndexBetterWay = ({ blocks }) => {
                     {settings.content &&
                       <p className="mb-7">{settings.content}</p>
                     }
+                    <div class="flex flex-col items-center sm:flex-row">
                     {settings.button_text &&
-                      <a href={settings.button_link} className="primary_btn">{settings.button_text}</a>
+                      <a href={settings.button_link} className="primary_btn mb-4 sm:mb-0">{settings.button_text}</a>
                     }
                     {settings.link_text &&
-                      <a href={settings.link_url} className="text-white hover:text-red-100">
+                      <a href={settings.link_url} className="text-white hover:text-red-100 flex items-center">
                         {settings.link_icon_position == 'before' &&
                           <img src={settings.link_icon} alt="Video Play" className="mr-3" />
                         }
@@ -95,6 +100,7 @@ const IndexBetterWay = ({ blocks }) => {
                         }
                       </a>
                     }
+                    </div>
                   </div>
                 </div>
               )}

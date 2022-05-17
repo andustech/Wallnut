@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { SectionTiltle } from './ProductFeature/ValuePropComponent';
-
 import { fetchProductByHandle } from '../utils';
 import PLPItem from './PLPItem';
 
@@ -49,7 +48,7 @@ const ProductRecommendation = ({ blocks, settings }) => {
   return (
     <ProductRecommendationContainer>
       <SectionTiltle className='section_titile'>
-          <h2 className="font-bold">{settings.title}</h2>
+          <h2 className="font-bold">{settings?.title}</h2>
       </SectionTiltle>
       <div className="">
         <RecommendationContainer recommendations={recommendations}>

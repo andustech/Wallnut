@@ -137,14 +137,8 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
 
   const handleColorChange = (color) => {
     const newVariant = product.variants.find((item) => {
-      // if (item.option2) {
-      //   console.log('if')
-      //   return item.option1.toLowerCase() === color;
-      // }
       return item.option1.toLowerCase() === color;
     });
-    // console.log('product.variants ', product.variants)
-    console.log('newvariant ', newVariant)
     setCurrentOption(newVariant);
     setColorOption(color);
   };
@@ -169,7 +163,7 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
     if (colorFilters && colorFilters.length > 0) return null;
 
     const variantName = product.tags.includes('Extra Cover') ? chairCoverVariant : 'e-gift-card';
-    
+
     return (
       <ItemContainer
         ref={PLPItemRef}
@@ -230,9 +224,21 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
       </ItemContainer>
     );
   }
-  const productImage = product.images.find((item) => {
-    return currentOption.id === item.variant_ids[0]
+
+  let productImage = [];
+  if (product.media) {
+    console.log('if')
+    productImage = product.variants.find((item) => {
+      return currentOption.id === item.id
     })
+  }
+  else {
+    console.log('else')
+    productImage = product.images.find((item) => {
+      return currentOption.id === item.variant_ids[0]
+    })
+  }
+
   return (
     <ItemContainer
       ref={PLPItemRef}
@@ -250,12 +256,20 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
           )}
         >
           {currentOption && (
-              <ImageContainer isHovered={hover} noColorSelector={noColorSelector}>
+            <ImageContainer isHovered={hover} noColorSelector={noColorSelector}>
+              {console.log('productImage = ', productImage)}
+              {!hover ?
                 <Media
                   alt={`${product.handle}-${currentOption.options.join(' ').toLowerCase().trim()}`}
-                  image={productImage.src}
+                  image={product.media ? productImage.featured_image.src : productImage.src}
                 />
-              </ImageContainer>
+                :
+                <Media
+                  alt={`${product.handle}-${currentOption.options.join(' ').toLowerCase().trim()}`}
+                  image="https://cdn.shopify.com/s/files/1/0627/3476/2207/products/abstract-maze-i-A-black-1824.jpg?v=1652789774"
+                />
+              }
+            </ImageContainer>
           )}
         </a>
       </div>
@@ -289,7 +303,7 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
                 }
                 return (
                   <ColorSwatchWrapper
-                    border={color === colorOption}
+                    border={color.toLowerCase() === colorOption.toLowerCase()}
                     onClick={() => handleColorChange(color.toLowerCase())}
                     onKeyUp={() => { }}
                     role="button"
@@ -361,8 +375,6 @@ const HoverContainer = styled.div(({ isHovered }) => [
 ]);
 const ImageContainer = styled.div(({ isHovered, noColorSelector }) => [
   tw`transition-all duration-300`,
-  isHovered && !noColorSelector && tw`transform scale-75 -translate-y-16`,
-  isHovered && noColorSelector && tw`transform scale-75 -translate-y-5`,
 ]);
 
 const AddToCartContainer = styled.div.attrs({
@@ -383,9 +395,9 @@ const ColorContainer = styled.div.attrs({
 })``;
 
 const ColorSwatchWrapper = styled.div.attrs(({ border }) => {
-  const borderStyle = border ? 'border-2 border-blue' : 'border border-gray-300';
+  const borderStyle = border ? 'border border-black' : 'border border-gray-300';
   return {
-    className: `w-6 h-6 border-solid border-2 mr-1 lg:mr-0 xxl:mr-1 rounded-full grid justify-items-center items-center ${borderStyle} `,
+    className: `w-5 h-5 border-solid border-2 mr-1 lg:mr-0 xxl:mr-1 rounded-full grid justify-items-center items-center ${borderStyle} `,
   };
 })``;
 

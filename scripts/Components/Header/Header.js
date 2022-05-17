@@ -63,10 +63,10 @@ const Header = (props) => {
               </div>
             </div>
 
-            <div id="mini-cart-container">
+            <div id="mini-cart-container" className="block">
               <a
                 href="/cart"
-                className="site-header__cart-toggle js-drawer-open-right"
+                className="site-header__cart-toggle js-drawer-open-right block ml-6"
                 aria-controls="CartDrawer"
                 aria-expanded="false"
               >
