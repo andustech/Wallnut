@@ -35,13 +35,13 @@ const WhiteCollectionContainer = styled.div`
 
 const MiddContent = styled.div`
   a:after {
-  content: '';
-  width: 17px;
-  height: 10px;
-  right: 30px;
-  top: 18px;
-  position: absolute;
-  background-image: url('https://i.ibb.co/mhJXcrZ/Vector.png');
+  // content: '';
+  // width: 17px;
+  // height: 10px;
+  // right: 30px;
+  // top: 18px;
+  // position: absolute;
+  // background-image: url('https://i.ibb.co/mhJXcrZ/Vector.png');
 }
 `;
 

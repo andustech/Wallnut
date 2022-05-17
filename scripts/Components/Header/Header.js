@@ -20,11 +20,11 @@ const Header = (props) => {
   return (
     <div>
       <HeaderContainer sticky={sticky}>
-        <nav className="flex w-full justify-between container mx-auto bg-white h-full">
-          <div className="block lg:hidden" style={{"flex": "1"}}>
+        <nav className="flex w-full justify-between container mx-auto bg-white h-full my-3.5 lg:my-0">
+          <div className="block lg:hidden flex-1 lg:flex-none">
             <MobileNav settings={mobileNavSettings} themeSettings={themeSettings} />
           </div>
-          <a className="flex items-center justify-center" style={{"flex": "1"}} href="/">
+          <a className="flex items-center justify-center flex-1 lg:flex-none" href="/">
             <LogoImage
               src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/logo-wallnut.png?v=1652438735"
               alt="Wallnut"
@@ -54,11 +54,11 @@ const Header = (props) => {
               </li>
             </ul>
           </div>
-          <div className="header-search-minicart-container" style={{"flex": "1"}}>
+          <div className="header-search-minicart-container flex-1 lg:flex-none">
             <div className="">
               <div id="header-search" className="desktop-3 tablet-hide mobile-hide">
                 <form action="/search" method="get">
-                  <img src='https://i.ibb.co/YNvzb2s/Vector.png' className='search_icon' />
+                  <img src='https://cdn.shopify.com/s/files/1/0627/3476/2207/files/search-icon.svg?v=1652783584' className='search_icon' />
                 </form>
               </div>
             </div>
@@ -71,7 +71,7 @@ const Header = (props) => {
                 aria-expanded="false"
               >
                 <img
-                  src="https://i.ibb.co/8dPZN7G/cart-icon.png"
+                  src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/cart-icon.svg?v=1652783627"
                   alt="cart"
                 />
                 {/* <div className="cart-count font-serif text-sm"></div> */}
@@ -86,7 +86,7 @@ const Header = (props) => {
 };
 
 const HeaderContainer = styled.div.attrs(({ sticky }) => {
-  const className = 'flex items-center justify-center w-full ';
+  const className = 'flex items-center justify-center w-full bg-white ';
   const fixed = 'fixed top-0 z-10';
   return { className: sticky ? `${className}, ${fixed}` : `${className}` };
 })`

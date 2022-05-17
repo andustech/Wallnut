@@ -70,7 +70,7 @@ const ValuePropSection = ({settings, collection_handle_1, collection_handle_2, c
               </div>
               { collection_handle_1.title && 
                 <div className="flex items-center text-base text-center whitespace-nowrap absolute left-0 bottom-0">
-                  <a className='premium_link bg-milk' href={handle_1}>{collection_handle_1.title}</a>
+                  <a className='premium_link bg-milk' href={handle_1}>Shop {collection_handle_1.title}</a>
                 </div>
               }
             </ValuePropColumn>
@@ -82,7 +82,7 @@ const ValuePropSection = ({settings, collection_handle_1, collection_handle_2, c
             </div>
             { collection_handle_2.title && 
               <div className="flex items-center text-base text-center whitespace-nowrap absolute left-0 bottom-0">
-                <a className='premium_link bg-milk' href={handle_2}>{collection_handle_2.title}</a>
+                <a className='premium_link bg-milk' href={handle_2}>Shop {collection_handle_2.title}</a>
               </div>
             }
           </ValuePropColumn>
@@ -94,7 +94,7 @@ const ValuePropSection = ({settings, collection_handle_1, collection_handle_2, c
             </div>
             { collection_handle_3.title && 
               <div className="flex items-center text-base text-center whitespace-nowrap absolute left-0 bottom-0">
-                <a className='premium_link bg-milk' href={handle_3}>{collection_handle_3.title}</a>
+                <a className='premium_link bg-milk' href={handle_3}>Shop {collection_handle_3.title}</a>
               </div>
             }
           </ValuePropColumn>

@@ -14,7 +14,7 @@
   <div class="fast_order_main_container top" style='background-color: #133744,'>
     <div class="container">
       <!-- <div class="bg-white grid grid-center grid-cols-3 items-center"> -->
-      <div class="fast_order_inner justify-between flex items-start" style='background: #F4F2EC;'>
+      <div class="fast_order_inner justify-between flex items-center" style='background: #F4F2EC;'>
         <h2 class="font-attila-sans-medium font-medium">{{ section.settings.title }}</h2>
         <p class="news_para">{{ section.settings.subheading }}</p>
         <div class="newsletter">
@@ -153,7 +153,6 @@
         font-size: 16px;
         line-height: 24px;
         letter-spacing: -0.01em;
-        margin: 0 15px 0 0;
         font-family: "GoodSans-Light" !important;
     }
     .klaviyo-form-SxEnPF p {
@@ -182,15 +181,17 @@
     border: none !important;
     border-bottom: 1px solid black !important;
     font-size: 16px !important;
-    font-weight: 300 !important;
+    font-weight: 400 !important;
     /* position: relative; */
     line-height: 24px;
     margin-bottom: 16px;
-    padding: 0 !important;
+    padding: 0 0 8px 0 !important;
     width: 100%;
     height: auto !important;
     max-width: 100% !important;
-    font-family: "GoodSans-Light" !important;
+    font-family: "GoodSans" !important;
+    letter-spacing: -0.01em !important;
+    box-shadow: none !important;
 }
 
   input.needsclick.go2416446746.kl-private-reset-css-Xuajs1::-webkit-input-placeholder {
@@ -270,10 +271,10 @@ form.needsclick.klaviyo-form.klaviyo-form-version-cid_1.kl-private-reset-css-Xua
         margin-left: 20px;
         margin-bottom: 0;
         color: white;
-        font-weight: 300;
-        letter-spacing: 3px;
+        font-weight: 500;
+        letter-spacing: 0.14em;
         text-transform: uppercase;
-        font-family: "AttilaSansUniform-semibold" !important;
+        font-family: 'AttilaSansUniform-Medium';
     }
     .footer_left {
         display: flex;
@@ -309,8 +310,7 @@ form.needsclick.klaviyo-form.klaviyo-form-version-cid_1.kl-private-reset-css-Xua
         font-family: "GoodSans-Light" !important;
     }
     .footer_opt ul li a:hover {
-        color: #ffffff54;
-        border-bottom: 1px solid #ffffff54;
+      filter: brightness(0.80);
     }
     .footer_opt_container {
         display: flex;

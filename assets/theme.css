@@ -335,14 +335,20 @@ body {
   letter-spacing: 0.05em;
 }
 
+.premium_link.bg-milk:hover {
+  filter: brightness(0.98);
+}
+
 .premium_link:after {
   content: '';
   width: 17px;
   height: 10px;
-  right: 19px;
-  top: 19px;
+  /* right: 19px; */
+  top: 50%;
   position: absolute;
-  background-image: url(https://i.ibb.co/mhJXcrZ/Vector.png);
+  background-image: url(https://cdn.shopify.com/s/files/1/0627/3476/2207/files/arrow-right-black.svg?v=1652772976);
+  margin-left: 16px;
+  transform: translateY(-50%)
 }
 
 
