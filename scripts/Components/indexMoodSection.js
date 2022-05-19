@@ -19,9 +19,9 @@ const indexMoodSection = ({ settings }) => {
 
   return (
     <>
-      <ShopByMood className='container'>
+      <ShopByMood className='container section-padding'>
         <SectionTiltle className='section_titile'>
-            { section_title && <h2 className="">{section_title}</h2> }
+            { section_title && <h2 className="font-bold">{section_title}</h2> }
         </SectionTiltle>
 
         {/* <div className='mood_card_container flex '>
@@ -50,8 +50,6 @@ const indexMoodSection = ({ settings }) => {
 };
 
 const ShopByMood = styled.div`
-  margin-top: 112px;
-
   h2 {
       font-size: 36px;
       line-height: 50px;

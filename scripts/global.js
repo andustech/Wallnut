@@ -18,6 +18,10 @@ import Header from './Components/Header';
 import CyberMondaySale from './Components/CyberMondaySale';
 import BlackFridaySale from './Components/BlackFridaySale';
 import ProductRecommendation from './Components/ProductRecommendation';
+import howItWorks from './Components/howItWorks';
+import meetWallnut from './Components/meetWallnut';
+import hangingWallnut from './Components/hangingWallnut';
+import ShopOurBestSellers from './Components/ShopOurBestSellers';
 
 addClientIdToHeap();
 setOptimizelySession();
@@ -60,6 +64,10 @@ const components = [
   { id: 'react-index-betterway', module: IndexBetterWay },
   { id: 'react-index-mood-section', module: indexMoodSection },
   { id: 'react-index-testimonial-section', module: indexTestimonialSection },
+  { id: 'react-meet-wallnut', module: meetWallnut },
+  { id: 'react-how-it-works', module: howItWorks },
+  { id: 'react-hanging-wallnut', module: hangingWallnut },
+  { id: 'react-shop-our-best-sellers', module: ShopOurBestSellers },
 ];
 
 createReactComponents(components);

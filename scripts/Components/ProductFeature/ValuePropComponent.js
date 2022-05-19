@@ -45,7 +45,7 @@ const ValuePropSection = ({settings, collection_handle_1, collection_handle_2, c
   ];
 
   return (
-    <PremiumMainContainer className='premium_main_container'>
+    <PremiumMainContainer className='premium_main_container section-padding'>
       <SectionTiltle className='section_titile'>
         { title && <h2 className="font-bold">{title}</h2> }
         { subheading && <p className="font-medium">{subheading}</p> }
@@ -69,7 +69,7 @@ const ValuePropSection = ({settings, collection_handle_1, collection_handle_2, c
                 <img className='premium_img' src={coll_image_1} />
               </div>
               { collection_handle_1.title && 
-                <div className="flex items-center text-base text-center whitespace-nowrap absolute left-0 bottom-0">
+                <div className="flex items-center text-base text-center whitespace-nowrap absolute left-0 bottom-0 premium_content">
                   <a className='premium_link bg-milk' href={handle_1}>Shop {collection_handle_1.title}</a>
                 </div>
               }
@@ -81,7 +81,7 @@ const ValuePropSection = ({settings, collection_handle_1, collection_handle_2, c
               <img className='premium_img' src={coll_image_2} />
             </div>
             { collection_handle_2.title && 
-              <div className="flex items-center text-base text-center whitespace-nowrap absolute left-0 bottom-0">
+              <div className="flex items-center text-base text-center whitespace-nowrap absolute left-0 bottom-0 premium_content">
                 <a className='premium_link bg-milk' href={handle_2}>Shop {collection_handle_2.title}</a>
               </div>
             }
@@ -93,7 +93,7 @@ const ValuePropSection = ({settings, collection_handle_1, collection_handle_2, c
               <img className='premium_img' src={coll_image_3} />
             </div>
             { collection_handle_3.title && 
-              <div className="flex items-center text-base text-center whitespace-nowrap absolute left-0 bottom-0">
+              <div className="flex items-center text-base text-center whitespace-nowrap absolute left-0 bottom-0 premium_content">
                 <a className='premium_link bg-milk' href={handle_3}>Shop {collection_handle_3.title}</a>
               </div>
             }
@@ -107,7 +107,6 @@ const ValuePropSection = ({settings, collection_handle_1, collection_handle_2, c
 export default ValuePropSection;
 
 const PremiumMainContainer = styled.div`
-  padding: 72px 0 0 0;
 `
 
 export const SectionTiltle = styled.div`

@@ -187,6 +187,10 @@ body {
   border-bottom: none !important;
 } */
 
+.section-padding {
+  padding: 112px 0 0;
+}
+
 .bannr_img{
     width: 100%;
 }
@@ -251,9 +255,13 @@ body {
 
 
 
-#mini-cart-container a img, .search_icon {
+.search_icon {
   height: 18px !important;
   width: 18px !important;
+}
+#mini-cart-container a img {
+  height: 20px !important;
+  width: 20px !important;
 }
 
 .gm-grid {
@@ -406,12 +414,15 @@ height: 180px !important;
 }
 
 .premium_link {
-  width: 240px;
+  /* width: 240px; */
   font-family: 'GoodSans' !important;
   font-size: 12px !important;
   /* font-weight: 700 !important; */
-  padding: 14px 27px 14px 0px;
+  /* padding: 14px 27px 14px 0px; */
+  padding: 14px 61px 14px 28px;
   letter-spacing: 0.05em;
+  min-width: 240px;
+  display: inline-block;
 }
 
 .premium_link.bg-milk:hover {
@@ -539,12 +550,6 @@ height: 180px !important;
   font-family: 'AttilaSansUniform-Medium' !important;
 }
 
-#react-index-betterway {
-  margin-top: 112px;
-}
-
-
-
 .mood_card_container a:first-child {
   width: 100%;
   max-width: 644px;
@@ -571,8 +576,9 @@ height: 180px !important;
 .by_mood_card a {
   position: absolute;
   left: 0;
-  right: 0;
+  /* right: 0; */
   bottom: 0;
+  /* padding: 14px 104px 14px 71px; */
 }
 
 .white_main_container {
@@ -590,12 +596,12 @@ height: 180px !important;
   margin-bottom: 31px !important;
   line-height: 56px !important;
   font-family: 'AttilaSansUniform-Medium' !important;
+  font-weight: 500;
 }
 
 .white_coll_right a {
   position: relative;
-  padding: 14px 63px 14px 30px;
-  margin-top: 30px !important;
+  /* padding: 14px 62px 14px 30px; */
 }
 
 
@@ -712,6 +718,20 @@ height: 180px !important;
 }
 
 
+@media only screen and (min-width: 769px) and (max-width: 991px) {
+  .premium_pos .premium_content {
+    width: 100%;
+    padding-right: 24px;
+  }
+  .premium_pos:last-child .premium_content {
+    padding-right: 0;
+  }
+  .premium_pos .premium_content .premium_link {
+    min-width: 100%;
+    display: block;
+    width: 100%;
+  }
+}
 @media only screen and (max-width: 991px) {
 
   .overlay {
@@ -881,7 +901,9 @@ line-height: 33px;
   margin-top: 56px !important;
 }
 
-
+.section-padding {
+  padding: 56px 0 0;
+}
 }
 
 
@@ -906,9 +928,6 @@ line-height: 33px;
     padding-bottom: 0;
   } */
 
-  #react-index-betterway {
-    margin-top: 56px;;
-  }
 
   .indexMoodSection__ShopByMood-sc-14xd07l-0.eXAkFA {
     overflow-x: scroll;
@@ -1154,4 +1173,100 @@ letter-spacing: 0.14em;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+
+
+
+ /* How it works page */
+ .how_it_work_hero_overlay {
+  max-width: 548px !important;
+  position: absolute;
+  top: 23%;
+}
+
+.how_it_work_hero_overlay h1 {
+  font-family: Nib Pro;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 66px;
+    margin-bottom: -7px !important;
+}
+
+.how_it_work_hero_overlay span {
+  font-family: Attila Sans Uniform;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 56px;
+}
+
+.how_it_work_hero_overlay p {
+  font-family: Attila Sans Uniform;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  margin-top: 16px;
+}
+
+.meet_wallnut_overlay {
+  width: 100% !important;
+  position: absolute;
+  top: 31%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center !important;
+  align-items: center;
+}
+
+.meet_wallnut_overlay h1 {
+  font-family: 'Nib Pro';
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 50px;
+}
+
+.meet_wallnut_overlay p {
+  font-family: 'Good Sans';
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+@media only screen and (max-width: 991px) {
+  .how_it_work_hero_overlay {
+    max-width: 100% !important;
+    padding: 50px;
+    text-align: center;
+    position: relative;
+  }
+
+  .meet_wallnut_overlay {
+    width: 100% !important;
+    position: relative;
+    /* top: 31%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center !important;
+    align-items: center;
+  }
+
+  /* .how_it_work_items_container img {
+  width: 100%;
+} */
+}
+
+@media only screen and (max-width: 575px) {
+  .how_it_work_hero_overlay h1 {
+    font-family: Nib Pro;
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 54px;
+    margin-bottom: -7px!important;
+  }
+  
+  .how_it_work_hero_overlay span {
+    font-family: Attila Sans Uniform;
+    font-weight: 400;
+    font-size: 34px;
+    line-height: 38px;
+  }
 }

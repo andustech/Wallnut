@@ -7,7 +7,7 @@ const indexTestimonialSection = ({ settings, blocks }) => {
 
   return (
     <>
-        <div className="review_main_container">
+        <div className="review_main_container section-padding">
             <div className="container">
                 <div className="review_inner_items">
                     <div className="left">
