@@ -11,10 +11,10 @@
 {%- endif -%}
 <div class="footer-section footer-template" data-section-id="{{ section.id }}" data-section-type="footer-section">
   <div class="clear"></div>
-  <div class="fast_order_main_container top" style='background-color: #133744,'>
+  <div class="fast_order_main_container top" style='background-color: #133744'>
     <div class="container">
       <!-- <div class="bg-white grid grid-center grid-cols-3 items-center"> -->
-      <div class="fast_order_inner justify-between flex items-center" style='background: #F4F2EC;'>
+      <div class="fast_order_inner justify-between flex items-start" style='background: #F4F2EC;'>
         <h2 class="font-attila-sans-medium font-medium">{{ section.settings.title }}</h2>
         <p class="news_para mb-0">{{ section.settings.subheading }}</p>
         <div class="newsletter">
@@ -23,7 +23,7 @@
           {% comment %} <form action=''>
             <input class='email_input' placeholder='Enter Email' type='emai'>
           </form> {% endcomment %}
-          <p>{{ section.settings.content }}</p>
+          <p class="mt-4">{{ section.settings.content }}</p>
         </div>
       </div>
     </div>
@@ -86,7 +86,7 @@
                   <p class='on_social_media'>{{ section.settings.social_media_title }}</p>
                   <div class='social_media_icon'>
                       {% if settings.email_text != '' %}
-                      <div class='soc_ico'><a href='{% if settings.email_url %} mailto:{{ settings.email_url }} {% endif %}'>{{ settings.email_text }}</a></div>
+                      <div class='soc_ico'><a class="text-white">{{ settings.email_text }}</a></div>
                       {% endif %}
                       {% if settings.twitter_url != '' %}
                       <div class='soc_ico'><a href='{{ settings.twitter_url }}'><i></i></a></div>
@@ -184,7 +184,6 @@
     font-weight: 400 !important;
     /* position: relative; */
     line-height: 24px;
-    margin-bottom: 16px;
     padding: 0 0 8px 0 !important;
     width: 100%;
     height: auto !important;
@@ -206,8 +205,32 @@
     padding: 0 !important;
 }
 
-button.needsclick.go3894874857.kl-private-reset-css-Xuajs1 {
-    display: none;
+.klaviyo-form button {
+  position: absolute;
+  right: 0;
+  width: 50px !important;
+  top: -50px;
+  height: 0px !important;
+  font-size: 0px !important;
+}
+
+.klaviyo-form button:after {
+  content: '';
+  right: 0;
+  top: 24px;
+  width: 17px;
+  height: 10px;
+  position: absolute;
+  cursor: pointer;
+  background-image: url(https://cdn.shopify.com/s/files/1/0627/3476/2207/files/arrow-right-black.svg?v=1652772976);
+}
+.klaviyo-form button:hover:after {
+  opacity: 0.60;
+}
+
+.klaviyo-form .ql-snow span {
+    color: #000 !important;
+    font-family: "GoodSans-Light" !important;
 }
 
 form.needsclick.klaviyo-form.klaviyo-form-version-cid_1.kl-private-reset-css-Xuajs1 {
@@ -300,14 +323,12 @@ form.needsclick.klaviyo-form.klaviyo-form-version-cid_1.kl-private-reset-css-Xua
         margin-bottom: 8px;
     }
     .footer_opt ul li a {
-        font-weight: 300;
         font-size: 14px;
         line-height: 24px;
         letter-spacing: -0.01em;
         color: #ffffff;
         transition: 0.8s;
         border-bottom: 1px solid transparent;
-        font-family: "GoodSans-Light" !important;
     }
     .footer_opt ul li a:hover {
       filter: brightness(0.80);

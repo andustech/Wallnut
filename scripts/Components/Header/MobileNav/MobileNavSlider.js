@@ -14,7 +14,6 @@ const MobileNavSlider = ({ isOpen, links, themeSettings, settings }) => {
     cyber_monday_sale_start,
     cyber_monday_sale_end,
     email_text,
-    email_url,
     twitter_url,
     facebook_url,
     instagram_url,
@@ -84,7 +83,7 @@ const MobileNavSlider = ({ isOpen, links, themeSettings, settings }) => {
         <ul></ul>
 
         <div class="mx-5 mt-10">
-          { email_text && <div class='soc_ico mb-3.5'><a href={`mailto:${email_url}`}>{ email_text }</a></div> }
+          { email_text && <div class='soc_ico mb-3.5'><a class='text-black'>{ email_text }</a></div> }
           <div class='social_media_icon'>
             { twitter_url && <div class='soc_ico'><a href={twitter_url }><i></i></a></div> }
             { facebook_url && <div class='soc_ico'><a href={facebook_url }>

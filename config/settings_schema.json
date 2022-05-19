@@ -1156,11 +1156,6 @@
       },
       {
         "type": "text",
-        "id": "email_url",
-        "label": "Enter Email"
-      },
-      {
-        "type": "text",
         "id": "twitter_url",
         "label": "Twitter link",
         "info": "https:\/\/twitter.com\/shopify"
