@@ -9,7 +9,7 @@ const VideoPromoSection = ({ settings }) => {
     <>
       <WhiteCollectionContainer className='container white_main_container section-padding'>
         <div className='white_coll_left'>
-          <img src={image} alt="Collection" />
+          <img src={image} alt="Collection" className="w-full" />
         </div> 
         <div className='white_coll_right'>
           <div className='item_box'>

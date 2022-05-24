@@ -150,7 +150,7 @@ const Title = styled.div(() => [tw`text-base font-normal font-serif uppercase`])
 
 const Container = styled.div.attrs(({ isOpen }) => {
   const className =
-    'top-14 absolute overflow-y-auto px-4.5 pb-33 left-0 w-screen h-screen bg-grey transform  lg:hidden';
+    'top-14 absolute overflow-y-auto px-4.5 pb-33 left-0 w-screen h-screen bg-grey transform hidden ';
   return {
     className:
       className + (isOpen ? 'translate-y-0 z-50 opacity-100' : 'translate-y-full opacity-0'),

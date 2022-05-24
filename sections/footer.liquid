@@ -13,7 +13,7 @@
   <div class="footer-section footer-template" data-section-id="{{ section.id }}" data-section-type="footer-section">
     <div class="clear"></div>
     <div class="fast_order_main_container top" style='background-color: #133744'>
-      <div class="container">
+      <div class="container px-0 xl:px-5">
         <!-- <div class="bg-white grid grid-center grid-cols-3 items-center"> -->
         <div class="fast_order_inner justify-between flex items-start" style='background: #F4F2EC;'>
           <h2 class="font-attila-sans-medium font-medium">{{ section.settings.title }}</h2>
@@ -30,7 +30,7 @@
       </div>
     </div>
       <div class='footer_bg'>
-          <div class='container'>
+          <div class='container px-0 xl:px-5'>
             <div class='footer_logo'>
               <img src='{{ section.settings.logo_icon }}'>
               <p>{{ section.settings.logo_title }}</p>
@@ -243,11 +243,6 @@ form.needsclick.klaviyo-form.klaviyo-form-version-cid_1.kl-private-reset-css-Xua
     margin: 0 !important;
 }
 
-.newsletter {
-    max-width: 387px;
-    width: 100%;
-}
-
     @media only screen and (max-width: 1354px) {
         .fast_order_inner {
             padding: 70px 70px;
@@ -264,6 +259,9 @@ form.needsclick.klaviyo-form.klaviyo-form-version-cid_1.kl-private-reset-css-Xua
         .fast_order_main_container {
             padding: 60px 40px;
         }
+        .footer_bg {
+            padding: 55px 40px 72px 40px !important;
+        }
         .fast_order_inner {
             padding: 60px 60px;
         }
@@ -275,12 +273,25 @@ form.needsclick.klaviyo-form.klaviyo-form-version-cid_1.kl-private-reset-css-Xua
         .fast_order_main_container {
             padding: 54px 35px;
         }
+        .footer_bg {
+            padding: 55px 35px 72px !important;
+        }
         .fast_order_inner {
             padding: 50px 30px;
         }
         .footer-section .top h2 {
             font-size: 25px;
             line-height: 29px;
+        }
+    }
+    @media only screen and (max-width: 1200px) {
+        .fast_order_main_container {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .footer_bg {
+            padding-left: 20px !important;
+            padding-right: 20px !important;
         }
     }
     @media only screen and (max-width: 991px) {
@@ -345,7 +356,7 @@ form.needsclick.klaviyo-form.klaviyo-form-version-cid_1.kl-private-reset-css-Xua
         align-items: flex-start;
     }
     .footer_right {
-        padding: 0 64px;
+        padding: 0 0 0 64px;
         border-left: 1px solid white;
     }
     .contact {
@@ -399,9 +410,20 @@ form.needsclick.klaviyo-form.klaviyo-form-version-cid_1.kl-private-reset-css-Xua
     }
 
     .news_para {
-    max-width: 255px;
-    width: 100%;
-}
+      max-width: 255px;
+      width: 100%;
+    }
+
+    .newsletter {
+      max-width: 387px;
+      width: 100%;
+    }
+  
+  {% comment %} @media only screen and (min-width: 991px) {
+    .footer-section .top h2 br {
+      display: none;
+    } {% endcomment %}
+  }
      
   </style>
 

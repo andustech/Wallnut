@@ -26,7 +26,7 @@ const Header = (props) => {
           </div>
           <a className="flex items-center justify-center flex-1 lg:flex-none" href="/">
             <LogoImage
-              src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/logo-wallnut.png?v=1652438735"
+              src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/Wallnut_Wordmark_RGB_Black_1_1.svg?v=1653293852"
               alt="Wallnut"
             />
           </a>
@@ -86,7 +86,7 @@ const Header = (props) => {
 };
 
 const HeaderContainer = styled.div.attrs(({ sticky }) => {
-  const className = 'flex items-center justify-center w-full bg-white ';
+  const className = 'flex items-center justify-center w-full bg-white navbar ';
   const fixed = 'fixed top-0 z-10';
   return { className: sticky ? `${className}, ${fixed}` : `${className}` };
 })`
