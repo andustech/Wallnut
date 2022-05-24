@@ -8,8 +8,9 @@ import AfterPayCopy from '../../AfterPayCopy';
 import YotpoReviewStars from '../../YotpoReviewStars';
 import ProductQty from '../../ProductQty';
 import PDPColorFilter from '../PDPColorFilter';
+import PDPSizeFilter from '../PDPColorFilter/PDPColorFilterA/PDPSizeFilter';
 import PDPMessaging from './PDPMessaging';
-import PDPSimpleFilter from './PDPSimpleFilter';
+import { SectionTiltle } from '../../ProductFeature/ValuePropComponent';
 
 const getProductOptions = (product, selectedVariant, optionKey) => {
   const options = product.variants.reduce((acc, variant) => {
@@ -55,16 +56,19 @@ const getCurrentVariant = (product, currentVariant) => {
   return currentVariant;
 };
 
+const getShortDescription = (description, n) => {
+  description = description.replace(/<(.|\n)*?>/g, '');
+  return description?.length > n ? description.substr(0, n - 1) + "... " : description;
+};
+
 const ProductSelector = ({
   product,
   currentVariant,
   reviews,
   reviewsRef = {},
+  descriptionRef = {},
   discount,
   productMessaging,
-  handleSelectingOption,
-  overlayImage,
-  overlayImageMobile,
 }) => {
   const { handle } = product;
   const { option1, option2, option3 } = currentVariant;
@@ -85,26 +89,11 @@ const ProductSelector = ({
     });
   };
 
-  const handleOptionClick = (value, option) => {
-    const newOptions = { ...currentOptions, [option]: value };
-    const newVariant = product.variants.find(
-      (variant) =>
-        variant.option1 === newOptions.option1 &&
-        variant.option2 === newOptions.option2 &&
-        variant.option3 === newOptions.option3
-    );
-    if (newVariant) {
-      history.pushState('', '', `?variant=${newVariant.id}`);
-      setSelectedVariant(newVariant);
-      setCurrentOptions(newOptions);
-    } else {
-      const defaultVariant = product.variants.filter(
-        (variant) => variant.option1 === newOptions.option1
-      );
-      history.pushState('', '', `?variant=${defaultVariant.id}`);
-      setSelectedVariant(defaultVariant[0]);
-      setCurrentOptions(newOptions);
-    }
+  const scrollToDescription = () => {
+    window.scrollTo({
+      behavior: 'smooth',
+      top: descriptionRef.current.offsetTop,
+    });
   };
 
   useEffect(() => {
@@ -128,62 +117,9 @@ const ProductSelector = ({
     setSelectedVariant(currentVariant);
   }, [currentVariant]);
 
-  const handleColorSwatch = () => {
-    window.optimizely.push({
-      type: 'event',
-      eventName: 'handle-color-swatch',
-      tags: {
-        revenue: 0, // Optional in cents as integer (500 == $5.00)
-        value: 0.0, // Optional as float
-      },
-    });
-  };
-
   return (
     <ProductSelectorContainer>
-      <div className="absolute lg:relative w-11/12 h-90 md:h-110 lg:w-7/12">
-        <div className="block lg:hidden">
-          <h1 className="text-xl mb-0 md:text-2xl">{product.title}</h1>
-          <div onClick={() => scrollToReviews()} onKeyDown={() => {}} role="button" tabIndex={0}>
-            {reviews.reviews && (
-              <YotpoReviewStars
-                totalReviews={reviews.bottomline.total_review}
-                stars={reviews.bottomline.average_score}
-                location="product-header"
-              />
-            )}
-          </div>
-
-          <div className="grid grid-cols-10  border-none text-sm ">
-            <div className="col-span-7">
-              <span id="pdp-product-price" className="text-2xl">
-                {product.compare_at_price ? (
-                  <div className="md:w-80">
-                    <span className="font-normal text-errorRed text-2xl md:text-3xl">
-                      {convertPriceFromNumber(selectedVariant.price)}
-                    </span>
-                    <span className="ml-1 line-through text-sm">
-                      {convertPriceFromNumber(selectedVariant.compare_at_price)}
-                    </span>
-                    <span className="ml-2 text-errorRed text-xl md:text-2xl">{discount}% Off</span>
-                  </div>
-                ) : (
-                  convertPriceFromNumber(selectedVariant.price)
-                )}
-              </span>
-            </div>
-          </div>
-          <AfterPayContainer>
-            <AfterPayCopy price={selectedVariant.price} product={product.title} dataSize="xs" />
-          </AfterPayContainer>
-        </div>
-        <Carousel
-          images={getCurrentImages(product, selectedVariant)}
-          watchForReset={selectedVariant.sku}
-          overlayImage={overlayImage}
-          overlayImageMobile={overlayImageMobile}
-        />
-      </div>
+      <Carousel images={getCurrentImages(product, selectedVariant)} />
       <ProductFormContainer handle={handle}>
         <form
           className="mb-3 md:pr-10"
@@ -191,8 +127,11 @@ const ProductSelector = ({
         >
           <div>
             <div className="invisible opacity-0 lg:visible lg:opacity-100">
-              <h1 className="text-xl mb-0 md:text-2xl">{product.metafields.productTitle}</h1>
+              <SectionTiltle className='section_titile pdp'>
+                <h2 className="font-bold text-left">{product.title}</h2>
+              </SectionTiltle>
               <div
+                className='mb-1'
                 onClick={() => scrollToReviews()}
                 onKeyDown={() => {}}
                 role="button"
@@ -207,9 +146,9 @@ const ProductSelector = ({
                 )}
               </div>
 
-              <div className="grid grid-cols-10  border-none text-sm ">
+              <div className="grid grid-cols-10 border-none text-sm mb-1">
                 <div className="col-span-7">
-                  <span id="pdp-product-price" className="text-2xl">
+                  <span id="pdp-product-price">
                     {product.compare_at_price ? (
                       <div className="md:w-80">
                         <span className="font-normal text-errorRed text-2xl md:text-3xl">
@@ -230,48 +169,46 @@ const ProductSelector = ({
               </div>
 
               <AfterPayCopy price={selectedVariant.price} product={product.title} />
+              
+              <ByName>
+                <p>By: Sarah smith</p>
+                <p>New York, NY</p>
+              </ByName>
+
+              <ProductShortDescription>
+                {getShortDescription(product.description, 49)}
+                <div className='read-more-desc border-b inline border-black'
+                  onClick={() => scrollToDescription()}
+                  onKeyDown={() => {}}
+                  role="button"
+                  tabIndex={0}
+                >Read More</div>
+              </ProductShortDescription>
             </div>
-            {/* This is here because extra chair cover selection needs to be at the top */}
-            {handle === 'extra-chair-cover' && (
-              <PDPSimpleFilter
-                product={product}
-                selectedVariant={selectedVariant}
-                selectOptions={product.metafields.styleOptions || []}
-                handleColorSwatch={handleColorSwatch}
-                handleOptionClick={handleOptionClick}
-                handleSelectingOption={handleSelectingOption}
-              />
-            )}
 
             {handle !== 'e-gift-card' && (
-              <PDPColorFilter
-                product={product}
-                selectedVariant={selectedVariant}
-                setSelectedVariant={setSelectedVariant}
-                currentOptions={currentOptions}
-                setCurrentOptions={setCurrentOptions}
-                selectOptions={selectOptions}
-              />
+              <>
+                <PDPSizeFilter
+                  product={product}
+                  selectedVariant={selectedVariant}
+                  setSelectedVariant={setSelectedVariant}
+                  currentOptions={currentOptions}
+                  setCurrentOptions={setCurrentOptions}
+                />
+                <PDPColorFilter
+                  product={product}
+                  selectedVariant={selectedVariant}
+                  setSelectedVariant={setSelectedVariant}
+                  currentOptions={currentOptions}
+                  setCurrentOptions={setCurrentOptions}
+                  selectOptions={selectOptions}
+                />
+              </>
             )}
 
-            {/* This is here because Leg selection needs to be at the bottom on Leg option products */}
-            {handle !== 'extra-chair-cover' && (
-              <PDPSimpleFilter
-                product={product}
-                selectedVariant={selectedVariant}
-                selectOptions={
-                  product.handle === 'e-gift-card'
-                    ? product.metafields.amountOptions
-                    : product.metafields.legOptions || []
-                }
-                handleColorSwatch={handleColorSwatch}
-                handleOptionClick={handleOptionClick}
-                handleSelectingOption={handleSelectingOption}
-              />
-            )}
+            <IncludesContainer>Includes<br/>Framed print and wall mounting system</IncludesContainer>
 
             <div className="grid grid-cols-4 my-4">
-              <ProductQty qty={qty} setQty={setQty} marginTop="1" />
               <div className="border-grey-50 border-solid center md:border-none col-span-3 ml-4">
                 <AddToCartSubmitInput
                   ref={submitRef}
@@ -289,6 +226,7 @@ const ProductSelector = ({
                   <StickyAddToCartInput type="submit" value="Add to Cart" />
                 </StickyAddToCartContainer>
               </div>
+              <ProductQty qty={qty} setQty={setQty} marginTop="1" />
             </div>
             <PDPMessaging productMessaging={productMessaging} />
           </div>
@@ -304,10 +242,9 @@ ProductSelector.defaultProps = {
   },
   reviews: {},
   reviewsRef: {},
+  descriptionRef: {},
   discount: '0',
   productMessaging: {},
-  overlayImage: '',
-  overlayImageMobile: '',
   // productFeature: false,
 };
 
@@ -349,31 +286,27 @@ ProductSelector.propTypes = {
       offsetTop: PropTypes.number,
     }),
   }),
+  descriptionRef: PropTypes.shape({
+    current: PropTypes.shape({
+      offsetTop: PropTypes.number,
+    }),
+  }),
   discount: PropTypes.string,
   productMessaging: PropTypes.shape({
-    productMessage: PropTypes.string,
-    productMessageInfo: PropTypes.string,
-    productMessageHeight: PropTypes.string,
+    shippingMessage: PropTypes.string,
+    shippingTime: PropTypes.string,
+    shippingMessageInfo: PropTypes.string,
+    shippingMessageInfoHeight: PropTypes.number,
   }),
   handleSelectingOption: PropTypes.func.isRequired,
-  overlayImage: PropTypes.string,
-  overlayImageMobile: PropTypes.string,
-  // productFeature: PropTypes.bool,
 };
 
 const ProductSelectorContainer = styled.div.attrs({
-  className: 'flex flex-col items-center max-w-screen-xl lg:flex-row',
+  className: 'flex flex-col max-w-screen-xl lg:flex-row',
 })``;
 
 const ProductFormContainer = styled.div.attrs(({ handle }) => {
-  let className = 'md:mt-100 lg:mt-0 lg:pt-0 md:pl-5 md:mx-28 lg:mx-5 w-full md:w-8/12 lg:w-5/12';
-
-  if (['extra-chair-cover', 'e-gift-card'].includes(handle)) {
-    className = `${className} mt-80 md:pt-4`;
-  } else {
-    className = `${className} mt-84 md:pt-8`;
-  }
-
+  let className = 'ml-12 w-full md:w-8/12 lg:w-5/12';
   return {
     className,
   };
@@ -381,7 +314,7 @@ const ProductFormContainer = styled.div.attrs(({ handle }) => {
 
 const AddToCartSubmitInput = styled.input.attrs({
   className:
-    'AddtoCart pb-0 pt-0 text-base font-light h-11 leading-none mb-0 md:h-auto md:py-0.5 md:w-full',
+    'AddtoCart pb-0 pt-0 mb-0 md:py-0.5 w-55 h-12',
 })``;
 
 const StickyAddToCartContainer = styled.div.attrs(({ showStickySubmit }) => {
@@ -397,6 +330,38 @@ const StickyAddToCartContainer = styled.div.attrs(({ showStickySubmit }) => {
     className,
   };
 })``;
+
+const ProductShortDescription = styled.div.attrs({
+  className:
+    'short-description',
+})`
+font-family: 'GoodSans';
+font-weight: 400;
+font-size: 14px;
+line-height: 22px;
+letter-spacing: -0.01em;
+margin-bottom: 32px;`;
+
+const ByName = styled.div`
+  margin-bottom: 16px;
+  p {
+    font-family: 'GoodSans';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+  }
+`;
+
+const IncludesContainer = styled.div`
+  margin-bottom: 16px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.01em;
+  font-family: 'GoodSans';
+`;
 
 const AfterPayContainer = styled.div.attrs({})`
   & .afterpay-paragraph {

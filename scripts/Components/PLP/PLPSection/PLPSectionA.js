@@ -2,13 +2,17 @@ import React, { useEffect, useState, useRef } from 'react';
 
 import PropTypes from 'prop-types';
 import PLPItems from '../PLPItems';
+import Filters from '../Filters';
 import PLPDescription from '../PLPDescription';
 import SeoCopy from '../SEOCopy';
 import PLPContext from '../plpContext';
 import { mergedFetchedRecommendations } from '../../../utils';
 
 const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
+  const [colors, setColors] = useState();
+  const [stickyFilter, setStickyFilter] = useState(false);
   const [colorFilters, setColorFilters] = useState([]);
+  const [chairTypes, setChairTypes] = useState([]);
   const [allFilters, setAllFilters] = useState({
     style: [],
     chairType: [],
@@ -53,6 +57,8 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
         });
       }
     });
+    setColors(tempArr);
+    setChairTypes([...productTypes]);
   }, [products]);
 
   const contextValue = {
@@ -61,36 +67,29 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
     checkFilters,
   };
 
-  const simplePLPPages = [
-    'Products',
-    'Shop All Chairs',
-    'Labor Day Sale',
-    'Pattern Chairs',
-    'Herringbone Chairs',
-    'White Chairs',
-    'Black Friday',
-    'Cyber Monday',
-    'Seasonal Favorites',
-    'Fresh Start Event',
-  ];
-
-  if (simplePLPPages.includes(collectionTitle)) {
-    return (
-      <PLPContext.Provider value={contextValue}>
-        <div className="w-full">
-          <PLPDescription filterRef={filterRef} {...{ collectionTitle, collectionDescription }} />
-          <PLPItems
-            products={combinedProducts}
-            collectionTitle={collectionTitle}
-            colorFilters={[]}
-            simpleLayout
-            holiday={collectionTitle === 'Seasonal Favorites'}
-          />
-          <SeoCopy title={collectionTitle} />
-        </div>
-      </PLPContext.Provider>
-    );
-  }
+  return (
+    <PLPContext.Provider value={contextValue}>
+      <div className="w-full">
+        <PLPDescription filterRef={filterRef} {...{ collectionTitle, collectionDescription }} />
+        <Filters
+          colorFilters={colorFilters}
+          setColorFilters={setColorFilters}
+          stickyFilter={stickyFilter}
+          colors={colors}
+          chairTypes={chairTypes}
+          collectionTitle={collectionTitle}
+        />
+        <PLPItems
+          products={combinedProducts}
+          collectionTitle={collectionTitle}
+          colorFilters={[]}
+          simpleLayout
+          holiday={collectionTitle === 'Seasonal Favorites'}
+        />
+        <SeoCopy title={collectionTitle} />
+      </div>
+    </PLPContext.Provider>
+  );
 
   return (
     <PLPContext.Provider value={contextValue}>

@@ -389,6 +389,19 @@ height: 180px !important;
   margin-bottom: 5px !important;
   letter-spacing: -0.02em !important;
 }
+.section_titile.pdp {
+  margin-bottom: 0px !important;
+}
+.section_titile.pdp h2 {
+  font-size: 30px !important;
+  line-height: 42px !important;
+  margin-bottom: 8px !important;
+}
+.section_titile.pdp-small h2 {
+  font-size: 28px !important;
+  line-height: 39px !important;
+  margin-bottom: 16px !important;
+}
 
 .section_titile p {
   font-size: 36px !important;
@@ -1196,7 +1209,35 @@ letter-spacing: 0.14em;
   top: 50%;
   transform: translate(-50%, -50%);
 }
-
+span#pdp-product-price {
+  font-family: 'AttilaSansUniform-Semibold';
+  letter-spacing: -0.005em;
+  font-size: 20px;
+  line-height: 28px;
+}
+afterpay-placement {
+  margin: 0 0 8px !important;
+  color: rgba(0, 0, 0, 0.7);
+  font-family: 'GoodSans' !important;
+}
+#pdp-size-swatcher {
+  margin-bottom: 32px;
+}
+#pdp-color-swatcher  {
+  margin-bottom: 32px;
+}
+#pdp-color-swatcher h5, #pdp-size-swatcher h5 {
+  font-family: 'GoodSans';
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.01em;
+  color: #000000;
+  margin-bottom: 16px;
+}
+#pdp-color-swatcher h5 span, #pdp-size-swatcher h5 span {
+  font-family: 'GoodSans';
+}
 
 
  /* How it works page */

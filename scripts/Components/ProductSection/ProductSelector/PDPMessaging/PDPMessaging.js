@@ -2,10 +2,10 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { QuestionmarkIcon, TruckIcon } from '../../../Icons';
+import { QuestionmarkIcon, ShippingBox } from '../../../Icons';
 
 const PDPMessaging = ({ productMessaging }) => {
-  const { productMessage, productMessageInfo, productMessageHeight } = productMessaging;
+  const { shippingMessage, shippingTime, shippingMessageInfo, shippingMessageInfoHeight } = productMessaging;
   const [hideBox, setHideBox] = useState(true);
   const handleClick = (e) => {
     if (!hideBox) {
@@ -22,19 +22,20 @@ const PDPMessaging = ({ productMessaging }) => {
     };
   }, [hideBox]);
 
-  if (productMessage !== undefined && productMessageInfo !== undefined) {
+  if (shippingMessage !== undefined && shippingTime !== undefined) {
     return (
-      <div className="flex text-grey-about text-sm font-serif mt-2">
-        <div className="flex items-start lg:items-center mr-2 w-8 md:w-min">
-          <TruckIcon />
+      <div className="flex text-grey-about text-sm font-serif mt-8 pt-3 pb-3 pl-6 pr-6" style={{backgroundColor: '#F4F2EC'}}>
+        <div className="flex items-start lg:items-center">
+          <ShippingBox />
         </div>
-        <div className="mr-1.5 whitespace-nowrap flex">
-          <div className="text-green-bright text-lg font-normal whitespace-normal w-33 md:mr-4.5 flex items-center">
-            Free Shipping on All Orders
+        <Divider />
+        <div className="whitespace-nowrap">
+          <div className="whitespace-normal flex items-center">
+            {shippingMessage}
           </div>
-          <Divider />
-          <div className="text-green-bright text-lg font-normal whitespace-normal w-48 ml-2 md:ml-8">
-            {productMessage}
+          
+          <div className="whitespace-normal">
+            {shippingTime}
             <div className="inline-block ml-1">
               <div
                 onClick={() => {
@@ -49,13 +50,14 @@ const PDPMessaging = ({ productMessaging }) => {
               </div>
               <StyledProductMessageContainer
                 hideBox={hideBox}
-                productMessageHeight={productMessageHeight}
+                // shippingMessageInfoHeight={shippingMessageInfoHeight}
+                style={{height: shippingMessageInfoHeight + 'px'}}
               >
                 <div
                   className="flex items-center absolute whitespace-normal text-white p-2 leading-4 text-xxs"
                   id="messagebox"
                 >
-                  {productMessageInfo}
+                  {shippingMessageInfo}
                 </div>
               </StyledProductMessageContainer>
             </div>
@@ -68,15 +70,13 @@ const PDPMessaging = ({ productMessaging }) => {
 };
 
 const StyledProductMessageContainer = styled.div.attrs((props) => ({
-  className: `${props.hideBox ? 'invisible' : 'visible'} absolute w-52 h-${
-    props.productMessageHeight
-  } bg-grey-about transform -translate-x-3/4 md:-translate-x-1/2 translate-y-1.5`,
+  className: `${props.hideBox ? 'invisible' : 'visible'} absolute w-52 bg-grey-about transform -translate-x-3/4 md:-translate-x-1/2 translate-y-1.5`,
 }))``;
 
 const Divider = styled.div`
-  width: 2px;
-  margin: 6px 0;
-  background: #435570;
+  width: 1px;
+  margin: 0 24px;
+  background: #000000;
 `;
 
 PDPMessaging.defaultProps = {
@@ -85,9 +85,10 @@ PDPMessaging.defaultProps = {
 
 PDPMessaging.propTypes = {
   productMessaging: PropTypes.shape({
-    productMessage: PropTypes.string,
-    productMessageInfo: PropTypes.string,
-    productMessageHeight: PropTypes.string,
+    shippingMessage: PropTypes.string,
+    shippingTime: PropTypes.string,
+    shippingMessageInfo: PropTypes.string,
+    shippingMessageInfoHeight: PropTypes.number,
   }),
 };
 

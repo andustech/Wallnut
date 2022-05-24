@@ -2,70 +2,33 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
-import { MinusIcon, PlusIcon } from './Icons';
 import {
-  legOptions,
   convertPriceFromNumber,
-  handleAddToCart,
   getSingleViewImage,
   getPriceInRanges,
   isMobile,
   herringboneGroups,
   whiteGroups,
 } from '../utils';
-import PLPButton from './PLP/PLPButton';
 import ColorSwatch from './ColorSwatch';
 import Media from './Media';
 
-const getColorTotal = (colors, product) => {
-  if (product.handle.includes('the-classic-dining-chair')) {
-    return product.variants.length / 3 - colors.length;
-  }
-
-  return product.variants.length - colors.length;
-};
-
-const getProductUrl = (product, colorOption, legOption, collectionTitle, chairCovers) => {
+const getProductUrl = (product, colorOption) => {
   let productHandle = product.handle;
-
-  if (product.handle.includes('the-classic-dining-chair')) {
-    productHandle = `${productHandle}-${legOption.toLowerCase()}`;
-  }
-
   if (colorOption) {
     const color = colorOption.replace(/\w\S*/g, (w) => w.replace(/^\w/, (c) => c.toUpperCase()));
 
     return `/products/${productHandle}?color=${color}`;
   }
-
-  if (product.handle.includes('extra-chair-cover')) {
-    if (collectionTitle === 'Herringbone Chairs' || collectionTitle === 'White Chairs') {
-      return chairCovers[collectionTitle].link;
-    }
-    return `/products/scandinavian-lounge-extra-chair-cover`;
-  }
-
   return `/products/${productHandle}`;
 };
 
-const chairCoverByCollection = {
-  'Herringbone Chairs': {
-    handle: herringboneGroups[4].colors[0],
-    link: herringboneGroups[4].link,
-  },
-  'White Chairs': {
-    handle: whiteGroups[4].colors[0],
-    link: whiteGroups[4].link,
-  },
-};
-
 const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, collectionTitle }) => {
-  const [qty, setQuantity] = useState(1);
   const [hover, setHover] = useState(false);
   const [currentOption, setCurrentOption] = useState(product.variant);
-  const [legOption, setLegOption] = useState(legOptions[0]);
   const [colorOption, setColorOption] = useState(colors[0]);
   const PLPItemRef = useRef();
+  const colorIndex = product.options.indexOf('Frame Color');
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(max-width: 768px)');
@@ -96,70 +59,20 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
     });
   }, []);
 
-  useEffect(() => {
-    if (currentOption && currentOption.options.some((option) => legOptions.includes(option))) {
-      setLegOption(currentOption.option2);
-    }
-  }, [currentOption, product]);
-
-  const handleSubmit = (e) => {
-    handleAddToCart(e, currentOption, qty, currentOption.id, () => {
-      setQuantity(1);
-      window.optimizely.push({
-        type: 'event',
-        eventName: 'add-to-cart',
-        tags: {
-          revenue: 0, // Optional in cents as integer (500 == $5.00)
-          value: 0.0, // Optional as float
-        },
-      });
-      window.optimizely.push({
-        type: 'event',
-        eventName: 'quick-add-to-cart',
-        tags: {
-          revenue: 0, // Optional in cents as integer (500 == $5.00)
-          value: 0.0, // Optional as float
-        },
-      });
-    });
-  };
-
-  const handleClick = (action) => {
-    if (action === 'sub') {
-      if (qty > 1) {
-        setQuantity(qty - 1);
-      }
-    }
-    if (action === 'add') {
-      setQuantity(qty + 1);
-    }
-  };
-
   const handleColorChange = (color) => {
     const newVariant = product.variants.find((item) => {
-      return item.option1.toLowerCase() === color;
+      if(colorIndex === 0) {
+        return item.option1 === color;
+      }
+      else {
+        return item.option2 === color;
+      }
     });
     setCurrentOption(newVariant);
     setColorOption(color);
   };
 
-  const chairCoverVariant = Object.keys(chairCoverByCollection).includes(collectionTitle)
-    ? `scandinavian-lounge-${chairCoverByCollection[collectionTitle].handle}`
-    : 'scandinavian-lounge-herringbone-off-white';
-
-  const handleLegChange = (leg) => {
-    const newVariant = product.variants.find(
-      (item) => item.option1.toLowerCase() === colorOption && item.option2 && item.option2 === leg
-    );
-    setCurrentOption(newVariant);
-    setLegOption(leg);
-  };
-
-  // if (product.handle.includes('exclusive')) {
-  //   return null;
-  // }
-
-  if (product.tags.includes('Gift card') || product.tags.includes('Extra Cover')) {
+  if (product.tags.includes('Gift card')) {
     if (colorFilters && colorFilters.length > 0) return null;
 
     const variantName = product.tags.includes('Extra Cover') ? chairCoverVariant : 'e-gift-card';
@@ -175,9 +88,7 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
             href={getProductUrl(
               product,
               colorOption,
-              legOption,
-              collectionTitle,
-              chairCoverByCollection
+              collectionTitle
             )}
           >
             <div className="bg-grey">
@@ -193,9 +104,7 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
           href={getProductUrl(
             product,
             colorOption,
-            legOption,
-            collectionTitle,
-            chairCoverByCollection
+            collectionTitle
           )}
         >
           <TitlePriceContainer>
@@ -227,37 +136,41 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
 
   let productImage = [];
   if (product.media) {
-    console.log('if')
     productImage = product.variants.find((item) => {
       return currentOption.id === item.id
     })
   }
   else {
-    console.log('else')
     productImage = product.images.find((item) => {
       return currentOption.id === item.variant_ids[0]
     })
   }
+  console.log('product ==== ', product)
+
+  const cdnUrl = 'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/';
+  var imgColor = ''
+  if(colorOption === 'Matte White') {
+    imgColor = 'white';
+  }
+  else if(colorOption === 'Matte Black') {
+    imgColor = 'black';
+  }
+  else if(colorOption === 'Walnut Wood') {
+    imgColor = 'walnut';
+  }
 
   return (
-    <ItemContainer
-      ref={PLPItemRef}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-    >
+    <ItemContainer>
       <div className="relative overflow-hidden bg-gray-50">
         <a
           href={getProductUrl(
             product,
             colorOption,
-            legOption,
-            collectionTitle,
-            chairCoverByCollection
+            collectionTitle
           )}
         >
           {currentOption && (
-            <ImageContainer isHovered={hover} noColorSelector={noColorSelector}>
-              {console.log('productImage = ', productImage)}
+            <ImageContainer isHovered={hover} noColorSelector={noColorSelector} ref={PLPItemRef} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
               {!hover ?
                 <Media
                   alt={`${product.handle}-${currentOption.options.join(' ').toLowerCase().trim()}`}
@@ -266,7 +179,7 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
                 :
                 <Media
                   alt={`${product.handle}-${currentOption.options.join(' ').toLowerCase().trim()}`}
-                  image="https://cdn.shopify.com/s/files/1/0627/3476/2207/products/abstract-maze-i-A-black-1824.jpg?v=1652789774"
+                  image={`${cdnUrl}${product.handle.slice(0, -3)}B-${imgColor}-1824.jpg`}
                 />
               }
             </ImageContainer>
@@ -278,9 +191,7 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
         href={getProductUrl(
           product,
           colorOption,
-          legOption,
-          collectionTitle,
-          chairCoverByCollection
+          collectionTitle
         )}
       >
         <TitlePriceContainer>
@@ -295,16 +206,10 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
           <div>
             <div className="flex">
               {colors.map((color) => {
-                if (
-                  (color === 'sedona ivory' && product.tags.includes('Scandinavian')) ||
-                  (color === 'kali ikat blue' && product.tags.includes('Classic'))
-                ) {
-                  return null;
-                }
                 return (
                   <ColorSwatchWrapper
-                    border={color.toLowerCase() === colorOption.toLowerCase()}
-                    onClick={() => handleColorChange(color.toLowerCase())}
+                    border={color === colorOption}
+                    onClick={() => handleColorChange(color)}
                     onKeyUp={() => { }}
                     role="button"
                     tabIndex="0"
@@ -395,9 +300,9 @@ const ColorContainer = styled.div.attrs({
 })``;
 
 const ColorSwatchWrapper = styled.div.attrs(({ border }) => {
-  const borderStyle = border ? 'border border-black' : 'border border-gray-300';
+  const borderStyle = border ? 'border border-black' : '';
   return {
-    className: `w-5 h-5 border-solid border-2 mr-1 lg:mr-0 xxl:mr-1 rounded-full grid justify-items-center items-center ${borderStyle} `,
+    className: `w-5 h-5 mr-1 lg:mr-0 xxl:mr-1 rounded-full grid justify-items-center items-center ${borderStyle} `,
   };
 })``;
 

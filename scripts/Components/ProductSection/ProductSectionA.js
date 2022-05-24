@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import parse from 'react-html-parser';
 
 import { getYotpoReviewsData, isSaleOn, fetchProductByHandle } from '../../utils';
-import BreadCrumbs from '../BreadCrumbs';
 import MobileProductDetailsSection from './MobileProductDetailsSection';
 import DesktopProductDetails from './DesktopProductDetails';
 import ProductRecommendation from '../ProductRecommendation';
@@ -11,6 +11,7 @@ import YotpoReviews from '../YotpoReviews';
 import ProductSelector from './ProductSelector';
 import VideoPlayer from '../VideoPlayer';
 import PDPValueProps from './PDPValueProps';
+import { SectionTiltle } from '../ProductFeature/ValuePropComponent';
 
 const getProductTypeBlocks = (product, blocks) => {
   if (!product) {
@@ -30,7 +31,7 @@ const getProductTypeBlocks = (product, blocks) => {
 };
 
 const ProductSectionA = (props) => {
-  const { blocks, product, assetURL, themeSettings, metafields } = props;
+  const { settings, blocks, product, assetURL, themeSettings, metafields } = props;
 
   const { sale_start, sale_end } = themeSettings;
   const salesOn = isSaleOn(sale_start, sale_end);
@@ -44,11 +45,12 @@ const ProductSectionA = (props) => {
   const [currentVariant, setCurrentVariant] = useState();
 
   const reviewsRef = useRef();
+  const descriptionRef = useRef();
   const productTypeBlocks = getProductTypeBlocks(currentProduct, blocks);
 
   useEffect(() => {
     let defaultVariant = product.variants.find((variant) =>
-      variant.options.includes('Herringbone Off White')
+      variant.options.includes('Matte Black')
     );
 
     if (product.handle === 'e-gift-card') {
@@ -85,7 +87,7 @@ const ProductSectionA = (props) => {
   const handleSelectingOption = (productHandle) => {
     fetchProductByHandle(productHandle, metafields).then((res) => {
       const params = new URLSearchParams(window.location.search);
-      const defaultColor = 'Herringbone Off White';
+      const defaultColor = 'Matte Black';
       const color = params.get('color');
       const variantItem = res.variants.find((variant) =>
         variant.options.includes(color || defaultColor)
@@ -105,7 +107,6 @@ const ProductSectionA = (props) => {
   return (
     <section>
       <div className="px-4">
-        <BreadCrumbs />
         {product.handle !== 'e-gift-card' && (
           <StyledDiv
             handle={product.handle}
@@ -123,7 +124,7 @@ const ProductSectionA = (props) => {
           </StyledDiv>
         )}
         {currentVariant && (
-          <div className="grid grid-cols-1 justify-items-auto xl:justify-items-center mb-5">
+          <div className="grid grid-cols-1 justify-items-auto xl:justify-items-center mb-20 mt-10">
             <ProductSelector
               product={currentProduct}
               currentVariant={currentVariant}
@@ -131,6 +132,7 @@ const ProductSectionA = (props) => {
               setReviews={setReviews}
               reviews={reviews}
               reviewsRef={reviewsRef}
+              descriptionRef={descriptionRef}
               assetURL={assetURL}
               discount={
                 product.handle !== 'e-gift-card'
@@ -138,9 +140,10 @@ const ProductSectionA = (props) => {
                   : '0'
               }
               productMessaging={{
-                productMessage: productTypeBlocks[0]?.settings.product_messaging,
-                productMessageInfo: productTypeBlocks[0]?.settings.product_messaging_info,
-                productMessageHeight: productTypeBlocks[0]?.settings.product_messaging_height,
+                shippingMessage: settings.shipping_message,
+                shippingTime: settings.shipping_time,
+                shippingMessageInfo: settings.shipping_message_info,
+                shippingMessageInfoHeight: settings.shipping_message_info_height,
               }}
               overlayImage={productTypeBlocks[0]?.settings.product_overlay_image}
               overlayImageMobile={productTypeBlocks[0]?.settings.product_overlay_image_mobile}
@@ -148,6 +151,12 @@ const ProductSectionA = (props) => {
           </div>
         )}
       </div>
+      <ProductDescription ref={descriptionRef}>
+        <SectionTiltle className='section_titile pdp-small'>
+          <h2 className="font-bold text-center">About {product.title}</h2>
+        </SectionTiltle>
+        {parse(product.description)}
+      </ProductDescription>
       <DesktopProductDetails productTypeBlocks={productTypeBlocks} blocks={blocks} />
       <div className="mb-8 md:hidden px-4">
         {productTypeBlocks.map((block, i) => {
@@ -196,6 +205,12 @@ const DRBannerDiscount = styled.h1.attrs({
   className: 'block font-serif font-normal md:inline md:text-3xl text-2xl text-orange-burnt',
 })`
   text-shadow: 2px 2px #f2caaf;
+`;
+
+const ProductDescription = styled.div.attrs({
+  className: 'product-description m-auto text-center',
+})`
+  max-width: 644px;
 `;
 
 const StyledMobileMedia = styled.div.attrs(({ mediaType }) => {

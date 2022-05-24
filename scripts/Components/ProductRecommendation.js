@@ -46,7 +46,7 @@ const ProductRecommendation = ({ blocks, settings }) => {
   };
 
   return (
-    <ProductRecommendationContainer className="section-padding">
+    <ProductRecommendationContainer>
       <SectionTiltle className='section_titile'>
           <h2 className="font-bold">{settings?.title}</h2>
       </SectionTiltle>
@@ -56,7 +56,7 @@ const ProductRecommendation = ({ blocks, settings }) => {
           <>
             {recommendations.map((product, index) => {
               let colorsArr = [];
-              const colorIndex = product.options.findIndex(option => option === "Color");
+              const colorIndex = product.options.findIndex(option => option === "Frame Color");
               var color = '';
               {product.variants.map((variant, index) => {
                 if(colorIndex === 0) {
@@ -95,7 +95,7 @@ const ProductRecommendation = ({ blocks, settings }) => {
 
 
 const ProductRecommendationContainer = styled.div.attrs({
-  className: 'px-2 md:px-0 md:text-center',
+  className: 'px-2 py-8 mb-8 md:px-0 md:py-10 md:text-center',
 })`
   @media (min-width: 740px) {
     margin-right: -8%;
@@ -106,39 +106,5 @@ const ProductRecommendationContainer = styled.div.attrs({
 const RecommendationContainer = styled.div.attrs(({ recommendations }) => ({
   className: `container`,
 }))``;
-
-const TrendingMainContainer = styled.div`
-padding: 112px 0;
-`
-
-const TrendCardContainer = styled.div`
-  display: flex;
-  align-items: center;
-  margin-top: 30px !important;
-  justify-content: space-between;
-
-`
-// const TrendCardRow = styled.div``
-const TrendCardRow = styled.div`
- display: flex;
- align-items: center;
- position: relative;
-`;
-
-const RadioChoice = styled.div`
-  input {
-    margin: 0 4px;
-    cursor: pointer;
-  }
-
-  input:first-child {
-    margin-left: 0;
-  }
-
-  input:last-child {
-    margin-right: 0;
-  }
-`;
-
 
 export default ProductRecommendation;

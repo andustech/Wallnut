@@ -512,8 +512,7 @@ export const getColorSwatchImageUrl = (variantName, product, variant) => {
 
 export const getColorSwatchThumbImageUrl = (variantName) => {
   const kababCase = getVariantSwatchName(variantName).replace(/ /g, '-').toLowerCase();
-
-  return getS3url(`/color-swatches/${kababCase}-thumb.jpg`);
+  return `https://cdn.shopify.com/s/files/1/0627/3476/2207/files/color-thumb-${kababCase}.jpg`;
 };
 
 export const findCollectionObject = (products, variant) => {
@@ -544,29 +543,38 @@ export const getSingleViewImage = (product, variant) => {
 
 export const getCurrentImages = (product, variant) => {
   const variantName = getVariantName(variant);
+  const sizeIndex = product.options.indexOf('Size');
+  const colorIndex = product.options.indexOf('Frame Color');
 
-  if (product.handle === 'e-gift-card') {
-    return [
-      {
-        url: getSingleViewImage(product, 'e-gift-card'),
-        alt: `${product.handle}-${variantName}`.replace(/-/g, ' ').replace('.jpg', ''),
-      },
-    ];
+  if(variant.options[colorIndex] === 'Matte White') {
+    var color = 'white'
+  }
+  else if(variant.options[colorIndex] === 'Matte Black') {
+    var color = 'black'
+  }
+  else if(variant.options[colorIndex] === 'Walnut Wood') {
+    var color = 'walnut'
   }
 
-  return productImages[product.handle][variantName].map((fileName) => {
-    if (fileName.includes('color-swatch')) {
-      return {
-        url: getColorSwatchImageUrl(variantName, product, variant),
-        alt: `${variantName.toLowerCase()} color swatch`,
-      };
-    }
+  let productImgs = [
+    variant.featured_image.src,
+    'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/Image-C-close-up-corner-angled-'+color+'.jpg?',
+    'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/Image-D-back-of-frame-angled.jpg',
+    'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/Image-E-hanging-demo.jpg'
+  ]
 
+  return productImgs.map((imageUrl) => {
+    console.log('imageUrl => ', imageUrl);
     return {
-      url: getS3url(`/${product.handle}/${variantName}/${fileName}`),
-      alt: `${product.handle}-${variantName}-${fileName}`.replace(/-/g, ' ').replace('.jpg', ''),
+      url: imageUrl,
+      alt: `${product.handle}-${variantName}`.replace(/-/g, ' ').replace('.jpg', ''),
     };
-  });
+  })
+
+  // return {
+  //   url: variant.featured_image.src,
+  //   alt: `${product.handle}-${variantName}`.replace(/-/g, ' ').replace('.jpg', ''),
+  // };
 };
 
 const mapRecommendedColors = (products) => {
