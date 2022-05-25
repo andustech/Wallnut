@@ -1,85 +1,88 @@
 import React from 'react';
 
-const meetWallnut = ({ settings }) => {
+const meetWallnut = ({ settings, blocks }) => {
+  const { section_title, main_content } = settings;
   return (
-    <div className="py-16 px-5 text-black">
-      <div className="text-center mb-24">
-        <p className="text-2xl mb-8">Meet Wallnut:a better way to art</p>
-        <p className="text-base mt-0">
-          We're taking the work out of artwork with premium, framed art that's easy to hang.
-        </p>
+    <div className="section-padding text-black">
+      <div className="container text-center mb-14">
+        {section_title && <h2 className="text-4xl mb-2 sec-title font-bold">{section_title}</h2> }
+        { main_content && <p className="font-normal text-base mb-0 leading-6">{main_content}</p> }
       </div>
 
-      <div className="container mx-auto py-2 px-5 lg:px-3">
-        <div className="video_items_container mb-16 flex items-center flex-col lg:flex-row lg:items-center md:items-start">
-          <div className="lg:w-7/12 lg: items-center">
-            <img
-              src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/meet-wallnut-1.jpg?v=1652355017"
-              alt="how-it-works"
-              className="w-full"
-            />
-          </div>
-          <div className="video_content lg:w-5/12 lg:px-10">
-            <h1 className="text-2xl font-bold text-black">Hassle-free hanging</h1>
-            <p className="mb-5 text-base">
-              Skip the trip to the hardware store. Wallnut artwork arrievs with everything you need
-              to hang it. The Wallnut<sup>TM</sup> Mounting System comes with two pieces:
-            </p>
-            <ul className="text-base pl-5 list-disc">
-              <li>
-                <h3 className="mb-2">
-                  <span className="font-bold">Wall mount.*</span> It's adhesive-based, so you don't
-                  have to worry about wall damage. It also comes with a built-in level, which makes
-                  it easy to find the perfect placement.
-                </h3>
-              </li>
-              <li>
-                <h3 className="mb-2">
-                  <span className="font-bold">Frame hook.</span> It arrievs already attached to the
-                  frame, so you can just slide it right into the amount.
-                </h3>
-              </li>
-            </ul>
-            <a
-              href="#"
-              className="text-xs flex items-center mb-8 lg:mb-2 text-black hover:text-red-100"
-            >
-              <img
-                src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/video-play-black.svg?v=1652851742"
-                alt="Video Play"
-                className="mr-3"
-              />{' '}
-              SEE IT IN ACTION
-            </a>
-            <p className="text-xs">
-              *We recommend using the included hanging nails when extra support is needed. For more
-              information, visit our FAQS.
-            </p>
-          </div>
-        </div>
+      <div className="container">
+          {blocks.map((block, index)=>{
+            const {settings} = block;
+            return (
+              <>
+              {index % 2 === 0 ? (
+                <div className="video_items_container mb-16 flex flex-col lg:flex-row items-center lg:items-center md:items-start">
+                  <div className="lg:w-7/12">
+                    <img
+                      src={settings.image}
+                      alt="how-it-works"
+                      className="w-full"
+                    />
+                  </div>
+                  <div className="video_content lg:w-5/12 lg:pl-16 xl:pl-24">
+                    { settings.title && <h2 className="text-2xl font-bold text-black mb-4">{settings.title}</h2> }
+                    { settings.content && <p className="font-normal mb-4 text-base leading-6">{settings.content}</p> }
+                    <ul className="text-base pl-5 mb-7 list-disc">
+                      { settings.point_content_1 && 
+                        <li>
+                          <p className="font-normal text-base mb-3 leading-6">
+                            <span className="font-bold">{settings.point_title_1}</span> {settings.point_content_1}
+                          </p>
+                        </li>
+                      }
+                      { settings.point_content_2 && 
+                        <li>
+                          <p className="font-normal text-base mb-0 leading-6">
+                            <span className="font-bold">{settings.point_title_2}</span> {settings.point_content_2}
+                          </p>
+                        </li>
+                      }
+                    </ul>
+                    { settings.video_btn_text && 
+                      <a
+                        href="javascript:void(0);"
+                        className="text-xs flex items-center mb-6 text-black leading-5 link_hover"
+                      >
+                        <img
+                          src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/video-play-black.svg?v=1652851742"
+                          alt="Video Play"
+                          className="mr-3"
+                        />{' '}
+                        {settings.video_btn_text}
+                      </a>
+                    }
+                    { settings.subtext && 
+                      <p className="font-normal text-xs leading-5 mb-0">{settings.subtext}</p>
+                    }
+                  </div>
+                </div>
 
-        <div className="how_it_work_items_container flex items-center flex-col lg:flex-row lg:items-center md:items-start">
-          <div className="h-full lg:w-6/12 lg:px-16 py-5 lg:pt-5 my-auto">
-            <div className="items-center">
-              <h2 className="text-2xl font-bold text-black mb-4">Framed and ready to hang</h2>
-              <p className="mb-7 text-base">
-                Your artwork arrives already framed, using premium materials that are thoughtfully
-                sourced. Simply hang it in your living room, bedroom, bathroom, kid's room, craft
-                room... or any room!
-              </p>
-              <a href="#" className="primary_btn">
-                SHOP BEST SELLERS
-              </a>
-            </div>
-          </div>
-          <div className="w-9/12">
-            <img
-              src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/meet-wallnut-2.jpg?v=1652355484"
-              alt="how-it-works"
-              className="w-full"
-            />
-          </div>
-        </div>
+              ):(
+                <div className="how_it_work_items_container flex flex-col lg:flex-row items-center lg:items-center md:items-start">
+                  <div className="lg:w-5/12 lg:pr-16 xl:pr-24">
+                    { settings.title && <h2 className="text-2xl font-bold text-black mb-4">{settings.title}</h2> }
+                    { settings.content && <p className="mb-6 font-normal text-base leading-6">{settings.content}</p> }
+                    { settings.button_text && <a href={settings.button_link} className="primary_btn mr-0">{settings.button_text}</a> }
+                    { settings.subtext && 
+                      <p className="font-normal text-xs leading-5 mb-0">{settings.subtext}</p>
+                    }
+                  </div>
+                  <div className="lg:w-7/12">
+                    <img
+                      src={settings.image}
+                      alt="how-it-works"
+                      className="w-full"
+                    />
+                  </div>
+                </div>
+              )}
+              </>
+              )
+          })}
       </div>
       <div className="main_banner mt-28 relative">
         <img

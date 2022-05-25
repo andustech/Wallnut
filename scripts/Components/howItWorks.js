@@ -1,6 +1,7 @@
 import React from 'react';
 
 const howItWorks = ({ settings }) => {
+  const { image, title, subheading, content, button_text_1, button_link_1, button_text_2, button_link_2 } = settings;
   return (
     <>
       <div id="shopify-section-162430614931fcd803" class="shopify-section">
@@ -8,22 +9,18 @@ const howItWorks = ({ settings }) => {
           <div id="react-hero">
             <div class="main_banner relative">
               <img
-                src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/how-it-works.jpg?v=1652360306"
+                src={image}
                 class="bannr_img"
                 alt="Banner"
               />
               <div class="banner_content">
                 <div class="container">
                   <div class="how_it_work_hero_overlay text-white">
-                    <h1 class="text-white">We're not your typical</h1>
-                    <span>art company</span>
-                    <p>We want to innovate the art experience. We were tired of having to choose between quality, style, and convenience, so we started Wallnut to set a new standard.</p>
-                    <a href="#" class="primary_btn">
-                      SHOP BEST SELLERS
-                    </a>
-                    <a href="#" class="secondary_btn">
-                      SHOP ALL
-                    </a>
+                    { title && <h1 class="text-white mb-1">{title}</h1> }
+                    { subheading && <h2 class="text-white mb-4">{subheading}</h2> }
+                    { content && <p className="mb-8">{content}</p> }
+                    { button_text_1 && <a href={button_link_1} class="primary_btn">{button_text_1}</a> }
+                    { button_text_2 && <a href={button_link_2} class="secondary_btn">{button_text_2}</a> }
                   </div>
                 </div>
               </div>

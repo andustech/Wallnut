@@ -45,25 +45,25 @@ const hangingWallnut = ({ settings }) => {
             </ValuePropColumn>
           ))}
         </ValuePropContainer>
-      </PremiumMainContainer>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 mt-14 px-5">
-        <div>
-          <img
-            src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/Rectangle-35.jpg?v=1652683698"
-            alt="Our mission"
-          />
-        </div>
-        <OurMissionText>
-          <h2>Our mission</h2>
-          <p>
-            At Wallnut, we’re passionate about making it easy to transform your house into a home.
-            We believe that art shouldn’t be difficult to find, frustrating to frame, or impossible
-            to hang. That's why we spent years developing the perfect mounting system. And it's why
-            we're constantly curating a high-quality art collection that will complement your space.{' '}
-          </p>
-        </OurMissionText>
-      </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 mt-14 px-5">
+          <div>
+            <img
+              src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/Rectangle-35.jpg?v=1652683698"
+              alt="Our mission"
+            />
+          </div>
+          <OurMissionText>
+            <h2>Our mission</h2>
+            <p>
+              At Wallnut, we’re passionate about making it easy to transform your house into a home.
+              We believe that art shouldn’t be difficult to find, frustrating to frame, or impossible
+              to hang. That's why we spent years developing the perfect mounting system. And it's why
+              we're constantly curating a high-quality art collection that will complement your space.{' '}
+            </p>
+          </OurMissionText>
+        </div> 
+      </PremiumMainContainer>
     </>
   );
 };
