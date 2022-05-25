@@ -145,7 +145,6 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
       return currentOption.id === item.variant_ids[0]
     })
   }
-  console.log('product ==== ', product)
 
   const cdnUrl = 'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/';
   var imgColor = ''

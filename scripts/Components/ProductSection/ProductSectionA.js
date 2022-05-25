@@ -6,7 +6,7 @@ import parse from 'react-html-parser';
 import { getYotpoReviewsData, isSaleOn, fetchProductByHandle } from '../../utils';
 import MobileProductDetailsSection from './MobileProductDetailsSection';
 import DesktopProductDetails from './DesktopProductDetails';
-import ProductRecommendation from '../ProductRecommendation';
+import ProductRecommended from '../ProductRecommended';
 import YotpoReviews from '../YotpoReviews';
 import ProductSelector from './ProductSelector';
 import VideoPlayer from '../VideoPlayer';
@@ -18,15 +18,8 @@ const getProductTypeBlocks = (product, blocks) => {
     return [];
   }
 
-  if (product.handle.includes('exclusive')) {
-    const handle = product.handle.replace(/-exclusive/, '');
-    return blocks.filter(
-      (block) => block.type === 'product_details' && block.settings.product === handle
-    );
-  }
-
   return blocks.filter(
-    (block) => block.type === 'product_details' && block.settings.product.includes(product.handle)
+    (block) => block.type === 'product_details'
   );
 };
 
@@ -152,7 +145,7 @@ const ProductSectionA = (props) => {
         )}
       </div>
       <ProductDescription ref={descriptionRef}>
-        <SectionTiltle className='section_titile pdp-small'>
+        <SectionTiltle className='section_titile pdp-small mb-0'>
           <h2 className="font-bold text-center">About {product.title}</h2>
         </SectionTiltle>
         {parse(product.description)}
@@ -193,7 +186,7 @@ const ProductSectionA = (props) => {
           );
         })}
       </div>
-      <ProductRecommendation product={currentProduct} title="You might also like" />
+      <ProductRecommended product={currentProduct} title="Here’s other products you might like." />
       <div ref={reviewsRef}>
         {reviews.reviews && <YotpoReviews reviews={reviews} product={currentProduct} />}
       </div>
@@ -208,9 +201,10 @@ const DRBannerDiscount = styled.h1.attrs({
 `;
 
 const ProductDescription = styled.div.attrs({
-  className: 'product-description m-auto text-center',
+  className: 'product-description ml-auto mr-auto text-center',
 })`
   max-width: 644px;
+  margin-bottom: 112px;
 `;
 
 const StyledMobileMedia = styled.div.attrs(({ mediaType }) => {
