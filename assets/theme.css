@@ -1238,6 +1238,15 @@ afterpay-placement {
 #pdp-color-swatcher h5 span, #pdp-size-swatcher h5 span {
   font-family: 'GoodSans';
 }
+.pdp-tabs .pdp-tab {
+  font-family: 'GoodSans';
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.05em;
+  color: #000000;
+  text-transform: uppercase;
+}
 
 
  /* How it works page */

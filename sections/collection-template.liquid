@@ -3,7 +3,7 @@
       <script type="application/json">
         {
           "products": [
-            {% paginate collection.products by number %}
+            {% paginate collection.products by 100 %}
               {% for product in collection.products %}
                 {{ product | json }}{% if forloop.last != true %},{% endif %}
               {% endfor %}

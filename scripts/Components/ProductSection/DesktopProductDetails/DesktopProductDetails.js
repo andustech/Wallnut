@@ -8,37 +8,33 @@ import DeliverySection from './DeliverySection';
 const DesktopProductDetails = ({ productTypeBlocks, blocks }) => {
   const [currentTab, setCurrentTab] = useState('');
   const productBlock = productTypeBlocks.find((block) => block.type === 'product_details');
-  const { about_heading, features_section_1_name, section_2_name } = productBlock
+  const { howitwork_tab_heading, whylove_tab_heading, specifications_tab_heading, sprt_tab_heading } = productBlock
     ? productBlock.settings
     : {};
 
   useEffect(() => {
-    setCurrentTab(about_heading);
-  }, [about_heading]);
+    setCurrentTab(howitwork_tab_heading);
+  }, [howitwork_tab_heading]);
 
   if (!productBlock) {
     return null;
   }
 
-  const deliveryBlock = blocks.find((block) => block.type === 'delivery_info_section');
-  const deliveryName = deliveryBlock.settings.name;
-  const activeStyles = 'border-b-2 border-black pb-5';
-  const tabs = [about_heading, features_section_1_name, section_2_name, deliveryName].filter(
+  const activeStyles = 'pdp-tab border-b-2 border-black pb-5';
+  const tabs = [howitwork_tab_heading, whylove_tab_heading, specifications_tab_heading, sprt_tab_heading].filter(
     (tab) => tab
   );
 
   return (
     <div className="hidden justify-items-center md:grid md:grid-cols-1 lg:px-28 md:px-10">
-      <div className="border-b w-10/12 grid justify-items-center max-w-screen-xxl">
+      <div className="border-b-2 w-10/12 grid justify-items-center max-w-screen-xxl">
         <div
-          className={`cursor-pointer font-extralight font-serif grid grid-cols-4 justify-items-center text-blue gap-28 lg:gap-0 text-lg md:grid-cols-${
-            tabs.length
-          } ${tabs.length === 2 ? 'w-8/12' : 'w-10/12'}`}
+          className={`cursor-pointer justify-items-center gap-18 flex flex-row pdp-tabs`}
         >
           {tabs.map((tab, i) => (
             <div
               key={i}
-              className={currentTab === tab ? activeStyles : ''}
+              className={currentTab === tab ? activeStyles : 'pdp-tab'}
               onClick={() => setCurrentTab(tab)}
               role="button"
               onKeyDown={() => {}}
@@ -49,13 +45,11 @@ const DesktopProductDetails = ({ productTypeBlocks, blocks }) => {
           ))}
         </div>
       </div>
-      <div className="pt-10 text-sm justify-items-center max-w-screen-xxl font-extralight flex flex-row w-10/12">
-        {currentTab === about_heading && (
-          <OverviewSection productBlock={productBlock} blocks={blocks} />
-        )}
-        {currentTab === features_section_1_name && <FeaturesSection productBlock={productBlock} />}
-        {currentTab === section_2_name && <SpecificationsSection productBlock={productBlock} />}
-        {deliveryName && currentTab === deliveryName && <DeliverySection blocks={blocks} />}
+      <div className="pt-16 text-sm justify-items-center max-w-screen-xxl font-extralight flex flex-row w-10/12">
+        {currentTab === howitwork_tab_heading && <OverviewSection productBlock={productBlock} blocks={blocks} />}
+        {currentTab === whylove_tab_heading && <FeaturesSection productBlock={productBlock} />}
+        {currentTab === specifications_tab_heading && <SpecificationsSection productBlock={productBlock} />}
+        {currentTab === sprt_tab_heading && <DeliverySection productBlock={productBlock} />}
       </div>
     </div>
   );

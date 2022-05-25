@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import PLPItem from '../PLPItem';
 import { getVariant } from '../../utils';
 import InfiniteScroll from 'react-infinite-scroll-component';
-var lastIndex = 4;
+var lastIndex = 16;
 
 const PLPItems = ({ products }) => {
   const [count, setCount] = React.useState([]);
@@ -11,7 +11,7 @@ const PLPItems = ({ products }) => {
     setCount(products.slice(0, lastIndex));
   }, []);
   const loadMore = () => {
-    lastIndex += 2;
+    lastIndex += 16;
     setCount(products.slice(0, lastIndex));
   };
   return (

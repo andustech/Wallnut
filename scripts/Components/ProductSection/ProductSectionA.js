@@ -18,6 +18,7 @@ const getProductTypeBlocks = (product, blocks) => {
     return [];
   }
 
+  console.log('getProductTypeBlocks == ', blocks)
   return blocks.filter(
     (block) => block.type === 'product_details'
   );
@@ -25,6 +26,8 @@ const getProductTypeBlocks = (product, blocks) => {
 
 const ProductSectionA = (props) => {
   const { settings, blocks, product, assetURL, themeSettings, metafields } = props;
+
+  console.log('blocks == ', blocks)
 
   const { sale_start, sale_end } = themeSettings;
   const salesOn = isSaleOn(sale_start, sale_end);
@@ -40,6 +43,8 @@ const ProductSectionA = (props) => {
   const reviewsRef = useRef();
   const descriptionRef = useRef();
   const productTypeBlocks = getProductTypeBlocks(currentProduct, blocks);
+
+  console.log('blocks == ', productTypeBlocks)
 
   useEffect(() => {
     let defaultVariant = product.variants.find((variant) =>
@@ -154,7 +159,7 @@ const ProductSectionA = (props) => {
       <div className="mb-8 md:hidden px-4">
         {productTypeBlocks.map((block, i) => {
           const {
-            about_heading,
+            howitwork_tab_heading,
             about_paragraph,
             about_paragraphNote,
             about_desktop_heading,
@@ -166,7 +171,7 @@ const ProductSectionA = (props) => {
             <div key={i}>
               <div className="pb-5 border-grey-50 border-b border-solid">
                 <h5 className="font-serif text-orange-burnt text-base font-normal mb-1 text-lg">
-                  {about_heading}
+                  {howitwork_tab_heading}
                 </h5>
                 <StyledMobileMedia mediaType={about_media_type}>
                   {about_image && about_media_type === 'image' && <img src={about_image} alt="" />}

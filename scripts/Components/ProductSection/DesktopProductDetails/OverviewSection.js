@@ -5,7 +5,7 @@ import VideoPlayer from '../../VideoPlayer';
 const OverviewSection = ({ productBlock }) => {
   const { settings } = productBlock;
   const {
-    about_desktop_heading,
+    howitwork_tab_heading,
     about_paragraph,
     about_media_type,
     about_image,
@@ -23,7 +23,7 @@ const OverviewSection = ({ productBlock }) => {
         </div>
       </div>
       <div className="lg:mt-15 md:mt-0 md:w-98 mt-5 mx-auto">
-        <div className="font-serif text-xl font-light mt-3">{about_desktop_heading}</div>
+        <div className="font-serif text-xl font-light mt-3">{howitwork_tab_heading}</div>
         <p className="text-base font-extralight mt-3 mb-5">{about_paragraph}</p>
       </div>
     </div>
@@ -37,7 +37,7 @@ OverviewSection.defaultProps = {
 OverviewSection.propTypes = {
   productBlock: PropTypes.shape({
     settings: PropTypes.shape({
-      about_desktop_heading: PropTypes.string,
+      howitwork_tab_heading: PropTypes.string,
       about_paragraph: PropTypes.string,
       about_image: PropTypes.string,
       about_video_url: PropTypes.string,
