@@ -69,6 +69,47 @@ p {
 	font-family: 'GoodSans-Light';
 }
 h1, .h1 {
+  font-size: 56px !important;
+  line-height: 78px !important; /* 51 */
+}
+@media only screen and (max-width: 575px) {
+  h1, .h1 {
+    font-size: 28px !important;
+    line-height: 39px !important; /* 25 */
+  }
+}
+h2, .h2 {
+  font-size: 48px !important;
+  line-height: 66px !important; /* 56 */
+}
+@media only screen and (max-width: 575px) {
+  h2, .h2 {
+    font-size: 24px !important;
+    line-height: 33px !important;
+  }
+}
+h3, .h3 {
+  font-size: 36px !important;
+  line-height: 50px !important;
+}
+@media only screen and (max-width: 575px) {
+  h3, .h3 {
+    font-size: 20px !important;
+    line-height: 26px !important;
+  }
+}
+h4, .h4 {
+  font-size: 24px !important;
+  line-height: 32px !important;
+}
+@media only screen and (max-width: 575px) {
+  h4, .h4 {
+    font-size: 20px !important;
+    line-height: 28px !important;
+  }
+}
+
+h1, .h1 {
   font-style: normal;
   font-weight: 500;
   font-size: 56px;
@@ -150,8 +191,12 @@ button, a {
 .font-attila-sans-medium {
   font-family: 'AttilaSansUniform-Medium';
 }
+* {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}  
 body {
-  font-family: 'Good Sans' !important;
+  font-family: 'GoodSans' !important;
   font-style: normal !important;
   font-weight: 300 !important;
   font-size: 16px !important;
@@ -204,6 +249,7 @@ body {
 
 .bannr_img{
     width: 100%;
+    object-fit: cover;
 }
 
 .bDBApU{
@@ -633,17 +679,17 @@ height: 180px !important;
 }
 
 
-.video_content h2, .how_it_work_content h2 {
+.index .video_content h2, .how_it_work_content h2 {
   margin-top: 0 !important;
   line-height: 66px !important;
 }
 
 
-.video_content p {
+.index .video_content p {
   line-height: 24px !important;
 }
 
-.video_content {
+.index .video_content {
   font-size: 12px !important;
   line-height: 20px !important;
 }
@@ -659,20 +705,20 @@ height: 180px !important;
   justify-content: flex-end;
 }
 
-.video_content {
+.index .video_content {
   /* padding-right: 100px; */
   /* max-width: 50%; */
   /* width: 100%; */
 }
 
-.video_content p, .how_it_work_content p {
+.index .video_content p, .how_it_work_content p {
   font-size: 16px;
   line-height: 24px;
   font-family: 'GoodSans' !important;
   font-weight: 400 !important;
 }
 
-.video_content h2, .how_it_work_content h2 {
+.index .video_content h2, .how_it_work_content h2 {
     font-weight: 700;
     font-size: 48px;
     line-height: 66px;
@@ -681,7 +727,7 @@ height: 180px !important;
     margin-bottom: 16px;
 }
 
-.video_content a, .how_it_work_content a:last-child {
+.index .video_content a, .how_it_work_content a:last-child {
   font-weight: 400;
   font-size: 12px;
   line-height: 20px;
@@ -727,7 +773,7 @@ height: 180px !important;
 
 @media only screen and (max-width: 1156px) {
 
-  .video_content p br, .how_it_work_content p br {
+  .index .video_content p br, .how_it_work_content p br {
     display: none;
   }
 
@@ -735,7 +781,7 @@ height: 180px !important;
     padding-left: 45px;
 } */
 
-/* .video_content {
+/* .index .video_content {
   padding-right: 45px;
 } */
 
@@ -782,7 +828,7 @@ height: 180px !important;
     width: 100% !important;
   } */
 
-  .video_content {
+  .index .video_content {
     padding: 0 !important;
   }
 
@@ -826,16 +872,16 @@ height: 180px !important;
   align-items: flex-start !important;
 }
 
-/* .video_content, .how_it_work_content {
+/* .index .video_content, .how_it_work_content {
     margin-top: 24px;
 } */
 
-/* .video_content h2 {
+/* .index .video_content h2 {
   font-size: 24px;
 line-height: 33px;
 } */
 
-.how_it_work_content p, .video_content p {
+.how_it_work_content p, .index .video_content p {
   font-weight: 300 !important;
   font-size: 14px;
   line-height: 20px;
@@ -857,7 +903,7 @@ line-height: 33px;
   flex-direction: column;
 }
 
-/* .video_content, .how_it_work_content {
+/* .index .video_content, .how_it_work_content {
   max-width: 100%;
   width: 100%;
   padding: 0;
@@ -989,49 +1035,6 @@ line-height: 33px;
 
 
 @media only screen and (max-width: 575px) {
-
-  .primary_btn, .secondary_btn {
-    /* display: inherit; */
-    width: 100%;
-    font-size: 10px;
-    line-height: 16px;
-    margin-bottom: 12px;
-  }
-  .overlay h1 {
-    font-size: 28px !important;
-    line-height: 39px !important;
-  }
-
-  .overlay span {
-    font-size: 28px !important;
-    margin-bottom: 24px !important;
-    line-height: 25px !important;
-  }
-
-  .overlay {
-    padding: 32px 0 !important;
-  }
-
-  .overlay .primary_btn, .overlay .secondary_btn {
-    margin: 0 auto;
-    max-width: 142px;
-    padding: 8px !important;
-  }
-
-  .how_it_work_hero_overlay  .primary_btn, .how_it_work_hero_overlay  .secondary_btn {
-    max-width: 176px;
-    padding: 8px !important;
-  }
-
-  .how_it_work_hero_overlay h1, .how_it_work_hero_overlay h2 {
-    font-size: 28px !important;
-    line-height: 39px !important;
-  }
-
-  .how_it_work_hero_overlay p {
-    font-size: 16px !important;
-    line-height: 24px !important;
-  }
   
   .premium_card_container {
     margin-bottom: 20px;
@@ -1063,13 +1066,13 @@ line-height: 33px;
       line-height: 16px !important;
   }
 
-  .video_content h2, .how_it_work_content h2 {
+  .index .video_content h2, .how_it_work_content h2 {
     font-size: 24px !important;
     line-height: 33px !important;
     letter-spacing: -0.02em;
   }
 
-  .video_content p, .how_it_work_content p {
+  .index .video_content p, .how_it_work_content p {
     font-weight: 300;
     font-size: 14px;
     line-height: 20px;
@@ -1256,7 +1259,7 @@ afterpay-placement {
   top: 23%;
 }
 
-#react-how-it-works .primary_btn, #react-how-it-works .secondary_btn {
+.how-it-works .primary_btn, .how-it-works .secondary_btn {
   padding: 14px 30px;
 }
 
@@ -1265,7 +1268,6 @@ afterpay-placement {
   font-weight: 700;
   font-size: 48px;
   line-height: 66px;
-  margin-bottom: -7px !important;
   letter-spacing: -0.02em;
 }
 
@@ -1308,11 +1310,23 @@ afterpay-placement {
   font-size: 16px;
   line-height: 24px;
 }
+#react-meet-wallnut h2.sec-title {
+  line-height: 50px !important;
+}
+#react-meet-wallnut h2 {
+    line-height: 33px !important;
+    letter-spacing: -0.02em;
+}
+
+#react-meet-wallnut p {
+  font-family: 'GoodSans';
+}
 
 @media only screen and (max-width: 991px) {
   .how_it_work_hero_overlay {
     max-width: 100% !important;
-    padding: 50px;
+    padding-top: 31px;
+    padding-bottom: 31px;
     position: relative;
   }
 
@@ -1328,7 +1342,53 @@ afterpay-placement {
 
   /* .how_it_work_items_container img {
   width: 100%;
-} */
+  } */
+  
+
+  .overlay .primary_btn, .overlay .secondary_btn, .how_it_work_hero_overlay  .primary_btn, .how_it_work_hero_overlay  .secondary_btn {
+    /* display: inherit; */
+    width: 100%;
+    font-size: 10px;
+    line-height: 16px;
+    margin-bottom: 12px !important;
+    text-align: center;
+    /* margin-right: 0 !important; */
+  }
+  .overlay h1 {
+    font-size: 28px !important;
+    line-height: 39px !important;
+  }
+
+  .overlay span {
+    font-size: 28px !important;
+    margin-bottom: 24px !important;
+    line-height: 25px !important;
+  }
+
+  .overlay {
+    padding: 32px 0 !important;
+  }
+
+  .overlay .primary_btn, .overlay .secondary_btn {
+    margin: 0 auto;
+    max-width: 142px;
+    padding: 8px !important;
+  }
+
+  .how_it_work_hero_overlay  .primary_btn, .how_it_work_hero_overlay  .secondary_btn {
+    max-width: 176px;
+    padding: 8px !important;
+  } 
+
+  .how_it_work_hero_overlay h1, .how_it_work_hero_overlay h2 {
+    font-size: 28px !important;
+    line-height: 39px !important;
+  }
+
+  .how_it_work_hero_overlay p {
+    font-size: 16px !important;
+    line-height: 24px !important;
+  }
 }
 
 /* @media only screen and (max-width: 575px) {
@@ -1347,33 +1407,19 @@ afterpay-placement {
     line-height: 38px;
   }
 } */
-#react-meet-wallnut h2 {
-  line-height: 50px !important;
-  letter-spacing: -0.02em;
-}
+
 @media only screen and (min-width: 1440px) {
   .index .navbar .container, .index .main_banner .container {
-    max-width: 1540px !important;
+    max-width: 1440px !important;
+    padding: 0 64px;
   }
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 991px) and (max-width: 1439px) {
   .index .navbar .container, .index .main_banner .container {
+    max-width: 100% !important;
     padding: 0 40px;
   }
 } 
-@media only screen and (min-width: 1100px) {
-  .index .navbar .container, .index .main_banner .container {
-    padding: 0 56px;
-    max-width: 100% !important;
-  }
-  
-}
-
-@media only screen and (max-width: 1440px) {
-  .index .navbar .container, .index .main_banner .container {
-    max-width: 100% !important;
-  }
-}
 
 @media only screen and (min-width: 991px) and (max-width: 1200px) {
   .overlay h1 {

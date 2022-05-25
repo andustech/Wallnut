@@ -90,10 +90,10 @@ const HeaderContainer = styled.div.attrs(({ sticky }) => {
   const fixed = 'fixed top-0 z-10';
   return { className: sticky ? `${className}, ${fixed}` : `${className}` };
 })`
-  height: 70px;
+  height: auto;
   border-bottom: 1px solid #d5d5d5;
   @media screen and (max-width: 1024px) {
-    height: 50px;
+    height: auto;
   }
 `;
 

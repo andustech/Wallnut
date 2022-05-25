@@ -203,7 +203,7 @@
       </div>
     {% endif %}
 
-    <div id="content"{% unless full_width_page %} class="row w-full"{% endunless %}>
+    <div id="content"{% unless full_width_page %} class="row w-full {{template.suffix }}"{% endunless %}>
       {% unless template contains 'product' %}
         {% if settings.breadcrumb and full_width_page == true %}
           <div class="row">
@@ -310,20 +310,29 @@
         }
       }, 200);
 
-      if ($(window).width() >= 991 && $('body').hasClass('index')){
-        const myIntervalBannerheight = setInterval(function() {
-          if ($('body .gm-menu').length > 0) {
-            var ann_height = $('#react-header').outerHeight();
-            console.log('ann_height', ann_height);
-            var header_height = $('#react-desktop-announcement').outerHeight();
-            console.log('header_height', header_height);
-            var total_height = ann_height + header_height;
-            console.log('total_height', total_height);
-            $('.main_banner img').attr('style', 'height: calc(100vh - '+total_height+'px)');
-            clearInterval(myIntervalBannerheight);
-          }
-        }, 200);
+      function bannerImageHeight() {
+        if ($(window).width() >= 991 && $('body').hasClass('index')){
+          const myIntervalBannerheight = setInterval(function() {
+            if ($('body .gm-menu').length > 0) {
+              var ann_height = $('#react-header').outerHeight();
+              console.log('ann_height', ann_height);
+              var header_height = $('#react-desktop-announcement').outerHeight();
+              console.log('header_height', header_height);
+              var total_height = ann_height + header_height;
+              console.log('total_height', total_height);
+              $('.main_banner img').attr('style', 'height: calc(100vh - '+total_height+'px)');
+              clearInterval(myIntervalBannerheight);
+            }
+          }, 200);
+        } else {
+          $('.main_banner img').removeAttr('style');
+        }
       }
+      bannerImageHeight();
+
+      $( window ).resize(function() {
+        bannerImageHeight();
+      });
     });
   </script>
 

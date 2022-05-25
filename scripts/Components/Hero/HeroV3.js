@@ -29,7 +29,7 @@ const HeroV3 = ({ settings }) => {
         <div className='container'>
           <div className="overlay">
             { title && <h1 className="mb-1">{title}</h1> }
-            { subheading && <span className="">{subheading}</span> }
+            { subheading && <span className="" style={{"line-height": "51px"}}>{subheading}</span> }
             { button_text_1 && <a href={button_link_1} className="primary_btn mr-3 lg:mr-6">{button_text_1}</a> }
             { button_text_2 && <a href={button_link_2} className="secondary_btn">{button_text_2}</a> }
           </div>
