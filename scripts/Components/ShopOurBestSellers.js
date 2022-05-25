@@ -25,11 +25,11 @@ const ShopOurBestSellers = ({ settings }) => {
   ];
 
   return (
-    <div className="py-16 px-5 text-black">
-      <div className="text-center mb-24">
+    <div className="px-5 text-black section-padding">
+      <div className="text-center">
         <p className="text-4xl mb-2">Shop our best sellers</p>
         <div className="grid justify-center">
-          <div className="grid grid-cols-1 pt-6 justify-items-start w-full gap-4 mb-12 max-w-screen-xxl sm:grid-cols-2 lg:gap-8 lg:grid-cols-4">
+          <div className="grid grid-cols-1 pt-6 justify-items-start w-full gap-4 max-w-screen-xxl sm:grid-cols-2 lg:gap-8 lg:grid-cols-4">
             {valueProps.map((item, i) => (
               <div key={i}>
                 <div class="relative overflow-hidden bg-gray-50">

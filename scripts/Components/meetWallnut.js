@@ -4,7 +4,7 @@ const meetWallnut = ({ settings }) => {
   return (
     <div className="py-16 px-5 text-black">
       <div className="text-center mb-24">
-        <p className="text-2xl mb-8">Meet Wallnut:a better way to art</p>
+        <h2 className="text-4xl mb-8">Meet Wallnut:a better way to art</h2>
         <p className="text-base mt-0">
           We're taking the work out of artwork with premium, framed art that's easy to hang.
         </p>
