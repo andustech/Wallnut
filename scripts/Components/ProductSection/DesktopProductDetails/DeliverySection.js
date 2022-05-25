@@ -32,15 +32,17 @@ const DeliverySection = ({ productBlock }) => {
         </div>
         <div>
           {sprt_1_paragraph && (
+            <>
             <p
-              className="text-sm font-extralight mb-0 hidden md:block md:text-base"
+              className="mb-0 inline"
               dangerouslySetInnerHTML={{ __html: sprt_1_paragraph }}
             />
-          )}
-          {sprt_1_linkText && sprt_1_linkUrl && (
-            <Link className="hidden font-xs md:inline-block md:text-sm" href={sprt_1_linkUrl}>
-              {sprt_1_linkText}
-            </Link>
+            {sprt_1_linkText && sprt_1_linkUrl && (
+              <Link className="inline-block ml-1" href={sprt_1_linkUrl}>
+                {sprt_1_linkText}
+              </Link>
+            )}
+            </>
           )}
         </div>
       </IconTitleContainer>
@@ -50,7 +52,7 @@ const DeliverySection = ({ productBlock }) => {
         <div className="mb-6">
           {sprt_2_title && (
             <>
-            <ReturnIcon height="55" />
+            <ReturnIcon/>
             <h3 className="text-base ml-5 inline">
               {sprt_2_title}
             </h3>
@@ -59,16 +61,19 @@ const DeliverySection = ({ productBlock }) => {
         </div>
         <div>
           {sprt_2_paragraph && (
+            <>
             <p
-              className="text-sm font-extralight mb-0 hidden md:block md:text-base"
+              className="mb-0 inline"
               dangerouslySetInnerHTML={{ __html: sprt_2_paragraph }}
             />
+            {sprt_2_linkText && sprt_2_linkUrl && (
+              <Link className="inline-block ml-1" href={sprt_2_linkUrl}>
+                {sprt_2_linkText}
+              </Link>
+            )}
+            </>
           )}
-          {sprt_2_linkText && sprt_2_linkUrl && (
-            <Link className="hidden font-xs md:inline-block md:text-sm" href={sprt_2_linkUrl}>
-              {sprt_2_linkText}
-            </Link>
-          )}
+          
         </div>
       </IconTitleContainer>
     </div>
@@ -85,13 +90,34 @@ const IconTitleContainer = styled.div.attrs({
   }
   h3 {
     vertical-align: middle;
+    vertical-align: middle;
+    font-family: 'Nib-bold-pro';
+    font-size: 24px !important;
+    line-height: 33px !important;
+    font-weight: 700;
+    color: #000;
+  }
+  p {
+    font-family: 'GoodSans';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.01em;
+    color: #000000;
   }
 `;
 
 const Link = styled.a.attrs({
-  className: 'font-serif mb-5 text-brown text-xs',
+  className: 'mb-5',
 })`
   text-decoration: underline;
+  text-transform: lowercase;
+  font-family: 'GoodSans';
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.01em;
+  color: #000000;
 `;
 
 DeliverySection.defaultProps = {

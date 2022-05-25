@@ -27,7 +27,7 @@ const FeaturesSection = ({ productBlock }) => {
               {!even && (
                 <div className="w-10/12">
                   {section.title && (
-                    <h3 className="font-normal font-serif pb-3 text-blue-light text-sm md:text-base">
+                    <h3 className="mb-4">
                       {section.title}
                     </h3>
                   )}
@@ -47,7 +47,7 @@ const FeaturesSection = ({ productBlock }) => {
               {even && (
                 <div className="w-10/12">
                   {section.title && (
-                    <h3 className="font-normal font-serif pb-3 text-blue-light text-sm md:text-base">
+                    <h3 className="mb-4">
                       {section.title}
                     </h3>
                   )}

@@ -21,7 +21,7 @@ const SpecificationsSection = ({ productBlock }) => {
   return (
     <>
       <div className="mx-auto lg:col-span-2 lg:grid lg:grid-cols-2 gap-5 max-w-screen-xxl">
-        <div>
+        <div className="dimensions-col">
           <SectionName>{dimensions_heading}</SectionName>
           {frame_size && (
             <ColumnOne>
@@ -87,7 +87,7 @@ const SpecificationsSection = ({ productBlock }) => {
 };
 
 const SectionName = styled.div.attrs({
-  className: 'mb-8',
+  className: 'pb-8 border-b',
 })`
 font-family: 'GoodSans';
 font-weight: 400;
@@ -97,7 +97,7 @@ letter-spacing: 0.05em;
 text-transform: uppercase;`;
 
 const ColumnOne = styled.div.attrs({
-  className: 'border-b items-center grid grid-cols-2 gap-4 pt-6 pb-6',
+  className: 'border-b grid grid-cols-2 gap-4 pt-6 pb-6',
 })``;
 
 const ColumnName = styled.div.attrs({

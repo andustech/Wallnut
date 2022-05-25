@@ -5,7 +5,7 @@ import VideoPlayer from '../../VideoPlayer';
 const OverviewSection = ({ productBlock }) => {
   const { settings } = productBlock;
   const {
-    howitwork_tab_heading,
+    about_desktop_heading,
     about_paragraph,
     about_media_type,
     about_image,
@@ -23,8 +23,8 @@ const OverviewSection = ({ productBlock }) => {
         </div>
       </div>
       <div className="lg:mt-15 md:mt-0 md:w-98 mt-5 mx-auto">
-        <div className="font-serif text-xl font-light mt-3">{howitwork_tab_heading}</div>
-        <p className="text-base font-extralight mt-3 mb-5">{about_paragraph}</p>
+        <h3 className="mb-4">{about_desktop_heading}</h3>
+        <p className="text-base font-extralight">{about_paragraph}</p>
       </div>
     </div>
   );

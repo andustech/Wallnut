@@ -20,7 +20,7 @@ const DesktopProductDetails = ({ productTypeBlocks, blocks }) => {
     return null;
   }
 
-  const activeStyles = 'pdp-tab border-b-2 border-black pb-5';
+  const activeStyles = 'pdp-tab pb-5 active';
   const tabs = [howitwork_tab_heading, whylove_tab_heading, specifications_tab_heading, sprt_tab_heading].filter(
     (tab) => tab
   );
@@ -45,7 +45,7 @@ const DesktopProductDetails = ({ productTypeBlocks, blocks }) => {
           ))}
         </div>
       </div>
-      <div className="pt-16 text-sm justify-items-center max-w-screen-xxl font-extralight flex flex-row w-10/12">
+      <div className="pdp-tabs-sec pt-16 text-sm justify-items-center max-w-screen-xxl font-extralight flex flex-row w-10/12 gap-20">
         {currentTab === howitwork_tab_heading && <OverviewSection productBlock={productBlock} blocks={blocks} />}
         {currentTab === whylove_tab_heading && <FeaturesSection productBlock={productBlock} />}
         {currentTab === specifications_tab_heading && <SpecificationsSection productBlock={productBlock} />}
