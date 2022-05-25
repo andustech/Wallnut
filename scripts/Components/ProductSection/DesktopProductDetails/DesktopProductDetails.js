@@ -22,7 +22,7 @@ const DesktopProductDetails = ({ productTypeBlocks, blocks }) => {
 
   const deliveryBlock = blocks.find((block) => block.type === 'delivery_info_section');
   const deliveryName = deliveryBlock.settings.name;
-  const activeStyles = 'border-b-4 border-brown pb-4';
+  const activeStyles = 'border-b-2 border-black pb-5';
   const tabs = [about_heading, features_section_1_name, section_2_name, deliveryName].filter(
     (tab) => tab
   );
@@ -49,7 +49,7 @@ const DesktopProductDetails = ({ productTypeBlocks, blocks }) => {
           ))}
         </div>
       </div>
-      <div className="pt-10 lg:grid lg:grid-cols-2 text-sm justify-items-center max-w-screen-xxl font-extralight xl:px-20 md:mb-12">
+      <div className="pt-10 text-sm justify-items-center max-w-screen-xxl font-extralight flex flex-row w-10/12">
         {currentTab === about_heading && (
           <OverviewSection productBlock={productBlock} blocks={blocks} />
         )}

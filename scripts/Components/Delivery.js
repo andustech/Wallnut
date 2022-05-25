@@ -5,15 +5,17 @@ import styled from 'styled-components';
 const Delivery = ({ sectionDataWithIcons }) => (
   <>
     {sectionDataWithIcons.map((section, i) => (
-      <div className="mb-4 md:col-span-2" key={i}>
+      <div className="mb-4 w-6/12" key={i}>
         <IconTitleContainer>
-          <div className="h-9 md:mt-10">{section.icon && section.icon}</div>
-          <div>
+          <div className="mb-6">
+            {section.icon && section.icon}
             {section.title && (
-              <h3 className="text-base text-blue-light font-serif font-normal md:mb-3">
+              <h3 className="text-base ml-5 inline">
                 {section.title}
               </h3>
             )}
+          </div>
+          <div>
             {section.paragraph && (
               <p
                 className="text-sm font-extralight mb-0 hidden md:block md:text-base"
@@ -44,9 +46,15 @@ const Delivery = ({ sectionDataWithIcons }) => (
 );
 
 const IconTitleContainer = styled.div.attrs({
-  className: 'grid items-center gap-x-4 mb-3 md:items-start',
+  className: 'items-center mb-3',
 })`
   grid-template-columns: 2fr 12fr;
+  svg {
+    display: inline-block;
+  }
+  h3 {
+    vertical-align: middle;
+  }
 `;
 
 const Link = styled.a.attrs({

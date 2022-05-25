@@ -36,7 +36,6 @@ const PDPSizeFilter = ({ product, selectedVariant, setSelectedVariant, setCurren
         });
       }
     } else {
-      console.log('useeffect')
       setSelectedSize(getDefaultSize(product, option1, option2));
     }
     
@@ -112,7 +111,6 @@ const PDPSizeFilter = ({ product, selectedVariant, setSelectedVariant, setCurren
           const varSize = variant.options[sizeIndex];
           if (sizeArr.indexOf(varSize) === -1) {
             sizeArr.push(varSize);
-            console.log('selectedSize == ', selectedSize)
             return (
               <li key={i}>
                 <SizeSwatchContainer

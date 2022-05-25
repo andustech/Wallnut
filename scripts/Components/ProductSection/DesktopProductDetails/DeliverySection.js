@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { getAllBlockSectionData } from '../../../utils';
-import { FreeShippingIcon, ReturnIcon } from '../../Icons';
+import { ShippingBox, ReturnIcon } from '../../Icons';
 import Delivery from '../../Delivery';
 
 const addIconsToSectionData = (sectionData) =>
-  [<FreeShippingIcon />, <ReturnIcon height="55" />].map((icon, i) => ({
+  [<ShippingBox />, <ReturnIcon height="55" />].map((icon, i) => ({
     icon,
     ...sectionData[i],
   }));

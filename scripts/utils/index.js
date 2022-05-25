@@ -564,7 +564,6 @@ export const getCurrentImages = (product, variant) => {
   ]
 
   return productImgs.map((imageUrl) => {
-    console.log('imageUrl => ', imageUrl);
     return {
       url: imageUrl,
       alt: `${product.handle}-${variantName}`.replace(/-/g, ' ').replace('.jpg', ''),
@@ -579,34 +578,15 @@ export const getCurrentImages = (product, variant) => {
 
 const mapRecommendedColors = (products) => {
   const recommendedColors = {
-    'the-classic-dining-chair': [
-      'herringbone off white',
-      'staccato salt and pepper',
-      'camellia cream',
-      'pinstripe dark gray',
-    ],
-    'the-scandinavian-lounge-chair': [
-      'mustard yellow',
-      'cowhide black and white',
-      'sand',
-      'shagreen storm gray',
-    ],
-    'the-scandinavian-dining-chair': [
-      'herringbone light gray',
-      'kali ikat blue',
-      'sand',
-      'burnt orange',
-    ],
-    'the-classic-lounge-chair': [
-      'dusty rose',
-      'woven mosaic storm gray',
-      'cerulean',
-      'gingham rustic red',
-    ],
+    'colors-name': [
+      'Matte White',
+      'Matte Black',
+      'Walnut Wood',
+    ]
   };
 
   return products.reduce((acc, product) => {
-    const colors = recommendedColors[product.handle];
+    const colors = recommendedColors['colors-name'];
 
     if (colors) {
       return [
@@ -788,18 +768,17 @@ export const mergedFetchedRecommendations = (products, allProducts) => {
 export const fetchRecommendations = async (productId) => {
   try {
     const products = await fetchProducts();
-
     if (!productId) {
       return mapRecommendedColors(mergedFetchedRecommendations(products));
     }
 
-    const fetchResponse = await fetch(`/recommendations/products.json?product_id=${productId}`);
+    const fetchResponse = await fetch(`/recommendations/products.json?product_id=${productId}&limit=4`);
     const response = await fetchResponse.json();
 
-    return mapRecommendedColors(mergedFetchedRecommendations(response.products, products));
+    return response.products;
+
   } catch (err) {
     console.log(err);
-
     return [];
   }
 };
