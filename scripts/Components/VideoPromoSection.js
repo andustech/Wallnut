@@ -14,10 +14,10 @@ const VideoPromoSection = ({ settings }) => {
         <div className='white_coll_right'>
           <div className='item_box'>
             { section_title && <div className='title_top uppercase'>{section_title}</div> }
-          
+           
             <MiddContent>
-              { title && <h2 className="font-bold">{title}</h2> }
-              { subheading && <p>{subheading}</p> }
+              { title && <h2 className="font-bold text-black">{title}</h2> }
+              { subheading && <p className="h2-attila-sans">{subheading}</p> }
               { button_text && <a className='premium_link bg-milk' href={button_link}>{button_text}</a> }
             </MiddContent>
           </div>

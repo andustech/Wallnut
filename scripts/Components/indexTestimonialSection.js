@@ -11,7 +11,7 @@ const indexTestimonialSection = ({ settings, blocks }) => {
             <div className="container">
                 <div className="review_inner_items">
                     <div className="left">
-                        { title && <h2>{title}</h2> }
+                        { title && <h2 className="h4-attila-sans text-black">{title}</h2> }
                         { content && <p>{content}</p> }
                     </div>
                     <div className="right">
@@ -34,7 +34,7 @@ const indexTestimonialSection = ({ settings, blocks }) => {
                                     <div className="rating_start">
                                         <img src={rating_img} alt="Rating" />
                                     </div>
-                                    { settings.content && <p>{settings.content}</p> }
+                                    { settings.content && <p className="">{settings.content}</p> }
                                     { settings.name && <span>{settings.name}</span> }
                                 </div>
                             )

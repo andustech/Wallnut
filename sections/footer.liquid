@@ -13,10 +13,10 @@
   <div class="footer-section footer-template" data-section-id="{{ section.id }}" data-section-type="footer-section">
     <div class="clear"></div>
     <div class="fast_order_main_container top" style='background-color: #133744'>
-      <div class="container px-0 xl:px-5">
+      <div class="container">
         <!-- <div class="bg-white grid grid-center grid-cols-3 items-center"> -->
         <div class="fast_order_inner justify-between flex items-start" style='background: #F4F2EC;'>
-          <h2 class="font-attila-sans-medium font-medium">{{ section.settings.title }}</h2>
+          <h2 class="h3-attila-sans font-medium text-black">{{ section.settings.title }}</h2>
           <p class="news_para mb-0">{{ section.settings.subheading }}</p>
           <div class="newsletter">
             <div class="klaviyo-form-SxEnPF"></div>
@@ -30,7 +30,7 @@
       </div>
     </div>
       <div class='footer_bg'>
-          <div class='container px-0 xl:px-5'>
+          <div class='container'>
             <div class='footer_logo'>
               <img src='{{ section.settings.logo_icon }}'>
               <p>{{ section.settings.logo_title }}</p>
@@ -127,36 +127,42 @@
 </div>
 
   <style>
-    .fast_order_main_container {
+    /* .fast_order_main_container {
       padding: 72px 64px;
+    }*/ 
+    .fast_order_main_container {
+      padding-top: 72px;
+      padding-bottom: 72px;
     }
     .fast_order_inner {
         padding: 75px 115px;
     }
-    .footer-section .top h2 {
+   /* .footer-section .top h2 {
         font-size: 36px;
         line-height: 44px;
         font-family: "AttilaSansUniform-Medium" !important;
-    }
+    } */
     .footer-section .top .newsletter p {
-        font-size: 10px;
-        line-height: 14px;
+        font-size: 10px !important;
+        line-height: 14px !important;
+        font-family: 'GoodSans' !important;
+        font-weight: 400 !important;
     }
     .fast_order_inner h2 {
-        font-weight: 500;
+        /* font-weight: 500;
         font-size: 36px;
         line-height: 44px;
-        letter-spacing: -0.005em;
+        letter-spacing: -0.005em; */
         margin: 0 15px 0 0;
-        font-family: "AttilaSansUniform-Medium" !important;
+        /* font-family: "AttilaSansUniform-Medium" !important; */
     }
-    .fast_order_inner p {
+    /* .fast_order_inner p {
         font-weight: 400;
         font-size: 16px;
         line-height: 24px;
         letter-spacing: -0.01em;
         font-family: "GoodSans" !important;
-    }
+    } */
     .klaviyo-form-SxEnPF p {
         font-weight: 300;
         font-size: 10px;
@@ -247,60 +253,94 @@ form.needsclick.klaviyo-form.klaviyo-form-version-cid_1.kl-private-reset-css-Xua
         .fast_order_inner {
             padding: 70px 70px;
         }
-        .fast_order_inner h2 {
+       /*  .fast_order_inner h2 {
             font-size: 30px;
-        }
+        } */
     }
     @media only screen and (max-width: 1263px) {
-        .footer-section .top h2 {
+        /* .footer-section .top h2 {
             font-size: 30px;
             line-height: 35px;
         }
         .fast_order_main_container {
             padding: 60px 40px;
+        } */
+        .fast_order_main_container {
+          padding-top: 60px;
+          padding-bottom: 60px;
         }
-        .footer_bg {
+        /* .footer_bg {
             padding: 55px 40px 72px 40px !important;
+        } */
+        .footer_bg {
+            padding-top: 55px !important;
+            padding-bottom: 40px !important;
         }
         .fast_order_inner {
             padding: 60px 60px;
         }
     }
     @media only screen and (max-width: 1149px) {
-        .fast_order_main_container {
+        /* .fast_order_main_container {
             padding: 54px 20px;
         }
         .fast_order_main_container {
             padding: 54px 35px;
+        } */
+        .fast_order_main_container {
+          padding-top: 54px;
+          padding-bottom: 54px;
         }
-        .footer_bg {
+        /* .footer_bg {
             padding: 55px 35px 72px !important;
+        } */
+        .footer_bg {
+            padding-top: 55px !important;
+            padding-bottom: 72px !important;
         }
         .fast_order_inner {
             padding: 50px 30px;
         }
-        .footer-section .top h2 {
+       /* .footer-section .top h2 {
             font-size: 25px;
             line-height: 29px;
-        }
+        } */
     }
     @media only screen and (max-width: 1200px) {
-        .fast_order_main_container {
+        /* .fast_order_main_container {
             padding-left: 20px;
             padding-right: 20px;
-        }
-        .footer_bg {
+        } */
+        /* .footer_bg {
             padding-left: 20px !important;
             padding-right: 20px !important;
-        }
+        } */
     }
     @media only screen and (max-width: 991px) {
         .fast_order_inner {
             flex-direction: column;
         }
+        /* .footer_bg {
+          padding: 55px 45px 72px 40px!important;
+        } */
+        .footer_bg {
+          padding-top: 55px !important;
+          padding-bottom: 72px!important;
+        }
+    }
+    @media only screen and (max-width: 575px) {
+      /* .footer_bg {
+          padding: 24px 20px !important;
+      } */
+      .footer_bg {
+          padding-top: 24px !important;
+          padding-bottom: 24px !important;
+      }
     }
     .footer_bg {
-        padding: 55px 64px 72px 64px;
+        /* padding: 55px 64px 72px 64px; */
+        padding-top: 55px ;
+        padding-bottom: 72px;
         background-color: #376043;
     }
     .footer_logo {
@@ -311,10 +351,10 @@ form.needsclick.klaviyo-form.klaviyo-form-version-cid_1.kl-private-reset-css-Xua
         margin-left: 20px;
         margin-bottom: 0;
         color: white;
-        font-weight: 500;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        font-family: 'AttilaSansUniform-Medium';
+        font-weight: 500 !important;
+        letter-spacing: 0.14em !important;
+        text-transform: uppercase !important;
+        font-family: 'AttilaSansUniform-Medium' !important;
     }
     .footer_left {
         display: flex;
@@ -329,11 +369,11 @@ form.needsclick.klaviyo-form.klaviyo-form-version-cid_1.kl-private-reset-css-Xua
     .footer_title {
         text-transform: uppercase;
         color: white;
-        font-weight: 500;
-        font-size: 14px;
-        line-height: 20px;
-        letter-spacing: 0.14em;
-        margin-bottom: 16px;
+        font-weight: 500 !important; 
+        font-size: 14px !important;
+        line-height: 20px !important;
+        letter-spacing: 0.14em !important;
+        margin-bottom: 16px !important;
         font-family: "AttilaSansUniform-Medium" !important;
     }
     .footer_opt ul li {
@@ -346,6 +386,8 @@ form.needsclick.klaviyo-form.klaviyo-form-version-cid_1.kl-private-reset-css-Xua
         color: #ffffff;
         transition: 0.4s;
         border-bottom: 1px solid transparent;
+        font-family: 'GoodSans-Light' !important;
+        font-weight: 300;
     }
     .footer_opt ul li a:hover {
       filter: brightness(0.80);
@@ -369,10 +411,10 @@ form.needsclick.klaviyo-form.klaviyo-form-version-cid_1.kl-private-reset-css-Xua
         font-family: "GoodSans" !important;
     }
     .on_social_media {
-        font-weight: 500;
-        font-size: 14px;
-        line-height: 20px;
-        letter-spacing: 0.14em;
+        font-weight: 500 !important;
+        font-size: 14px !important;
+        line-height: 20px !important;
+        letter-spacing: 0.14em !important;
         margin-bottom: 17px;
         text-transform: uppercase;
         color: white;
