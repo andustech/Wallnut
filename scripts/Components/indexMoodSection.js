@@ -21,7 +21,7 @@ const indexMoodSection = ({ settings }) => {
     <>
       <ShopByMood className='container section-padding'>
         <SectionTiltle className='section_titile'>
-            { section_title && <h2 className="font-bold">{section_title}</h2> }
+            { section_title && <h3 className="font-bold text-black">{section_title}</h3> }
         </SectionTiltle>
 
         {/* <div className='mood_card_container flex '>
@@ -50,11 +50,6 @@ const indexMoodSection = ({ settings }) => {
 };
 
 const ShopByMood = styled.div`
-  h2 {
-      font-size: 36px;
-      line-height: 50px;
-      letter-spacing: -0.02em;
-  }
 `
 
 

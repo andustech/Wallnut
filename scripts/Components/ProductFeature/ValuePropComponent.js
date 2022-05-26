@@ -47,8 +47,8 @@ const ValuePropSection = ({settings, collection_handle_1, collection_handle_2, c
   return (
     <PremiumMainContainer className='premium_main_container section-padding'>
       <SectionTiltle className='section_titile'>
-        { title && <h2 className="font-bold">{title}</h2> }
-        { subheading && <p className="font-medium">{subheading}</p> }
+        { title && <h3 className="font-bold text-black">{title}</h3> }
+        { subheading && <p className="h3-attila-sans font-medium">{subheading}</p> }
       </SectionTiltle>
       <ValuePropContainer>
 

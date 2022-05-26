@@ -159,7 +159,7 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
   }
 
   return (
-    <ItemContainer>
+    <ItemContainer className="each-item">
       <div className="relative overflow-hidden bg-gray-50">
         <a
           href={getProductUrl(

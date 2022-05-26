@@ -48,7 +48,7 @@ const ProductRecommendation = ({ blocks, settings }) => {
   return (
     <ProductRecommendationContainer>
       <SectionTiltle className='section_titile'>
-          <h2 className="font-bold">{settings?.title}</h2>
+          <h2 className="font-bold text-black">{settings?.title}</h2>
       </SectionTiltle>
       <div className="">
         <RecommendationContainer recommendations={recommendations}>
@@ -95,7 +95,7 @@ const ProductRecommendation = ({ blocks, settings }) => {
 
 
 const ProductRecommendationContainer = styled.div.attrs({
-  className: 'px-2 py-8 mb-8 md:px-0 md:py-10 md:text-center',
+  className: 'px-2 md:px-0 md:text-center section-padding',
 })`
   @media (min-width: 740px) {
     margin-right: -8%;
