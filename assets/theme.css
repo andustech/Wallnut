@@ -1246,9 +1246,11 @@ afterpay-placement {
   letter-spacing: -0.01em;
   color: #000000;
   margin-bottom: 16px;
+  text-transform: inherit;
 }
 #pdp-color-swatcher h5 span, #pdp-size-swatcher h5 span {
   font-family: 'GoodSans';
+  font-weight: 600;
 }
 .pdp-tabs .pdp-tab {
   font-family: 'GoodSans';
@@ -1276,7 +1278,7 @@ afterpay-placement {
   width: 100%;
 }
 .dimensions-col {
-  max-width: 42px;
+  max-width: 420px;
 }
 .pdp-tabs-sec h3 {
   font-family: 'Nib-bold-pro';
@@ -1284,6 +1286,26 @@ afterpay-placement {
   line-height: 33px !important;
   font-weight: 700;
   color: #000;
+}
+#react-product-section input.AddtoCart {
+  line-height: 20px !important;
+}
+.ship-msg {
+  font-family: 'GoodSans';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.01em;
+  color: #000000;
+}
+.time-msg {
+  font-family: 'GoodSans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 14px;
+  letter-spacing: -0.01em;
+  color: #000000;
 }
 
  /* How it works page */

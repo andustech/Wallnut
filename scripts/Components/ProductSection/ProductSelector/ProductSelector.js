@@ -119,6 +119,51 @@ const ProductSelector = ({
 
   return (
     <ProductSelectorContainer>
+      <MobileTopContainer>
+        <SectionTiltle className='section_titile pdp'>
+          <h2 className="font-bold text-left">{product.title}</h2>
+        </SectionTiltle>
+        <div
+          className='mb-1'
+          onClick={() => scrollToReviews()}
+          onKeyDown={() => {}}
+          role="button"
+          tabIndex={0}
+        >
+          {reviews.reviews && (
+            <YotpoReviewStars
+              stars={reviews.bottomline.average_score}
+              totalReviews={reviews.bottomline.total_review}
+              location="product-header"
+            />
+          )}
+        </div>
+        <div className="grid grid-cols-10 border-none text-sm mb-1">
+          <div className="col-span-7">
+            <span id="pdp-product-price">
+              {product.compare_at_price ? (
+                <div className="md:w-80">
+                  <span className="font-normal text-errorRed text-2xl md:text-3xl">
+                    {convertPriceFromNumber(selectedVariant.price)}
+                  </span>
+                  <span className="ml-1 line-through text-sm">
+                    {convertPriceFromNumber(selectedVariant.compare_at_price)}
+                  </span>
+                  <span className="ml-2 text-errorRed text-xl md:text-2xl">
+                    {discount}% Off
+                  </span>
+                </div>
+              ) : (
+                convertPriceFromNumber(selectedVariant.price)
+              )}
+            </span>
+          </div>
+        </div>
+        <ByName>
+          <p>By: Sarah smith</p>
+          <p>New York, NY</p>
+        </ByName>
+      </MobileTopContainer>
       <Carousel images={getCurrentImages(product, selectedVariant)} />
       <ProductFormContainer handle={handle}>
         <form
@@ -126,7 +171,7 @@ const ProductSelector = ({
           onSubmit={(e) => handleAddToCart(e, product, qty, selectedVariant.id)}
         >
           <div>
-            <div className="invisible opacity-0 lg:visible lg:opacity-100">
+            <DesktopTopContainer>
               <SectionTiltle className='section_titile pdp'>
                 <h2 className="font-bold text-left">{product.title}</h2>
               </SectionTiltle>
@@ -184,7 +229,7 @@ const ProductSelector = ({
                   tabIndex={0}
                 >Read More</div>
               </ProductShortDescription>
-            </div>
+            </DesktopTopContainer>
 
             {handle !== 'e-gift-card' && (
               <>
@@ -208,8 +253,8 @@ const ProductSelector = ({
 
             <IncludesContainer>Includes<br/>Framed print and wall mounting system</IncludesContainer>
 
-            <div className="grid grid-cols-4 my-4">
-              <div className="border-grey-50 border-solid center md:border-none col-span-3 ml-4">
+            <div className="flex flex-row pb-8 border-b border-gray">
+              <div className="mr-4">
                 <AddToCartSubmitInput
                   ref={submitRef}
                   type="submit"
@@ -306,7 +351,7 @@ const ProductSelectorContainer = styled.div.attrs({
 })``;
 
 const ProductFormContainer = styled.div.attrs(({ handle }) => {
-  let className = 'ml-12 w-full md:w-8/12 lg:w-5/12';
+  let className = 'lg:ml-12 w-full md:w-8/12 lg:w-5/12';
   return {
     className,
   };
@@ -314,8 +359,18 @@ const ProductFormContainer = styled.div.attrs(({ handle }) => {
 
 const AddToCartSubmitInput = styled.input.attrs({
   className:
-    'AddtoCart pb-0 pt-0 mb-0 md:py-0.5 w-55 h-12',
-})``;
+    'AddtoCart pb-3 pt-3 my-0',
+})`
+  width: 231px;
+  border-radius: 0 !important;
+  background-color: #F1946A !important;
+  font-family: 'GoodSans' !important;
+  font-weight: 400 !important;
+  font-size: 12px !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  color: #000000 !important;
+`;
 
 const StickyAddToCartContainer = styled.div.attrs(({ showStickySubmit }) => {
   let className = 'fixed mb-0 px-2 w-full bg-white md:hidden';
@@ -374,5 +429,16 @@ const StickyAddToCartInput = styled.input.attrs({
   className:
     'AddtoCart col-span-4 pt-0 text-sm px-0 font-light h-10 leading-none my-auto ml-4 mb-3 ',
 })``;
+
+const MobileTopContainer = styled.div.attrs({
+  className: 'lg:hidden',
+})``;
+
+const DesktopTopContainer = styled.div.attrs({
+})`
+  @media (max-width: 1023px) {
+    display: none;
+  }
+`;
 
 export default ProductSelector;

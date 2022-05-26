@@ -9,8 +9,6 @@ import DesktopProductDetails from './DesktopProductDetails';
 import ProductRecommended from '../ProductRecommended';
 import YotpoReviews from '../YotpoReviews';
 import ProductSelector from './ProductSelector';
-import VideoPlayer from '../VideoPlayer';
-import PDPValueProps from './PDPValueProps';
 import { SectionTiltle } from '../ProductFeature/ValuePropComponent';
 
 const getProductTypeBlocks = (product, blocks) => {
@@ -18,7 +16,6 @@ const getProductTypeBlocks = (product, blocks) => {
     return [];
   }
 
-  console.log('getProductTypeBlocks == ', blocks)
   return blocks.filter(
     (block) => block.type === 'product_details'
   );
@@ -27,15 +24,12 @@ const getProductTypeBlocks = (product, blocks) => {
 const ProductSectionA = (props) => {
   const { settings, blocks, product, assetURL, themeSettings, metafields } = props;
 
-  console.log('blocks == ', blocks)
-
   const { sale_start, sale_end } = themeSettings;
   const salesOn = isSaleOn(sale_start, sale_end);
 
   const [reviews, setReviews] = useState({});
   const [currentProduct, setCurrentProduct] = useState({
     ...product,
-    handle: metafields.productHandleName,
     metafields,
   });
   const [currentVariant, setCurrentVariant] = useState();
@@ -43,8 +37,6 @@ const ProductSectionA = (props) => {
   const reviewsRef = useRef();
   const descriptionRef = useRef();
   const productTypeBlocks = getProductTypeBlocks(currentProduct, blocks);
-
-  console.log('blocks == ', productTypeBlocks)
 
   useEffect(() => {
     let defaultVariant = product.variants.find((variant) =>
@@ -72,7 +64,6 @@ const ProductSectionA = (props) => {
   }, [currentProduct.variants, product, product.handle]);
 
   useEffect(() => {
-    // eslint-disable-next-line no-underscore-dangle, no-use-before-define
     const _learnq = _learnq || [];
 
     (async () => {
@@ -122,7 +113,7 @@ const ProductSectionA = (props) => {
           </StyledDiv>
         )}
         {currentVariant && (
-          <div className="grid grid-cols-1 justify-items-auto xl:justify-items-center mb-20 mt-10">
+          <div className="grid grid-cols-1 justify-items-auto xl:justify-items-center mb-14 lg:mb-20 mt-8 lg:mt-10">
             <ProductSelector
               product={currentProduct}
               currentVariant={currentVariant}
@@ -143,8 +134,6 @@ const ProductSectionA = (props) => {
                 shippingMessageInfo: settings.shipping_message_info,
                 shippingMessageInfoHeight: settings.shipping_message_info_height,
               }}
-              overlayImage={productTypeBlocks[0]?.settings.product_overlay_image}
-              overlayImageMobile={productTypeBlocks[0]?.settings.product_overlay_image_mobile}
             />
           </div>
         )}
@@ -158,34 +147,8 @@ const ProductSectionA = (props) => {
       <DesktopProductDetails productTypeBlocks={productTypeBlocks} blocks={blocks} />
       <div className="mb-8 md:hidden px-4">
         {productTypeBlocks.map((block, i) => {
-          const {
-            howitwork_tab_heading,
-            about_paragraph,
-            about_paragraphNote,
-            about_desktop_heading,
-            about_image,
-            about_video_url,
-            about_media_type,
-          } = block.settings;
           return (
             <div key={i}>
-              <div className="pb-5 border-grey-50 border-b border-solid">
-                <h5 className="font-serif text-orange-burnt text-base font-normal mb-1 text-lg">
-                  {howitwork_tab_heading}
-                </h5>
-                <StyledMobileMedia mediaType={about_media_type}>
-                  {about_image && about_media_type === 'image' && <img src={about_image} alt="" />}
-                  {about_video_url && about_media_type === 'video' && (
-                    <VideoPlayer link={about_video_url} autoPlay loop />
-                  )}
-                </StyledMobileMedia>
-                <div className="font-serif mb-3 mt-2">{about_desktop_heading}</div>
-                <p className="text-sm font-extralight mb-3">{about_paragraph}</p>
-                {about_paragraphNote && (
-                  <p className="text-sm font-normal mb-3 text-brown">{about_paragraphNote}</p>
-                )}
-              </div>
-              <PDPValueProps width={80} height={80} />
               <MobileProductDetailsSection productTypeBlock={block} blocks={blocks} />
             </div>
           );
@@ -209,7 +172,10 @@ const ProductDescription = styled.div.attrs({
   className: 'product-description ml-auto mr-auto text-center',
 })`
   max-width: 644px;
-  margin-bottom: 112px;
+  margin-bottom: 55px;
+  @media (min-width: 1024px) {
+    margin-bottom: 112px;
+  }
 `;
 
 const StyledMobileMedia = styled.div.attrs(({ mediaType }) => {

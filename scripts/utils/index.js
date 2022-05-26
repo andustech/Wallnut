@@ -542,6 +542,7 @@ export const getSingleViewImage = (product, variant) => {
 };
 
 export const getCurrentImages = (product, variant) => {
+  console.log('product A => ', product);
   const variantName = getVariantName(variant);
   const sizeIndex = product.options.indexOf('Size');
   const colorIndex = product.options.indexOf('Frame Color');
@@ -556,8 +557,12 @@ export const getCurrentImages = (product, variant) => {
     var color = 'walnut'
   }
 
+  var size = variant.options[sizeIndex].replace(/ |x|"/gi, '');
+  var roomImg = 'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/'+product.handle.replace('art', '')+'B-'+color+'-'+size+'.jpg?v=1652388790'
+
   let productImgs = [
     variant.featured_image.src,
+    roomImg,
     'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/Image-C-close-up-corner-angled-'+color+'.jpg?',
     'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/Image-D-back-of-frame-angled.jpg',
     'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/Image-E-hanging-demo.jpg'
@@ -569,11 +574,7 @@ export const getCurrentImages = (product, variant) => {
       alt: `${product.handle}-${variantName}`.replace(/-/g, ' ').replace('.jpg', ''),
     };
   })
-
-  // return {
-  //   url: variant.featured_image.src,
-  //   alt: `${product.handle}-${variantName}`.replace(/-/g, ' ').replace('.jpg', ''),
-  // };
+  
 };
 
 const mapRecommendedColors = (products) => {

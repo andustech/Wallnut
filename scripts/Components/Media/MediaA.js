@@ -85,18 +85,16 @@ const ImageContainer = styled.span.attrs(({ bgCover }) => {
 
 const ThumbnailContainer = styled.span.attrs({
   className:
-    'cursor-pointer bg-cover bg-center bg-no-repeat lg:bg-transparent mb-6',
+    'cursor-pointer bg-cover bg-center bg-no-repeat lg:bg-transparent lg:mb-6',
 })`
   ${({ currentImage }) =>
     currentImage ? `border: 1px solid #E2DACD;` : ``}
 
   height: 88px;
   width: 88px;
-  @media (min-width: 1024px) {
-    ${tw`pb-1`}
-    background-origin: content-box;
-    background-image: url(${({ image }) => image});
-  }
+  ${tw`pb-1`}
+  background-origin: content-box;
+  background-image: url(${({ image }) => image});
 `;
 
 const VideoThumbnailContainer = styled.span.attrs({

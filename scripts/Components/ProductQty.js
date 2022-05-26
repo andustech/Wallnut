@@ -7,11 +7,11 @@ const ProductQty = (props) => {
 
   return (
     <div
-      className={`mt-${marginTop} border border-solid border-black rounded grid grid-cols-3 text-xl my-auto`}
+      className={`border border-solid border-black grid grid-cols-3 my-0 w-20 h-11`}
     >
       <Button
         type="button"
-        className="h-9 leading-none"
+        className="h-10 leading-none"
         onClick={() => {
           const newQty = qty - 1;
 
@@ -27,7 +27,7 @@ const ProductQty = (props) => {
       </Button>
       <StyledQtyInput
         type="text"
-        className="border-none center h-9 leading-none mb-0 min-w-full text-sm w-full"
+        className="border-none center h-10 leading-none mb-0 min-w-full text-sm w-full"
         value={qty}
         min="1"
         aria-label="quantity"
@@ -51,7 +51,7 @@ const ProductQty = (props) => {
           }
         }}
         type="button"
-        className="h-9 leading-none"
+        className="h-10 leading-none"
       >
         {' '}
         +{' '}

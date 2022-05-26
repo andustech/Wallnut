@@ -39,21 +39,23 @@ const CarouselA = (props) => {
     <>
     {images.length > 1 && (
       <>
-        <div className="flex flex-col mr-12">
-          {images.map((image, i) => (
-            <Media
-              key={i}
-              image={image.url}
-              currentImage={currentImageIndex === i}
-              onClick={() => handleThumbnailClick(i)}
-              thumbnail
-              alt={image.alt}
-            />
-          ))}
-        </div>
+        <DesktopThumbContainer>
+          <div className="flex flex-col mr-12">
+            {images.map((image, i) => (
+              <Media
+                key={i}
+                image={image.url}
+                currentImage={currentImageIndex === i}
+                onClick={() => handleThumbnailClick(i)}
+                thumbnail
+                alt={image.alt}
+              />
+            ))}
+          </div>
+        </DesktopThumbContainer>
       </>
     )}
-    <div className="lg:relative w-11/12 lg:w-5/12">
+    <div className="lg:relative w-full lg:w-5/12">
       <div className="w-full h-full">
         <CarouselContainer ref={containerRef} onScroll={handleOnScroll}>
           {images.map((image, i) => (
@@ -66,6 +68,24 @@ const CarouselA = (props) => {
         </CarouselContainer>
       </div>
     </div>
+    {images.length > 1 && (
+      <>
+        <MobileThumbContainer>
+          <div className="flex flex-row">
+            {images.map((image, i) => (
+              <Media
+                key={i}
+                image={image.url}
+                currentImage={currentImageIndex === i}
+                onClick={() => handleThumbnailClick(i)}
+                thumbnail
+                alt={image.alt}
+              />
+            ))}
+          </div>
+        </MobileThumbContainer>
+      </>
+    )}
     </>
   );
 };
@@ -106,6 +126,22 @@ const CarouselContainer = styled.div.attrs({
   & > * {
     scroll-snap-align: center;
     vertical-align: top;
+  }
+`;
+
+const DesktopThumbContainer = styled.div.attrs({
+})`
+  display: none;
+  @media (min-width: 1024px) {
+    display: block;
+  }
+`;
+
+const MobileThumbContainer = styled.div.attrs({
+  className: 'mt-4 mb-10',
+})`
+  @media (min-width: 1024px) {
+    display: none;
   }
 `;
 

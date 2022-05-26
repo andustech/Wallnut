@@ -30,13 +30,13 @@ const PDPMessaging = ({ productMessaging }) => {
         </div>
         <Divider />
         <div className="whitespace-nowrap">
-          <div className="whitespace-normal flex items-center">
+          <div className="ship-msg">
             {shippingMessage}
           </div>
           
-          <div className="whitespace-normal">
+          <div className="time-msg">
             {shippingTime}
-            <div className="inline-block ml-1">
+            <div className="inline-block ml-1" style={{verticalAlign: "middle"}}>
               <div
                 onClick={() => {
                   setHideBox(!hideBox);
@@ -50,7 +50,6 @@ const PDPMessaging = ({ productMessaging }) => {
               </div>
               <StyledProductMessageContainer
                 hideBox={hideBox}
-                // shippingMessageInfoHeight={shippingMessageInfoHeight}
                 style={{height: shippingMessageInfoHeight + 'px'}}
               >
                 <div

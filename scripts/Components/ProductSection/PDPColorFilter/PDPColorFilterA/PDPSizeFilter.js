@@ -138,13 +138,13 @@ const PDPSizeFilter = ({ product, selectedVariant, setSelectedVariant, setCurren
 
 const SizeSwatchContainer = styled.div.attrs(({ isSelected }) => {
   let className =
-    'relative grid justify-items-center items-center h-9 w-24 rounded-full';
+    'relative grid justify-items-center items-center h-9 w-24 rounded-full border border-black';
 
   if (isSelected) {
-    className = `${className} border border-black`;
+    className = `${className} opacity-100`;
   }
   else {
-    className = `${className} border border-gray`;
+    className = `${className} opacity-40`;
   }
 
   return {
