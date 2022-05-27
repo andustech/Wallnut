@@ -79,25 +79,91 @@ const MobileNavSlider = ({ isOpen, links, themeSettings, settings }) => {
       </Container>
       <BgOverlay isOpen={isOpen} />
 
-      <div class="globo-menu-mobile">
+      <div className="globo-menu-mobile">
         <ul></ul>
 
-        <div class="mx-5 mt-10">
-          { email_text && <div class='soc_ico mb-3.5'><a class='text-black'>{ email_text }</a></div> }
-          <div class='social_media_icon'>
-            { twitter_url && <div class='soc_ico'><a href={twitter_url }><i></i></a></div> }
-            { facebook_url && <div class='soc_ico'><a href={facebook_url }>
-             <i><img src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/facebook-black.svg?v=1652709438" alt="Social icon" /></i>
-            </a></div> }
-            { instagram_url && <div class='soc_ico'><a href={instagram_url }><i><img src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/instagram-svg.svg?v=1652711813" alt="Social icon" /></i></a></div> }
-            { pinterest_url && <div class='soc_ico'><a href={pinterest_url }><i></i></a></div> }
-            { tumblr_url && <div class='soc_ico'><a href={tumblr_url }><i></i></a></div> }
-            { youtube_url && <div class='soc_ico'><a href={youtube_url }><i></i></a></div> }
-            { googleplus_url && <div class='soc_ico'><a href={googleplus_url }><i></i></a></div> }
-            { snapchat_id && <div class='soc_ico'><a href={snapchat_id }><i></i></a></div> }
-            { weibo_id && <div class='soc_ico'><a href={weibo_id }><i></i></a></div> }
+        <div className="mx-5 mt-10">
+          {email_text && (
+            <div className="soc_ico mb-3.5">
+              <a className="text-black">{email_text}</a>
+            </div>
+          )}
+          <div className="social_media_icon">
+            {twitter_url && (
+              <div className="soc_ico">
+                <a href={twitter_url}>
+                  <i></i>
+                </a>
+              </div>
+            )}
+            {facebook_url && (
+              <div className="soc_ico">
+                <a href={facebook_url}>
+                  <i>
+                    <img
+                      src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/facebook-black.svg?v=1652709438"
+                      alt="Social icon"
+                    />
+                  </i>
+                </a>
+              </div>
+            )}
+            {instagram_url && (
+              <div className="soc_ico">
+                <a href={instagram_url}>
+                  <i>
+                    <img
+                      src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/instagram-svg.svg?v=1652711813"
+                      alt="Social icon"
+                    />
+                  </i>
+                </a>
+              </div>
+            )}
+            {pinterest_url && (
+              <div className="soc_ico">
+                <a href={pinterest_url}>
+                  <i></i>
+                </a>
+              </div>
+            )}
+            {tumblr_url && (
+              <div className="soc_ico">
+                <a href={tumblr_url}>
+                  <i></i>
+                </a>
+              </div>
+            )}
+            {youtube_url && (
+              <div className="soc_ico">
+                <a href={youtube_url}>
+                  <i></i>
+                </a>
+              </div>
+            )}
+            {googleplus_url && (
+              <div className="soc_ico">
+                <a href={googleplus_url}>
+                  <i></i>
+                </a>
+              </div>
+            )}
+            {snapchat_id && (
+              <div className="soc_ico">
+                <a href={snapchat_id}>
+                  <i></i>
+                </a>
+              </div>
+            )}
+            {weibo_id && (
+              <div className="soc_ico">
+                <a href={weibo_id}>
+                  <i></i>
+                </a>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
       </div>
     </>
   );

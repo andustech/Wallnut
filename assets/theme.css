@@ -501,8 +501,26 @@ height: 180px !important;
   display: inline-block;
 }
 
-.primary_btn:hover {
+.primary_btn:hover, .login-register-container .primary_btn:hover, #recover-password .primary_btn:hover, #create-customer .primary_btn:hover {
   background-color: #f1956abb !important;
+}
+
+.login-register-container .primary_btn, #recover-password .primary_btn, #create-customer .primary_btn {
+  padding: 5px 3em;
+  margin-right: 0!important;
+  font-size: 12px!important;
+  color: #000!important;
+  transition: .6s!important;
+  background-color: #f1946a!important;
+  display: inline-block!important;
+  font-family: GoodSans!important;
+  width: 100%;
+  border-radius: 0;
+  line-height: 42px!important;
+  text-align: center!important;
+}
+.login-register-container a.primary_btn.create-customer {
+  margin-top: 20px;
 }
 
 .secondary_btn {
@@ -1603,4 +1621,47 @@ afterpay-placement {
     font-size: 46px!important;
     line-height: 41px!important;
   }
+}
+
+div#forgot_password {
+  margin-bottom: 10px;
+}
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea,
+select {
+  border: 1px solid #F4F2EC;
+  line-height: 42px;
+  height: 42px;
+  outline: none;
+  margin: 0;
+  width: 100%;
+  text-indent: 16px;
+  display: block;
+  margin-bottom: 20px;
+  background: #F4F2EC;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12px;
+  border-radius: 5px;
+  color: rgba(0, 0, 0, 0.8);
+  letter-spacing: -0.01em;
+}
+label,
+legend {
+  display: block;
+  font-weight: 400;
+  padding-bottom: 5px;
+  font-family: GoodSans!important;
+  letter-spacing: 0.05em;
+}
+section.user-login { 
+  padding-bottom: 0;
+}
+form#create_customer {
+  margin-bottom: 20px;
+}
+.fancybox-close-small:hover {
+  background-color: transparent !important;
 }
