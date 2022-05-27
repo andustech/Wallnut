@@ -320,12 +320,14 @@
               console.log('header_height', header_height);
               var total_height = ann_height + header_height;
               console.log('total_height', total_height);
-              $('.main_banner img').attr('style', 'height: calc(100vh - '+total_height+'px)');
+              $('.main_banner').css('height', 'calc(100vh - '+total_height+'px)');
+              $('.main_banner img').hide()
               clearInterval(myIntervalBannerheight);
             }
           }, 200);
         } else {
-          $('.main_banner img').removeAttr('style');
+          $('.main_banner img').show()
+          $('.main_banner').css('height', 'auto');
         }
       }
       bannerImageHeight();

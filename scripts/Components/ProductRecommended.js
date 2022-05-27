@@ -24,7 +24,7 @@ const ProductRecommended = ({ product, title }) => {
   return (
     <ProductRecommendationContainer>
       <SectionTiltle className='section_titile'>
-        <h2 className="font-bold text-center">{title}</h2>
+        <h2 className="font-bold text-center text-black">{title}</h2>
       </SectionTiltle>
       <div className="grid grid-cols-1 overflow-hidden md:justify-items-center">
         <RecommendationContainer recommendations={recommendations}>

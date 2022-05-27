@@ -13,7 +13,7 @@ const getDefaultColor = (product, option1, option2) => {
   return 'Matte Black';
 };
 
-const PDPColorFilter = ({ product, selectedVariant, setSelectedVariant, setCurrentOptions }) => {
+const PDPColorFilter = ({ product, selectedVariant, setSelectedVariant, setCurrentOptions, setFrameColorSelected }) => {
   const { handle, variants: originalVaraints } = product;
   const { option1, option2 } = selectedVariant;
   const defaultColor = 'Matte Black';
@@ -51,7 +51,8 @@ const PDPColorFilter = ({ product, selectedVariant, setSelectedVariant, setCurre
 
   useEffect(() => {
     setVariants(product.variants);
-  }, [product.variants]);
+    setFrameColorSelected(selectedColor);
+  }, [product.variants, setFrameColorSelected, selectedColor]);
 
   const handleColorSelect = (color) => {
 

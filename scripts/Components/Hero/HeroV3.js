@@ -23,7 +23,7 @@ const ButtonLink = ({ settings }) => {
 const HeroV3 = ({ settings }) => {
   const { image, video_url, title, subheading, button_text_1, button_link_1, button_text_2, button_link_2 } = settings;
   return (
-    <div className="main_banner relative">
+    <div className="main_banner relative" style={{backgroundImage: 'url('+image+')', backgroundSize: 'cover', backgroundPosition: 'center center', backgroundRepeat: 'no-repeat'}}>
       <img src={image} className='bannr_img' alt="Banner" />
       <div className='banner_content'>
         <div className='container'>

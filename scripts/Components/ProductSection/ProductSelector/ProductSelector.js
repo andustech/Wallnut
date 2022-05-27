@@ -62,6 +62,8 @@ const getShortDescription = (description, n) => {
 };
 
 const ProductSelector = ({
+  setFrameColorSelected,
+  setFrameSelected,
   product,
   currentVariant,
   reviews,
@@ -173,7 +175,7 @@ const ProductSelector = ({
           <div>
             <DesktopTopContainer>
               <SectionTiltle className='section_titile pdp'>
-                <h2 className="font-bold text-left">{product.title}</h2>
+                <h2 className="font-bold text-left text-black">{product.title}</h2>
               </SectionTiltle>
               <div
                 className='mb-1'
@@ -233,7 +235,8 @@ const ProductSelector = ({
 
             {handle !== 'e-gift-card' && (
               <>
-                <PDPSizeFilter
+                 <PDPSizeFilter
+                  setFrameSelected={setFrameSelected}
                   product={product}
                   selectedVariant={selectedVariant}
                   setSelectedVariant={setSelectedVariant}
@@ -241,6 +244,7 @@ const ProductSelector = ({
                   setCurrentOptions={setCurrentOptions}
                 />
                 <PDPColorFilter
+                  setFrameColorSelected={setFrameColorSelected}
                   product={product}
                   selectedVariant={selectedVariant}
                   setSelectedVariant={setSelectedVariant}
@@ -261,7 +265,7 @@ const ProductSelector = ({
                   name="button"
                   value="Add to Cart"
                 />
-                <StickyAddToCartContainer showStickySubmit={showStickySubmit}>
+                <StickyAddToCartContainer ref={submitRef} showStickySubmit={showStickySubmit}>
                   <div className="w-20 my-auto ml-2 justify-self-end col-span-3">
                     <ProductQty qty={qty} setQty={setQty} />
                   </div>

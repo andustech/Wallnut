@@ -13,7 +13,7 @@ const getDefaultSize = (product, option1, option2) => {
   return '18" x 24"';
 };
 
-const PDPSizeFilter = ({ product, selectedVariant, setSelectedVariant, setCurrentOptions }) => {
+const PDPSizeFilter = ({ product, selectedVariant, setSelectedVariant, setCurrentOptions,  setFrameSelected }) => {
   const { variants: originalVaraints } = product;
   const { option1, option2 } = selectedVariant;
   const defaultSize = '18" x 24"';
@@ -51,7 +51,8 @@ const PDPSizeFilter = ({ product, selectedVariant, setSelectedVariant, setCurren
 
   useEffect(() => {
     setVariants(product.variants);
-  }, [product.variants]);
+    setFrameSelected(selectedSize);
+  }, [product.variants, setFrameSelected, selectedSize]);
 
   const handleSizeSelect = (size) => {
     const url = new URL(window.location);

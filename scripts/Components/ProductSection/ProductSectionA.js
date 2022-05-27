@@ -23,7 +23,8 @@ const getProductTypeBlocks = (product, blocks) => {
 
 const ProductSectionA = (props) => {
   const { settings, blocks, product, assetURL, themeSettings, metafields } = props;
-
+  const [frameSelected, setFrameSelected] = useState('');
+  const [frameColorSelected, setFrameColorSelected] = useState('');
   const { sale_start, sale_end } = themeSettings;
   const salesOn = isSaleOn(sale_start, sale_end);
 
@@ -115,6 +116,8 @@ const ProductSectionA = (props) => {
         {currentVariant && (
           <div className="grid grid-cols-1 justify-items-auto xl:justify-items-center mb-14 lg:mb-20 mt-8 lg:mt-10">
             <ProductSelector
+              setFrameSelected={setFrameSelected}
+              setFrameColorSelected={setFrameColorSelected}
               product={currentProduct}
               currentVariant={currentVariant}
               handleSelectingOption={handleSelectingOption}
@@ -140,11 +143,16 @@ const ProductSectionA = (props) => {
       </div>
       <ProductDescription ref={descriptionRef}>
         <SectionTiltle className='section_titile pdp-small mb-0'>
-          <h2 className="font-bold text-center">About {product.title}</h2>
+          <h2 className="font-bold text-center text-black">About {product.title}</h2>
         </SectionTiltle>
         {parse(product.description)}
       </ProductDescription>
-      <DesktopProductDetails productTypeBlocks={productTypeBlocks} blocks={blocks} />
+      <DesktopProductDetails
+        productTypeBlocks={productTypeBlocks}
+        blocks={blocks}
+        frameSelected={frameSelected}
+        frameColorSelected={frameColorSelected}
+      />
       <div className="mb-8 md:hidden px-4">
         {productTypeBlocks.map((block, i) => {
           return (

@@ -1569,7 +1569,12 @@ afterpay-placement {
 @media only screen and (min-width: 1440px) {
   .index .navbar .container, .index .main_banner .container {
     max-width: 1440px !important;
-    padding: 0 64px;
+    padding: 0 60px;
+  }
+}
+@media only screen and (min-width: 1500px) {
+  .index .navbar .container, .index .main_banner .container {
+    max-width: 1500px !important;
   }
 }
 @media only screen and (min-width: 991px) and (max-width: 1439px) {

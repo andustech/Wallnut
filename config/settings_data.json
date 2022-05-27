@@ -400,25 +400,10 @@
               "sprt_2_linkText": "here",
               "sprt_2_linkUrl": "#"
             }
-          },
-          "9ddfd147-0e74-494c-9a02-e70d4e42bc90": {
-            "type": "delivery_info_section",
-            "settings": {
-              "name": "Shipping and Returns",
-              "section_1_title": "Free Standard Shipping",
-              "section_1_paragraph": "We offer free standard shipping and handling on all orders within the U.S. (excluding Hawaii, Alaska, and the U.S. Territories).\n\nOur products are made to order, which means we create your rug after your order has been placed. At this time, please expect your orders to ship within 2 to 3 weeks.\n\nLearn more about our shipping policy",
-              "section_1_linkText": "here",
-              "section_1_linkUrl": "#",
-              "section_2_title": "30 Day Returns",
-              "section_2_paragraph": "We want you to be as excited about your art as we are! We offer returns for all orders within 30 days of delivery. \n\nLearn more about our return policy",
-              "section_2_linkText": "here",
-              "section_2_linkUrl": "#"
-            }
           }
         },
         "block_order": [
-          "06eb28b4-2fda-4686-80ee-bf7266f08552",
-          "9ddfd147-0e74-494c-9a02-e70d4e42bc90"
+          "06eb28b4-2fda-4686-80ee-bf7266f08552"
         ],
         "settings": {
           "enable_product_reviews": false,

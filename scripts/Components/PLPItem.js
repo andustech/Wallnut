@@ -158,6 +158,12 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
     imgColor = 'walnut';
   }
 
+  console.log('colors arr before', colors)
+  var sortOrder = ['Matte Black', 'Walnut Wood', 'Matte White'];
+  colors.sort( function(a, b) {
+      return sortOrder[a] - sortOrder[b];
+  });
+  console.log('colors arr after', colors)
   return (
     <ItemContainer className="each-item">
       <div className="relative overflow-hidden bg-gray-50">

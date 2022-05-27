@@ -5,7 +5,7 @@ import FeaturesSection from './FeaturesSection';
 import SpecificationsSection from './SpecificationsSection';
 import DeliverySection from './DeliverySection';
 
-const DesktopProductDetails = ({ productTypeBlocks, blocks }) => {
+const DesktopProductDetails = ({ productTypeBlocks, blocks, frameSelected, frameColorSelected, }) => {
   const [currentTab, setCurrentTab] = useState('');
   const productBlock = productTypeBlocks.find((block) => block.type === 'product_details');
   const { howitwork_tab_heading, whylove_tab_heading, specifications_tab_heading, sprt_tab_heading } = productBlock
@@ -37,7 +37,7 @@ const DesktopProductDetails = ({ productTypeBlocks, blocks }) => {
               className={currentTab === tab ? activeStyles : 'pdp-tab'}
               onClick={() => setCurrentTab(tab)}
               role="button"
-              onKeyDown={() => {}}
+              onKeyDown={() => { }}
               tabIndex={0}
             >
               {tab}
@@ -48,7 +48,13 @@ const DesktopProductDetails = ({ productTypeBlocks, blocks }) => {
       <div className="pdp-tabs-sec pt-16 text-sm justify-items-center max-w-screen-xxl font-extralight flex flex-row w-10/12 gap-20">
         {currentTab === howitwork_tab_heading && <OverviewSection productBlock={productBlock} blocks={blocks} />}
         {currentTab === whylove_tab_heading && <FeaturesSection productBlock={productBlock} />}
-        {currentTab === specifications_tab_heading && <SpecificationsSection productBlock={productBlock} />}
+        {currentTab === specifications_tab_heading && (
+          <SpecificationsSection
+            productBlock={productBlock}
+            frameSelected={frameSelected}
+            frameColorSelected={frameColorSelected}
+          />
+        )}
         {currentTab === sprt_tab_heading && <DeliverySection productBlock={productBlock} />}
       </div>
     </div>
