@@ -67,11 +67,14 @@ const ProductSelector = ({
   product,
   currentVariant,
   reviews,
+  enableReviews,
   reviewsRef = {},
   descriptionRef = {},
   discount,
   productMessaging,
 }) => {
+
+  console.log('enableReviews', enableReviews)
   const { handle } = product;
   const { option1, option2, option3 } = currentVariant;
   const [selectedVariant, setSelectedVariant] = useState(
@@ -132,7 +135,7 @@ const ProductSelector = ({
           role="button"
           tabIndex={0}
         >
-          {reviews.reviews && (
+          {reviews.reviews && enableReviews && (
             <YotpoReviewStars
               stars={reviews.bottomline.average_score}
               totalReviews={reviews.bottomline.total_review}
@@ -184,7 +187,7 @@ const ProductSelector = ({
                 role="button"
                 tabIndex={0}
               >
-                {reviews.reviews && (
+                {reviews.reviews && enableReviews && (
                   <YotpoReviewStars
                     stars={reviews.bottomline.average_score}
                     totalReviews={reviews.bottomline.total_review}
@@ -290,6 +293,7 @@ ProductSelector.defaultProps = {
     variants: [],
   },
   reviews: {},
+  enableReviews: false,
   reviewsRef: {},
   descriptionRef: {},
   discount: '0',

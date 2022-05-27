@@ -18,64 +18,66 @@ const DeliverySection = ({ productBlock }) => {
 
   return (
     <>
-    <div className="mb-4 w-6/12">
-      <IconTitleContainer>
-        <div className="mb-6">
-          {sprt_1_title && (
-            <>
-            <ShippingBox />
-            <h3 className="text-base ml-5 inline">
-              {sprt_1_title}
-            </h3>
-            </>
-          )}
-        </div>
-        <div>
-          {sprt_1_paragraph && (
-            <>
-            <p
-              className="mb-0 inline"
-              dangerouslySetInnerHTML={{ __html: sprt_1_paragraph }}
-            />
-            {sprt_1_linkText && sprt_1_linkUrl && (
-              <Link className="inline-block ml-1" href={sprt_1_linkUrl}>
-                {sprt_1_linkText}
-              </Link>
+    <div className="pdp-tabs-sec pt-16 text-sm justify-items-center max-w-screen-xxl font-extralight flex flex-row w-10/12 gap-20">
+      <div className="mb-4 w-6/12">
+        <IconTitleContainer>
+          <div className="mb-6">
+            {sprt_1_title && (
+              <>
+              <ShippingBox />
+              <h3 className="text-base ml-5 inline">
+                {sprt_1_title}
+              </h3>
+              </>
             )}
-            </>
-          )}
-        </div>
-      </IconTitleContainer>
-    </div>
-    <div className="mb-4 w-6/12">
-      <IconTitleContainer>
-        <div className="mb-6">
-          {sprt_2_title && (
-            <>
-            <ReturnIcon/>
-            <h3 className="text-base ml-5 inline">
-              {sprt_2_title}
-            </h3>
-            </>
-          )}
-        </div>
-        <div>
-          {sprt_2_paragraph && (
-            <>
-            <p
-              className="mb-0 inline"
-              dangerouslySetInnerHTML={{ __html: sprt_2_paragraph }}
-            />
-            {sprt_2_linkText && sprt_2_linkUrl && (
-              <Link className="inline-block ml-1" href={sprt_2_linkUrl}>
-                {sprt_2_linkText}
-              </Link>
+          </div>
+          <div>
+            {sprt_1_paragraph && (
+              <>
+              <p
+                className="mb-0 inline"
+                dangerouslySetInnerHTML={{ __html: sprt_1_paragraph }}
+              />
+              {sprt_1_linkText && sprt_1_linkUrl && (
+                <Link className="inline-block ml-1" href={sprt_1_linkUrl}>
+                  {sprt_1_linkText}
+                </Link>
+              )}
+              </>
             )}
-            </>
-          )}
-          
-        </div>
-      </IconTitleContainer>
+          </div>
+        </IconTitleContainer>
+      </div>
+      <div className="mb-4 w-6/12">
+        <IconTitleContainer>
+          <div className="mb-6">
+            {sprt_2_title && (
+              <>
+              <ReturnIcon/>
+              <h3 className="text-base ml-5 inline">
+                {sprt_2_title}
+              </h3>
+              </>
+            )}
+          </div>
+          <div>
+            {sprt_2_paragraph && (
+              <>
+              <p
+                className="mb-0 inline"
+                dangerouslySetInnerHTML={{ __html: sprt_2_paragraph }}
+              />
+              {sprt_2_linkText && sprt_2_linkUrl && (
+                <Link className="inline-block ml-1" href={sprt_2_linkUrl}>
+                  {sprt_2_linkText}
+                </Link>
+              )}
+              </>
+            )}
+            
+          </div>
+        </IconTitleContainer>
+      </div>
     </div>
     </>
   )

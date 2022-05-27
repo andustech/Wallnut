@@ -63,6 +63,8 @@ const ProductQty = (props) => {
 const StyledQtyInput = styled.input`
   &&& {
     text-indent: 0px;
+    background: transparent;
+    box-shadow: none;
   }
 `;
 
