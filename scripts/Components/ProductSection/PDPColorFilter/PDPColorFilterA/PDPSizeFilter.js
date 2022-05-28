@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import SizeSwatch from '../../../SizeSwatch';
+import ArrowDownIcon from '../../../Icons/ArrowDownIcon';
 
 const getDefaultSize = (product, option1, option2) => {
   const sizeIndex = product.options.indexOf('Size');
@@ -13,12 +14,13 @@ const getDefaultSize = (product, option1, option2) => {
   return '18" x 24"';
 };
 
-const PDPSizeFilter = ({ product, selectedVariant, setSelectedVariant, setCurrentOptions,  setFrameSelected }) => {
+const PDPSizeFilter = ({ product, selectedVariant, setSelectedVariant, setCurrentOptions,  setFrameSelected, isSticky }) => {
   const { variants: originalVaraints } = product;
   const { option1, option2 } = selectedVariant;
 
   const [selectedSize, setSelectedSize] = useState(getDefaultSize(product, option1, option2));
   const [variants, setVariants] = useState(originalVaraints);
+  const [sizeDropdown, setSizeDropdown] = useState('')
 
   useEffect(() => {
     if (!location.search.includes('variant=')) {
@@ -92,21 +94,38 @@ const PDPSizeFilter = ({ product, selectedVariant, setSelectedVariant, setCurren
     });
 
   };
+
+  const handleSizeDropdown = () => {
+    if(sizeDropdown === 'sizeDropdownVisible') {
+      setSizeDropdown('')
+    }
+    else {
+      setSizeDropdown('sizeDropdownVisible')
+    }
+  }
   
   let sizeArr = [];
   const sizeIndex = product.options.findIndex(option => option === "Size");
   return (
-    <div id="pdp-size-swatcher">
-      <h5 className="mb-4">
-      Size{' '}
-        <>
-          -{' '}
-          <span>
-            {sizeIndex === 0 ? option1 : option2}
-          </span>
-        </>
-      </h5>
-      <ul className="grid grid-cols-4">
+    <div id={ isSticky ? 'pdp-size-swatcher-sticky' : 'pdp-size-swatcher'}>
+      { isSticky ?
+        <h5>
+          Size
+          <span onClick={() => handleSizeDropdown() }>{selectedSize}</span>
+          <span onClick={() => handleSizeDropdown() } className="inline-block" ><ArrowDownIcon/></span>
+        </h5>
+      :
+        <h5 className="mb-4">
+        Size{' '}
+          <>
+            -{' '}
+            <span>
+              {sizeIndex === 0 ? option1 : option2}
+            </span>
+          </>
+        </h5>
+      }
+      <ul className={ isSticky ? 'sizeDropdown '+sizeDropdown : 'grid grid-cols-4'}>
         {product.variants.map((variant, i) => {
           const varSize = variant.options[sizeIndex];
           if (sizeArr.indexOf(varSize) === -1) {
@@ -115,6 +134,7 @@ const PDPSizeFilter = ({ product, selectedVariant, setSelectedVariant, setCurren
               <li key={i}>
                 <SizeSwatchContainer
                   isSelected={varSize === selectedSize}
+                  isSticky={isSticky}
                   onClick={() => {
                     setSelectedSize(varSize);
                     handleSizeSelect(varSize);
@@ -124,7 +144,7 @@ const PDPSizeFilter = ({ product, selectedVariant, setSelectedVariant, setCurren
                   role="button"
                   aria-label="change size"
                 >
-                  <SizeSwatch option={varSize} />
+                  <SizeSwatch option={varSize} isSticky={isSticky} />
                 </SizeSwatchContainer>
               </li>
             )
@@ -136,9 +156,12 @@ const PDPSizeFilter = ({ product, selectedVariant, setSelectedVariant, setCurren
   );
 };
 
-const SizeSwatchContainer = styled.div.attrs(({ isSelected }) => {
+const SizeSwatchContainer = styled.div.attrs(({ isSelected, isSticky }) => {
   let className =
     'relative grid justify-items-center items-center h-9 w-24 rounded-full border border-black';
+  if (isSticky) {
+    className = '';
+  }
 
   if (isSelected) {
     className = `${className} opacity-100`;

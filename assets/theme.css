@@ -1427,10 +1427,20 @@ afterpay-placement {
   list-style-position: outside;
   margin-bottom: 12px;
 }
-
-#react-product-section input.AddtoCart {
-  line-height: 20px !important;
+.sizeDropdown {
+  transition: all ease-in-out .4s;
+  width: 100%;
+  bottom: 100%;
+  position: absolute;
+  visibility: hidden;
+  height: 0;
 }
+.sizeDropdown.sizeDropdownVisible {
+  transition: all ease-in-out .4s;
+  visibility: visible;
+  height: auto;
+}
+#pdp-color-swatcher-sticky, .sticky-right {align-items: center; display: flex; flex-direction: row; position: relative;}
 .ship-msg {
   font-family: 'GoodSans';
   font-weight: 400;

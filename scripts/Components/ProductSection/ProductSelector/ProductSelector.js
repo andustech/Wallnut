@@ -273,39 +273,39 @@ const ProductSelector = ({
                   name="button"
                   value="Add to Cart"
                 />
-                <StickyAddToCartContainer ref={submitRef} showStickySubmit={true}>
-                  <StickyAddToCartTitleContainer>
-                    <StickyAddToCartTitle>{product.title}</StickyAddToCartTitle>
-                    <span>{convertPriceFromNumber(selectedVariant.price)}</span>
-                  </StickyAddToCartTitleContainer>
-                  <div className="col-span-2">
-                    {handle !== 'e-gift-card' && (
-                      <PDPSizeFilter
-                        setFrameSelected={setFrameSelected}
-                        product={product}
-                        selectedVariant={selectedVariant}
-                        setSelectedVariant={setSelectedVariant}
-                        currentOptions={currentOptions}
-                        setCurrentOptions={setCurrentOptions}
-                        isSticky={true}
-                      />
-                    )}
+                <StickyAddToCartContainer showStickySubmit={true}>
+                  <div className="container flex flex-row">
+                    <StickyAddToCartTitleContainer>
+                      <StickyAddToCartTitle>{product.title}</StickyAddToCartTitle>
+                      <span>{convertPriceFromNumber(selectedVariant.price)}</span>
+                    </StickyAddToCartTitleContainer>
+                    <div className="sticky-right flex flex-row">
+                      {handle !== 'e-gift-card' && (
+                        <PDPSizeFilter
+                          setFrameSelected={setFrameSelected}
+                          product={product}
+                          selectedVariant={selectedVariant}
+                          setSelectedVariant={setSelectedVariant}
+                          currentOptions={currentOptions}
+                          setCurrentOptions={setCurrentOptions}
+                          isSticky={true}
+                        />
+                      )}
+                      {handle !== 'e-gift-card' && (
+                        <PDPColorFilter
+                          setFrameColorSelected={setFrameColorSelected}
+                          product={product}
+                          selectedVariant={selectedVariant}
+                          setSelectedVariant={setSelectedVariant}
+                          currentOptions={currentOptions}
+                          setCurrentOptions={setCurrentOptions}
+                          selectOptions={selectOptions}
+                          isSticky={true}
+                        />
+                      )}
+                      <StickyAddToCartInput type="submit" value="Add to Cart" />
+                    </div>
                   </div>
-                  <div className="col-span-2 justify-self-end">
-                    {handle !== 'e-gift-card' && (
-                      <PDPColorFilter
-                        setFrameColorSelected={setFrameColorSelected}
-                        product={product}
-                        selectedVariant={selectedVariant}
-                        setSelectedVariant={setSelectedVariant}
-                        currentOptions={currentOptions}
-                        setCurrentOptions={setCurrentOptions}
-                        selectOptions={selectOptions}
-                        isSticky={true}
-                      />
-                    )}
-                  </div>
-                  <StickyAddToCartInput type="submit" value="Add to Cart" />
                 </StickyAddToCartContainer>
               </div>
               <ProductQty qty={qty} setQty={setQty} marginTop="1" />
@@ -411,10 +411,10 @@ const AddToCartSubmitInput = styled.input.attrs({
 `;
 
 const StickyAddToCartContainer = styled.div.attrs(({ showStickySubmit }) => {
-  let className = 'fixed mb-0 px-2 w-full bg-white';
+  let className = 'fixed mb-0 px-2 w-full';
 
   if (showStickySubmit) {
-    className = `${className} grid grid-cols-10 left-0 bottom-0 rounded-none z-20 pt-4 pb-4 pl-16 pr-16`;
+    className = `${className} left-0 bottom-0 rounded-none z-20 pt-4 pb-4`;
   } else {
     className = `${className} hidden`;
   }
@@ -424,7 +424,11 @@ const StickyAddToCartContainer = styled.div.attrs(({ showStickySubmit }) => {
   };
 })`
   align-items: center;
-  background: #f4f2ec;
+  background: #F4F2EC;
+  .container {
+    justify-content: space-between;
+    align-items: center;
+  }
 `;
 
 const ProductShortDescription = styled.div.attrs({
@@ -439,7 +443,7 @@ const ProductShortDescription = styled.div.attrs({
 `;
 
 const StickyAddToCartTitleContainer = styled.div.attrs({
-  className: 'col-span-4 section_titile sticky-add-to-cart',
+  className: 'section_titile sticky-add-to-cart',
 })`
   margin-bottom: 0 !important;
 `;
@@ -483,8 +487,19 @@ const AfterPayContainer = styled.div.attrs({})`
 `;
 
 const StickyAddToCartInput = styled.input.attrs({
-  className: 'AddtoCart col-span-2 pt-0 px-0 leading-none my-auto ml-10 mr-0 primary_btn',
-})``;
+  className: 'AddtoCart pb-3 pt-3 my-0',
+})`
+  width: 153px;
+  border-radius: 0 !important;
+  background-color: #f1946a !important;
+  font-family: 'GoodSans' !important;
+  font-weight: 400 !important;
+  font-size: 12px !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  color: #000000 !important;
+  padding: 0 !important;
+`;
 
 const MobileTopContainer = styled.div.attrs({
   className: 'lg:hidden',
