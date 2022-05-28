@@ -100,9 +100,9 @@ const PDPColorFilter = ({
   let staticColors = ['Matte Black', 'Walnut Wood', 'Matte White'];
   const colorIndex = product.options.findIndex((option) => option === 'Frame Color');
   return (
-    <div id={ isSticky ? 'pdp-color-swatcher-sticky' : 'pdp-color-swatcher'}>
+    <div id={ isSticky ? 'pdp-color-swatcher-sticky' : 'pdp-color-swatcher'} className={isSticky ? 'pl-6 ml-6 border-l mr-12' : ''}>
       { isSticky ?
-        <h5 className="inline-block">Frame</h5>
+        <h5 className="mr-4">Frame</h5>
       :
         <h5 className="mb-4">
           Choose a Frame{' '}
@@ -115,7 +115,7 @@ const PDPColorFilter = ({
       <ul className={ isSticky ? 'inline-block' : 'grid grid-cols-10'}>
         {staticColors.map((color, index) => {
           return (
-            <li key={index} className={ isSticky ? 'inline-block' : ''}>
+            <li key={index} className={ isSticky ? 'inline-block mr-2' : ''}>
               <ColorSwatchContainer
                 isSelected={color === selectedColor}
                 onClick={() => {

@@ -111,7 +111,7 @@ const PDPSizeFilter = ({ product, selectedVariant, setSelectedVariant, setCurren
       { isSticky ?
         <h5>
           Size
-          <span onClick={() => handleSizeDropdown() }>{selectedSize}</span>
+          <span className="mr-4 ml-4" onClick={() => handleSizeDropdown() }>{selectedSize}</span>
           <span onClick={() => handleSizeDropdown() } className="inline-block" ><ArrowDownIcon/></span>
         </h5>
       :

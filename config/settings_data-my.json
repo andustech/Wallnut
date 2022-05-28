@@ -380,6 +380,10 @@
               "features_section_1_video_url": "https:\/\/levity-products.s3.us-west-2.amazonaws.com\/videos\/OV_CD_Stain-Spill+proof_Desktop-+496px+x+330px_redo.mp4",
               "specifications_tab_heading": "Specifications",
               "dimensions_heading": "DIMensions",
+              "frame_size": "19.4” x 25.4” x 1”",
+              "image_size": "13” x 19.5”",
+              "total_weight": "3.9 lbs",
+              "moulding_width": "1”",
               "details_heading": "Details",
               "frame_description": "Solid wood - FSC certified pine wood. Stained finish.",
               "paper_description": "Archival quality, acid-free, matte finish",
@@ -2044,8 +2048,7 @@
             "settings": {
               "image": "shopify:\/\/shop_images\/meet-wallnut-left.png",
               "title": "Hassle-free hanging",
-              "content": "Skip the trip to the hardware store. Wallnut artwork arrievs with everything you need to hang it. The Wallnut<sup>TM<\/sup> Mounting System comes with two pieces:",
-              "content_r": "",
+              "content": "Skip the trip to the hardware store. Wallnut artwork arrievs with everything you need to hang it. The \nWallnut<sup>TM<\/sup> Mounting System comes with two pieces:",
               "point_title_1": "Wall mount.*",
               "point_content_1": "It's adhesive-based, so you don't have to worry about wall damage. It also comes with a built-in level, which makes it easy to find the perfect placement.",
               "point_title_2": "Frame hook.",
@@ -2053,7 +2056,7 @@
               "button_text": "",
               "button_link": "",
               "video_btn_text": "SEE IT IN ACTION",
-              "video_link": "http:\/\/commondatastorage.googleapis.com\/gtv-videos-bucket\/sample\/BigBuckBunny.mp4",
+              "video_link": "",
               "subtext": "*We recommend using the included hanging nails when extra support is needed. For more information, visit our FAQS."
             }
           },
@@ -2063,7 +2066,6 @@
               "image": "shopify:\/\/shop_images\/meet-wallnut-right.png",
               "title": "Framed and ready to hang",
               "content": "Your artwork arrives already framed, using premium materials that are thoughtfully sourced. Simply hang it in your living room, bedroom, bathroom, kids’ room, craft room... or any room!",
-              "content_r": "",
               "point_title_1": "",
               "point_content_1": "",
               "point_title_2": "",
@@ -2087,100 +2089,12 @@
       },
       "hanging-wallnut": {
         "type": "hanging-wallnut",
-        "blocks": {
-          "a59691c8-766e-4a6f-9128-3683a20ec017": {
-            "type": "section",
-            "settings": {
-              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0627\/3476\/2207\/files\/hanging-wallnut-1.png?v=1653727050",
-              "title": "1. Measure and mark",
-              "content": "Your artwork comes with a special tape measure that sticks right to the wall. It's like your personal helper to find the perfect height."
-            }
-          },
-          "c4769b7b-ee0e-47f6-ac0d-23dba42c88ae": {
-            "type": "section",
-            "settings": {
-              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0627\/3476\/2207\/files\/hanging-wallnut-2.png?v=1653727050",
-              "title": "2. Level and stick",
-              "content": "Our wall mount has a built-in level (cool, right?). Simply stick it to your wall and say goodbye to crooked artwork."
-            }
-          },
-          "02789ba7-d2e0-4c9c-9298-1ab21bea9185": {
-            "type": "section",
-            "settings": {
-              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0627\/3476\/2207\/files\/hanging-wallnut-3.png?v=1653727050",
-              "title": "3. Attach and enjoy!",
-              "content": "Just slide your art into place, relax, and enjoy. Maybe have a party to show off your beautiful walls. Be sure to invite us!"
-            }
-          }
-        },
-        "block_order": [
-          "a59691c8-766e-4a6f-9128-3683a20ec017",
-          "c4769b7b-ee0e-47f6-ac0d-23dba42c88ae",
-          "02789ba7-d2e0-4c9c-9298-1ab21bea9185"
-        ],
         "settings": {
-          "section_title": "Hanging your Wallnut art is easy as 1-2-3!"
         }
       },
       "shop-our-best-sellers": {
         "type": "shop-our-best-sellers",
         "settings": {
-        }
-      },
-      "how-it-works-video": {
-        "type": "how-it-works-video",
-        "settings": {
-          "image": "shopify:\/\/shop_images\/how-it-works-video.png",
-          "title": "How it works",
-          "content": "Sound too good to be true? This video explains everything.",
-          "video_btn_text": "watch the video",
-          "video_link": "http:\/\/commondatastorage.googleapis.com\/gtv-videos-bucket\/sample\/ElephantsDream.mp4"
-        }
-      },
-      "how-it-works-mission": {
-        "type": "how-it-works-mission",
-        "settings": {
-          "image": "shopify:\/\/shop_images\/how-it-works-mission.png",
-          "title": "Our mission",
-          "content": "At Wallnut, we’re passionate about making it easy to transform your house into a home. We believe that art shouldn’t be difficult to find, frustrating to frame, or impossible to hang. That's why we spent years developing the perfect mounting system. And it's why we're constantly curating a high-quality art collection that will complement your space."
-        }
-      },
-      "featured-collection": {
-        "type": "featured-collection",
-        "blocks": {
-          "cff32f9a-a350-47c1-85d1-69b4087c521a": {
-            "type": "section",
-            "settings": {
-              "product": "a-pair-of-pears-art"
-            }
-          },
-          "3611b512-9050-46df-9c1b-0929ae7ae6cd": {
-            "type": "section",
-            "settings": {
-              "product": "a-birds-view-of-paris-crop-i-art"
-            }
-          },
-          "229c53c6-e9e2-4959-a8a2-cde03e1d3fee": {
-            "type": "section",
-            "settings": {
-              "product": "abstract-figure-study-i-art"
-            }
-          },
-          "7607dae1-0409-4c0a-b35f-1b9d5252ca1f": {
-            "type": "section",
-            "settings": {
-              "product": "a-half-peeled-banana-art"
-            }
-          }
-        },
-        "block_order": [
-          "cff32f9a-a350-47c1-85d1-69b4087c521a",
-          "3611b512-9050-46df-9c1b-0929ae7ae6cd",
-          "229c53c6-e9e2-4959-a8a2-cde03e1d3fee",
-          "7607dae1-0409-4c0a-b35f-1b9d5252ca1f"
-        ],
-        "settings": {
-          "title": "Shop our best sellers"
         }
       }
     },

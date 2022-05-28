@@ -23,7 +23,15 @@ const SizeSwatchContainer = styled.div.attrs(({ isSticky }) => {
     className,
   };
 
-})``;
+})`
+  font-family: 'GoodSans';
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #000000;
+`;
 
 SizeSwatch.defaultProps = {
   isSticky: false,
