@@ -10,7 +10,7 @@
     max-width: 100% !important;
   }
 }
-.gm-menu-installed .gm-menu {
+.gm-menu-installed .gm-menu { 
   line-height: 1.4;
   background-color: rgba(255, 255, 255, 1) !important;
   color: rgba(0, 0, 0, 1);
