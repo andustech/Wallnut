@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import MobileContext from './mobileContext';
 
+import HowItWorkTab from './HowItWorkTab';
 import FeaturesTab from './FeaturesTab';
 import SpecificationsTab from './SpecificationsTab';
 import DeliveryTab from './DeliveryTab';
@@ -32,9 +33,10 @@ const MobileProductDetailsSection = (props) => {
   return (
     <MobileContext.Provider value={contextValue}>
       <div className="grid md:none" ref={detailsRef}>
+        <HowItWorkTab productTypeBlock={productTypeBlock} />
         <FeaturesTab productTypeBlock={productTypeBlock} />
         <SpecificationsTab productTypeBlock={productTypeBlock} />
-        <DeliveryTab blocks={blocks} />
+        <DeliveryTab productTypeBlock={productTypeBlock} />
       </div>
     </MobileContext.Provider>
   );

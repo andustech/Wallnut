@@ -29,8 +29,6 @@
   <style>
   @font-face {
     font-family: 'GoodSans-Light';
-    font-style: normal;
-    font-weight: normal;
     src: url({{ "GoodSans-Light.woff2" | asset_url }}) format("woff2"), 
     url({{ "GoodSans-Light.woff" | asset_url }}) format("woff"); 
   }
@@ -64,8 +62,8 @@
 
   @font-face {
     font-family: 'GoodSans';
-    src: url({{ "https://cdn.shopify.com/s/files/1/0627/3476/2207/files/GoodSans-Regular.woff2?v=1652105277" }}) format("woff2"), 
-    url({{ "https://cdn.shopify.com/s/files/1/0627/3476/2207/files/GoodSans-Regular.woff?v=1652105277" }}) format("woff"); 
+    src: url({{ "GoodSans-Regular.woff2" | asset_url }}) format("woff2"), 
+    url({{ "GoodSans-Regular.woff" | asset_url }}) format("woff"); 
   }                               
   </style>
 
@@ -205,7 +203,7 @@
       </div>
     {% endif %}
 
-    <div id="content"{% unless full_width_page %} class="row"{% endunless %}>
+    <div id="content"{% unless full_width_page %} class="row w-full {{template.suffix }}"{% endunless %}>
       {% unless template contains 'product' %}
         {% if settings.breadcrumb and full_width_page == true %}
           <div class="row">
@@ -288,7 +286,7 @@
           }
         })
 
-      }
+      } 
     }
      const myInterval = setInterval(function() {
       	$('.gm-menu .gm-heading span:contains(Default)').addClass('default-title');
@@ -296,6 +294,47 @@
           clearInterval(myInterval);
         }
       }, 200);
+
+      $(window).scroll(function () {
+        if ($(window).scrollTop() > 10) {
+          $(".gm-submenu.gm-mega.gm-submenu-bordered").css({ "top": "75px" });
+        }
+        else {
+          $(".gm-submenu.gm-mega.gm-submenu-bordered").css({ "top": "119px" });
+        }
+      });
+       const myIntervalNewsletter = setInterval(function() {
+      	if ($('body form.klaviyo-form').length > 0) {
+          $('body form.klaviyo-form').attr('autocomplete', 'off');
+          clearInterval(myIntervalNewsletter);
+        }
+      }, 200);
+
+      function bannerImageHeight() {
+        if ($(window).width() >= 991 && $('body').hasClass('index')){
+          const myIntervalBannerheight = setInterval(function() {
+            if ($('body .gm-menu').length > 0) {
+              var ann_height = $('#react-header').outerHeight();
+              console.log('ann_height', ann_height);
+              var header_height = $('#react-desktop-announcement').outerHeight();
+              console.log('header_height', header_height);
+              var total_height = ann_height + header_height;
+              console.log('total_height', total_height);
+              $('.main_banner').css('height', 'calc(100vh - '+total_height+'px)');
+              $('.main_banner img').hide()
+              clearInterval(myIntervalBannerheight);
+            }
+          }, 200);
+        } else {
+          $('.main_banner img').show()
+          $('.main_banner').css('height', 'auto');
+        }
+      }
+      bannerImageHeight();
+
+      $( window ).resize(function() {
+        bannerImageHeight();
+      });
     });
   </script>
 

@@ -512,8 +512,7 @@ export const getColorSwatchImageUrl = (variantName, product, variant) => {
 
 export const getColorSwatchThumbImageUrl = (variantName) => {
   const kababCase = getVariantSwatchName(variantName).replace(/ /g, '-').toLowerCase();
-
-  return getS3url(`/color-swatches/${kababCase}-thumb.jpg`);
+  return `https://cdn.shopify.com/s/files/1/0627/3476/2207/files/color-thumb-${kababCase}.jpg`;
 };
 
 export const findCollectionObject = (products, variant) => {
@@ -543,62 +542,52 @@ export const getSingleViewImage = (product, variant) => {
 };
 
 export const getCurrentImages = (product, variant) => {
+  console.log('product A => ', product);
   const variantName = getVariantName(variant);
+  const sizeIndex = product.options.indexOf('Size');
+  const colorIndex = product.options.indexOf('Frame Color');
 
-  if (product.handle === 'e-gift-card') {
-    return [
-      {
-        url: getSingleViewImage(product, 'e-gift-card'),
-        alt: `${product.handle}-${variantName}`.replace(/-/g, ' ').replace('.jpg', ''),
-      },
-    ];
+  if(variant.options[colorIndex] === 'Matte White') {
+    var color = 'white'
+  }
+  else if(variant.options[colorIndex] === 'Matte Black') {
+    var color = 'black'
+  }
+  else if(variant.options[colorIndex] === 'Walnut Wood') {
+    var color = 'walnut'
   }
 
-  return productImages[product.handle][variantName].map((fileName) => {
-    if (fileName.includes('color-swatch')) {
-      return {
-        url: getColorSwatchImageUrl(variantName, product, variant),
-        alt: `${variantName.toLowerCase()} color swatch`,
-      };
-    }
+  var size = variant.options[sizeIndex].replace(/ |x|"/gi, '');
+  var roomImg = 'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/'+product.handle.replace('art', '')+'B-'+color+'-'+size+'.jpg?v=1652388790'
 
+  let productImgs = [
+    variant.featured_image.src,
+    roomImg,
+    'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/Image-C-close-up-corner-angled-'+color+'.jpg?',
+    'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/Image-D-back-of-frame-angled.jpg',
+    'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/Image-E-hanging-demo.jpg'
+  ]
+
+  return productImgs.map((imageUrl) => {
     return {
-      url: getS3url(`/${product.handle}/${variantName}/${fileName}`),
-      alt: `${product.handle}-${variantName}-${fileName}`.replace(/-/g, ' ').replace('.jpg', ''),
+      url: imageUrl,
+      alt: `${product.handle}-${variantName}`.replace(/-/g, ' ').replace('.jpg', ''),
     };
-  });
+  })
+  
 };
 
 const mapRecommendedColors = (products) => {
   const recommendedColors = {
-    'the-classic-dining-chair': [
-      'herringbone off white',
-      'staccato salt and pepper',
-      'camellia cream',
-      'pinstripe dark gray',
-    ],
-    'the-scandinavian-lounge-chair': [
-      'mustard yellow',
-      'cowhide black and white',
-      'sand',
-      'shagreen storm gray',
-    ],
-    'the-scandinavian-dining-chair': [
-      'herringbone light gray',
-      'kali ikat blue',
-      'sand',
-      'burnt orange',
-    ],
-    'the-classic-lounge-chair': [
-      'dusty rose',
-      'woven mosaic storm gray',
-      'cerulean',
-      'gingham rustic red',
-    ],
+    'colors-name': [
+      'Matte White',
+      'Matte Black',
+      'Walnut Wood',
+    ]
   };
 
   return products.reduce((acc, product) => {
-    const colors = recommendedColors[product.handle];
+    const colors = recommendedColors['colors-name'];
 
     if (colors) {
       return [
@@ -612,6 +601,27 @@ const mapRecommendedColors = (products) => {
 
     return acc;
   }, []);
+};
+
+export const getVariant = (recommendation, colorsArr, colorIndex) => {
+  if(colorIndex === 0) {
+    const productVariant = recommendation.variants.find(
+      (variant) => variant.option1 === colorsArr[0]
+    );
+    return productVariant;
+  }
+  else if(colorIndex === 1) {
+    const productVariant = recommendation.variants.find(
+      (variant) => variant.option2 === colorsArr[0]
+    );
+    return productVariant;
+  }
+  else if(colorIndex === 2) {
+    const productVariant = recommendation.variants.find(
+      (variant) => variant.option3 === colorsArr[0]
+    );
+    return productVariant;
+  }
 };
 
 export const getVariantOptions = (variant) =>
@@ -759,18 +769,17 @@ export const mergedFetchedRecommendations = (products, allProducts) => {
 export const fetchRecommendations = async (productId) => {
   try {
     const products = await fetchProducts();
-
     if (!productId) {
       return mapRecommendedColors(mergedFetchedRecommendations(products));
     }
 
-    const fetchResponse = await fetch(`/recommendations/products.json?product_id=${productId}`);
+    const fetchResponse = await fetch(`/recommendations/products.json?product_id=${productId}&limit=4`);
     const response = await fetchResponse.json();
 
-    return mapRecommendedColors(mergedFetchedRecommendations(response.products, products));
+    return response.products;
+
   } catch (err) {
     console.log(err);
-
     return [];
   }
 };

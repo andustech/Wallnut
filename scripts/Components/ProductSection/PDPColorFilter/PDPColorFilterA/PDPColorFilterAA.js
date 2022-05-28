@@ -1,81 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import fabrics from './fabrics';
 import ColorSwatch from '../../../ColorSwatch';
-import FilterTabs from './FilterTabs';
 
-const filterColorGroup = (product, group, option) => {
-  if (product.handle === 'extra-chair-cover') {
-    const productVariants = product.variants.filter((variant) => variant.option1 === option);
-
-    return group.filter((color) => {
-      const variant = productVariants.find((productVariant) =>
-        productVariant.options.join(' ').replace(/ /g, '-').toLowerCase().includes(color)
-      );
-
-      return !!variant;
-    });
-  }
-
-  return group.filter((color) => {
-    const variant = product.variants.find((productVariant) =>
-      productVariant.options.join(' ').replace(/ /g, '-').toLowerCase().includes(color)
-    );
-
-    return !!variant;
-  });
-};
-
-const getDefaultColor = (handle, option1, option2) => {
-  const color = handle.includes('cover') ? option2 : option1;
+const getDefaultColor = (product, option1, option2) => {
+  const colorIndex = product.options.indexOf('Frame Color');
+  const color = colorIndex === 0 ? option1 : option2;
 
   if (location.search.includes('variant=') || location.search.includes('color=')) {
-    return color.toLowerCase().replace(/\s/g, '-');
+    return color;
   }
-
-  return 'herringbone-off-white';
+  return 'Matte Black';
 };
 
-const getFilterType = (handle, selectedVariant) => {
-  const { option1, option2 } = selectedVariant;
-  const filterTypeName = handle.includes('cover') ? option2 : option1;
-  const option = filterTypeName.toLowerCase().replace(/\s/g, '-');
-  const hasVariantParams =
-    location.search.includes('variant=') || location.search.includes('color=');
-
-  if (hasVariantParams) {
-    const filterType = Object.keys(fabrics).reduce((acc, key) => {
-      const groupValue = fabrics[key];
-
-      if (groupValue.All.includes(option)) {
-        return key;
-      }
-
-      return acc;
-    }, '');
-
-    return filterType;
-  }
-
-  return 'Patterns';
-};
-
-const PDPColorFilter = ({ product, selectedVariant, setSelectedVariant, setCurrentOptions }) => {
+const PDPColorFilter = ({
+  product,
+  selectedVariant,
+  setSelectedVariant,
+  setCurrentOptions,
+  setFrameColorSelected,
+  isSticky,
+}) => {
   const { handle, variants: originalVaraints } = product;
   const { option1, option2 } = selectedVariant;
-  const filterType = getFilterType(handle, selectedVariant);
-  const defaultColor = getDefaultColor(handle, option1, option2);
 
-  const [type, setType] = useState(filterType);
-  const [group, setGroup] = useState('All');
-  const [selectedColor, setSelectedColor] = useState(defaultColor);
+  const [selectedColor, setSelectedColor] = useState(getDefaultColor(product, option1, option2));
   const [variants, setVariants] = useState(originalVaraints);
 
   useEffect(() => {
     if (!location.search.includes('variant=')) {
       const defaultVariant = product.variants.find((variant) =>
-        variant.title.includes('Herringbone Off White')
+        variant.title.includes('Matte Black')
       );
 
       if (defaultVariant) {
@@ -87,7 +42,7 @@ const PDPColorFilter = ({ product, selectedVariant, setSelectedVariant, setCurre
         });
       }
     } else {
-      setSelectedColor(getDefaultColor(handle, option1, option2));
+      setSelectedColor(getDefaultColor(product, option1, option2));
     }
   }, [
     handle,
@@ -102,21 +57,30 @@ const PDPColorFilter = ({ product, selectedVariant, setSelectedVariant, setCurre
 
   useEffect(() => {
     setVariants(product.variants);
-  }, [product.variants]);
-
-  const groupList = fabrics[type];
+    setFrameColorSelected(selectedColor);
+  }, [product.variants, setFrameColorSelected, selectedColor]);
 
   const handleColorSelect = (color) => {
-    const colorOptionIndex = product.options.indexOf('Color');
-    const findVariant = variants.find((variantItem) =>
-      variantItem.options.map((option) => option.toLowerCase().replace(/ /g, '-')).includes(color)
-    );
+    const url = new URL(window.location);
+    let params = url.searchParams;
+    const colorOptionIndex = product.options.indexOf('Frame Color');
+    const sizeOptionIndex = product.options.indexOf('Size');
+    let size = params.get('size');
+    if (!size) {
+      size = '18" x 24"';
+    }
 
-    history.pushState(
-      '',
-      '',
-      `?variant=${findVariant.id}&color=${findVariant.options[colorOptionIndex]}`
-    );
+    const findVariant = variants.find((variantItem) => {
+      return (
+        variantItem.options[sizeOptionIndex] === size &&
+        variantItem.options[colorOptionIndex] === color
+      );
+    });
+
+    url.searchParams.set('variant', findVariant.id);
+    url.searchParams.set('color', color);
+    window.history.pushState('', '', url);
+
     setSelectedVariant(findVariant);
     setCurrentOptions({
       option1: findVariant.option1,
@@ -133,47 +97,32 @@ const PDPColorFilter = ({ product, selectedVariant, setSelectedVariant, setCurre
     });
   };
 
+  let staticColors = ['Matte Black', 'Walnut Wood', 'Matte White'];
+  const colorIndex = product.options.findIndex((option) => option === 'Frame Color');
   return (
-    <div>
-      <h5 className="text-sm text-left mb-3">
-        Washable Fabric Color{' '}
-        <>
-          -{' '}
-          <span className="brown-text md:text-sm">
-            {handle.includes('cover') ? option2 : option1}
-          </span>
-        </>
-      </h5>
-      <div className="flex gap-2 mb-2">
-        {Object.keys(fabrics).map((item, i) => (
-          <FilterTabs
-            key={i}
-            onClick={() => {
-              setType(item);
-              setGroup('All');
-            }}
-            text={item}
-            active={item === type}
-          />
-        ))}
-      </div>
-      <div className="border-gray border-b" />
-      <StyledGroupList type={type}>
-        {Object.keys(groupList).map((item, i) => (
-          <FilterTabs key={i} onClick={() => setGroup(item)} text={item} active={item === group} />
-        ))}
-      </StyledGroupList>
-      <div className="lg:h-50">
-        <ul className="border-b border-t grid grid-cols-8 lg:border-none lg:pb-0 pb-2">
-          {filterColorGroup(product, groupList[group], option1).map((color, i) => (
-            <li key={i} className="mt-2">
+    <div id={ isSticky ? 'pdp-color-swatcher-sticky' : 'pdp-color-swatcher'}>
+      { isSticky ?
+        <h5 className="inline-block">Frame</h5>
+      :
+        <h5 className="mb-4">
+          Choose a Frame{' '}
+          <>
+            - <span>{colorIndex === 0 ? option1 : option2}</span>
+          </>
+        </h5>
+      }
+
+      <ul className={ isSticky ? 'inline-block' : 'grid grid-cols-10'}>
+        {staticColors.map((color, index) => {
+          return (
+            <li key={index} className={ isSticky ? 'inline-block' : ''}>
               <ColorSwatchContainer
                 isSelected={color === selectedColor}
                 onClick={() => {
                   setSelectedColor(color);
                   handleColorSelect(color);
                 }}
-                tabIndex={0}
+                tabIndex={index}
                 onKeyDown={() => {}}
                 role="button"
                 aria-label="change color"
@@ -181,35 +130,20 @@ const PDPColorFilter = ({ product, selectedVariant, setSelectedVariant, setCurre
                 <ColorSwatch option={color} />
               </ColorSwatchContainer>
             </li>
-          ))}
-        </ul>
-      </div>
+          );
+        })}
+      </ul>
     </div>
   );
 };
 
-const StyledGroupList = styled.div.attrs(({ type }) => {
-  let className = 'flex gap-3 my-2 md:gap-2';
-  if (type === 'Solids') {
-    className = `${className} justify-center`;
-  }
-  return {
-    className,
-  };
-})`
-  @media screen and (max-width: 430px) {
-    flex-wrap: wrap;
-  }
-`;
-
 const ColorSwatchContainer = styled.div.attrs(({ isSelected }) => {
-  let className =
-    'relative grid justify-items-center items-center h-9 w-9 mx-auto rounded-full md:h-11 md:w-11';
+  let className = 'relative grid justify-items-center items-center h-8 w-8 rounded-full';
 
   if (isSelected) {
-    className = `${className} border-2 border-blue`;
+    className = `${className} border-2 border-black`;
   } else {
-    className = `${className} border border-gray-300`;
+    className = `${className}`;
   }
 
   return {

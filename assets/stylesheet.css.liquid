@@ -11640,7 +11640,7 @@ Mobile Fixed Nav
 
 #shopify-section-header  {
  width: 100% !important;
- border-bottom-width: 1px !important;
+ /* border-bottom-width: 1px !important; */
 }
 
 button.needsclick.Button__FormStyledButton-p2mbjt-0.gVdKtA.kl-private-reset-css-Xuajs1 {
@@ -12257,14 +12257,14 @@ body.gm-menu-installed nav > .hidden.lg\:flex > ul{
 }
 .gm-menu-installed .gm-menu .gm-submenu .gm-heading .gm-target .gm-text, .gm-menu-installed .gm-menu .gm-submenu .gm-item .gm-heading a.gm-target {
     text-transform: uppercase;
-    font-family: 'GoodSans' !important;
+    font-family: 'GoodSans-Medium' !important;
     line-height: 20px;
     letter-spacing: 0.05em;
     padding-bottom: 0;
     text-align: left;
 }
 .gm-menu-installed .gm-menu .gm-submenu .gm-has-submenu .gm-item:not(.gm-heading) .gm-target .gm-text {
-  font-family: 'GoodSans';
+  font-family: 'GoodSans-Light';
 }
 
 .gm-menu-installed .gm-menu .gm-submenu .gm-item .gm-heading {
@@ -12290,11 +12290,12 @@ body.gm-menu-installed nav > .hidden.lg\:flex > ul{
 .gm-menu-installed .gm-menu .gm-single-product .gm-product-name {
     font-family: 'AttilaSansUniform-Medium';
     font-style: normal;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 10px;
     line-height: 14px;
     letter-spacing: 0.04em;
     text-transform: uppercase;
+    text-align: left;
 }
 .gm-menu-installed .gm-menu .gm-single-product .gm-product-price {
     display: none;
@@ -12304,6 +12305,12 @@ body.gm-menu-installed nav > .hidden.lg\:flex > ul{
 }
 .gm-menu:not(.gm-menu-mobile) .iTbbpu, .gm-menu-mobile .fyRDfx {
   display: none;
+}
+.gm-menu-installed .gm-label.gm-sold_out-label {
+  display: none; 
+}
+.gm-menu-installed .gm-menu .gm-submenu .gm-grid {
+    justify-content: space-between !important;
 }
 .gm-menu-installed .gm-menu .gm-submenu .gm-heading .gm-target .gm-text.default-title, .gm-menu-installed .gm-menu .gm-submenu .gm-heading .gm-target:hover .gm-text.default-title {
     color: #fff !important;

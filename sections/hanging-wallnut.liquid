@@ -1,0 +1,55 @@
+<div id="react-hanging-wallnut">
+  <script type="application/json">
+    {
+      "themeSettings": {{ settings | json }},
+      "settings": {{ section.settings | json }},
+      "blocks": [
+        {% for block in section.blocks %}
+            {
+                "settings": {{ block.settings | json }},
+                "type": {{ block.type | json }},
+                "shopify_attributes": {{ block.shopify_attributes | json }}
+            }
+            {% if forloop.last != true %},{% endif %}
+        {% endfor %}
+      ]
+    }
+  </script>
+</div>
+
+{% schema %}
+{
+  "name": "Hanging Wallnut",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Hanging your Wallnut art is easy as 1-2-3!"
+    }
+  ],
+  "blocks": [
+      {
+        "name": "Image With Text",
+        "type": "section",
+        "settings": [
+          {
+            "type": "text",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "textarea",
+            "id": "content",
+            "label": "Content"
+          }
+        ]
+      }
+  ]
+}
+{% endschema %}

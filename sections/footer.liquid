@@ -9,153 +9,160 @@
 {%- if section.settings.show_locale_selector and shop.published_locales.size > 1 -%}
   {%- assign locale_selector = true -%}
 {%- endif -%}
-<div class="footer-section footer-template" data-section-id="{{ section.id }}" data-section-type="footer-section">
-  <div class="clear"></div>
-  <div class="fast_order_main_container top" style='background-color: #133744,'>
-    <div class="container">
-      <!-- <div class="bg-white grid grid-center grid-cols-3 items-center"> -->
-      <div class="fast_order_inner justify-between flex items-start" style='background: #F4F2EC;'>
-        <h2 class="font-attila-sans-medium font-medium">{{ section.settings.title }}</h2>
-        <p class="news_para">{{ section.settings.subheading }}</p>
-        <div class="newsletter">
-          <div class="klaviyo-form-SxEnPF"></div>
+<div class="section-padding">
+  <div class="footer-section footer-template" data-section-id="{{ section.id }}" data-section-type="footer-section">
+    <div class="clear"></div>
+    <div class="fast_order_main_container top" style='background-color: #133744'>
+      <div class="container">
+        <!-- <div class="bg-white grid grid-center grid-cols-3 items-center"> -->
+        <div class="fast_order_inner justify-between flex items-start" style='background: #F4F2EC;'>
+          <h2 class="h3-attila-sans font-medium text-black">{{ section.settings.title }}</h2>
+          <p class="news_para mb-0">{{ section.settings.subheading }}</p>
+          <div class="newsletter">
+            <div class="klaviyo-form-SxEnPF"></div>
 
-          {% comment %} <form action=''>
-            <input class='email_input' placeholder='Enter Email' type='emai'>
-          </form> {% endcomment %}
-          <p>{{ section.settings.content }}</p>
+            {% comment %} <form action=''>
+              <input class='email_input' placeholder='Enter Email' type='emai'>
+            </form> {% endcomment %}
+            <p class="mt-4">{{ section.settings.content }}</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-    <div class='footer_bg'>
-        <div class='container'>
-          <div class='footer_logo'>
-            <img src='{{ section.settings.logo_icon }}'>
-            <p>{{ section.settings.logo_title }}</p>
-          </div>
-          <div class='footer_opt_container'>
-            <div class='footer_left'>
-            {% for block in section.blocks %}
-              {% if forloop.index < 3 %}
-                {% assign menu_handle = block.settings.footer_nav %}
-                <div class='footer_opt'>
-                  <p class='footer_title'>{{ block.settings.title }}</p>
-                  <ul>
-                    {% for link in linklists[menu_handle].links %}
-                      <li><a href='{{ link.url }}' class='normal-case'>{{ link.title }}</a></li>
-                    {% endfor %}
-                  </ul>
-                </div>
-              {% endif %}
-            {% endfor %}
-              <!--
-              <div class='footer_opt'>
-                <p class='footer_title'>Support</p>
-                <ul>
-                  <li><a href='#'>FAQS</a></li>
-                  <li><a href='#'>Returns</a></li>
-                  <li><a href='#'>Shipping</a></li>
-                  <li><a href='#'>Instructions</a></li>
-                  <li><a href='#'>Accesibility</a></li>
-                  <li><a href='#'>Afterpay</a></li>
-                </ul>
-              </div>
-              <div class='footer_opt'>
-                <p class='footer_title'>Shop</p>
-                <ul>
-                  <li><a href='#'>Shop by Size</a></li>
-                  <li><a href='#'>Shop by Subject</a></li>
-                  <li><a href='#'>Shop by Mood</a></li>
-                  <li><a href='#'>Shop by Style</a></li>
-                </ul>
-              </div> -->
+      <div class='footer_bg'>
+          <div class='container'>
+            <div class='footer_logo'>
+              <img src='{{ section.settings.logo_icon }}'>
+              <p>{{ section.settings.logo_title }}</p>
             </div>
-            <div class='footer_right'>            
+            <div class='footer_opt_container'>
+              <div class='footer_left'>
               {% for block in section.blocks %}
-                {% if forloop.index == 3 %}
+                {% if forloop.index < 3 %}
                   {% assign menu_handle = block.settings.footer_nav %}
-                  <div class='contact_footer_opt footer_opt mr-0 contact'>
+                  <div class='footer_opt'>
                     <p class='footer_title'>{{ block.settings.title }}</p>
                     <ul>
                       {% for link in linklists[menu_handle].links %}
-                        <li><a href='{{ link.url }}' class='contact normal-case'>{{ link.title }}</a></li>
+                        <li><a href='{{ link.url }}' class='normal-case'>{{ link.title }}</a></li>
                       {% endfor %}
                     </ul>
                   </div>
-                  <p class='on_social_media'>{{ section.settings.social_media_title }}</p>
-                  <div class='social_media_icon'>
-                      {% if settings.email_text != '' %}
-                      <div class='soc_ico'><a href='{% if settings.email_url %} mailto:{{ settings.email_url }} {% endif %}'>{{ settings.email_text }}</a></div>
-                      {% endif %}
-                      {% if settings.twitter_url != '' %}
-                      <div class='soc_ico'><a href='{{ settings.twitter_url }}'><i></i></a></div>
-                      {% endif %}
-                      {% if settings.facebook_url != '' %}
-                      <div class='soc_ico'><a href='{{ settings.facebook_url }}'><i><img src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/facebook.svg?v=1652272128" alt="Social Icons"></i></a></div>
-                      {% endif %}
-                      {% if settings.instagram_url != '' %}
-                      <div class='soc_ico'><a href='{{ settings.instagram_url }}'><i><img src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/instagram.svg?v=1652273696" alt="Social Icons"></i></a></div>
-                      {% endif %}
-                      {% if settings.pinterest_url != '' %}
-                      <div class='soc_ico'><a href='{{ settings.pinterest_url }}'><i></i></a></div>
-                      {% endif %}
-                      {% if settings.tumblr_url != '' %}
-                      <div class='soc_ico'><a href='{{ settings.tumblr_url }}'><i></i></a></div>
-                      {% endif %}
-                      {% if settings.youtube_url != '' %}
-                      <div class='soc_ico'><a href='{{ settings.youtube_url }}'><i></i></a></div>
-                      {% endif %}
-                      {% if settings.googleplus_url != '' %}
-                      <div class='soc_ico'><a href='{{ settings.googleplus_url }}'><i></i></a></div>
-                      {% endif %}
-                      {% if settings.snapchat_id != '' %}
-                      <div class='soc_ico'><a href='{{ settings.snapchat_id }}'><i></i></a></div>
-                      {% endif %}
-                      {% if settings.weibo_id != '' %}
-                      <div class='soc_ico'><a href='{{ settings.weibo_id }}'><i></i></a></div>
-                      {% endif %}
-                  </div>
                 {% endif %}
               {% endfor %}
+                <!--
+                <div class='footer_opt'>
+                  <p class='footer_title'>Support</p>
+                  <ul>
+                    <li><a href='#'>FAQS</a></li>
+                    <li><a href='#'>Returns</a></li>
+                    <li><a href='#'>Shipping</a></li>
+                    <li><a href='#'>Instructions</a></li>
+                    <li><a href='#'>Accesibility</a></li>
+                    <li><a href='#'>Afterpay</a></li>
+                  </ul>
+                </div>
+                <div class='footer_opt'>
+                  <p class='footer_title'>Shop</p>
+                  <ul>
+                    <li><a href='#'>Shop by Size</a></li>
+                    <li><a href='#'>Shop by Subject</a></li>
+                    <li><a href='#'>Shop by Mood</a></li>
+                    <li><a href='#'>Shop by Style</a></li>
+                  </ul>
+                </div> -->
+              </div>
+              <div class='footer_right'>            
+                {% for block in section.blocks %}
+                  {% if forloop.index == 3 %}
+                    {% assign menu_handle = block.settings.footer_nav %}
+                    <div class='contact_footer_opt footer_opt mr-0 contact'>
+                      <p class='footer_title'>{{ block.settings.title }}</p>
+                      <ul>
+                        {% for link in linklists[menu_handle].links %}
+                          <li><a href='{{ link.url }}' class='contact normal-case'>{{ link.title }}</a></li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                    <p class='on_social_media'>{{ section.settings.social_media_title }}</p>
+                    <div class='social_media_icon'>
+                        {% if settings.email_text != '' %}
+                        <div class='soc_ico'><a class="text-white">{{ settings.email_text }}</a></div>
+                        {% endif %}
+                        {% if settings.twitter_url != '' %}
+                        <div class='soc_ico'><a href='{{ settings.twitter_url }}'><i></i></a></div>
+                        {% endif %}
+                        {% if settings.facebook_url != '' %}
+                        <div class='soc_ico'><a href='{{ settings.facebook_url }}'><i><img src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/facebook.svg?v=1652272128" alt="Social Icons"></i></a></div>
+                        {% endif %}
+                        {% if settings.instagram_url != '' %}
+                        <div class='soc_ico'><a href='{{ settings.instagram_url }}'><i><img src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/instagram.svg?v=1652273696" alt="Social Icons"></i></a></div>
+                        {% endif %}
+                        {% if settings.pinterest_url != '' %}
+                        <div class='soc_ico'><a href='{{ settings.pinterest_url }}'><i></i></a></div>
+                        {% endif %}
+                        {% if settings.tumblr_url != '' %}
+                        <div class='soc_ico'><a href='{{ settings.tumblr_url }}'><i></i></a></div>
+                        {% endif %}
+                        {% if settings.youtube_url != '' %}
+                        <div class='soc_ico'><a href='{{ settings.youtube_url }}'><i></i></a></div>
+                        {% endif %}
+                        {% if settings.googleplus_url != '' %}
+                        <div class='soc_ico'><a href='{{ settings.googleplus_url }}'><i></i></a></div>
+                        {% endif %}
+                        {% if settings.snapchat_id != '' %}
+                        <div class='soc_ico'><a href='{{ settings.snapchat_id }}'><i></i></a></div>
+                        {% endif %}
+                        {% if settings.weibo_id != '' %}
+                        <div class='soc_ico'><a href='{{ settings.weibo_id }}'><i></i></a></div>
+                        {% endif %}
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
             </div>
           </div>
-        </div>
-    </div>
+      </div>
   </div>
+</div>
 
   <style>
-    .fast_order_main_container {
+    /* .fast_order_main_container {
       padding: 72px 64px;
+    }*/ 
+    .fast_order_main_container {
+      padding-top: 72px;
+      padding-bottom: 72px;
     }
     .fast_order_inner {
         padding: 75px 115px;
     }
-    .footer-section .top h2 {
+   /* .footer-section .top h2 {
         font-size: 36px;
         line-height: 44px;
         font-family: "AttilaSansUniform-Medium" !important;
-    }
+    } */
     .footer-section .top .newsletter p {
-        font-size: 10px;
-        line-height: 14px;
+        font-size: 10px !important;
+        line-height: 14px !important;
+        font-family: 'GoodSans' !important;
+        font-weight: 400 !important;
     }
     .fast_order_inner h2 {
-        font-weight: 500;
+        /* font-weight: 500;
         font-size: 36px;
         line-height: 44px;
-        letter-spacing: -0.005em;
+        letter-spacing: -0.005em; */
         margin: 0 15px 0 0;
-        font-family: "AttilaSansUniform-Medium" !important;
+        /* font-family: "AttilaSansUniform-Medium" !important; */
     }
-    .fast_order_inner p {
-        font-weight: 300;
+    /* .fast_order_inner p {
+        font-weight: 400;
         font-size: 16px;
         line-height: 24px;
         letter-spacing: -0.01em;
-        margin: 0 15px 0 0;
-        font-family: "GoodSans-Light" !important;
-    }
+        font-family: "GoodSans" !important;
+    } */
     .klaviyo-form-SxEnPF p {
         font-weight: 300;
         font-size: 10px;
@@ -182,15 +189,16 @@
     border: none !important;
     border-bottom: 1px solid black !important;
     font-size: 16px !important;
-    font-weight: 300 !important;
+    font-weight: 400 !important;
     /* position: relative; */
     line-height: 24px;
-    margin-bottom: 16px;
-    padding: 0 !important;
+    padding: 0 0 8px 0 !important;
     width: 100%;
     height: auto !important;
     max-width: 100% !important;
-    font-family: "GoodSans-Light" !important;
+    font-family: "GoodSans" !important;
+    letter-spacing: -0.01em !important;
+    box-shadow: none !important;
 }
 
   input.needsclick.go2416446746.kl-private-reset-css-Xuajs1::-webkit-input-placeholder {
@@ -205,61 +213,134 @@
     padding: 0 !important;
 }
 
-button.needsclick.go3894874857.kl-private-reset-css-Xuajs1 {
-    display: none;
+.klaviyo-form button {
+  position: absolute;
+  right: 0;
+  width: 50px !important;
+  top: -50px;
+  height: 0px !important;
+  font-size: 0px !important;
+}
+
+.klaviyo-form button:after {
+  content: '';
+  right: 0;
+  top: 24px;
+  width: 17px;
+  height: 10px;
+  position: absolute;
+  cursor: pointer;
+  background-image: url(https://cdn.shopify.com/s/files/1/0627/3476/2207/files/arrow-right-black.svg?v=1652772976);
+}
+.klaviyo-form button:hover:after {
+  opacity: 0.60;
+}
+
+.klaviyo-form .ql-snow span {
+    color: #000 !important;
+    font-family: "GoodSans-Light" !important;
+    font-size: 14px !important;
+}
+.klaviyo-form .ql-snow p {
+    text-align: left !important;
 }
 
 form.needsclick.klaviyo-form.klaviyo-form-version-cid_1.kl-private-reset-css-Xuajs1 {
     margin: 0 !important;
 }
 
-.newsletter {
-    max-width: 387px;
-    width: 100%;
-}
-
     @media only screen and (max-width: 1354px) {
         .fast_order_inner {
             padding: 70px 70px;
         }
-        .fast_order_inner h2 {
+       /*  .fast_order_inner h2 {
             font-size: 30px;
-        }
+        } */
     }
     @media only screen and (max-width: 1263px) {
-        .footer-section .top h2 {
+        /* .footer-section .top h2 {
             font-size: 30px;
             line-height: 35px;
         }
         .fast_order_main_container {
             padding: 60px 40px;
+        } */
+        .fast_order_main_container {
+          padding-top: 60px;
+          padding-bottom: 60px;
+        }
+        /* .footer_bg {
+            padding: 55px 40px 72px 40px !important;
+        } */
+        .footer_bg {
+            padding-top: 55px !important;
+            padding-bottom: 40px !important;
         }
         .fast_order_inner {
             padding: 60px 60px;
         }
     }
     @media only screen and (max-width: 1149px) {
-        .fast_order_main_container {
+        /* .fast_order_main_container {
             padding: 54px 20px;
         }
         .fast_order_main_container {
             padding: 54px 35px;
+        } */
+        .fast_order_main_container {
+          padding-top: 54px;
+          padding-bottom: 54px;
+        }
+        /* .footer_bg {
+            padding: 55px 35px 72px !important;
+        } */
+        .footer_bg {
+            padding-top: 55px !important;
+            padding-bottom: 72px !important;
         }
         .fast_order_inner {
             padding: 50px 30px;
         }
-        .footer-section .top h2 {
+       /* .footer-section .top h2 {
             font-size: 25px;
             line-height: 29px;
-        }
+        } */
+    }
+    @media only screen and (max-width: 1200px) {
+        /* .fast_order_main_container {
+            padding-left: 20px;
+            padding-right: 20px;
+        } */
+        /* .footer_bg {
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+        } */
     }
     @media only screen and (max-width: 991px) {
         .fast_order_inner {
             flex-direction: column;
         }
+        /* .footer_bg {
+          padding: 55px 45px 72px 40px!important;
+        } */
+        .footer_bg {
+          padding-top: 55px !important;
+          padding-bottom: 72px!important;
+        }
+    }
+    @media only screen and (max-width: 575px) {
+      /* .footer_bg {
+          padding: 24px 20px !important;
+      } */
+      .footer_bg {
+          padding-top: 24px !important;
+          padding-bottom: 24px !important;
+      }
     }
     .footer_bg {
-        padding: 55px 64px 72px 64px;
+        /* padding: 55px 64px 72px 64px; */
+        padding-top: 55px ;
+        padding-bottom: 72px;
         background-color: #376043;
     }
     .footer_logo {
@@ -270,10 +351,10 @@ form.needsclick.klaviyo-form.klaviyo-form-version-cid_1.kl-private-reset-css-Xua
         margin-left: 20px;
         margin-bottom: 0;
         color: white;
-        font-weight: 300;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        font-family: "AttilaSansUniform-semibold" !important;
+        font-weight: 500 !important;
+        letter-spacing: 0.14em !important;
+        text-transform: uppercase !important;
+        font-family: 'AttilaSansUniform-Medium' !important;
     }
     .footer_left {
         display: flex;
@@ -288,29 +369,28 @@ form.needsclick.klaviyo-form.klaviyo-form-version-cid_1.kl-private-reset-css-Xua
     .footer_title {
         text-transform: uppercase;
         color: white;
-        font-weight: 500;
-        font-size: 14px;
-        line-height: 20px;
-        letter-spacing: 0.14em;
-        margin-bottom: 16px;
+        font-weight: 500 !important; 
+        font-size: 14px !important;
+        line-height: 20px !important;
+        letter-spacing: 0.14em !important;
+        margin-bottom: 16px !important;
         font-family: "AttilaSansUniform-Medium" !important;
     }
     .footer_opt ul li {
         margin-bottom: 8px;
     }
     .footer_opt ul li a {
-        font-weight: 300;
         font-size: 14px;
         line-height: 24px;
         letter-spacing: -0.01em;
         color: #ffffff;
-        transition: 0.8s;
+        transition: 0.4s;
         border-bottom: 1px solid transparent;
-        font-family: "GoodSans-Light" !important;
+        font-family: 'GoodSans-Light' !important;
+        font-weight: 300;
     }
     .footer_opt ul li a:hover {
-        color: #ffffff54;
-        border-bottom: 1px solid #ffffff54;
+      filter: brightness(0.80);
     }
     .footer_opt_container {
         display: flex;
@@ -318,23 +398,23 @@ form.needsclick.klaviyo-form.klaviyo-form-version-cid_1.kl-private-reset-css-Xua
         align-items: flex-start;
     }
     .footer_right {
-        padding: 0 64px;
+        padding: 0 0 0 64px;
         border-left: 1px solid white;
     }
     .contact {
-        font-weight: 300;
+        font-weight: 400;
         font-size: 14px;
         line-height: 24px;
         letter-spacing: -0.01em;
         color: #ffffff;
         margin-bottom: 32px;
-        font-family: "GoodSans-Light" !important;
+        font-family: "GoodSans" !important;
     }
     .on_social_media {
-        font-weight: 500;
-        font-size: 14px;
-        line-height: 20px;
-        letter-spacing: 0.14em;
+        font-weight: 500 !important;
+        font-size: 14px !important;
+        line-height: 20px !important;
+        letter-spacing: 0.14em !important;
         margin-bottom: 17px;
         text-transform: uppercase;
         color: white;
@@ -372,9 +452,20 @@ form.needsclick.klaviyo-form.klaviyo-form-version-cid_1.kl-private-reset-css-Xua
     }
 
     .news_para {
-    max-width: 255px;
-    width: 100%;
-}
+      max-width: 255px;
+      width: 100%;
+    }
+
+    .newsletter {
+      max-width: 387px;
+      width: 100%;
+    }
+  
+  {% comment %} @media only screen and (min-width: 991px) {
+    .footer-section .top h2 br {
+      display: none;
+    } {% endcomment %}
+  }
      
   </style>
 

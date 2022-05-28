@@ -1,0 +1,33 @@
+<div id="react-how-it-works-mission">
+  <script type="application/json">
+    {
+      "themeSettings": {{ settings | json }},
+      "settings": {{ section.settings | json }}
+    }
+  </script>
+</div>
+
+{% schema %}
+{
+  "name": "How It Works Mission",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Our mission"
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "Content",
+      "default": "At Wallnut, we’re passionate about making it easy to transform your house into a home. We believe that art shouldn’t be difficult to find, frustrating to frame, or impossible to hang. That's why we spent years developing the perfect mounting system. And it's why we're constantly curating a high-quality art collection that will complement your space. "
+    }
+  ]
+}
+{% endschema %}

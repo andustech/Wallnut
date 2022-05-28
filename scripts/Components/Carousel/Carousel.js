@@ -1,79 +1,92 @@
-import React from 'react';
-// import PropTypes from 'prop-types';
+import React, { useState, useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-// import Media from '../Media';
+import Media from '../Media';
 
-const CarouselA = () => {
-  // const containerRef = useRef();
-  // const [currentImageIndex, setCurrentImageIndex] = useState(0);
+const CarouselA = (props) => {
+  const { images, watchForReset } = props;
+  const containerRef = useRef();
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  // const handleOnScroll = () => {
-  //   const scrollPos = containerRef.current.scrollLeft;
-  //   const threshold = 5;
-  //   const eachImageWidth = containerRef.current.scrollWidth / containerRef.current.children.length;
-  //   const imagePositions = Array.from(containerRef.current.children).map((_child, i) =>
-  //     Math.round(i * eachImageWidth)
-  //   );
+  const handleOnScroll = () => {
+    const scrollPos = containerRef.current.scrollLeft;
+    const threshold = 5;
+    const eachImageWidth = containerRef.current.scrollWidth / containerRef.current.children.length;
+    const imagePositions = Array.from(containerRef.current.children).map((_child, i) =>
+      Math.round(i * eachImageWidth)
+    );
 
-  //   const index = imagePositions.findIndex(
-  //     (pos) => pos - threshold > scrollPos || scrollPos < pos + threshold
-  //   );
+    const index = imagePositions.findIndex(
+      (pos) => pos - threshold > scrollPos || scrollPos < pos + threshold
+    );
 
-  //   setCurrentImageIndex(index);
-  // };
+    setCurrentImageIndex(index);
+  };
 
-  // const handleThumbnailClick = (i) => {
-  //   const pos = containerRef.current.children[i].getBoundingClientRect();
+  const handleThumbnailClick = (i) => {
+    const pos = containerRef.current.children[i].getBoundingClientRect();
 
-  //   containerRef.current.scrollTo(containerRef.current.scrollLeft + pos.left, 0);
-  //   setCurrentImageIndex(i);
-  // };
+    containerRef.current.scrollTo(containerRef.current.scrollLeft + pos.left, 0);
+    setCurrentImageIndex(i);
+  };
 
-  // useEffect(() => {
-  //   handleThumbnailClick(0);
-  // }, [watchForReset]);
+  useEffect(() => {
+    handleThumbnailClick(0);
+  }, [watchForReset]);
 
   return (
-    <h1>hello carousel</h1>
-    // <div className="w-full h-full">
-    //   <CarouselContainer ref={containerRef} onScroll={handleOnScroll}>
-    //     {images.map((image, i) => (
-    //       <Media
-    //         key={i}
-    //         image={image.url}
-    //         alt={image.alt}
-    //         backgroundImage
-    //         bgCover={image.url.includes('color-swatch')}
-    //         overlayImage={i === 0 ? overlayImage : null}
-    //         overlayImageMobile={i === 0 ? overlayImageMobile : null}
-    //       />
-    //     ))}
-    //   </CarouselContainer>
-    //   {images.length > 1 && (
-    //     <>
-    //       <div className="flex justify-center space-x-1 mt-2">
-    //         {images.map((image, i) => (
-    //           <Media
-    //             key={i}
-    //             image={image.url}
-    //             currentImage={currentImageIndex === i}
-    //             onClick={() => handleThumbnailClick(i)}
-    //             onMouseOver={() => handleThumbnailClick(i)}
-    //             thumbnail
-    //             alt={image.alt}
-    //           />
-    //         ))}
-    //       </div>
-    //       <div
-    //         className="absolute bg-white -bottom-15
-    //          px-3 rounded text-sm font-serif left-2 md:-bottom-8 lg:bottom-26"
-    //       >
-    //         {currentImageIndex + 1}/{images.length}
-    //       </div>
-    //     </>
-    //   )}
-    // </div>
+    <>
+    {images.length > 1 && (
+      <>
+        <DesktopThumbContainer>
+          <div className="flex flex-col mr-12">
+            {images.map((image, i) => (
+              <Media
+                key={i}
+                image={image.url}
+                currentImage={currentImageIndex === i}
+                onClick={() => handleThumbnailClick(i)}
+                thumbnail
+                alt={image.alt}
+              />
+            ))}
+          </div>
+        </DesktopThumbContainer>
+      </>
+    )}
+    <div className="lg:relative w-full lg:w-5/12">
+      <div className="w-full h-full">
+        <CarouselContainer ref={containerRef} onScroll={handleOnScroll}>
+          {images.map((image, i) => (
+            <Media
+              key={i}
+              image={image.url}
+              alt={image.alt}
+            />
+          ))}
+        </CarouselContainer>
+      </div>
+    </div>
+    {images.length > 1 && (
+      <>
+        <MobileThumbContainer>
+          <div className="flex flex-row">
+            {images.map((image, i) => (
+              <Media
+                key={i}
+                image={image.url}
+                currentImage={currentImageIndex === i}
+                onClick={() => handleThumbnailClick(i)}
+                thumbnail
+                alt={image.alt}
+              />
+            ))}
+          </div>
+        </MobileThumbContainer>
+      </>
+    )}
+    </>
   );
 };
 
@@ -96,7 +109,7 @@ CarouselA.propTypes = {
 };
 
 const CarouselContainer = styled.div.attrs({
-  className: 'h-5/6 relative bg-gray-50',
+  className: 'relative',
 })`
   height: 100%;
   overflow-x: scroll;
@@ -112,6 +125,23 @@ const CarouselContainer = styled.div.attrs({
 
   & > * {
     scroll-snap-align: center;
+    vertical-align: top;
+  }
+`;
+
+const DesktopThumbContainer = styled.div.attrs({
+})`
+  display: none;
+  @media (min-width: 1024px) {
+    display: block;
+  }
+`;
+
+const MobileThumbContainer = styled.div.attrs({
+  className: 'mt-4 mb-10',
+})`
+  @media (min-width: 1024px) {
+    display: none;
   }
 `;
 

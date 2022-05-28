@@ -1,42 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Tab from '../../Tab';
 import VideoPlayer from '../../VideoPlayer';
-import { getDataByBlockSectionName } from '../../../utils';
+import Tab from '../../Tab';
 
 const FeaturesTab = ({ productTypeBlock }) => {
-  const sectionOne = getDataByBlockSectionName('features_section_1', productTypeBlock, 3);
-  const sectionTwo = getDataByBlockSectionName('features_section_2', productTypeBlock, 3);
-  const sectionThree = getDataByBlockSectionName('features_section_3', productTypeBlock, 3);
-  const sectionFour = getDataByBlockSectionName('features_section_4', productTypeBlock, 3);
-  const sectionFive = getDataByBlockSectionName('features_section_5', productTypeBlock, 3);
-
-  const sectionData = [sectionOne, sectionTwo, sectionThree, sectionFour, sectionFive];
+  const { settings } = productTypeBlock;
+  const {
+    whylove_tab_heading,
+    features_section_1_title,
+    features_section_1_paragraph,
+    features_section_1_media_type,
+    features_section_1_image,
+    features_section_1_video_url,
+  } = settings;
 
   return (
     <>
-      {sectionOne.name && (
-        <Tab tabName={sectionOne.name}>
-          {sectionData.map((section, i) => (
-            <div key={i}>
-              {section.title && (
-                <h3 className="pb-3 text-base text-blue-light font-serif">{section.title}</h3>
-              )}
-              {section.paragraph && (
-                <p className="mb-2 text-sm font-extralight">{section.paragraph}</p>
-              )}
-              {section.image && section.media === 'image' && (
-                <img className="mb-5" src={section.image} alt="" />
-              )}
-              {section.video && section.media === 'video' && (
-                <div className="mb-5">
-                  <VideoPlayer link={section.video} autoPlay loop />
-                </div>
-              )}
+      <Tab tabName={whylove_tab_heading}>
+        <div>
+          {features_section_1_title && (
+            <h3 className="pb-3 text-base text-blue-light font-serif">{features_section_1_title}</h3>
+          )}
+          {features_section_1_paragraph && (
+            <p className="mb-2 text-sm font-extralight">{features_section_1_paragraph}</p>
+          )}
+          {features_section_1_image && features_section_1_media_type === 'image' && (
+            <img className="mb-5" src={features_section_1_image} alt="" />
+          )}
+          {features_section_1_video_url && features_section_1_media_type === 'video' && (
+            <div className="mb-5">
+              <VideoPlayer link={features_section_1_video_url} autoPlay loop />
             </div>
-          ))}
-        </Tab>
-      )}
+          )}
+        </div>
+      </Tab>
     </>
   );
 };

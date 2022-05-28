@@ -12,14 +12,14 @@ const ColorSwatch = ({ option, small }) => (
 );
 
 const ColorSwatchContainer = styled.div.attrs(({ small }) => {
-  const size = small ? 'h-3 w-3' : 'h-7 w-7 md:h-9 md:w-9';
+  const size = small ? 'h-3 w-3' : 'h-5 w-5';
   return {
     className: `bg-white bg-no-repeat rounded-full ${size}`,
   }; 
 })`
   ${({ option }) => `
     background-image: url(${getColorSwatchThumbImageUrl(option)});
-    background-size: 36px 36px;
+    background-size: 100% 100%;
   `}
 `;
 

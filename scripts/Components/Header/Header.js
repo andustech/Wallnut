@@ -20,13 +20,13 @@ const Header = (props) => {
   return (
     <div>
       <HeaderContainer sticky={sticky}>
-        <nav className="flex w-full justify-between container mx-auto bg-white h-full">
-          <div className="block lg:hidden" style={{"flex": "1"}}>
+        <nav className="flex w-full justify-between container mx-auto bg-white h-full my-3.5 lg:my-0">
+          <div className="block lg:hidden flex-1 lg:flex-none">
             <MobileNav settings={mobileNavSettings} themeSettings={themeSettings} />
           </div>
-          <a className="flex items-center justify-center" style={{"flex": "1"}} href="/">
+          <a className="flex items-center justify-center flex-1 lg:flex-none" href="/">
             <LogoImage
-              src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/logo-wallnut.png?v=1652438735"
+              src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/Wallnut_Wordmark_RGB_Black_1_1.svg?v=1653293852"
               alt="Wallnut"
             />
           </a>
@@ -54,24 +54,24 @@ const Header = (props) => {
               </li>
             </ul>
           </div>
-          <div className="header-search-minicart-container" style={{"flex": "1"}}>
+          <div className="header-search-minicart-container flex-1 lg:flex-none">
             <div className="">
-              <div id="header-search" className="desktop-3 tablet-hide mobile-hide">
-                <form action="/search" method="get">
-                  <img src='https://i.ibb.co/YNvzb2s/Vector.png' className='search_icon' />
-                </form>
+              <div id="header-search" className="desktop-3 tablet-hide mobile-hide mb-0.5">
+                <a href="#" className="inline-block">
+                  <img src='https://cdn.shopify.com/s/files/1/0627/3476/2207/files/search-icon.svg?v=1652783584' className='search_icon' />
+                </a>
               </div>
             </div>
 
-            <div id="mini-cart-container">
+            <div id="mini-cart-container" className="block">
               <a
                 href="/cart"
-                className="site-header__cart-toggle js-drawer-open-right"
+                className="site-header__cart-toggle js-drawer-open-right block ml-6"
                 aria-controls="CartDrawer"
                 aria-expanded="false"
               >
                 <img
-                  src="https://i.ibb.co/8dPZN7G/cart-icon.png"
+                  src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/cart-icon.svg?v=1652783627"
                   alt="cart"
                 />
                 {/* <div className="cart-count font-serif text-sm"></div> */}
@@ -86,14 +86,14 @@ const Header = (props) => {
 };
 
 const HeaderContainer = styled.div.attrs(({ sticky }) => {
-  const className = 'flex items-center justify-center w-full ';
+  const className = 'flex items-center justify-center w-full bg-white navbar ';
   const fixed = 'fixed top-0 z-10';
   return { className: sticky ? `${className}, ${fixed}` : `${className}` };
 })`
-  height: 70px;
+  height: auto;
   border-bottom: 1px solid #d5d5d5;
   @media screen and (max-width: 1024px) {
-    height: 50px;
+    height: auto;
   }
 `;
 

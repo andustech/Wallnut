@@ -24,9 +24,9 @@ const Tab = ({ tabName, children }) => {
         <AnimatePresence initial={false}>
           <div className="justify-items-end grid items-center col-span-1 pr-3">
             {tabName === openSection ? (
-              <CloseIcon width="14" height="14" strokeWidth="3" stroke="gray" />
+              <CloseIcon width="14" height="1" />
             ) : (
-              <OpenIcon width="14" height="14" strokeWidth="3" stroke="gray" />
+              <OpenIcon width="14" height="14" />
             )}
           </div>
         </AnimatePresence>
@@ -53,17 +53,17 @@ const Tab = ({ tabName, children }) => {
   );
 };
 
-const StyledTabName = styled.div.attrs(({ tabName, openSection }) => {
-  let className = 'font-serif col-span-4 text-base font-normal text-lg';
-  if (tabName === openSection) {
-    className = `${className} text-orange-burnt`;
-  } else {
-    className = `${className} text-blue`;
-  }
-  return {
-    className,
-  };
-})``;
+const StyledTabName = styled.div.attrs ({
+  className: 'col-span-4',
+})`
+  font-family: 'GoodSans';
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #000000;
+`;
 
 Tab.defaultProps = {
   children: {},

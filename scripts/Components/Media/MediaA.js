@@ -85,16 +85,16 @@ const ImageContainer = styled.span.attrs(({ bgCover }) => {
 
 const ThumbnailContainer = styled.span.attrs({
   className:
-    'cursor-pointer bg-cover bg-center bg-no-repeat lg:bg-transparent mt-2 h-1.5 w-10 lg:h-16 lg:w-16',
+    'cursor-pointer bg-cover bg-center bg-no-repeat lg:bg-transparent lg:mb-6',
 })`
   ${({ currentImage }) =>
-    currentImage ? tw`bg-gray-500 lg:border-b-2 lg:border-gray-500` : tw`lg:opacity-50 bg-gray-200`}
+    currentImage ? `border: 1px solid #E2DACD;` : ``}
 
-  @media (min-width: 1024px) {
-    ${tw`pb-1`}
-    background-origin: content-box;
-    background-image: url(${({ image }) => image});
-  }
+  height: 88px;
+  width: 88px;
+  ${tw`pb-1`}
+  background-origin: content-box;
+  background-image: url(${({ image }) => image});
 `;
 
 const VideoThumbnailContainer = styled.span.attrs({

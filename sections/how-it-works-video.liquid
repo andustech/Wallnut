@@ -1,0 +1,44 @@
+<div id="react-how-it-works-video">
+  <script type="application/json">
+    {
+      "themeSettings": {{ settings | json }},
+      "settings": {{ section.settings | json }}
+    }
+  </script>
+</div>
+
+{% schema %}
+{
+  "name": "How It Works Video",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "How it works"
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "Content",
+      "default": "Sound too good to be true? This video explains everything."
+    },
+    {
+      "type": "text",
+      "id": "video_btn_text",
+      "label": "Video Button Text",
+      "default": "watch the video"
+    },
+    {
+      "type": "url",
+      "id": "video_link",
+      "label": "Video Link"
+    }
+  ]
+}
+{% endschema %}
