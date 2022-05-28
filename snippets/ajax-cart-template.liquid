@@ -31,35 +31,38 @@
                 <a href="{{url}}" class="ajaxcart__product-image"><img src="{{img}}" alt=""></a>
               </div>
               <div class="desktop-8 tablet-4 mobile-2">
-                <p>
-                  <div class="pr-10 leading-none">
+
+                <div class="row">
+                  <div class="desktop-8 tablet-4 mobile-2 leading-none">
                     <a href="{{url}}" class="ajaxcart__product-name font-normal text-sm">{{name}}</a>
                   </div>
-                  <div class="absolute right-0 top-2.5 w-10">
-                    <a class="product-remove-button" href="#" data-line="{{line}}">
-                      {% endraw %} 
-                        <img src={{ 'trash-bin.svg' | asset_url }} alt="trash bin"/>
-                      {% raw %}
-                    </a>
+                  <div class="desktop-4 tablet-2 mobile-1 text-right">
+                    {{#if discountsApplied}}
+                      <span class="visually-hidden">{% endraw %}{{ 'products.general.sale_price' | t }}{% raw %}</span>
+                      <span class="ajaxcart__price onsale">{{{discountedPrice}}}</span>
+                      <span class="visually-hidden">{% endraw %}{{ 'products.general.regular_price' | t }}{% raw %}</span>
+                      <del class="ajaxcart__price">{{{price}}}</del>
+                    {{else}}
+                      <span class="ajaxcart__price">{{{price}}}</span>
+                    {{/if}}
                   </div>
-                 
                   {{#if variation}}
-                    <p class="ajaxcart__product-meta text-xs">{{variation}}</p>
+                    <p class="desktop-12 ajaxcart__product-meta text-xs">{{variation}}</p>
                   {{/if}}
                   {{#if sellingPlanAllocation}}
-                     <p>{{ sellingPlanAllocationName }}</p>
+                     <p class="desktop-12">{{ sellingPlanAllocationName }}</p>
                     {{/if}}
                   {{#properties}}
                     {{#each this}}
                       {{#if this}}
-                        <span class="ajaxcart__product-meta text-sm">{{@key}}: {{this}}</span>
+                        <span class="desktop-12 ajaxcart__product-meta text-sm">{{@key}}: {{this}}</span>
                       {{/if}}
                     {{/each}}
                   {{/properties}}
                   {% endraw %}{% if settings.cart_vendor_enable %}{% raw %}
-                    <span class="ajaxcart__product-meta text-sm">{{ vendor }}</span>
+                    <span class="desktop-12 ajaxcart__product-meta text-sm">{{ vendor }}</span>
                   {% endraw %}{% endif %}{% raw %}
-                </p>
+                </div>
 
                 <span {{#unless unitPriceMeasurement}}class="hide"{{/unless}} data-unit-price-group>
                   <dt>
@@ -98,16 +101,13 @@
                     </div>
                   </div>
                 </div>
-                <div class="pr-2 text-right">
-                  {{#if discountsApplied}}
-                    <span class="visually-hidden">{% endraw %}{{ 'products.general.sale_price' | t }}{% raw %}</span>
-                    <span class="ajaxcart__price onsale">{{{discountedPrice}}}</span>
-                    <span class="visually-hidden">{% endraw %}{{ 'products.general.regular_price' | t }}{% raw %}</span>
-                    <del class="ajaxcart__price">{{{price}}}</del>
-                  {{else}}
-                    <span class="ajaxcart__price">{{{price}}}</span>
-                  {{/if}}
-                </div>
+                <div class="pr-2 pl-2">
+                  <a class="product-remove-button" href="#" data-line="{{line}}">
+                    {% endraw %} 
+                      Remove
+                    {% raw %}
+                  </a>
+                </div>                
               </div>
 
           </div>
@@ -136,7 +136,7 @@
         </div>
       <div id="react-chair-cover-upsell"></div>
       </div>
-      <div class="ajaxcart__footer row px-6 bg-blue-baby">
+      <div class="ajaxcart__footer row px-6">
         <div class="subtotal h-6">
           <p class="title normal-case font-normal">Subtotal</p>
           <p class="subtotal-price"><span id="miniCartTotal" class="cart-original-total">{{{subTotalPrice}}}</span></p>
@@ -180,8 +180,7 @@
           <span class="cart-total"></span></h3>
         </div>
         <a class="outline-button" href="/collections">{% endraw %}{{ 'cart.general.continue' | t }}{% raw %}</a>
-        <div id="react-afterpay-cart-copy" />
-        <button type="submit" class="cart__checkout mt-4 font-serif bg-brown text-white uppercase font-light" name="checkout" onclick="optimizelyCheckout();">
+        <button type="submit" class="cart__checkout mt-4 primary_btn uppercase" name="checkout" onclick="optimizelyCheckout();">
           {% endraw %} 
           {{ 'cart.general.checkout' | t }}
           {% raw %}
@@ -189,7 +188,8 @@
         {% endraw %}{% if additional_checkout_buttons %}
           <div class="additional_checkout_buttons">{{ content_for_additional_checkout_buttons }}</div>
         {% endif %}{% raw %}
-      </div>
+        <div id="react-afterpay-cart-copy"></div>
+        <div class="drawer-continue-shopping"><a href="https://wallnut.com/collections/all">Continue Shopping</a></div>
     </form>
   {% endraw %}
   </script>

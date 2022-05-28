@@ -13,7 +13,13 @@ const getDefaultColor = (product, option1, option2) => {
   return 'Matte Black';
 };
 
-const PDPColorFilter = ({ product, selectedVariant, setSelectedVariant, setCurrentOptions, setFrameColorSelected }) => {
+const PDPColorFilter = ({
+  product,
+  selectedVariant,
+  setSelectedVariant,
+  setCurrentOptions,
+  setFrameColorSelected,
+}) => {
   const { handle, variants: originalVaraints } = product;
   const { option1, option2 } = selectedVariant;
 
@@ -54,21 +60,20 @@ const PDPColorFilter = ({ product, selectedVariant, setSelectedVariant, setCurre
   }, [product.variants, setFrameColorSelected, selectedColor]);
 
   const handleColorSelect = (color) => {
-
     const url = new URL(window.location);
-    let params = url.searchParams
+    let params = url.searchParams;
     const colorOptionIndex = product.options.indexOf('Frame Color');
     const sizeOptionIndex = product.options.indexOf('Size');
     let size = params.get('size');
-    if(!size) {
-      size = '18" x 24"'
+    if (!size) {
+      size = '18" x 24"';
     }
 
     const findVariant = variants.find((variantItem) => {
       return (
         variantItem.options[sizeOptionIndex] === size &&
         variantItem.options[colorOptionIndex] === color
-      )
+      );
     });
 
     url.searchParams.set('variant', findVariant.id);
@@ -90,18 +95,15 @@ const PDPColorFilter = ({ product, selectedVariant, setSelectedVariant, setCurre
       },
     });
   };
-  
+
   let staticColors = ['Matte Black', 'Walnut Wood', 'Matte White'];
-  const colorIndex = product.options.findIndex(option => option === "Frame Color");
+  const colorIndex = product.options.findIndex((option) => option === 'Frame Color');
   return (
     <div id="pdp-color-swatcher">
       <h5 className="mb-4">
-      Choose a Frame{' '}
+        Choose a Frame{' '}
         <>
-          -{' '}
-          <span>
-            {colorIndex === 0 ? option1 : option2}
-          </span>
+          - <span>{colorIndex === 0 ? option1 : option2}</span>
         </>
       </h5>
       <ul className="grid grid-cols-10">
@@ -122,7 +124,7 @@ const PDPColorFilter = ({ product, selectedVariant, setSelectedVariant, setCurre
                 <ColorSwatch option={color} />
               </ColorSwatchContainer>
             </li>
-          )
+          );
         })}
       </ul>
     </div>
@@ -130,13 +132,11 @@ const PDPColorFilter = ({ product, selectedVariant, setSelectedVariant, setCurre
 };
 
 const ColorSwatchContainer = styled.div.attrs(({ isSelected }) => {
-  let className =
-    'relative grid justify-items-center items-center h-8 w-8 rounded-full';
+  let className = 'relative grid justify-items-center items-center h-8 w-8 rounded-full';
 
   if (isSelected) {
     className = `${className} border-2 border-black`;
-  }
-  else {
+  } else {
     className = `${className}`;
   }
 

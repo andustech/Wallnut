@@ -13,15 +13,12 @@ const EmptyCart = (props) => {
   }, []);
 
   return (
-    <div className={`${count > 0 ? 'hidden' : ''} text-center font-serif`}>
-      <p className="mb-0 mt-16 text-lg">Your cart is empty.</p>
-      <p className="text-lg">Not sure where to start?</p>
-      <div className="absolute transform -translate-x-1/2 bottom-36 left-1/2 w-1/2">
-        <img src={cartChair} alt="empty cart" />
-      </div>
+    <div className={`${count > 0 ? 'hidden' : ''} text-center`}>
+      <p className="mb-0 mt-16 uppercase text-black">Your cart is empty.</p>
+      <p className="uppercase text-black">Not sure where to start?</p>
       <div className="absolute transform -translate-x-1/2 bottom-20 left-1/2">
-        <button className="bg-brown font-light font-serif py-2 text-base w-72" type="button">
-          <a className="text-white no-underline" href="https://levityhome.com/collections/all">
+        <button className="primary_btn empty_shop_all_btn" type="button">
+          <a className="no-underline" href="https://wallnut.com/collections/all">
             SHOP ALL
           </a>
         </button>
