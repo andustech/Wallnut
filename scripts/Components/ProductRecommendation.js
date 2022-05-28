@@ -46,7 +46,7 @@ const ProductRecommendation = ({ blocks, settings }) => {
   return (
     <ProductRecommendationContainer>
       <SectionTiltle className="section_titile">
-        <h2 className="font-bold text-black">{settings?.title}</h2>
+        <h3 className="font-bold text-black">{settings?.title}</h3>
       </SectionTiltle>
       <div className="">
         <RecommendationContainer recommendations={recommendations}>

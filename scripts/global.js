@@ -20,8 +20,10 @@ import BlackFridaySale from './Components/BlackFridaySale';
 import ProductRecommendation from './Components/ProductRecommendation';
 import howItWorks from './Components/howItWorks';
 import meetWallnut from './Components/meetWallnut';
+import howItWorksVideo from './Components/howItWorksVideo';
+import howItWorksMission from './Components/howItWorksMission';
 import hangingWallnut from './Components/hangingWallnut';
-import ShopOurBestSellers from './Components/ShopOurBestSellers';
+// import ShopOurBestSellers from './Components/ShopOurBestSellers';
 
 addClientIdToHeap();
 setOptimizelySession();
@@ -66,8 +68,10 @@ const components = [
   { id: 'react-index-testimonial-section', module: indexTestimonialSection },
   { id: 'react-meet-wallnut', module: meetWallnut },
   { id: 'react-how-it-works', module: howItWorks },
+  { id: 'react-how-it-works-video', module: howItWorksVideo },
   { id: 'react-hanging-wallnut', module: hangingWallnut },
-  { id: 'react-shop-our-best-sellers', module: ShopOurBestSellers },
+  { id: 'react-how-it-works-mission', module: howItWorksMission },
+  // { id: 'react-shop-our-best-sellers', module: ShopOurBestSellers },
 ];
 
 createReactComponents(components);
