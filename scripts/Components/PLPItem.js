@@ -26,7 +26,11 @@ const getProductUrl = (product, colorOption) => {
 const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, collectionTitle }) => {
   const [hover, setHover] = useState(false);
   const [currentOption, setCurrentOption] = useState(product.variant);
-  const [colorOption, setColorOption] = useState(colors[0]);
+
+  //Define static colors for custom order
+  let staticColors = ['Matte Black', 'Walnut Wood', 'Matte White'];
+  const [colorOption, setColorOption] = useState(staticColors[0]);
+  
   const PLPItemRef = useRef();
   const colorIndex = product.options.indexOf('Frame Color');
 
@@ -157,13 +161,7 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
   else if(colorOption === 'Walnut Wood') {
     imgColor = 'walnut';
   }
-
-  console.log('colors arr before', colors)
-  var sortOrder = ['Matte Black', 'Walnut Wood', 'Matte White'];
-  colors.sort( function(a, b) {
-      return sortOrder[a] - sortOrder[b];
-  });
-  console.log('colors arr after', colors)
+  
   return (
     <ItemContainer className="each-item">
       <div className="relative overflow-hidden bg-gray-50">
@@ -210,7 +208,7 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
         <ColorContainer>
           <div>
             <div className="flex">
-              {colors.map((color) => {
+              {staticColors.map((color) => {
                 return (
                   <ColorSwatchWrapper
                     border={color === colorOption}

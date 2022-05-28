@@ -13,18 +13,24 @@ const OverviewSection = ({ productBlock }) => {
   } = settings;
 
   return (
-    <div className="mx-auto lg:col-span-2 lg:grid lg:grid-cols-2 gap-5 max-w-screen-xxl">
-      <div className="pb-5 border-grey-50 border-b border-solid lg:px-10 md:border-none">
-        <div>
-          {about_image && about_media_type === 'image' && <img src={about_image} alt="" />}
-          {about_video_url && about_media_type === 'video' && (
-            <VideoPlayer link={about_video_url} autoPlay loop />
-          )}
-        </div>
+    <div className="pdp-tabs-sec pt-16 text-sm justify-items-center max-w-screen-xxl font-extralight items-center flex flex-row w-10/12 gap-18">
+      <div className="w-7/12">
+        {about_image && about_media_type === 'image' && (
+          <img className="lg:mb-0 md:mb-5" src={about_image} alt="" />
+        )}
+        {about_video_url && about_media_type === 'video' && (
+          <VideoPlayer link={about_video_url} autoPlay loop />
+        )}
       </div>
-      <div className="lg:mt-15 md:mt-0 md:w-98 mt-5 mx-auto">
-        <h3 className="mb-4">{about_desktop_heading}</h3>
-        <p className="text-base font-extralight">{about_paragraph}</p>
+      <div className="w-5/12">
+        {about_desktop_heading && (
+          <h3 className="mb-4">
+            {about_desktop_heading}
+          </h3>
+        )}
+        {about_paragraph && (
+          <p className="mb-2 text-sm font-extralight md:text-base">{about_paragraph}</p>
+        )}
       </div>
     </div>
   );

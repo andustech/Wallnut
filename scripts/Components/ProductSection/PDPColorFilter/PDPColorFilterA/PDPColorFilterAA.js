@@ -22,9 +22,8 @@ const PDPColorFilter = ({
 }) => {
   const { handle, variants: originalVaraints } = product;
   const { option1, option2 } = selectedVariant;
-  const defaultColor = 'Matte Black';
 
-  const [selectedColor, setSelectedColor] = useState(defaultColor);
+  const [selectedColor, setSelectedColor] = useState(getDefaultColor(product, option1, option2));
   const [variants, setVariants] = useState(originalVaraints);
 
   useEffect(() => {
@@ -97,7 +96,7 @@ const PDPColorFilter = ({
     });
   };
 
-  let colorsArr = [];
+  let staticColors = ['Matte Black', 'Walnut Wood', 'Matte White'];
   const colorIndex = product.options.findIndex((option) => option === 'Frame Color');
   return (
     <div id="pdp-color-swatcher">
@@ -108,28 +107,24 @@ const PDPColorFilter = ({
         </>
       </h5>
       <ul className="grid grid-cols-10">
-        {product.variants.map((variant, i) => {
-          const varColor = variant.options[colorIndex];
-          if (colorsArr.indexOf(varColor) === -1) {
-            colorsArr.push(varColor);
-            return (
-              <li key={i}>
-                <ColorSwatchContainer
-                  isSelected={varColor === selectedColor}
-                  onClick={() => {
-                    setSelectedColor(varColor);
-                    handleColorSelect(varColor);
-                  }}
-                  tabIndex={colorIndex}
-                  onKeyDown={() => {}}
-                  role="button"
-                  aria-label="change color"
-                >
-                  <ColorSwatch option={varColor} />
-                </ColorSwatchContainer>
-              </li>
-            );
-          }
+        {staticColors.map((color, index) => {
+          return (
+            <li key={index}>
+              <ColorSwatchContainer
+                isSelected={color === selectedColor}
+                onClick={() => {
+                  setSelectedColor(color);
+                  handleColorSelect(color);
+                }}
+                tabIndex={index}
+                onKeyDown={() => {}}
+                role="button"
+                aria-label="change color"
+              >
+                <ColorSwatch option={color} />
+              </ColorSwatchContainer>
+            </li>
+          );
         })}
       </ul>
     </div>

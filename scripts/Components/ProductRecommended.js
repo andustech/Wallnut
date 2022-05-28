@@ -24,7 +24,7 @@ const ProductRecommended = ({ product, title }) => {
   return (
     <ProductRecommendationContainer>
       <SectionTiltle className='section_titile'>
-        <h2 className="font-bold text-center text-black">{title}</h2>
+        <h3 className="font-bold text-center text-black">{title}</h3>
       </SectionTiltle>
       <div className="grid grid-cols-1 overflow-hidden md:justify-items-center">
         <RecommendationContainer recommendations={recommendations}>
@@ -69,8 +69,8 @@ const ProductRecommended = ({ product, title }) => {
 };
 
 const ProductRecommendationContainer = styled.div.attrs({
-  className: 'px-2 py-8 mb-8 md:px-0 md:py-10 md:text-center',
 })`
+  margin-top: 112px;
   @media (min-width: 740px) {
     margin-right: -8%;
     margin-left: -8%;

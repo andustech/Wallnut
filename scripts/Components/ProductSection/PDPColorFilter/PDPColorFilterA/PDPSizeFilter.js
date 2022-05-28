@@ -16,9 +16,8 @@ const getDefaultSize = (product, option1, option2) => {
 const PDPSizeFilter = ({ product, selectedVariant, setSelectedVariant, setCurrentOptions,  setFrameSelected }) => {
   const { variants: originalVaraints } = product;
   const { option1, option2 } = selectedVariant;
-  const defaultSize = '18" x 24"';
 
-  const [selectedSize, setSelectedSize] = useState(defaultSize);
+  const [selectedSize, setSelectedSize] = useState(getDefaultSize(product, option1, option2));
   const [variants, setVariants] = useState(originalVaraints);
 
   useEffect(() => {

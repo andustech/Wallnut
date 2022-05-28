@@ -45,18 +45,16 @@ const DesktopProductDetails = ({ productTypeBlocks, blocks, frameSelected, frame
           ))}
         </div>
       </div>
-      <div className="pdp-tabs-sec pt-16 text-sm justify-items-center max-w-screen-xxl font-extralight flex flex-row w-10/12 gap-20">
-        {currentTab === howitwork_tab_heading && <OverviewSection productBlock={productBlock} blocks={blocks} />}
-        {currentTab === whylove_tab_heading && <FeaturesSection productBlock={productBlock} />}
-        {currentTab === specifications_tab_heading && (
-          <SpecificationsSection
-            productBlock={productBlock}
-            frameSelected={frameSelected}
-            frameColorSelected={frameColorSelected}
-          />
-        )}
-        {currentTab === sprt_tab_heading && <DeliverySection productBlock={productBlock} />}
-      </div>
+      {currentTab === howitwork_tab_heading && <OverviewSection productBlock={productBlock} blocks={blocks} />}
+      {currentTab === whylove_tab_heading && <FeaturesSection productBlock={productBlock} />}
+      {currentTab === specifications_tab_heading && (
+        <SpecificationsSection
+          productBlock={productBlock}
+          frameSelected={frameSelected}
+          frameColorSelected={frameColorSelected}
+        />
+      )}
+      {currentTab === sprt_tab_heading && <DeliverySection productBlock={productBlock} />}
     </div>
   );
 };
