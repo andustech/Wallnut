@@ -1803,3 +1803,11 @@ button.ajaxcart__qty-adjust.quantity-increment, #CartDrawer input.ajaxcart__qty-
   line-height: 20px;
   letter-spacing: 0.05em;
 }
+#bg-overlay {
+  display: none!important;
+}
+.js-drawer-open-right .is-moved-by-drawer {
+  -ms-transform: none!important;
+  -webkit-transform: none!important;
+  transform: none!important;
+}
