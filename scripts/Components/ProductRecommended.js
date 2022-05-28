@@ -70,10 +70,9 @@ const ProductRecommended = ({ product, title }) => {
 
 const ProductRecommendationContainer = styled.div.attrs({
 })`
-  margin-top: 112px;
-  @media (min-width: 740px) {
-    margin-right: -8%;
-    margin-left: -8%;
+  margin-top: 55px;
+  @media (min-width: 1024px) {
+    margin-top: 112px;
   }
 `;
 

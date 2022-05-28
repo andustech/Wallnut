@@ -85,7 +85,7 @@ const ImageContainer = styled.span.attrs(({ bgCover }) => {
 
 const ThumbnailContainer = styled.span.attrs({
   className:
-    'cursor-pointer bg-cover bg-center bg-no-repeat lg:bg-transparent lg:mb-6',
+    'cursor-pointer bg-cover bg-center bg-no-repeat lg:bg-transparent lg:mb-6 mr-2 lg:mr-0',
 })`
   ${({ currentImage }) =>
     currentImage ? `border: 1px solid #E2DACD;` : ``}

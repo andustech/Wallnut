@@ -184,7 +184,7 @@ const DRBannerDiscount = styled.h1.attrs({
 `;
 
 const ProductDescription = styled.div.attrs({
-  className: 'product-description ml-auto mr-auto text-center',
+  className: 'product-description ml-auto mr-auto text-center container',
 })`
   max-width: 644px;
   margin-bottom: 55px;

@@ -126,7 +126,7 @@ const ProductSelector = ({
     <ProductSelectorContainer>
       <MobileTopContainer>
         <SectionTiltle className="section_titile pdp">
-          <h2 className="font-bold text-left">{product.title}</h2>
+          <h2 className="font-bold text-left text-black">{product.title}</h2>
         </SectionTiltle>
         <div
           className="mb-1"

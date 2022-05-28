@@ -1257,7 +1257,9 @@ afterpay-placement {
   letter-spacing: -0.01em;
   color: #000000;
 }
-
+.pdp-tabs {
+  gap: 72px;
+}
  /* How it works page */
  .how_it_work_hero_overlay {
   max-width: 548px !important;
@@ -1335,8 +1337,17 @@ afterpay-placement {
     padding-top: 56px;
   }
   }
-  
-  
+  */
+  @media only screen and (max-width: 1439px) {
+    .pdp-tabs {
+        gap: 50px;
+    }
+  }
+  @media only screen and (max-width: 1366px) {
+    .pdp-tabs {
+        gap: 35px;
+    }
+  }
   
   @media only screen and (max-width: 768px) {
   
@@ -1400,7 +1411,7 @@ afterpay-placement {
   
     .section_titile {
       margin-bottom: 20px !important;
-  }
+    }
   
   
     /* .section_titile h2 {
@@ -1524,6 +1535,18 @@ afterpay-placement {
   .how-it-works .video-open {
     font-size: 12px !important;
     line-height: 20px !important;
+  }
+
+  .section_titile.pdp h2 {
+    font-size: 18px !important;
+    line-height: 24px !important;
+    margin-bottom: 4px !important;
+  }
+  .section_titile.pdp-small h2 {
+    font-size: 20px !important;
+    line-height: 28px !important;
+    margin-bottom: 8px !important;
+    font-weight: 600 !important;
   }
   
   }
