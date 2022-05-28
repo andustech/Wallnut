@@ -276,6 +276,7 @@ body {
   line-height: 24px !important;
   letter-spacing: -0.01em !important;
   color: #000000 !important;
+  background: #E5E5E5;
 }
 .container {
   margin: 0 auto;
@@ -501,11 +502,11 @@ height: 180px !important;
   display: inline-block;
 }
 
-.primary_btn:hover, .login-register-container .primary_btn:hover, #recover-password .primary_btn:hover, #create-customer .primary_btn:hover {
+.primary_btn:hover, .login-register-container .primary_btn:hover, #recover-password .primary_btn:hover, #create-customer .primary_btn:hover, .AddtoCart.primary_btn:hover {
   background-color: #f1956abb !important;
 }
 
-.login-register-container .primary_btn, #recover-password .primary_btn, #create-customer .primary_btn {
+.login-register-container .primary_btn, #recover-password .primary_btn, #create-customer .primary_btn, .AddtoCart.primary_btn {
   padding: 5px 3em;
   margin-right: 0!important;
   font-size: 12px!important;
@@ -516,8 +517,11 @@ height: 180px !important;
   font-family: GoodSans!important;
   width: 100%;
   border-radius: 0;
-  line-height: 42px!important;
+  line-height: 40px!important;
   text-align: center!important;
+}
+.AddtoCart.primary_btn {
+  width: auto !important;
 }
 .login-register-container a.primary_btn.create-customer {
   margin-top: 20px;
@@ -1407,9 +1411,6 @@ afterpay-placement {
   font-weight: 700;
   color: #000;
 }
-#react-product-section input.AddtoCart {
-  line-height: 20px !important;
-}
 .ship-msg {
   font-family: 'GoodSans';
   font-weight: 400;
@@ -1664,4 +1665,7 @@ form#create_customer {
 }
 .fancybox-close-small:hover {
   background-color: transparent !important;
+}
+.section_titile.sticky-add-to-cart {
+  margin-bottom: 0!important;
 }

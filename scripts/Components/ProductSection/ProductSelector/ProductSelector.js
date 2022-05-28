@@ -58,7 +58,7 @@ const getCurrentVariant = (product, currentVariant) => {
 
 const getShortDescription = (description, n) => {
   description = description.replace(/<(.|\n)*?>/g, '');
-  return description?.length > n ? description.substr(0, n - 1) + "... " : description;
+  return description?.length > n ? description.substr(0, n - 1) + '... ' : description;
 };
 
 const ProductSelector = ({
@@ -78,7 +78,7 @@ const ProductSelector = ({
     getCurrentVariant(product, currentVariant)
   );
   const [currentOptions, setCurrentOptions] = useState({ option1, option2, option3 });
-  const [showStickySubmit, setShowStickySubmit] = useState(false);
+  //const [showStickySubmit, setShowStickySubmit] = useState(false);
   const [qty, setQty] = useState(1);
   const selectOptions = getOptions(product, selectedVariant);
 
@@ -98,22 +98,22 @@ const ProductSelector = ({
     });
   };
 
-  useEffect(() => {
-    const intersectionObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.intersectionRatio !== 1 && entry.target.getBoundingClientRect().top < 0) {
-            setShowStickySubmit(true);
-          } else {
-            setShowStickySubmit(false);
-          }
-        });
-      },
-      { threshold: 1 }
-    );
+  // useEffect(() => {
+  //   const intersectionObserver = new IntersectionObserver(
+  //     (entries) => {
+  //       entries.forEach((entry) => {
+  //         if (entry.intersectionRatio !== 1 && entry.target.getBoundingClientRect().top < 0) {
+  //           setShowStickySubmit(true);
+  //         } else {
+  //           setShowStickySubmit(false);
+  //         }
+  //       });
+  //     },
+  //     { threshold: 1 }
+  //   );
 
-    intersectionObserver.observe(submitRef.current);
-  }, [product, selectedVariant]);
+  //   intersectionObserver.observe(submitRef.current);
+  // }, [product, selectedVariant]);
 
   useEffect(() => {
     setSelectedVariant(currentVariant);
@@ -122,11 +122,11 @@ const ProductSelector = ({
   return (
     <ProductSelectorContainer>
       <MobileTopContainer>
-        <SectionTiltle className='section_titile pdp'>
+        <SectionTiltle className="section_titile pdp">
           <h2 className="font-bold text-left">{product.title}</h2>
         </SectionTiltle>
         <div
-          className='mb-1'
+          className="mb-1"
           onClick={() => scrollToReviews()}
           onKeyDown={() => {}}
           role="button"
@@ -151,9 +151,7 @@ const ProductSelector = ({
                   <span className="ml-1 line-through text-sm">
                     {convertPriceFromNumber(selectedVariant.compare_at_price)}
                   </span>
-                  <span className="ml-2 text-errorRed text-xl md:text-2xl">
-                    {discount}% Off
-                  </span>
+                  <span className="ml-2 text-errorRed text-xl md:text-2xl">{discount}% Off</span>
                 </div>
               ) : (
                 convertPriceFromNumber(selectedVariant.price)
@@ -174,11 +172,11 @@ const ProductSelector = ({
         >
           <div>
             <DesktopTopContainer>
-              <SectionTiltle className='section_titile pdp'>
+              <SectionTiltle className="section_titile pdp">
                 <h2 className="font-bold text-left text-black">{product.title}</h2>
               </SectionTiltle>
               <div
-                className='mb-1'
+                className="mb-1"
                 onClick={() => scrollToReviews()}
                 onKeyDown={() => {}}
                 role="button"
@@ -216,7 +214,7 @@ const ProductSelector = ({
               </div>
 
               <AfterPayCopy price={selectedVariant.price} product={product.title} />
-              
+
               <ByName>
                 <p>By: Sarah smith</p>
                 <p>New York, NY</p>
@@ -224,18 +222,21 @@ const ProductSelector = ({
 
               <ProductShortDescription>
                 {getShortDescription(product.description, 49)}
-                <div className='read-more-desc border-b inline border-black'
+                <div
+                  className="read-more-desc border-b inline border-black"
                   onClick={() => scrollToDescription()}
                   onKeyDown={() => {}}
                   role="button"
                   tabIndex={0}
-                >Read More</div>
+                >
+                  Read More
+                </div>
               </ProductShortDescription>
             </DesktopTopContainer>
 
             {handle !== 'e-gift-card' && (
               <>
-                 <PDPSizeFilter
+                <PDPSizeFilter
                   setFrameSelected={setFrameSelected}
                   product={product}
                   selectedVariant={selectedVariant}
@@ -255,7 +256,11 @@ const ProductSelector = ({
               </>
             )}
 
-            <IncludesContainer>Includes<br/>Framed print and wall mounting system</IncludesContainer>
+            <IncludesContainer>
+              Includes
+              <br />
+              Framed print and wall mounting system
+            </IncludesContainer>
 
             <div className="flex flex-row pb-8 border-b border-gray">
               <div className="mr-4">
@@ -265,12 +270,37 @@ const ProductSelector = ({
                   name="button"
                   value="Add to Cart"
                 />
-                <StickyAddToCartContainer ref={submitRef} showStickySubmit={showStickySubmit}>
-                  <div className="w-20 my-auto ml-2 justify-self-end col-span-3">
-                    <ProductQty qty={qty} setQty={setQty} />
+                <StickyAddToCartContainer ref={submitRef} showStickySubmit={true}>
+                  <StickyAddToCartTitleContainer>
+                    <StickyAddToCartTitle>{product.title}</StickyAddToCartTitle>
+                    <span>{convertPriceFromNumber(selectedVariant.price)}</span>
+                  </StickyAddToCartTitleContainer>
+                  <div className="col-span-2">
+                    {handle !== 'e-gift-card' && (
+                      <PDPSizeFilter
+                        setFrameSelected={setFrameSelected}
+                        product={product}
+                        selectedVariant={selectedVariant}
+                        setSelectedVariant={setSelectedVariant}
+                        currentOptions={currentOptions}
+                        setCurrentOptions={setCurrentOptions}
+                        isSticky={true}
+                      />
+                    )}
                   </div>
-                  <div className="col-span-2 my-auto ml-3 font-serif font-xl">
-                    {convertPriceFromNumber(selectedVariant.price)}
+                  <div className="col-span-2 justify-self-end">
+                    {handle !== 'e-gift-card' && (
+                      <PDPColorFilter
+                        setFrameColorSelected={setFrameColorSelected}
+                        product={product}
+                        selectedVariant={selectedVariant}
+                        setSelectedVariant={setSelectedVariant}
+                        currentOptions={currentOptions}
+                        setCurrentOptions={setCurrentOptions}
+                        selectOptions={selectOptions}
+                        isSticky={true}
+                      />
+                    )}
                   </div>
                   <StickyAddToCartInput type="submit" value="Add to Cart" />
                 </StickyAddToCartContainer>
@@ -362,25 +392,25 @@ const ProductFormContainer = styled.div.attrs(({ handle }) => {
 })``;
 
 const AddToCartSubmitInput = styled.input.attrs({
-  className:
-    'AddtoCart pb-3 pt-3 my-0',
+  className: 'AddtoCart pb-3 pt-3 my-0',
 })`
   width: 231px;
   border-radius: 0 !important;
-  background-color: #F1946A !important;
+  background-color: #f1946a !important;
   font-family: 'GoodSans' !important;
   font-weight: 400 !important;
   font-size: 12px !important;
   letter-spacing: 0.05em !important;
   text-transform: uppercase !important;
   color: #000000 !important;
+  padding: 0 !important;
 `;
 
 const StickyAddToCartContainer = styled.div.attrs(({ showStickySubmit }) => {
-  let className = 'fixed mb-0 px-2 w-full bg-white md:hidden';
+  let className = 'fixed mb-0 px-2 w-full bg-white';
 
   if (showStickySubmit) {
-    className = `${className} grid grid-cols-10 left-0 bottom-0 rounded-none border-t border-gray-light h-16 z-20`;
+    className = `${className} grid grid-cols-10 left-0 bottom-0 rounded-none z-20 pt-4 pb-4 pl-16 pr-16`;
   } else {
     className = `${className} hidden`;
   }
@@ -388,18 +418,37 @@ const StickyAddToCartContainer = styled.div.attrs(({ showStickySubmit }) => {
   return {
     className,
   };
-})``;
+})`
+  align-items: center;
+  background: #f4f2ec;
+`;
 
 const ProductShortDescription = styled.div.attrs({
-  className:
-    'short-description',
+  className: 'short-description',
 })`
-font-family: 'GoodSans';
-font-weight: 400;
-font-size: 14px;
-line-height: 22px;
-letter-spacing: -0.01em;
-margin-bottom: 32px;`;
+  font-family: 'GoodSans';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: -0.01em;
+  margin-bottom: 32px;
+`;
+
+const StickyAddToCartTitleContainer = styled.div.attrs({
+  className: 'col-span-4 section_titile sticky-add-to-cart',
+})`
+  margin-bottom: 0 !important;
+`;
+
+const StickyAddToCartTitle = styled.h3.attrs({
+  className: 'mr-6',
+})`
+  font-size: 14px !important;
+  line-height: 19px !important;
+  color: #000000;
+  letter-spacing: -0.02em !important;
+  display: inline-block;
+`;
 
 const ByName = styled.div`
   margin-bottom: 16px;
@@ -430,16 +479,14 @@ const AfterPayContainer = styled.div.attrs({})`
 `;
 
 const StickyAddToCartInput = styled.input.attrs({
-  className:
-    'AddtoCart col-span-4 pt-0 text-sm px-0 font-light h-10 leading-none my-auto ml-4 mb-3 ',
+  className: 'AddtoCart col-span-2 pt-0 px-0 leading-none my-auto ml-10 mr-0 primary_btn',
 })``;
 
 const MobileTopContainer = styled.div.attrs({
   className: 'lg:hidden',
 })``;
 
-const DesktopTopContainer = styled.div.attrs({
-})`
+const DesktopTopContainer = styled.div.attrs({})`
   @media (max-width: 1023px) {
     display: none;
   }
