@@ -26,43 +26,45 @@ const indexMoodSection = ({ settings }) => {
 
   return (
     <>
-      <ShopByMood className="container section-padding">
-        <SectionTiltle className="section_titile">
-          {section_title && <h3 className="font-bold text-black">{section_title}</h3>}
-        </SectionTiltle>
+      <div className="container">
+        <ShopByMood className="section-padding">
+          <SectionTiltle className="section_titile">
+            {section_title && <h3 className="font-bold text-black">{section_title}</h3>}
+          </SectionTiltle>
 
-        {/* <div className='mood_card_container flex '>
-          {bymoodData.map((value, i) => (
-            <a className='by_mood_card' key={i}>
-              <img src={value.img} />
-              <a href='#' className='premium_link bg-milk text-center'>{value.link}</a>
-            </a>  
-          ))}
-        </div> */}
+          {/* <div className='mood_card_container flex '>
+            {bymoodData.map((value, i) => (
+              <a className='by_mood_card' key={i}>
+                <img src={value.img} />
+                <a href='#' className='premium_link bg-milk text-center'>{value.link}</a>
+              </a>  
+            ))}
+          </div> */}
 
-        <div className="mood_card_container flex ">
-          <a className="by_mood_card">
-            {image_1 && <img src={image_1} />}
-            {button_text_1 && (
-              <div>
-                <a href={button_link_1} className="premium_link bg-milk text-center">
-                  {button_text_1}
-                </a>
-              </div>
-            )}
-          </a>
-          <a className="by_mood_card">
-            {image_2 && <img src={image_2} />}
-            {button_text_2 && (
-              <div>
-                <a href={button_link_2} className="premium_link bg-milk text-center">
-                  {button_text_2}
-                </a>
-              </div>
-            )}
-          </a>
-        </div>
-      </ShopByMood>
+          <div className="mood_card_container flex ">
+            <a className="by_mood_card">
+              {image_1 && <img src={image_1} />}
+              {button_text_1 && (
+                <div>
+                  <a href={button_link_1} className="premium_link bg-milk text-center">
+                    {button_text_1}
+                  </a>
+                </div>
+              )}
+            </a>
+            <a className="by_mood_card">
+              {image_2 && <img src={image_2} />}
+              {button_text_2 && (
+                <div>
+                  <a href={button_link_2} className="premium_link bg-milk text-center">
+                    {button_text_2}
+                  </a>
+                </div>
+              )}
+            </a>
+          </div>
+        </ShopByMood>
+      </div>
     </>
   );
 };

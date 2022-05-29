@@ -82,7 +82,7 @@ const MobileNavSlider = ({ isOpen, links, themeSettings, settings }) => {
       <div className="globo-menu-mobile">
         <ul></ul>
 
-        <div className="mx-5 mt-10">
+        <div className="mx-5 mt-10 social-icons">
           {email_text && (
             <div className="soc_ico mb-3.5">
               <a className="text-black">{email_text}</a>

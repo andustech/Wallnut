@@ -52,7 +52,7 @@ const IndexBetterWay = ({ blocks }) => {
               <div key={`bw-` + index}>
                 {index % 2 === 0 ? (
                   <div className="video_items_container flex items-center flex-col-reverse md:flex-row mb-14 md:mb-0">
-                    <div className="video_content w-full md:w-6/12 md:pr-5 lg:px-13 xl:px-16 pt-6 md:pt-0 pb-0 md:pb-5 lg:pb-0">
+                    <div className="video_content w-full md:w-6/12 md:pr-8 lg:px-13 xl:px-16 pt-6 md:pt-0- pb-0 md:pb-5 lg:pb-0">
                       {settings.title && (
                         <h2 className="font-bold text-white mb-4">{settings.title}</h2>
                       )}
@@ -142,7 +142,7 @@ const IndexBetterWay = ({ blocks }) => {
                     <div className="w-full md:w-6/12">
                       <img src={settings.image} alt="how-it-works" className="w-full" />
                     </div>
-                    <div className="how_it_work_content w-full md:w-6/12 md:pl-5 lg:px-13 xl:px-16 pt-6 md:pt-0">
+                    <div className="how_it_work_content w-full md:w-6/12 md:pl-8 lg:px-13 xl:px-16 pt-6 md:pt-0-">
                       {settings.title && (
                         <h2 className="font-bold text-white mb-4">{settings.title}</h2>
                       )}

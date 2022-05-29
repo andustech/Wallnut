@@ -48,7 +48,7 @@ const ProductRecommendation = ({ blocks, settings }) => {
       <SectionTiltle className="section_titile">
         <h3 className="font-bold text-black">{settings?.title}</h3>
       </SectionTiltle>
-      <div className="">
+      <div className="container">
         <RecommendationContainer recommendations={recommendations}>
           {recommendations && (
             <>
@@ -86,16 +86,14 @@ const ProductRecommendation = ({ blocks, settings }) => {
 };
 
 const ProductRecommendationContainer = styled.div.attrs({
-  className: 'px-2 md:px-0 md:text-center section-padding',
+  className: 'md:text-center section-padding',
 })`
   @media (min-width: 740px) {
-    margin-right: -8%;
-    margin-left: -8%;
   }
 `;
 
 const RecommendationContainer = styled.div.attrs(({ recommendations }) => ({
-  className: `container`,
+  className: `prod-list`,
 }))``;
 
 export default ProductRecommendation;

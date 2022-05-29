@@ -93,7 +93,7 @@ const HeaderContainer = styled.div.attrs(({ sticky }) => {
   height: auto;
   border-bottom: 1px solid #d5d5d5;
   @media screen and (max-width: 1024px) {
-    height: auto;
+    height: 50px;
   }
 `;
 

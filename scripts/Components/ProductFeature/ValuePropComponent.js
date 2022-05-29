@@ -50,56 +50,58 @@ const ValuePropSection = ({settings, collection_handle_1, collection_handle_2, c
         { title && <h3 className="font-bold text-black">{title}</h3> }
         { subheading && <p className="h3-attila-sans font-medium">{subheading}</p> }
       </SectionTiltle>
-      <ValuePropContainer>
+      <div className="container">
+        <ValuePropContainer>
 
-        {/* {valueProps.map((item, i) => (
-          <ValuePropColumn key={i} className='premium_card_container premium_pos'>
-            <div className="premium_img_box">
-              <img className='premium_img' src={item.img} />
-            </div>
-            <div className="flex items-center text-base text-center whitespace-nowrap absolute left-0 bottom-0">
-              <a className='premium_link bg-milk' href=''>{item.name}</a>
-            </div>
-          </ValuePropColumn>
-        ))} */}
-
-        { collection_handle_1.handle && 
-          <ValuePropColumn className='premium_card_container premium_pos'>
+          {/* {valueProps.map((item, i) => (
+            <ValuePropColumn key={i} className='premium_card_container premium_pos'>
               <div className="premium_img_box">
-                <img className='premium_img' src={coll_image_1} />
+                <img className='premium_img' src={item.img} />
               </div>
-              { collection_handle_1.title && 
+              <div className="flex items-center text-base text-center whitespace-nowrap absolute left-0 bottom-0">
+                <a className='premium_link bg-milk' href=''>{item.name}</a>
+              </div>
+            </ValuePropColumn>
+          ))} */}
+
+          { collection_handle_1.handle && 
+            <ValuePropColumn className='premium_card_container premium_pos'>
+                <div className="premium_img_box">
+                  <img className='premium_img' src={coll_image_1} />
+                </div>
+                { collection_handle_1.title && 
+                  <div className="flex items-center text-base text-center whitespace-nowrap absolute left-0 bottom-0 premium_content">
+                    <a className='premium_link bg-milk' href={handle_1}>Shop {collection_handle_1.title}</a>
+                  </div>
+                }
+              </ValuePropColumn>
+          }
+          { collection_handle_2.handle &&
+            <ValuePropColumn className='premium_card_container premium_pos'>
+              <div className="premium_img_box">
+                <img className='premium_img' src={coll_image_2} />
+              </div>
+              { collection_handle_2.title && 
                 <div className="flex items-center text-base text-center whitespace-nowrap absolute left-0 bottom-0 premium_content">
-                  <a className='premium_link bg-milk' href={handle_1}>Shop {collection_handle_1.title}</a>
+                  <a className='premium_link bg-milk' href={handle_2}>Shop {collection_handle_2.title}</a>
                 </div>
               }
             </ValuePropColumn>
-        }
-        { collection_handle_2.handle &&
-          <ValuePropColumn className='premium_card_container premium_pos'>
-            <div className="premium_img_box">
-              <img className='premium_img' src={coll_image_2} />
-            </div>
-            { collection_handle_2.title && 
-              <div className="flex items-center text-base text-center whitespace-nowrap absolute left-0 bottom-0 premium_content">
-                <a className='premium_link bg-milk' href={handle_2}>Shop {collection_handle_2.title}</a>
+          }
+          { collection_handle_3.handle && 
+            <ValuePropColumn className='premium_card_container premium_pos'>
+              <div className="premium_img_box">
+                <img className='premium_img' src={coll_image_3} />
               </div>
-            }
-          </ValuePropColumn>
-        }
-        { collection_handle_3.handle && 
-          <ValuePropColumn className='premium_card_container premium_pos'>
-            <div className="premium_img_box">
-              <img className='premium_img' src={coll_image_3} />
-            </div>
-            { collection_handle_3.title && 
-              <div className="flex items-center text-base text-center whitespace-nowrap absolute left-0 bottom-0 premium_content">
-                <a className='premium_link bg-milk' href={handle_3}>Shop {collection_handle_3.title}</a>
-              </div>
-            }
-          </ValuePropColumn>
-        }
-      </ValuePropContainer>
+              { collection_handle_3.title && 
+                <div className="flex items-center text-base text-center whitespace-nowrap absolute left-0 bottom-0 premium_content">
+                  <a className='premium_link bg-milk' href={handle_3}>Shop {collection_handle_3.title}</a>
+                </div>
+              }
+            </ValuePropColumn>
+          }
+        </ValuePropContainer>
+      </div>
     </PremiumMainContainer>
   );
 };
@@ -116,7 +118,7 @@ export const SectionTiltle = styled.div`
 
 const ValuePropContainer = styled.div.attrs({
   className:
-    'h-full  container m-auto',
+    'h-full  m-auto prem-art',
 })``;
 
 const ValuePropColumn = styled.div.attrs({
