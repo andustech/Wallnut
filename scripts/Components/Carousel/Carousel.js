@@ -40,7 +40,7 @@ const CarouselA = (props) => {
       {images.length > 1 && (
         <>
           <DesktopThumbContainer>
-            <div className="flex flex-col mr-12">
+            <div className="flex flex-col lg:mr-12 md:mr-4">
               {images.map((image, i) => (
                 <Media
                   key={i}
@@ -55,7 +55,7 @@ const CarouselA = (props) => {
           </DesktopThumbContainer>
         </>
       )}
-      <div className="lg:relative w-full lg:w-5/12">
+      <div className="lg:relative w-full md:w-6/12">
         <div className="w-full h-full">
           <CarouselContainer ref={containerRef} onScroll={handleOnScroll}>
             {images.map((image, i) => (
@@ -127,7 +127,7 @@ const CarouselContainer = styled.div.attrs({
 
 const DesktopThumbContainer = styled.div.attrs({})`
   display: none;
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     display: block;
   }
 `;
@@ -135,7 +135,7 @@ const DesktopThumbContainer = styled.div.attrs({})`
 const MobileThumbContainer = styled.div.attrs({
   className: 'mt-4 mb-10',
 })`
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     display: none;
   }
 `;

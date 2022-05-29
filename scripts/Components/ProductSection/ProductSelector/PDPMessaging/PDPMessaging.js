@@ -24,7 +24,7 @@ const PDPMessaging = ({ productMessaging }) => {
 
   if (shippingMessage !== undefined && shippingTime !== undefined) {
     return (
-      <div className="flex text-grey-about text-sm font-serif mt-8 pt-3 pb-3 pl-6 pr-6" style={{backgroundColor: '#F4F2EC'}}>
+      <div className="flex text-grey-about text-sm font-serif mt-5 lg:mt-8 pt-3 pb-3 pl-6 pr-6" style={{backgroundColor: '#F4F2EC'}}>
         <div className="flex items-start lg:items-center">
           <ShippingBox />
         </div>

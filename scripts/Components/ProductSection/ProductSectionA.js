@@ -94,7 +94,7 @@ const ProductSectionA = (props) => {
 
   return (
     <section>
-      <div className="px-4">
+      <div className="container">
         {product.handle !== 'e-gift-card' && (
           <StyledDiv
             handle={product.handle}
@@ -112,7 +112,7 @@ const ProductSectionA = (props) => {
           </StyledDiv>
         )}
         {currentVariant && (
-          <div className="grid grid-cols-1 justify-items-auto xl:justify-items-center mb-14 lg:mb-20 mt-8 lg:mt-10 container">
+          <div className="grid grid-cols-1 justify-items-auto xl:justify-items-center mb-14 lg:mb-20 mt-8 lg:mt-10">
             <ProductSelector
               setFrameSelected={setFrameSelected}
               setFrameColorSelected={setFrameColorSelected}
@@ -142,7 +142,7 @@ const ProductSectionA = (props) => {
       </div>
       <ProductDescription ref={descriptionRef}>
         <SectionTiltle className="section_titile pdp-small mb-0">
-          <h2 className="font-bold text-center text-black">About {product.title}</h2>
+          <h2 className="font-bold text-left md:text-center text-black">About {product.title}</h2>
         </SectionTiltle>
         {parse(product.description)}
       </ProductDescription>
@@ -152,7 +152,7 @@ const ProductSectionA = (props) => {
         frameSelected={frameSelected}
         frameColorSelected={frameColorSelected}
       />
-      <div className="mb-8 md:hidden px-4">
+      <div className="md:hidden mobile-pdp-tabs">
         {productTypeBlocks.map((block, i) => {
           return (
             <div key={i}>
@@ -180,7 +180,7 @@ const DRBannerDiscount = styled.h1.attrs({
 `;
 
 const ProductDescription = styled.div.attrs({
-  className: 'product-description ml-auto mr-auto text-center container',
+  className: 'product-description ml-auto mr-auto md:text-center container',
 })`
   max-width: 644px;
   margin-bottom: 55px;

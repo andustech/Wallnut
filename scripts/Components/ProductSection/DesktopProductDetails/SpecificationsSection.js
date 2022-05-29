@@ -72,7 +72,7 @@ const SpecificationsSection = ({ productBlock, frameSelected, frameColorSelected
   }, [frameSelected, frameColorSelected]);
   return (
     <>
-    <div className="pdp-tabs-sec pt-16 text-sm justify-items-center max-w-screen-xxl font-extralight items-center flex flex-row w-10/12 gap-20">
+    <div className="pdp-tabs-sec pt-16 text-sm justify-items-center max-w-screen-xxl font-extralight items-center flex flex-row xl:w-10/12 gap-20">
       <div className="mx-auto lg:col-span-2 lg:grid lg:grid-cols-2 gap-5 max-w-screen-xxl">
         <div className="dimensions-col">
         <SectionName>{dimensions_heading}</SectionName>

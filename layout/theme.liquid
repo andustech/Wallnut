@@ -315,12 +315,18 @@
           const myIntervalBannerheight = setInterval(function() {
             if ($('body .gm-menu').length > 0) {
               var ann_height = $('#react-header').outerHeight();
-              console.log('ann_height', ann_height);
               var header_height = $('#react-desktop-announcement').outerHeight();
-              console.log('header_height', header_height);
               var total_height = ann_height + header_height;
-              console.log('total_height', total_height);
               $('.main_banner').css('height', 'calc(100vh - '+total_height+'px)');
+              
+              var windowWidth = $(window).width();
+              if (windowWidth > 1440) {
+                $('.main_banner').css('max-height', (windowWidth/2)+'px');
+              }
+              else {
+                $('.main_banner').css('max-height', 'none');
+              }
+
               $('.main_banner img').hide()
               clearInterval(myIntervalBannerheight);
             }

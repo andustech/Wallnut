@@ -18,7 +18,7 @@ const DeliverySection = ({ productBlock }) => {
 
   return (
     <>
-    <div className="pdp-tabs-sec pt-16 text-sm justify-items-center max-w-screen-xxl font-extralight flex flex-row w-10/12 gap-20">
+    <div className="pdp-tabs-sec pt-16 text-sm justify-items-center max-w-screen-xxl font-extralight flex flex-row xl:w-10/12 gap-20">
       <div className="mb-4 w-6/12">
         <IconTitleContainer>
           <div className="mb-6">

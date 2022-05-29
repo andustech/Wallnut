@@ -21,13 +21,13 @@ const DeliveryTab = ({ productTypeBlock }) => {
 
   return (
     <Tab tabName={sprt_tab_heading}>
-      <div className="mb-4 w-6/12">
+      <div className="mb-4 w-full">
         <IconTitleContainer>
-          <div className="mb-6">
+          <div>
             {sprt_1_title && (
               <>
-              <ShippingBox />
-              <h3 className="text-base ml-5 inline">
+              <ShippingBox width="20" height="19.22" />
+              <h3 className="ml-4 inline-block">
                 {sprt_1_title}
               </h3>
               </>
@@ -50,13 +50,13 @@ const DeliveryTab = ({ productTypeBlock }) => {
           </div>
         </IconTitleContainer>
       </div>
-      <div className="mb-4 w-6/12">
+      <div className="mb-4 w-full">
         <IconTitleContainer>
-          <div className="mb-6">
+          <div>
             {sprt_2_title && (
               <>
-              <ReturnIcon/>
-              <h3 className="text-base ml-5 inline">
+              <ReturnIcon width='18' height='19'/>
+              <h3 className="ml-4 inline-block">
                 {sprt_2_title}
               </h3>
               </>
@@ -90,23 +90,6 @@ const IconTitleContainer = styled.div.attrs({
   grid-template-columns: 2fr 12fr;
   svg {
     display: inline-block;
-  }
-  h3 {
-    vertical-align: middle;
-    vertical-align: middle;
-    font-family: 'Nib-bold-pro';
-    font-size: 24px !important;
-    line-height: 33px !important;
-    font-weight: 700;
-    color: #000;
-  }
-  p {
-    font-family: 'GoodSans';
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    letter-spacing: -0.01em;
-    color: #000000;
   }
 `;
 

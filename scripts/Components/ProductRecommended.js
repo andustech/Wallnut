@@ -69,16 +69,19 @@ const ProductRecommended = ({ product, title }) => {
 };
 
 const ProductRecommendationContainer = styled.div.attrs({
+  className: `container`,
 })`
   margin-top: 55px;
   @media (min-width: 1024px) {
     margin-top: 112px;
   }
+  @media (max-width: 767px) {
+    display: none;
+  }
 `;
 
-const RecommendationContainer = styled.div.attrs(({ recommendations }) => ({
-  className: `container`,
-}))`
+const RecommendationContainer = styled.div.attrs ({
+})`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;

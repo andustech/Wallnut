@@ -15,7 +15,7 @@ const FeaturesSection = ({ productBlock }) => {
 
   return (
     <>
-      <div className="pdp-tabs-sec pt-16 text-sm justify-items-center max-w-screen-xxl font-extralight items-center flex flex-row w-10/12 gap-18">
+      <div className="pdp-tabs-sec pt-16 text-sm justify-items-center max-w-screen-xxl font-extralight items-center flex flex-row xl:w-10/12 gap-18">
         <div className="w-5/12">
           {features_section_1_image && features_section_1_media_type === 'image' && (
             <img className="lg:mb-0 md:mb-5" src={features_section_1_image} alt="" />

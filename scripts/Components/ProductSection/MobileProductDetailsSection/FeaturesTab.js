@@ -18,19 +18,19 @@ const FeaturesTab = ({ productTypeBlock }) => {
     <>
       <Tab tabName={whylove_tab_heading}>
         <div>
-          {features_section_1_title && (
-            <h3 className="pb-3 text-base text-blue-light font-serif">{features_section_1_title}</h3>
-          )}
-          {features_section_1_paragraph && (
-            <p className="mb-2 text-sm font-extralight">{features_section_1_paragraph}</p>
-          )}
           {features_section_1_image && features_section_1_media_type === 'image' && (
-            <img className="mb-5" src={features_section_1_image} alt="" />
+            <img className="mb-6" src={features_section_1_image} alt="" />
           )}
           {features_section_1_video_url && features_section_1_media_type === 'video' && (
-            <div className="mb-5">
+            <div className="mb-6">
               <VideoPlayer link={features_section_1_video_url} autoPlay loop />
             </div>
+          )}
+          {features_section_1_title && (
+            <h3>{features_section_1_title}</h3>
+          )}
+          {features_section_1_paragraph && (
+            <p>{features_section_1_paragraph}</p>
           )}
         </div>
       </Tab>

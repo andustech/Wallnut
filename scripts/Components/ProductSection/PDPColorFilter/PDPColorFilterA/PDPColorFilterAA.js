@@ -100,11 +100,11 @@ const PDPColorFilter = ({
   let staticColors = ['Matte Black', 'Walnut Wood', 'Matte White'];
   const colorIndex = product.options.findIndex((option) => option === 'Frame Color');
   return (
-    <div id={ isSticky ? 'pdp-color-swatcher-sticky' : 'pdp-color-swatcher'} className={isSticky ? 'pl-6 ml-6 border-l mr-12' : ''}>
+    <div id={ isSticky ? 'pdp-color-swatcher-sticky' : 'pdp-color-swatcher'} className={isSticky ? 'md:flex md:flex-row pl-3 ml-3 lg:pl-6 lg:ml-6 md:border-l mr-6 lg:mr-12' : 'mb-5 lg:mb-8'}>
       { isSticky ?
-        <h5 className="mr-4">Frame</h5>
+        <h5 className="mr-2 lg:mr-4">Frame</h5>
       :
-        <h5 className="mb-4">
+        <h5 className="mb-2 lg:mb-4">
           Choose a Frame{' '}
           <>
             - <span>{colorIndex === 0 ? option1 : option2}</span>
@@ -112,10 +112,10 @@ const PDPColorFilter = ({
         </h5>
       }
 
-      <ul className={ isSticky ? 'inline-block' : 'grid grid-cols-10'}>
+      <ul className={ isSticky ? 'inline-block' : 'flex flex-row gap-2'}>
         {staticColors.map((color, index) => {
           return (
-            <li key={index} className={ isSticky ? 'inline-block mr-2' : ''}>
+            <li key={index} className={ isSticky ? 'inline-block mr-1 lg:mr-2' : ''}>
               <ColorSwatchContainer
                 isSelected={color === selectedColor}
                 onClick={() => {
@@ -127,7 +127,7 @@ const PDPColorFilter = ({
                 role="button"
                 aria-label="change color"
               >
-                <ColorSwatch option={color} />
+                <ColorSwatch option={color} size={ isSticky ? 'medium' : 'large'}/>
               </ColorSwatchContainer>
             </li>
           );

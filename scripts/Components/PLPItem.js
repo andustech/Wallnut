@@ -201,7 +201,7 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
                     tabIndex="0"
                     key={color}
                   >
-                    <ColorSwatch option={color} small />
+                    <ColorSwatch option={color} size="small" />
                   </ColorSwatchWrapper>
                 );
               })}

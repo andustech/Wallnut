@@ -26,8 +26,8 @@ const DesktopProductDetails = ({ productTypeBlocks, blocks, frameSelected, frame
   );
 
   return (
-    <div className="hidden justify-items-center md:grid md:grid-cols-1 lg:px-28 md:px-10">
-      <div className="border-b-2 w-10/12 grid justify-items-center max-w-screen-xxl">
+    <div className="hidden justify-items-center md:grid md:grid-cols-1 container">
+      <div className="border-b-2 xl:w-10/12 grid justify-items-center max-w-screen-xxl">
         <div
           className={`cursor-pointer justify-items-center flex flex-row pdp-tabs`}
         >

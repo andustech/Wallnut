@@ -169,7 +169,7 @@ const ProductSelector = ({
       <Carousel images={getCurrentImages(product, selectedVariant)} />
       <ProductFormContainer handle={handle}>
         <form
-          className="mb-3 md:pr-10"
+          className="mb-0"
           onSubmit={(e) => handleAddToCart(e, product, qty, selectedVariant.id)}
         >
           <div>
@@ -264,7 +264,7 @@ const ProductSelector = ({
               Framed print and wall mounting system
             </IncludesContainer>
 
-            <div className="flex flex-row pb-8 border-b border-gray">
+            <div className="flex flex-row pb-5 lg:pb-8 border-b border-gray">
               <div className="mr-4">
                 <AddToCartSubmitInput
                   ref={submitRef}
@@ -273,12 +273,12 @@ const ProductSelector = ({
                   value="Add to Cart"
                 />
                 <StickyAddToCartContainer showStickySubmit={true}>
-                  <div className="container flex flex-row">
+                  <div className="container md:flex md:flex-row">
                     <StickyAddToCartTitleContainer>
                       <StickyAddToCartTitle>{product.title}</StickyAddToCartTitle>
                       <span>{convertPriceFromNumber(selectedVariant.price)}</span>
                     </StickyAddToCartTitleContainer>
-                    <div className="sticky-right flex flex-row">
+                    <div className="sticky-right md:flex md:flex-row">
                       {handle !== 'e-gift-card' && (
                         <PDPSizeFilter
                           setFrameSelected={setFrameSelected}
@@ -384,11 +384,11 @@ ProductSelector.propTypes = {
 };
 
 const ProductSelectorContainer = styled.div.attrs({
-  className: 'flex flex-col max-w-screen-xl lg:flex-row',
+  className: 'flex flex-col max-w-screen-xl md:flex-row',
 })``;
 
 const ProductFormContainer = styled.div.attrs(({ handle }) => {
-  let className = 'lg:ml-12 w-full md:w-8/12 lg:w-5/12';
+  let className = 'md:ml-4 lg:ml-12 w-full md:w-6/12';
   return {
     className,
   };
@@ -410,7 +410,7 @@ const AddToCartSubmitInput = styled.input.attrs({
 `;
 
 const StickyAddToCartContainer = styled.div.attrs(({ showStickySubmit }) => {
-  let className = 'fixed mb-0 px-2 w-full';
+  let className = 'fixed mb-0 w-full';
 
   if (showStickySubmit) {
     className = `${className} left-0 bottom-0 rounded-none z-20 pt-4 pb-4`;
@@ -431,14 +431,13 @@ const StickyAddToCartContainer = styled.div.attrs(({ showStickySubmit }) => {
 `;
 
 const ProductShortDescription = styled.div.attrs({
-  className: 'short-description',
+  className: 'short-description mb-5 lg:mb-8',
 })`
   font-family: 'GoodSans';
   font-weight: 400;
   font-size: 14px;
   line-height: 22px;
   letter-spacing: -0.01em;
-  margin-bottom: 32px;
 `;
 
 const StickyAddToCartTitleContainer = styled.div.attrs({
@@ -448,7 +447,7 @@ const StickyAddToCartTitleContainer = styled.div.attrs({
 `;
 
 const StickyAddToCartTitle = styled.h3.attrs({
-  className: 'mr-6',
+  className: 'mr-3 lg:mr-6',
 })`
   font-size: 14px !important;
   line-height: 19px !important;
@@ -489,6 +488,7 @@ const StickyAddToCartInput = styled.input.attrs({
   className: 'AddtoCart pb-3 pt-3 my-0',
 })`
   width: 153px;
+  min-width: auto;
   border-radius: 0 !important;
   background-color: #f1946a !important;
   font-family: 'GoodSans' !important;
@@ -498,14 +498,20 @@ const StickyAddToCartInput = styled.input.attrs({
   text-transform: uppercase !important;
   color: #000000 !important;
   padding: 0 !important;
+  @media (max-width: 1024px) {
+    width: 130px;
+  }
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 `;
 
 const MobileTopContainer = styled.div.attrs({
-  className: 'lg:hidden',
+  className: 'md:hidden',
 })``;
 
 const DesktopTopContainer = styled.div.attrs({})`
-  @media (max-width: 1023px) {
+  @media (max-width: 767px) {
     display: none;
   }
 `;

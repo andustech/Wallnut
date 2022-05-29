@@ -34,7 +34,7 @@ const Tab = ({ tabName, children }) => {
       <AnimatePresence initial={false}>
         {tabName === openSection && (
           <motion.div
-            className="py-3"
+            className="py-8"
             key="content"
             initial="collapsed"
             animate="open"

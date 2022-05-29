@@ -1131,12 +1131,6 @@ afterpay-placement {
   color: rgba(0, 0, 0, 0.7);
   font-family: 'GoodSans' !important;
 }
-#pdp-size-swatcher {
-  margin-bottom: 32px;
-}
-#pdp-color-swatcher  {
-  margin-bottom: 32px;
-}
 #pdp-color-swatcher h5, #pdp-size-swatcher h5 {
   font-family: 'GoodSans';
   font-weight: 400;
@@ -1221,6 +1215,23 @@ afterpay-placement {
   list-style-position: outside;
   margin-bottom: 12px;
 }
+.mobile-pdp-tabs h3 {
+  font-family: 'NibPro' !important;
+  font-weight: 700 !important;
+  font-size: 18px !important;
+  line-height: 25px !important;
+  letter-spacing: -0.02em !important;
+  color: #000000 !important;
+  margin-bottom: 16px;
+}
+.mobile-pdp-tabs p {
+  font-family: 'GoodSans';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.01em;
+  color: #000000;
+}
 .sizeDropdown {
   visibility: hidden;
   height: 0;
@@ -1236,7 +1247,7 @@ afterpay-placement {
   background: #fff;
   border: 1px solid rgba(0,0,0,0.4);
 }
-#pdp-color-swatcher-sticky, #pdp-size-swatcher-sticky, .sticky-right {align-items: center; display: flex; flex-direction: row; position: relative;}
+#pdp-color-swatcher-sticky, #pdp-size-swatcher-sticky {align-items: center; position: relative;}
 .ship-msg {
   font-family: 'GoodSans';
   font-weight: 400;
@@ -1349,7 +1360,14 @@ afterpay-placement {
     }
   }
   
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 1024px) {
+    .section_titile.pdp h2 {
+      font-size: 25px!important;
+      line-height: 32px!important;
+    }
+  }
+  
+  @media only screen and (max-width: 767px) {
   
     .ProductRecommendation__TrendCardContainer-sc-1bfw787-1.dnwXiG.container {
       overflow-x: scroll !important;
@@ -1393,6 +1411,24 @@ afterpay-placement {
       padding: 8px 24px;
       font-size: 10px;
       line-height: 16px;
+    }
+
+    .sticky-add-to-cart {
+      display: none;
+    }
+    .sticky-right {
+        display: block;
+    }
+    #pdp-color-swatcher-sticky, #pdp-size-swatcher-sticky {
+      width: 50%;
+      display: inline-block;
+      margin: 0 0 16px !important;
+    }
+    #pdp-color-swatcher-sticky {
+      text-align: right;
+    }
+    #pdp-color-swatcher-sticky h5 {
+      display: inline-block;
     }
   }
   
@@ -1627,12 +1663,6 @@ afterpay-placement {
     color: rgba(0, 0, 0, 0.7);
     font-family: 'GoodSans' !important;
   }
-  #pdp-size-swatcher {
-    margin-bottom: 32px;
-  }
-  #pdp-color-swatcher  {
-    margin-bottom: 32px;
-  }
   #pdp-color-swatcher h5, #pdp-size-swatcher h5 {
     font-family: 'GoodSans';
     font-weight: 400;
@@ -1711,7 +1741,25 @@ afterpay-placement {
     visibility: visible;
     height: auto;
   }
-  #pdp-color-swatcher-sticky, .sticky-right {align-items: center; display: flex; flex-direction: row; position: relative;}
+
+  
+  #pdp-color-swatcher-sticky .PDPColorFilterAA__ColorSwatchContainer-sc-1g1mpi5-0 {
+      width: 25px !important;
+      height: 25px !important;
+  }
+  .large-color-swatch {
+    width: 22px;
+    height: 22px;
+  }
+  .medium-color-swatch {
+    width: 17px;
+    height: 17px;
+  }
+  .small-color-swatch {
+    width: 12px;
+    height: 12px;
+  }
+
   .ship-msg {
     font-family: 'GoodSans';
     font-weight: 400;

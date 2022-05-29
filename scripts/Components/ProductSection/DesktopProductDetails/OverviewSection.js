@@ -13,7 +13,7 @@ const OverviewSection = ({ productBlock }) => {
   } = settings;
 
   return (
-    <div className="pdp-tabs-sec pt-16 text-sm justify-items-center max-w-screen-xxl font-extralight items-center flex flex-row w-10/12 gap-18">
+    <div className="pdp-tabs-sec pt-16 text-sm justify-items-center max-w-screen-xxl font-extralight items-center flex flex-row xl:w-10/12 gap-18">
       <div className="w-7/12">
         {about_image && about_media_type === 'image' && (
           <img className="lg:mb-0 md:mb-5" src={about_image} alt="" />
