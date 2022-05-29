@@ -30,7 +30,7 @@ const HowItWorkTab = ({ productTypeBlock }) => {
     <>
       <Tab tabName={howitwork_tab_heading}>
         <div>
-          {about_image && about_media_type === 'image' && (
+          {about_image && (
             <img className="mb-6" src={about_image} alt="" />
           )}
           {about_desktop_heading && (
