@@ -542,7 +542,6 @@ export const getSingleViewImage = (product, variant) => {
 };
 
 export const getCurrentImages = (product, variant) => {
-  console.log('product A => ', product);
   const variantName = getVariantName(variant);
   const sizeIndex = product.options.indexOf('Size');
   const colorIndex = product.options.indexOf('Frame Color');

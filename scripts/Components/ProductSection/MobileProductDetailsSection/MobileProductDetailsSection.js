@@ -8,7 +8,7 @@ import SpecificationsTab from './SpecificationsTab';
 import DeliveryTab from './DeliveryTab';
 
 const MobileProductDetailsSection = (props) => {
-  const { productTypeBlock, blocks } = props;
+  const { productTypeBlock, frameSelected, frameColorSelected } = props;
   const [openSection, setOpenSection] = useState('');
 
   const detailsRef = useRef();
@@ -35,7 +35,11 @@ const MobileProductDetailsSection = (props) => {
       <div className="grid md:none" ref={detailsRef}>
         <HowItWorkTab productTypeBlock={productTypeBlock} />
         <FeaturesTab productTypeBlock={productTypeBlock} />
-        <SpecificationsTab productTypeBlock={productTypeBlock} />
+        <SpecificationsTab
+          productTypeBlock={productTypeBlock} 
+          frameSelected={frameSelected}
+          frameColorSelected={frameColorSelected}
+        />
         <DeliveryTab productTypeBlock={productTypeBlock} />
       </div>
     </MobileContext.Provider>

@@ -16,7 +16,7 @@ const FilterDropdown = ({
   options = [],
   colors = [],
   filterName,
-  collectionTitle,
+  collectionTitle,TagSelected, setTagSelected,RemoveTag,setRemoveTag,sortingApply,setSortingApply,sortingBy
 }) => {
   const { allFilters } = useContext(plpContext);
   const { color } = allFilters;
@@ -33,7 +33,7 @@ const FilterDropdown = ({
       <div className="col-span-2">
         <FilterContainer id="dropdown" onClick={handleClick}>
           <FilterTitle>{filterTitle}</FilterTitle>
-          {color.length > 0 && !color.includes('All') && (
+          {color?.length > 0 && !color?.includes('All') && (
             <div className="flex gap-2 mr-2 md:mr-7">
               {color.map((colorItem, i) => {
                 const icon = plpColorFilterGroupIcons[colorItem];
@@ -70,6 +70,10 @@ const FilterDropdown = ({
           options={options}
           colors={colors}
           collectionTitle={collectionTitle}
+          setTagSelected={setTagSelected}
+          TagSelected={TagSelected}
+          sortingBy={sortingBy}
+          
         />
       </div>
     );
@@ -89,6 +93,10 @@ const FilterDropdown = ({
         menuName="collection"
         type="checkbox"
         options={options}
+        RemoveTag={RemoveTag}
+        setRemoveTag={setRemoveTag}
+        sortingApply={sortingApply} 
+          setSortingApply={setSortingApply}
       />
     </div>
   );

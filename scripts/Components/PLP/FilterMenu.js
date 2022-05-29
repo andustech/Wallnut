@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import FilterItem from './FilterItem';
@@ -41,10 +41,24 @@ const toggleColorFilter = (allFilters, collectionTitle, tempArr) => {
   return tempArr;
 };
 
-const FilterMenu = ({ type, options = [], menuOpen, menuName, filterName, collectionTitle }) => {
+const FilterMenu = ({
+  type,
+  options = [],
+  menuOpen,
+  menuName,
+  filterName,
+  collectionTitle,
+  TagSelected,
+  setTagSelected, RemoveTag,
+  setRemoveTag,
+}) => {
   const { allFilters, setAllFilters } = useContext(plpContext);
-
+  useEffect(() => {
+    console.log('tag :>> ', TagSelected);
+  }, [TagSelected]);
   const handleClick = (option) => {
+    console.log('tag :>> ', option);
+
     let tempArr = [...allFilters[filterName]];
 
     if (tempArr.includes('All')) {
@@ -112,6 +126,8 @@ const FilterMenu = ({ type, options = [], menuOpen, menuName, filterName, collec
           menuName={menuName}
           filterName={filterName}
           collectionTitle={collectionTitle}
+          RemoveTag={RemoveTag}
+          setRemoveTag={setRemoveTag}
         />
       ))}
     </MenuContainer>

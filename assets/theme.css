@@ -2211,6 +2211,13 @@ afterpay-placement {
   .dimensions-col {
     max-width: 420px;
   }
+  .mobile-dimensions-col .col-val {
+    text-align: right;
+  }
+  .video-pop-link svg {
+    display: inline-block;
+    margin-right: 12px;
+  }
   .pdp-tabs-sec h3 {
     font-family: 'Nib-bold-pro';
     font-size: 24px !important;

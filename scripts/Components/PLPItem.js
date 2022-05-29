@@ -152,8 +152,6 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
       'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/600x900.png?v=1653804158';
   }
 
-  console.log(productImage, 'productImgSrc');
-
   return (
     <ItemContainer className="each-item">
       <div className="relative overflow-hidden bg-gray-50">
