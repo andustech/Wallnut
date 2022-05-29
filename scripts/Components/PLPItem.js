@@ -30,7 +30,7 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
   //Define static colors for custom order
   let staticColors = ['Matte Black', 'Walnut Wood', 'Matte White'];
   const [colorOption, setColorOption] = useState(staticColors[0]);
-  
+
   const PLPItemRef = useRef();
   const colorIndex = product.options.indexOf('Frame Color');
 
@@ -65,10 +65,9 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
 
   const handleColorChange = (color) => {
     const newVariant = product.variants.find((item) => {
-      if(colorIndex === 0) {
+      if (colorIndex === 0) {
         return item.option1 === color;
-      }
-      else {
+      } else {
         return item.option2 === color;
       }
     });
@@ -88,13 +87,7 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
         onMouseLeave={() => setHover(false)}
       >
         <div className="relative overflow-hidden trend_card">
-          <a
-            href={getProductUrl(
-              product,
-              colorOption,
-              collectionTitle
-            )}
-          >
+          <a href={getProductUrl(product, colorOption, collectionTitle)}>
             <div className="bg-grey">
               <Media
                 alt={`${product.handle.replace(/-/g, ' ')}`}
@@ -103,14 +96,7 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
             </div>
           </a>
         </div>
-        <a
-          className="no-underline"
-          href={getProductUrl(
-            product,
-            colorOption,
-            collectionTitle
-          )}
-        >
+        <a className="no-underline" href={getProductUrl(product, colorOption, collectionTitle)}>
           <TitlePriceContainer>
             <span className="">{product.title}</span>
             <span className="">
@@ -141,67 +127,63 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
   let productImage = [];
   if (product.media) {
     productImage = product.variants.find((item) => {
-      return currentOption.id === item.id
-    })
-  }
-  else {
+      return currentOption.id === item.id;
+    });
+  } else {
     productImage = product.images.find((item) => {
-      return currentOption.id === item.variant_ids[0]
-    })
+      return currentOption.id === item.variant_ids[0];
+    });
   }
 
   const cdnUrl = 'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/';
-  var imgColor = ''
-  if(colorOption === 'Matte White') {
+  var imgColor = '';
+  if (colorOption === 'Matte White') {
     imgColor = 'white';
-  }
-  else if(colorOption === 'Matte Black') {
+  } else if (colorOption === 'Matte Black') {
     imgColor = 'black';
-  }
-  else if(colorOption === 'Walnut Wood') {
+  } else if (colorOption === 'Walnut Wood') {
     imgColor = 'walnut';
   }
-  
+
+  console.log(productImage, 'productImage');
+
+  let productImgSrc =
+    'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/600x900.png?v=1653804158';
+  if (productImage) {
+    productImgSrc = product.media ? productImage.featured_image.src : productImage.src;
+  }
+
   return (
     <ItemContainer className="each-item">
       <div className="relative overflow-hidden bg-gray-50">
-        <a
-          href={getProductUrl(
-            product,
-            colorOption,
-            collectionTitle
-          )}
-        >
+        <a href={getProductUrl(product, colorOption, collectionTitle)}>
           {currentOption && (
-            <ImageContainer isHovered={hover} noColorSelector={noColorSelector} ref={PLPItemRef} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
-              {!hover ?
+            <ImageContainer
+              isHovered={hover}
+              noColorSelector={noColorSelector}
+              ref={PLPItemRef}
+              onMouseEnter={() => setHover(true)}
+              onMouseLeave={() => setHover(false)}
+            >
+              {!hover ? (
                 <Media
                   alt={`${product.handle}-${currentOption.options.join(' ').toLowerCase().trim()}`}
-                  image={product.media ? productImage.featured_image.src : productImage.src}
+                  image={productImgSrc}
                 />
-                :
+              ) : (
                 <Media
                   alt={`${product.handle}-${currentOption.options.join(' ').toLowerCase().trim()}`}
                   image={`${cdnUrl}${product.handle.slice(0, -3)}B-${imgColor}-1824.jpg`}
                 />
-              }
+              )}
             </ImageContainer>
           )}
         </a>
       </div>
-      <a
-        className="no-underline"
-        href={getProductUrl(
-          product,
-          colorOption,
-          collectionTitle
-        )}
-      >
+      <a className="no-underline" href={getProductUrl(product, colorOption, collectionTitle)}>
         <TitlePriceContainer>
           <h6 className="pro_title">{product.title}</h6>
-          <p className="pro_price">
-            {getPriceInRanges(product.price_min, product.price_max)}
-          </p>
+          <p className="pro_price">{getPriceInRanges(product.price_min, product.price_max)}</p>
         </TitlePriceContainer>
       </a>
       {!noColorSelector && (
@@ -213,7 +195,7 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
                   <ColorSwatchWrapper
                     border={color === colorOption}
                     onClick={() => handleColorChange(color)}
-                    onKeyUp={() => { }}
+                    onKeyUp={() => {}}
                     role="button"
                     tabIndex="0"
                     key={color}
