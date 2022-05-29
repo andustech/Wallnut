@@ -43,7 +43,7 @@
                 {% if form.password_needed %}
                   <div class="desktop-12 tablet-6 mobile-3 a-left relative">
                     <label class="left" for="customer-password">{{ 'customer.login.password' | t }}</label>
-                    <a class="right" data-src="#recover-password" data-fancybox href="javascript:;">{{ 'customer.login.forgot_password' | t }}</a>
+                    <a class="right recover-password-a" data-src="#recover-password" data-fancybox href="javascript:;">{{ 'customer.login.forgot_password' | t }}</a>
                     <input id="customer-password" type="password" value="" name="customer[password]" size="16" />
                   </div>
                 {% endif %}

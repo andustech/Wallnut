@@ -1047,11 +1047,11 @@
         "type": "react-promo-video",
         "settings": {
           "section_title": "New in",
-          "image": "shopify:\/\/shop_images\/white-collection.png",
-          "title": "White",
-          "subheading": "Collection",
+          "image": "shopify:\/\/shop_images\/featured-collection-img.png",
+          "title": "Minimalist",
+          "subheading": "Abstractions",
           "button_text": "Shop Collection",
-          "button_link": "#"
+          "button_link": "shopify:\/\/collections\/minimalist-abstractions"
         }
       },
       "16218796845014f478": {
@@ -1275,8 +1275,8 @@
           "subheading": "that’s painless to hang",
           "default_image": "shopify:\/\/shop_images\/default-collection-image.png",
           "collection_1": "best-selling-collection",
-          "collection_2": "frontpage",
-          "collection_3": "new-collection"
+          "collection_2": "statement-pieces-1",
+          "collection_3": "natural-elements"
         }
       },
       "sales-hero": {
@@ -1920,7 +1920,7 @@
           "31488042-a1ac-4840-aa1a-fb2a9e68b5bb": {
             "type": "section",
             "settings": {
-              "image": "shopify:\/\/shop_images\/better-way_797b25cb-ffa3-46f9-86c4-fa6ea666826e.png",
+              "image": "shopify:\/\/shop_images\/design_hero_gif.gif",
               "title": "A better way to art",
               "content": "We believe art can transform a house into a home. So\nwhy is art so difficult to find, frustrating to frame, and\nimpossible to hang? That’s why we created an all-in-one solution for finding, framing, and hanging art, mess-free and stress-free. Your walls will thank you.",
               "button_text": "",
@@ -1936,17 +1936,17 @@
           "f511cbc7-01f1-477f-9c02-cf7e29af1f3d": {
             "type": "section",
             "settings": {
-              "image": "shopify:\/\/shop_images\/how-it-works_d5918321-545d-434c-b8fb-f053ad9aebbc.png",
+              "image": "shopify:\/\/shop_images\/hardware_gif_1.gif",
               "title": "How it works",
               "content": "It's easy. Just pick a piece you love from our curated\ncollection of high quality prints. Then, it’s made to order\nand delivered to you, fully assembled in the frame of\nyour choice. The best part? Hanging is a breeze with\nour innovative Wallnut Mounting System™. It’s an\nadhesive-based wall mount with a built-in bubble level,\nso your frame slides right into place, super straight and\ndamage-free. We’ve rethought everything, so all you\nhave to do is enjoy it.",
               "button_text": "Shop All",
-              "button_link": "#",
+              "button_link": "\/collections\/all",
               "link_icon": "https:\/\/cdn.shopify.com\/s\/files\/1\/0627\/3476\/2207\/files\/arrow-right-white.svg?v=1651814299",
               "video_btn_text": "",
               "video_link": "",
               "link_icon_position": "after",
               "link_text": "Learn more",
-              "link_url": "#"
+              "link_url": "shopify:\/\/pages\/how-it-works"
             }
           }
         },
@@ -1961,11 +1961,11 @@
         "type": "react-index-mood",
         "settings": {
           "section_title": "Shop by mood",
-          "image_1": "shopify:\/\/shop_images\/playful-mood.png",
-          "button_text_1": "Playful",
+          "image_1": "shopify:\/\/shop_images\/mood-img-1.png",
+          "button_text_1": "SOOTHING",
           "button_link_1": "#",
-          "image_2": "shopify:\/\/shop_images\/sophisticated-mood.png",
-          "button_text_2": "Sophisticated",
+          "image_2": "shopify:\/\/shop_images\/mood-img-2.png",
+          "button_text_2": "JOYFUL",
           "button_link_2": "#"
         }
       },
@@ -2031,7 +2031,7 @@
           "subheading": "art company",
           "content": "We want to innovate the art experience. We were tired of having to choose between quality, style, and convenience, so we started Wallnut to set a new standard.",
           "button_text_1": "Shop Best sellers",
-          "button_link_1": "#",
+          "button_link_1": "shopify:\/\/collections\/best-selling-collection",
           "button_text_2": "shop all",
           "button_link_2": "\/collections\/all"
         }
