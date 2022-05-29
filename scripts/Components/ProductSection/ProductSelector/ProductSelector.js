@@ -73,8 +73,7 @@ const ProductSelector = ({
   discount,
   productMessaging,
 }) => {
-
-  console.log('enableReviews', enableReviews)
+  //console.log('enableReviews', enableReviews)
   const { handle } = product;
   const { option1, option2, option3 } = currentVariant;
   const [selectedVariant, setSelectedVariant] = useState(
@@ -424,7 +423,7 @@ const StickyAddToCartContainer = styled.div.attrs(({ showStickySubmit }) => {
   };
 })`
   align-items: center;
-  background: #F4F2EC;
+  background: #f4f2ec;
   .container {
     justify-content: space-between;
     align-items: center;

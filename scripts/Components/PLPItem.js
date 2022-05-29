@@ -145,13 +145,14 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
     imgColor = 'walnut';
   }
 
-  console.log(productImage, 'productImage');
+  let productImgSrc = product.media ? productImage?.featured_image.src : productImage?.src;
 
-  let productImgSrc =
-    'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/600x900.png?v=1653804158';
-  if (productImage) {
-    productImgSrc = product.media ? productImage.featured_image.src : productImage.src;
+  if (!productImgSrc) {
+    productImgSrc =
+      'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/600x900.png?v=1653804158';
   }
+
+  console.log(productImage, 'productImgSrc');
 
   return (
     <ItemContainer className="each-item">

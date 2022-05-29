@@ -37,55 +37,51 @@ const CarouselA = (props) => {
 
   return (
     <>
-    {images.length > 1 && (
-      <>
-        <DesktopThumbContainer>
-          <div className="flex flex-col mr-12">
+      {images.length > 1 && (
+        <>
+          <DesktopThumbContainer>
+            <div className="flex flex-col mr-12">
+              {images.map((image, i) => (
+                <Media
+                  key={i}
+                  image={image.url}
+                  currentImage={currentImageIndex === i}
+                  onClick={() => handleThumbnailClick(i)}
+                  thumbnail
+                  alt={image.alt}
+                />
+              ))}
+            </div>
+          </DesktopThumbContainer>
+        </>
+      )}
+      <div className="lg:relative w-full lg:w-5/12">
+        <div className="w-full h-full">
+          <CarouselContainer ref={containerRef} onScroll={handleOnScroll}>
             {images.map((image, i) => (
-              <Media
-                key={i}
-                image={image.url}
-                currentImage={currentImageIndex === i}
-                onClick={() => handleThumbnailClick(i)}
-                thumbnail
-                alt={image.alt}
-              />
+              <Media key={i} image={image.url} alt={image.alt} />
             ))}
-          </div>
-        </DesktopThumbContainer>
-      </>
-    )}
-    <div className="lg:relative w-full lg:w-5/12">
-      <div className="w-full h-full">
-        <CarouselContainer ref={containerRef} onScroll={handleOnScroll}>
-          {images.map((image, i) => (
-            <Media
-              key={i}
-              image={image.url}
-              alt={image.alt}
-            />
-          ))}
-        </CarouselContainer>
+          </CarouselContainer>
+        </div>
       </div>
-    </div>
-    {images.length > 1 && (
-      <>
-        <MobileThumbContainer>
-          <div className="flex flex-row">
-            {images.map((image, i) => (
-              <Media
-                key={i}
-                image={image.url}
-                currentImage={currentImageIndex === i}
-                onClick={() => handleThumbnailClick(i)}
-                thumbnail
-                alt={image.alt}
-              />
-            ))}
-          </div>
-        </MobileThumbContainer>
-      </>
-    )}
+      {images.length > 1 && (
+        <>
+          <MobileThumbContainer>
+            <div className="flex flex-row">
+              {images.map((image, i) => (
+                <Media
+                  key={i}
+                  image={image.url}
+                  currentImage={currentImageIndex === i}
+                  onClick={() => handleThumbnailClick(i)}
+                  thumbnail
+                  alt={image.alt}
+                />
+              ))}
+            </div>
+          </MobileThumbContainer>
+        </>
+      )}
     </>
   );
 };
@@ -129,8 +125,7 @@ const CarouselContainer = styled.div.attrs({
   }
 `;
 
-const DesktopThumbContainer = styled.div.attrs({
-})`
+const DesktopThumbContainer = styled.div.attrs({})`
   display: none;
   @media (min-width: 1024px) {
     display: block;

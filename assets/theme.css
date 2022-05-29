@@ -526,12 +526,12 @@ height: 180px !important;
   display: inline-block;
 }
 
-.primary_btn:hover, .login-register-container .primary_btn:hover, #recover-password .primary_btn:hover, #create-customer .primary_btn:hover, .AddtoCart.primary_btn:hover, .cart__checkout.primary_btn:hover, .empty_shop_all_btn.primary_btn:hover {
+.primary_btn:hover, .login-register-container .primary_btn:hover, #recover-password .primary_btn:hover, #create-customer .primary_btn:hover, .AddtoCart.primary_btn:hover, .cart__checkout.primary_btn:hover,  .empty_shop_all_btn.primary_btn:hover, .primary_btn.new-address:hover {
   background-color: #f1956abb !important;
 }
 
-.login-register-container .primary_btn, #recover-password .primary_btn, #create-customer .primary_btn, .AddtoCart.primary_btn, .cart__checkout.primary_btn, .empty_shop_all_btn.primary_btn {
-  padding: 5px 3em;
+.login-register-container .primary_btn, #recover-password .primary_btn, #create-customer .primary_btn, .AddtoCart.primary_btn, .cart__checkout.primary_btn, .empty_shop_all_btn.primary_btn, .primary_btn.new-address {
+  padding: 5px 3em!important;
   margin-right: 0!important;
   font-size: 12px!important;
   color: #000!important;
@@ -543,6 +543,7 @@ height: 180px !important;
   border-radius: 0;
   line-height: 40px!important;
   text-align: center!important;
+  text-transform: uppercase!important;
 }
 .AddtoCart.primary_btn {
   width: auto !important;
@@ -1974,7 +1975,7 @@ input[type="password"],
 input[type="email"],
 textarea,
 select {
-  border: 1px solid #F4F2EC;
+  border: 1px solid #000;
   line-height: 42px;
   height: 42px;
   outline: none;
@@ -2132,4 +2133,101 @@ button.ajaxcart__qty-adjust.quantity-increment, #CartDrawer input.ajaxcart__qty-
   -ms-transform: none!important;
   -webkit-transform: none!important;
   transform: none!important;
+}
+a:visited {
+  color: currentColor;
+}
+.overflow-hidden {
+  overflow: hidden;
+}
+h1, h2, h3 {
+  color: #000000;
+}
+.footer_bg ul {
+  list-style: none;
+}
+.customer-account-page, section.customer-order {
+  padding-bottom: 0;
+}
+.customer-account-page .sidebar {
+  border-right: 1px solid #E2DACD;
+}
+.customer-account-page .sidebar ul li a.selected, .customer-account-page .sidebar ul li:hover a {
+  border-bottom: 1px solid #000;
+}
+.customer-account-page .sidebar ul li a {
+  border-bottom: 1px solid transparent;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.01em;
+  color: #000;
+}
+.customer-account-page .sidebar ul li {
+  padding: 10px 0;
+}
+.customer-account-page .sidebar ul li:first-child {
+  padding-top: 0;
+}
+.customer-account-page .content {
+  padding-left: 20px;
+  padding-top: 0;
+}
+.customer-account-page .content h5, #account-addresses h4.address_title, .customer_address h4 {
+  color: #000000;
+  font-family: 'Nib-bold-pro' !important;
+}
+#account-addresses .customer_address {
+  border: 1px solid #E2DACD;
+  padding: 20px;
+}
+#account-addresses a {
+  text-transform: none;
+}
+#account-addresses .action_delete a {
+  color: red;
+}
+form {
+  margin-bottom: 0;
+}
+#content {
+  min-height: 200px;
+}
+@media (max-width: 740px) {
+  .customer-account-page .content {
+    margin-top: 0;
+    padding-left: 0;
+  }
+  .customer-account-page .sidebar ul li {
+    border-bottom: 0;
+  }
+  .fancybox-wrapper div#recover-password, .fancybox-wrapper div#create-customer, #edit-address, #add-address {
+    width: 480px !important;
+  }
+  .customer-account-page .sidebar {
+    border-right: 0;
+    padding-right: 0!important;
+  }
+}
+@media (max-width: 540px) {
+  .fancybox-wrapper div#recover-password, .fancybox-wrapper div#create-customer, #edit-address, #add-address {
+    width: 320px !important;
+  }
+}
+.hr-or:after {
+  font-family: 'GoodSans-Medium';
+  top: -14px;
+}
+.recover-password-a, #forgot_password a {
+  font-size: 12px;
+  text-transform: none;
+}
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, textarea:focus {
+  border: 1px solid #000;
+  color: #000;
+}
+.header-search-minicart-container a {
+  padding: 0;
+  line-height: normal;
+  font-size: inherit;
 }

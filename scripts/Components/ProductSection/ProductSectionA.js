@@ -16,9 +16,7 @@ const getProductTypeBlocks = (product, blocks) => {
     return [];
   }
 
-  return blocks.filter(
-    (block) => block.type === 'product_details'
-  );
+  return blocks.filter((block) => block.type === 'product_details');
 };
 
 const ProductSectionA = (props) => {
@@ -114,8 +112,7 @@ const ProductSectionA = (props) => {
           </StyledDiv>
         )}
         {currentVariant && (
-          <div className="grid grid-cols-1 justify-items-auto xl:justify-items-center mb-14 lg:mb-20 mt-8 lg:mt-10">
-            {console.log(settings.enable_product_reviews)}
+          <div className="grid grid-cols-1 justify-items-auto xl:justify-items-center mb-14 lg:mb-20 mt-8 lg:mt-10 container">
             <ProductSelector
               setFrameSelected={setFrameSelected}
               setFrameColorSelected={setFrameColorSelected}
@@ -144,8 +141,7 @@ const ProductSectionA = (props) => {
         )}
       </div>
       <ProductDescription ref={descriptionRef}>
-        <SectionTiltle className='section_titile pdp-small mb-0'>
-
+        <SectionTiltle className="section_titile pdp-small mb-0">
           <h2 className="font-bold text-center text-black">About {product.title}</h2>
         </SectionTiltle>
         {parse(product.description)}
@@ -166,13 +162,13 @@ const ProductSectionA = (props) => {
         })}
       </div>
       <ProductRecommended product={currentProduct} title="Here’s other products you might like." />
-      { settings.enable_product_reviews && 
+      {settings.enable_product_reviews && (
         <>
-        <div ref={reviewsRef}>
-          {reviews.reviews && <YotpoReviews reviews={reviews} product={currentProduct} />}
-        </div>
+          <div ref={reviewsRef}>
+            {reviews.reviews && <YotpoReviews reviews={reviews} product={currentProduct} />}
+          </div>
         </>
-      }
+      )}
     </section>
   );
 };
