@@ -152,11 +152,16 @@ const ProductSectionA = (props) => {
         frameSelected={frameSelected}
         frameColorSelected={frameColorSelected}
       />
-      <div className="md:hidden mobile-pdp-tabs">
+      <div className="md:hidden mobile-pdp-tabs container">
         {productTypeBlocks.map((block, i) => {
           return (
             <div key={i}>
-              <MobileProductDetailsSection productTypeBlock={block} blocks={blocks} />
+              <MobileProductDetailsSection 
+                productTypeBlock={block}
+                blocks={blocks}
+                frameSelected={frameSelected}
+                frameColorSelected={frameColorSelected}
+              />
             </div>
           );
         })}

@@ -1,23 +1,16 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 
 const IndexBetterWay = ({ blocks }) => {
   const [videoActive, setVideoActive] = useState('fade-out');
 
   const handleVideoPopup = () => {
-    // console.log('click', videoActive)
     if (videoActive === 'fade-out') {
       setVideoActive('fade-in');
-      console.log('if');
       $('video')[0].play();
-      // $('video').removeAttr('controls');
       $('.close-button').addClass('md:hidden');
     } else {
-      console.log('else');
       setVideoActive('fade-out');
       $('video')[0].pause();
-      // $('video').attr('controls', true);
-      // $('.close-button').removeClass('md:hidden');
     }
   };
 

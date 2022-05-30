@@ -8,7 +8,7 @@ const PLPDescription = ({ collectionTitle, collectionDescription, filterRef }) =
     <div className="max-w-screen-md text-center">
       <h1 key="h1-title" className="text-2xl lg:text-3xl font-serif">
         {collectionTitle}
-      </h1>,
+      </h1>
       <Description
         key="collection description"
         dangerouslySetInnerHTML={{ __html: collectionDescription }}

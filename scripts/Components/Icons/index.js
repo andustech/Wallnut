@@ -27,3 +27,4 @@ export { default as CheckmarkIcon } from './CheckmarkIcon';
 export { default as QuestionmarkIcon } from './QuestionmarkIcon';
 export { default as TruckIcon } from './TruckIcon';
 export { default as ShippingBox } from './ShippingBox';
+export { default as VideoPlayIcon } from './VideoPlayIcon';

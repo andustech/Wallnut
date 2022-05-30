@@ -21,7 +21,7 @@
                   {{ address | format_address }}
                 </div>
 
-                <p class="address_actions">
+                <p class="address_actions mb-0">
                   <a data-src="#edit-address" data-fancybox href="javascript:;">{{ 'customer.addresses.edit' | t }}</a>
                   <span class="action_link action_delete pl-4">{{ 'customer.addresses.delete' | t | delete_customer_address_link: address.id }}</span>
                 </p>

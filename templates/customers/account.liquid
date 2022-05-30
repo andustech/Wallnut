@@ -52,7 +52,7 @@
             <tbody>
               {% for order in customer.orders %}
               <tr class="{% cycle 'odd', 'even' %} {% if order.cancelled %}cancelled_order{% endif %}">
-                <td>{{ order.name | link_to: order.customer_url }}</td>
+                <td class="order-anchor">{{ order.name | link_to: order.customer_url }}</td>
                 <td class="note"><span>{{ order.created_at | date: "%b %d, %Y" }}</span></td>
                 <td class="status"><span>{{ order.financial_status }}</span></td>
                 <td class="status"><span>{{ order.fulfillment_status }}</span></td>
@@ -78,7 +78,7 @@
                     {{ address | format_address }}
                   </div>
 
-                  <p class="address_actions">
+                  <p class="address_actions mb-0">
                     <a data-src="#edit-address" data-fancybox href="javascript:;">{{ 'customer.addresses.edit' | t }}</a>
                     <span class="action_link action_delete pl-4">{{ 'customer.addresses.delete' | t | delete_customer_address_link: address.id }}</span>
                   </p>

@@ -1,18 +1,21 @@
 import PropTypes from 'prop-types';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PLPItem from '../PLPItem';
 import { getVariant } from '../../utils';
 import InfiniteScroll from 'react-infinite-scroll-component';
 var lastIndex = 16;
 
 const PLPItems = ({ products }) => {
-  const [count, setCount] = React.useState([]);
+  const [count, setCount] = useState([]);
+  const [productFilterManage,setProductFilterManage]=useState([])
+  
   useEffect(() => {
+    setProductFilterManage(products)
     setCount(products.slice(0, lastIndex));
-  }, []);
+  }, [products]);
   const loadMore = () => {
     lastIndex += 16;
-    setCount(products.slice(0, lastIndex));
+    setCount(productFilterManage.slice(0, lastIndex));
   };
   return (
     <InfiniteScroll
@@ -22,7 +25,7 @@ const PLPItems = ({ products }) => {
     >
       <div className="grid justify-center">
         <div className="grid grid-cols-1 px-4 pt-10 justify-items-center gap-8 mb-12 max-w-screen-xxl md:grid-cols-2 xl:grid-cols-4">
-          {count.map((product) => {
+          {productFilterManage.map((product) => {
             let colorsArr = [];
             const colorIndex = product.options.findIndex((option) => option === 'Frame Color');
             var color = '';
@@ -46,7 +49,32 @@ const PLPItems = ({ products }) => {
           })}
         </div>
       </div>
-      {products.length > lastIndex && <button onClick={() => loadMore()}>Load more</button>}
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        {products.length > lastIndex && (
+          <button
+            style={{
+              height: '48px',
+              background: '#F4F2EC',
+              width: '173px',
+              borderRadius: '0px',
+            }}
+            onClick={() => loadMore()}
+          >
+            Load more +
+           
+          </button>
+        )}
+      </div>
+      <div
+        style={{
+          paddingTop:'16px',
+          display: 'flex',
+          justifyContent: 'center',
+          fontSize: '16px',
+          color: '#000000',
+          opacity: '0.7',
+        }}
+      >{`${count.length}/${products.length} Products`}</div>
     </InfiniteScroll>
   );
 };
