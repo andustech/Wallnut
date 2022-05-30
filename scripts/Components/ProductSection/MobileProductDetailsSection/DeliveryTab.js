@@ -91,6 +91,18 @@ const IconTitleContainer = styled.div.attrs({
   svg {
     display: inline-block;
   }
+  p {
+    a {
+      text-decoration: underline;
+      text-transform: lowercase;
+      font-family: 'GoodSans';
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: -0.01em;
+      color: #000000;
+    }
+  }
 `;
 
 const Link = styled.a.attrs({
