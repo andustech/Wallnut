@@ -289,14 +289,6 @@ body {
   border-bottom: 2px solid transparent;
 }
 
-/* .gm-menu-installed .gm-menu .gm-item.gm-level-0.gm-active>.gm-target, .gm-menu-installed .gm-menu .gm-item.gm-level-0:hover>.gm-target {
-  border-bottom: 2px solid black;
-} */
-
-/* .gm-mega li a:hover {
-  border-bottom: none !important;
-} */ 
-
 .section-padding {
   padding-top: 112px;
 }
@@ -395,15 +387,6 @@ body {
   margin-bottom: 0 !important;
 }
 
-/* .gm-submenu ul .gmcol-6 {
-  max-width: 33.333333% !important;
-} */
-
-/* .gm-product-img {
-  width: 159px !important;
-height: 180px !important;
-} */
-
 #header-search {
   margin-right: 0 !important;
 }
@@ -419,25 +402,8 @@ height: 180px !important;
     position: relative;
 }
 
-.overlay h1 { 
-      /* color: white !important; */
-      /* font-size: 56px !important;
-    line-height: 78px !important; */
-    /* font-weight: 700 !important; */
-    /* margin-bottom: 0 !important; */
-    /* font-family: 'Nib-bold-pro' !important;
-    letter-spacing: -0.02em; */
-}
-
 .overlay span {
-  /* display: block;
-  color: white !important;
-  font-size: 56px !important;
-  line-height: 51px !important; */
   margin-bottom: 35px !important;
-  /* font-weight: 500 !important;
-  font-family: 'AttilaSansUniform-Medium' !important;
-  letter-spacing: -0.005em; */
 }
 
 .primary_btn {
@@ -660,9 +626,6 @@ body.cart .cart-final-details .secondary_btn {
   width: 100%;
   max-width: 896px !important;
 }
-
-
-
 
 .item_box {
   text-align: center;
@@ -1480,7 +1443,6 @@ afterpay-placement {
   color: #000000;
 }
 
-  /* How it works page */
   .how_it_work_hero_overlay {
   max-width: 548px !important;
   position: absolute;
@@ -1541,15 +1503,6 @@ afterpay-placement {
       display: -webkit-box !important;
     }
   
-    /* .premium_main_container {
-      padding: 0 !important;
-    }
-  
-    .premium_main_container {
-      padding-bottom: 0;
-    } */
-  
-  
     .indexMoodSection__ShopByMood-sc-14xd07l-0.eXAkFA {
       overflow-x: scroll;
     }
@@ -1593,10 +1546,7 @@ afterpay-placement {
       display: inline-block;
     }
   }
-  
-  
-  
-  
+    
   @media only screen and (max-width: 575px) {
     
     .premium_card_container {
@@ -1905,7 +1855,6 @@ afterpay-placement {
     color: #000000;
   }
   
-   /* How it works page */
    .how_it_work_hero_overlay {
     max-width: 548px !important;
     position: absolute;
@@ -1937,20 +1886,14 @@ afterpay-placement {
     padding-bottom: 31px;
     position: relative;
   }
-  
-  /* .how_it_work_items_container img {
-  width: 100%;
-  } */
-  
+ 
 
   .overlay .primary_btn, .overlay .secondary_btn, .how_it_work_hero_overlay  .primary_btn, .how_it_work_hero_overlay  .secondary_btn {
-    /* display: inherit; */
     width: 100%;
     font-size: 10px;
     line-height: 16px;
     margin-bottom: 12px !important;
     text-align: center;
-    /* margin-right: 0 !important; */
   }
   .overlay h1 {
     font-size: 28px !important;
