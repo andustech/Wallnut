@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-
 const ValuePropSection = ({settings, collection_handle_1, collection_handle_2, collection_handle_3}) => {
   const { title, subheading } = settings;
   let handle_1, handle_2, handle_3 = '';

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import FilterItem from './FilterItem';
@@ -51,6 +51,7 @@ const FilterMenu = ({
   TagSelected,
   setTagSelected, RemoveTag,
   setRemoveTag,
+  setMenuOpen
 }) => {
   const { allFilters, setAllFilters } = useContext(plpContext);
   useEffect(() => {
@@ -128,6 +129,7 @@ const FilterMenu = ({
           collectionTitle={collectionTitle}
           RemoveTag={RemoveTag}
           setRemoveTag={setRemoveTag}
+          setMenuOpen={setMenuOpen}
         />
       ))}
     </MenuContainer>

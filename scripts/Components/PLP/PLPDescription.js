@@ -1,18 +1,16 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import tw from 'twin.macro';
 import styled from 'styled-components';
+import parse from 'react-html-parser';
+import { SectionTiltle } from '../ProductFeature/ValuePropComponent';
 
 const PLPDescription = ({ collectionTitle, collectionDescription, filterRef }) => (
-  <div ref={filterRef} className=" grid justify-center font-serif pt-4 px-4 md:pt-12 lg:pt-15">
-    <div className="max-w-screen-md text-center">
-      <h1 key="h1-title" className="text-2xl lg:text-3xl font-serif">
-        {collectionTitle}
-      </h1>
-      <Description
-        key="collection description"
-        dangerouslySetInnerHTML={{ __html: collectionDescription }}
-      />
+  <div ref={filterRef} className="pt-12 container">
+    <div className="text-center">
+      <SectionTiltle className="section_titile pdp">
+        <h2 className="font-bold text-black">{collectionTitle}</h2>
+      </SectionTiltle>
+      <Description key="collection description">{parse(collectionDescription)}</Description>
     </div>
   </div>
 );
@@ -28,9 +26,8 @@ PLPDescription.propTypes = {
 };
 
 const Description = styled.div`
-  p {
-    ${tw`text-sm md:text-lg`}
-  }
+  max-width: 586px;
+  margin: 0 auto;
 `;
 
 export default PLPDescription;

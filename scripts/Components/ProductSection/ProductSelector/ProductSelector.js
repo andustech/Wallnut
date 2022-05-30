@@ -166,7 +166,7 @@ const ProductSelector = ({
           <p>New York, NY</p>
         </ByName>
       </MobileTopContainer>
-      <Carousel images={getCurrentImages(product, selectedVariant)} />
+      <Carousel images={getCurrentImages(product, selectedVariant)} watchForReset={selectedVariant.sku} />
       <ProductFormContainer handle={handle}>
         <form
           className="mb-0"

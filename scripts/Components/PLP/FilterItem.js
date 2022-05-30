@@ -19,6 +19,8 @@ const toggleFilters = (
   orientation,
   medium,RemoveTag
 ) => {
+
+  
  
   // Filter SIZE
   if (filterName === 'size') {
@@ -264,7 +266,7 @@ const toggleFilters = (
         medium: [],
       };
     }
-    return { ...allFilters, subject: [...tempArr] };
+    return { ...allFilters, mood: [...tempArr] };
   }
   // Filter DECOR
   if (filterName === 'decorStyle') {
@@ -679,7 +681,8 @@ const toggleFilters = (
   // return '';
 };
 
-const FilterItem = ({ option, filterName, RemoveTag, setRemoveTag }) => {
+const FilterItem = ({ option, filterName, RemoveTag, setRemoveTag, setMenuOpen }) => {
+  
   const { allFilters, setAllFilters } = useContext(plpContext);
   const {
     style,
@@ -694,13 +697,15 @@ const FilterItem = ({ option, filterName, RemoveTag, setRemoveTag }) => {
     medium,
   } = allFilters;
   const [selected, setSelected] = useState(false);
-  useEffect(()=>{
-console.log('RemoveTag :>> ', RemoveTag);
-    let option=RemoveTag?.tagValue
-    let filterName= RemoveTag?.tagType
-    if(RemoveTag?.tagValue&& RemoveTag?.tagValue){
-    handleClick(option,filterName)}
-  },[RemoveTag])
+//   useEffect(()=>{
+// console.log('RemoveTag :>> ', RemoveTag);
+//     let option=RemoveTag?.tagValue
+//     let filterName= RemoveTag?.tagType
+//     if(RemoveTag?.tagValue&& RemoveTag?.tagValue){
+//     handleClick(option,filterName)}
+//   },[RemoveTag])
+// const [tempOptions, setTempOptions] = useState([])
+
   const handleClick = (option,filterName) => {
  
     const styleAndChairTypeFilters = removeFilterItems(
@@ -719,7 +724,14 @@ console.log('RemoveTag :>> ', RemoveTag);
       orientation,
       medium,RemoveTag
     );
-    console.log('object :>> ', styleAndChairTypeFilters);
+    const selectOption = {tagType: filterName, tagValue: option}
+    setRemoveTag(selectOption)
+    let tag = document.getElementById(option) 
+    if(tag){
+      tag.click()
+      setMenuOpen(filterName)
+    }
+    // console.log('object :>> ', option,'===============',filterName);
     // let tempArr = [...allFilters[filterName]];
     // tempArr = tempArr.includes(option)
     //   ? tempArr.filter((item) => item !== option)
@@ -760,9 +772,9 @@ console.log('RemoveTag :>> ', RemoveTag);
       tabIndex="0"
     >
       <div className="self-center mr-2">
-        <Rectangle fill={selected ? '#AC6433' : 'none'} />
+        <Rectangle fill={selected ? '#000' : 'none'} />
       </div>
-      <span>{option}</span>
+      <span style={{fontFamily: 'GoodSans', fontSize: '12px', lineHeight: '20px', letterSpacing: '0.05em'}}>{option}</span>
     </div>
   );
 };

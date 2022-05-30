@@ -1758,6 +1758,18 @@ afterpay-placement {
   visibility: visible;
   height: auto;
 }
+#sortbyDropdown {
+  background-color: transparent;
+  border: none;
+  font-family: 'GoodSans';
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  min-width: 120px;
+  text-align: right;
+}
 #pdp-color-swatcher-sticky, #pdp-size-swatcher-sticky {align-items: center; position: relative;}
 .ship-msg {
   font-family: 'GoodSans';
