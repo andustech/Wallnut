@@ -176,7 +176,7 @@
   <script src="https://cdn-widgetsrepository.yotpo.com/v1/loader/F2xxQINWW8fMR3B2WCWIXQ" async></script>
 </head>
 
-<body class="gridlock shifter shifter-left {% if template contains 'product' %}product{% elsif template contains 'collection' %}collection{% else %}{{ template | handleize }}{% endif %}">
+<body class="gridlock shifter shifter-left {% if template contains 'product' %}product{% elsif template contains 'collection' %}collection{% else %}{{ template | handleize }}{% endif %}" data-shop-url="{{ shop.url }}">
   {% section 'mobile-navigation' %}
 
   {% render 'timber-cart' %}
@@ -341,6 +341,154 @@
       $( window ).resize(function() {
         bannerImageHeight();
       });
+
+      $('.search-click').on('click', function(){
+        if ($(window).width() >= 1024) {
+          $(this).hide();
+        }
+        $('.search-form').addClass('active');
+        $(this).parent().siblings('form').find('input').focus();
+      });
+
+      $(document).on('click', function (e) {
+        if (
+          !(
+            $(e.target).closest('.search-form').length > 0 ||
+            $(e.target).closest('.search__results-wrapper').length > 0 ||
+            $(e.target).closest('.search-click').length > 0
+          )
+        ) {
+          $('.search-form').removeClass('active');
+          if ($(window).width() >= 1024) {
+            $('.search-click').show();
+          }
+        }
+      });
+
+      var shopURL = $('body').data('shop-url');
+      var currentAjaxRequest = null;
+            var searchPath = shopURL + '/search?q=';
+      var searchForms = $('form.search_form, form.search-form, form.search, form.header_search_form').each(function() {
+
+            var input = $(this).find('input[name="q"]');
+
+            // Adding a list for showing search results.
+            $('<div class="search__results-wrapper"><ul class="search__results"></ul></div>').appendTo($(this));
+            // Listening to keyup and change on the text field within these search forms.
+            input.attr('autocomplete', 'off').bind('keyup change', function() {
+
+              if(input.val() == '') {
+                $('.search__results').hide();
+                $('.search__results').empty();
+              }
+
+              var term = $(this).val();
+              var cleanTerm = encodeURI(term);
+
+              var form = $(this).closest('form');
+              var searchURL =  searchPath + cleanTerm;
+              console.log('searchURL', searchURL);
+              var resultsList = form.find('.search__results');
+
+              if (term.length >= 3) {
+
+                if (currentAjaxRequest != null) currentAjaxRequest.abort();
+                console.log('searchURL 2', searchURL +'*&view=json');
+                currentAjaxRequest = $.getJSON(searchURL +'*&view=json', function(data) {
+                  resultsList.empty();
+                  console.log('data', data);
+                  // If we have no results.
+                  if(data.results_count == 0) {
+                    resultsList.hide();
+                    // resultsList.append('<p>No items found </p>');
+                  } else {
+                    // If we have results.
+                    $.each(data.results, function(index, item) {
+                      if(index >= 5) {
+                        return false;
+                      }
+
+                      var link = $('<a></a>').attr('href', item.url);
+
+                      //Collect collection handles if product
+                      if(item.object_type == 'product') {
+
+                        var collectionHandles = [];
+                        for(i=0; i < item.collections.length; i++) {
+                          collectionHandles.push(item.collections[i].handle);
+                        }
+
+                        if($.inArray('coming-soon', collectionHandles) != -1) {
+                          var itemPrice = Shopify.translation.coming_soon_text;
+                        } else {
+                          if(item.available == true) {
+
+                            if(item.raw_compare > item.raw_price ) {
+                              var itemPrice = '<span class="was_price">' + item.compare + '</span> ' + item.price;
+                            } else {
+                              if(item.price_varies && item.price_min > 0) {
+                                var itemPrice = 'from' + ' ' + item.price;
+                              } else if(item.price > 0 || item.raw_price > 0) {
+                                var itemPrice = item.price;
+                              } else {
+                                var itemPrice = Shopify.theme_settings.free_text;
+                              }
+                            }
+                          } else {
+                            var itemPrice = Shopify.theme_settings.display_sold_out_price ? item.price + ' ' + '<span class="sold-out-text">' + Shopify.theme_settings.sold_out_text + '</span>' : '<span class="sold-out-text">' + Shopify.theme_settings.sold_out_text + '</span>';
+                          }
+                        }
+
+                        if(item.thumbnail != 'NULL') {
+                          link.append('<div class="thumbnail mb-0"><img class="lazyload {{ settings.image_loading_style }}" src="' + item.thumbnail + '" /></div>');
+                        }
+                        link.append('<p class="title mb-0">' + item.title + '<br><p class="item-pricing hidden">'+ itemPrice +'</p></p>');
+
+
+                      } else if(item.object_type == 'article') {
+                        if(item.thumbnail != 'NULL') {
+                          link.append('<div class="thumbnail"><img class="lazyload {{ settings.image_loading_style }}" src="' + item.thumbnail + '" /></div>');
+                        }
+                        link.append('<div class="title">' + item.title + '<br><span class="item-pricing">'+ item.text_content +'</span></div>');
+
+                      } else if(item.object_type == 'page') {
+                        link.append('<div class="title">' + item.title + '<br><span class="item-pricing">'+ item.text_content +'</span></div>');
+                      }
+
+                      var border_padding = '';
+                      if(index > 0) {
+                        border_padding = 'border-t py-4';
+                      } else {
+                        border_padding = 'pb-4';
+                      }
+                      link.wrap('<li class="item-result result-- ' + border_padding + ' ' + item.object_type + '"></li>');
+                      resultsList.append(link.parent());
+                    });
+                    // The Ajax request will return at the most 5 results.
+                    // If there are more than 5, let's link to the search results page.
+                    if(data.results_count >= 5) {
+                      resultsList.append('<li class="all-results border-t py-4"><span class="title see-all"><a href="' + searchURL + '*">' + 'View all results' + ' (' + data.results_count + ')</a></span></li>');
+                    }
+                    resultsList.fadeIn(200);
+                  }
+                })
+              }
+            });
+          });
+          // Clicking outside makes the results disappear.
+          $(document).on('click', function(e){
+            var container = $('[data-autocomplete-true]');
+            if (!container.is(e.target) && container.has(e.target).length === 0) {
+              $('[data-autocomplete-true]').find('.search__results-wrapper').hide();
+            }
+          });
+
+          $('[data-autocomplete-true] input').on('keyup', function(){
+            if ($(this).val() != '') {
+              $('.search__results-wrapper').hide();
+              $(this).parents('[data-autocomplete-true]').find('.search__results-wrapper').show();
+            }
+          });
     });
   </script>
 

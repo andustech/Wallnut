@@ -1,5 +1,5 @@
 <a href="{{ product.url | within: collection }}">
-  <div class="reveal reveal-homepage {% if settings.image_ratio == 'square' %}square-images{% elsif settings.image_ratio == 'vertical' %}vertical-images{% elsif settings.image_ratio == 'horizontal' %}horizontal-images{% endif %}">
+  <div class="reveal reveal-homepage mb-4 {% if settings.image_ratio == 'square' %}square-images{% elsif settings.image_ratio == 'vertical' %}vertical-images{% elsif settings.image_ratio == 'horizontal' %}horizontal-images{% endif %}">
     {%- assign preview_image = product.featured_media.preview_image -%}
     {%- assign second_image = product.media[1] -%}
 
@@ -48,16 +48,47 @@
       <p><em>{{ product.vendor }}</em></p>
     {% endif %}
     <span class="prod-title">{{ product.title }}</span>
-    <div class="prod-swatches-and-more" style="display: flex;">
+    {% render 'product-price-listing', product: product %}
+    {% comment %} <div class="prod-swatches-and-more" style="display: flex;">
       <img src="https://cdn.shopify.com/s/files/1/0492/6321/4743/files/kali.png?v=1614980015" alt="color swatch kali" />
       <img src="https://cdn.shopify.com/s/files/1/0492/6321/4743/files/navy_f37c834b-cc1b-4b9e-9639-83c1e53ce924.png?v=1614980015" alt="color swatch navy" />
       <img src="https://cdn.shopify.com/s/files/1/0492/6321/4743/files/SEDONA_IVORY.jpg?v=1614980013" alt="color swatch sedona ivory" />
       <img src="https://cdn.shopify.com/s/files/1/0492/6321/4743/files/swatch4.svg?v=1613153672" alt="color swatch " />
       <p style="font-size: 14px">+ more</p>
-    </div>
-  </a>
+    </div> 
 
-  {% render 'product-price-listing', product: product %}
+    <ul class="colorlist"> 
+    {% for option in product.options %}
+    {% if option == 'Frame Color' %}
+    {% assign index = forloop.index0 %}
+    {% assign colorlist = '' %}
+    {% assign color = '' %}
+    {% for variant in product.variants %}
+    {% capture color %}
+    {{ variant.options[index] }}
+    {% endcapture %}
+
+    {% unless colorlist contains color %}
+      {% if variant.available %}
+      <li id="{{ variant.id }}" title="{{ variant.inventory_quantity }} In Stock" class="instock"><a href="{{ product.url | within: collection }}?variant={{ variant.id }}" style="background:{{ color | downcase }}" data-variant-img="{{ variant.image.src }}">{{ color | downcase }}</a></li>
+
+      {% else %}
+
+      <li id="{{ variant.id }}" title="Out of Stock"  class="outstock" >{{ color | downcase }}</li>
+
+      {% endif %}
+
+    {% capture tempList %}
+    {{colorlist | append: color | append: " " }}
+    {% endcapture %}
+    {% assign colorlist = tempList %}
+    {% endunless %}
+    {% endfor %}
+    {% endif %}
+    {% endfor %}
+
+    </ul>{% endcomment %} 
+  </a>
 
   {% if settings.show_product_review_stars %}
     <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>

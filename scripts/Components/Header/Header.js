@@ -56,10 +56,17 @@ const Header = (props) => {
           </div>
           <div className="header-search-minicart-container flex-1 lg:flex-none">
             <div className="">
-              <div id="header-search" className="desktop-3 tablet-hide mobile-hide mb-0.5">
+              <div id="header-search" className="desktop-3 tablet-hide mobile-hide mb-0.5" data-autocomplete-true>
                 <a href="#" className="inline-block">
-                  <img src='https://cdn.shopify.com/s/files/1/0627/3476/2207/files/search-icon.svg?v=1652783584' className='search_icon' />
+                  <img src='https://cdn.shopify.com/s/files/1/0627/3476/2207/files/search-icon.svg?v=1652783584' className='search_icon search-click' />
                 </a>
+                <form action="/search" method="get" className="search-form">      
+                  <div className="" style={{ "position": "relative"}}>
+                    <input type="text" name="q" className="normal-case" id="q" placeholder="Search" />
+                    <img src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/search-icon.svg?v=1652783584" className="search_icon search-bar-icon" /> 
+                  </div>
+                </form> 
+                
               </div>
             </div>
 

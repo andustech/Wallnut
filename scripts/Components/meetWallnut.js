@@ -49,7 +49,7 @@ const meetWallnut = ({ settings, blocks }) => {
         { main_content && <p className="mb-0">{main_content}</p> }
       </div>
 
-      <div className="container">
+      <div className="bg-milk container lg:bg-transparent py-8 lg:py-0">
           {blocks.map((block, index)=>{
             const {settings} = block;
             return (

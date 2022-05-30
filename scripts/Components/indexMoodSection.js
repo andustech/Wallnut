@@ -41,9 +41,12 @@ const indexMoodSection = ({ settings }) => {
             ))}
           </div> */}
 
-          <div className="mood_card_container flex ">
+          <div className="mood_card_container ">
+          <div className="mr-6"> 
             <a className="by_mood_card">
-              {image_1 && <img src={image_1} />}
+              <div>
+                {image_1 && <img src={image_1} />}
+              </div>
               {button_text_1 && (
                 <div>
                   <a href={button_link_1} className="premium_link bg-milk text-center">
@@ -52,8 +55,12 @@ const indexMoodSection = ({ settings }) => {
                 </div>
               )}
             </a>
+          </div>
+          <div>
             <a className="by_mood_card">
-              {image_2 && <img src={image_2} />}
+              <div>
+                {image_2 && <img src={image_2} />}
+              </div>
               {button_text_2 && (
                 <div>
                   <a href={button_link_2} className="premium_link bg-milk text-center">
@@ -62,6 +69,7 @@ const indexMoodSection = ({ settings }) => {
                 </div>
               )}
             </a>
+          </div>
           </div>
         </ShopByMood>
       </div>

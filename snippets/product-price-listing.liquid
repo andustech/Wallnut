@@ -43,13 +43,14 @@
       <span class="visually-hidden visually-hidden--inline">{{ 'products.general.regular_price' | t }}</span>
     </dt>
     <dd>
-      <span class="price-item price-item--regular">
+      {% comment %} <span class="price-item price-item--regular">
         {%- if product.price_varies -%}
           {{ 'products.product.from_lowest_price_html' | t: lowest_price: money_price }}
         {%- else -%}
           {{ money_price }}
         {%- endif -%}
-      </span>
+      </span> {% endcomment %}
+      <span class="prod-price block">{{ product.price_min | money_without_trailing_zeros }} - {{ product.price_max | money_without_trailing_zeros }}
     </dd>
   </div>
   <div class="price__sale">
