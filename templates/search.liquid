@@ -43,14 +43,16 @@
 
 
 
-
-<h2 class="desktop-12 tablet-6 mobile-3">{{ 'general.search.title' | t }}</h2>
+<div class="container pt-10">
+<h2 class="h2 text-center mb-4">{{ 'general.search.title' | t }}</h2>
 {% paginate search.results by 24 %}
 
-  <div id="search-bar" class="desktop-12 tablet-6 mobile-3">
+  <div id="search-bar" class="mt-0 mb-14 border-0 text-center">
     <form action="{{ routes.search_url }}" method="get">
       <p>{{ 'general.search.results_for_html' | t: terms: search.terms }}</p>
-      <input type="text" name="q" id="q" placeholder="{{ 'general.search.placeholder' | t }}" />
+      <div class="sm:w-6/12 mx-auto">
+        <input type="text" name="q" class="normal-case" value="{{ search.terms | escape }}" id="q" placeholder="{{ 'general.search.placeholder' | t }}" />
+      </div>
     </form>
   </div>
 
@@ -104,7 +106,7 @@
   {% endif %}
 
 {% endpaginate %}
-
+</div>
 <style>
   .artice-container{
     height: 100%;
