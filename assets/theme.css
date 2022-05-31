@@ -2205,6 +2205,8 @@ form#create_customer {
 }
 .drawer__header__inner {
   border-bottom: 1px solid #e2dacd !important;
+  width: 100%;
+  text-align: left;
 }
 #CartDrawer .ajaxcart__product .row {
   padding-top: 20px !important;
