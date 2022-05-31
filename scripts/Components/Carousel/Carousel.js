@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useLayoutEffect, useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -6,7 +6,7 @@ import Media from '../Media';
 
 const CarouselA = (props) => {
   const { images, watchForReset } = props;
-  const containerRef = useRef();
+  let containerRef = useRef();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const handleOnScroll = () => {
@@ -25,13 +25,26 @@ const CarouselA = (props) => {
   };
 
   const handleThumbnailClick = (i) => {
-    const pos = containerRef.current.children[i].getBoundingClientRect();
+    // const pos = containerRef.current.children[i].getBoundingClientRect();
+    
+    // console.log('childres -> ', containerRef.current.children[i])
+    
+    // console.log('containerRef.current -> ', containerRef.current)
+    // console.log('containerRef.current.scrollLeft -> ', containerRef.current.scrollLeft)
+    // console.log('sum -> ', containerRef.current.scrollLeft + pos.left)
+    // console.log('pos -> ', pos)
 
-    containerRef.current.scrollTo(containerRef.current.scrollLeft + pos.left, 0);
+    // containerRef.current.scrollTo(containerRef.current.scrollLeft + pos.left, 0);
     setCurrentImageIndex(i);
   };
 
   useEffect(() => {
+    window.addEventListener("resize", () => {
+      // containerRef.current = window.innerWidth;
+      console.log(containerRef.current)
+      console.log(containerRef.current)
+    });
+
     handleThumbnailClick(0);
   }, [watchForReset]);
 
@@ -59,7 +72,7 @@ const CarouselA = (props) => {
         <div className="w-full h-full">
           <CarouselContainer ref={containerRef} onScroll={handleOnScroll}>
             {images.map((image, i) => (
-              <Media key={i} image={image.url} alt={image.alt} />
+              <Media key={i} image={image.url} alt={image.alt} currentImage={currentImageIndex === i}/>
             ))}
           </CarouselContainer>
         </div>

@@ -353,7 +353,9 @@
         "type": "collection-template",
         "settings": {
           "products_per_row": 4,
-          "products_per_page": 25
+          "products_per_page": 25,
+          "shop_all_heading": "Shop All",
+          "shop_all_content": "Transform your house into a gallery-worthy home with our curated collection of prints, in frames that are easy to hang. Whether you want to add art that's modern or traditional, joyful or soothing, Wallnut's collection has the pieces you’re after."
         }
       },
       "product-template": {
@@ -365,11 +367,14 @@
               "howitwork_tab_heading": "How it Works",
               "about_desktop_heading": "Just stick and click",
               "about_paragraph": "Wallnut's artwork comes already assembled, and is easy to hang. Simply pick a spot for it, attach the wall mount, and slide the art into place.",
-              "about_video_url": "https:\/\/levity-products.s3.us-west-2.amazonaws.com\/videos\/MV_CD_Desktop-+534px+x375px%C2%A0.mp4",
+              "about_image": "shopify:\/\/shop_images\/hardware_gif_1.gif",
+              "about_video_title": "see it in action",
+              "about_video_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/1564\/7647\/files\/monthly_packages.mp4?v=1614849415",
               "whylove_tab_heading": "Why You’ll Love It",
               "features_section_1_title": "Quality art, made easy",
-              "features_section_1_paragraph": "Super simple. Our innovative wall mount has a built-in level and a quick-stick measuring tape that allows you to hang art easily. Even solo!",
-              "features_section_1_media_type": "video",
+              "features_section_1_paragraph": "<ul>\n<li>\n<b>Super simple.<\/b> Our innovative wall mount has a built-in level and a quick-stick measuring tape that allows you to hang art easily. Even solo!<\/li>\n<li>\n<b>Damage-free.*<\/b> Our adhesive-based wall mount is renter-friendly and won’t damage your walls. Or your landlord’s.<\/li>\n<li>\n<b>Interchangeable.<\/b> All Wallnut art pieces work with the same mounting system, so you can switch up your artwork whenever you want.<\/li>\n<li>\n<b>Built to last.<\/b> We make our prints with archival-quality paper and ink. We assemble each piece by hand using FSC® certified wood.<\/li>\n<li>\n<b>Made to order.<\/b> Wallnut artwork is consciously made upon order just for you, which reduces waste.<\/li>\n<\/ul>\n*Heads up! We recommend using the included hanging nails when extra support is needed, such as when hanging larger sizes (30\"x40\" frames and up) or over beds or cribs.",
+              "features_section_1_media_type": "image",
+              "features_section_1_image": "shopify:\/\/shop_images\/Rectangle_37_1b44bfa6-77a0-4917-9890-46567a3c46c9.jpg",
               "features_section_1_video_url": "https:\/\/levity-products.s3.us-west-2.amazonaws.com\/videos\/OV_CD_Stain-Spill+proof_Desktop-+496px+x+330px_redo.mp4",
               "specifications_tab_heading": "Specifications",
               "dimensions_heading": "DIMensions",
@@ -381,13 +386,13 @@
               "plexiglass_glazing": "Scratch-resistant and shatter-resistant",
               "sprt_tab_heading": "Shipping and Returns",
               "sprt_1_title": "Free Standard Shipping",
-              "sprt_1_paragraph": "We offer free standard shipping and handling on all orders within the U.S. (excluding Hawaii, Alaska, and the U.S. Territories).\n<br><br>\nOur products are made to order, which means we create your rug after your order has been placed. At this time, please expect your orders to ship within 2 to 3 weeks.\n<br><br>\nLearn more about our shipping policy",
-              "sprt_1_linkText": "here",
-              "sprt_1_linkUrl": "#",
+              "sprt_1_paragraph": "We offer free standard shipping and handling on all orders within the U.S. (excluding Hawaii, Alaska, and the U.S. Territories).\n<br><br>\nOur products are made to order, which means we create your rug after your order has been placed. At this time, please expect your orders to ship within 2 to 3 weeks.\n<br><br>\nLearn more about our shipping policy <a href=\"#\">here<\/a>.",
+              "sprt_1_linkText": "",
+              "sprt_1_linkUrl": "",
               "sprt_2_title": "30 Day Returns",
-              "sprt_2_paragraph": "We want you to be as excited about your art as we are! We offer returns for all orders within 30 days of delivery. Learn more about our return policy",
-              "sprt_2_linkText": "here",
-              "sprt_2_linkUrl": "#"
+              "sprt_2_paragraph": "We want you to be as excited about your art as we are! We offer returns for all orders within 30 days of delivery. Learn more about our return policy <a href=\"#\">here<\/a>.",
+              "sprt_2_linkText": "",
+              "sprt_2_linkUrl": ""
             }
           }
         },
@@ -399,7 +404,7 @@
           "reviews_heading": "Customer Reviews",
           "shipping_message": "Free Shipping",
           "shipping_time": "Current ship time: 2 - 3 weeks",
-          "shipping_message_info": "This is our current best estimate for when we will get your chair out of our LA-based facility and on its way to your home!",
+          "shipping_message_info": "Our products are made to order. This is our current estimate for when your order will be on its way to you!",
           "shipping_message_info_height": 80
         }
       },

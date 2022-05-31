@@ -114,9 +114,6 @@ const toggleFilters = (
         value: 0.0, // Optional as float
       },
     });
-    if (allFilters.color.length === 0 && !tempArr.includes('All')) {
-      return { ...allFilters, subject: [...tempArr], color: ['All'] };
-    }
     if (
       (tempArr.length === 0 &&
         chairType.length === 0 &&
@@ -196,9 +193,6 @@ const toggleFilters = (
         value: 0.0, // Optional as float
       },
     });
-    if (allFilters.color.length === 0 && !tempArr.includes('All')) {
-      return { ...allFilters, mood: [...tempArr], color: ['All'] };
-    }
     if (
       (tempArr.length === 0 &&
         chairType.length === 0 &&
@@ -278,9 +272,6 @@ const toggleFilters = (
         value: 0.0, // Optional as float
       },
     });
-    if (allFilters.color.length === 0 && !tempArr.includes('All')) {
-      return { ...allFilters, decorStyle: [...tempArr], color: ['All'] };
-    }
     if (
       (tempArr.length === 0 &&
         chairType.length === 0 &&
@@ -360,9 +351,6 @@ const toggleFilters = (
         value: 0.0, // Optional as float
       },
     });
-    if (allFilters.color.length === 0 && !tempArr.includes('All')) {
-      return { ...allFilters, artStyle: [...tempArr], color: ['All'] };
-    }
     if (
       (tempArr.length === 0 &&
         chairType.length === 0 &&
@@ -442,9 +430,6 @@ const toggleFilters = (
         value: 0.0, // Optional as float
       },
     });
-    if (allFilters.color.length === 0 && !tempArr.includes('All')) {
-      return { ...allFilters, orientation: [...tempArr], color: ['All'] };
-    }
     if (
       (tempArr.length === 0 &&
         chairType.length === 0 &&
@@ -524,9 +509,6 @@ const toggleFilters = (
         value: 0.0, // Optional as float
       },
     });
-    if (allFilters.color.length === 0 && !tempArr.includes('All')) {
-      return { ...allFilters, medium: [...tempArr], color: ['All'] };
-    }
     if (
       (tempArr.length === 0 &&
         chairType.length === 0 &&
@@ -606,9 +588,6 @@ const toggleFilters = (
         value: 0.0, // Optional as float
       },
     });
-    if (allFilters.color.length === 0 && !tempArr.includes('All')) {
-      return { ...allFilters, style: [...tempArr], color: ['All'] };
-    }
     if (
       (tempArr.length === 0 &&
         chairType.length === 0 &&

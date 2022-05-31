@@ -15,7 +15,6 @@ const getProductTypeBlocks = (product, blocks) => {
   if (!product) {
     return [];
   }
-
   return blocks.filter((block) => block.type === 'product_details');
 };
 
@@ -187,10 +186,13 @@ const DRBannerDiscount = styled.h1.attrs({
 const ProductDescription = styled.div.attrs({
   className: 'product-description ml-auto mr-auto md:text-center container',
 })`
-  max-width: 644px;
   margin-bottom: 55px;
   @media (min-width: 1024px) {
     margin-bottom: 112px;
+  }
+  p {
+    max-width: 644px;
+    margin: 0 auto;
   }
 `;
 

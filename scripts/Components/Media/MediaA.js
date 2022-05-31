@@ -63,7 +63,7 @@ const MediaA = ({
     );
   }
 
-  return <img alt={alt} src={image} />;
+  return <img alt={alt} src={image} style={{display: currentImage ? "block" : 'none' }}/>;
 };
 
 const ImageContainer = styled.span.attrs(({ bgCover }) => {

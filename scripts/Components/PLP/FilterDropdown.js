@@ -80,11 +80,11 @@ const FilterDropdown = ({
   }
 
   return (
-    <div>
+    <FilterDropdownItem>
       <FilterContainer id="dropdown" onClick={handleClick}>
         <FilterTitle>{filterTitle}</FilterTitle>
         <IconContainer flip={menuOpen === filterType}>
-          <MenuIcon width="12" height="7" />
+          <MenuIcon/>
         </IconContainer>
       </FilterContainer>
       <FilterMenu
@@ -99,12 +99,16 @@ const FilterDropdown = ({
           setSortingApply={setSortingApply}
           setMenuOpen={setMenuOpen}
       />
-    </div>
+    </FilterDropdownItem>
   );
 };
 
+const FilterDropdownItem = styled.div.attrs ({
+  className: 'fltr-drpdwn-item',
+})``;
+
 const FilterContainer = styled.div.attrs({
-  className: 'flex items-center mr-9 cursor-pointer',
+  className: 'flex items-center mr-4 cursor-pointer fltr-drpdwn',
 })``;
 
 const FilterTitle = styled.span.attrs({

@@ -93,7 +93,7 @@ const ProductRecommendationContainer = styled.div.attrs({
 `;
 
 const RecommendationContainer = styled.div.attrs(({ recommendations }) => ({
-  className: `prod-list`,
+  className: `prod-list gap-6`,
 }))``;
 
 export default ProductRecommendation;

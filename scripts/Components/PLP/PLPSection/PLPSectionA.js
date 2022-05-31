@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from 'react';
-
 import PropTypes from 'prop-types';
 import PLPItems from '../PLPItems';
 import Filters from '../Filters';
@@ -31,32 +30,16 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
   const checkFilters = Object.values(allFilters).some((filter) => filter.length > 0);
   const [TagSelected, setTagSelected] = useState([]);
   const filterRef = useRef();
-  // const [productFilter, setProductFilter] = useState([])
-
   useEffect(() => {
     FilterProducts();
   }, [allFilters, sortingApply, products]);
   const FilterProducts = () => {
     var productFilter = [];
-    // let products = products;
-    
     if (checkFilters || sortingApply) {
-
-      // if (sortingApply === 'priceAscending') {
-      //   productFilter = products.sort(function (a, b) {
-      //     return a.price - b.price;
-      //   });
-      // } else if (sortingApply === 'priceDescending') {
-      //   productFilter = products.sort(function (a, b) {
-      //     return b.price - a.price;
-      //   });
-      // } else
-
-      if (sortingApply === 'titleAscending' ||sortingApply === '' || sortingApply === 'SORT BY' ) {
-       
+      if (sortingApply === 'titleAscending' || sortingApply === '' || sortingApply === 'SORT BY') {
         const tempItems = products.sort(function (a, b) {
-          var nameA = a.title.toLowerCase() // ignore upper and lowercase
-          var nameB = b.title.toLowerCase() // ignore upper and lowercase
+          var nameA = a.title.toLowerCase(); // ignore upper and lowercase
+          var nameB = b.title.toLowerCase(); // ignore upper and lowercase
           if (nameA > nameB) {
             return 1;
           }
@@ -68,10 +51,9 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
       }
       if (sortingApply === 'titleDescending') {
         productFilter = products.sort(function (a, b) {
-          var nameA = a.title.toLowerCase() // ignore upper and lowercase
-          var nameB = b.title.toLowerCase() // ignore upper and lowercase
+          var nameA = a.title.toLowerCase(); // ignore upper and lowercase
+          var nameB = b.title.toLowerCase(); // ignore upper and lowercase
           if (nameA > nameB) {
-        
             return -1;
           }
           if (nameA < nameB) {
@@ -80,13 +62,10 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
           // names must be equal
           return 0;
         });
-        // setProductFilter(tempItems)
       }
-
-      
       for (let index = 0; index < products.length; index++) {
         const productElement = products[index];
-        // console.log('allFilters', allFilters)
+
         Object.keys(allFilters).map((element, inde2) => {
           a: for (let index1 = 0; index1 < allFilters[element].length; index1++) {
             const filterValue = allFilters[element][index1];
@@ -94,45 +73,22 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
               tagType: element,
               tagValue: filterValue,
             };
-            let tempRes = TagSelected.filter(i => JSON.stringify(i) === JSON.stringify(tempEntry));
+            let tempRes = TagSelected.filter(
+              (i) => JSON.stringify(i) === JSON.stringify(tempEntry)
+            );
             if (tempRes.length == 0 && !isRemoving) {
               setTagSelected([...TagSelected, tempEntry]);
             }
-
-            if (allFilters['size'].length !== 0 && element === 'size') {
-              c: for (let index = 0; index < productElement.variants.length; index++) {
-                const varientElement = productElement.variants[index];
-                {
-                  d: for (let index = 0; index < varientElement.options.length; index++) {
-                    const varientValue = varientElement.options[index];
-                    if (filterValue.localeCompare(varientValue)) {
-                      if (productFilter.length === 0) {
-                        productFilter.push(productElement);
-                      } else {
-                        let findValue = productFilter.filter((i) => i.id === productElement.id);
-                        if (findValue.length == 0) {
-                          productFilter.push(productElement);
-                        }
-                      }
-                    }
-                    break;
-                  }
-                  break;
-                }
-              }
-            }
+            
             if (
               (allFilters['subject'].length !== 0 && element === 'subject') ||
               (allFilters['mood'].length !== 0 && element === 'mood') ||
               (allFilters['decorStyle'].length !== 0 && element === 'decorStyle') ||
               (allFilters['artStyle'].length !== 0 && element === 'artStyle') ||
               (allFilters['medium'].length !== 0 && element === 'medium')
-
-              // (allFilters['color'].length !== 0 && element === 'color')
             ) {
               for (let index = 0; index < productElement.tags.length; index++) {
                 const elementTags = productElement.tags[index];
-                // productElement.tags.find(elementTags => {
                 if (elementTags.includes(filterValue)) {
                   let findValue = productFilter.filter((i) => i.id === productElement.id);
                   if (findValue.length == 0) {
@@ -146,7 +102,7 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
       }
     }
     setFilterProducts(productFilter);
-    setIsRemoving(false)
+    setIsRemoving(false);
   };
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -237,8 +193,7 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
   );
 };
 
-PLPSection.defaultProps = {
-};
+PLPSection.defaultProps = {};
 
 PLPSection.propTypes = {
   collectionTitle: PropTypes.string.isRequired,

@@ -7,26 +7,22 @@ var lastIndex = 16;
 
 const PLPItems = ({ products }) => {
   const [count, setCount] = useState([]);
-  const [productFilterManage,setProductFilterManage]=useState([])
-  
+  const [productFilterManage, setProductFilterManage] = useState([]);
+
   useEffect(() => {
-    setProductFilterManage(products.slice(0, lastIndex))
+    setProductFilterManage(products.slice(0, lastIndex));
     setCount(products.slice(0, lastIndex));
   }, [products]);
   const loadMore = () => {
     lastIndex += 16;
     setCount(productFilterManage.slice(0, lastIndex));
-    setProductFilterManage(products.slice(0, lastIndex))
+    setProductFilterManage(products.slice(0, lastIndex));
   };
 
   return (
-    <InfiniteScroll
-      dataLength={products.length || 0}
-      loader={''}
-      hasMore={true}
-    >
+    <InfiniteScroll dataLength={products.length || 0} loader={''} hasMore={true}>
       <div className="grid justify-center container">
-        <div className="grid grid-cols-1 justify-items-center gap-8 mb-8 max-w-screen-xxl md:grid-cols-2 xl:grid-cols-4 mt-18">
+        <div className="grid grid-cols-1 justify-items-center gap-6 mb-8 max-w-screen-xxl xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 mt-18">
           {productFilterManage.map((product) => {
             let colorsArr = [];
             const colorIndex = product.options.findIndex((option) => option === 'Frame Color');
@@ -63,20 +59,21 @@ const PLPItems = ({ products }) => {
             onClick={() => loadMore()}
           >
             Load more +
-           
           </button>
         )}
       </div>
-      <div
-        style={{
-          paddingTop:'16px',
-          display: 'flex',
-          justifyContent: 'center',
-          fontSize: '16px',
-          color: '#000000',
-          opacity: '0.7',
-        }}
-      >{`${count.length}/${products.length} Products`}</div>
+      {products.length > lastIndex && (
+        <div
+          style={{
+            paddingTop: '16px',
+            display: 'flex',
+            justifyContent: 'center',
+            fontSize: '16px',
+            color: '#000000',
+            opacity: '0.7',
+          }}
+        >{`${productFilterManage.length}/${products.length} Products`}</div>
+      )}
     </InfiniteScroll>
   );
 };

@@ -14,7 +14,9 @@ const Filters = ({
   setTagSelected,
   TagSelected,
   setIsRemoving,
-  products,sortingApply,setSortingApply
+  products,
+  sortingApply,
+  setSortingApply,
 }) => {
   const { allFilters, setAllFilters, checkFilters } = useContext(plpContext);
   const {
@@ -32,7 +34,6 @@ const Filters = ({
   const [menuOpen, setMenuOpen] = useState('');
   const [RemoveTag, setRemoveTag] = useState({});
 
-  const sizeOption = ['18" x 24"', '24" x 32"', '30" x 40"', '32" x 44"'];
   const subjectOption = [
     'Abstract',
     'Animals',
@@ -123,16 +124,32 @@ const Filters = ({
   }, [menuOpen]);
 
   const handleClearAll = () => {
-    if (
-      window.location.href.includes('all') ||
-      window.location.href.includes('pattern-chairs') ||
-      window.location.href.includes('seasonal-favorites')
-    ) {
       setAllFilters({
-        style: [],
-        chairType: [],
-        color: [],
-        size: [],
+        subject: [],
+        mood: [],
+        decorStyle: [],
+        artStyle: [],
+        orientation: [],
+        medium: [],
+      });
+      setTagSelected([]);
+  };
+
+  const handleMenuOpen = () => {
+    if (window.scrollY >= 250) {
+      setMenuOpen('');
+    }
+  };
+
+  window.addEventListener('scroll', handleMenuOpen);
+  /* -------------------------Remove Tag with Filter selected item remove----------------------*/
+  const removeSelectedTag = (item) => {
+    setRemoveTag(item);
+    let tempRes = TagSelected.filter((i) => JSON.stringify(i) !== JSON.stringify(item));
+
+    setIsRemoving(true);
+    if (tempRes.length === 0) {
+      setAllFilters({
         subject: [],
         mood: [],
         decorStyle: [],
@@ -142,192 +159,121 @@ const Filters = ({
       });
       setTagSelected([]);
     } else {
-      setAllFilters({
-        style: [],
-        chairType: [],
-        color: ['All'],
-        size: [],
-        subject: [],
-        mood: [],
-        decorStyle: [],
-        artStyle: [],
-        orientation: [],
-        medium: [],
-      });
-      setTagSelected([]);
+      if (Object.keys(allFilters).length !== 0) {
+        const newArr = allFilters[item.tagType].filter((object) => {
+          return object !== item.tagValue;
+        });
+        setAllFilters({ ...allFilters, [item.tagType]: newArr });
+        setTagSelected([...tempRes]);
+      }
     }
   };
-
-  const handleMenuOpen = () => {
-    if (window.scrollY >= 250) {
-      setMenuOpen('');
-    }
+  const sortingBy = (e) => {
+    setSortingApply(e.target.value);
   };
-  
-  const [tempOptions, setTempOptions] = useState([])
-
-  useEffect(()=>{
-    // const ts = tempOptions.filter(i =>{
-    //   console.log('i', i)
-    //   console.log('i++++++++++', JSON.stringify(i) === JSON.stringify(RemoveTag), RemoveTag)
-    //   if(JSON.stringify(i) === JSON.stringify(RemoveTag)){
-    //     return i
-    //   }
-    // })
-    // // console.log('ts', ts)
-    // if(ts.length > 0){
-    //   removeSelectedTag(RemoveTag)
-    //   setTempOptions(tempOptions.filter(i => JSON.stringify(i) !== JSON.stringify(RemoveTag)))
-    //   setIsRemoving(true)
-    // }else{
-    //   setTempOptions([...tempOptions, RemoveTag])
-    // }
-    // console.log('RemoveTag ======== ', tempOptions)
-  },[RemoveTag])
-
-  window.addEventListener('scroll', handleMenuOpen);
-  const removeSelectedTag = (item) => {
-    console.log('###########', item);
-    setRemoveTag(item);
-    let tempRes = TagSelected.filter(i => JSON.stringify(i) !== JSON.stringify(item));
-    console.log('tempRes :>>>  ', tempRes);
-    setIsRemoving(true)
-    // let tempRes = TagSelected.filter(i => i !== item)
-    setTagSelected([...tempRes]);
-  };
-  const sortingBy=(e)=>{
-    // if(sortingApply){
-    console.log('object :>> ', e.target.value);
-    // }
-    setSortingApply(e.target.value)
-  }
   return (
     <>
       {stickyFilter && <SpaceHolder />}
       <Content id="filters" {...{ stickyFilter }}>
-        <div className="bg-transparent border-t-2 border-b-2 w-full">
+        <div className="bg-transparent border-t border-b w-full">
           <div className="bg-transparent flex container">
-          <div className="flex justify-between w-full">
-            <div className="grid grid-cols-2 gap-y-4 md:flex py-5 justify-items-center">
-              <FilterDropdown
-                filterName="size"
-                setMenuOpen={setMenuOpen}
-                filterType="size"
-                menuOpen={menuOpen}
-                filterTitle="SIZE"
-                options={sizeOption}
-                setTagSelected={setTagSelected}
-                TagSelected={TagSelected}
-                RemoveTag={RemoveTag}
-                setRemoveTag={setRemoveTag}
-              />
-              <FilterDropdown
-                filterName="subject"
-                setMenuOpen={setMenuOpen}
-                filterType="subject"
-                menuOpen={menuOpen}
-                filterTitle="SUBJECT"
-                options={subjectOption}
-                setTagSelected={setTagSelected}
-                TagSelected={TagSelected}
-                setRemoveTag={setRemoveTag}
-              />
-              <FilterDropdown
-                filterName="mood"
-                setMenuOpen={setMenuOpen}
-                filterType="mood"
-                menuOpen={menuOpen}
-                filterTitle="MOOD"
-                options={moodOption}
-                setTagSelected={setTagSelected}
-                TagSelected={TagSelected}
-                setRemoveTag={setRemoveTag}
-              />
-              <FilterDropdown
-                filterName="decorStyle"
-                setMenuOpen={setMenuOpen}
-                filterType="decorStyle"
-                menuOpen={menuOpen}
-                filterTitle="DECOR STYLE"
-                options={decorOption}
-                setTagSelected={setTagSelected}
-                TagSelected={TagSelected}
-                setRemoveTag={setRemoveTag}
-              />
-              {/* <FilterDropdown
-                filterName="color"
-                setMenuOpen={setMenuOpen}
-                filterType="colorpicker"
-                menuOpen={menuOpen}
-                colorFilters={colorFilters}
-                filterTitle="Color"
-                colors={colors}
-                collectionTitle={collectionTitle}
-                setTagSelected={setTagSelected}
-                TagSelected={TagSelected}
-                setRemoveTag={setRemoveTag}
-              /> */}
-              <FilterDropdown
-                filterName="artStyle"
-                setMenuOpen={setMenuOpen}
-                filterType="artStyle"
-                menuOpen={menuOpen}
-                filterTitle="ART STYLE"
-                options={artOption}
-                setRemoveTag={setRemoveTag}
-              />
-              <FilterDropdown
-                filterName="orientation"
-                setMenuOpen={setMenuOpen}
-                filterType="orientation"
-                menuOpen={menuOpen}
-                filterTitle="ORIENTATION"
-                options={orientationOption}
-                setTagSelected={setTagSelected}
-                TagSelected={TagSelected}
-                setRemoveTag={setRemoveTag}
-              />
-              <FilterDropdown
-                filterName="medium"
-                setMenuOpen={setMenuOpen}
-                filterType="medium"
-                menuOpen={menuOpen}
-                filterTitle="MEDIUM"
-                options={mediumOption}
-                setTagSelected={setTagSelected}
-                TagSelected={TagSelected}
-                setRemoveTag={setRemoveTag}
-              />
+            <div className="flex justify-between w-full">
+              <div className="grid grid-cols-2 gap-y-4 md:flex py-5 justify-items-center">
+                <FilterDropdown
+                  filterName="subject"
+                  setMenuOpen={setMenuOpen}
+                  filterType="subject"
+                  menuOpen={menuOpen}
+                  filterTitle="SUBJECT"
+                  options={subjectOption}
+                  setTagSelected={setTagSelected}
+                  TagSelected={TagSelected}
+                  setRemoveTag={setRemoveTag}
+                />
+                <FilterDropdown
+                  filterName="mood"
+                  setMenuOpen={setMenuOpen}
+                  filterType="mood"
+                  menuOpen={menuOpen}
+                  filterTitle="MOOD"
+                  options={moodOption}
+                  setTagSelected={setTagSelected}
+                  TagSelected={TagSelected}
+                  setRemoveTag={setRemoveTag}
+                />
+                <FilterDropdown
+                  filterName="decorStyle"
+                  setMenuOpen={setMenuOpen}
+                  filterType="decorStyle"
+                  menuOpen={menuOpen}
+                  filterTitle="DECOR STYLE"
+                  options={decorOption}
+                  setTagSelected={setTagSelected}
+                  TagSelected={TagSelected}
+                  setRemoveTag={setRemoveTag}
+                />
+                <FilterDropdown
+                  filterName="artStyle"
+                  setMenuOpen={setMenuOpen}
+                  filterType="artStyle"
+                  menuOpen={menuOpen}
+                  filterTitle="ART STYLE"
+                  options={artOption}
+                  setRemoveTag={setRemoveTag}
+                />
+                <FilterDropdown
+                  filterName="orientation"
+                  setMenuOpen={setMenuOpen}
+                  filterType="orientation"
+                  menuOpen={menuOpen}
+                  filterTitle="ORIENTATION"
+                  options={orientationOption}
+                  setTagSelected={setTagSelected}
+                  TagSelected={TagSelected}
+                  setRemoveTag={setRemoveTag}
+                />
+                <FilterDropdown
+                  filterName="medium"
+                  setMenuOpen={setMenuOpen}
+                  filterType="medium"
+                  menuOpen={menuOpen}
+                  filterTitle="MEDIUM"
+                  options={mediumOption}
+                  setTagSelected={setTagSelected}
+                  TagSelected={TagSelected}
+                  setRemoveTag={setRemoveTag}
+                />
               </div>
               <div className="flex items-center">
-              
-              <select id="sortbyDropdown" name='sortBy' onChange={(e)=>sortingBy(e)}>
-                <option >SORT BY</option>
-                <option value="titleAscending">Ascending</option>
-                <option value="titleDescending">Descending</option>
-              </select>
+                <select id="sortbyDropdown" name="sortBy" onChange={(e) => sortingBy(e)}>
+                  <option>SORT BY</option>
+                  <option value="titleAscending">Ascending</option>
+                  <option value="titleDescending">Descending</option>
+                </select>
               </div>
             </div>
-
           </div>
         </div>
         {checkFilters && (
-          <div
-            className="bg-transparent border-b-2 w-full"
-          >
+          <div className="bg-transparent border-b w-full">
             <div className="bg-transparent container">
-              <div className="py-5 justify-items-center flex flex-row" style={{justifyContent: 'space-between'}}>
+              <div
+                className="py-5 justify-items-center flex flex-row"
+                style={{ justifyContent: 'space-between' }}
+              >
                 {' '}
                 <div>
                   <Text>
-                    <ProductSpan>
-                      {products.length} Products
-                    </ProductSpan>
+                    <ProductSpan>{products.length} Products</ProductSpan>
                     {TagSelected.map((items, index) => (
                       <Tag key={index}>
                         {' '}
                         <p>{items.tagValue}</p>{' '}
-                        <div className="svg-icon" id={items.tagValue} onClick={() => removeSelectedTag(items)}>
+                        <div
+                          className="svg-icon"
+                          id={items.tagValue}
+                          onClick={() => removeSelectedTag(items)}
+                        >
                           <svg
                             width="10"
                             height="10"
@@ -366,7 +312,12 @@ const Filters = ({
                     !window.location.href.includes('seasonal-favorites')) ? (
                     <div className="hidden md:block">
                       <div
-                        style={{fontSize: '12px', lineHeight: '20px', letterSpacing: '0.05em', textTransform: 'uppercase'}}
+                        style={{
+                          fontSize: '12px',
+                          lineHeight: '20px',
+                          letterSpacing: '0.05em',
+                          textTransform: 'uppercase',
+                        }}
                         className="underline"
                         onClick={() => handleClearAll()}
                         tabIndex={0}
@@ -471,7 +422,7 @@ const ProductSpan = styled.span`
   letter-spacing: -0.01em;
   color: rgba(0, 0, 0, 0.7);
   padding-right: 16px;
-  border-right: 1px solid #F4F2EC;
+  border-right: 1px solid #f4f2ec;
   margin-right: 16px;
 `;
 export default Filters;

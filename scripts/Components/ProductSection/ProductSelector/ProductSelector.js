@@ -384,7 +384,7 @@ ProductSelector.propTypes = {
 };
 
 const ProductSelectorContainer = styled.div.attrs({
-  className: 'flex flex-col max-w-screen-xl md:flex-row',
+  className: 'flex flex-col max-w-screen-xl md:flex-row w-full',
 })``;
 
 const ProductFormContainer = styled.div.attrs(({ handle }) => {

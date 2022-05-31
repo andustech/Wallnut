@@ -575,16 +575,6 @@ body.cart .cart-final-details .secondary_btn {
   justify-content: end !important;
 }
 
-
-.hkkjzZ, .each-item {
-  margin: 0 12px !important;
-}
-
-
-.hkkjzZ:first-child, .each-item:first-child {
-  margin-left: 0 !important;
-}
-
 .ProductRecommendation__RecommendationContainer-sc-1bfw787-1.prod-list {
   display: flex;
   align-items: flex-start;
@@ -594,7 +584,16 @@ body.cart .cart-final-details .secondary_btn {
 .hkkjzZ:last-child, .each-item:last-child {
   margin-right: 0 !important;
 }
-
+.fltr-drpdwn-item .fltr-drpdwn:after {
+  content: "";
+  width: 1px;
+  height: 24px;
+  border-right: 1px solid #f4f2ec;
+  margin-left: 16px;
+}
+.fltr-drpdwn-item:last-child .fltr-drpdwn:after {
+  display: none;
+}
 .trend_row {
   display: flex;
   align-items: center;

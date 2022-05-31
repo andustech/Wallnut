@@ -81,6 +81,7 @@ const ProductRecommendationContainer = styled.div.attrs({
 `;
 
 const RecommendationContainer = styled.div.attrs ({
+  className: 'gap-6',
 })`
   display: flex;
   align-items: flex-start;
