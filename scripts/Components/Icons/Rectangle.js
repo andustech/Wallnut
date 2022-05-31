@@ -1,21 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Rectangle = ({ width = '16', height = '16', fill = 'none' }) => (
+const Rectangle = ({ width = '12', height = '12', fill = 'none' }) => (
   <svg
     width={width}
     height={height}
-    viewBox="0 0 16 16"
-    fill={fill}
+    viewBox="0 0 12 12"
+    fill='none'
     xmlns="http://www.w3.org/2000/svg"
   >
-    <rect x="0.5" y="0.5" width="15" height="15" stroke="#E6E6E6" />
+    <rect x="0.25" y="0.25" width="11.5" height="11.5" stroke="black" stroke-opacity="0.7" stroke-width="0.5"/>
+    { fill === '#000' && (
+      <rect x="2" y="2" width="8" height="8" fill="black"/>
+    )}
   </svg>
 );
 
 Rectangle.defaultProps = {
-  width: '16',
-  height: '16',
+  width: '12',
+  height: '12',
   fill: 'none',
 };
 

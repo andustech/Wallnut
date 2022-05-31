@@ -13,6 +13,7 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
   const [stickyFilter, setStickyFilter] = useState(false);
   const [colorFilters, setColorFilters] = useState([]);
   const [chairTypes, setChairTypes] = useState([]);
+  const [isRemoving, setIsRemoving] = useState(false);
   const [allFilters, setAllFilters] = useState({
     style: [],
     chairType: [],
@@ -30,47 +31,45 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
   const checkFilters = Object.values(allFilters).some((filter) => filter.length > 0);
   const [TagSelected, setTagSelected] = useState([]);
   const filterRef = useRef();
+  // const [productFilter, setProductFilter] = useState([])
 
   useEffect(() => {
     FilterProducts();
-  }, [allFilters, sortingApply]);
+  }, [allFilters, sortingApply, products]);
   const FilterProducts = () => {
     var productFilter = [];
-    let newProducts = products;
+    // let products = products;
     
     if (checkFilters || sortingApply) {
 
       // if (sortingApply === 'priceAscending') {
-      //   productFilter = newProducts.sort(function (a, b) {
+      //   productFilter = products.sort(function (a, b) {
       //     return a.price - b.price;
       //   });
       // } else if (sortingApply === 'priceDescending') {
-      //   productFilter = newProducts.sort(function (a, b) {
+      //   productFilter = products.sort(function (a, b) {
       //     return b.price - a.price;
       //   });
       // } else
 
-      if (sortingApply === 'titleAscending' ||sortingApply === '' ) {
+      if (sortingApply === 'titleAscending' ||sortingApply === '' || sortingApply === 'SORT BY' ) {
        
-        productFilter = newProducts.sort(function (a, b) {
-          var nameA = a.title // ignore upper and lowercase
-          var nameB = b.title // ignore upper and lowercase
+        const tempItems = products.sort(function (a, b) {
+          var nameA = a.title.toLowerCase() // ignore upper and lowercase
+          var nameB = b.title.toLowerCase() // ignore upper and lowercase
           if (nameA > nameB) {
             return 1;
           }
           if (nameA < nameB) {
             return -1;
           }
-          // names must be equal
           return 0;
         });
-       
-
-      } else if (sortingApply === 'titleDescending') {
-        
-        productFilter = newProducts.sort(function (a, b) {
-          var nameA = a.title // ignore upper and lowercase
-          var nameB = b.title // ignore upper and lowercase
+      }
+      if (sortingApply === 'titleDescending') {
+        productFilter = products.sort(function (a, b) {
+          var nameA = a.title.toLowerCase() // ignore upper and lowercase
+          var nameB = b.title.toLowerCase() // ignore upper and lowercase
           if (nameA > nameB) {
         
             return -1;
@@ -81,19 +80,22 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
           // names must be equal
           return 0;
         });
-        
+        // setProductFilter(tempItems)
       }
 
-      for (let index = 0; index < newProducts.length; index++) {
-        const productElement = newProducts[index];
-        Object.keys(allFilters).map((element, index) => {
-          a: for (let index = 0; index < allFilters[element].length; index++) {
-            const filterValue = allFilters[element][index];
+      
+      for (let index = 0; index < products.length; index++) {
+        const productElement = products[index];
+        // console.log('allFilters', allFilters)
+        Object.keys(allFilters).map((element, inde2) => {
+          a: for (let index1 = 0; index1 < allFilters[element].length; index1++) {
+            const filterValue = allFilters[element][index1];
             const tempEntry = {
               tagType: element,
               tagValue: filterValue,
             };
-            if (!TagSelected.includes(tempEntry)) {
+            let tempRes = TagSelected.filter(i => JSON.stringify(i) === JSON.stringify(tempEntry));
+            if (tempRes.length == 0 && !isRemoving) {
               setTagSelected([...TagSelected, tempEntry]);
             }
 
@@ -144,6 +146,7 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
       }
     }
     setFilterProducts(productFilter);
+    setIsRemoving(false)
   };
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -205,6 +208,7 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
           setSortingApply={setSortingApply}
           sortingApply={sortingApply}
           products={combinedProducts}
+          setIsRemoving={setIsRemoving}
         />
         <PLPItems
           products={combinedProducts}
@@ -234,8 +238,6 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
 };
 
 PLPSection.defaultProps = {
-  collectionDescription:
-    'Our washable chairs come in a wide variety of colors. If you’re wondering which chair color perfectly complements your room theme, look no further. Here we give you a host of options, plus some tips on how to choose the perfect chair color for you.',
 };
 
 PLPSection.propTypes = {

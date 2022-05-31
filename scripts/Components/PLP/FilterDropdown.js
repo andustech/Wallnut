@@ -73,7 +73,7 @@ const FilterDropdown = ({
           setTagSelected={setTagSelected}
           TagSelected={TagSelected}
           sortingBy={sortingBy}
-          
+          setMenuOpen={setMenuOpen}
         />
       </div>
     );
@@ -84,7 +84,7 @@ const FilterDropdown = ({
       <FilterContainer id="dropdown" onClick={handleClick}>
         <FilterTitle>{filterTitle}</FilterTitle>
         <IconContainer flip={menuOpen === filterType}>
-          <MenuIcon />
+          <MenuIcon width="12" height="7" />
         </IconContainer>
       </FilterContainer>
       <FilterMenu
@@ -97,6 +97,7 @@ const FilterDropdown = ({
         setRemoveTag={setRemoveTag}
         sortingApply={sortingApply} 
           setSortingApply={setSortingApply}
+          setMenuOpen={setMenuOpen}
       />
     </div>
   );
@@ -107,8 +108,16 @@ const FilterContainer = styled.div.attrs({
 })``;
 
 const FilterTitle = styled.span.attrs({
-  className: 'text-base mr-4 lg:mr-9',
-})``;
+  className: 'mr-6',
+})`
+  font-family: 'GoodSans';
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #000000;
+`;
 
 const StyledColorSwatch = styled.div.attrs({
   className: 'bg-no-repeat h-8 w-8 rounded-full border border-solid border-gray-300',

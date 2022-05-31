@@ -353,13 +353,7 @@
         "type": "collection-template",
         "settings": {
           "products_per_row": 4,
-          "products_per_page": 25,
-          "show_collection_heading": true,
-          "description_position": "top_description",
-          "filter_position": "top_filters",
-          "filter_bg_color": "#ffffff",
-          "filter_border_color": "#d5d5d5",
-          "filter_text_color": "#415060"
+          "products_per_page": 25
         }
       },
       "product-template": {
@@ -371,7 +365,6 @@
               "howitwork_tab_heading": "How it Works",
               "about_desktop_heading": "Just stick and click",
               "about_paragraph": "Wallnut's artwork comes already assembled, and is easy to hang. Simply pick a spot for it, attach the wall mount, and slide the art into place.",
-              "about_media_type": "video",
               "about_video_url": "https:\/\/levity-products.s3.us-west-2.amazonaws.com\/videos\/MV_CD_Desktop-+534px+x375px%C2%A0.mp4",
               "whylove_tab_heading": "Why You’ll Love It",
               "features_section_1_title": "Quality art, made easy",

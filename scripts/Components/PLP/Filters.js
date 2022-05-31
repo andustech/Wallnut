@@ -13,6 +13,7 @@ const Filters = ({
   collectionTitle,
   setTagSelected,
   TagSelected,
+  setIsRemoving,
   products,sortingApply,setSortingApply
 }) => {
   const { allFilters, setAllFilters, checkFilters } = useContext(plpContext);
@@ -162,14 +163,36 @@ const Filters = ({
       setMenuOpen('');
     }
   };
+  
+  const [tempOptions, setTempOptions] = useState([])
+
+  useEffect(()=>{
+    // const ts = tempOptions.filter(i =>{
+    //   console.log('i', i)
+    //   console.log('i++++++++++', JSON.stringify(i) === JSON.stringify(RemoveTag), RemoveTag)
+    //   if(JSON.stringify(i) === JSON.stringify(RemoveTag)){
+    //     return i
+    //   }
+    // })
+    // // console.log('ts', ts)
+    // if(ts.length > 0){
+    //   removeSelectedTag(RemoveTag)
+    //   setTempOptions(tempOptions.filter(i => JSON.stringify(i) !== JSON.stringify(RemoveTag)))
+    //   setIsRemoving(true)
+    // }else{
+    //   setTempOptions([...tempOptions, RemoveTag])
+    // }
+    // console.log('RemoveTag ======== ', tempOptions)
+  },[RemoveTag])
 
   window.addEventListener('scroll', handleMenuOpen);
-  const removeSelectedTag = (item, index) => {
-    // console.log('TagSelected :>> ', filterRemoveValue,TagSelected,tempEntry);
+  const removeSelectedTag = (item) => {
+    console.log('###########', item);
     setRemoveTag(item);
-    let tempRes = TagSelected;
-    tempRes.splice(index, 1);
-    console.log('tempRes :>>> ', tempRes);
+    let tempRes = TagSelected.filter(i => JSON.stringify(i) !== JSON.stringify(item));
+    console.log('tempRes :>>>  ', tempRes);
+    setIsRemoving(true)
+    // let tempRes = TagSelected.filter(i => i !== item)
     setTagSelected([...tempRes]);
   };
   const sortingBy=(e)=>{
@@ -183,8 +206,9 @@ const Filters = ({
       {stickyFilter && <SpaceHolder />}
       <Content id="filters" {...{ stickyFilter }}>
         <div className="bg-transparent border-t-2 border-b-2 w-full">
-          <div className="bg-transparent flex max-w-screen-2xl mx-auto">
-            <div className="grid grid-cols-2 gap-y-4 md:flex py-4.5 md:pl-8 mx-auto md:mx-0 justify-items-center">
+          <div className="bg-transparent flex container">
+          <div className="flex justify-between w-full">
+            <div className="grid grid-cols-2 gap-y-4 md:flex py-5 justify-items-center">
               <FilterDropdown
                 filterName="size"
                 setMenuOpen={setMenuOpen}
@@ -274,56 +298,36 @@ const Filters = ({
                 TagSelected={TagSelected}
                 setRemoveTag={setRemoveTag}
               />
-               {/* <FilterDropdown
-                filterName="sortBy"
-                setMenuOpen={setMenuOpen}
-                filterType="sortBy"
-                menuOpen={menuOpen}
-                filterTitle="SORT BY"
-                options={['Title Ascending','Title Descending']}
-                setTagSelected={setTagSelected}
-                TagSelected={TagSelected}
-                setRemoveTag={setRemoveTag}
-                sortingApply={sortingApply} 
-                setSortingApply={setSortingApply}
-              /> */}
+              </div>
+              <div className="flex items-center">
               
-              <select name='sortBy' onChange={(e)=>sortingBy(e)}
-               >
-              {/* <option value="priceAscending">Price Ascending</option>
-              <option value="priceDescending">Price Descending</option> */}
-              <option >SORT BY</option>
-
-              <option value="titleAscending">Title Ascending</option>
-              <option value="titleDescending">Title Descending</option>
-
+              <select id="sortbyDropdown" name='sortBy' onChange={(e)=>sortingBy(e)}>
+                <option >SORT BY</option>
+                <option value="titleAscending">Ascending</option>
+                <option value="titleDescending">Descending</option>
               </select>
-              
+              </div>
             </div>
+
           </div>
         </div>
         {checkFilters && (
           <div
-            class="bg-transparent border-b-2 w-full"
-            style={{
-              border: '0.5px solid #E2DACD',
-              // transform: rotate('-0.04deg'),
-            }}
+            className="bg-transparent border-b-2 w-full"
           >
-            <div class="bg-transparent flex max-w-screen-2xl mx-auto">
-              <div
-                class="grid grid-cols-2 gap-y-4 md:flex py-4.5 md:pl-8 mx-auto md:mx-0 justify-items-center"
-                style={{ width: '100%', display: 'flex', justifyContent: 'space-between' }}
-              >
+            <div className="bg-transparent container">
+              <div className="py-5 justify-items-center flex flex-row" style={{justifyContent: 'space-between'}}>
                 {' '}
                 <div>
                   <Text>
-                    {products.length} Products|{' '}
+                    <ProductSpan>
+                      {products.length} Products
+                    </ProductSpan>
                     {TagSelected.map((items, index) => (
                       <Tag key={index}>
                         {' '}
                         <p>{items.tagValue}</p>{' '}
-                        <div className="svg-icon" onClick={() => removeSelectedTag(items, index)}>
+                        <div className="svg-icon" id={items.tagValue} onClick={() => removeSelectedTag(items)}>
                           <svg
                             width="10"
                             height="10"
@@ -343,7 +347,7 @@ const Filters = ({
                     ))}
                   </Text>
                 </div>
-                <div style={{ paddingRight: '67px' }}>
+                <div>
                   {(checkFilters && window.location.href.includes('all')) ||
                   (checkFilters && window.location.href.includes('pattern-chairs')) ||
                   (checkFilters && window.location.href.includes('seasonal-favorites')) ||
@@ -360,9 +364,10 @@ const Filters = ({
                     !window.location.href.includes('all') &&
                     !window.location.href.includes('pattern-chairs') &&
                     !window.location.href.includes('seasonal-favorites')) ? (
-                    <div className="relative bg-lynxwhite w-20 hidden md:block">
+                    <div className="hidden md:block">
                       <div
-                        className="-translate-x-1/2 -translate-y-1/2 absolute font-serif left-1/2 text-base text-center top-1/2 transform underline w-20"
+                        style={{fontSize: '12px', lineHeight: '20px', letterSpacing: '0.05em', textTransform: 'uppercase'}}
+                        className="underline"
                         onClick={() => handleClearAll()}
                         tabIndex={0}
                         onKeyDown={() => {}}
@@ -426,9 +431,9 @@ Filters.propTypes = {
   collectionTitle: PropTypes.string.isRequired,
 };
 
-const Content = styled.div(({ stickyFilter }) => [
-  stickyFilter && tw`fixed w-screen z-1 top-14 lg:top-18`,
-]);
+const Content = styled.div.attrs({
+  className: 'mt-14',
+})``;
 
 const SpaceHolder = styled.div(() => [`height: 63.27px`]);
 const Text = styled.div`
@@ -438,19 +443,35 @@ const Text = styled.div`
   letter-spacing: -0.01em;
   color: rgba(0, 0, 0, 0.7);
   padding-right: 32px;
+  flex-wrap: wrap;
+  row-gap: 12px;
 `;
 const Tag = styled.div`
-  padding-left: 16px;
+  padding-right: 16px;
   display: flex;
   justify-content: space-between;
   color: #000000;
   align-items: center;
   p {
     margin-bottom: 0px !important;
+    font-size: 14px !important;
+    line-height: 18px !important;
   }
   .svg-icon {
-    padding-left: 17px;
+    padding-left: 16px;
     cursor: pointer;
   }
+`;
+const ProductSpan = styled.span`
+  white-space: pre;
+  font-family: 'GoodSans-Light';
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: -0.01em;
+  color: rgba(0, 0, 0, 0.7);
+  padding-right: 16px;
+  border-right: 1px solid #F4F2EC;
+  margin-right: 16px;
 `;
 export default Filters;
