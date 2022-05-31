@@ -20,6 +20,7 @@ const MediaA = ({
   backgroundImage,
   bgCover,
   width = '101%',
+  isCarousel,
 }) => {
   if (image.includes('.mp4') && !thumbnail) {
     return (
@@ -63,7 +64,7 @@ const MediaA = ({
     );
   }
 
-  return <img alt={alt} src={image} style={{display: currentImage ? "block" : 'none' }}/>;
+  return <img alt={alt} src={image} style={{display: currentImage || !isCarousel ? "block" : 'none' }}/>;
 };
 
 const ImageContainer = styled.span.attrs(({ bgCover }) => {
