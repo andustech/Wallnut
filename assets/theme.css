@@ -396,6 +396,8 @@ body {
 
 #header-search {
   margin-right: 0 !important;
+  margin-bottom: 0 !important;
+  position: relative;
 }
 
 .gm-submenu ul li a {
@@ -2488,16 +2490,21 @@ textarea:focus {
   font-family: 'GoodSans';
   line-height: 18px;
   color: #000;
-  transition: all 0.4s;
+  transition: none;
+  margin: 0;
 }
 .navbar form {
   width: 0;
   height: 0;
-  transition: all 0.4s;
+  transition: none;
+  position: absolute;
+  right: 0;
+  top: -7px;
 }
 .navbar form.active {
   width: 277px;
   height: auto;
+  transition: width 0.1s ease-in-out;
 }
 
 /* Search autocomplete css */
@@ -2505,7 +2512,9 @@ textarea:focus {
   display: none;
   position: relative;
 }
-
+.search__results-wrapper .search__results {
+  top: 15px;
+}
 .search__results {
   width: 100%;
   right: 0;
@@ -2541,19 +2550,11 @@ textarea:focus {
   display: flex;
   align-items: center;
   font-size: 14px;
-}
-.search__results li a:hover,
-.search__results li a:focus,
-.search__results li .no-results:hover,
-.search__results li .no-results:focus {
-  /* color: {{ settings.nav_color_hover }}; */
+  text-transform: inherit;
 }
 .search__results .search-title {
   text-transform: none;
   text-align: left;
-}
-.search__results .search-title span {
-  /* color: {{ settings.link_color }}; */
 }
 .search__results .thumbnail {
   padding: 0;
@@ -2568,16 +2569,21 @@ textarea:focus {
 .search__results .thumbnail img {
   display: block;
 }
-
-.search__results {
-  top: -20px;
-}
 .search__results p.title {
-  font-size: 14px !important;
+  font-size: 12px !important;
 }
-@media only screen and (min-width: 1024px) {
-  .search__results {
-    width: 400px;
+.search__results .thumbnail img {
+  border: 1px solid #e2dacd !important;
+}
+.search__results li:first-child {
+  padding-top: 16px;
+}
+.search__results-wrapper .search__results {
+  height: 400px;
+}
+@media only screen and (max-width: 1023px) {
+  .search__results-wrapper .search__results {
+    top: 0;
   }
 }
 @media only screen and (max-width: 1024px) {
@@ -2712,4 +2718,25 @@ body.cart .cart-item {
 }
 .ajaxcart__product-image img {
   margin: 0;
+}
+.navbar form.active {
+  width: 277px;
+  height: auto;
+  position: absolute;
+  right: 0;
+  top: -7px;
+}
+#pagination a {
+  padding: 10px 15px;
+  background: #fff;
+}
+#pagination a:hover {
+  background: #f1946a;
+}
+#pagination .current,
+#pagination .count {
+  padding: 10px 15px;
+  font-family: 'GoodSans';
+  font-size: 14px;
+  line-height: 20px;
 }
