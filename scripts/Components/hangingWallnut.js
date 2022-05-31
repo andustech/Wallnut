@@ -48,7 +48,6 @@ const hangingWallnut = ({ settings, blocks }) => {
           ))} */}
 
           {blocks?.map((block, index)=>{
-            console.log(block, blocks.length, index)
             const {settings} = block;
             const margin_class = index + 1 == blocks.length ? 'lg:mr-0' : 'lg:mr-6 mb-8 lg:mb-0';
             return (
@@ -93,6 +92,7 @@ const ValuePropColumn = styled.div.attrs({
   @media only screen and (min-width: 1024px) {
     img {
       height: 450px;
+      object-fit: cover;
     } 
   }
 `;

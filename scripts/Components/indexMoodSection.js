@@ -43,7 +43,7 @@ const indexMoodSection = ({ settings }) => {
 
           <div className="mood_card_container ">
           <div className="mr-6"> 
-            <a className="by_mood_card">
+            <div className="by_mood_card">
               <div>
                 {image_1 && <img src={image_1} />}
               </div>
@@ -54,10 +54,10 @@ const indexMoodSection = ({ settings }) => {
                   </a>
                 </div>
               )}
-            </a>
+            </div>
           </div>
           <div>
-            <a className="by_mood_card">
+            <div className="by_mood_card">
               <div>
                 {image_2 && <img src={image_2} />}
               </div>
@@ -68,7 +68,7 @@ const indexMoodSection = ({ settings }) => {
                   </a>
                 </div>
               )}
-            </a>
+            </div>
           </div>
           </div>
         </ShopByMood>

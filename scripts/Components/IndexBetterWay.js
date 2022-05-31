@@ -54,8 +54,8 @@ const IndexBetterWay = ({ blocks }) => {
                         <>
                           <a
                             onClick={() => handleVideoPopup()}
-                            href="javascript:void(0);"
-                            className="video-open text-white flex items-center link_hover"
+                            href={undefined}
+                            className="video-open text-white flex items-center link_hover cursor-pointer"
                           >
                             <img
                               src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/video-play.svg?v=1651814299"

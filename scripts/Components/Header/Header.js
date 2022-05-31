@@ -56,24 +56,39 @@ const Header = (props) => {
           </div>
           <div className="header-search-minicart-container flex-1 lg:flex-none">
             <div className="">
-              <div id="header-search" className="desktop-3 tablet-hide mobile-hide mb-0.5" data-autocomplete-true>
+              <div
+                id="header-search"
+                className="desktop-3 tablet-hide mobile-hide mb-0.5"
+                data-autocomplete-true
+              >
                 <a href="#" className="inline-block">
-                  <img src='https://cdn.shopify.com/s/files/1/0627/3476/2207/files/search-icon.svg?v=1652783584' className='search_icon search-click' />
+                  <img
+                    src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/search-icon.svg?v=1652783584"
+                    className="search_icon search-click"
+                  />
                 </a>
-                <form action="/search" method="get" className="search-form">      
-                  <div className="" style={{ "position": "relative"}}>
-                    <input type="text" name="q" className="normal-case" id="q" placeholder="Search" />
-                    <img src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/search-icon.svg?v=1652783584" className="search_icon search-bar-icon" /> 
+                <form action="/search" method="get" className="search-form">
+                  <div className="" style={{ position: 'relative' }}>
+                    <input
+                      type="text"
+                      name="q"
+                      className="normal-case"
+                      id="q"
+                      placeholder="Search"
+                    />
+                    <img
+                      src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/search-icon.svg?v=1652783584"
+                      className="search_icon search-bar-icon"
+                    />
                   </div>
-                </form> 
-                
+                </form>
               </div>
             </div>
 
             <div id="mini-cart-container" className="block">
               <a
                 href="/cart"
-                className="site-header__cart-toggle js-drawer-open-right block ml-6"
+                className="site-header__cart-toggle js-drawer-open-right block ml-6 relative"
                 aria-controls="CartDrawer"
                 aria-expanded="false"
               >
@@ -81,7 +96,7 @@ const Header = (props) => {
                   src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/cart-icon.svg?v=1652783627"
                   alt="cart"
                 />
-                {/* <div className="cart-count font-serif text-sm"></div> */}
+                <div className="cart-count font-serif text-sm">{cartCount}</div>
                 {/* <CartHighlight cartCount={cartCount} /> */}
               </a>
             </div>
@@ -97,9 +112,9 @@ const HeaderContainer = styled.div.attrs(({ sticky }) => {
   const fixed = 'fixed top-0 z-10';
   return { className: sticky ? `${className}, ${fixed}` : `${className}` };
 })`
-  height: auto;
+  height: 75px;
   border-bottom: 1px solid #d5d5d5;
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1023px) {
     height: 50px;
   }
 `;
@@ -117,8 +132,7 @@ const NavWrapper = styled.div.attrs(({ isShown }) => {
 `;
 
 const LinkItem = styled.a.attrs({
-  className:
-    'relative hover:no-underline text-blue-dark uppercase',
+  className: 'relative hover:no-underline text-blue-dark uppercase',
 })`
   &:hover {
     &:after {

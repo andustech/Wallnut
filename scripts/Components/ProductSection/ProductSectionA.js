@@ -143,7 +143,9 @@ const ProductSectionA = (props) => {
         <SectionTiltle className="section_titile pdp-small mb-0">
           <h2 className="font-bold text-left md:text-center text-black">About {product.title}</h2>
         </SectionTiltle>
-        {parse(product.description)}
+        <div className="md:w-10/12 lg:w-6/12 m-auto">
+          {parse(product.description)}
+        </div>
       </ProductDescription>
       <DesktopProductDetails
         productTypeBlocks={productTypeBlocks}

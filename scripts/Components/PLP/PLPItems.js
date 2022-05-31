@@ -49,12 +49,19 @@ const PLPItems = ({ products }) => {
       </div>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         {products.length > lastIndex && (
-          <button
+          <button className="load-more"
             style={{
-              height: '48px',
-              background: '#F4F2EC',
-              width: '173px',
-              borderRadius: '0px',
+              'height': '48px',
+              'background': '#F4F2EC',
+              'width': '173px',
+              'borderRadius': '0px',
+              'fontSize': '12px',
+              'lineHeight': '20px !important',
+              'color': '#000',
+              'textTransform': 'uppercase',
+              'display': 'flex',
+              'alignItems': 'center',
+              'justifyContent': 'center',
             }}
             onClick={() => loadMore()}
           >

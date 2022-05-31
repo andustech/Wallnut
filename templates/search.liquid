@@ -57,6 +57,7 @@
   </div>
 
   {% if search.performed %}
+  {% if search.results_count > 0 %}
     <div id="product-loop">
       {% for item in search.results %}
       {% unless item.handle contains "exclusive" or item.handle == "scandinavian-lounge-extra-chair-cover" or item.handle == "scandinavian-dining-extra-chair-cover" or item.handle == "classic-lounge-extra-chair-cover" or item.handle == "classic-dining-extra-chair-cover"  %}
@@ -103,8 +104,10 @@
 
     {% render 'pagination', paginate: paginate %}
 
+  {% else %}
+  <h4 class="h4-attila-sans text-center">No matches found</h4>
   {% endif %}
-
+{% endif %}
 {% endpaginate %}
 </div>
 <style>
