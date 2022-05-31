@@ -6,15 +6,12 @@ const meetWallnut = ({ settings, blocks }) => {
   const [videoActive, setVideoActive] = useState('fade-out');
 
   const handleVideoPopup = () => {
-    console.log('click', videoActive)
     if (videoActive === 'fade-out') {
       setVideoActive('fade-in');
-      console.log('if');
       $('.video_items_container video')[0].play();
       // $('video').removeAttr('controls');
       $('.video_items_container .close-button').addClass('md:hidden');
     } else {
-      console.log('else');
       setVideoActive('fade-out');
       $('.video_items_container video')[0].pause();
       // $('video').attr('controls', true);
@@ -85,7 +82,7 @@ const meetWallnut = ({ settings, blocks }) => {
                     </ul>
                     { settings.video_btn_text && 
                       <>
-                          <a href="javascript:void(0);" onClick={() => handleVideoPopup()} className="video-open text-xs flex items-center mb-6 text-black leading-5 link_hover">
+                          <a href={undefined} onClick={() => handleVideoPopup()} className="video-open text-xs flex items-center mb-6 text-black leading-5 link_hover cursor-pointer">
                               <img 
                                   src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/video-play-black.svg?v=1652851742" 
                                   alt="Video Play" 

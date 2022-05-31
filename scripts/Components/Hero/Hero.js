@@ -90,12 +90,8 @@ Hero.propTypes = {
     content: PropTypes.string,
     image: PropTypes.string.isRequired,
     version: PropTypes.string.isRequired,
-    mobile_image: PropTypes.string.isRequired,
-    tablet_image: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     subheading: PropTypes.string.isRequired,
-    button_text: PropTypes.string.isRequired,
-    button_link: PropTypes.string.isRequired,
   }),
   themeSettings: PropTypes.shape({
     sale_start: PropTypes.string,
@@ -107,8 +103,6 @@ ButtonLink.propTypes = {
   settings: PropTypes.shape({
     title: PropTypes.string.isRequired,
     subheading: PropTypes.string.isRequired,
-    button_text: PropTypes.string.isRequired,
-    button_link: PropTypes.string.isRequired,
     text_color: PropTypes.string.isRequired,
     mobile_text_color: PropTypes.string.isRequired,
   }).isRequired,

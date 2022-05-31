@@ -73,7 +73,7 @@ const Header = (props) => {
             <div id="mini-cart-container" className="block">
               <a
                 href="/cart"
-                className="site-header__cart-toggle js-drawer-open-right block ml-6"
+                className="site-header__cart-toggle js-drawer-open-right block ml-6 relative"
                 aria-controls="CartDrawer"
                 aria-expanded="false"
               >
@@ -81,7 +81,7 @@ const Header = (props) => {
                   src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/cart-icon.svg?v=1652783627"
                   alt="cart"
                 />
-                {/* <div className="cart-count font-serif text-sm"></div> */}
+                <div className="cart-count font-serif text-sm">{cartCount}</div>
                 {/* <CartHighlight cartCount={cartCount} /> */}
               </a>
             </div>

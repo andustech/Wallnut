@@ -9,7 +9,7 @@ const Rectangle = ({ width = '12', height = '12', fill = 'none' }) => (
     fill='none'
     xmlns="http://www.w3.org/2000/svg"
   >
-    <rect x="0.25" y="0.25" width="11.5" height="11.5" stroke="black" stroke-opacity="0.7" stroke-width="0.5"/>
+    <rect x="0.25" y="0.25" width="11.5" height="11.5" stroke="black" strokeOpacity="0.7" strokeWidth="0.5"/>
     { fill === '#000' && (
       <rect x="2" y="2" width="8" height="8" fill="black"/>
     )}

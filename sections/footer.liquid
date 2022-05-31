@@ -24,7 +24,7 @@
             {% comment %} <form action=''>
               <input class='email_input' placeholder='Enter Email' type='emai'>
             </form> {% endcomment %}
-            <p class="mt-4">{{ section.settings.content }}</p>
+            <p class="mt-4 mb-0">{{ section.settings.content }}</p>
           </div>
         </div>
       </div>
@@ -459,6 +459,30 @@ form.needsclick.klaviyo-form.klaviyo-form-version-cid_1.kl-private-reset-css-Xua
     .newsletter {
       max-width: 387px;
       width: 100%;
+    }
+    @media only screen and (min-width: 1264px) and  (max-width: 1440px) {
+      .fast_order_inner {
+        padding-left: 75px;
+        padding-right: 75px;
+      }
+    }
+    @media only screen and (min-width: 1201px) and (max-width: 1400px) {
+      .newsletter {
+        max-width: 357px;
+      }
+    }
+    @media only screen and (min-width: 1101px) and (max-width: 1200px) {
+      .newsletter {
+        max-width: 337px;
+      }
+    }
+    @media only screen and (min-width: 991px) and (max-width: 1100px) {
+      .newsletter {
+        max-width: 300px;
+      }
+      .news_para {
+        max-width: 215px;
+      }
     }
   
   {% comment %} @media only screen and (min-width: 991px) {

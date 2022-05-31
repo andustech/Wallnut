@@ -210,18 +210,6 @@ const Filters = ({
           <div className="flex justify-between w-full">
             <div className="grid grid-cols-2 gap-y-4 md:flex py-5 justify-items-center">
               <FilterDropdown
-                filterName="size"
-                setMenuOpen={setMenuOpen}
-                filterType="size"
-                menuOpen={menuOpen}
-                filterTitle="SIZE"
-                options={sizeOption}
-                setTagSelected={setTagSelected}
-                TagSelected={TagSelected}
-                RemoveTag={RemoveTag}
-                setRemoveTag={setRemoveTag}
-              />
-              <FilterDropdown
                 filterName="subject"
                 setMenuOpen={setMenuOpen}
                 filterType="subject"

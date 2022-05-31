@@ -5,15 +5,12 @@ const howItWorksVideo = ({ settings }) => {
   const [videoActive, setVideoActive] = useState('fade-out');
 
   const handleVideoPopup = () => {
-    console.log('click', videoActive)
     if (videoActive === 'fade-out') {
       setVideoActive('fade-in');
-      console.log('if');
       $('.video_container video')[0].play();
       // $('video').removeAttr('controls');
       $('.close-button').addClass('md:hidden');
     } else {
-      console.log('else');
       setVideoActive('fade-out');
       $('.video_container video')[0].pause();
       // $('video').attr('controls', true);
@@ -52,7 +49,7 @@ const howItWorksVideo = ({ settings }) => {
                 { content && <p className="mb-6">{content}</p> }
                 { video_btn_text && 
                     <>
-                        <a href="javascript:void(0);" onClick={() => handleVideoPopup()} className="video-open text-white flex items-center link_hover hidden lg:block">
+                        <a href={undefined} onClick={() => handleVideoPopup()} className="video-open text-white flex items-center link_hover hidden lg:block cursor-pointer">
                             <img 
                                 src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/video-play.svg?v=1651814299" 
                                 alt="Video Play" 
@@ -60,7 +57,7 @@ const howItWorksVideo = ({ settings }) => {
                             />
                             {video_btn_text}
                         </a>
-                        <a href="javascript:void(0);" onClick={() => handleVideoPopup()} className="video-open text-black flex items-center link_hover lg:hidden">
+                        <a href={undefined} onClick={() => handleVideoPopup()} className="video-open text-black flex items-center link_hover lg:hidden cursor-pointer">
                             <img 
                                 src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/video-play-black.svg?v=1652851742" 
                                 alt="Video Play" 
