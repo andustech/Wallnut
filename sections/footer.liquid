@@ -14,7 +14,6 @@
     <div class="clear"></div>
     <div class="fast_order_main_container top" style='background-color: #133744'>
       <div class="container">
-        <!-- <div class="bg-white grid grid-center grid-cols-3 items-center"> -->
         <div class="fast_order_inner justify-between flex items-start" style='background: #F4F2EC;'>
           <h2 class="h3-attila-sans font-medium text-black">{{ section.settings.title }}</h2>
           <p class="news_para mb-0">{{ section.settings.subheading }}</p>
@@ -50,27 +49,6 @@
                   </div>
                 {% endif %}
               {% endfor %}
-                <!--
-                <div class='footer_opt'>
-                  <p class='footer_title'>Support</p>
-                  <ul>
-                    <li><a href='#'>FAQS</a></li>
-                    <li><a href='#'>Returns</a></li>
-                    <li><a href='#'>Shipping</a></li>
-                    <li><a href='#'>Instructions</a></li>
-                    <li><a href='#'>Accesibility</a></li>
-                    <li><a href='#'>Afterpay</a></li>
-                  </ul>
-                </div>
-                <div class='footer_opt'>
-                  <p class='footer_title'>Shop</p>
-                  <ul>
-                    <li><a href='#'>Shop by Size</a></li>
-                    <li><a href='#'>Shop by Subject</a></li>
-                    <li><a href='#'>Shop by Mood</a></li>
-                    <li><a href='#'>Shop by Style</a></li>
-                  </ul>
-                </div> -->
               </div>
               <div class='footer_right'>            
                 {% for block in section.blocks %}
@@ -127,9 +105,6 @@
 </div>
 
   <style>
-    /* .fast_order_main_container {
-      padding: 72px 64px;
-    }*/ 
     .fast_order_main_container {
       padding-top: 72px;
       padding-bottom: 72px;
@@ -137,11 +112,6 @@
     .fast_order_inner {
         padding: 75px 115px;
     }
-   /* .footer-section .top h2 {
-        font-size: 36px;
-        line-height: 44px;
-        font-family: "AttilaSansUniform-Medium" !important;
-    } */
     .footer-section .top .newsletter p {
         font-size: 10px !important;
         line-height: 14px !important;
@@ -149,20 +119,8 @@
         font-weight: 400 !important;
     }
     .fast_order_inner h2 {
-        /* font-weight: 500;
-        font-size: 36px;
-        line-height: 44px;
-        letter-spacing: -0.005em; */
         margin: 0 15px 0 0;
-        /* font-family: "AttilaSansUniform-Medium" !important; */
     }
-    /* .fast_order_inner p {
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 24px;
-        letter-spacing: -0.01em;
-        font-family: "GoodSans" !important;
-    } */
     .klaviyo-form-SxEnPF p {
         font-weight: 300;
         font-size: 10px;
@@ -183,14 +141,12 @@
         font-family: "GoodSans-Light" !important;
     }
     
-
     input.needsclick.go2416446746.kl-private-reset-css-Xuajs1 {
     background: transparent !important;
     border: none !important;
     border-bottom: 1px solid black !important;
     font-size: 16px !important;
     font-weight: 400 !important;
-    /* position: relative; */
     line-height: 24px;
     padding: 0 0 8px 0 !important;
     width: 100%;
@@ -253,25 +209,12 @@ form.needsclick.klaviyo-form.klaviyo-form-version-cid_1.kl-private-reset-css-Xua
         .fast_order_inner {
             padding: 70px 70px;
         }
-       /*  .fast_order_inner h2 {
-            font-size: 30px;
-        } */
     }
     @media only screen and (max-width: 1263px) {
-        /* .footer-section .top h2 {
-            font-size: 30px;
-            line-height: 35px;
-        }
-        .fast_order_main_container {
-            padding: 60px 40px;
-        } */
         .fast_order_main_container {
           padding-top: 60px;
           padding-bottom: 60px;
         }
-        /* .footer_bg {
-            padding: 55px 40px 72px 40px !important;
-        } */
         .footer_bg {
             padding-top: 55px !important;
             padding-bottom: 40px !important;
@@ -281,19 +224,11 @@ form.needsclick.klaviyo-form.klaviyo-form-version-cid_1.kl-private-reset-css-Xua
         }
     }
     @media only screen and (max-width: 1149px) {
-        /* .fast_order_main_container {
-            padding: 54px 20px;
-        }
-        .fast_order_main_container {
-            padding: 54px 35px;
-        } */
+        
         .fast_order_main_container {
           padding-top: 54px;
           padding-bottom: 54px;
         }
-        /* .footer_bg {
-            padding: 55px 35px 72px !important;
-        } */
         .footer_bg {
             padding-top: 55px !important;
             padding-bottom: 72px !important;
@@ -301,44 +236,23 @@ form.needsclick.klaviyo-form.klaviyo-form-version-cid_1.kl-private-reset-css-Xua
         .fast_order_inner {
             padding: 50px 30px;
         }
-       /* .footer-section .top h2 {
-            font-size: 25px;
-            line-height: 29px;
-        } */
-    }
-    @media only screen and (max-width: 1200px) {
-        /* .fast_order_main_container {
-            padding-left: 20px;
-            padding-right: 20px;
-        } */
-        /* .footer_bg {
-            padding-left: 20px !important;
-            padding-right: 20px !important;
-        } */
     }
     @media only screen and (max-width: 991px) {
         .fast_order_inner {
             flex-direction: column;
         }
-        /* .footer_bg {
-          padding: 55px 45px 72px 40px!important;
-        } */
         .footer_bg {
           padding-top: 55px !important;
           padding-bottom: 72px!important;
         }
     }
     @media only screen and (max-width: 575px) {
-      /* .footer_bg {
-          padding: 24px 20px !important;
-      } */
       .footer_bg {
           padding-top: 24px !important;
           padding-bottom: 24px !important;
       }
     }
     .footer_bg {
-        /* padding: 55px 64px 72px 64px; */
         padding-top: 55px ;
         padding-bottom: 72px;
         background-color: #376043;
