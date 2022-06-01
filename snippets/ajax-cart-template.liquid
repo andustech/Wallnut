@@ -46,22 +46,24 @@
                       <span class="ajaxcart__price">{{{price}}}</span>
                     {{/if}}
                   </div>
-                  {{#if variation}}
-                    <p class="desktop-12 ajaxcart__product-meta text-xs">{{variation}}</p>
-                  {{/if}}
-                  {{#if sellingPlanAllocation}}
-                     <p class="desktop-12">{{ sellingPlanAllocationName }}</p>
+                  <div class="desktop-12">
+                    {{#if variation}}
+                      <p class="desktop-12 ajaxcart__product-meta text-xs">{{variation}}</p>
                     {{/if}}
-                  {{#properties}}
-                    {{#each this}}
-                      {{#if this}}
-                        <span class="desktop-12 ajaxcart__product-meta text-sm">{{@key}}: {{this}}</span>
+                    {{#if sellingPlanAllocation}}
+                      <p class="desktop-12">{{ sellingPlanAllocationName }}</p>
                       {{/if}}
-                    {{/each}}
-                  {{/properties}}
-                  {% endraw %}{% if settings.cart_vendor_enable %}{% raw %}
-                    <span class="desktop-12 ajaxcart__product-meta text-sm">{{ vendor }}</span>
-                  {% endraw %}{% endif %}{% raw %}
+                    {{#properties}}
+                      {{#each this}}
+                        {{#if this}}
+                          <span class="desktop-12 ajaxcart__product-meta text-sm">{{@key}}: {{this}}</span>
+                        {{/if}}
+                      {{/each}}
+                    {{/properties}}
+                    {% endraw %}{% if settings.cart_vendor_enable %}{% raw %}
+                      <span class="desktop-12 ajaxcart__product-meta text-sm">{{ vendor }}</span>
+                    {% endraw %}{% endif %}{% raw %}
+                  </div>
                 </div>
 
                 <span {{#unless unitPriceMeasurement}}class="hide"{{/unless}} data-unit-price-group>
@@ -109,7 +111,6 @@
                   </a>
                 </div>                
               </div>
-
           </div>
         </div>
         {{/items}}
@@ -138,7 +139,7 @@
       </div>
       <div class="ajaxcart__footer row px-6 pl-0 pr-0">
         <div class="subtotal h-6">
-          <p class="title normal-case font-normal">Subtotal:</p>
+          <p class="title normal-case font-normal">Subtotal {% endraw %}({{ cart.item_count }}){% raw %}:</p>
           <p class="subtotal-price"><span id="miniCartTotal" class="cart-original-total">{{{subTotalPrice}}}</span></p>
           
         </div>
