@@ -27,10 +27,10 @@
         <div class="ajaxcart__product text-left">
           <div class="ajaxcart row border-none" data-line="{{line}}">
 
-              <div class="grid__item desktop-4 tablet-2 mobile-1">
+              <div class="grid__item desktop-4 tablet-1 mobile-1">
                 <a href="{{url}}" class="ajaxcart__product-image"><img src="{{img}}" alt=""></a>
               </div>
-              <div class="desktop-8 tablet-4 mobile-2">
+              <div class="desktop-8 tablet-5 mobile-2">
 
                 <div class="row">
                   <div class="desktop-8 tablet-4 mobile-2 leading-none">
@@ -46,22 +46,22 @@
                       <span class="ajaxcart__price">{{{price}}}</span>
                     {{/if}}
                   </div>
-                  <div class="desktop-12">
+                  <div class="desktop-12 tablet-4 mobile-2">
                     {{#if variation}}
-                      <p class="desktop-12 ajaxcart__product-meta text-xs">{{variation}}</p>
+                      <p class="ajaxcart__product-meta text-xs">{{variation}}</p>
                     {{/if}}
                     {{#if sellingPlanAllocation}}
-                      <p class="desktop-12">{{ sellingPlanAllocationName }}</p>
+                      <p>{{ sellingPlanAllocationName }}</p>
                       {{/if}}
                     {{#properties}}
                       {{#each this}}
                         {{#if this}}
-                          <span class="desktop-12 ajaxcart__product-meta text-sm">{{@key}}: {{this}}</span>
+                          <span class="ajaxcart__product-meta text-sm">{{@key}}: {{this}}</span>
                         {{/if}}
                       {{/each}}
                     {{/properties}}
                     {% endraw %}{% if settings.cart_vendor_enable %}{% raw %}
-                      <span class="desktop-12 ajaxcart__product-meta text-sm">{{ vendor }}</span>
+                      <span class="ajaxcart__product-meta text-sm">{{ vendor }}</span>
                     {% endraw %}{% endif %}{% raw %}
                   </div>
                 </div>
@@ -135,13 +135,13 @@
             </div>
           {% endraw %}{% endif %}{% raw %}
         </div>
+        <div class="drawer-continue-shopping show-on-mobile"><a href="https://wallnut.com/collections/all">Continue Shopping</a></div>
       <div id="react-chair-cover-upsell"></div>
       </div>
       <div class="ajaxcart__footer row px-6 pl-0 pr-0">
-        <div class="subtotal h-6">
+        <div class="subtotal">
           <p class="title normal-case font-normal">Subtotal {% endraw %}({{ cart.item_count }}){% raw %}:</p>
-          <p class="subtotal-price"><span id="miniCartTotal" class="cart-original-total">{{{subTotalPrice}}}</span></p>
-          
+          <p class="subtotal-price"><span id="miniCartTotal" class="cart-original-total">{{{subTotalPrice}}}</span></p>          
         </div>
         <div id="afterpay-div" class="flex free-shipping-drawer">          
           <svg
@@ -193,15 +193,13 @@
         </div>
         <a class="outline-button" href="/collections">{% endraw %}{{ 'cart.general.continue' | t }}{% raw %}</a>
         <button type="submit" class="cart__checkout mt-4 primary_btn uppercase" name="checkout" onclick="optimizelyCheckout();">
-          {% endraw %} 
-          {{ 'cart.general.checkout' | t }}
-          {% raw %}
+          Continue to checkout
         </button>
         {% endraw %}{% if additional_checkout_buttons %}
           <div class="additional_checkout_buttons">{{ content_for_additional_checkout_buttons }}</div>
         {% endif %}{% raw %}
         <div id="react-afterpay-cart-copy"></div>
-        <div class="drawer-continue-shopping"><a href="https://wallnut.com/collections/all">Continue Shopping</a></div>
+        <div class="drawer-continue-shopping show-on-desktop"><a href="https://wallnut.com/collections/all">Continue Shopping</a></div>
     </form>
   {% endraw %}
   </script>
