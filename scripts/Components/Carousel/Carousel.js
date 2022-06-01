@@ -72,7 +72,7 @@ const CarouselA = (props) => {
         <div className="w-full h-full">
           <CarouselContainer ref={containerRef} onScroll={handleOnScroll}>
             {images.map((image, i) => (
-              <Media key={i} image={image.url} alt={image.alt} currentImage={currentImageIndex === i}/>
+              <Media key={i} image={image.url} alt={image.alt} isCarousel currentImage={currentImageIndex === i}/>
             ))}
           </CarouselContainer>
         </div>
