@@ -37,8 +37,8 @@ const IndexBetterWay = ({ blocks }) => {
 
   return (
     <div className="section-padding">
-      <div className="bg-deep-moss py-8 md:py-16 text-white">
-        <div className="container mx-auto md:py-2">
+      <div className="bg-deep-moss py-8 lg:py-16 text-white">
+        <div className="container mx-auto lg:py-2">
           {blocks.map((block, index) => {
             const { settings } = block;
             return (
@@ -47,9 +47,9 @@ const IndexBetterWay = ({ blocks }) => {
                   <div className="video_items_container flex items-center flex-col-reverse md:flex-row mb-14 md:mb-0">
                     <div className="video_content w-full md:w-6/12 md:pr-8 lg:px-13 xl:px-16 pt-6 md:pt-0- pb-0 md:pb-5 lg:pb-0">
                       {settings.title && (
-                        <h2 className="font-bold text-white mb-4">{settings.title}</h2>
+                        <h2 className="font-bold text-white mb-2 lg:mb-4">{settings.title}</h2>
                       )}
-                      {settings.content && <p className="mb-6 md:mb-7">{settings.content}</p>}
+                      {settings.content && <p className="mb-6">{settings.content}</p>}
                       {settings.video_btn_text && (
                         <>
                           <a
@@ -137,9 +137,9 @@ const IndexBetterWay = ({ blocks }) => {
                     </div>
                     <div className="how_it_work_content w-full md:w-6/12 md:pl-8 lg:px-13 xl:px-16 pt-6 md:pt-0-">
                       {settings.title && (
-                        <h2 className="font-bold text-white mb-4">{settings.title}</h2>
+                        <h2 className="font-bold text-white mb-2 lg:mb-4">{settings.title}</h2>
                       )}
-                      {settings.content && <p className="mb-6 md:mb-7">{settings.content}</p>}
+                      {settings.content && <p className="mb-6">{settings.content}</p>}
                       <div className="flex items-center flex-row">
                         {settings.button_text && (
                           <a href={settings.button_link} className="primary_btn mr-6 sm:mr-10">

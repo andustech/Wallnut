@@ -16,9 +16,9 @@ const VideoPromoSection = ({ settings }) => {
             { section_title && <div className='title_top uppercase'>{section_title}</div> }
            
             <MiddContent>
-              { title && <h2 className="font-bold text-black">{title}</h2> }
+              { title && <h2 className="font-bold text-black mb-1 md:mb-0">{title}</h2> }
               { subheading && <p className="h2-attila-sans">{subheading}</p> }
-              { button_text && <a className='premium_link bg-milk' href={button_link}>{button_text}</a> }
+              { button_text && <a className='premium_link bg-milk md:pr-16 md:pl-7' href={button_link}>{button_text}</a> }
             </MiddContent>
           </div>
         </div>

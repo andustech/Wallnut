@@ -558,9 +558,10 @@ export const getCurrentImages = (product, variant) => {
 
   var size = variant.options[sizeIndex].replace(/ |x|"/gi, '');
   var roomImg = 'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/'+product.handle.replace('art', '')+'B-'+color+'-'+size+'.jpg?v=1652388790'
+  var frameImg = 'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/'+product.handle.replace('art', '')+'A-'+color+'-2432.jpg'
 
   let productImgs = [
-    variant.featured_image.src,
+    frameImg,
     roomImg,
     'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/Image-C-close-up-corner-angled-'+color+'.jpg?',
     'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/Image-D-back-of-frame-angled.jpg',

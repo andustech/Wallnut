@@ -80,6 +80,7 @@ const FilterDropdown = ({
   }
 
   return (
+    <div style={{position:'relative'}}>
     <FilterDropdownItem>
       <FilterContainer id="dropdown" onClick={handleClick}>
         <FilterTitle>{filterTitle}</FilterTitle>
@@ -100,11 +101,12 @@ const FilterDropdown = ({
           setMenuOpen={setMenuOpen}
       />
     </FilterDropdownItem>
+    </div>
   );
 };
 
 const FilterDropdownItem = styled.div.attrs ({
-  className: 'fltr-drpdwn-item',
+  className: 'fltr-drpdwn-item ',
 })``;
 
 const FilterContainer = styled.div.attrs({

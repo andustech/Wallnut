@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import tw from 'twin.macro';
 
 const MobileNavIcon = ({ isOpen }) => (
-  <NavIcon style={{width: "20px"}}>
-    <Span style={{height: "1.5px"}} smallwidth className="top-0" isOpen={isOpen}  />
-    <Span style={{height: "1.5px"}} rotateRight className="top-2 rotateRight" isOpen={isOpen}  />
-    <Span style={{height: "1.5px"}} rotateLeft className="top-2 rotateLeft" isOpen={isOpen}  />
-    <Span style={{height: "1.5px"}} smallwidth className="top-4" isOpen={isOpen}  />
+  <NavIcon style={{width: "19px"}}>
+    <Span style={{height: "1px"}} smallwidth className="top-0" isOpen={isOpen}  />
+    <Span style={{height: "1px"}} rotateRight className="top-2 rotateRight" isOpen={isOpen}  />
+    <Span style={{height: "1px"}} rotateLeft className="top-2 rotateLeft" isOpen={isOpen}  />
+    <Span style={{height: "1px"}} smallwidth className="top-4" isOpen={isOpen}  />
   </NavIcon>
 );
 

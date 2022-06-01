@@ -30,9 +30,20 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
   const checkFilters = Object.values(allFilters).some((filter) => filter.length > 0);
   const [TagSelected, setTagSelected] = useState([]);
   const filterRef = useRef();
+  const [slugValue, setSlugValue] = useState('');
   useEffect(() => {
     FilterProducts();
   }, [allFilters, sortingApply, products]);
+  useEffect(() => {
+    slugToSelectedFilterValue();
+  }, [slugValue]);
+  const slugToSelectedFilterValue = () => {
+    let arr = window.location.pathname.split('/');
+    let value = arr[arr.length - 1];
+    if (value !== '' && value !== undefined) {
+      setSlugValue(value);
+    }
+  };
   const FilterProducts = () => {
     var productFilter = [];
     if (checkFilters || sortingApply) {
@@ -66,7 +77,7 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
       for (let index = 0; index < products.length; index++) {
         const productElement = products[index];
 
-        Object.keys(allFilters).map((element, inde2) => {
+        Object.keys(allFilters).map((element) => {
           a: for (let index1 = 0; index1 < allFilters[element].length; index1++) {
             const filterValue = allFilters[element][index1];
             const tempEntry = {
@@ -74,18 +85,19 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
               tagValue: filterValue,
             };
             let tempRes = TagSelected.filter(
-              (i) => JSON.stringify(i) === JSON.stringify(tempEntry)
+              (i) => i.tagType === tempEntry.tagType && i.tagValue === tempEntry.tagValue
             );
             if (tempRes.length == 0 && !isRemoving) {
               setTagSelected([...TagSelected, tempEntry]);
             }
-            
+
             if (
               (allFilters['subject'].length !== 0 && element === 'subject') ||
               (allFilters['mood'].length !== 0 && element === 'mood') ||
               (allFilters['decorStyle'].length !== 0 && element === 'decorStyle') ||
               (allFilters['artStyle'].length !== 0 && element === 'artStyle') ||
-              (allFilters['medium'].length !== 0 && element === 'medium')
+              (allFilters['medium'].length !== 0 && element === 'medium') ||
+              (allFilters['orientation'].length !== 0 && element === 'orientation')
             ) {
               for (let index = 0; index < productElement.tags.length; index++) {
                 const elementTags = productElement.tags[index];
@@ -165,6 +177,7 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
           sortingApply={sortingApply}
           products={combinedProducts}
           setIsRemoving={setIsRemoving}
+          slugValue={slugValue}
         />
         <PLPItems
           products={combinedProducts}

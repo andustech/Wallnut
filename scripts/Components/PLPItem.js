@@ -145,7 +145,9 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
     imgColor = 'walnut';
   }
 
-  let productImgSrc = product.media ? productImage?.featured_image.src : productImage?.src;
+  var productImgSrc = 'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/'+product.handle.replace('art', '')+'A-'+imgColor+'-2432.jpg'
+
+  // let productImgSrc = product.media ? productImage?.featured_image.src : productImage?.src;
 
   if (!productImgSrc) {
     productImgSrc =
@@ -246,14 +248,24 @@ PLPItem.propTypes = {
   collectionTitle: PropTypes.string,
 };
 
-const ItemContainer = styled.div(() => [tw`flex flex-col cursor-pointer`, `max-width: 520px;`]);
+const ItemContainer = styled.div(() => [tw`flex flex-col cursor-pointer`, `max-width: 520px;`, `
+  @media only screen and (max-width: 990px) {
+    max-width: 300px;
+  }
+  @media only screen and (max-width: 767px) {
+    max-width: 250px;
+  }
+  @media only screen and (max-width: 575px) {
+    max-width: 200px;
+  }
+`]);
 
 const ColorTitleWrapper = styled.div.attrs({
   className: 'w-full flex justify-center ',
 })``;
 
 const TitlePriceContainer = styled.div.attrs({
-  className: 'flex justify-start flex-col text-left mt-2.5 md:mt-3.5 lg:mt-2.5',
+  className: 'flex justify-start flex-col text-left mt-2.5 md:mt-3.5 lg:mt-3', 
 })``;
 
 const HoverContainer = styled.div(({ isHovered }) => [

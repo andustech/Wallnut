@@ -42,7 +42,7 @@ const indexMoodSection = ({ settings }) => {
           </div> */}
 
           <div className="mood_card_container ">
-          <div className="mr-6"> 
+          <div className="mr-4 sm:mr-6"> 
             <div className="by_mood_card">
               <div>
                 {image_1 && <img src={image_1} />}

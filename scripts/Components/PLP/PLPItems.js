@@ -22,7 +22,7 @@ const PLPItems = ({ products }) => {
   return (
     <InfiniteScroll dataLength={products.length || 0} loader={''} hasMore={true}>
       <div className="grid justify-center container">
-        <div className="grid grid-cols-1 justify-items-center gap-6 mb-8 max-w-screen-xxl xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 mt-18">
+        <div className="grid grid-cols-1 justify-items-center gap-4 md:gap-6 mb-8 max-w-screen-xxl xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 mt-18">
           {productFilterManage.map((product) => {
             let colorsArr = [];
             const colorIndex = product.options.findIndex((option) => option === 'Frame Color');

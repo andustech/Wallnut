@@ -66,7 +66,7 @@ const ValuePropSection = ({settings, collection_handle_1, collection_handle_2, c
           { collection_handle_1.handle && 
             <ValuePropColumn className='premium_card_container premium_pos'>
                 <div className="premium_img_box">
-                  <img className='premium_img' src={coll_image_1} />
+                  <img className='premium_img object-cover' src={coll_image_1} />
                 </div>
                 { collection_handle_1.title && 
                   <div className="flex items-center text-base text-center whitespace-nowrap absolute left-0 bottom-0 premium_content">
@@ -78,11 +78,11 @@ const ValuePropSection = ({settings, collection_handle_1, collection_handle_2, c
           { collection_handle_2.handle &&
             <ValuePropColumn className='premium_card_container premium_pos'>
               <div className="premium_img_box">
-                <img className='premium_img' src={coll_image_2} />
+                <img className='premium_img object-cover' src={coll_image_2} />
               </div>
               { collection_handle_2.title && 
                 <div className="flex items-center text-base text-center whitespace-nowrap absolute left-0 bottom-0 premium_content">
-                  <a className='premium_link bg-milk' href={handle_2}>Shop {collection_handle_2.title}</a>
+                  <a className='premium_link bg-milk md:pl-5 md:pr-14' href={handle_2}>Shop {collection_handle_2.title}</a>
                 </div>
               }
             </ValuePropColumn>
@@ -90,11 +90,11 @@ const ValuePropSection = ({settings, collection_handle_1, collection_handle_2, c
           { collection_handle_3.handle && 
             <ValuePropColumn className='premium_card_container premium_pos'>
               <div className="premium_img_box">
-                <img className='premium_img' src={coll_image_3} />
+                <img className='premium_img object-cover' src={coll_image_3} />
               </div>
               { collection_handle_3.title && 
                 <div className="flex items-center text-base text-center whitespace-nowrap absolute left-0 bottom-0 premium_content">
-                  <a className='premium_link bg-milk' href={handle_3}>Shop {collection_handle_3.title}</a>
+                  <a className='premium_link bg-milk md:pl-4 md:pr-12' href={handle_3}>Shop {collection_handle_3.title}</a>
                 </div>
               }
             </ValuePropColumn>

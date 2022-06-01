@@ -17,6 +17,7 @@ const Filters = ({
   products,
   sortingApply,
   setSortingApply,
+  slugValue,
 }) => {
   const { allFilters, setAllFilters, checkFilters } = useContext(plpContext);
   const {
@@ -95,7 +96,48 @@ const Filters = ({
   ];
   const mediumOption = ['Drawing', 'Mixed Media', 'Photography', 'Graphic', 'Painting'];
   const orientationOption = ['Horizontal', 'Vertical'];
+  useEffect(() => {
+    slugValueFindInfilter();
+  }, [slugValue]);
 
+  const slugValueFindInfilter = () => {
+    let filterName = '';
+    let subjectFilter = subjectOption.filter((i) => i.toLowerCase() === slugValue.toLowerCase());
+    let orientationOptionFilter = orientationOption.filter(
+      (i) => i.toLowerCase() === slugValue.toLowerCase()
+    );
+    let mediumOptionFilter = mediumOption.filter(
+      (i) => i.toLowerCase() === slugValue.toLowerCase()
+    );
+    let decorOptionFilter = decorOption.filter((i) => i.toLowerCase() === slugValue.toLowerCase());
+    let artOptionFilter = artOption.filter((i) => i.toLowerCase() === slugValue.toLowerCase());
+    let moodOptionFilter = moodOption.filter((i) => i.toLowerCase() === slugValue.toLowerCase());
+
+    if (subjectFilter.length !== 0) {
+      filterName = 'subject';
+    } else if (orientationOptionFilter.length !== 0) {
+      filterName = 'orientation';
+    } else if (mediumOptionFilter.length !== 0) {
+      filterName = 'medium';
+    } else if (decorOptionFilter.length !== 0) {
+      filterName = 'decorStyle';
+    } else if (artOptionFilter.length !== 0) {
+      filterName = 'artStyle';
+    } else if (moodOptionFilter.length !== 0) {
+      filterName = 'mood';
+    }
+    if (filterName !== '') {
+      const demo = {
+        ...allFilters,
+        [filterName]: [
+          ...allFilters[filterName],
+          slugValue.substring(0, 1).toUpperCase() + slugValue.substring(1),
+        ],
+      };
+      setAllFilters(demo);
+    }
+    // setAllFilters({ ...tempArr, slugValue });
+  };
   useEffect(() => {
     document.body.addEventListener('click', (e) => {
       if (menuOpen) {
@@ -124,15 +166,15 @@ const Filters = ({
   }, [menuOpen]);
 
   const handleClearAll = () => {
-      setAllFilters({
-        subject: [],
-        mood: [],
-        decorStyle: [],
-        artStyle: [],
-        orientation: [],
-        medium: [],
-      });
-      setTagSelected([]);
+    setAllFilters({
+      subject: [],
+      mood: [],
+      decorStyle: [],
+      artStyle: [],
+      orientation: [],
+      medium: [],
+    });
+    setTagSelected([]);
   };
 
   const handleMenuOpen = () => {
@@ -271,7 +313,7 @@ const Filters = ({
                         <p>{items.tagValue}</p>{' '}
                         <div
                           className="svg-icon"
-                          id={items.tagValue}
+                          id={items.tagValue + '-' + items.tagType}
                           onClick={() => removeSelectedTag(items)}
                         >
                           <svg
@@ -282,8 +324,8 @@ const Filters = ({
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
-                              fill-rule="evenodd"
-                              clip-rule="evenodd"
+                              fillRule="evenodd"
+                              clipRule="evenodd"
                               d="M0.162507 0.162507C0.379876 -0.0541689 0.731253 -0.0541689 0.948622 0.162507L5 4.2146L9.05138 0.162507C9.26875 -0.0541689 9.62012 -0.0541689 9.83749 0.162507C10.0542 0.379876 10.0542 0.731253 9.83749 0.948622L5.7854 5L9.83749 9.05138C10.0542 9.26875 10.0542 9.62012 9.83749 9.83749C9.62012 10.0542 9.26875 10.0542 9.05138 9.83749L5 5.7854L0.948622 9.83749C0.731253 10.0542 0.379876 10.0542 0.162507 9.83749C-0.0541689 9.62012 -0.0541689 9.26875 0.162507 9.05138L4.2146 5L0.162507 0.948622C-0.0541689 0.731253 -0.0541689 0.379876 0.162507 0.162507Z"
                               fill="black"
                             />
@@ -398,7 +440,7 @@ const Text = styled.div`
   row-gap: 12px;
 `;
 const Tag = styled.div`
-  padding-right: 16px;
+  padding-right: 24px;
   display: flex;
   justify-content: space-between;
   color: #000000;

@@ -19,7 +19,6 @@ export const removeFilterItems = (
   tempArr = tempArr.includes(option)
     ? tempArr.filter((item) => item !== option)
     : [...tempArr, option];
-  console.log('object :>> ',tempArr);
   const styleAndChairTypeFilters = toggleFilters(
     allFilters,
     filterName,

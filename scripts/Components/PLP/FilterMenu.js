@@ -49,17 +49,13 @@ const FilterMenu = ({
   filterName,
   collectionTitle,
   TagSelected,
-  setTagSelected, RemoveTag,
+  setTagSelected,
+  RemoveTag,
   setRemoveTag,
-  setMenuOpen
+  setMenuOpen,
 }) => {
   const { allFilters, setAllFilters } = useContext(plpContext);
-  useEffect(() => {
-    console.log('tag :>> ', TagSelected);
-  }, [TagSelected]);
   const handleClick = (option) => {
-    console.log('tag :>> ', option);
-
     let tempArr = [...allFilters[filterName]];
 
     if (tempArr.includes('All')) {
@@ -119,20 +115,22 @@ const FilterMenu = ({
   }
 
   return (
-    <MenuContainer id="filterMenu" {...{ menuOpen, menuName }}>
-      {options.map((option, i) => (
-        <FilterItem
-          option={option}
-          key={i}
-          menuName={menuName}
-          filterName={filterName}
-          collectionTitle={collectionTitle}
-          RemoveTag={RemoveTag}
-          setRemoveTag={setRemoveTag}
-          setMenuOpen={setMenuOpen}
-        />
-      ))}
-    </MenuContainer>
+    <div style={{ position: 'absolute', top: '41px', left: 0, right: 0 }}>
+      <MenuContainer id="filterMenu" {...{ menuOpen, menuName }}>
+        {options.map((option, i) => (
+          <FilterItem
+            option={option}
+            key={i}
+            menuName={menuName}
+            filterName={filterName}
+            collectionTitle={collectionTitle}
+            RemoveTag={RemoveTag}
+            setRemoveTag={setRemoveTag}
+            setMenuOpen={setMenuOpen}
+          />
+        ))}
+      </MenuContainer>
+    </div>
   );
 };
 
@@ -161,7 +159,9 @@ const MenuContainer = styled.div(({ menuOpen, menuName }) => [
   menuName === 'colorpicker' && menuOpen && tw`grid grid-cols-5 w-full justify-items-center`,
   `
   background: #fff;
-  box-shadow: 0 3px 10px 0 rgb(71 89 113 / 13%);`,
+  box-shadow: 0 3px 10px 0 rgb(71 89 113 / 13%);
+  
+}`,
 ]);
 
 const StyledColorSwatch = styled.div.attrs({

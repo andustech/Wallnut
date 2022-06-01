@@ -4,10 +4,17 @@ import styled from 'styled-components';
 // import VideoPlayer from '../VideoPlayer';
 
 const HeroV3 = ({ settings }) => {
-  const { image, video_url, title, subheading, button_text_1, button_link_1, button_text_2, button_link_2 } = settings;
+  const { image, video_url, mobile_image, title, subheading, button_text_1, button_link_1, button_text_2, button_link_2 } = settings;
+  if ($(window).width() <= 575) {
+    var banner_img = image;
+  } else {
+    // var banner_img = mobile_image;
+    var banner_img = image;
+  }
   return (
     <div className="main_banner relative" style={{backgroundImage: 'url('+image+')', backgroundSize: 'cover', backgroundPosition: 'center center', backgroundRepeat: 'no-repeat'}}>
-      <img src={image} className='bannr_img' alt="Banner" />
+      
+      <img src={banner_img} className='bannr_img' alt="Banner" />
       <div className='banner_content'>
         <div className='container'>
           <div className="overlay">
