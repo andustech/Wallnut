@@ -166,17 +166,19 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
               onMouseEnter={() => setHover(true)}
               onMouseLeave={() => setHover(false)}
             >
-              {!hover ? (
+              <div className="top">
                 <Media
                   alt={`${product.handle}-${currentOption.options.join(' ').toLowerCase().trim()}`}
                   image={productImgSrc}
+                  
                 />
-              ) : (
+              </div>
+              <div className="bottom">
                 <Media
                   alt={`${product.handle}-${currentOption.options.join(' ').toLowerCase().trim()}`}
                   image={`${cdnUrl}${product.handle.slice(0, -3)}B-${imgColor}-1824.jpg`}
                 />
-              )}
+              </div>
             </ImageContainer>
           )}
         </a>
@@ -260,10 +262,6 @@ const ItemContainer = styled.div(() => [tw`flex flex-col cursor-pointer`, `max-w
   }
 `]);
 
-const ColorTitleWrapper = styled.div.attrs({
-  className: 'w-full flex justify-center ',
-})``;
-
 const TitlePriceContainer = styled.div.attrs({
   className: 'flex justify-start flex-col text-left mt-2.5 md:mt-3.5 lg:mt-3', 
 })``;
@@ -274,23 +272,11 @@ const HoverContainer = styled.div(({ isHovered }) => [
   !isHovered && tw`hidden`,
   `bottom: 0;`,
 ]);
-const ImageContainer = styled.div(({ isHovered, noColorSelector }) => [
-  tw`transition-all duration-300`,
-]);
 
-const AddToCartContainer = styled.div.attrs({
-  className: 'flex gap-2 w-full justify-between px-2 md:px-3 py-2.5 md:py-3',
-})`
-  background: #e1eaf8;
-  height: 72px !important;
-`;
-const ButtonWrapper = styled.div(() => []);
+const ImageContainer = styled.div.attrs ({
+    className: 'list-img-wrap',
+})``;
 
-const CounterContainer = styled.div.attrs({
-  className: 'flex w-26 lg:w-32 justify-around h-12',
-})`
-  background: white;
-`;
 const ColorContainer = styled.div.attrs({
   className: 'flex w-full justify-between',
 })``;

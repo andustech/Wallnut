@@ -1,11 +1,14 @@
 import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import PLPItems from '../PLPItems';
 import Filters from '../Filters';
 import PLPDescription from '../PLPDescription';
 import SeoCopy from '../SEOCopy';
 import PLPContext from '../plpContext';
 import { mergedFetchedRecommendations } from '../../../utils';
+import FilterIcon from '../../Icons/filterIcon';
+import MobileFilters from '../MobileFilters';
 
 const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
   const [colors, setColors] = useState();
@@ -29,6 +32,8 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
   const [filterProducts, setFilterProducts] = useState([]);
   const checkFilters = Object.values(allFilters).some((filter) => filter.length > 0);
   const [TagSelected, setTagSelected] = useState([]);
+  const [isOpenFilter, setIsOpenFilter] = useState(false);
+
   const filterRef = useRef();
   const [slugValue, setSlugValue] = useState('');
   useEffect(() => {
@@ -159,26 +164,45 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
     setAllFilters,
     checkFilters,
   };
-
+  const sortingBy = (e) => {
+    setSortingApply(e.target.value);
+  };
   return (
     <PLPContext.Provider value={contextValue}>
+      {console.log('isOpenFilter', isOpenFilter)}
+      {isOpenFilter && (
+        <MobileFilters setIsOpenFilter={setIsOpenFilter} isOpenFilter={isOpenFilter} />
+      )}
       <div className="w-full">
+        <FilterMobile>
+          <div className="flex items-center" onClick={() => setIsOpenFilter(true)}>
+            <FilterSpan>FILTER</FilterSpan>
+            <FilterIcon />
+          </div>
+          <select id="sortbyMobileDropdown" name="sortBy" onChange={(e) => sortingBy(e)}>
+            <option>SORT BY</option>
+            <option value="titleAscending">Ascending</option>
+            <option value="titleDescending">Descending</option>
+          </select>
+        </FilterMobile>
         <PLPDescription filterRef={filterRef} {...{ collectionTitle, collectionDescription }} />
-        <Filters
-          colorFilters={colorFilters}
-          setColorFilters={setColorFilters}
-          stickyFilter={stickyFilter}
-          colors={colors}
-          chairTypes={chairTypes}
-          collectionTitle={collectionTitle}
-          setTagSelected={setTagSelected}
-          TagSelected={TagSelected}
-          setSortingApply={setSortingApply}
-          sortingApply={sortingApply}
-          products={combinedProducts}
-          setIsRemoving={setIsRemoving}
-          slugValue={slugValue}
-        />
+        <FiltersDesktop>
+          <Filters
+            colorFilters={colorFilters}
+            setColorFilters={setColorFilters}
+            stickyFilter={stickyFilter}
+            colors={colors}
+            chairTypes={chairTypes}
+            collectionTitle={collectionTitle}
+            setTagSelected={setTagSelected}
+            TagSelected={TagSelected}
+            setSortingApply={setSortingApply}
+            sortingApply={sortingApply}
+            products={combinedProducts}
+            setIsRemoving={setIsRemoving}
+            slugValue={slugValue}
+          />
+        </FiltersDesktop>
         <PLPItems
           products={combinedProducts}
           collectionTitle={collectionTitle}
@@ -205,6 +229,36 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
     </PLPContext.Provider>
   );
 };
+
+const FiltersDesktop = styled.div`
+  display: block;
+  @media (max-width: 480px) {
+    display: none;
+  }
+`;
+const FilterMobile = styled.div`
+  display: flex;
+  margin: 0 20px;
+  border-bottom: 0.5px solid #e2dacd;
+  justify-content: space-between;
+  select {
+    font-size: 10px;
+    line-height: 18px;
+    letter-spacing: 0.05em;
+    font-family: 'GoodSans' !important;
+  }
+  @media (min-width: 480px) {
+    display: none;
+  }
+`;
+
+export const FilterSpan = styled.span`
+  margin-right: 8px;
+  font-size: 10px;
+  line-height: 18px;
+  letter-spacing: 0.05em;
+  font-family: 'GoodSans' !important;
+`;
 
 PLPSection.defaultProps = {};
 

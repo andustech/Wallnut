@@ -91,14 +91,14 @@ const MobileNavSlider = ({ isOpen, links, themeSettings, settings }) => {
           <div className="social_media_icon">
             {twitter_url && (
               <div className="soc_ico">
-                <a href={twitter_url}>
+                <a href={twitter_url} target="_blank">
                   <i></i>
                 </a>
               </div>
             )}
             {facebook_url && (
               <div className="soc_ico">
-                <a href={facebook_url}>
+                <a href={facebook_url} target="_blank">
                   <i>
                     <img
                       src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/facebook-black.svg?v=1652709438"
@@ -110,7 +110,7 @@ const MobileNavSlider = ({ isOpen, links, themeSettings, settings }) => {
             )}
             {instagram_url && (
               <div className="soc_ico">
-                <a href={instagram_url}>
+                <a href={instagram_url} target="_blank">
                   <i>
                     <img
                       src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/instagram-svg.svg?v=1652711813"
@@ -122,42 +122,42 @@ const MobileNavSlider = ({ isOpen, links, themeSettings, settings }) => {
             )}
             {pinterest_url && (
               <div className="soc_ico">
-                <a href={pinterest_url}>
+                <a href={pinterest_url} target="_blank">
                   <i></i>
                 </a>
               </div>
             )}
             {tumblr_url && (
               <div className="soc_ico">
-                <a href={tumblr_url}>
+                <a href={tumblr_url} target="_blank">
                   <i></i>
                 </a>
               </div>
             )}
             {youtube_url && (
               <div className="soc_ico">
-                <a href={youtube_url}>
+                <a href={youtube_url} target="_blank">
                   <i></i>
                 </a>
               </div>
             )}
             {googleplus_url && (
               <div className="soc_ico">
-                <a href={googleplus_url}>
+                <a href={googleplus_url} target="_blank">
                   <i></i>
                 </a>
               </div>
             )}
             {snapchat_id && (
               <div className="soc_ico">
-                <a href={snapchat_id}>
+                <a href={snapchat_id} target="_blank">
                   <i></i>
                 </a>
               </div>
             )}
             {weibo_id && (
               <div className="soc_ico">
-                <a href={weibo_id}>
+                <a href={weibo_id} target="_blank">
                   <i></i>
                 </a>
               </div>

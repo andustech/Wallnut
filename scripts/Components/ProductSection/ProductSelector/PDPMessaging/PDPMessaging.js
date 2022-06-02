@@ -14,6 +14,10 @@ const PDPMessaging = ({ productMessaging }) => {
       }
     }
   };
+  const hendleBoxHeight = (e) => {
+    var height = document.getElementById('messagebox').offsetHeight;
+    document.getElementById("infobox").style.height = height+"px";
+  };
   useEffect(() => {
     window.addEventListener('click', handleClick);
 
@@ -40,6 +44,7 @@ const PDPMessaging = ({ productMessaging }) => {
               <div
                 onClick={() => {
                   setHideBox(!hideBox);
+                  hendleBoxHeight();
                 }}
                 onKeyDown={() => {}}
                 tabIndex={0}
@@ -50,7 +55,7 @@ const PDPMessaging = ({ productMessaging }) => {
               </div>
               <StyledProductMessageContainer
                 hideBox={hideBox}
-                style={{height: shippingMessageInfoHeight + 'px'}}
+                id="infobox"
               >
                 <div
                   className="flex items-center absolute whitespace-normal text-white p-2 leading-4 text-xxs"

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import VideoPlayer from '../../VideoPlayer';
 import Tab from '../../Tab';
+import parse from 'react-html-parser';
 
 const FeaturesTab = ({ productTypeBlock }) => {
   const { settings } = productTypeBlock;
@@ -30,7 +31,7 @@ const FeaturesTab = ({ productTypeBlock }) => {
             <h3>{features_section_1_title}</h3>
           )}
           {features_section_1_paragraph && (
-            <p>{features_section_1_paragraph}</p>
+            <p>{parse(features_section_1_paragraph)}</p>
           )}
         </div>
       </Tab>

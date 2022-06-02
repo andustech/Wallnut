@@ -10,6 +10,7 @@ const CarouselA = (props) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const handleOnScroll = () => {
+    console.log('scroll thyu')
     const scrollPos = containerRef.current.scrollLeft;
     const threshold = 5;
     const eachImageWidth = containerRef.current.scrollWidth / containerRef.current.children.length;
@@ -22,6 +23,7 @@ const CarouselA = (props) => {
     );
 
     setCurrentImageIndex(index);
+
   };
 
   const handleThumbnailClick = (i) => {

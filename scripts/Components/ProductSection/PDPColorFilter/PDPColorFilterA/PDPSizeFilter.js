@@ -107,7 +107,7 @@ const PDPSizeFilter = ({ product, selectedVariant, setSelectedVariant, setCurren
   let sizeArr = [];
   const sizeIndex = product.options.findIndex(option => option === "Size");
   return (
-    <div id={ isSticky ? 'pdp-size-swatcher-sticky' : 'pdp-size-swatcher'} className={isSticky ? 'md:flex md:flex-row' : 'mb-5 lg:mb-8 overflow-x-auto'}>
+    <div id={ isSticky ? 'pdp-size-swatcher-sticky' : 'pdp-size-swatcher'} className={isSticky ? 'md:flex md:flex-row' : 'mb-5 lg:mb-8'}>
       { isSticky ?
         <h5>
           Size
@@ -125,7 +125,7 @@ const PDPSizeFilter = ({ product, selectedVariant, setSelectedVariant, setCurren
           </>
         </h5>
       }
-      <ul className={ isSticky ? 'sizeDropdown '+sizeDropdown : 'flex flex-row gap-3 xl:gap-4'}>
+      <ul className={ isSticky ? 'sizeDropdown '+sizeDropdown : 'flex flex-row gap-3 xl:gap-4 overflow-x-auto'}>
         {product.variants.map((variant, i) => {
           const varSize = variant.options[sizeIndex];
           if (sizeArr.indexOf(varSize) === -1) {

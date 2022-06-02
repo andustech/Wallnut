@@ -407,6 +407,9 @@ const AddToCartSubmitInput = styled.input.attrs({
   text-transform: uppercase !important;
   color: #000000 !important;
   padding: 0 !important;
+  :hover {
+    background-color: #f1956abb !important;
+  }
 `;
 
 const StickyAddToCartContainer = styled.div.attrs(({ showStickySubmit }) => {
@@ -498,6 +501,9 @@ const StickyAddToCartInput = styled.input.attrs({
   text-transform: uppercase !important;
   color: #000000 !important;
   padding: 0 !important;
+  :hover {
+    background-color: #f1956abb !important;
+  }
   @media (max-width: 1024px) {
     width: 130px;
   }

@@ -286,7 +286,7 @@ const Filters = ({
                   setRemoveTag={setRemoveTag}
                 />
               </div>
-              <div className="flex items-center">
+              <div className="flex items-center cursor-pointer">
                 <select id="sortbyDropdown" name="sortBy" onChange={(e) => sortingBy(e)}>
                   <option>SORT BY</option>
                   <option value="titleAscending">Ascending</option>
