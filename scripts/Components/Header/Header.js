@@ -64,7 +64,7 @@ const Header = (props) => {
                 <a href="#" className="inline-block">
                   <img
                     src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/search-icon.svg?v=1652783584"
-                    className="search_icon search-click"
+                    className="search_icon search-click search"
                   />
                 </a>
                 <form action="/search" method="get" className="search-form">
@@ -116,6 +116,7 @@ const HeaderContainer = styled.div.attrs(({ sticky }) => {
   border-bottom: 1px solid #d5d5d5;
   @media screen and (max-width: 1023px) {
     height: 50px;
+    position: relative;
   }
 `;
 
@@ -153,6 +154,12 @@ const LogoImage = styled.img`
   // }
   @media screen and (min-width: 1024px) {
     max-width: 130px;
+  }
+  @media screen and (max-width: 1023px) { 
+    max-width: 150px;
+  }
+  @media screen and (max-width: 575px) {
+    max-width: 100px;
   }
 `;
 
