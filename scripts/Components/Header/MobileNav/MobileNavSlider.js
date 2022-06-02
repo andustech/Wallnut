@@ -165,6 +165,17 @@ const MobileNavSlider = ({ isOpen, links, themeSettings, settings }) => {
           </div>
         </div>
       </div>
+      <div style={{
+        display: 'none',
+      }} className="search-mob-div">
+        <div data-autocomplete-true>
+          <form action="/search" method="get" className="search-form search-form-mob active">
+            <div className="">
+                <input type="text" name="q" className="normal-case" id="q" placeholder="Search" autocomplete="off" /><img src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/search-icon.svg?v=1652783584" alt="Serach" className="search_icon search-bar-icon" />
+            </div>
+          </form>
+        </div>
+      </div>
     </>
   );
 };
@@ -228,11 +239,11 @@ const Container = styled.div.attrs(({ isOpen }) => {
   }
 `;
 
-const BgOverlay = styled.div(({ isOpen }) => [
-  tw`bg-black h-screen w-screen left-0 fixed z-10 opacity-60`,
-  `top: 83px;`,
-  !isOpen && tw`hidden`,
-  isOpen && tw`block`,
+const BgOverlay = styled.div(({ isOpen }) => [``
+  // tw`bg-black h-screen w-screen left-0 fixed z-10 opacity-60`,
+  // `top: 83px;`,
+  // !isOpen && tw`hidden`,
+  // isOpen && tw`block`,
 ]);
 
 MobileNavSlider.propTypes = {

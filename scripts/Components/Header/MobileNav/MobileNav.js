@@ -89,7 +89,8 @@ const MobileNavWrapper = styled.div.attrs({
 })``;
 
 const BgOverlay = styled.div(({ isOpen }) => [
-  ` background-color: #000;
+  ` 
+  background-color: #000;
   height: 100 vh;
   width: 100 vw;
   top: 0;
