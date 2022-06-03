@@ -318,7 +318,12 @@ body {
   .gm-menu-installed .gm-menu .gm-submenu .gm-has-submenu .gm-item:not(.gm-heading) .gm-target {
     transition: all 0.4s;
   }
-  .gm-menu-installed .gm-menu .gm-submenu .gm-has-submenu .gm-item:not(.gm-heading) .gm-target:hover {
+  .gm-menu-installed
+    .gm-menu
+    .gm-submenu
+    .gm-has-submenu
+    .gm-item:not(.gm-heading)
+    .gm-target:hover {
     opacity: 0.7;
   }
   .gm-menu-installed .gm-menu .gm-single-product .gm-product-name {
@@ -336,12 +341,12 @@ body {
 }
 @media only screen and (min-width: 1201px) and (max-width: 1320px) {
   .gm-submenu.gm-mega.gm-submenu-bordered {
-      padding: 24px 184px 46px 177px;
+    padding: 24px 184px 46px 177px;
   }
 }
 @media only screen and (min-width: 1101px) and (max-width: 1200px) {
   .gm-submenu.gm-mega.gm-submenu-bordered {
-      padding: 24px 134px 46px 127px;
+    padding: 24px 134px 46px 127px;
   }
 }
 @media only screen and (min-width: 1024px) and (max-width: 1100px) {
@@ -496,7 +501,8 @@ body {
   }
 }
 @media only screen and (max-width: 575px) {
-  .index .overlay .primary_btn, .index .overlay .secondary_btn {
+  .index .overlay .primary_btn,
+  .index .overlay .secondary_btn {
     display: block;
     margin-left: auto !important;
     margin-right: auto !important;
@@ -1283,7 +1289,6 @@ afterpay-placement {
   .footer_title {
     margin-bottom: 8px !important;
   }
-
 }
 
 @media only screen and (max-width: 640px) {
@@ -1314,7 +1319,7 @@ afterpay-placement {
 @media only screen and (max-width: 420px) {
   .footer_logo p {
     font-size: 12px !important;
-    line-height: 18px!important;
+    line-height: 18px !important;
   }
 }
 @media only screen and (max-width: 575px) {
@@ -1341,7 +1346,7 @@ afterpay-placement {
   .premium_img_box {
     /* width: auto; */
     /* max-height: 330px; */
-    margin-right: 16px!important;
+    margin-right: 16px !important;
   }
 
   .title_top.uppercase {
@@ -1367,7 +1372,6 @@ afterpay-placement {
   /* .footer-section .top .newsletter p {
     margin-bottom: 0 !important;
   } */
-
 
   .contact {
     font-size: 12px;
@@ -1610,10 +1614,10 @@ afterpay-placement {
   opacity: 1 !important;
 }
 #pdp-color-swatcher .PDPColorFilterAA__ColorSwatchContainer-sc-1g1mpi5-0:hover {
-  border: 1px solid rgba(0,0,0,0.4);
+  border: 1px solid rgba(0, 0, 0, 0.4);
 }
 .PLPItem__ColorSwatchWrapper-sc-cy9xe9-5:hover {
-  border: 1px solid rgba(0,0,0,0.4);
+  border: 1px solid rgba(0, 0, 0, 0.4);
 }
 .sizeDropdown {
   transition: all ease-in-out 0.4s;
@@ -1809,7 +1813,7 @@ afterpay-placement {
   }
 
   .fast_order_inner {
-    padding: 24px 53px 0 24px!important;
+    padding: 24px 53px 0 24px !important;
   }
   .news_para {
     max-width: 100% !important;
@@ -1822,13 +1826,11 @@ afterpay-placement {
     margin-bottom: 0 !important;
   } */
 
-
   .contact {
     font-size: 12px;
     line-height: 18px;
     letter-spacing: -0.01em;
   }
-
 
   .footer_left .footer_opt:last-child {
     display: none;
@@ -2350,6 +2352,7 @@ form#create_customer {
 }
 .drawer {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  padding-bottom: 0;
 }
 .drawer__header__inner {
   border-bottom: 1px solid #e2dacd !important;
@@ -2476,6 +2479,7 @@ form#create_customer {
 }
 .drawer-continue-shopping {
   margin-top: 30px;
+  margin-bottom: 15px;
 }
 .drawer-continue-shopping a {
   letter-spacing: 0.05em;
@@ -2501,6 +2505,10 @@ button.ajaxcart__qty-adjust.quantity-increment,
 }
 #bg-overlay {
   display: none !important;
+}
+.js-drawer-open {
+  overflow: auto !important;
+  height: auto !important;
 }
 .js-drawer-open-right .is-moved-by-drawer {
   -ms-transform: none !important;
@@ -2533,6 +2541,7 @@ button.ajaxcart__qty-adjust.quantity-increment,
     display: block;
     border-top: 1px solid #e2dacd;
     padding-top: 30px;
+    padding-bottom: 30px;
     margin: 0;
   }
   .drawer-continue-shopping.show-on-desktop {
@@ -2986,7 +2995,8 @@ body.cart .cart-item {
   opacity: 0.7;
 }
 @media (min-width: 768px) {
-  .video-open-link, .read-more-desc {
+  .video-open-link,
+  .read-more-desc {
     transition: all 0.4s;
   }
   .video-open-link:hover {
