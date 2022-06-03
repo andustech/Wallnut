@@ -18,11 +18,33 @@ const OverviewSection = ({ productBlock }) => {
     if (videoActive === 'fade-out') {
       setVideoActive('fade-in');
       $('video')[0].play();
+      $('.close-button').addClass('md:hidden');
     } else {
       setVideoActive('fade-out');
       $('video')[0].pause();
     }
   };
+
+  $('.videoBack .modal-body').mouseenter(function () {
+    $('video').attr('controls', true);
+    $('.close-button').removeClass('md:hidden');
+  });
+  $('.videoBack .modal-body').mouseleave(function () {
+    $('video').removeAttr('controls');
+    $('.close-button').addClass('md:hidden');
+  });
+
+  $(document).on('click', function (e) {
+    if (
+      !(
+        $(e.target).closest('.video-pop-link').length > 0 ||
+        $(e.target).closest('.videoBack .modal-body').length > 0
+      )
+    ) {
+      setVideoActive('fade-out');
+      $('video')[0].pause();
+    }
+  });
 
   return (
     <div className="pdp-tabs-sec pt-16 text-sm justify-items-center max-w-screen-xxl font-extralight items-center flex flex-row xl:w-10/12 gap-18">
@@ -42,13 +64,13 @@ const OverviewSection = ({ productBlock }) => {
         )}
         {about_video_url && (
           <>
-          <div className="inline-block cursor-pointer video-pop-link mt-6" onClick={() => handleVideoPopup()} ><VideoPlayIcon/>{about_video_title}</div>
+          <div className="flex items-center cursor-pointer video-pop-link mt-6 uppercase text-xs leading-5 video-open-link" onClick={() => handleVideoPopup()} style={{ letterSpacing: '.05em'}} ><VideoPlayIcon/>{about_video_title}</div>
           <div tabIndex="-1" aria-hidden="true" className={`videoBack fixed ${videoActive}`}>
             <div className="flex items-start modal-body pr-4 w-11/12 md:w-2/3">
               <VideoPlayer link={about_video_url} autoPlay loop width="100%" height="100%" controls/>
               <button
                 type="button"
-                className="close-button bg-transparent hover:text-gray-900 items-center ml-auto rounded-lg text-gray-400 text-sm"
+                className="pl-3 close-button bg-transparent hover:text-gray-900 items-center ml-auto rounded-lg text-gray-400 text-sm"
                 onClick={() => handleVideoPopup()}
               >
                 <svg

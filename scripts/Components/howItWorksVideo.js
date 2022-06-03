@@ -49,7 +49,7 @@ const howItWorksVideo = ({ settings }) => {
                 { content && <p className="mb-6">{content}</p> }
                 { video_btn_text && 
                     <>
-                        <a href={undefined} onClick={() => handleVideoPopup()} className="video-open text-white flex items-center link_hover hidden lg:block cursor-pointer">
+                        <a href={undefined} onClick={() => handleVideoPopup()} className="video-open text-white flex items-center video-open-link hidden lg:block cursor-pointer">
                             <img 
                                 src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/video-play.svg?v=1651814299" 
                                 alt="Video Play" 
@@ -57,7 +57,7 @@ const howItWorksVideo = ({ settings }) => {
                             />
                             {video_btn_text}
                         </a>
-                        <a href={undefined} onClick={() => handleVideoPopup()} className="video-open text-black flex items-center link_hover lg:hidden cursor-pointer">
+                        <a href={undefined} onClick={() => handleVideoPopup()} className="video-open text-black flex items-center video-open-link lg:hidden cursor-pointer">
                             <img 
                                 src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/video-play-black.svg?v=1652851742" 
                                 alt="Video Play" 

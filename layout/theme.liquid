@@ -282,14 +282,13 @@
               $('.globo-menu-mobile').removeClass('active');
             }
           })
-
         } 
       }
 
       // Made submenu heading color white to hide it
       const myInterval = setInterval(function() {
-      	$('.gm-menu .gm-heading span:contains(Default)').addClass('default-title');
-        if ($('.gm-menu .gm-heading span').hasClass('default-title')) {
+      	$('.gm-menu .gm-heading span:contains(Default)').parent().addClass('default-title');
+        if ($('.gm-menu .gm-heading span').parent().hasClass('default-title')) {
           clearInterval(myInterval);
         }
       }, 200);
@@ -358,14 +357,33 @@
         bannerImageHeight();
       });
 
-      // Search layer and auto suggestion code
-      if ($(window).width() >= 1024) {
+      // Search layer and auto suggestion code for desktop and mobile
+      function searchLayer() {
         $('.search-click').on('click', function(){
-          $(this).hide();
-          $('.search-form').addClass('active');
-          $(this).parent().siblings('form').find('input').focus();
+          if ($(window).width() >= 1024) {
+            $(this).hide();
+            $('.search-form').addClass('active');
+            $(this).parent().siblings('form').find('input').focus();
+          } else if ($(window).width() < 1024) {
+            $('.search-form-mob').addClass('active');
+            $('.search-mob-div').slideToggle();
+            $('.search-form-mob').find('input').focus();
+            if ($(this).hasClass('search')) {
+              $(this).attr('src', 'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/close-img-black.png?v=1654240702');
+              $(this).addClass('close');
+              $(this).removeClass('search');
+            } else {
+              $(this).attr('src', 'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/search-icon.svg?v=1652783584');
+              $(this).addClass('search');
+              $(this).removeClass('close');
+            }
+          }
         });
-        $(document).on('click', function (e) {
+      } 
+      searchLayer();
+
+      $(document).on('click', function (e) {
+        if ($(window).width() >= 1024) {
           if (
             !(
               $(e.target).closest('.search-form').length > 0 ||
@@ -376,30 +394,13 @@
             $('.search-form').removeClass('active');
             $('.search-click').show();
           }
-        });
-      }
-      if ($(window).width() < 1024) {
-        $('.search-click').on('click', function(){
-          $('.search-mob-div').slideToggle();
-          $('.search-form-mob').find('input').focus();
-          if ($(this).hasClass('search')) {
-            $(this).attr('src', 'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/close-black.svg?v=1654178004');
-            $(this).addClass('close');
-            $(this).removeClass('search');
-          } else {
-            $(this).attr('src', 'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/search-icon.svg?v=1652783584');
-            $(this).addClass('search');
-            $(this).removeClass('close');
-          }
-        });
-        $(document).on('click', function (e) {
+        } else if ($(window).width() < 1024) {
           if (
             !(
               $(e.target).closest('.search-mob-div').length > 0 ||
               $(e.target).closest('.search__results-wrapper').length > 0 ||
               $(e.target).closest('.search-click').length > 0 ||
-              $(e.target).closest('button.toggle-button').length > 0 ||
-              $(e.target).closest('.globo-menu-mobile').length > 0       
+              $(e.target).closest('button.toggle-button').length > 0   
             )
           ) {
             $('.search-mob-div').slideUp();
@@ -407,9 +408,20 @@
             $('.search-click').addClass('search');
             $('.search-click').removeClass('close');
           }
-        });
-      }
+        }
+      });
 
+      $( window ).resize(function() {
+        if ($(window).width() >= 1024) {
+          $('.search-form').removeClass('active');
+          $('.search-click').show();
+        } else if ($(window).width() < 1024) {
+          $('.search-mob-div').slideUp();
+          $('.search-click').attr('src', 'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/search-icon.svg?v=1652783584');
+          $('.search-click').addClass('search');
+          $('.search-click').removeClass('close');
+        }
+      });
       var shopURL = $('body').data('shop-url');
       var currentAjaxRequest = null;
             var searchPath = shopURL + '/search?q=';

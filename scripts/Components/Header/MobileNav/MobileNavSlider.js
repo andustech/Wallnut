@@ -171,7 +171,7 @@ const MobileNavSlider = ({ isOpen, links, themeSettings, settings }) => {
         <div data-autocomplete-true>
           <form action="/search" method="get" className="search-form search-form-mob active">
             <div className="">
-                <input type="text" name="q" className="normal-case" id="q" placeholder="Search" autocomplete="off" /><img src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/search-icon.svg?v=1652783584" alt="Serach" className="search_icon search-bar-icon" />
+                <input type="text" name="q" className="normal-case" id="q" placeholder="Search.." autocomplete="off" /><img src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/search-icon.svg?v=1652783584" alt="Serach" className="search_icon search-bar-icon" />
             </div>
           </form>
         </div>

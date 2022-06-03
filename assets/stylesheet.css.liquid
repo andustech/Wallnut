@@ -11267,6 +11267,12 @@ p {
   .gm-links {
     padding: 0 !important;
   }
+  .header-search-minicart-container {
+    width: 62px;
+  }
+  #header-search form {
+    margin-right: 8px;
+  }
 }
 
 @media only screen and (max-width: 1023px) {
@@ -12282,7 +12288,7 @@ button[aria-controls="write-review-tabpanel-main-widget"].yotpo-icon-btn {
     max-width: 400px;
   }
 }
-@media(max-width:1023px){
+@media(max-width:1024px){
   .search-mob-div {
     background: rgb(255, 255, 255);
     position: absolute;
@@ -12309,6 +12315,9 @@ button[aria-controls="write-review-tabpanel-main-widget"].yotpo-icon-btn {
     width: 100% !important;
     height: 100% !important;
   }
+  .search-form-mob > div {
+    position: relative;
+  }
 }
 @media(max-width:767px){
   .globo-menu-mobile{
@@ -12323,10 +12332,6 @@ button[aria-controls="write-review-tabpanel-main-widget"].yotpo-icon-btn {
   .search-mob-div [data-autocomplete-true] {
     max-width: 350px;
     margin: 40px auto;
-  }
-  .search_icon.close {
-    height: 14px!important;
-    width: 14px!important;
   }
 }
 body.gm-menu-installed nav > .hidden.lg\:flex > ul{
@@ -12407,9 +12412,10 @@ body.gm-menu-installed nav > .hidden.lg\:flex > ul{
 .gm-menu-installed .gm-menu .gm-single-product a {
     padding-bottom: 0;
 }
-gm-single-product
-.gm-menu-installed .gm-menu .gm-submenu .gm-heading .gm-target .gm-text.default-title, .gm-menu-installed .gm-menu .gm-submenu .gm-heading .gm-target:hover .gm-text.default-title {
-    color: #fff !important;
+.gm-single-product
+.gm-menu-installed .gm-menu .gm-submenu .gm-heading .gm-target.default-title, .gm-menu-installed .gm-menu .gm-submenu .gm-item .gm-heading .gm-target.default-title {
+    opacity: 0;
+    visibility: hidden;
 }
 @media only screen and (min-width: 1024px) {
   .gm-grid {
