@@ -23,11 +23,26 @@ const MobileFilters = ({
     decorStyle,
     artStyle,
     orientation,
-    medium,
+    medium,colorObj
   } = allFilters;
   const [menuOpen, setMenuOpen] = useState('');
   const [RemoveTag, setRemoveTag] = useState({});
-
+  const colorObject = [
+    'Black',
+    'White',
+    'Gray',
+    'Brown',
+    'Beige',
+    'Black & White',
+    'Pink',
+    'Red',
+    'Orange',
+    'Yellow',
+    'Green',
+    'Blue',
+    'Purple',
+    'Multicolor',
+  ];
   const subjectOption = [
     'Abstract',
     'Animals',
@@ -124,6 +139,7 @@ const MobileFilters = ({
       artStyle: [],
       orientation: [],
       medium: [],
+      colorObj:[]
     });
     setTagSelected([]);
   };
@@ -148,7 +164,7 @@ const MobileFilters = ({
         decorStyle: [],
         artStyle: [],
         orientation: [],
-        medium: [],
+        medium: [],colorObj:[]
       });
       setTagSelected([]);
     } else {
@@ -268,8 +284,21 @@ const MobileFilters = ({
               count={allFilters.medium.length}
             />
             <HorizontalBorder />
+            <FilterDropdown
+              filterName="colorObj"
+              setMenuOpen={setMenuOpen}
+              filterType="colorObj"
+              menuOpen={menuOpen}
+              filterTitle="COLOR"
+              options={colorObject}
+              setTagSelected={setTagSelected}
+              TagSelected={TagSelected}
+              setRemoveTag={setRemoveTag}
+              count={allFilters.colorObj.length}
+            />
+            <HorizontalBorder />
             <ApplyProductDiv onClick={() => setIsOpenFilter(false)}>
-              APPLY {`(${products?.length} products)`}
+              APPLY 
             </ApplyProductDiv>
           </div>
         </div>

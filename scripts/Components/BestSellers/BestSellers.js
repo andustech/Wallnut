@@ -36,7 +36,6 @@ const BestSellers = (props) => {
         console.log(err);
       }
     };
-
     document.body.querySelector('#content').classList.remove('row');
 
     fetchAllProducts();

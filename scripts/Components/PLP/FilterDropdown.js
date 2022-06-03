@@ -92,7 +92,7 @@ const FilterDropdown = ({
       <FilterDropdownItem>
         <FilterContainer id="dropdown" onClick={handleClick}>
           <FilterTitle>
-            {filterTitle} {count > 0 && `(${count})`}
+            {filterTitle}
           </FilterTitle>
           <IconContainer flip={menuOpen === filterType}>
             <MenuIcon />

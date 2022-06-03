@@ -402,7 +402,6 @@ export const legOptions = ['Walnut', 'Black'];
 
 export const getOptionUrl = (option) => {
   const strArr = option.toLowerCase().replaceAll(' ', '-');
-
   return `https://cdn.shopify.com/s/files/1/0492/6321/4743/files/${strArr}.png?20576`;
 };
 

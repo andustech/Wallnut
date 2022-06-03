@@ -3,9 +3,6 @@ export const removeFilterItems = (
   filterName,
   toggleFilters,
   option,
-  style,
-  chairType,
-  color,
   size,
   subject,
   mood,
@@ -13,24 +10,23 @@ export const removeFilterItems = (
   artStyle,
   orientation,
   medium,
-  RemoveTag,colorObj
+  RemoveTag,
+  colorObj
 ) => {
   let tempArr = [...allFilters[filterName]];
-
   tempArr = tempArr.includes(option)
-    ? tempArr.map((item) => {
-        if (item !== option) {
-          return item;
-        }
-      })
-    : [...tempArr, option];
+  ? tempArr.map((item) => {
+      if (item !== option) {
+        return item;
+      }
+    })
+  : [...tempArr, option];
+
+  
   const styleAndChairTypeFilters = toggleFilters(
     allFilters,
     filterName,
     tempArr,
-    chairType,
-    style,
-    color,
     size,
     subject,
     mood,
@@ -38,7 +34,8 @@ export const removeFilterItems = (
     artStyle,
     orientation,
     medium,
-    RemoveTag,colorObj
+    RemoveTag,
+    colorObj
   );
 
   return styleAndChairTypeFilters;

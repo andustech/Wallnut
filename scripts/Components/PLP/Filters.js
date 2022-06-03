@@ -30,7 +30,7 @@ const Filters = ({
     decorStyle,
     artStyle,
     orientation,
-    medium,
+    medium,colorObj
   } = allFilters;
   const [menuOpen, setMenuOpen] = useState('');
   const [RemoveTag, setRemoveTag] = useState({});
@@ -142,6 +142,9 @@ const Filters = ({
     } else if (moodOptionFilter.length !== 0) {
       filterName = 'mood';
     }
+    else if (moodOptionFilter.length !== 0) {
+      filterName = 'colorObj';
+    }
     if (filterName !== '') {
       const demo = {
         ...allFilters,
@@ -214,6 +217,8 @@ const Filters = ({
         artStyle: [],
         orientation: [],
         medium: [],
+        colorObj: [],
+
       });
       setTagSelected([]);
     } else {
@@ -381,6 +386,7 @@ const Filters = ({
                   decorStyle?.length < 0 ||
                   orientation?.length < 0 ||
                   medium?.length < 0 ||
+                  colorObj?.length < 0 ||
                   chairType?.length < 0 ||
                   (!color?.includes('All') &&
                     !window.location.href.includes('all') &&
@@ -417,6 +423,7 @@ const Filters = ({
                   decorStyle?.length < 0 ||
                   orientation?.length < 0 ||
                   medium?.length < 0 ||
+                  colorObj?.length < 0 ||
                   chairType?.length < 0 ||
                   (!color?.includes('All') &&
                     !window.location.href.includes('all') &&
