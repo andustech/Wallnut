@@ -3429,6 +3429,7 @@ theme.Collection = (function() {
           currentFilters.style.display = 'block';
           $( listCurrentItems ).clone().appendTo( currentFilters ).show(300);
         }
+        
       })
 
       var listCurrentItems = container.querySelectorAll('#full-width-filter ul.filter-list li.current a');

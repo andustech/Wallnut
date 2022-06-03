@@ -27,6 +27,7 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
     artStyle: [],
     orientation: [],
     medium: [],
+    colorObj:[]
   });
   const [sortingApply, setSortingApply] = useState('');
   const [filterProducts, setFilterProducts] = useState([]);
@@ -102,7 +103,9 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
               (allFilters['decorStyle'].length !== 0 && element === 'decorStyle') ||
               (allFilters['artStyle'].length !== 0 && element === 'artStyle') ||
               (allFilters['medium'].length !== 0 && element === 'medium') ||
-              (allFilters['orientation'].length !== 0 && element === 'orientation')
+              (allFilters['orientation'].length !== 0 && element === 'orientation')||
+              (allFilters['colorObj'].length !== 0 && element === 'colorObj')
+
             ) {
               for (let index = 0; index < productElement.tags.length; index++) {
                 const elementTags = productElement.tags[index];
@@ -120,9 +123,17 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
                       productFilter.push(productElement);
                     }
                   }
+                } else if (element === 'colorObj') {
+                  if (elementTags.includes(`Color-${filterValue}`)) {
+                    let findValue = productFilter.filter((i) => i.id === productElement.id);
+                    if (findValue.length == 0) {
+                      productFilter.push(productElement);
+                    }
+                  }
                 }
                 // Default condition 
-                else if (elementTags.includes(filterValue)) {
+                else
+                 if (elementTags.includes(filterValue)) {
                   let findValue = productFilter.filter((i) => i.id === productElement.id);
                   if (findValue.length == 0) {
                     productFilter.push(productElement);

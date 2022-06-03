@@ -94,6 +94,22 @@ const Filters = ({
     'Retro',
     'Pop-Art',
   ];
+  const colorObject = [
+    'Black',
+    'White',
+    'Gray',
+    'Brown',
+    'Beige',
+    'Black & White',
+    'Pink',
+    'Red',
+    'Orange',
+    'Yellow',
+    'Green',
+    'Blue',
+    'Purple',
+    'Multicolor',
+  ];
   const mediumOption = ['Drawing', 'Mixed Media', 'Photography', 'Graphic', 'Painting'];
   const orientationOption = ['Horizontal', 'Vertical'];
   useEffect(() => {
@@ -290,6 +306,19 @@ const Filters = ({
                   TagSelected={TagSelected}
                   setRemoveTag={setRemoveTag}
                 />
+                <VerticalBorder />
+                <FilterDropdown
+                  filterName="colorObj"
+                  setMenuOpen={setMenuOpen}
+                  filterType="colorObj"
+                  menuOpen={menuOpen}
+                  filterTitle="COLOR"
+                  options={colorObject}
+                  setTagSelected={setTagSelected}
+                  TagSelected={TagSelected}
+                  setRemoveTag={setRemoveTag}
+                />
+                
               </div>
               <div className="flex items-center cursor-pointer">
                 <select id="sortbyDropdown" name="sortBy" onChange={(e) => sortingBy(e)}>
@@ -473,7 +502,7 @@ const ProductSpan = styled.span`
   margin-right: 16px;
 `;
 const VerticalBorder = styled.div`
-  border-top: 1px solid #F4F2EC;
+  border-top: 1px solid #f4f2ec;
   width: 24px;
   height: 0px;
   transform: rotate(-90deg);

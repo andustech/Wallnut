@@ -27,7 +27,6 @@ const FilterDropdown = ({
   count,
 }) => {
   const { allFilters } = useContext(plpContext);
-  console.log('allfilter--', count);
   const { color } = allFilters;
   const handleClick = () => {
     if (menuOpen !== filterType) {

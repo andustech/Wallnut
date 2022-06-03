@@ -161,7 +161,7 @@ const MenuContainer = styled.div(({ menuOpen, menuName }) => [
   `
   background: #fff;
   box-shadow: 0 3px 10px 0 rgb(71 89 113 / 13%);
-  top: 41px;
+  top: 41px;  
   @media(max-width: 767px) {
     top: 0;
     box-shadow: none;
