@@ -45,7 +45,7 @@ const OverviewSection = ({ productBlock }) => {
           <div className="inline-block cursor-pointer video-pop-link mt-6" onClick={() => handleVideoPopup()} ><VideoPlayIcon/>{about_video_title}</div>
           <div tabIndex="-1" aria-hidden="true" className={`videoBack fixed ${videoActive}`}>
             <div className="flex items-start modal-body pr-4 w-11/12 md:w-2/3">
-              <VideoPlayer link={about_video_url} autoPlay loop width="100%" height="100%" controls/>
+              <VideoPlayer link={about_video_url} loop width="100%" height="100%" controls/>
               <button
                 type="button"
                 className="close-button bg-transparent hover:text-gray-900 items-center ml-auto rounded-lg text-gray-400 text-sm"

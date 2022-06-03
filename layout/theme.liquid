@@ -288,8 +288,8 @@
 
       // Made submenu heading color white to hide it
       const myInterval = setInterval(function() {
-      	$('.gm-menu .gm-heading span:contains(Default)').addClass('default-title');
-        if ($('.gm-menu .gm-heading span').hasClass('default-title')) {
+      	$('.gm-menu .gm-heading span:contains(Default)').parent().addClass('default-title');
+        if ($('.gm-menu .gm-heading span').parent().hasClass('default-title')) {
           clearInterval(myInterval);
         }
       }, 200);

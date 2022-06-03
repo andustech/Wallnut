@@ -3,6 +3,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import Rectangle from '../Icons/Rectangle';
 import plpContext from './plpContext';
 import { removeFilterItems } from './RemoveFilterItems';
+import styled from 'styled-components';
 
 const toggleFilters = (
   allFilters,
@@ -633,7 +634,7 @@ const FilterItem = ({ option, filterName, RemoveTag, setRemoveTag, setMenuOpen }
       <div className="self-center mr-3 ">
         <Rectangle fill={selected ? '#000' : 'none'} />
       </div>
-      <span style={{fontFamily: 'GoodSans', fontSize: '12px', lineHeight: '20px', letterSpacing: '0.05em'}}>{option}</span>
+      <FilterOptions>{option}</FilterOptions>
     </div>
   );
 };
@@ -642,5 +643,16 @@ FilterItem.propTypes = {
   option: PropTypes.string.isRequired,
   filterName: PropTypes.string.isRequired,
 };
+
+const FilterOptions = styled.span`
+  font-family: 'GoodSans';
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0.05em;
+  @media (max-width: 767px) {
+    letter-spacing: -0.01em;
+    line-height: 16px;
+  }
+`;
 
 export default FilterItem;

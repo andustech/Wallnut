@@ -232,6 +232,7 @@ const Filters = ({
                   TagSelected={TagSelected}
                   setRemoveTag={setRemoveTag}
                 />
+                <VerticalBorder />
                 <FilterDropdown
                   filterName="mood"
                   setMenuOpen={setMenuOpen}
@@ -243,6 +244,7 @@ const Filters = ({
                   TagSelected={TagSelected}
                   setRemoveTag={setRemoveTag}
                 />
+                <VerticalBorder />
                 <FilterDropdown
                   filterName="decorStyle"
                   setMenuOpen={setMenuOpen}
@@ -254,6 +256,7 @@ const Filters = ({
                   TagSelected={TagSelected}
                   setRemoveTag={setRemoveTag}
                 />
+                <VerticalBorder />
                 <FilterDropdown
                   filterName="artStyle"
                   setMenuOpen={setMenuOpen}
@@ -263,6 +266,7 @@ const Filters = ({
                   options={artOption}
                   setRemoveTag={setRemoveTag}
                 />
+                <VerticalBorder />
                 <FilterDropdown
                   filterName="orientation"
                   setMenuOpen={setMenuOpen}
@@ -274,6 +278,7 @@ const Filters = ({
                   TagSelected={TagSelected}
                   setRemoveTag={setRemoveTag}
                 />
+                <VerticalBorder />
                 <FilterDropdown
                   filterName="medium"
                   setMenuOpen={setMenuOpen}
@@ -466,5 +471,14 @@ const ProductSpan = styled.span`
   padding-right: 16px;
   border-right: 1px solid #f4f2ec;
   margin-right: 16px;
+`;
+const VerticalBorder = styled.div`
+  border-top: 1px solid #F4F2EC;
+  width: 24px;
+  height: 0px;
+  transform: rotate(-90deg);
+  position: relative;
+  top: 8px;
+  left: -7px;
 `;
 export default Filters;

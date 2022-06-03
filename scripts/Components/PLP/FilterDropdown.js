@@ -24,8 +24,10 @@ const FilterDropdown = ({
   sortingApply,
   setSortingApply,
   sortingBy,
+  count,
 }) => {
   const { allFilters } = useContext(plpContext);
+  console.log('allfilter--', count);
   const { color } = allFilters;
   const handleClick = () => {
     if (menuOpen !== filterType) {
@@ -90,7 +92,9 @@ const FilterDropdown = ({
     <div style={{ position: 'relative' }}>
       <FilterDropdownItem>
         <FilterContainer id="dropdown" onClick={handleClick}>
-          <FilterTitle>{filterTitle}</FilterTitle>
+          <FilterTitle>
+            {filterTitle} {count > 0 && `(${count})`}
+          </FilterTitle>
           <IconContainer flip={menuOpen === filterType}>
             <MenuIcon />
           </IconContainer>
@@ -118,7 +122,11 @@ const FilterDropdownItem = styled.div.attrs({
 
 const FilterContainer = styled.div.attrs({
   className: 'flex items-center mr-4 cursor-pointer fltr-drpdwn ',
-})``;
+})`
+  @media (max-width: 767px) {
+    margin-right: 0 !important;
+  }
+`;
 
 const FilterTitle = styled.span.attrs({
   className: 'mr-6',
@@ -130,6 +138,11 @@ const FilterTitle = styled.span.attrs({
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: #000000;
+  @media (max-width: 767px) {
+    width: 100%;
+    font-size: 10px;
+    line-height: 18px;
+  }
 `;
 
 const StyledColorSwatch = styled.div.attrs({
@@ -143,10 +156,12 @@ const StyledColorSwatch = styled.div.attrs({
   }}
 `;
 
-export const IconContainer = styled.div(({ flip }) => [
-  tw`transition-all`,
-  flip && tw`transform rotate-180`,
-]);
+export const IconContainer = styled.div`
+  transform: ${({ flip }) => (!flip ? 'rotate(0deg)' : 'rotate(180deg)')};
+  @media (max-width: 767px) {
+    transform: ${({ flip }) => (flip ? 'rotate(0deg)' : 'rotate(270deg)')};
+  }
+`;
 
 FilterDropdown.defaultProps = {
   colorFilters: [],

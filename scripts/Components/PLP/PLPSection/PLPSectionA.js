@@ -106,12 +106,28 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
             ) {
               for (let index = 0; index < productElement.tags.length; index++) {
                 const elementTags = productElement.tags[index];
-                if (elementTags.includes(filterValue)) {
+                if (element === 'subject' && filterValue === 'Abstract') {
+                  if (elementTags.includes('Subject-Abstract')) {
+                    let findValue = productFilter.filter((i) => i.id === productElement.id);
+                    if (findValue.length == 0) {
+                      productFilter.push(productElement);
+                    }
+                  }
+                } else if (element === 'artStyle' && filterValue === 'Abstract') {
+                  if (elementTags.includes('Art Style-Abstract')) {
+                    let findValue = productFilter.filter((i) => i.id === productElement.id);
+                    if (findValue.length == 0) {
+                      productFilter.push(productElement);
+                    }
+                  }
+                }
+                // Default condition 
+                else if (elementTags.includes(filterValue)) {
                   let findValue = productFilter.filter((i) => i.id === productElement.id);
                   if (findValue.length == 0) {
                     productFilter.push(productElement);
                   }
-                }
+                } 
               }
             }
           }
@@ -132,6 +148,14 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
   useEffect(() => {
     document.body.querySelector('#content').classList.remove('row');
   }, []);
+
+  useEffect(() => {
+    if (isOpenFilter) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isOpenFilter]);
 
   useEffect(() => {
     const productTypes = [];
@@ -169,9 +193,12 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
   };
   return (
     <PLPContext.Provider value={contextValue}>
-      {console.log('isOpenFilter', isOpenFilter)}
       {isOpenFilter && (
-        <MobileFilters setIsOpenFilter={setIsOpenFilter} isOpenFilter={isOpenFilter} />
+        <MobileFilters
+          setIsOpenFilter={setIsOpenFilter}
+          isOpenFilter={isOpenFilter}
+          products={filterProducts.length ? filterProducts : products}
+        />
       )}
       <div className="w-full">
         <FilterMobile>
@@ -232,7 +259,7 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
 
 const FiltersDesktop = styled.div`
   display: block;
-  @media (max-width: 480px) {
+  @media (max-width: 768px) {
     display: none;
   }
 `;
@@ -247,7 +274,7 @@ const FilterMobile = styled.div`
     letter-spacing: 0.05em;
     font-family: 'GoodSans' !important;
   }
-  @media (min-width: 480px) {
+  @media (min-width: 768px) {
     display: none;
   }
 `;

@@ -20,7 +20,7 @@ VideoPlayer.defaultProps = {
   link: '',
   width: '100%',
   controls: false,
-  muted: true,
+  muted: false,
   height: '',
   autoPlay: false,
   loop: false,

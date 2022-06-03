@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import FilterItem from './FilterItem';
@@ -115,7 +115,7 @@ const FilterMenu = ({
   }
 
   return (
-    <div style={{ position: 'absolute', top: '41px', left: 0, right: 0 }}>
+    <StyleFilterMenuContainer>
       <MenuContainer id="filterMenu" {...{ menuOpen, menuName }}>
         {options.map((option, i) => (
           <FilterItem
@@ -130,7 +130,7 @@ const FilterMenu = ({
           />
         ))}
       </MenuContainer>
-    </div>
+    </StyleFilterMenuContainer>
   );
 };
 
@@ -150,18 +150,23 @@ FilterMenu.propTypes = {
 };
 
 const MenuContainer = styled.div(({ menuOpen, menuName }) => [
-  tw`w-full left-0 sm:left-0 md:left-auto z-50 bg-white md:w-68 absolute`,
+  tw`w-full grid left-0 sm:left-0 md:left-auto md:z-50 z-0 bg-white md:w-96 md:absolute relative md:grid-cols-2 md:gap-3.5 gap-4`,
   !menuOpen && tw`hidden`,
   menuOpen && tw`visible`,
-  menuName === 'collection' && tw` transform translate-y-15 md:translate-y-4.5 py-4 px-4`,
-  menuName === 'type' && tw`transform -translate-x-33 translate-y-15 md:translate-y-4.5 py-4 px-4`,
-  menuName === 'colorpicker' && tw`transform translate-y-4.5  px-3 py-3.5`,
+  menuName === 'collection' && tw` transform md:translate-y-4.5 py-4 md:px-4 px-0`,
+  menuName === 'type' &&
+    tw`transform -translate-x-33 md:translate-y-4.5 py-4 md:px-4 px-0 `,
+  menuName === 'colorpicker' && tw`transform md:px-3 py-3.5`,
   menuName === 'colorpicker' && menuOpen && tw`grid grid-cols-5 w-full justify-items-center`,
   `
   background: #fff;
   box-shadow: 0 3px 10px 0 rgb(71 89 113 / 13%);
-  
-}`,
+  top: 41px;
+  @media(max-width: 767px) {
+    top: 0;
+    box-shadow: none;
+  }
+  `,
 ]);
 
 const StyledColorSwatch = styled.div.attrs({
@@ -173,6 +178,16 @@ const StyledColorSwatch = styled.div.attrs({
     }
     return 'background-size: 36px 36px;';
   }}
+`;
+const StyleFilterMenuContainer = styled.div`
+  position: 'absolute';
+  top: '41px';
+  left: 0;
+  right: 0;
+  @media (max-width: 767px) {
+    position: relative;
+    top: 0;
+  }
 `;
 
 export default FilterMenu;

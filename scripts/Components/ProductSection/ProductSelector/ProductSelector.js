@@ -121,6 +121,8 @@ const ProductSelector = ({
     setSelectedVariant(currentVariant);
   }, [currentVariant]);
 
+  console.log('product => ', product)
+
   return (
     <ProductSelectorContainer>
       <MobileTopContainer>
@@ -161,6 +163,9 @@ const ProductSelector = ({
             </span>
           </div>
         </div>
+
+        <AfterPayCopy price={selectedVariant.price} product={product.title} />
+
         <ByName>
           <p>By: Sarah smith</p>
           <p>New York, NY</p>

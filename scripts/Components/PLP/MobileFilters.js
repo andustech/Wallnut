@@ -164,7 +164,7 @@ const MobileFilters = ({
   return (
     <Filterpopup isOpenFilter={isOpenFilter}>
       <div className="bg-transparent border-t border-b w-full">
-        <FilterBackDiv>
+        <FilterBackDiv onClick={() => setIsOpenFilter(false)}>
           <svg
             width="5"
             height="8"
@@ -177,21 +177,21 @@ const MobileFilters = ({
               fill="black"
             />
           </svg>
-          <FilterBack onClick={() => setIsOpenFilter(false)}>Back</FilterBack>
+          <FilterBack>Back</FilterBack>
         </FilterBackDiv>
         <div className="flex justify-between px-5 pb-6">
           <FilterBySpan>Filter BY</FilterBySpan>
-            <ClearAllBtn
-              onClick={() => handleClearAll()}
-              tabIndex={0}
-              onKeyDown={() => {}}
-              role="button"
-            >
-              Clear All
-            </ClearAllBtn>
+          <ClearAllBtn
+            onClick={() => handleClearAll()}
+            tabIndex={0}
+            onKeyDown={() => {}}
+            role="button"
+          >
+            Clear All
+          </ClearAllBtn>
         </div>
         <div className="bg-transparent flex container">
-          <div className="flex flex-col w-full gap-y-8 justify-items-center">
+          <div className="flex flex-col w-full gap-y-4 justify-items-center">
             <FilterDropdown
               filterName="subject"
               setMenuOpen={setMenuOpen}
@@ -202,7 +202,9 @@ const MobileFilters = ({
               setTagSelected={setTagSelected}
               TagSelected={TagSelected}
               setRemoveTag={setRemoveTag}
+              count={allFilters.subject.length}
             />
+            <HorizontalBorder />
             <FilterDropdown
               filterName="mood"
               setMenuOpen={setMenuOpen}
@@ -213,7 +215,9 @@ const MobileFilters = ({
               setTagSelected={setTagSelected}
               TagSelected={TagSelected}
               setRemoveTag={setRemoveTag}
+              count={allFilters.mood.length}
             />
+            <HorizontalBorder />
             <FilterDropdown
               filterName="decorStyle"
               setMenuOpen={setMenuOpen}
@@ -224,7 +228,9 @@ const MobileFilters = ({
               setTagSelected={setTagSelected}
               TagSelected={TagSelected}
               setRemoveTag={setRemoveTag}
+              count={allFilters.decorStyle.length}
             />
+            <HorizontalBorder />
             <FilterDropdown
               filterName="artStyle"
               setMenuOpen={setMenuOpen}
@@ -233,7 +239,9 @@ const MobileFilters = ({
               filterTitle="ART STYLE"
               options={artOption}
               setRemoveTag={setRemoveTag}
+              count={allFilters.artStyle.length}
             />
+            <HorizontalBorder />
             <FilterDropdown
               filterName="orientation"
               setMenuOpen={setMenuOpen}
@@ -244,7 +252,9 @@ const MobileFilters = ({
               setTagSelected={setTagSelected}
               TagSelected={TagSelected}
               setRemoveTag={setRemoveTag}
+              count={allFilters.orientation.length}
             />
+            <HorizontalBorder />
             <FilterDropdown
               filterName="medium"
               setMenuOpen={setMenuOpen}
@@ -255,30 +265,18 @@ const MobileFilters = ({
               setTagSelected={setTagSelected}
               TagSelected={TagSelected}
               setRemoveTag={setRemoveTag}
+              count={allFilters.medium.length}
             />
+            <HorizontalBorder />
+            <ApplyProductDiv onClick={() => setIsOpenFilter(false)}>
+              APPLY {`(${products?.length} products)`}
+            </ApplyProductDiv>
           </div>
         </div>
       </div>
     </Filterpopup>
   );
 };
-
-// Filters.defaultProps = {
-//   colors: [],
-// };
-
-// Filters.propTypes = {
-//   chairTypes: PropTypes.arrayOf(PropTypes.string).isRequired,
-//   colorFilters: PropTypes.arrayOf(PropTypes.string).isRequired,
-//   colors: PropTypes.arrayOf(PropTypes.string),
-//   stickyFilter: PropTypes.bool.isRequired,
-//   collectionTitle: PropTypes.string.isRequired,
-// };
-
-const Content = styled.div.attrs({
-  className: 'mt-14',
-})``;
-
 const Filterpopup = styled.div`
   position: fixed;
   bottom: 0;
@@ -288,45 +286,10 @@ const Filterpopup = styled.div`
   z-index: 1111;
   transition: 0.3s;
   top: 80px;
-`;
-const SpaceHolder = styled.div(() => [`height: 63.27px`]);
-const Text = styled.div`
-  display: flex;
-  align-items: center;
-  text-align: center;
-  letter-spacing: -0.01em;
-  color: rgba(0, 0, 0, 0.7);
-  padding-right: 32px;
-  flex-wrap: wrap;
-  row-gap: 12px;
-`;
-const Tag = styled.div`
-  padding-right: 16px;
-  display: flex;
-  justify-content: space-between;
-  color: #000000;
-  align-items: center;
-  p {
-    margin-bottom: 0px !important;
-    font-size: 14px !important;
-    line-height: 18px !important;
+  overflow-y: scroll;
+  @media (min-width: 768px) {
+    display: none;
   }
-  .svg-icon {
-    padding-left: 16px;
-    cursor: pointer;
-  }
-`;
-const ProductSpan = styled.span`
-  white-space: pre;
-  font-family: 'GoodSans-Light';
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 16px;
-  letter-spacing: -0.01em;
-  color: rgba(0, 0, 0, 0.7);
-  padding-right: 16px;
-  border-right: 1px solid #f4f2ec;
-  margin-right: 16px;
 `;
 const FilterBack = styled.span`
   margin-left: 8px;
@@ -361,5 +324,23 @@ const ClearAllBtn = styled.span`
   text-decoration-line: underline;
   color: #000000;
 `;
+const HorizontalBorder = styled.div`
+  border: 0.5px solid #e2dacd;
+`;
 
+const ApplyProductDiv = styled.div`
+  background: #f1946a;
+  font-family: 'GoodSans';
+  font-size: 10px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  letter-spacing: 0.05em;
+  color: #000000;
+  padding: 10px 0;
+  margin: -16px 0 16px;
+  text-transform: uppercase;
+`;
 export default MobileFilters;

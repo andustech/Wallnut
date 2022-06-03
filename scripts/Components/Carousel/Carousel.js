@@ -27,27 +27,19 @@ const CarouselA = (props) => {
   };
 
   const handleThumbnailClick = (i) => {
-    // const pos = containerRef.current.children[i].getBoundingClientRect();
-    
-    // console.log('childres -> ', containerRef.current.children[i])
-    
-    // console.log('containerRef.current -> ', containerRef.current)
-    // console.log('containerRef.current.scrollLeft -> ', containerRef.current.scrollLeft)
-    // console.log('sum -> ', containerRef.current.scrollLeft + pos.left)
-    // console.log('pos -> ', pos)
+    setCurrentImageIndex(i);
+  };
 
-    // containerRef.current.scrollTo(containerRef.current.scrollLeft + pos.left, 0);
+  
+  const mobileHandleThumbnailClick = (i) => {
+    const pos = containerRef.current.children[i].getBoundingClientRect();
+    containerRef.current.scrollTo(containerRef.current.scrollLeft + pos.left, 0);
     setCurrentImageIndex(i);
   };
 
   useEffect(() => {
-    window.addEventListener("resize", () => {
-      // containerRef.current = window.innerWidth;
-      console.log(containerRef.current)
-      console.log(containerRef.current)
-    });
-
     handleThumbnailClick(0);
+    mobileHandleThumbnailClick(0);
   }, [watchForReset]);
 
   return (
@@ -72,11 +64,16 @@ const CarouselA = (props) => {
       )}
       <div className="lg:relative w-full md:w-6/12">
         <div className="w-full h-full">
-          <CarouselContainer ref={containerRef} onScroll={handleOnScroll}>
+          <CarouselContainer ref={containerRef}>
             {images.map((image, i) => (
               <Media key={i} image={image.url} alt={image.alt} isCarousel currentImage={currentImageIndex === i}/>
             ))}
           </CarouselContainer>
+          <MobileCarouselContainer ref={containerRef} onScroll={handleOnScroll}>
+            {images.map((image, i) => (
+              <Media key={i} image={image.url} alt={image.alt} currentImage={currentImageIndex === i}/>
+            ))}
+          </MobileCarouselContainer>
         </div>
       </div>
       {images.length > 1 && (
@@ -88,7 +85,7 @@ const CarouselA = (props) => {
                   key={i}
                   image={image.url}
                   currentImage={currentImageIndex === i}
-                  onClick={() => handleThumbnailClick(i)}
+                  onClick={() => mobileHandleThumbnailClick(i)}
                   thumbnail
                   alt={image.alt}
                 />
@@ -129,6 +126,34 @@ const CarouselContainer = styled.div.attrs({
   scroll-snap-type: x mandatory;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  @media (max-width: 767px) {
+    display: none;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  & > * {
+    scroll-snap-align: center;
+    vertical-align: top;
+  }
+  
+`;
+
+const MobileCarouselContainer = styled.div.attrs({
+  className: 'relative flex flex-row',
+})`
+  height: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scroll-snap-type: x mandatory;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  @media (min-width: 768px) {
+    display: none !important;
+  }
 
   &::-webkit-scrollbar {
     display: none;
