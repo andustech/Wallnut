@@ -34,7 +34,7 @@ const PDPMessaging = ({ productMessaging }) => {
         </div>
         <Divider />
         <div className="whitespace-nowrap">
-          <div className="ship-msg">
+          <div className="ship-msg mb-0.5">
             {shippingMessage}
           </div>
           

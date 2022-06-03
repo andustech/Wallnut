@@ -82,7 +82,7 @@ const meetWallnut = ({ settings, blocks }) => {
                     </ul>
                     { settings.video_btn_text && 
                       <>
-                          <a href={undefined} onClick={() => handleVideoPopup()} className="video-open text-xs flex items-center mb-6 text-black leading-5 link_hover cursor-pointer">
+                          <a href={undefined} onClick={() => handleVideoPopup()} className="video-open text-xs flex items-center mb-6 text-black leading-5 video-open-link cursor-pointer">
                               <img 
                                   src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/video-play-black.svg?v=1652851742" 
                                   alt="Video Play" 

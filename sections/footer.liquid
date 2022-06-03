@@ -43,7 +43,7 @@
                     <p class='footer_title'>{{ block.settings.title }}</p>
                     <ul>
                       {% for link in linklists[menu_handle].links %}
-                        <li><a href='{{ link.url }}' class='normal-case'>{{ link.title }}</a></li>
+                        <li><a href='{{ link.url }}' class='normal-case' {% if link.url contains 'https' %} target="_blank" {% endif %}>{{ link.title }}</a></li>
                       {% endfor %}
                     </ul>
                   </div>
@@ -308,13 +308,14 @@ form.needsclick.klaviyo-form.klaviyo-form-version-cid_1.kl-private-reset-css-Xua
         line-height: 24px;
         letter-spacing: -0.01em;
         color: #ffffff;
-        transition: 0.4s;
+        transition: all 0.4s;
         border-bottom: 1px solid transparent;
         font-family: 'GoodSans-Light' !important;
         font-weight: 300;
     }
     .footer_opt ul li a:hover {
-      filter: brightness(0.80);
+      /* filter: brightness(0.80); */
+      opacity: 0.7;
     }
     .footer_opt_container {
         display: flex;
@@ -322,7 +323,7 @@ form.needsclick.klaviyo-form.klaviyo-form-version-cid_1.kl-private-reset-css-Xua
         align-items: flex-start;
     }
     .footer_right {
-        padding: 0 0 0 64px;
+        padding: 0 0 80px 64px;
         border-left: 1px solid white;
     }
     .contact {

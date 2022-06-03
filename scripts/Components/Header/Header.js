@@ -74,7 +74,7 @@ const Header = (props) => {
                       name="q"
                       className="normal-case"
                       id="q"
-                      placeholder="Search"
+                      placeholder="Search for products"
                     />
                     <img
                       src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/search-icon.svg?v=1652783584"

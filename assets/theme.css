@@ -315,6 +315,18 @@ body {
     bottom: -3px;
     border-radius: 10px;
   }
+  .gm-menu-installed .gm-menu .gm-submenu .gm-has-submenu .gm-item:not(.gm-heading) .gm-target {
+    transition: all 0.4s;
+  }
+  .gm-menu-installed .gm-menu .gm-submenu .gm-has-submenu .gm-item:not(.gm-heading) .gm-target:hover {
+    opacity: 0.7;
+  }
+  .gm-menu-installed .gm-menu .gm-single-product .gm-product-name {
+    transition: all 0.4s;
+  }
+  .gm-menu-installed .gm-menu .gm-single-product .gm-product-name:hover {
+    opacity: 0.7;
+  }
 }
 
 @media only screen and (min-width: 1321px) and (max-width: 1400px) {
@@ -666,10 +678,6 @@ body.cart .cart-final-details .secondary_btn {
 }
 .premium_link.white_link:hover:after {
   margin-left: 28px;
-}
-
-.link_hover:hover {
-  filter: brightness(0.9);
 }
 .gm-submenu .gm-grid {
   justify-content: end !important;
@@ -1039,8 +1047,8 @@ afterpay-placement {
 }
 #pdp-color-swatcher h5,
 #pdp-size-swatcher h5 {
-  font-family: 'GoodSans';
-  font-weight: 400;
+  font-family: 'GoodSans-Light';
+  font-weight: 300;
   font-size: 16px;
   line-height: 24px;
   letter-spacing: -0.01em;
@@ -1050,8 +1058,8 @@ afterpay-placement {
 }
 #pdp-color-swatcher-sticky h5,
 #pdp-size-swatcher-sticky h5 {
-  font-family: 'GoodSans';
-  font-weight: 400;
+  font-family: 'GoodSans-Light';
+  font-weight: 300;
   font-size: 12px;
   line-height: 24px;
   letter-spacing: -0.01em;
@@ -1152,8 +1160,8 @@ afterpay-placement {
   position: relative;
 }
 .ship-msg {
-  font-family: 'GoodSans';
-  font-weight: 400;
+  font-family: 'GoodSans-Light';
+  font-weight: 300;
   font-size: 14px;
   line-height: 18px;
   letter-spacing: -0.01em;
@@ -1163,9 +1171,9 @@ afterpay-placement {
   border-color: #e2dacd;
 }
 .time-msg {
-  font-family: 'GoodSans';
+  font-family: 'GoodSans-Light';
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
   font-size: 10px;
   line-height: 14px;
   letter-spacing: -0.01em;
@@ -1493,8 +1501,8 @@ afterpay-placement {
 }
 #pdp-color-swatcher h5,
 #pdp-size-swatcher h5 {
-  font-family: 'GoodSans';
-  font-weight: 400;
+  font-family: 'GoodSans-Light';
+  font-weight: 300;
   font-size: 16px;
   line-height: 24px;
   letter-spacing: -0.01em;
@@ -1650,17 +1658,17 @@ afterpay-placement {
   position: relative;
 }
 .ship-msg {
-  font-family: 'GoodSans';
-  font-weight: 400;
+  font-family: 'GoodSans-Light';
+  font-weight: 300;
   font-size: 14px;
   line-height: 18px;
   letter-spacing: -0.01em;
   color: #000000;
 }
 .time-msg {
-  font-family: 'GoodSans';
+  font-family: 'GoodSans-Light';
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
   font-size: 10px;
   line-height: 14px;
   letter-spacing: -0.01em;
@@ -1932,8 +1940,8 @@ afterpay-placement {
 }
 #pdp-color-swatcher h5,
 #pdp-size-swatcher h5 {
-  font-family: 'GoodSans';
-  font-weight: 400;
+  font-family: 'GoodSans-Light';
+  font-weight: 300;
   font-size: 16px;
   line-height: 24px;
   letter-spacing: -0.01em;
@@ -2060,8 +2068,8 @@ afterpay-placement {
 }
 #pdp-color-swatcher h5,
 #pdp-size-swatcher h5 {
-  font-family: 'GoodSans';
-  font-weight: 400;
+  font-family: 'GoodSans-Light';
+  font-weight: 300;
   font-size: 16px;
   line-height: 24px;
   letter-spacing: -0.01em;
@@ -2156,17 +2164,17 @@ afterpay-placement {
 }
 
 .ship-msg {
-  font-family: 'GoodSans';
-  font-weight: 400;
+  font-family: 'GoodSans-Light';
+  font-weight: 300;
   font-size: 14px;
   line-height: 18px;
   letter-spacing: -0.01em;
   color: #000000;
 }
 .time-msg {
-  font-family: 'GoodSans';
+  font-family: 'GoodSans-Light';
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
   font-size: 10px;
   line-height: 14px;
   letter-spacing: -0.01em;
@@ -2968,4 +2976,34 @@ body.cart .cart-item {
   top: -6px;
   width: 16px;
   height: 16px;
+}
+
+.link_hover {
+  transition: all 0.4s;
+}
+.link_hover:hover {
+  /* filter: brightness(0.9); */
+  opacity: 0.7;
+}
+@media (min-width: 768px) {
+  .video-open-link, .read-more-desc {
+    transition: all 0.4s;
+  }
+  .video-open-link:hover {
+    opacity: 0.7;
+  }
+  .pdp-tabs .pdp-tab:hover:after {
+    content: '';
+    height: 2px;
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    background: #000;
+    display: block;
+    transition: all ease-in-out 0.4s;
+    width: 100%;
+  }
+  .read-more-desc:hover {
+    opacity: 0.7;
+  }
 }
