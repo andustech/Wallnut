@@ -48,7 +48,7 @@ const ProductRecommendation = ({ blocks, settings }) => {
       <SectionTiltle className="section_titile mb-5 md:mb-10">
         <h3 className="font-bold text-black">{settings?.title}</h3>
       </SectionTiltle>
-      <div className="">
+      <div className="container">
         <RecommendationContainer recommendations={recommendations}>
           {recommendations && (
             <>

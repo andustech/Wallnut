@@ -27,7 +27,7 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
     artStyle: [],
     orientation: [],
     medium: [],
-    colorObj:[]
+    colorObj: [],
   });
   const [sortingApply, setSortingApply] = useState('');
   const [filterProducts, setFilterProducts] = useState([]);
@@ -39,7 +39,7 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
   const [slugValue, setSlugValue] = useState('');
   useEffect(() => {
     FilterProducts();
-  }, [allFilters, sortingApply, products]);
+  }, [allFilters, sortingApply, products, slugValue]);
   useEffect(() => {
     slugToSelectedFilterValue();
   }, [slugValue]);
@@ -80,22 +80,21 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
           return 0;
         });
       }
-      for (let index = 0; index < products.length; index++) {
-        const productElement = products[index];
-
-        Object.keys(allFilters).map((element) => {
-          a: for (let index1 = 0; index1 < allFilters[element].length; index1++) {
-            const filterValue = allFilters[element][index1];
-            const tempEntry = {
-              tagType: element,
-              tagValue: filterValue,
-            };
-            let tempRes = TagSelected.filter(
-              (i) => i.tagType === tempEntry.tagType && i.tagValue === tempEntry.tagValue
-            );
-            if (tempRes.length == 0 && !isRemoving) {
-              setTagSelected([...TagSelected, tempEntry]);
-            }
+      Object.keys(allFilters).map((element) => {
+        a: for (let index1 = 0; index1 < allFilters[element].length; index1++) {
+          const filterValue = allFilters[element][index1];
+          const tempEntry = {
+            tagType: element,
+            tagValue: filterValue,
+          };
+          let tempRes = TagSelected.filter(
+            (i) => i.tagType === tempEntry.tagType && i.tagValue === tempEntry.tagValue
+          );
+          if (tempRes.length === 0 && !isRemoving) {
+            setTagSelected([...TagSelected, tempEntry]);
+          }
+          for (let index = 0; index < products.length; index++) {
+            const productElement = products[index];
 
             if (
               (allFilters['subject'].length !== 0 && element === 'subject') ||
@@ -103,9 +102,8 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
               (allFilters['decorStyle'].length !== 0 && element === 'decorStyle') ||
               (allFilters['artStyle'].length !== 0 && element === 'artStyle') ||
               (allFilters['medium'].length !== 0 && element === 'medium') ||
-              (allFilters['orientation'].length !== 0 && element === 'orientation')||
+              (allFilters['orientation'].length !== 0 && element === 'orientation') ||
               (allFilters['colorObj'].length !== 0 && element === 'colorObj')
-
             ) {
               for (let index = 0; index < productElement.tags.length; index++) {
                 const elementTags = productElement.tags[index];
@@ -131,19 +129,18 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
                     }
                   }
                 }
-                // Default condition 
-                else
-                 if (elementTags.includes(filterValue)) {
+                // Default condition
+                else if (elementTags.includes(filterValue)) {
                   let findValue = productFilter.filter((i) => i.id === productElement.id);
                   if (findValue.length == 0) {
                     productFilter.push(productElement);
                   }
-                } 
+                }
               }
             }
           }
-        });
-      }
+        }
+      });
     }
     setFilterProducts(productFilter);
     setIsRemoving(false);

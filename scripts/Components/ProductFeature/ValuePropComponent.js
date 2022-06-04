@@ -49,7 +49,7 @@ const ValuePropSection = ({settings, collection_handle_1, collection_handle_2, c
         { title && <h3 className="font-bold text-black">{title}</h3> }
         { subheading && <p className="h3-attila-sans font-medium">{subheading}</p> }
       </SectionTiltle>
-      <div className="">
+      <div className="container">
         <ValuePropContainer>
 
           {/* {valueProps.map((item, i) => (
