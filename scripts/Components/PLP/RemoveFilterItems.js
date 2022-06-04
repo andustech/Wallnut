@@ -14,15 +14,10 @@ export const removeFilterItems = (
   colorObj
 ) => {
   let tempArr = [...allFilters[filterName]];
-  tempArr = tempArr.includes(option)
-  ? tempArr.map((item) => {
-      if (item !== option) {
-        return item;
-      }
-    })
-  : [...tempArr, option];
+  tempArr = tempArr.includes(option) ?
+    tempArr.filter((item) => item !== option) : [...tempArr, option];
 
-  
+
   const styleAndChairTypeFilters = toggleFilters(
     allFilters,
     filterName,

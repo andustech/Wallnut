@@ -267,6 +267,18 @@ const Filters = ({
                 />
                 <VerticalBorder />
                 <FilterDropdown
+                  filterName="colorObj"
+                  setMenuOpen={setMenuOpen}
+                  filterType="colorObj"
+                  menuOpen={menuOpen}
+                  filterTitle="COLOR"
+                  options={colorObject}
+                  setTagSelected={setTagSelected}
+                  TagSelected={TagSelected}
+                  setRemoveTag={setRemoveTag}
+                />
+                <VerticalBorder />
+                <FilterDropdown
                   filterName="decorStyle"
                   setMenuOpen={setMenuOpen}
                   filterType="decorStyle"
@@ -307,18 +319,6 @@ const Filters = ({
                   menuOpen={menuOpen}
                   filterTitle="MEDIUM"
                   options={mediumOption}
-                  setTagSelected={setTagSelected}
-                  TagSelected={TagSelected}
-                  setRemoveTag={setRemoveTag}
-                />
-                <VerticalBorder />
-                <FilterDropdown
-                  filterName="colorObj"
-                  setMenuOpen={setMenuOpen}
-                  filterType="colorObj"
-                  menuOpen={menuOpen}
-                  filterTitle="COLOR"
-                  options={colorObject}
                   setTagSelected={setTagSelected}
                   TagSelected={TagSelected}
                   setRemoveTag={setRemoveTag}

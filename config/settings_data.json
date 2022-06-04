@@ -8,7 +8,7 @@
     "black_friday_sale_end": "11-28-2021 21:00",
     "cyber_monday_sale_start": "11-28-2021 21:00",
     "cyber_monday_sale_end": "12-01-2021 03:00",
-    "favicon": "shopify:\/\/shop_images\/Levity_Chair_Favicon-02.png",
+    "favicon": "shopify:\/\/shop_images\/Wallnut_BrandMark_RGB_Black_1.png",
     "header_background": "#435570",
     "header_color": "#fffbf4",
     "header_wrapper_background": "#ffffff",
@@ -148,7 +148,7 @@
     "notification_text_alignment": "center",
     "notification_background_color": "#28323c",
     "notification_background_image": "",
-    "checkout_logo_image": "shopify:\/\/shop_images\/levity.logo.png",
+    "checkout_logo_image": "shopify:\/\/shop_images\/Wallnut_Wordmark_RGB_Black_1_1.png",
     "checkout_logo_position": "left",
     "checkout_logo_size": "medium",
     "checkout_body_background_image": "",
@@ -156,10 +156,10 @@
     "checkout_input_background_color_mode": "white",
     "checkout_sidebar_background_image": "",
     "checkout_sidebar_background_color": "#fafafa",
-    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
-    "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_heading_font": "Open Sans",
+    "checkout_body_font": "Open Sans",
     "checkout_accent_color": "#b5b5b5",
-    "checkout_button_color": "#ad6433",
+    "checkout_button_color": "#f1946a",
     "checkout_error_color": "#fa9765",
     "email_url": "",
     "twitter_img": "",
@@ -317,7 +317,7 @@
             "type": "menu",
             "settings": {
               "footer_nav": "shop-menu",
-              "title": "Shop"
+              "title": "Shop Collections"
             }
           },
           "2bb41f54-d101-4707-98a4-fac151f7b286": {
@@ -367,9 +367,9 @@
               "howitwork_tab_heading": "How it Works",
               "about_desktop_heading": "Just stick and click",
               "about_paragraph": "Wallnut's artwork comes already assembled, and is easy to hang. Simply pick a spot for it, attach the wall mount, and slide the art into place.",
-              "about_image": "shopify:\/\/shop_images\/hardware_gif_1.gif",
+              "about_image": "shopify:\/\/shop_images\/how_it_works_PDP_gif.gif",
               "about_video_title": "see it in action",
-              "about_video_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/1564\/7647\/files\/monthly_packages.mp4?v=1614849415",
+              "about_video_url": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/33dbaef2970647d098d69840a0820c00.mp4",
               "whylove_tab_heading": "Why You’ll Love It",
               "features_section_1_title": "Quality art, made easy",
               "features_section_1_paragraph": "<ul>\n<li>\n<b>Super simple.<\/b> Our innovative wall mount has a built-in level and a quick-stick measuring tape that allows you to hang art easily. Even solo!<\/li>\n<li>\n<b>Damage-free.*<\/b> Our adhesive-based wall mount is renter-friendly and won’t damage your walls. Or your landlord’s.<\/li>\n<li>\n<b>Interchangeable.<\/b> All Wallnut art pieces work with the same mounting system, so you can switch up your artwork whenever you want.<\/li>\n<li>\n<b>Built to last.<\/b> We make our prints with archival-quality paper and ink. We assemble each piece by hand using FSC® certified wood.<\/li>\n<li>\n<b>Made to order.<\/b> Wallnut artwork is consciously made upon order just for you, which reduces waste.<\/li>\n<\/ul>\n*Heads up! We recommend using the included hanging nails when extra support is needed, such as when hanging larger sizes (30\"x40\" frames and up) or over beds or cribs.",
@@ -386,11 +386,11 @@
               "plexiglass_glazing": "Scratch-resistant and shatter-resistant",
               "sprt_tab_heading": "Shipping and Returns",
               "sprt_1_title": "Free Standard Shipping",
-              "sprt_1_paragraph": "We offer free standard shipping and handling on all orders within the U.S. (excluding Hawaii, Alaska, and the U.S. Territories).\n<br><br>\nOur products are made to order, which means we create your rug after your order has been placed. At this time, please expect your orders to ship within 2 to 3 weeks.\n<br><br>\nLearn more about our shipping policy <a href=\"#\">here<\/a>.",
+              "sprt_1_paragraph": "We offer free standard shipping and handling on all orders within the U.S. (excluding Hawaii, Alaska, and the U.S. Territories).\n<br><br>\nOur products are made to order, which means we create your rug after your order has been placed. At this time, please expect your orders to ship within 2 to 3 weeks.\n<br><br>\nLearn more about our shipping policy <a href=\"https:\/\/wallnut.zendesk.com\/hc\/en-us\/sections\/6536730197911-Shipping\" target=\"_blank\">here<\/a>.",
               "sprt_1_linkText": "",
               "sprt_1_linkUrl": "",
               "sprt_2_title": "30 Day Returns",
-              "sprt_2_paragraph": "We want you to be as excited about your art as we are! We offer returns for all orders within 30 days of delivery. Learn more about our return policy <a href=\"#\">here<\/a>.",
+              "sprt_2_paragraph": "We want you to be as excited about your art as we are! We offer returns for all orders within 30 days of delivery. Learn more about our return policy <a href=\"https:\/\/wallnut.zendesk.com\/hc\/en-us\/sections\/6536561498519-Returns-Exchanges\" target=\"_blank\">here<\/a>.",
               "sprt_2_linkText": "",
               "sprt_2_linkUrl": ""
             }
@@ -636,25 +636,25 @@
           "aca09c97-8882-4e30-bb5a-fa1dc9cc7abb": {
             "type": "section",
             "settings": {
-              "product": "a-pair-of-pears-art"
+              "product": "black-expression-ii-art"
             }
           },
           "617f207c-dcc0-4b1f-b0c4-d744a155ef59": {
             "type": "section",
             "settings": {
-              "product": "a-birds-view-of-paris-crop-i-art"
+              "product": "tangerine-tropics-i-art"
             }
           },
           "b9072066-8c43-40d2-8284-e533d2e1c720": {
             "type": "section",
             "settings": {
-              "product": "abstract-figure-study-i-art"
+              "product": "white-sands-ii-art"
             }
           },
           "3227e2f0-9228-40bd-9271-07bee6faf178": {
             "type": "section",
             "settings": {
-              "product": "a-half-peeled-banana-art"
+              "product": "geo-abstract-iv-neutral-pink-art"
             }
           }
         },
@@ -675,45 +675,6 @@
           "product_recommendations_heading": "Recommended products",
           "position": "bottom",
           "recommended_product_limit": 4
-        }
-      },
-      "160246744642def47d": {
-        "type": "image-with-text",
-        "disabled": true,
-        "settings": {
-          "layout": "right",
-          "image_width": "50%",
-          "text_align": "center",
-          "title": "Life is messy.  Your chairs shouldn't be.™",
-          "text": "<p>We believe that homes are meant to be lived in. That’s why we created chairs with machine washable slipcovers that look great in any room. <\/p>",
-          "link": "shopify:\/\/collections\/all-chairs",
-          "button": "Shop now"
-        }
-      },
-      "16024674901e4c0873": {
-        "type": "image-with-text",
-        "disabled": true,
-        "settings": {
-          "layout": "left",
-          "image_width": "50%",
-          "text_align": "center",
-          "title": "We've got you covered.",
-          "text": "<p>All of our upholstery is fully removable, with innovative features that make it easy to take off and reattach.<\/p>",
-          "link": "shopify:\/\/pages\/how-it-works",
-          "button": "Learn more"
-        }
-      },
-      "1602467713b92e9c76": {
-        "type": "image-with-text",
-        "disabled": true,
-        "settings": {
-          "layout": "right",
-          "image_width": "50%",
-          "text_align": "center",
-          "title": "Live Now. Wash Later.",
-          "text": "<p>Our removable Chair Covers are washer and dryer safe. Wash away spills, stains, and pet accidents with ease.<\/p>",
-          "link": "shopify:\/\/collections\/all-chairs",
-          "button": "Shop now"
         }
       },
       "collection-custom-one": {
@@ -1050,19 +1011,6 @@
           "subheading": "Abstractions",
           "button_text": "Shop Collection",
           "button_link": "shopify:\/\/collections\/minimalist-abstractions"
-        }
-      },
-      "16218796845014f478": {
-        "type": "image-with-text",
-        "disabled": true,
-        "settings": {
-          "layout": "left",
-          "image_width": "50%",
-          "text_align": "center",
-          "title": "Never get bored.",
-          "text": "<p>With interchangeable upholstery in over 30 styles, customize your furniture for the season–or your mood!<\/p>",
-          "link": "shopify:\/\/pages\/how-it-works",
-          "button": "LEARN MORE"
         }
       },
       "162430614931fcd803": {
@@ -1587,22 +1535,6 @@
           "collection_hero_disclaimer": "*excluding gift cards."
         }
       },
-      "1639449782bb7d049d": {
-        "type": "whats-new",
-        "disabled": true,
-        "settings": {
-          "title": "Explore the Latest",
-          "image_left_text": "Hello Herringbone",
-          "left_button_text": "Shop The Collection",
-          "left_button_link": "shopify:\/\/pages\/herringbone-chairs",
-          "image_tr_text": "Get Inspired",
-          "tr_button_text": "Shop Lounge Chairs",
-          "tr_button_link": "shopify:\/\/collections\/lounge-chairs",
-          "image_br_text": "Cover For Every Mood",
-          "br_button_text": "Shop Extra Covers",
-          "br_button_link": "shopify:\/\/products\/scandinavian-lounge-extra-chair-cover"
-        }
-      },
       "instagram-grid-one": {
         "type": "instagram-grid-one",
         "blocks": {
@@ -1805,24 +1737,6 @@
           "mobile_images_6_image": "shopify:\/\/shop_images\/Mobile-Image6_2x_a7a5c789-87a7-4b16-ab35-1314fe2c0e99.jpg"
         }
       },
-      "1641913103096bfe6c": {
-        "type": "featured-in",
-        "disabled": true,
-        "settings": {
-          "quote_1": "<p>“I love knowing that it can handle my lifestyle, whatever spills may come.”<\/p>",
-          "author_1": "-Apartment Therapy",
-          "link_1": "https:\/\/www.apartmenttherapy.com\/levity-classic-lounge-chair-review-36990790",
-          "quote_2": "<p>“made out of durable, machine-washable covers that were designed to take a beating”<\/p>",
-          "author_2": "-Vice",
-          "link_2": "https:\/\/www.vice.com\/en\/article\/k78ddy\/best-cat-proof-couches",
-          "quote_3": "<p> “modern style when it comes to your home shouldn't mean an inability to live in it”<\/p>",
-          "author_3": "-Hunker",
-          "link_3": "https:\/\/www.hunker.com\/13767610\/best-places-to-shop-for-contemporary-style-furniture-and-decor",
-          "quote_4": "<p> “there's a perfect chair design for your lifestyle.”<\/p>",
-          "author_4": "-House Beautiful",
-          "link_4": "https:\/\/www.housebeautiful.com\/shopping\/g37910969\/family-approved-awards-2021\/"
-        }
-      },
       "page-herringbone-chairs": {
         "type": "page-herringbone-chairs",
         "settings": {
@@ -1925,7 +1839,7 @@
               "button_link": "",
               "link_icon": "",
               "video_btn_text": "Watch the video",
-              "video_link": "https:\/\/cdn.shopify.com\/s\/files\/1\/1564\/7647\/files\/monthly_packages.mp4?v=1614849415",
+              "video_link": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/33dbaef2970647d098d69840a0820c00.mp4",
               "link_icon_position": "before",
               "link_text": "",
               "link_url": "#"
@@ -1934,7 +1848,7 @@
           "f511cbc7-01f1-477f-9c02-cf7e29af1f3d": {
             "type": "section",
             "settings": {
-              "image": "shopify:\/\/shop_images\/hardware_gif_1.gif",
+              "image": "shopify:\/\/shop_images\/wall_mount_gif.gif",
               "title": "How it works",
               "content": "It's easy. Just pick a piece you love from our curated\ncollection of high quality prints. Then, it’s made to order\nand delivered to you, fully assembled in the frame of\nyour choice. The best part? Hanging is a breeze with\nour innovative Wallnut Mounting System™. It’s an\nadhesive-based wall mount with a built-in bubble level,\nso your frame slides right into place, super straight and\ndamage-free. We’ve rethought everything, so all you\nhave to do is enjoy it.",
               "button_text": "Shop All",
@@ -2040,7 +1954,7 @@
           "885bca74-bf71-46a0-891d-3e39f10ec10f": {
             "type": "section",
             "settings": {
-              "image": "shopify:\/\/shop_images\/meet-wallnut-left.png",
+              "image": "shopify:\/\/shop_images\/Image-E-hanging-demo_crop.jpg",
               "title": "Hassle-free hanging",
               "content": "Skip the trip to the hardware store. Wallnut artwork arrievs with everything you need to hang it. The Wallnut<sup>TM<\/sup> Mounting System comes with two pieces:",
               "content_r": "",
@@ -2051,14 +1965,14 @@
               "button_text": "",
               "button_link": "",
               "video_btn_text": "SEE IT IN ACTION",
-              "video_link": "http:\/\/commondatastorage.googleapis.com\/gtv-videos-bucket\/sample\/BigBuckBunny.mp4",
+              "video_link": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/33dbaef2970647d098d69840a0820c00.mp4",
               "subtext": "*We recommend using the included hanging nails when extra support is needed. For more information, visit our FAQS."
             }
           },
           "d4eec368-7a26-4c30-afaf-8e58e6416b21": {
             "type": "section",
             "settings": {
-              "image": "shopify:\/\/shop_images\/meet-wallnut-right.png",
+              "image": "shopify:\/\/shop_images\/SHOT05_FRAME_FRAME_FRAME_crop_843e0059-d5b0-4712-9f24-8e3f76da1857.jpg",
               "title": "Framed and ready to hang",
               "content": "Your artwork arrives already framed, using premium materials that are thoughtfully sourced. Simply hang it in your living room, bedroom, bathroom, kids’ room, craft room... or any room!",
               "content_r": "",
@@ -2089,7 +2003,7 @@
           "a59691c8-766e-4a6f-9128-3683a20ec017": {
             "type": "section",
             "settings": {
-              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0627\/3476\/2207\/files\/hanging-wallnut-1.png?v=1653727050",
+              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0627\/3476\/2207\/files\/MEASURE_AND_MARK_GIF_v2.gif?v=1654132757",
               "title": "1. Measure and mark",
               "content": "Your artwork comes with a special tape measure that sticks right to the wall. It's like your personal helper to find the perfect height."
             }
@@ -2097,7 +2011,7 @@
           "c4769b7b-ee0e-47f6-ac0d-23dba42c88ae": {
             "type": "section",
             "settings": {
-              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0627\/3476\/2207\/files\/hanging-wallnut-2.png?v=1653727050",
+              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0627\/3476\/2207\/files\/LEVEL_AND_STICK_GIF_v2.gif?v=1654132757",
               "title": "2. Level and stick",
               "content": "Our wall mount has a built-in level (cool, right?). Simply stick it to your wall and say goodbye to crooked artwork."
             }
@@ -2105,7 +2019,7 @@
           "02789ba7-d2e0-4c9c-9298-1ab21bea9185": {
             "type": "section",
             "settings": {
-              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0627\/3476\/2207\/files\/hanging-wallnut-3.png?v=1653727050",
+              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0627\/3476\/2207\/files\/CLICK_AND_PLACE_GIF_v2.gif?v=1654132757",
               "title": "3. Attach and enjoy!",
               "content": "Just slide your art into place, relax, and enjoy. Maybe have a party to show off your beautiful walls. Be sure to invite us!"
             }
@@ -2132,13 +2046,13 @@
           "title": "How it works",
           "content": "Sound too good to be true? This video explains everything.",
           "video_btn_text": "watch the video",
-          "video_link": "http:\/\/commondatastorage.googleapis.com\/gtv-videos-bucket\/sample\/ElephantsDream.mp4"
+          "video_link": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/33dbaef2970647d098d69840a0820c00.mp4"
         }
       },
       "how-it-works-mission": {
         "type": "how-it-works-mission",
         "settings": {
-          "image": "shopify:\/\/shop_images\/how-it-works-mission.png",
+          "image": "shopify:\/\/shop_images\/SHOT03_SO_MANY_OPTIONS_1.jpg",
           "title": "Our mission",
           "content": "At Wallnut, we’re passionate about making it easy to transform your house into a home. We believe that art shouldn’t be difficult to find, frustrating to frame, or impossible to hang. That's why we spent years developing the perfect mounting system. And it's why we're constantly curating a high-quality art collection that will complement your space."
         }
@@ -2149,25 +2063,25 @@
           "cff32f9a-a350-47c1-85d1-69b4087c521a": {
             "type": "section",
             "settings": {
-              "product": "a-pair-of-pears-art"
+              "product": "black-expression-ii-art"
             }
           },
           "3611b512-9050-46df-9c1b-0929ae7ae6cd": {
             "type": "section",
             "settings": {
-              "product": "a-birds-view-of-paris-crop-i-art"
+              "product": "tangerine-tropics-i-art"
             }
           },
           "229c53c6-e9e2-4959-a8a2-cde03e1d3fee": {
             "type": "section",
             "settings": {
-              "product": "abstract-figure-study-i-art"
+              "product": "white-sands-ii-art"
             }
           },
           "7607dae1-0409-4c0a-b35f-1b9d5252ca1f": {
             "type": "section",
             "settings": {
-              "product": "a-half-peeled-banana-art"
+              "product": "geo-abstract-iv-neutral-pink-art"
             }
           }
         },
@@ -2187,12 +2101,6 @@
       "162500318474b8d8ee",
       "16521560987a5dd475",
       "1540224911099",
-      "1641913103096bfe6c",
-      "1639449782bb7d049d",
-      "160246744642def47d",
-      "16024674901e4c0873",
-      "1602467713b92e9c76",
-      "16218796845014f478",
       "162144687750a492d8",
       "16521585491041f1df",
       "165217627403d30c85"

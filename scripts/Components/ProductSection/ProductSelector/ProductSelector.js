@@ -441,8 +441,8 @@ const StickyAddToCartContainer = styled.div.attrs(({ showStickySubmit }) => {
 const ProductShortDescription = styled.div.attrs({
   className: 'short-description mb-5 lg:mb-8',
 })`
-  font-family: 'GoodSans';
-  font-weight: 400;
+  font-family: 'GoodSans-Light';
+  font-weight: 300;
   font-size: 14px;
   line-height: 22px;
   letter-spacing: -0.01em;
@@ -478,11 +478,11 @@ const ByName = styled.div`
 
 const IncludesContainer = styled.div`
   margin-bottom: 16px;
-  font-weight: 400;
+  font-weight: 300;
   font-size: 14px;
   line-height: 18px;
   letter-spacing: -0.01em;
-  font-family: 'GoodSans';
+  font-family: 'GoodSans-Light';
 `;
 
 const AfterPayContainer = styled.div.attrs({})`

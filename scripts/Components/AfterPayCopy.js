@@ -14,7 +14,7 @@ const AfterPayCopy = ({ price, dataSize }) => (
 );
 
 AfterPayCopy.defaultProps = {
-  dataSize: 'sm',
+  dataSize: 'xs',
 };
 
 AfterPayCopy.propTypes = {

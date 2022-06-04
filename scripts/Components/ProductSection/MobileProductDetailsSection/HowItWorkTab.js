@@ -19,12 +19,36 @@ const HowItWorkTab = ({ productTypeBlock }) => {
   const handleVideoPopup = () => {
     if (videoActive === 'fade-out') {
       setVideoActive('fade-in');
-      $('video')[0].play();
+      $('.mobile-pdp-tabs video')[0].play();
+      $('.mobile-pdp-tabs .close-button').addClass('md:hidden');
     } else {
       setVideoActive('fade-out');
-      $('video')[0].pause();
+      $('.mobile-pdp-tabs video')[0].pause();
     }
   };
+
+  $('.mobile-pdp-tabs .videoBack .modal-body').mouseenter(function () {
+    $('.mobile-pdp-tabs video').attr('controls', true);
+    $('.mobile-pdp-tabs .close-button').removeClass('md:hidden');
+  });
+  $('.mobile-pdp-tabs .videoBack .modal-body').mouseleave(function () {
+    $('.mobile-pdp-tabs video').removeAttr('controls');
+    $('.mobile-pdp-tabs .close-button').addClass('md:hidden');
+  });
+
+  $(document).on('click', function (e) {
+    if (
+      !(
+        $(e.target).closest('.video-pop-link').length > 0 ||
+        $(e.target).closest('.videoBack .modal-body').length > 0
+      )
+    ) {
+      setVideoActive('fade-out');
+      if ($('.mobile-pdp-tabs video').length > 0) {
+        $('.mobile-pdp-tabs video')[0].pause();
+      }
+    }
+  });
 
   return (
     <>
@@ -41,13 +65,13 @@ const HowItWorkTab = ({ productTypeBlock }) => {
           )}
           {about_video_url && (
             <>
-            <div className="inline-block cursor-pointer video-pop-link mt-5" onClick={() => handleVideoPopup()} ><VideoPlayIcon/>{about_video_title}</div>
+            <div className="flex items-center cursor-pointer video-pop-link mt-5 uppercase text-xs leading-5 video-open-link" style={{ letterSpacing: '.05em'}} onClick={() => handleVideoPopup()} ><VideoPlayIcon/>{about_video_title}</div>
             <div tabIndex="-1" aria-hidden="true" className={`videoBack fixed ${videoActive}`}>
               <div className="flex items-start modal-body pr-4 w-11/12 md:w-2/3">
                 <VideoPlayer link={about_video_url} autoPlay loop width="100%" height="100%" controls/>
                 <button
                   type="button"
-                  className="close-button bg-transparent hover:text-gray-900 items-center ml-auto rounded-lg text-gray-400 text-sm"
+                  className="pl-3 close-button bg-transparent hover:text-gray-900 items-center ml-auto rounded-lg text-gray-400 text-sm"
                   onClick={() => handleVideoPopup()}
                 >
                   <svg

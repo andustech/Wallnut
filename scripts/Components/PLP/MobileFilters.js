@@ -235,6 +235,19 @@ const MobileFilters = ({
             />
             <HorizontalBorder />
             <FilterDropdown
+              filterName="colorObj"
+              setMenuOpen={setMenuOpen}
+              filterType="colorObj"
+              menuOpen={menuOpen}
+              filterTitle="COLOR"
+              options={colorObject}
+              setTagSelected={setTagSelected}
+              TagSelected={TagSelected}
+              setRemoveTag={setRemoveTag}
+              count={allFilters.colorObj.length}
+            />
+            <HorizontalBorder />
+            <FilterDropdown
               filterName="decorStyle"
               setMenuOpen={setMenuOpen}
               filterType="decorStyle"
@@ -282,19 +295,6 @@ const MobileFilters = ({
               TagSelected={TagSelected}
               setRemoveTag={setRemoveTag}
               count={allFilters.medium.length}
-            />
-            <HorizontalBorder />
-            <FilterDropdown
-              filterName="colorObj"
-              setMenuOpen={setMenuOpen}
-              filterType="colorObj"
-              menuOpen={menuOpen}
-              filterTitle="COLOR"
-              options={colorObject}
-              setTagSelected={setTagSelected}
-              TagSelected={TagSelected}
-              setRemoveTag={setRemoveTag}
-              count={allFilters.colorObj.length}
             />
             <HorizontalBorder />
             <ApplyProductDiv onClick={() => setIsOpenFilter(false)}>

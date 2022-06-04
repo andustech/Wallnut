@@ -324,13 +324,13 @@ body {
     .gm-has-submenu
     .gm-item:not(.gm-heading)
     .gm-target:hover {
-    opacity: 0.7;
+    text-decoration: underline;
   }
   .gm-menu-installed .gm-menu .gm-single-product .gm-product-name {
     transition: all 0.4s;
   }
   .gm-menu-installed .gm-menu .gm-single-product .gm-product-name:hover {
-    opacity: 0.7;
+    text-decoration: underline;
   }
 }
 
@@ -520,7 +520,8 @@ body {
 .cart__checkout.primary_btn:hover,
 .empty_shop_all_btn.primary_btn:hover,
 .primary_btn.new-address:hover,
-body.cart .cart-final-details .primary_btn:hover {
+body.cart .cart-final-details .primary_btn:hover,
+#contact_form .primary_btn:hover {
   background-color: #f1956abb !important;
 }
 
@@ -531,7 +532,8 @@ body.cart .cart-final-details .primary_btn:hover {
 .cart__checkout.primary_btn,
 .empty_shop_all_btn.primary_btn,
 .primary_btn.new-address,
-body.cart .cart-final-details .primary_btn {
+body.cart .cart-final-details .primary_btn,
+#contact_form .primary_btn {
   padding: 5px 3em !important;
   margin-right: 0 !important;
   font-size: 12px !important;
@@ -1373,7 +1375,7 @@ afterpay-placement {
     margin-bottom: 0 !important;
   } */
 
-  .contact {
+  .contact.contact_footer_opt {
     font-size: 12px;
     line-height: 18px;
     letter-spacing: -0.01em;
@@ -1826,7 +1828,7 @@ afterpay-placement {
     margin-bottom: 0 !important;
   } */
 
-  .contact {
+  .contact.contact_footer_opt {
     font-size: 12px;
     line-height: 18px;
     letter-spacing: -0.01em;
@@ -2311,18 +2313,18 @@ input[type='email'],
 textarea,
 select {
   border: 1px solid #000;
-  line-height: 42px;
+  line-height: 42px !important;
   height: 42px;
   outline: none;
   margin: 0;
   width: 100%;
   text-indent: 16px;
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 20px !important;
   background: #f4f2ec;
   font-weight: 400;
   font-style: normal;
-  font-size: 12px;
+  font-size: 12px !important;
   border-radius: 5px;
   color: rgba(0, 0, 0, 0.8);
   letter-spacing: -0.01em;
@@ -3016,4 +3018,12 @@ body.cart .cart-item {
   .read-more-desc:hover {
     opacity: 0.7;
   }
+}
+@media only screen and (min-width: 768px) and (max-width: 990px) {
+  .pdp-tabs .pdp-tab {
+    font-size: 12px;
+  }
+}
+.afterpay-paragraph .afterpay-main-text {
+  font-size: 11px;
 }
