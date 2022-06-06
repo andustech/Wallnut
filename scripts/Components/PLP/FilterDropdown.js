@@ -92,7 +92,7 @@ const FilterDropdown = ({
       <FilterDropdownItem>
         <FilterContainer id="dropdown" onClick={handleClick}>
           <FilterTitle>
-            {filterTitle}
+            {filterTitle} {count > 0 && `(${count})`}
           </FilterTitle>
           <IconContainer flip={menuOpen === filterType}>
             <MenuIcon />
@@ -128,7 +128,7 @@ const FilterContainer = styled.div.attrs({
 `;
 
 const FilterTitle = styled.span.attrs({
-  className: 'mr-6',
+  className: 'mr-5',
 })`
   font-family: 'GoodSans';
   font-weight: 400;

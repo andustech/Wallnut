@@ -124,16 +124,16 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
     );
   }
 
-  let productImage = [];
-  if (product.media) {
-    productImage = product.variants.find((item) => {
-      return currentOption.id === item.id;
-    });
-  } else {
-    productImage = product.images.find((item) => {
-      return currentOption.id === item.variant_ids[0];
-    });
-  }
+  // let productImage = [];
+  // if (product.media) {
+  //   productImage = product.variants.find((item) => {
+  //     return currentOption.id === item.id;
+  //   });
+  // } else {
+  //   productImage = product.images.find((item) => {
+  //     return currentOption.id === item.variant_ids[0];
+  //   });
+  // }
 
   const cdnUrl = 'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/';
   var imgColor = '';
@@ -145,9 +145,13 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
     imgColor = 'walnut';
   }
 
-  var productImgSrc = 'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/'+product.handle.replace('art', '')+'A-'+imgColor+'-2432.jpg'
+  var productHandle = product.handle;
+  var hasArt = productHandle.slice(-4);
+  if (hasArt === '-art') {
+    productHandle = productHandle.slice(0, -4)
+  }
 
-  // let productImgSrc = product.media ? productImage?.featured_image.src : productImage?.src;
+  var productImgSrc = 'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/'+productHandle+'-A-'+imgColor+'-2432.jpg'
 
   if (!productImgSrc) {
     productImgSrc =

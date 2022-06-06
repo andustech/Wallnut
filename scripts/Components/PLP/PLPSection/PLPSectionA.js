@@ -9,7 +9,16 @@ import PLPContext from '../plpContext';
 import { mergedFetchedRecommendations } from '../../../utils';
 import FilterIcon from '../../Icons/filterIcon';
 import MobileFilters from '../MobileFilters';
-
+import {
+  artOption,
+  colorObject,
+  decorOption,
+  mediumOption,
+  moodOption,
+  orientationOption,
+  subjectOption,
+  sizeOption,
+} from '../FilterOptionValues';
 const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
   const [colors, setColors] = useState();
   const [stickyFilter, setStickyFilter] = useState(false);
@@ -39,13 +48,27 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
   const [slugValue, setSlugValue] = useState('');
   useEffect(() => {
     FilterProducts();
-  }, [allFilters, sortingApply, products, slugValue]);
+  }, [allFilters, sortingApply, products,slugValue]);
   useEffect(() => {
     slugToSelectedFilterValue();
   }, [slugValue]);
   const slugToSelectedFilterValue = () => {
     let arr = window.location.pathname.split('/');
     let value = arr[arr.length - 1];
+
+    let splitValue = value.split('-');
+    if (splitValue.length > 1) {
+      if (value.startsWith('decor-style')) {
+        console.log('value', value);
+        value = value.split('decor-style-')[1].split('-').join(' ');
+        console.log('value', value);
+      } else {
+        value = splitValue[1];
+      }
+    } else {
+      value = splitValue[0];
+    }
+    console.log('value', value);
     if (value !== '' && value !== undefined) {
       setSlugValue(value);
     }
@@ -82,10 +105,10 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
       }
       Object.keys(allFilters).map((element) => {
         a: for (let index1 = 0; index1 < allFilters[element].length; index1++) {
-          const filterValue = allFilters[element][index1];
+          const filterValue = allFilters[element][index1].replace('&', ' & ');
           const tempEntry = {
             tagType: element,
-            tagValue: filterValue,
+            tagValue: filterValue.replace('&', ' & '),
           };
           let tempRes = TagSelected.filter(
             (i) => i.tagType === tempEntry.tagType && i.tagValue === tempEntry.tagValue
@@ -107,15 +130,30 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
             ) {
               for (let index = 0; index < productElement.tags.length; index++) {
                 const elementTags = productElement.tags[index];
-                if (element === 'subject' && filterValue === 'Abstract') {
-                  if (elementTags.includes('Subject-Abstract')) {
+
+                if (element === 'subject' && filterValue === 'Floral & Botanical') {
+                  if (elementTags.includes('Subject-Floral&Botanical')) {
                     let findValue = productFilter.filter((i) => i.id === productElement.id);
                     if (findValue.length == 0) {
                       productFilter.push(productElement);
                     }
                   }
-                } else if (element === 'artStyle' && filterValue === 'Abstract') {
-                  if (elementTags.includes('Art Style-Abstract')) {
+                } else if (element === 'subject' && filterValue === 'Travel & Architecture') {
+                  if (elementTags.includes('Subject-Travel&Architecture')) {
+                    let findValue = productFilter.filter((i) => i.id === productElement.id);
+                    if (findValue.length == 0) {
+                      productFilter.push(productElement);
+                    }
+                  }
+                } else if (element === 'subject') {
+                  if (elementTags.includes(`Subject-${filterValue}`)) {
+                    let findValue = productFilter.filter((i) => i.id === productElement.id);
+                    if (findValue.length == 0) {
+                      productFilter.push(productElement);
+                    }
+                  }
+                } else if (element === 'artStyle') {
+                  if (elementTags.includes(`Art Style-${filterValue}`)) {
                     let findValue = productFilter.filter((i) => i.id === productElement.id);
                     if (findValue.length == 0) {
                       productFilter.push(productElement);
@@ -123,6 +161,21 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
                   }
                 } else if (element === 'colorObj') {
                   if (elementTags.includes(`Color-${filterValue}`)) {
+                    let findValue = productFilter.filter((i) => i.id === productElement.id);
+                    if (findValue.length == 0) {
+                      productFilter.push(productElement);
+                    }
+                  }
+                } else if (element === 'decorStyle') {
+                  console.log('filterValue', filterValue)
+                  if (elementTags.includes(`Décor Style-${filterValue}`)) {
+                    let findValue = productFilter.filter((i) => i.id === productElement.id);
+                    if (findValue.length == 0) {
+                      productFilter.push(productElement);
+                    }
+                  }
+                } else if (element === 'medium') {
+                  if (elementTags.includes(filterValue)) {
                     let findValue = productFilter.filter((i) => i.id === productElement.id);
                     if (findValue.length == 0) {
                       productFilter.push(productElement);
@@ -206,6 +259,9 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
           setIsOpenFilter={setIsOpenFilter}
           isOpenFilter={isOpenFilter}
           products={filterProducts.length ? filterProducts : products}
+          slugValue={slugValue}
+          setTagSelected={setTagSelected}
+          TagSelected={TagSelected}
         />
       )}
       <div className="w-full">
@@ -236,6 +292,15 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
             products={combinedProducts}
             setIsRemoving={setIsRemoving}
             slugValue={slugValue}
+            artOption={artOption}
+            colorObject={colorObject}
+            decorOption={decorOption}
+            mediumOption={mediumOption}
+            moodOption={moodOption}
+            orientationOption={orientationOption}
+            subjectOption={subjectOption}
+            sizeOption={sizeOption}
+            isRemoving={isRemoving}
           />
         </FiltersDesktop>
         <PLPItems

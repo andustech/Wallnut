@@ -33,7 +33,7 @@ const toggleFilters = (
       },
     });
     if (allFilters.color.length === 0 && !tempArr.includes('All')) {
-      return { ...allFilters, size: [...tempArr]};
+      return { ...allFilters, size: [...tempArr] };
     }
     if (
       (tempArr.length === 0 &&
@@ -79,15 +79,7 @@ const toggleFilters = (
       (tempArr.length === 0 && !window.location.href.includes('pattern-chairs')) ||
       (tempArr.length === 0 && !window.location.href.includes('seasonal-favorites'))
     ) {
-      return {
-        size: [],
-        subject: [],
-        mood: [],
-        decorStyle: [],
-        artStyle: [],
-        orientation: [],
-        medium: [],
-      };
+      return { ...allFilters, size: [...tempArr] };
     }
     return { ...allFilters, size: [...tempArr] };
   }
@@ -144,16 +136,7 @@ const toggleFilters = (
       (tempArr.length === 0 && !window.location.href.includes('pattern-chairs')) ||
       (tempArr.length === 0 && !window.location.href.includes('seasonal-favorites'))
     ) {
-      return {
-        size: [],
-        subject: [],
-        mood: [],
-        decorStyle: [],
-        artStyle: [],
-        orientation: [],
-        medium: [],
-        colorObj: [],
-      };
+      return { ...allFilters, subject: [...tempArr] };
     }
     return { ...allFilters, subject: [...tempArr] };
   }
@@ -211,16 +194,7 @@ const toggleFilters = (
       (tempArr.length === 0 && !window.location.href.includes('pattern-chairs')) ||
       (tempArr.length === 0 && !window.location.href.includes('seasonal-favorites'))
     ) {
-      return {
-        size: [],
-        subject: [],
-        mood: [],
-        decorStyle: [],
-        artStyle: [],
-        orientation: [],
-        medium: [],
-        colorObj: [],
-      };
+      return { ...allFilters, mood: [...tempArr] };
     }
     return { ...allFilters, mood: [...tempArr] };
   }
@@ -278,16 +252,7 @@ const toggleFilters = (
       (tempArr.length === 0 && !window.location.href.includes('pattern-chairs')) ||
       (tempArr.length === 0 && !window.location.href.includes('seasonal-favorites'))
     ) {
-      return {
-        size: [],
-        subject: [],
-        mood: [],
-        decorStyle: [],
-        artStyle: [],
-        orientation: [],
-        medium: [],
-        colorObj: [],
-      };
+      return { ...allFilters, decorStyle: [...tempArr] };
     }
     return { ...allFilters, decorStyle: [...tempArr] };
   }
@@ -345,16 +310,7 @@ const toggleFilters = (
       (tempArr.length === 0 && !window.location.href.includes('pattern-chairs')) ||
       (tempArr.length === 0 && !window.location.href.includes('seasonal-favorites'))
     ) {
-      return {
-        size: [],
-        subject: [],
-        mood: [],
-        decorStyle: [],
-        artStyle: [],
-        orientation: [],
-        medium: [],
-        colorObj: [],
-      };
+      return { ...allFilters, artStyle: [...tempArr] };
     }
     return { ...allFilters, artStyle: [...tempArr] };
   }
@@ -412,16 +368,7 @@ const toggleFilters = (
       (tempArr.length === 0 && !window.location.href.includes('pattern-chairs')) ||
       (tempArr.length === 0 && !window.location.href.includes('seasonal-favorites'))
     ) {
-      return {
-        size: [],
-        subject: [],
-        mood: [],
-        decorStyle: [],
-        artStyle: [],
-        orientation: [],
-        medium: [],
-        colorObj: [],
-      };
+      return { ...allFilters, orientation: [...tempArr] };
     }
     return { ...allFilters, orientation: [...tempArr] };
   }
@@ -479,16 +426,7 @@ const toggleFilters = (
       (tempArr.length === 0 && !window.location.href.includes('pattern-chairs')) ||
       (tempArr.length === 0 && !window.location.href.includes('seasonal-favorites'))
     ) {
-      return {
-        size: [],
-        subject: [],
-        mood: [],
-        decorStyle: [],
-        artStyle: [],
-        orientation: [],
-        medium: [],
-        colorObj: [],
-      };
+      return { ...allFilters, medium: [...tempArr] };
     }
     return { ...allFilters, medium: [...tempArr] };
   }
@@ -502,8 +440,8 @@ const toggleFilters = (
         value: 0.0, // Optional as float
       },
     });
-    if (allFilters.color.length === 0 && !tempArr.includes('All')) {
-      return { ...allFilters, colorObj: [...tempArr]};
+    if (allFilters.colorObj.length === 0 && !tempArr.includes('All')) {
+      return { ...allFilters, colorObj: [...tempArr] };
     }
     if (
       (tempArr.length === 0 &&
@@ -545,16 +483,7 @@ const toggleFilters = (
       (tempArr.length === 0 && !window.location.href.includes('pattern-chairs')) ||
       (tempArr.length === 0 && !window.location.href.includes('seasonal-favorites'))
     ) {
-      return {
-        size: [],
-        subject: [],
-        mood: [],
-        decorStyle: [],
-        artStyle: [],
-        orientation: [],
-        medium: [],
-        colorObj: [],
-      };
+      return { ...allFilters, colorObj: [...tempArr] };
     }
     return { ...allFilters, colorObj: [...tempArr] };
   }
@@ -653,12 +582,12 @@ const FilterItem = ({ option, filterName, RemoveTag, setRemoveTag, setMenuOpen }
       onKeyPress={() => {}}
       role="button"
       tabIndex="0"
-      style={{ display: 'flex' }}
+      style={{ display: 'flex', alignItems:'center' }}
     >
       <div className="self-center mr-3 align-items-centner">
         <Rectangle fill={selected ? '#000' : 'none'} />
       </div>
-      <FilterOptions>{option}</FilterOptions>
+      <FilterOptions>{option.replace('&', ' & ')}</FilterOptions>
     </div>
   );
 };

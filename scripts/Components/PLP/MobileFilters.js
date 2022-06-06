@@ -3,6 +3,15 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import FilterDropdown from './FilterDropdown';
 import plpContext from './plpContext';
+import {
+  subjectOption,
+  artOption,
+  colorObject,
+  decorOption,
+  mediumOption,
+  moodOption,
+  orientationOption,
+} from './FilterOptionValues';
 const MobileFilters = ({
   stickyFilter,
   setTagSelected,
@@ -11,6 +20,7 @@ const MobileFilters = ({
   products,
   isOpenFilter,
   setIsOpenFilter,
+  slugValue,
 }) => {
   const { allFilters, setAllFilters, checkFilters } = useContext(plpContext);
   const {
@@ -23,87 +33,12 @@ const MobileFilters = ({
     decorStyle,
     artStyle,
     orientation,
-    medium,colorObj
+    medium,
+    colorObj,
   } = allFilters;
   const [menuOpen, setMenuOpen] = useState('');
   const [RemoveTag, setRemoveTag] = useState({});
-  const colorObject = [
-    'Black',
-    'White',
-    'Gray',
-    'Brown',
-    'Beige',
-    'Black & White',
-    'Pink',
-    'Red',
-    'Orange',
-    'Yellow',
-    'Green',
-    'Blue',
-    'Purple',
-    'Multicolor',
-  ];
-  const subjectOption = [
-    'Abstract',
-    'Animals',
-    'Beach',
-    'Desert',
-    'Fashion',
-    'Floral & Botanical',
-    'Geometric',
-    'Landscapes',
-    'Nature',
-    'People',
-    'Sports',
-    'Still Life',
-    'Travel & Architecture',
-    'Water',
-  ];
-  const moodOption = [
-    'Moody',
-    'Joyful',
-    'Soothing',
-    'Courageous',
-    'Romantic',
-    'Nostalgic',
-    'Fantasy',
-    'Uplifting',
-    'Pensive',
-  ];
-  const decorOption = [
-    'Mid Century Modern',
-    'Contemporary',
-    'Farmhouse',
-    'Bohemian',
-    'Scandinavian',
-    'Coastal',
-    'Industrial',
-    'Vintage',
-    'Glam',
-    'Modern',
-    'Art Deco',
-    'Traditional',
-    'Post Modern',
-  ];
-  const artOption = [
-    'Abstract',
-    'Modern',
-    'Impressionist',
-    'Minimalist ',
-    'Maximalist',
-    'Photography',
-    'Typography',
-    'Folk',
-    'Realism',
-    'Infographics & Posters',
-    'Surrealist',
-    'Collage',
-    'Landscape',
-    'Retro',
-    'Pop-Art',
-  ];
-  const mediumOption = ['Drawing', 'Mixed Media', 'Photography', 'Graphic', 'Painting'];
-  const orientationOption = ['Horizontal', 'Vertical'];
+
   useEffect(() => {
     document.body.addEventListener('click', (e) => {
       if (menuOpen) {
@@ -130,7 +65,73 @@ const MobileFilters = ({
       });
     };
   }, [menuOpen]);
+  useEffect(() => {
+    slugValueFindInfilter();
+  }, [slugValue]);
 
+  const slugValueFindInfilter = () => {
+    let filterName = '';
+    // let sizeFilter = sizeOption.filter((i) => i.toLowerCase() === slugValue.toLowerCase());
+    // slugValue = slugValue.replace('%20', ' ');
+    let subjectFilter = subjectOption.filter((i) => i.toLowerCase() === slugValue.toLowerCase());
+    let orientationOptionFilter = orientationOption.filter(
+      (i) => i.toLowerCase() === slugValue.toLowerCase()
+    );
+    let mediumOptionFilter = mediumOption.filter(
+      (i) => i.toLowerCase() === slugValue.toLowerCase()
+    );
+    let decorOptionFilter = decorOption.filter((i) => i.toLowerCase() === slugValue.toLowerCase());
+    let artOptionFilter = artOption.filter((i) => i.toLowerCase() === slugValue.toLowerCase());
+    let moodOptionFilter = moodOption.filter((i) => i.toLowerCase() === slugValue.toLowerCase());
+    let colorObjectOptionFilter = colorObject.filter(
+      (i) => i.toLowerCase() === slugValue.toLowerCase()
+    );
+
+    if (subjectFilter.length !== 0) {
+      filterName = 'subject';
+    } else if (orientationOptionFilter.length !== 0) {
+      filterName = 'orientation';
+    } else if (mediumOptionFilter.length !== 0) {
+      filterName = 'medium';
+    } else if (decorOptionFilter.length !== 0) {
+      filterName = 'decorStyle';
+    } else if (artOptionFilter.length !== 0) {
+      filterName = 'artStyle';
+    } else if (moodOptionFilter.length !== 0) {
+      filterName = 'mood';
+    } else if (colorObjectOptionFilter.length !== 0) {
+      filterName = 'colorObj';
+    }
+    const tempEntry = {
+      tagType: filterName,
+      tagValue:
+        slugValue.substring(0, 1).toUpperCase() + slugValue.substring(1).replace('&', ' & '),
+    };
+    console.log('tempEntry', tempEntry, TagSelected);
+    let tempRes = TagSelected.filter(
+      (i) => i.tagType === tempEntry.tagType && i.tagValue === tempEntry.tagValue
+    );
+    if (
+      tempRes.length === 0 &&
+      !isRemoving &&
+      tempEntry.tagType !== '' &&
+      tempEntry.tagValue !== ''
+    ) {
+      setTagSelected([...TagSelected, tempEntry]);
+
+      if (filterName !== '') {
+        const demo = {
+          ...allFilters,
+          [filterName]: [
+            ...allFilters[filterName],
+            slugValue.substring(0, 1).toUpperCase() + slugValue.substring(1),
+          ],
+        };
+        setAllFilters(demo);
+      }
+    }
+    // setAllFilters({ ...tempArr, slugValue });
+  };
   const handleClearAll = () => {
     setAllFilters({
       subject: [],
@@ -139,7 +140,7 @@ const MobileFilters = ({
       artStyle: [],
       orientation: [],
       medium: [],
-      colorObj:[]
+      colorObj: [],
     });
     setTagSelected([]);
   };
@@ -164,7 +165,8 @@ const MobileFilters = ({
         decorStyle: [],
         artStyle: [],
         orientation: [],
-        medium: [],colorObj:[]
+        medium: [],
+        colorObj: [],
       });
       setTagSelected([]);
     } else {
@@ -298,7 +300,7 @@ const MobileFilters = ({
             />
             <HorizontalBorder />
             <ApplyProductDiv onClick={() => setIsOpenFilter(false)}>
-              APPLY 
+              APPLY {`(${products?.length} products)`}
             </ApplyProductDiv>
           </div>
         </div>

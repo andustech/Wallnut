@@ -555,9 +555,15 @@ export const getCurrentImages = (product, variant) => {
     var color = 'walnut'
   }
 
+  var productHandle = product.handle;
+  var hasArt = productHandle.slice(-4);
+  if (hasArt === '-art') {
+    productHandle = productHandle.slice(0, -4)
+  }
+
   var size = variant.options[sizeIndex].replace(/ |x|"/gi, '');
-  var roomImg = 'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/'+product.handle.replace('art', '')+'B-'+color+'-'+size+'.jpg?v=1652388790'
-  var frameImg = 'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/'+product.handle.replace('art', '')+'A-'+color+'-2432.jpg'
+  var roomImg = 'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/'+productHandle+'-B-'+color+'-'+size+'.jpg?v=1652388790'
+  var frameImg = 'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/'+productHandle+'-A-'+color+'-2432.jpg'
 
   let productImgs = [
     frameImg,

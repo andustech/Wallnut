@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 import FilterDropdown from './FilterDropdown';
 import plpContext from './plpContext';
+import { MenuIcon } from '../Icons';
 
 const Filters = ({
   stickyFilter,
@@ -18,6 +19,15 @@ const Filters = ({
   sortingApply,
   setSortingApply,
   slugValue,
+  artOption,
+  colorObject,
+  decorOption,
+  mediumOption,
+  moodOption,
+  orientationOption,
+  subjectOption,
+  isRemoving,
+  sizeOption,
 }) => {
   const { allFilters, setAllFilters, checkFilters } = useContext(plpContext);
   const {
@@ -30,88 +40,12 @@ const Filters = ({
     decorStyle,
     artStyle,
     orientation,
-    medium,colorObj
+    medium,
+    colorObj,
   } = allFilters;
   const [menuOpen, setMenuOpen] = useState('');
   const [RemoveTag, setRemoveTag] = useState({});
-
-  const subjectOption = [
-    'Abstract',
-    'Animals',
-    'Beach',
-    'Desert',
-    'Fashion',
-    'Floral & Botanical',
-    'Geometric',
-    'Landscapes',
-    'Nature',
-    'People',
-    'Sports',
-    'Still Life',
-    'Travel & Architecture',
-    'Water',
-  ];
-  const moodOption = [
-    'Moody',
-    'Joyful',
-    'Soothing',
-    'Courageous',
-    'Romantic',
-    'Nostalgic',
-    'Fantasy',
-    'Uplifting',
-    'Pensive',
-  ];
-  const decorOption = [
-    'Mid Century Modern',
-    'Contemporary',
-    'Farmhouse',
-    'Bohemian',
-    'Scandinavian',
-    'Coastal',
-    'Industrial',
-    'Vintage',
-    'Glam',
-    'Modern',
-    'Art Deco',
-    'Traditional',
-    'Post Modern',
-  ];
-  const artOption = [
-    'Abstract',
-    'Modern',
-    'Impressionist',
-    'Minimalist ',
-    'Maximalist',
-    'Photography',
-    'Typography',
-    'Folk',
-    'Realism',
-    'Infographics & Posters',
-    'Surrealist',
-    'Collage',
-    'Landscape',
-    'Retro',
-    'Pop-Art',
-  ];
-  const colorObject = [
-    'Black',
-    'White',
-    'Gray',
-    'Brown',
-    'Beige',
-    'Black & White',
-    'Pink',
-    'Red',
-    'Orange',
-    'Yellow',
-    'Green',
-    'Blue',
-    'Purple',
-    'Multicolor',
-  ];
-  const mediumOption = ['Drawing', 'Mixed Media', 'Photography', 'Graphic', 'Painting'];
-  const orientationOption = ['Horizontal', 'Vertical'];
+  const [sortingDropdownToggle, setSortingDropdownToggle] = useState(false);
   useEffect(() => {
     slugValueFindInfilter();
   }, [slugValue]);
@@ -126,9 +60,13 @@ const Filters = ({
       (i) => i.toLowerCase() === slugValue.toLowerCase()
     );
     let decorOptionFilter = decorOption.filter((i) => i.toLowerCase() === slugValue.toLowerCase());
+
     let artOptionFilter = artOption.filter((i) => i.toLowerCase() === slugValue.toLowerCase());
     let moodOptionFilter = moodOption.filter((i) => i.toLowerCase() === slugValue.toLowerCase());
-
+    let colorObjectOptionFilter = colorObject.filter(
+      (i) => i.toLowerCase() === slugValue.toLowerCase()
+    );
+console.log('decorOptionFilter', decorOptionFilter)
     if (subjectFilter.length !== 0) {
       filterName = 'subject';
     } else if (orientationOptionFilter.length !== 0) {
@@ -141,19 +79,36 @@ const Filters = ({
       filterName = 'artStyle';
     } else if (moodOptionFilter.length !== 0) {
       filterName = 'mood';
-    }
-    else if (moodOptionFilter.length !== 0) {
+    } else if (colorObjectOptionFilter.length !== 0) {
       filterName = 'colorObj';
     }
-    if (filterName !== '') {
-      const demo = {
-        ...allFilters,
-        [filterName]: [
-          ...allFilters[filterName],
-          slugValue.substring(0, 1).toUpperCase() + slugValue.substring(1),
-        ],
-      };
-      setAllFilters(demo);
+    const tempEntry = {
+      tagType: filterName,
+      tagValue:
+        slugValue.substring(0, 1).toUpperCase() + slugValue.substring(1).replace('&', ' & '),
+    };
+    console.log('tempEntry', tempEntry);
+    let tempRes = TagSelected.filter(
+      (i) => i.tagType === tempEntry.tagType && i.tagValue === tempEntry.tagValue
+    );
+    if (
+      tempRes.length === 0 &&
+      !isRemoving &&
+      tempEntry.tagType !== '' &&
+      tempEntry.tagValue !== ''
+    ) {
+      setTagSelected([...TagSelected, tempEntry]);
+
+      if (filterName !== '') {
+        const demo = {
+          ...allFilters,
+          [filterName]: [
+            ...allFilters[filterName],
+            slugValue.substring(0, 1).toUpperCase() + slugValue.substring(1),
+          ],
+        };
+        setAllFilters(demo);
+      }
     }
     // setAllFilters({ ...tempArr, slugValue });
   };
@@ -183,7 +138,14 @@ const Filters = ({
       });
     };
   }, [menuOpen]);
+  var camalize = function camalize(str) {
+    // adding space between strings
+    const result = str.replace(/([A-Z])/g, ' $1');
 
+    // converting first character to uppercase and join it to the final string
+    const final = result.charAt(0).toUpperCase() + result.slice(1);
+    return final;
+  };
   const handleClearAll = () => {
     setAllFilters({
       subject: [],
@@ -192,6 +154,7 @@ const Filters = ({
       artStyle: [],
       orientation: [],
       medium: [],
+      colorObj: [],
     });
     setTagSelected([]);
   };
@@ -218,7 +181,6 @@ const Filters = ({
         orientation: [],
         medium: [],
         colorObj: [],
-
       });
       setTagSelected([]);
     } else {
@@ -323,14 +285,24 @@ const Filters = ({
                   TagSelected={TagSelected}
                   setRemoveTag={setRemoveTag}
                 />
-                
               </div>
-              <div className="flex items-center cursor-pointer">
-                <select id="sortbyDropdown" name="sortBy" onChange={(e) => sortingBy(e)}>
+              <div
+                className="items-center cursor-pointer"
+                style={{ position: 'relative', display: 'flex' }}
+              >
+                <SortDropDown
+                  id="sortbyDropdown"
+                  name="sortBy"
+                  onChange={(e) => sortingBy(e)}
+                  onClick={() => setSortingDropdownToggle(!sortingDropdownToggle)}
+                >
                   <option>SORT BY</option>
                   <option value="titleAscending">Ascending</option>
                   <option value="titleDescending">Descending</option>
-                </select>
+                </SortDropDown>
+                <IconContainer flip={sortingDropdownToggle}>
+                  <MenuIcon />
+                </IconContainer>
               </div>
             </div>
           </div>
@@ -516,5 +488,17 @@ const VerticalBorder = styled.div`
   position: relative;
   top: 8px;
   left: -7px;
+`;
+const SortDropDown = styled.select`
+  padding-right: 20px;
+  margin-bottom: 0 !important;
+  cursor: pointer;
+`;
+const IconContainer = styled.div`
+  transform: ${({ flip }) => (!flip ? 'rotate(0deg)' : 'rotate(180deg)')};
+  position: absolute;
+  z-index: -2;
+  right: 0px !important;
+  cursor: pointer;
 `;
 export default Filters;

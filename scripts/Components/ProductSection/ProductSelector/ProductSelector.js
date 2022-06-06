@@ -73,14 +73,12 @@ const ProductSelector = ({
   discount,
   productMessaging,
 }) => {
-  //console.log('enableReviews', enableReviews)
   const { handle } = product;
   const { option1, option2, option3 } = currentVariant;
   const [selectedVariant, setSelectedVariant] = useState(
     getCurrentVariant(product, currentVariant)
   );
   const [currentOptions, setCurrentOptions] = useState({ option1, option2, option3 });
-  //const [showStickySubmit, setShowStickySubmit] = useState(false);
   const [qty, setQty] = useState(1);
   const selectOptions = getOptions(product, selectedVariant);
 
@@ -167,8 +165,8 @@ const ProductSelector = ({
         <AfterPayCopy price={selectedVariant.price} product={product.title} />
 
         <ByName>
-          <p>By: Sarah smith</p>
-          <p>New York, NY</p>
+          <p>{product.metafields.productArtist}</p>
+          <p>{product.metafields.productLocation}</p>
         </ByName>
       </MobileTopContainer>
       <Carousel images={getCurrentImages(product, selectedVariant)} watchForReset={selectedVariant.sku} />
@@ -223,8 +221,8 @@ const ProductSelector = ({
               <AfterPayCopy price={selectedVariant.price} product={product.title} />
 
               <ByName>
-                <p>By: Sarah smith</p>
-                <p>New York, NY</p>
+                <p>{product.metafields.productArtist}</p>
+                <p>{product.metafields.productLocation}</p>
               </ByName>
 
               <ProductShortDescription>

@@ -24,6 +24,8 @@
           {% endfor %}
         ],
         "metafields": {
+          "productArtist": "{{ product.metafields.my_fields.artist }}",
+          "productLocation": "{{ product.metafields.my_fields.location }}",
           "productHandleName": "{{ product.metafields.my_fields.product_handle_name }}",
           "productTitle": "{{ product.metafields.my_fields.product_title }}",
           "legOptions": {% if product.metafields.my_fields.leg_options == null %} "" {% else %}{{ product.metafields.my_fields.leg_options }}{% endif %},
