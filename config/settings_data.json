@@ -2042,7 +2042,7 @@
       "how-it-works-video": {
         "type": "how-it-works-video",
         "settings": {
-          "image": "shopify:\/\/shop_images\/how-it-works-video.png",
+          "image": "shopify:\/\/shop_images\/HIW_Video_Crop_darkened.jpg",
           "title": "How it works",
           "content": "Sound too good to be true? This video explains everything.",
           "video_btn_text": "watch the video",

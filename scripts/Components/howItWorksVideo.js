@@ -44,7 +44,7 @@ const howItWorksVideo = ({ settings }) => {
        <div className="main_banner relative video_container">
         <div className="container">
           <div className="bg-morning-blue w-full">
-            <div className="meet_wallnut_overlay text-black lg:text-white lg:w-3/12 text-center py-8 lg:py-0">
+            <div className="meet_wallnut_overlay text-black lg:text-white lg:w-3/12 text-center py-8 lg:py-0 px-4 lg:px-0">
                 { title && <h3 className="mb-2 text-black lg:text-white">{title}</h3> }
                 { content && <p className="mb-6">{content}</p> }
                 { video_btn_text && 

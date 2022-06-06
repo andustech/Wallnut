@@ -56,7 +56,7 @@ const indexMoodSection = ({ settings }) => {
               )}
             </div>
           </div>
-          <div>
+          <div className="mr-4 sm:mr-6 md:mr-0">
             <div className="by_mood_card">
               <div>
                 {image_2 && <img src={image_2} />}
