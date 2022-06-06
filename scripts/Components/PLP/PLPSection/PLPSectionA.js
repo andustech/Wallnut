@@ -19,12 +19,15 @@ import {
   subjectOption,
   sizeOption,
 } from '../FilterOptionValues';
+import { MenuIcon } from '../../Icons';
 const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
   const [colors, setColors] = useState();
   const [stickyFilter, setStickyFilter] = useState(false);
   const [colorFilters, setColorFilters] = useState([]);
   const [chairTypes, setChairTypes] = useState([]);
   const [isRemoving, setIsRemoving] = useState(false);
+  const [sortingDropdownToggle, setSortingDropdownToggle] = useState(false);
+
   const [allFilters, setAllFilters] = useState({
     style: [],
     chairType: [],
@@ -63,7 +66,14 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
         value = value.split('decor-style-')[1].split('-').join(' ');
         console.log('value', value);
       } else {
-        value = splitValue[1];
+        if(splitValue.length>2){
+          value= splitValue.splice(1)
+          value= value.join(' ')
+        }else
+        {
+          value = splitValue[1];
+        }
+      
       }
     } else {
       value = splitValue[0];
@@ -108,8 +118,9 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
           const filterValue = allFilters[element][index1].replace('&', ' & ');
           const tempEntry = {
             tagType: element,
-            tagValue: filterValue.replace('&', ' & '),
+            tagValue: filterValue.replace('-',' '),
           };
+          console.log('tempEntry',tempEntry)
           let tempRes = TagSelected.filter(
             (i) => i.tagType === tempEntry.tagType && i.tagValue === tempEntry.tagValue
           );
@@ -211,7 +222,7 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
   }, []);
 
   useEffect(() => {
-    if (isOpenFilter) {
+    if (isOpenFilter && document.body.clientWidth > 767 ) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
@@ -270,11 +281,29 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
             <FilterSpan>FILTER</FilterSpan>
             <FilterIcon />
           </div>
-          <select id="sortbyMobileDropdown" name="sortBy" onChange={(e) => sortingBy(e)}>
+          <div
+                className="items-center cursor-pointer"
+                style={{ position: 'relative', display: 'flex' }}
+              >
+                <SortDropDown
+                  id="sortbyDropdown"
+                  name="sortBy"
+                  onChange={(e) => sortingBy(e)}
+                  onClick={() => setSortingDropdownToggle(!sortingDropdownToggle)}
+                >
+                  <option>SORT BY</option>
+                  <option value="titleAscending">Ascending</option>
+                  <option value="titleDescending">Descending</option>
+                </SortDropDown>
+                <IconContainer flip={sortingDropdownToggle}>
+                  <MenuIcon />
+                </IconContainer>
+              </div>
+          {/* <select id="sortbyMobileDropdown" name="sortBy" onChange={(e) => sortingBy(e)}>
             <option>SORT BY</option>
             <option value="titleAscending">Ascending</option>
             <option value="titleDescending">Descending</option>
-          </select>
+          </select> */}
         </FilterMobile>
         <PLPDescription filterRef={filterRef} {...{ collectionTitle, collectionDescription }} />
         <FiltersDesktop>
@@ -314,20 +343,6 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
       </div>
     </PLPContext.Provider>
   );
-
-  return (
-    <PLPContext.Provider value={contextValue}>
-      <div className="w-full">
-        <PLPDescription filterRef={filterRef} {...{ collectionTitle, collectionDescription }} />
-        <PLPItems
-          products={combinedProducts}
-          collectionTitle={collectionTitle}
-          colorFilters={colorFilters}
-        />
-        <SeoCopy title={collectionTitle} />
-      </div>
-    </PLPContext.Provider>
-  );
 };
 
 const FiltersDesktop = styled.div`
@@ -359,7 +374,18 @@ export const FilterSpan = styled.span`
   letter-spacing: 0.05em;
   font-family: 'GoodSans' !important;
 `;
-
+const SortDropDown = styled.select`
+  padding-right: 20px;
+  margin-bottom: 0 !important;
+  cursor: pointer;
+`;
+const IconContainer = styled.div`
+  transform: ${({ flip }) => (!flip ? 'rotate(0deg)' : 'rotate(180deg)')};
+  position: absolute;
+  z-index: -2;
+  right: 0px !important;
+  cursor: pointer;
+`;
 PLPSection.defaultProps = {};
 
 PLPSection.propTypes = {

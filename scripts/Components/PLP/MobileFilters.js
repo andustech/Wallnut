@@ -20,7 +20,7 @@ const MobileFilters = ({
   products,
   isOpenFilter,
   setIsOpenFilter,
-  slugValue,
+  slugValue,isRemoving
 }) => {
   const { allFilters, setAllFilters, checkFilters } = useContext(plpContext);
   const {

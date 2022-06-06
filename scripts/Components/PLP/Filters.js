@@ -66,7 +66,6 @@ const Filters = ({
     let colorObjectOptionFilter = colorObject.filter(
       (i) => i.toLowerCase() === slugValue.toLowerCase()
     );
-console.log('decorOptionFilter', decorOptionFilter)
     if (subjectFilter.length !== 0) {
       filterName = 'subject';
     } else if (orientationOptionFilter.length !== 0) {
@@ -82,22 +81,25 @@ console.log('decorOptionFilter', decorOptionFilter)
     } else if (colorObjectOptionFilter.length !== 0) {
       filterName = 'colorObj';
     }
+    
     const tempEntry = {
       tagType: filterName,
       tagValue:
-        slugValue.substring(0, 1).toUpperCase() + slugValue.substring(1).replace('&', ' & '),
+        slugValue.substring(0, 1).toUpperCase() + slugValue.substring(1)
+        // .replace('&', ' & '),
     };
-    console.log('tempEntry', tempEntry);
     let tempRes = TagSelected.filter(
       (i) => i.tagType === tempEntry.tagType && i.tagValue === tempEntry.tagValue
     );
+    console.log('tempEntry :>> ', tempEntry,slugValue);
+    console.log('TagSelected :>> ', TagSelected);
     if (
       tempRes.length === 0 &&
       !isRemoving &&
       tempEntry.tagType !== '' &&
       tempEntry.tagValue !== ''
     ) {
-      setTagSelected([...TagSelected, tempEntry]);
+      // setTagSelected([...TagSelected, tempEntry]);
 
       if (filterName !== '') {
         const demo = {
@@ -107,6 +109,7 @@ console.log('decorOptionFilter', decorOptionFilter)
             slugValue.substring(0, 1).toUpperCase() + slugValue.substring(1),
           ],
         };
+        console.log('demo :>> ', demo);
         setAllFilters(demo);
       }
     }
@@ -138,14 +141,7 @@ console.log('decorOptionFilter', decorOptionFilter)
       });
     };
   }, [menuOpen]);
-  var camalize = function camalize(str) {
-    // adding space between strings
-    const result = str.replace(/([A-Z])/g, ' $1');
 
-    // converting first character to uppercase and join it to the final string
-    const final = result.charAt(0).toUpperCase() + result.slice(1);
-    return final;
-  };
   const handleClearAll = () => {
     setAllFilters({
       subject: [],

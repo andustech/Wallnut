@@ -165,7 +165,7 @@ const ProductSelector = ({
         <AfterPayCopy price={selectedVariant.price} product={product.title} />
 
         <ByName>
-          <p>{product.metafields.productArtist}</p>
+          <p>By: {product.metafields.productArtist}</p>
           <p>{product.metafields.productLocation}</p>
         </ByName>
       </MobileTopContainer>
@@ -221,7 +221,7 @@ const ProductSelector = ({
               <AfterPayCopy price={selectedVariant.price} product={product.title} />
 
               <ByName>
-                <p>{product.metafields.productArtist}</p>
+                <p>By: {product.metafields.productArtist}</p>
                 <p>{product.metafields.productLocation}</p>
               </ByName>
 

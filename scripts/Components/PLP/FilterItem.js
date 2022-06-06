@@ -537,8 +537,8 @@ const FilterItem = ({ option, filterName, RemoveTag, setRemoveTag, setMenuOpen }
     );
     const selectOption = { tagType: filterName, tagValue: option };
     setRemoveTag(selectOption);
-    console.log('selectOption :>> ', selectOption, allFilters);
-    let tag = document.getElementById(option + '-' + filterName);
+    let tag = document.getElementById(option.replace('&', ' & ') + '-' + filterName);
+    console.log('option,filterName',option,filterName)
     if (tag) {
       tag.click();
       setMenuOpen(filterName);

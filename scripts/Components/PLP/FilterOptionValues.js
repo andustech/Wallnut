@@ -39,7 +39,7 @@
     'Modern',
     'Art Deco',
     'Traditional',
-    'Post Modern',
+    'Postmodern',
   ];
   export const artOption = [
     'Abstract',
