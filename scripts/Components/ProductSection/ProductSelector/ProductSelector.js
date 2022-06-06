@@ -467,10 +467,16 @@ const ByName = styled.div`
   p {
     font-family: 'GoodSans';
     font-weight: 400;
-    font-size: 14px;
+    font-size: 14px !important;
     line-height: 24px;
     letter-spacing: -0.01em;
     margin-bottom: 4px;
+  }
+  @media only screen and (max-width: 768px) {
+    p {
+        font-size: 12px!important;
+        line-height: 18px!important;
+    }
   }
 `;
 
@@ -481,6 +487,10 @@ const IncludesContainer = styled.div`
   line-height: 18px;
   letter-spacing: -0.01em;
   font-family: 'GoodSans-Light';
+  @media only screen and (max-width: 768px) {
+    font-size: 12px!important;
+    line-height: 18px!important;
+  }
 `;
 
 const AfterPayContainer = styled.div.attrs({})`
