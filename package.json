@@ -12,7 +12,7 @@
     "prepare": "husky install",
     "test": "jest",
     "actions:deploy:prod": "yarn build && shopify-themekit deploy --env=production --allow-live",
-    "actions:deploy:dev": "yarn shopify-themekit deploy",
+    "actions:deploy:dev": "yarn shopify-themekit deploy --allow-live",
     "actions:build:deploy:dev": "yarn build:dev && shopify-themekit deploy"
   },
   "repository": {
