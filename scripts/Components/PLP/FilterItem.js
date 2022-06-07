@@ -601,6 +601,7 @@ FilterItem.propTypes = {
   filterName: PropTypes.string.isRequired,
 };
 
+
 const FilterOptions = styled.span`
   font-family: 'GoodSans';
   font-size: 12px;

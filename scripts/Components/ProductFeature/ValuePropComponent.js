@@ -52,17 +52,6 @@ const ValuePropSection = ({settings, collection_handle_1, collection_handle_2, c
       <div className="container">
         <ValuePropContainer>
 
-          {/* {valueProps.map((item, i) => (
-            <ValuePropColumn key={i} className='premium_card_container premium_pos'>
-              <div className="premium_img_box">
-                <img className='premium_img' src={item.img} />
-              </div>
-              <div className="flex items-center text-base text-center whitespace-nowrap absolute left-0 bottom-0">
-                <a className='premium_link bg-milk' href=''>{item.name}</a>
-              </div>
-            </ValuePropColumn>
-          ))} */}
-
           { collection_handle_1.handle && 
             <ValuePropColumn className='premium_card_container premium_pos'>
                 <div className="premium_img_box">
