@@ -14,7 +14,7 @@ const indexTestimonialSection = ({ settings, blocks }) => {
               {title && <h2 className="h4-attila-sans text-black">{title}</h2>}
               {content && <p>{content}</p>}
             </div>
-            <div className="right">
+            <div className="right gap-7 ml-11">
               {blocks.map((block, index) => {
                 const { settings } = block;
                 let rating_img;
