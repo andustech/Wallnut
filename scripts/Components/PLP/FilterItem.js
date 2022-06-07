@@ -491,7 +491,7 @@ const toggleFilters = (
   // return '';
 };
 
-const FilterItem = ({ option, filterName, RemoveTag, setRemoveTag, setMenuOpen }) => {
+const FilterItem = ({ option, filterName, RemoveTag, setRemoveTag, setMenuOpen, slugValue }) => {
   const { allFilters, setAllFilters } = useContext(plpContext);
   const {
     style,
@@ -538,7 +538,7 @@ const FilterItem = ({ option, filterName, RemoveTag, setRemoveTag, setMenuOpen }
     const selectOption = { tagType: filterName, tagValue: option };
     setRemoveTag(selectOption);
     let tag = document.getElementById(option.replace('&', ' & ') + '-' + filterName);
-    console.log('option,filterName',option,filterName)
+    console.log('option,filterName', option, filterName);
     if (tag) {
       tag.click();
       setMenuOpen(filterName);
@@ -578,11 +578,15 @@ const FilterItem = ({ option, filterName, RemoveTag, setRemoveTag, setMenuOpen }
   return (
     <div
       className="cursor-pointer"
-      onClick={() => handleClick(option, filterName)}
+      onClick={() => {
+        if (slugValue.toLowerCase() !== option.toLowerCase()) {
+          handleClick(option, filterName);
+        }
+      }}
       onKeyPress={() => {}}
       role="button"
       tabIndex="0"
-      style={{ display: 'flex', alignItems:'center' }}
+      style={{ display: 'flex', alignItems: 'center' }}
     >
       <div className="self-center mr-3 align-items-centner">
         <Rectangle fill={selected ? '#000' : 'none'} />

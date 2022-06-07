@@ -27,7 +27,7 @@ const Filters = ({
   orientationOption,
   subjectOption,
   isRemoving,
-  sizeOption,
+  sizeOption,slugRawValue
 }) => {
   const { allFilters, setAllFilters, checkFilters } = useContext(plpContext);
   const {
@@ -81,18 +81,15 @@ const Filters = ({
     } else if (colorObjectOptionFilter.length !== 0) {
       filterName = 'colorObj';
     }
-    
+
     const tempEntry = {
       tagType: filterName,
-      tagValue:
-        slugValue.substring(0, 1).toUpperCase() + slugValue.substring(1)
-        // .replace('&', ' & '),
+      tagValue: slugValue.substring(0, 1).toUpperCase() + slugValue.substring(1),
+      // .replace('&', ' & '),
     };
     let tempRes = TagSelected.filter(
       (i) => i.tagType === tempEntry.tagType && i.tagValue === tempEntry.tagValue
     );
-    console.log('tempEntry :>> ', tempEntry,slugValue);
-    console.log('TagSelected :>> ', TagSelected);
     if (
       tempRes.length === 0 &&
       !isRemoving &&
@@ -143,16 +140,63 @@ const Filters = ({
   }, [menuOpen]);
 
   const handleClearAll = () => {
-    setAllFilters({
-      subject: [],
-      mood: [],
-      decorStyle: [],
-      artStyle: [],
-      orientation: [],
-      medium: [],
-      colorObj: [],
-    });
-    setTagSelected([]);
+    if (slugValue !== null) {
+      let subjectFilter = subjectOption.filter((i) => i.toLowerCase() === slugValue.toLowerCase());
+      let orientationOptionFilter = orientationOption.filter(
+        (i) => i.toLowerCase() === slugValue.toLowerCase()
+      );
+      let mediumOptionFilter = mediumOption.filter(
+        (i) => i.toLowerCase() === slugValue.toLowerCase()
+      );
+      let decorOptionFilter = decorOption.filter(
+        (i) => i.toLowerCase() === slugValue.toLowerCase()
+      );
+
+      let artOptionFilter = artOption.filter((i) => i.toLowerCase() === slugValue.toLowerCase());
+      let moodOptionFilter = moodOption.filter((i) => i.toLowerCase() === slugValue.toLowerCase());
+      let colorObjectOptionFilter = colorObject.filter(
+        (i) => i.toLowerCase() === slugValue.toLowerCase()
+      );
+      let existingTagValue = {};
+      if (subjectFilter.length !== 0) {
+        existingTagValue = { tagType: 'subject', tagValue: subjectFilter[0] };
+      } else if (orientationOptionFilter.length !== 0) {
+        existingTagValue = { tagType: 'orientation', tagValue: orientationOptionFilter[0] };
+      } else if (mediumOptionFilter.length !== 0) {
+        existingTagValue = { tagType: 'medium', tagValue: mediumOptionFilter[0] };
+      } else if (decorOptionFilter.length !== 0) {
+        existingTagValue = { tagType: 'decorStyle', tagValue: decorOptionFilter[0] };
+      } else if (artOptionFilter.length !== 0) {
+        existingTagValue = { tagType: 'artStyle', tagValue: artOptionFilter[0] };
+      } else if (moodOptionFilter.length !== 0) {
+        existingTagValue = { tagType: 'mood', tagValue: moodOptionFilter[0] };
+      } else if (colorObjectOptionFilter.length !== 0) {
+        existingTagValue = { tagType: 'colorObj', tagValue: colorObjectOptionFilter[0] };
+      }
+      setTagSelected([existingTagValue]);
+      const tempselect = {
+        subject: [],
+        mood: [],
+        decorStyle: [],
+        artStyle: [],
+        orientation: [],
+        medium: [],
+        colorObj: [],
+      }
+      console.log('existingTagValue', existingTagValue)
+      setAllFilters({...tempselect,[existingTagValue.tagType]:[existingTagValue.tagValue]})
+    } else {
+      setAllFilters({
+        subject: [],
+        mood: [],
+        decorStyle: [],
+        artStyle: [],
+        orientation: [],
+        medium: [],
+        colorObj: [],
+      });
+      setTagSelected([]);
+    }
   };
 
   const handleMenuOpen = () => {
@@ -164,28 +208,30 @@ const Filters = ({
   window.addEventListener('scroll', handleMenuOpen);
   /* -------------------------Remove Tag with Filter selected item remove----------------------*/
   const removeSelectedTag = (item) => {
-    setRemoveTag(item);
-    let tempRes = TagSelected.filter((i) => JSON.stringify(i) !== JSON.stringify(item));
+    if (item.tagValue.toLowerCase() !== slugValue.toLowerCase()) {
+      setRemoveTag(item);
+      let tempRes = TagSelected.filter((i) => JSON.stringify(i) !== JSON.stringify(item));
 
-    setIsRemoving(true);
-    if (tempRes.length === 0) {
-      setAllFilters({
-        subject: [],
-        mood: [],
-        decorStyle: [],
-        artStyle: [],
-        orientation: [],
-        medium: [],
-        colorObj: [],
-      });
-      setTagSelected([]);
-    } else {
-      if (Object.keys(allFilters).length !== 0) {
-        const newArr = allFilters[item.tagType].filter((object) => {
-          return object !== item.tagValue;
+      setIsRemoving(true);
+      if (tempRes.length === 0) {
+        setAllFilters({
+          subject: [],
+          mood: [],
+          decorStyle: [],
+          artStyle: [],
+          orientation: [],
+          medium: [],
+          colorObj: [],
         });
-        setAllFilters({ ...allFilters, [item.tagType]: newArr });
-        setTagSelected([...tempRes]);
+        setTagSelected([]);
+      } else {
+        if (Object.keys(allFilters).length !== 0) {
+          const newArr = allFilters[item.tagType].filter((object) => {
+            return object !== item.tagValue;
+          });
+          setAllFilters({ ...allFilters, [item.tagType]: newArr });
+          setTagSelected([...tempRes]);
+        }
       }
     }
   };
@@ -210,6 +256,7 @@ const Filters = ({
                   setTagSelected={setTagSelected}
                   TagSelected={TagSelected}
                   setRemoveTag={setRemoveTag}
+                  slugValue={slugValue}
                 />
                 <VerticalBorder />
                 <FilterDropdown
@@ -222,6 +269,7 @@ const Filters = ({
                   setTagSelected={setTagSelected}
                   TagSelected={TagSelected}
                   setRemoveTag={setRemoveTag}
+                  slugValue={slugValue}
                 />
                 <VerticalBorder />
                 <FilterDropdown
@@ -234,6 +282,7 @@ const Filters = ({
                   setTagSelected={setTagSelected}
                   TagSelected={TagSelected}
                   setRemoveTag={setRemoveTag}
+                  slugValue={slugValue}
                 />
                 <VerticalBorder />
                 <FilterDropdown
@@ -246,6 +295,7 @@ const Filters = ({
                   setTagSelected={setTagSelected}
                   TagSelected={TagSelected}
                   setRemoveTag={setRemoveTag}
+                  slugValue={slugValue}
                 />
                 <VerticalBorder />
                 <FilterDropdown
@@ -256,6 +306,7 @@ const Filters = ({
                   filterTitle="ART STYLE"
                   options={artOption}
                   setRemoveTag={setRemoveTag}
+                  slugValue={slugValue}
                 />
                 <VerticalBorder />
                 <FilterDropdown
@@ -268,6 +319,7 @@ const Filters = ({
                   setTagSelected={setTagSelected}
                   TagSelected={TagSelected}
                   setRemoveTag={setRemoveTag}
+                  slugValue={slugValue}
                 />
                 <VerticalBorder />
                 <FilterDropdown
@@ -280,6 +332,7 @@ const Filters = ({
                   setTagSelected={setTagSelected}
                   TagSelected={TagSelected}
                   setRemoveTag={setRemoveTag}
+                  slugValue={slugValue}
                 />
               </div>
               <div

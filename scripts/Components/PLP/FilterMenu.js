@@ -52,6 +52,7 @@ const FilterMenu = ({
   setTagSelected,
   RemoveTag,
   setRemoveTag,
+  slugValue,
   setMenuOpen,
 }) => {
   const { allFilters, setAllFilters } = useContext(plpContext);
@@ -127,6 +128,7 @@ const FilterMenu = ({
             RemoveTag={RemoveTag}
             setRemoveTag={setRemoveTag}
             setMenuOpen={setMenuOpen}
+            slugValue={slugValue}
           />
         ))}
       </MenuContainer>

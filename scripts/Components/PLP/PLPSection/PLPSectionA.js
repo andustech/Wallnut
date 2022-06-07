@@ -49,6 +49,7 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
 
   const filterRef = useRef();
   const [slugValue, setSlugValue] = useState('');
+  const [slugRawValue,setSlugRawValue]=useState('')
   useEffect(() => {
     FilterProducts();
   }, [allFilters, sortingApply, products,slugValue]);
@@ -58,7 +59,7 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
   const slugToSelectedFilterValue = () => {
     let arr = window.location.pathname.split('/');
     let value = arr[arr.length - 1];
-
+    setSlugRawValue(value)
     let splitValue = value.split('-');
     if (splitValue.length > 1) {
       if (value.startsWith('decor-style')) {
@@ -270,9 +271,9 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
           setIsOpenFilter={setIsOpenFilter}
           isOpenFilter={isOpenFilter}
           products={filterProducts.length ? filterProducts : products}
-          slugValue={slugValue}
           setTagSelected={setTagSelected}
           TagSelected={TagSelected}
+          slugValue={slugValue}
         />
       )}
       <div className="w-full">
@@ -330,6 +331,7 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
             subjectOption={subjectOption}
             sizeOption={sizeOption}
             isRemoving={isRemoving}
+            slugRawValue={slugRawValue}
           />
         </FiltersDesktop>
         <PLPItems

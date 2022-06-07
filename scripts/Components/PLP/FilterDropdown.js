@@ -24,7 +24,7 @@ const FilterDropdown = ({
   sortingApply,
   setSortingApply,
   sortingBy,
-  count,
+  count,slugValue
 }) => {
   const { allFilters } = useContext(plpContext);
   const { color } = allFilters;
@@ -109,6 +109,8 @@ const FilterDropdown = ({
           sortingApply={sortingApply}
           setSortingApply={setSortingApply}
           setMenuOpen={setMenuOpen}
+          slugValue={slugValue}
+
         />
       </FilterDropdownItem>
     </div>
