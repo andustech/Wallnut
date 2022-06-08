@@ -122,7 +122,7 @@ const FilterDropdownItem = styled.div.attrs({
 })``;
 
 const FilterContainer = styled.div.attrs({
-  className: 'flex items-center mr-4 cursor-pointer fltr-drpdwn ',
+  className: 'flex items-center mr-3 xl:mr-4 cursor-pointer fltr-drpdwn ',
 })`
   @media (max-width: 767px) {
     margin-right: 0 !important;
@@ -130,7 +130,7 @@ const FilterContainer = styled.div.attrs({
 `;
 
 const FilterTitle = styled.span.attrs({
-  className: 'mr-5',
+  className: 'mr-3 xl:mr-5',
 })`
   font-family: 'GoodSans';
   font-weight: 400;
