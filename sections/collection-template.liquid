@@ -10,7 +10,6 @@
             {% endpaginate %}
           ],
           "settings": {{ section.settings | json }},
-          "collectionProducts": {{ collection.products | json }},
           "collectionTitle":
             {% if collection.title == "Products" %}
               {{section.settings.shop_all_heading | json }}
