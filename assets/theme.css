@@ -234,6 +234,13 @@ section.customer-order h5.order_section_title {
 .font-attila-sans-medium {
   font-family: 'AttilaSansUniform-Medium';
 }
+.font-good-sans-light {
+  font-family: 'GoodSans-Light';
+}
+.font-good-sans {
+  font-family: 'GoodSans';
+}
+
 * {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -502,7 +509,9 @@ body {
 }
 @media only screen and (max-width: 575px) {
   .index .overlay .primary_btn,
-  .index .overlay .secondary_btn {
+  .index .overlay .secondary_btn,
+  .how_it_work_hero_overlay .primary_btn,
+  .how_it_work_hero_overlay .secondary_btn {
     display: block;
     margin-left: auto !important;
     margin-right: auto !important;
@@ -871,9 +880,6 @@ body.cart .cart-final-details .secondary_btn {
     width: 100%;
     padding-right: 24px;
   }
-  .premium_pos:last-child .premium_content {
-    /* padding-right: 0; */
-  }
   .premium_pos .premium_content .premium_link {
     min-width: 100%;
     display: block;
@@ -884,6 +890,11 @@ body.cart .cart-final-details .secondary_btn {
   }
   .premium_pos .premium_content .premium_link:after {
     display: none;
+  }
+}
+@media only screen and (min-width: 769px) and (max-width: 991px) {
+  .premium_pos:last-child .premium_content {
+      padding-right: 0;
   }
 }
 @media only screen and (max-width: 991px) {
@@ -1302,9 +1313,32 @@ afterpay-placement {
   }
   .premium_main_container .container {
     padding-right: 0;
+    padding-left: 0;
+  }
+  .accessibility h5 {
+    font-size: 15px;
+  }
+  .premium_pos:first-child .premium_img_box {
+    margin-left: 20px;
   }
   .premium_pos:last-child .premium_img_box {
-    margin-right: 24px!important;
+    margin-right: 20px!important;
+  }
+  .premium_pos:first-child .premium_content {
+    padding-left: 20px;
+  }
+  .mood_card_container > div:first-child {
+    margin-right: 16px !important;
+  }
+  .mood_card_container > div:first-child {
+    margin-left: 20px;
+  }
+  .mood_card_container > div:last-child {
+    margin-right: 20px;
+  }
+  #react-index-mood-section .container {
+    padding-right: 0; 
+    padding-left: 0; 
   }
 }
 
@@ -1477,6 +1511,50 @@ afterpay-placement {
   .fast_order_inner h2 br {
     display: none;
   }
+  #react-product-recommendation .container {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  #react-product-recommendation .each-item:first-child {
+    margin-left: 20px;
+  }
+  #react-product-recommendation .each-item:last-child {
+    margin-right: 20px !important;
+  }
+}
+@media only screen and (min-width: 769px) and (max-width: 991px) {
+  #react-product-recommendation .each-item:first-child {
+    margin-left: 40px;
+  }
+  #react-product-recommendation .each-item:last-child {
+    margin-right: 40px !important;
+  }
+}
+@media only screen and (min-width: 581px) and (max-width: 768px) {
+  .premium_pos:first-child .premium_img_box {
+    margin-left: 30px;
+  }
+  .premium_pos:last-child .premium_img_box {
+    margin-right: 30px!important;
+  }
+  .premium_pos:first-child .premium_content {
+    padding-left: 30px;
+  }
+  .premium_pos:last-child .premium_content {
+    padding-right: 30px;
+  }
+  #react-product-recommendation .each-item:first-child {
+    margin-left: 30px;
+  }
+  #react-product-recommendation .each-item:last-child {
+    margin-right: 30px !important;
+  }  
+  .mood_card_container > div:first-child {
+    margin-left: 30px;
+  }
+  .mood_card_container > div:last-child {
+    margin-right: 30px;
+  }
 }
 .videoBack.fade-out {
   transition: opacity linear 0.15s;
@@ -1607,6 +1685,7 @@ afterpay-placement {
 }
 .mobile-pdp-tabs ul {
   padding-left: 20px;
+  padding-bottom: 12px;
 }
 .mobile-pdp-tabs ul li {
   list-style-type: disc;
@@ -1797,9 +1876,6 @@ afterpay-placement {
   }
   #pdp-color-swatcher-sticky h5 {
     display: inline-block;
-  }
-  #react-index-mood-section .container {
-    padding-right: 0; 
   }
 }
 
@@ -2234,6 +2310,7 @@ afterpay-placement {
     padding-top: 31px;
     padding-bottom: 31px;
     position: relative;
+    text-align: center;
   }
 
   .overlay .primary_btn,
@@ -3044,4 +3121,7 @@ body.cart .cart-item {
 }
 .afterpay-paragraph .afterpay-main-text {
   font-size: 11px;
+}
+.mood_card_container > div:first-child {
+  margin-right: 24px;
 }
