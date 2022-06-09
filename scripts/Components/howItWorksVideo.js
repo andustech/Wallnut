@@ -42,7 +42,7 @@ const howItWorksVideo = ({ settings }) => {
   return (
     <div className="section-padding">
        <div className="main_banner relative video_container">
-        <div className="container">
+        <div className="container lg:float-none lg:px-0 max-w-full">
           <div className="bg-morning-blue w-full">
             <div className="meet_wallnut_overlay text-black lg:text-white lg:w-3/12 text-center py-8 lg:py-0 px-4 lg:px-0">
                 { title && <h3 className="mb-2 text-black lg:text-white">{title}</h3> }

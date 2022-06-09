@@ -93,7 +93,7 @@ const meetWallnut = ({ settings, blocks }) => {
                       </>
                     }
                     { settings.subtext && 
-                      <p className="font-normal text-xs leading-5 mb-0">{settings.subtext}</p>
+                      <p className="font-normal text-xs leading-5 mb-0">{parse(settings.subtext)}</p>
                     }
                   </div>
                   {settings.video_link && (

@@ -49,7 +49,7 @@ const hangingWallnut = ({ settings, blocks }) => {
 
           {blocks?.map((block, index)=>{
             const {settings} = block;
-            const margin_class = index + 1 == blocks.length ? 'lg:mr-0' : 'lg:mr-6 mb-8 lg:mb-0';
+            const margin_class = index + 1 == blocks.length ? 'lg:mr-0 lg:w-4/12' : 'lg:mr-6 mb-8 lg:mb-0 lg:w-4/12';
             return (
                 <>
                   <ValuePropColumn className={margin_class}>

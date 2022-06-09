@@ -603,12 +603,12 @@ FilterItem.propTypes = {
 
 
 const FilterOptions = styled.span`
-  font-family: 'GoodSans';
-  font-size: 12px;
+  font-family: 'GoodSans-Light';
+  font-size: 14px;
   line-height: 20px;
-  letter-spacing: 0.05em;
-  align-items:center @media (max-width: 767px) {
-    letter-spacing: -0.01em;
+  align-items:center;
+  @media (max-width: 767px) {
+    font-size: 12px;
     line-height: 16px;
   }
 `;
