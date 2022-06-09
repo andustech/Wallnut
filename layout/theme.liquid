@@ -139,6 +139,17 @@
 </noscript>
 <!-- End Google Tag Manager (noscript) -->
 
+<!-- HEAP -->
+<script type="text/javascript">
+  window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.heapanalytics.com/js/heap-"+e+".js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a);for(var n=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","resetIdentity","removeEventProperty","setEventProperties","track","unsetEventProperty"],o=0;o<p.length;o++)heap[p[o]]=n(p[o])};
+  heap.load("559853633");
+</script>
+
+
+<script type="text/javascript">
+  (function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/yTqbcAqAOLbG8dXBwuwR59fc1TTQI8hesxMF3qqO/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+</script>
+
 <script src="https://cdn.optimizely.com/js/20193727087.js"></script>
 
 {% if handle contains 'exclusive' %}
@@ -159,6 +170,7 @@
 {% if template.name == 'page' %}
   {% render 'webpack-scripts-pages' %}
 {% endif %}
+  <script src="https://cdn-widgetsrepository.yotpo.com/v1/loader/F2xxQINWW8fMR3B2WCWIXQ" async></script>
 </head>
 
 <body class="gridlock shifter shifter-left {% if template contains 'product' %}product{% elsif template contains 'collection' %}collection{% else %}{{ template | handleize }}{% endif %}" data-shop-url="{{ shop.url }}">
