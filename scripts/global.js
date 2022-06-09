@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './base.css';
 import { subscribeToRenderUpsell, subscribeToUpdatePrice } from './pub-sub';
 import { createReactComponents } from './utils';
-import { addClientIdToHeap } from './utils/heap';
+// import { addClientIdToHeap } from './utils/heap';
 import { setOptimizelySession } from './utils/optimizely';
 
 import BestSellers from './Components/BestSellers';
@@ -25,7 +25,7 @@ import howItWorksMission from './Components/howItWorksMission';
 import hangingWallnut from './Components/hangingWallnut';
 // import ShopOurBestSellers from './Components/ShopOurBestSellers';
 
-addClientIdToHeap();
+//addClientIdToHeap();
 setOptimizelySession();
 
 import('./Components/CartHighlight').then((data) => {

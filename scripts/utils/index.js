@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PubSub from 'pubsub-js';
 import { addEventToDataLayer } from './google-analytics';
-import { trackHeapEvent } from './heap';
+// import { trackHeapEvent } from './heap';
 import productImages from '../Components/ProductSection/product-images';
 
 export const convertPriceFromNumber = (price) => {
@@ -858,7 +858,7 @@ export const handleAddToCart = (e, item, qty, variantID, callback) => {
     sendKlaviyoEvent(variantID, _learnq);
   }
 
-  trackHeapEvent('Add to cart', { item, qty, variantID });
+  // trackHeapEvent('Add to cart', { item, qty, variantID });
   addEventToDataLayer({ event: 'Add to cart' });
 
   $.ajax({
