@@ -1875,10 +1875,10 @@
           "section_title": "Shop by mood",
           "image_1": "shopify:\/\/shop_images\/mood-img-1.png",
           "button_text_1": "SOOTHING",
-          "button_link_1": "#",
+          "button_link_1": "\/collections\/all\/mood-soothing",
           "image_2": "shopify:\/\/shop_images\/mood-img-2.png",
           "button_text_2": "JOYFUL",
-          "button_link_2": "#"
+          "button_link_2": "\/collections\/all\/mood-joyful"
         }
       },
       "165217627403d30c85": {
@@ -1957,7 +1957,6 @@
               "image": "shopify:\/\/shop_images\/Image-E-hanging-demo_crop.jpg",
               "title": "Hassle-free hanging",
               "content": "Skip the trip to the hardware store. Wallnut artwork arrives with everything you need to hang it. The Wallnut<sup>TM<\/sup> Mounting System comes with two pieces:",
-              "content_r": "",
               "point_title_1": "Wall mount.*",
               "point_content_1": "It's adhesive-based, so you don't have to worry about wall damage. It also comes with a built-in level, which makes it easy to find the perfect placement.",
               "point_title_2": "Frame hook.",
@@ -1975,7 +1974,6 @@
               "image": "shopify:\/\/shop_images\/SHOT05_FRAME_FRAME_FRAME_crop_843e0059-d5b0-4712-9f24-8e3f76da1857.jpg",
               "title": "Framed and ready to hang",
               "content": "Your artwork arrives already framed, using premium materials that are thoughtfully sourced. Simply hang it in your living room, bedroom, bathroom, kids’ room, craft room... or any room!",
-              "content_r": "",
               "point_title_1": "",
               "point_content_1": "",
               "point_title_2": "",
