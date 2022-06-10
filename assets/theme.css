@@ -3166,3 +3166,9 @@ body.cart .cart-item {
   display: inline-block;
   padding: 4px !important;
 }
+.gm-menu .gm-level-0:first-child {
+  display: none;
+}
+.gm-menu-installed .gm-menu.gm-mobile-bordered.gm-menu-mobile>.gm-level-0+.gm-level-0:not(.searchItem):nth-child(2) {
+  border: none !important;
+}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import SizeSwatch from '../../../SizeSwatch';
@@ -21,6 +21,7 @@ const PDPSizeFilter = ({ product, selectedVariant, setSelectedVariant, setCurren
   const [selectedSize, setSelectedSize] = useState(getDefaultSize(product, option1, option2));
   const [variants, setVariants] = useState(originalVaraints);
   const [sizeDropdown, setSizeDropdown] = useState('')
+  const sizeDropDownRef = useRef();
 
   useEffect(() => {
     if (!location.search.includes('variant=')) {
@@ -92,29 +93,82 @@ const PDPSizeFilter = ({ product, selectedVariant, setSelectedVariant, setCurren
         value: 0.0, // Optional as float
       },
     });
-
+    handleSizeDropdown();
   };
 
   const handleSizeDropdown = () => {
     if(sizeDropdown === 'sizeDropdownVisible') {
+      console.log('if')
       setSizeDropdown('')
     }
     else {
+      console.log('else')
       setSizeDropdown('sizeDropdownVisible')
     }
   }
+
+  // const clickOutside = (e) => {
+  //   console.log('sizeDropDownRef => ', sizeDropDownRef)
+  //   if(sizeDropDownRef.current.contains(e.target)) {
+  //     // inside click
+  //     console.log('clicked inside')
+  //     return;
+  //   } 
+  //   // outside click
+  //     console.log('clicked outside scope')
+  //     handleSizeDropdown()
+  // }
+
+  // // Do something after component renders
+  // useEffect(() => {
+  //   document.addEventListener('mousedown', clickOutside);
+
+  //   // clean up function before running new effect
+  //   return () => {
+  //       document.removeEventListener('mousedown', clickOutside);
+  //   }
+  // }, [])
   
   let sizeArr = [];
   const sizeIndex = product.options.findIndex(option => option === "Size");
   return (
-    <div id={ isSticky ? 'pdp-size-swatcher-sticky' : 'pdp-size-swatcher'} className={isSticky ? 'md:flex md:flex-row' : 'mb-5 lg:mb-8'}>
-      { isSticky ?
+    <>
+    { isSticky ?
+      <div ref={sizeDropDownRef} id="pdp-size-swatcher-sticky" className="md:flex md:flex-row">
         <h5>
           Size
           <span className="mr-2 ml-2 lg:mr-4 lg:ml-4" onClick={() => handleSizeDropdown() }>{selectedSize}</span>
           <span onClick={() => handleSizeDropdown() } className="inline-block" ><ArrowDownIcon/></span>
         </h5>
-      :
+        <ul className={`sizeDropdown ${sizeDropdown}`}>
+          {product.variants.map((variant, i) => {
+            const varSize = variant.options[sizeIndex];
+            if (sizeArr.indexOf(varSize) === -1) {
+              sizeArr.push(varSize);
+              return (
+                <li key={i}>
+                  <SizeSwatchContainer
+                    isSelected={varSize === selectedSize}
+                    isSticky={isSticky}
+                    onClick={() => {
+                      setSelectedSize(varSize);
+                      handleSizeSelect(varSize);
+                    }}
+                    tabIndex={sizeIndex}
+                    onKeyDown={() => {}}
+                    role="button"
+                    aria-label="change size"
+                  >
+                    <SizeSwatch option={varSize} isSticky={isSticky} />
+                  </SizeSwatchContainer>
+                </li>
+              )
+            }
+          })}
+        </ul>
+      </div>
+    :
+      <div id="pdp-size-swatcher" className="mb-5 lg:mb-8">
         <h5 className="mb-2 lg:mb-4">
         Size{' '}
           <>
@@ -124,35 +178,35 @@ const PDPSizeFilter = ({ product, selectedVariant, setSelectedVariant, setCurren
             </span>
           </>
         </h5>
-      }
-      <ul className={ isSticky ? 'sizeDropdown '+sizeDropdown : 'flex flex-row gap-3 xl:gap-4 overflow-x-auto'}>
-        {product.variants.map((variant, i) => {
-          const varSize = variant.options[sizeIndex];
-          if (sizeArr.indexOf(varSize) === -1) {
-            sizeArr.push(varSize);
-            return (
-              <li key={i}>
-                <SizeSwatchContainer
-                  isSelected={varSize === selectedSize}
-                  isSticky={isSticky}
-                  onClick={() => {
-                    setSelectedSize(varSize);
-                    handleSizeSelect(varSize);
-                  }}
-                  tabIndex={sizeIndex}
-                  onKeyDown={() => {}}
-                  role="button"
-                  aria-label="change size"
-                >
-                  <SizeSwatch option={varSize} isSticky={isSticky} />
-                </SizeSwatchContainer>
-              </li>
-            )
-          }
-        })}
-      </ul>
-
-    </div>
+        <ul className="flex flex-row gap-3 xl:gap-4 overflow-x-auto">
+          {product.variants.map((variant, i) => {
+            const varSize = variant.options[sizeIndex];
+            if (sizeArr.indexOf(varSize) === -1) {
+              sizeArr.push(varSize);
+              return (
+                <li key={i}>
+                  <SizeSwatchContainer
+                    isSelected={varSize === selectedSize}
+                    isSticky={isSticky}
+                    onClick={() => {
+                      setSelectedSize(varSize);
+                      handleSizeSelect(varSize);
+                    }}
+                    tabIndex={sizeIndex}
+                    onKeyDown={() => {}}
+                    role="button"
+                    aria-label="change size"
+                  >
+                    <SizeSwatch option={varSize} isSticky={isSticky} />
+                  </SizeSwatchContainer>
+                </li>
+              )
+            }
+          })}
+        </ul>
+      </div>
+    }
+    </>
   );
 };
 

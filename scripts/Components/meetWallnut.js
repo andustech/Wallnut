@@ -53,18 +53,17 @@ const meetWallnut = ({ settings, blocks }) => {
               <>
               {index % 2 === 0 ? (
                 <div className="video_items_container mb-10 lg:mb-16 flex flex-col lg:flex-row items-center lg:items-center md:items-start">
-                  <div className="lg:w-7/12 mb-4 lg:mb-0">
+                  <div className="lg:w-6/12 xl:w-6/12 xxl:w-7/12 mb-4 lg:mb-0">
                     <img
                       src={settings.image}
                       alt="how-it-works"
                       className="w-full"
                     />
                   </div>
-                  <div className="video_content lg:w-5/12 lg:pl-16 xl:pl-24">
-                    { settings.title && <h4 className="font-bold text-black mb-4">{settings.title}</h4> }
-                    { settings.content && <p className="mb-4 test">{parse(settings.content)}</p> }
-                    <p>{settings.content_r}</p>
-                    <ul className="text-base pl-5 mb-7 list-disc">
+                  <div className="video_content lg:w-6/12 xl:w-6/12 xxl:w-5/12 lg:pl-10 xl:pl-14 xxl:pl-24">
+                    { settings.title && <h4 className="font-bold text-black mb-2 lg:mb-4">{settings.title}</h4> }
+                    { settings.content && <p className="mb-4">{parse(settings.content)}</p> }
+                    <ul className="text-base pl-5 mb-6 list-disc">
                       { settings.point_content_1 && 
                         <li>
                           <p className="mb-3">
@@ -82,7 +81,7 @@ const meetWallnut = ({ settings, blocks }) => {
                     </ul>
                     { settings.video_btn_text && 
                       <>
-                          <a href={undefined} onClick={() => handleVideoPopup()} className="video-open text-xs flex items-center mb-6 text-black leading-5 video-open-link cursor-pointer">
+                          <a href={undefined} onClick={() => handleVideoPopup()} className="video-open text-xs flex items-center mb-5 text-black leading-5 video-open-link cursor-pointer">
                               <img 
                                   src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/video-play-black.svg?v=1652851742" 
                                   alt="Video Play" 
@@ -138,15 +137,15 @@ const meetWallnut = ({ settings, blocks }) => {
 
               ):(
                 <div className="how_it_work_items_container flex flex-col-reverse lg:flex-row items-center lg:items-center md:items-start">
-                  <div className="lg:w-5/12 lg:pr-16 xl:pr-24">
-                    { settings.title && <h4 className="font-bold text-black mb-4">{settings.title}</h4> }
+                  <div className="lg:w-6/12 xl:w-6/12 xxl:w-5/12 lg:pr-10 xl:pr-14 xxl:pr-24">
+                    { settings.title && <h4 className="font-bold text-black mb-2 lg:mb-4">{settings.title}</h4> }
                     { settings.content && <p className="mb-6">{settings.content}</p> }
                     { settings.button_text && <a href={settings.button_link} className="primary_btn mr-0">{settings.button_text}</a> }
                     { settings.subtext && 
                       <p className="font-normal text-xs leading-5 mb-0">{settings.subtext}</p>
                     }
                   </div>
-                  <div className="lg:w-7/12 mb-4 lg:mb-0">
+                  <div className="lg:w-6/12 xl:w-6/12 xxl:w-7/12 mb-4 lg:mb-0">
                     <img
                       src={settings.image}
                       alt="how-it-works"
