@@ -346,7 +346,8 @@
           "payment_icon_color": true,
           "show_copyright": true,
           "show_locale_selector": true,
-          "show_currency_selector": true
+          "show_currency_selector": true,
+          "shipping_subtext": "*Shipping exclusions apply"
         }
       },
       "collection-template": {
@@ -1262,7 +1263,7 @@
       "desktop-announcement": {
         "type": "desktop-announcement",
         "settings": {
-          "announcement": "FREE SHIPPING ON ALL ORDERS",
+          "announcement": "FREE SHIPPING* ON ALL ORDERS",
           "referral_link_text": "Refer and Save $25!",
           "sale_announcement": "The Fresh Start Event: $100 Off Lounge Chairs with code FRESHSTART",
           "sale_link": "\/collections\/fresh-start-event",
@@ -2102,6 +2103,14 @@
       "162144687750a492d8",
       "16521585491041f1df",
       "165217627403d30c85"
-    ]
+    ],
+    "blocks": {
+      "855628211100114053": {
+        "type": "shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/klaviyo-onsite-embed\/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {
+        }
+      }
+    }
   }
 }
