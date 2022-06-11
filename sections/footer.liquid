@@ -18,7 +18,8 @@
           <h2 class="h3-attila-sans font-medium text-black">{{ section.settings.title }}</h2>
           <p class="news_para mb-0">{{ section.settings.subheading }}</p>
           <div class="newsletter">
-            <div class="klaviyo-form-SxEnPF"></div>
+            {% comment %} <div class="klaviyo-form-SxEnPF"></div> {% endcomment %}
+            <div class="klaviyo-form-XJQCMH"></div>
 
             {% comment %} <form action=''>
               <input class='email_input' placeholder='Enter Email' type='emai'>
@@ -95,6 +96,12 @@
                         <div class='soc_ico'><a href='{{ settings.weibo_id }}' target="_blank"><i></i></a></div>
                         {% endif %}
                     </div>
+
+                    <div class="shipping-text">
+                      {%- if section.settings.shipping_subtext -%}
+                        <p class="mb-0 text-white text-xs">{{ section.settings.shipping_subtext }}</p>
+                      {%- endif -%}
+                    </div>
                   {% endif %}
                 {% endfor %}
               </div>
@@ -141,7 +148,7 @@
         font-family: "GoodSans-Light" !important;
     }
     
-    input.needsclick.go2416446746.kl-private-reset-css-Xuajs1 {
+    input.needsclick.go525426912.kl-private-reset-css-Xuajs1 {
     background: transparent !important;
     border: none !important;
     border-bottom: 1px solid black !important;
@@ -156,16 +163,22 @@
     letter-spacing: -0.01em !important;
     box-shadow: none !important;
     line-height: unset !important;
-
+}
+input.needsclick.go525426912.kl-private-reset-css-Xuajs1:hover {
+  border-bottom: 1px solid black !important;
 }
 
-  input.needsclick.go2416446746.kl-private-reset-css-Xuajs1::-webkit-input-placeholder {
+  input.needsclick.go525426912.kl-private-reset-css-Xuajs1::-webkit-input-placeholder {
         color: black;
         font-size: 16px;
         font-weight: 300;
         line-height: 24px;
         font-family: "GoodSans-Light" !important;
     }
+    form.needsclick.klaviyo-form > div {
+    min-height: auto !important;
+    background: transparent;
+}
 
     .needsclick.kl-private-reset-css-Xuajs1 {
     padding: 0 !important;
@@ -194,15 +207,18 @@
   opacity: 0.60;
 }
 
-.klaviyo-form .ql-snow span {
+.klaviyo-form .ql-snow span, .klaviyo-form .ql-snow strong {
     color: #000 !important;
     font-family: "GoodSans-Light" !important;
     font-size: 14px !important;
+    font-weight: 300 !important;
 }
 .klaviyo-form .ql-snow p {
     text-align: left !important;
 }
-
+.klaviyo-form > div > div:first-child .ql-snow p {
+  margin-bottom: 14px !important;
+}
 form.needsclick.klaviyo-form.klaviyo-form-version-cid_1.kl-private-reset-css-Xuajs1 {
     margin: 0 !important;
 }
@@ -325,8 +341,11 @@ form.needsclick.klaviyo-form.klaviyo-form-version-cid_1.kl-private-reset-css-Xua
         align-items: flex-start;
     }
     .footer_right {
-        padding: 0 0 80px 64px;
+        padding: 0 0 0px 64px;
         border-left: 1px solid white;
+    }
+    .shipping-text {
+        padding-top: 80px;
     }
     .contact.contact_footer_opt {
         font-weight: 400;
@@ -532,6 +551,12 @@ form.needsclick.klaviyo-form.klaviyo-form-version-cid_1.kl-private-reset-css-Xua
      "id": "show_currency_selector",
      "label": "Show currency selector",
      "default": true
+    },
+    {
+      "type": "text",
+      "id": "shipping_subtext",
+      "label": "Shipping subtext",
+      "default": "*Shipping exclusions apply"
     }
   ],
   "blocks":[

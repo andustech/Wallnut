@@ -530,7 +530,8 @@ body {
 .empty_shop_all_btn.primary_btn:hover,
 .primary_btn.new-address:hover,
 body.cart .cart-final-details .primary_btn:hover,
-#contact_form .primary_btn:hover {
+#contact_form .primary_btn:hover,
+.reset-pwd .primary_btn:hover {
   background-color: #f1956abb !important;
 }
 
@@ -542,7 +543,8 @@ body.cart .cart-final-details .primary_btn:hover,
 .empty_shop_all_btn.primary_btn,
 .primary_btn.new-address,
 body.cart .cart-final-details .primary_btn,
-#contact_form .primary_btn {
+#contact_form .primary_btn,
+.reset-pwd .primary_btn {
   padding: 5px 3em !important;
   margin-right: 0 !important;
   font-size: 12px !important;
@@ -1350,6 +1352,18 @@ afterpay-placement {
   .review_main_container .review_inner_items .right .review_card:last-child {
     margin-right: 20px;
   }
+  .footer_opt_container {
+    flex-direction: column;
+  }
+  .footer_right {
+    padding: 0 !important;
+    margin-top: 32px !important;
+    border-left: none !important;
+    padding: 0 0 0 40px;
+  }
+  .shipping-text {
+    padding-top: 20px !important;
+  }
 }
 @media only screen and (min-width: 350px) and (max-width: 768px) {
   .how_it_work_hero_overlay h2 {
@@ -1362,16 +1376,6 @@ afterpay-placement {
   }
 }
 @media only screen and (max-width: 640px) {
-  .footer_opt_container {
-    flex-direction: column;
-  }
-
-  .footer_right {
-    padding: 0 !important;
-    margin-top: 32px !important;
-    border-left: none !important;
-    padding: 0 0 0 40px;
-  }
   .footer_opt_container .footer_title {
     font-size: 12px !important;
     line-height: 18px !important;
@@ -3165,10 +3169,15 @@ body.cart .cart-item {
 .footer-section .klaviyo-form [data-testid=form-row] input.needsclick ~ div > div > div {
   display: inline-block;
   padding: 4px !important;
+  background: #f8ece9 !important;
 }
 .gm-menu .gm-level-0:first-child {
   display: none;
 }
 .gm-menu-installed .gm-menu.gm-mobile-bordered.gm-menu-mobile>.gm-level-0+.gm-level-0:not(.searchItem):nth-child(2) {
   border: none !important;
+}
+form.needsclick.klaviyo-form > div {
+  min-height: auto !important;
+  background: transparent;
 }

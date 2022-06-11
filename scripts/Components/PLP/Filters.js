@@ -248,7 +248,7 @@ const Filters = ({
           <div className="bg-transparent flex container">
             <div className="flex justify-between w-full">
               <div className="grid grid-cols-2 gap-y-4 md:flex py-5 justify-items-center">
-                <FilterDropdown
+                {/* <FilterDropdown
                   filterName="subject"
                   setMenuOpen={setMenuOpen}
                   filterType="subject"
@@ -272,8 +272,8 @@ const Filters = ({
                   TagSelected={TagSelected}
                   setRemoveTag={setRemoveTag}
                   slugValue={slugValue}
-                />
-                <VerticalBorder />
+                /> 
+                <VerticalBorder /> */}
                 <FilterDropdown
                   filterName="colorObj"
                   setMenuOpen={setMenuOpen}
@@ -286,7 +286,7 @@ const Filters = ({
                   setRemoveTag={setRemoveTag}
                   slugValue={slugValue}
                 />
-                <VerticalBorder />
+                {/* <VerticalBorder />
                 <FilterDropdown
                   filterName="decorStyle"
                   setMenuOpen={setMenuOpen}
@@ -298,7 +298,7 @@ const Filters = ({
                   TagSelected={TagSelected}
                   setRemoveTag={setRemoveTag}
                   slugValue={slugValue}
-                />
+                /> */} 
                 <VerticalBorder />
                 <FilterDropdown
                   filterName="artStyle"
