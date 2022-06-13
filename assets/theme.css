@@ -1364,6 +1364,10 @@ afterpay-placement {
   .shipping-text {
     padding-top: 20px !important;
   }
+  #add-address #address_form_new .customer_address_table tr:last-child td input {
+    width: auto;
+    min-width: auto;
+  }
 }
 @media only screen and (min-width: 350px) and (max-width: 768px) {
   .how_it_work_hero_overlay h2 {
@@ -2760,6 +2764,9 @@ form {
   #add-address {
     width: 320px !important;
   }
+}
+#add-address #address_form_new .customer_address_table tr td {
+  display: block;
 }
 .hr-or:after {
   font-family: 'GoodSans-Medium';

@@ -56,8 +56,8 @@
         {{ form.errors | default_errors }}
 
         <div id="recover_email" class="clearfix large_form">
-          <label for="email" class="large">{{ 'customer.recover_password.email' | t }}</label>
-          <input type="email" value="" size="30" name="email" id="recover-email" class="large" />
+          <label for="email" class="large">{{ 'customer.recover_password.email' | t }}<span class="text-red-700">*</span></label>
+          <input type="email" required value="" size="30" name="email" id="recover-email" class="large" />
         </div>
 
         <div class="action_bottom">
