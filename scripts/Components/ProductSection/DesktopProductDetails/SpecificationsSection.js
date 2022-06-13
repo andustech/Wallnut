@@ -6,6 +6,8 @@ const SpecificationsSection = ({ productBlock, frameSelected, frameColorSelected
   const { settings } = productBlock;
   const [frameData, setFrameData] = useState();
   const [frameWeight, setFrameWeight] = useState('');
+  const [frameDesc, setFrameDesc] = useState('');
+
   const {
     dimensions_heading,
     details_heading,
@@ -57,6 +59,13 @@ const SpecificationsSection = ({ productBlock, frameSelected, frameColorSelected
       },
     },
   };
+
+  const frameDescArr = {
+    'Walnut Wood': 'Solid wood - FSC certified pine wood, stained finish',
+    'Matte Black': 'Engineered wood from FSC certified sources, painted finish',
+    'Matte White': 'Engineered wood from FSC certified sources, painted finish',
+  }
+
   useEffect(() => {
     for (const key in arr) {
       if (key.toString() === frameSelected) {
@@ -69,6 +78,13 @@ const SpecificationsSection = ({ productBlock, frameSelected, frameColorSelected
         }
       }
     }
+
+    for (const key in frameDescArr) {
+      if (key.toString() === frameColorSelected.toString()) {
+        setFrameDesc(frameDescArr[key]);
+      }
+    }
+
   }, [frameSelected, frameColorSelected]);
   return (
     <>
@@ -96,12 +112,10 @@ const SpecificationsSection = ({ productBlock, frameSelected, frameColorSelected
         </div>
         <div>
           <SectionName>{details_heading}</SectionName>
-          {frame_description && (
-            <ColumnOne>
-              <ColumnName>Frame Description</ColumnName>
-              <ColumnValue>{frame_description}</ColumnValue>
-            </ColumnOne>
-          )}
+          <ColumnOne>
+            <ColumnName>Frame Description</ColumnName>
+            <ColumnValue>{frameDesc}</ColumnValue>
+          </ColumnOne>
           {paper_description && (
             <ColumnOne>
               <ColumnName>Paper Description</ColumnName>
