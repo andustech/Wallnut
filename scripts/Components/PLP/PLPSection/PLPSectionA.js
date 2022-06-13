@@ -9,6 +9,8 @@ import PLPContext from '../plpContext';
 import { mergedFetchedRecommendations } from '../../../utils';
 import FilterIcon from '../../Icons/filterIcon';
 import MobileFilters from '../MobileFilters';
+import algoliasearch from 'algoliasearch/lite';
+
 import {
   artOption,
   colorObject,
@@ -20,7 +22,7 @@ import {
   sizeOption,
 } from '../FilterOptionValues';
 import { MenuIcon } from '../../Icons';
-const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
+const PLPSection = ({ collectionTitle, collectionDescription }) => {
   const [colors, setColors] = useState();
   const [stickyFilter, setStickyFilter] = useState(false);
   const [colorFilters, setColorFilters] = useState([]);
@@ -41,6 +43,18 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
     medium: [],
     colorObj: [],
   });
+
+  console.log('testing')
+  const [products, setProducts] = useState([])
+  const searchClient = algoliasearch('G49A2XSYO1', 'aac1fbe78febb9f003c18df8aba2eba1');
+  const index = searchClient.initIndex('shopify_products');
+  index.search().then(res => {
+    console.log('=========',res.hits)
+    setProducts(res.hits)
+  })
+  .catch(e => console.log('=======e=====',e))
+  .finally(()=> {})
+  
   const [sortingApply, setSortingApply] = useState('');
   const [filterProducts, setFilterProducts] = useState([]);
   const checkFilters = Object.values(allFilters).some((filter) => filter.length > 0);
@@ -230,29 +244,29 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
     }
   }, [isOpenFilter]);
 
-  useEffect(() => {
-    const productTypes = [];
-    products.forEach((product) => {
-      if (product.tags.includes('Dining') && !productTypes.includes('Dining')) {
-        productTypes.push('Dining');
-      }
-      if (product.tags.includes('Lounge') && !productTypes.includes('Lounge')) {
-        productTypes.push('Lounge');
-      }
-    });
-    const tempArr = [];
-    products.forEach((product) => {
-      if (product.tags.includes('Classic') || product.tags.includes('Scandinavian')) {
-        product.variants.forEach((variant) => {
-          if (tempArr.includes(variant.options[0]) === false) {
-            tempArr.push(variant.options[0]);
-          }
-        });
-      }
-    });
-    setColors(tempArr);
-    setChairTypes([...productTypes]);
-  }, [products]);
+  // useEffect(() => {
+  //   const productTypes = [];
+  //   products.forEach((product) => {
+  //     if (product.tags.includes('Dining') && !productTypes.includes('Dining')) {
+  //       productTypes.push('Dining');
+  //     }
+  //     if (product.tags.includes('Lounge') && !productTypes.includes('Lounge')) {
+  //       productTypes.push('Lounge');
+  //     }
+  //   });
+  //   const tempArr = [];
+  //   products.forEach((product) => {
+  //     if (product.tags.includes('Classic') || product.tags.includes('Scandinavian')) {
+  //       product.variants.forEach((variant) => {
+  //         if (tempArr.includes(variant.options[0]) === false) {
+  //           tempArr.push(variant.options[0]);
+  //         }
+  //       });
+  //     }
+  //   });
+  //   setColors(tempArr);
+  //   setChairTypes([...productTypes]);
+  // }, [products]);
 
   const combinedProducts = mergedFetchedRecommendations(checkFilters ? filterProducts : products);
 
@@ -392,54 +406,7 @@ PLPSection.defaultProps = {};
 
 PLPSection.propTypes = {
   collectionTitle: PropTypes.string.isRequired,
-  collectionDescription: PropTypes.string,
-  products: PropTypes.arrayOf(
-    PropTypes.shape({
-      featured_image: PropTypes.string,
-      handle: PropTypes.string,
-      id: PropTypes.number,
-      options: PropTypes.arrayOf(PropTypes.string),
-      price: PropTypes.number,
-      price_max: PropTypes.number,
-      price_min: PropTypes.number,
-      tags: PropTypes.arrayOf(PropTypes.string),
-      title: PropTypes.string,
-      variants: PropTypes.arrayOf(
-        PropTypes.shape({
-          featured_image: PropTypes.shape({
-            alt: PropTypes.string,
-            height: PropTypes.number,
-            product_id: PropTypes.number,
-            src: PropTypes.string,
-            variant_ids: PropTypes.arrayOf(PropTypes.number),
-            width: PropTypes.number,
-          }),
-          featured_media: PropTypes.shape({
-            alt: PropTypes.string,
-            id: PropTypes.number,
-            position: PropTypes.number,
-            preview_image: PropTypes.shape({
-              aspect_ratio: PropTypes.number,
-              height: PropTypes.number,
-              src: PropTypes.string,
-              width: PropTypes.number,
-            }),
-          }),
-          id: PropTypes.number,
-          name: PropTypes.string,
-          option1: PropTypes.string,
-          option2: PropTypes.string,
-          option3: PropTypes.string,
-          options: PropTypes.arrayOf(PropTypes.string),
-          price: PropTypes.number,
-          public_title: PropTypes.string,
-          sku: PropTypes.string,
-          taxable: PropTypes.bool,
-          title: PropTypes.string,
-        })
-      ),
-    })
-  ).isRequired,
+  collectionDescription: PropTypes.string,  
 };
 
 export default PLPSection;

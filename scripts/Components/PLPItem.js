@@ -25,14 +25,14 @@ const getProductUrl = (product, colorOption) => {
 
 const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, collectionTitle }) => {
   const [hover, setHover] = useState(false);
-  const [currentOption, setCurrentOption] = useState(product.variant);
+  const [currentOption, setCurrentOption] = useState('Matte Black');
 
   //Define static colors for custom order
   let staticColors = ['Matte Black', 'Walnut Wood', 'Matte White'];
   const [colorOption, setColorOption] = useState(staticColors[0]);
 
   const PLPItemRef = useRef();
-  const colorIndex = product.options.indexOf('Frame Color');
+  const colorIndex = product.option_names.indexOf('Frame Color');
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(max-width: 768px)');
@@ -64,14 +64,14 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
   }, []);
 
   const handleColorChange = (color) => {
-    const newVariant = product.variants.find((item) => {
-      if (colorIndex === 0) {
-        return item.option1 === color;
-      } else {
-        return item.option2 === color;
-      }
-    });
-    setCurrentOption(newVariant);
+    // const newVariant = product.variants.find((item) => {
+    //   if (colorIndex === 0) {
+    //     return item.option1 === color;
+    //   } else {
+    //     return item.option2 === color;
+    //   }
+    // });
+    setCurrentOption(color);
     setColorOption(color);
   };
 
@@ -172,14 +172,14 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
             >
               <div className="top">
                 <Media
-                  alt={`${product.handle}-${currentOption.options.join(' ').toLowerCase().trim()}`}
+                  alt={`${product.handle}-${currentOption}`}
                   image={productImgSrc}
                   
                 />
               </div>
               <div className="bottom">
                 <Media
-                  alt={`${product.handle}-${currentOption.options.join(' ').toLowerCase().trim()}`}
+                  alt={`${product.handle}-${currentOption}`}
                   image={`${cdnUrl}${product.handle.slice(0, -3)}B-${imgColor}-1824.jpg`}
                 />
               </div>
@@ -190,7 +190,7 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
       <a className="no-underline" href={getProductUrl(product, colorOption, collectionTitle)}>
         <TitlePriceContainer>
           <h6 className="pro_title">{product.title}</h6>
-          <p className="pro_price">{getPriceInRanges(product.price_min, product.price_max)}</p>
+          <p className="pro_price">{getPriceInRanges(product.variants_min_price, product.variants_max_price)}</p>
         </TitlePriceContainer>
       </a>
       {!noColorSelector && (
