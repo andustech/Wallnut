@@ -18,12 +18,7 @@
           <h2 class="h3-attila-sans font-medium text-black">{{ section.settings.title }}</h2>
           <p class="news_para mb-0">{{ section.settings.subheading }}</p>
           <div class="newsletter">
-            {% comment %} <div class="klaviyo-form-SxEnPF"></div> {% endcomment %}
-            <div class="klaviyo-form-XJQCMH"></div>
-
-            {% comment %} <form action=''>
-              <input class='email_input' placeholder='Enter Email' type='emai'>
-            </form> {% endcomment %}
+            <div class="klaviyo-form-UraD7G"></div>
             <p class="mt-4 mb-0">{{ section.settings.content }}</p>
           </div>
         </div>
@@ -33,7 +28,8 @@
           <div class='container'>
             <div class='footer_logo'>
               <img src='{{ section.settings.logo_icon }}'>
-              <p>{{ section.settings.logo_title }}</p>
+              <p class="hidden sm:block">{{ section.settings.logo_title }}</p>
+              <p class="sm:hidden">{{ section.settings.mob_logo_title }}</p>
             </div>
             <div class='footer_opt_container'>
               <div class='footer_left'>
@@ -475,6 +471,12 @@ form.needsclick.klaviyo-form.klaviyo-form-version-cid_1.kl-private-reset-css-Xua
       "id": "logo_title",
       "label": "Heading",
       "default": "ART WORK WITHOUT WORK"
+    },
+    {
+      "type": "text",
+      "id": "mob_logo_title",
+      "label": "Heading for mobile",
+      "default": "Better way to art"
     },
     {
       "type": "text",
