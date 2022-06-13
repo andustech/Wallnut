@@ -75,6 +75,6 @@
     'Purple',
     'Multicolor',
   ];
-  export const mediumOption = ['Drawing', 'Mixed Media', 'Photography', 'Graphic', 'Painting'];
+  export const mediumOption = ['Drawing', 'Mixed Media', 'Photography', 'Graphic', 'Oil&Acrylic Painting', 'Watercolor Painting'];
   export const orientationOption = ['Horizontal', 'Vertical'];
   export const sizeOption =['1824','2432','3040','3244']
