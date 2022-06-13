@@ -1737,7 +1737,7 @@ afterpay-placement {
   -o-transition: width 1s ease-in-out;
   transition: width 1s ease-in-out;
 } */
-.list-img-wrap:hover .top {
+/* .list-img-wrap:hover .top {
   width: 0;
 }
 .list-img-wrap .bottom {
@@ -1745,7 +1745,20 @@ afterpay-placement {
 }
 .list-img-wrap:hover .bottom {
   width: 100%;
+} */
+
+.list-img-wrap {
+  position: relative;
+  float: left;
+  clear: both;
 }
+.list-img-wrap .hover {
+  position: absolute;
+  left:0;
+  top:0;
+  opacity: 0;
+}
+
 #pdp-size-swatcher .PDPSizeFilter__SizeSwatchContainer-sc-rmjw9j-0:hover {
   opacity: 1 !important;
 }

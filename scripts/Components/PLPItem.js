@@ -170,14 +170,13 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
               onMouseEnter={() => setHover(true)}
               onMouseLeave={() => setHover(false)}
             >
-              <div className="top">
+              <div className="img-wrap">
                 <Media
                   alt={`${product.handle}-${currentOption.options.join(' ').toLowerCase().trim()}`}
                   image={productImgSrc}
-                  
                 />
               </div>
-              <div className="bottom">
+              <div className="img-wrap hover">
                 <Media
                   alt={`${product.handle}-${currentOption.options.join(' ').toLowerCase().trim()}`}
                   image={`${cdnUrl}${product.handle.slice(0, -3)}B-${imgColor}-1824.jpg`}
