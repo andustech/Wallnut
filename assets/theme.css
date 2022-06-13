@@ -1751,19 +1751,6 @@ afterpay-placement {
 .PLPItem__ColorSwatchWrapper-sc-cy9xe9-5:hover {
   border: 1px solid rgba(0, 0, 0, 0.4);
 }
-.sizeDropdown {
-  transition: all ease-in-out 0.4s;
-  width: 100%;
-  bottom: 100%;
-  position: absolute;
-  visibility: hidden;
-  height: 0;
-}
-.sizeDropdown.sizeDropdownVisible {
-  transition: all ease-in-out 0.4s;
-  visibility: visible;
-  height: auto;
-}
 #sortbyDropdown {
   background-color: transparent;
   border: none;
@@ -2267,7 +2254,6 @@ afterpay-placement {
   margin-bottom: 12px;
 }
 .sizeDropdown {
-  transition: all ease-in-out 0.4s;
   width: 100%;
   bottom: 100%;
   position: absolute;
@@ -2275,7 +2261,6 @@ afterpay-placement {
   height: 0;
 }
 .sizeDropdown.sizeDropdownVisible {
-  transition: all ease-in-out 0.4s;
   visibility: visible;
   height: auto;
 }

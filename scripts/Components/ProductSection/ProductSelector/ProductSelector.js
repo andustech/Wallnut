@@ -119,8 +119,6 @@ const ProductSelector = ({
     setSelectedVariant(currentVariant);
   }, [currentVariant]);
 
-  console.log('product => ', product)
-
   return (
     <ProductSelectorContainer>
       <MobileTopContainer>

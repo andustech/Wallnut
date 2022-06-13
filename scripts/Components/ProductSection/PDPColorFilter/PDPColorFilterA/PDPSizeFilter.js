@@ -98,36 +98,28 @@ const PDPSizeFilter = ({ product, selectedVariant, setSelectedVariant, setCurren
 
   const handleSizeDropdown = () => {
     if(sizeDropdown === 'sizeDropdownVisible') {
-      console.log('if')
       setSizeDropdown('')
     }
     else {
-      console.log('else')
       setSizeDropdown('sizeDropdownVisible')
     }
   }
 
-  // const clickOutside = (e) => {
-  //   console.log('sizeDropDownRef => ', sizeDropDownRef)
-  //   if(sizeDropDownRef.current.contains(e.target)) {
-  //     // inside click
-  //     console.log('clicked inside')
-  //     return;
-  //   } 
-  //   // outside click
-  //     console.log('clicked outside scope')
-  //     handleSizeDropdown()
-  // }
+  const clickOutside = (e) => {
+    if(sizeDropDownRef.current.contains(e.target)) {
+      // inside click
+      return;
+    } 
+    // outside click
+      setSizeDropdown('')
+  }
 
-  // // Do something after component renders
-  // useEffect(() => {
-  //   document.addEventListener('mousedown', clickOutside);
-
-  //   // clean up function before running new effect
-  //   return () => {
-  //       document.removeEventListener('mousedown', clickOutside);
-  //   }
-  // }, [])
+  useEffect(() => {
+    document.addEventListener('mousedown', clickOutside);
+    return () => {
+        document.removeEventListener('mousedown', clickOutside);
+    }
+  }, [])
   
   let sizeArr = [];
   const sizeIndex = product.options.findIndex(option => option === "Size");

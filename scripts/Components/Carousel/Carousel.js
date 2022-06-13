@@ -28,20 +28,12 @@ const CarouselA = (props) => {
   const handleThumbnailClick = (i) => {
     setCurrentImageIndex(i);
   };
-
   
   const mobileHandleThumbnailClick = (i) => {
     const pos = containerRef.current.children[i].getBoundingClientRect();
     containerRef.current.scrollTo(containerRef.current.scrollLeft + pos.left, 0);
     setCurrentImageIndex(i);
   };
-
-  // useEffect(() => {
-  //   console.log('useEffect')
-
-  //   handleThumbnailClick(0);
-  //   mobileHandleThumbnailClick(0);
-  // }, [watchForReset]);
 
   return (
     <>
