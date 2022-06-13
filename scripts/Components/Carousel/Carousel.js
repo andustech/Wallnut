@@ -147,6 +147,9 @@ const MobileCarouselContainer = styled.div.attrs({
   @media (min-width: 768px) {
     display: none !important;
   }
+  img {
+    height: max-content;
+  }
 
   &::-webkit-scrollbar {
     display: none;
