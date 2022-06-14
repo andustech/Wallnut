@@ -1520,6 +1520,11 @@ afterpay-placement {
   }
 }
 
+@media only screen and (max-width: 479px) {
+  .premium_img_box {
+    height: 400px;
+  }
+}
 /* ===============product_detail==== */
 
 .hkkjzZ,
