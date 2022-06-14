@@ -131,7 +131,6 @@ const CarouselContainer = styled.div.attrs({
     scroll-snap-align: center;
     vertical-align: top;
   }
-  
 `;
 
 const MobileCarouselContainer = styled.div.attrs({
