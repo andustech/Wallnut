@@ -32,12 +32,12 @@ const Header = (props) => {
           </a>
           <div className="hidden lg:flex">
             <ul className="nav_menu_opt flex text-center items-center">
-              <li onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>
+              {/* <li onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>
                 <LinkItem href="/collections/all">SIZE</LinkItem>
                 <NavWrapper isShown={isShown}>
                   <Nav themeSettings={themeSettings} newsettings={newsettings} />
                 </NavWrapper>
-              </li>
+              </li> */}
               <li>
                 <LinkItem href="/about">SUBJECT</LinkItem>
               </li>
@@ -50,7 +50,7 @@ const Header = (props) => {
               </li>
 
               <li>
-                <LinkItem href="/pages/how-it-works">HIDE IT WORK</LinkItem>
+                <LinkItem href="/pages/how-it-works">HOW IT WORKS</LinkItem>
               </li>
             </ul>
           </div>

@@ -3209,3 +3209,21 @@ form.needsclick.klaviyo-form > div {
   min-height: auto !important;
   background: transparent;
 }
+@supports (-webkit-touch-callout: none) {
+  /* Only for IOS Chrome device */
+  #react-product-recommendation .each-item {
+    margin-right: 24px;
+  }
+  .review_inner_items .review_card {
+    margin-right: 24px;
+  }
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  /* Only for IOS Safari device */
+  ::i-block-chrome, #react-product-recommendation .each-item {
+    margin-right: 24px;
+  }
+  ::i-block-chrome, .review_inner_items .review_card {
+    margin-right: 24px;
+  }
+}
