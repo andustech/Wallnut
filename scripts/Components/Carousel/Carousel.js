@@ -131,6 +131,7 @@ const CarouselContainer = styled.div.attrs({
     scroll-snap-align: center;
     vertical-align: top;
   }
+  
 `;
 
 const MobileCarouselContainer = styled.div.attrs({
@@ -145,6 +146,12 @@ const MobileCarouselContainer = styled.div.attrs({
   scrollbar-width: none;
   @media (min-width: 768px) {
     display: none !important;
+  }
+  img {
+    max-height: 500px;
+    &:last-child {
+      max-height: 208px;
+    }
   }
 
   &::-webkit-scrollbar {
