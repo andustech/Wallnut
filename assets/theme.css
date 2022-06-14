@@ -1372,16 +1372,6 @@ afterpay-placement {
     min-width: auto;
   }
 }
-@media only screen and (min-width: 350px) and (max-width: 768px) {
-  .how_it_work_hero_overlay h2 {
-    font-size: 28px !important;
-    line-height: 25px !important;
-  }
-  .how_it_work_hero_overlay h1 {
-    font-size: 28px !important;
-    line-height: 39px !important;
-  }
-}
 @media only screen and (max-width: 640px) {
   .footer_opt_container .footer_title {
     font-size: 12px !important;
@@ -1931,6 +1921,14 @@ afterpay-placement {
   #pdp-color-swatcher-sticky h5 {
     display: inline-block;
   }
+  .how_it_work_hero_overlay h2 {
+    font-size: 28px !important;
+    line-height: 25px !important;
+  }
+  .how_it_work_hero_overlay h1 {
+    font-size: 28px !important;
+    line-height: 39px !important;
+  }
 }
 
 @media only screen and (max-width: 575px) {
@@ -2017,6 +2015,17 @@ afterpay-placement {
     line-height: 28px !important;
     margin-bottom: 8px !important;
     font-weight: 600 !important;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .how_it_work_hero_overlay h2 {
+    font-size: 25px !important;
+    line-height: 25px !important;
+  }
+  .how_it_work_hero_overlay h1 {
+    font-size: 25px !important;
+    line-height: 34px !important;
   }
 }
 
