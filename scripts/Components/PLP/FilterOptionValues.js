@@ -57,6 +57,7 @@
     'Landscape',
     'Retro',
     'Pop-Art',
+    'Line Art',
   ];
   export const colorObject = [
     'Black',

@@ -27,7 +27,9 @@ const Filters = ({
   orientationOption,
   subjectOption,
   isRemoving,
-  sizeOption,slugRawValue
+  sizeOption,
+  slugRawValue,
+  totalProducts
 }) => {
   const { allFilters, setAllFilters, checkFilters } = useContext(plpContext);
   const {
@@ -47,7 +49,7 @@ const Filters = ({
   const [RemoveTag, setRemoveTag] = useState({});
   const [sortingDropdownToggle, setSortingDropdownToggle] = useState(false);
   useEffect(() => {
-    slugValueFindInfilter();
+    // slugValueFindInfilter();
   }, [slugValue]);
 
   const slugValueFindInfilter = () => {
@@ -82,19 +84,20 @@ const Filters = ({
       filterName = 'colorObj';
     }
 
-    const tempEntry = {
-      tagType: filterName,
-      tagValue: slugValue.substring(0, 1).toUpperCase() + slugValue.substring(1),
-      // .replace('&', ' & '),
-    };
-    let tempRes = TagSelected.filter(
-      (i) => i.tagType === tempEntry.tagType && i.tagValue === tempEntry.tagValue
-    );
+    // const tempEntry = {
+    //   tagType: filterName,
+    //   tagValue: slugValue.substring(0, 1).toUpperCase() + slugValue.substring(1),
+    //   // .replace('&', ' & '),
+    // };
+    // let tempRes = TagSelected.filter(
+    //   (i) => i.tagType === tempEntry.tagType && i.tagValue === tempEntry.tagValue
+    // );
     if (
-      tempRes.length === 0 &&
-      !isRemoving &&
-      tempEntry.tagType !== '' &&
-      tempEntry.tagValue !== ''
+      // tempRes.length === 0 &&
+      // !isRemoving &&
+      // tempEntry.tagType !== '' &&
+      // tempEntry.tagValue !== ''
+      filterName !== ''
     ) {
       // setTagSelected([...TagSelected, tempEntry]);
 
@@ -140,52 +143,52 @@ const Filters = ({
   }, [menuOpen]);
 
   const handleClearAll = () => {
-    if (slugValue !== null) {
-      let subjectFilter = subjectOption.filter((i) => i.toLowerCase() === slugValue.toLowerCase());
-      let orientationOptionFilter = orientationOption.filter(
-        (i) => i.toLowerCase() === slugValue.toLowerCase()
-      );
-      let mediumOptionFilter = mediumOption.filter(
-        (i) => i.toLowerCase() === slugValue.toLowerCase()
-      );
-      let decorOptionFilter = decorOption.filter(
-        (i) => i.toLowerCase() === slugValue.toLowerCase()
-      );
+    // if (slugValue !== null) {
+    //   let subjectFilter = subjectOption.filter((i) => i.toLowerCase() === slugValue.toLowerCase());
+    //   let orientationOptionFilter = orientationOption.filter(
+    //     (i) => i.toLowerCase() === slugValue.toLowerCase()
+    //   );
+    //   let mediumOptionFilter = mediumOption.filter(
+    //     (i) => i.toLowerCase() === slugValue.toLowerCase()
+    //   );
+    //   let decorOptionFilter = decorOption.filter(
+    //     (i) => i.toLowerCase() === slugValue.toLowerCase()
+    //   );
 
-      let artOptionFilter = artOption.filter((i) => i.toLowerCase() === slugValue.toLowerCase());
-      let moodOptionFilter = moodOption.filter((i) => i.toLowerCase() === slugValue.toLowerCase());
-      let colorObjectOptionFilter = colorObject.filter(
-        (i) => i.toLowerCase() === slugValue.toLowerCase()
-      );
-      let existingTagValue = {};
-      if (subjectFilter.length !== 0) {
-        existingTagValue = { tagType: 'subject', tagValue: subjectFilter[0] };
-      } else if (orientationOptionFilter.length !== 0) {
-        existingTagValue = { tagType: 'orientation', tagValue: orientationOptionFilter[0] };
-      } else if (mediumOptionFilter.length !== 0) {
-        existingTagValue = { tagType: 'medium', tagValue: mediumOptionFilter[0] };
-      } else if (decorOptionFilter.length !== 0) {
-        existingTagValue = { tagType: 'decorStyle', tagValue: decorOptionFilter[0] };
-      } else if (artOptionFilter.length !== 0) {
-        existingTagValue = { tagType: 'artStyle', tagValue: artOptionFilter[0] };
-      } else if (moodOptionFilter.length !== 0) {
-        existingTagValue = { tagType: 'mood', tagValue: moodOptionFilter[0] };
-      } else if (colorObjectOptionFilter.length !== 0) {
-        existingTagValue = { tagType: 'colorObj', tagValue: colorObjectOptionFilter[0] };
-      }
-      setTagSelected([existingTagValue]);
-      const tempselect = {
-        subject: [],
-        mood: [],
-        decorStyle: [],
-        artStyle: [],
-        orientation: [],
-        medium: [],
-        colorObj: [],
-      }
-      console.log('existingTagValue', existingTagValue)
-      setAllFilters({...tempselect,[existingTagValue.tagType]:[existingTagValue.tagValue]})
-    } else {
+    //   let artOptionFilter = artOption.filter((i) => i.toLowerCase() === slugValue.toLowerCase());
+    //   let moodOptionFilter = moodOption.filter((i) => i.toLowerCase() === slugValue.toLowerCase());
+    //   let colorObjectOptionFilter = colorObject.filter(
+    //     (i) => i.toLowerCase() === slugValue.toLowerCase()
+    //   );
+    //   let existingTagValue = {};
+    //   if (subjectFilter.length !== 0) {
+    //     existingTagValue = { tagType: 'subject', tagValue: subjectFilter[0] };
+    //   } else if (orientationOptionFilter.length !== 0) {
+    //     existingTagValue = { tagType: 'orientation', tagValue: orientationOptionFilter[0] };
+    //   } else if (mediumOptionFilter.length !== 0) {
+    //     existingTagValue = { tagType: 'medium', tagValue: mediumOptionFilter[0] };
+    //   } else if (decorOptionFilter.length !== 0) {
+    //     existingTagValue = { tagType: 'decorStyle', tagValue: decorOptionFilter[0] };
+    //   } else if (artOptionFilter.length !== 0) {
+    //     existingTagValue = { tagType: 'artStyle', tagValue: artOptionFilter[0] };
+    //   } else if (moodOptionFilter.length !== 0) {
+    //     existingTagValue = { tagType: 'mood', tagValue: moodOptionFilter[0] };
+    //   } else if (colorObjectOptionFilter.length !== 0) {
+    //     existingTagValue = { tagType: 'colorObj', tagValue: colorObjectOptionFilter[0] };
+    //   }
+    //   setTagSelected([existingTagValue]);
+    //   const tempselect = {
+    //     subject: [],
+    //     mood: [],
+    //     decorStyle: [],
+    //     artStyle: [],
+    //     orientation: [],
+    //     medium: [],
+    //     colorObj: [],
+    //   };
+    //   console.log('existingTagValue', existingTagValue);
+    //   setAllFilters({ ...tempselect, [existingTagValue.tagType]: [existingTagValue.tagValue] });
+    // } else {
       setAllFilters({
         subject: [],
         mood: [],
@@ -196,7 +199,7 @@ const Filters = ({
         colorObj: [],
       });
       setTagSelected([]);
-    }
+    // }
   };
 
   const handleMenuOpen = () => {
@@ -208,7 +211,7 @@ const Filters = ({
   window.addEventListener('scroll', handleMenuOpen);
   /* -------------------------Remove Tag with Filter selected item remove----------------------*/
   const removeSelectedTag = (item) => {
-    if (item.tagValue.toLowerCase() !== slugValue.toLowerCase()) {
+    // if (item.tagValue.toLowerCase() !== slugValue.toLowerCase()) {
       setRemoveTag(item);
       let tempRes = TagSelected.filter((i) => JSON.stringify(i) !== JSON.stringify(item));
 
@@ -233,7 +236,7 @@ const Filters = ({
           setTagSelected([...tempRes]);
         }
       }
-    }
+    // }
   };
   const sortingBy = (e) => {
     setSortingApply(e.target.value);
@@ -366,7 +369,7 @@ const Filters = ({
                 {' '}
                 <div>
                   <Text>
-                    <ProductSpan>{products.length} Products</ProductSpan>
+                    <ProductSpan>{totalProducts} Products</ProductSpan>
                     {TagSelected.map((items, index) => (
                       <Tag key={index}>
                         {' '}
@@ -396,10 +399,7 @@ const Filters = ({
                   </Text>
                 </div>
                 <div>
-                  {(checkFilters && window.location.href.includes('all')) ||
-                  (checkFilters && window.location.href.includes('pattern-chairs')) ||
-                  (checkFilters && window.location.href.includes('seasonal-favorites')) ||
-                  // style.length > 0 ||
+                  {
                   size?.length < 0 ||
                   mood?.length < 0 ||
                   subject?.length < 0 ||
@@ -407,12 +407,7 @@ const Filters = ({
                   decorStyle?.length < 0 ||
                   orientation?.length < 0 ||
                   medium?.length < 0 ||
-                  colorObj?.length < 0 ||
-                  chairType?.length < 0 ||
-                  (!color?.includes('All') &&
-                    !window.location.href.includes('all') &&
-                    !window.location.href.includes('pattern-chairs') &&
-                    !window.location.href.includes('seasonal-favorites')) ? (
+                  colorObj?.length < 0 ? (
                     <div className="hidden md:block">
                       <div
                         style={{
@@ -430,40 +425,7 @@ const Filters = ({
                         Clear All
                       </div>
                     </div>
-                  ) : (
-                    ''
-                  )}
-                  {(checkFilters && window.location.href.includes('all')) ||
-                  (checkFilters && window.location.href.includes('pattern-chairs')) ||
-                  (checkFilters && window.location.href.includes('seasonal-favorites')) ||
-                  // style.length > 0 ||
-                  size?.length < 0 ||
-                  mood?.length < 0 ||
-                  subject?.length < 0 ||
-                  artStyle?.length < 0 ||
-                  decorStyle?.length < 0 ||
-                  orientation?.length < 0 ||
-                  medium?.length < 0 ||
-                  colorObj?.length < 0 ||
-                  chairType?.length < 0 ||
-                  (!color?.includes('All') &&
-                    !window.location.href.includes('all') &&
-                    !window.location.href.includes('pattern-chairs') &&
-                    !window.location.href.includes('seasonal-favorites')) ? (
-                    <div className="bg-white w-full md:hidden">
-                      <div
-                        className="bg-white pl-4 font-serif text-base underline"
-                        onClick={() => handleClearAll()}
-                        tabIndex={0}
-                        onKeyDown={() => {}}
-                        role="button"
-                      >
-                        Clear All
-                      </div>
-                    </div>
-                  ) : (
-                    ''
-                  )}
+                  ):''}
                 </div>
               </div>
             </div>

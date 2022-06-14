@@ -3,22 +3,9 @@ import React, { useEffect, useState } from 'react';
 import PLPItem from '../PLPItem';
 import { getVariant } from '../../utils';
 import InfiniteScroll from 'react-infinite-scroll-component';
-var lastIndex = 16;
 
-const PLPItems = ({ products }) => {
-  const [count, setCount] = useState([]);
-  const [productFilterManage, setProductFilterManage] = useState([]);
 
-  // useEffect(() => {
-  //   setProductFilterManage(products.slice(0, lastIndex));
-  //   setCount(products.slice(0, lastIndex));
-  // }, [products]);
-
-  // const loadMore = () => {
-  //   lastIndex += 16;
-  //   setCount(productFilterManage.slice(0, lastIndex));
-  //   setProductFilterManage(products.slice(0, lastIndex));
-  // };
+const PLPItems = ({ products, totalProducts, loadMore }) => {
 
   return (
     <InfiniteScroll dataLength={products.length || 0} loader={''} hasMore={true}>
@@ -32,7 +19,7 @@ const PLPItems = ({ products }) => {
         </div>
       </div>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
-        {products.length > lastIndex && (
+        {products.length < totalProducts && (
           <button className="load-more"
             style={{
               'height': '48px',
@@ -47,13 +34,13 @@ const PLPItems = ({ products }) => {
               'alignItems': 'center',
               'justifyContent': 'center',
             }}
-            // onClick={() => loadMore()}
+            onClick={loadMore}
           >
             Load more +
           </button>
         )}
       </div>
-      {products.length > lastIndex && (
+      {products.length < totalProducts && (
         <div
           style={{
             paddingTop: '16px',
@@ -63,18 +50,16 @@ const PLPItems = ({ products }) => {
             color: '#000000',
             opacity: '0.7',
           }}
-        >{`${productFilterManage.length}/${products.length} Products`}</div>
+        >{`${products.length}/${totalProducts} Products`}</div>
       )}
     </InfiniteScroll>
   );
 };
-
 PLPItems.defaultProps = {
   collectionTitle: '',
   simpleLayout: false,
   holiday: false,
 };
-
 PLPItems.propTypes = {
   holiday: PropTypes.bool,
   collectionTitle: PropTypes.string,
@@ -128,5 +113,4 @@ PLPItems.propTypes = {
     })
   ).isRequired,
 };
-
 export default PLPItems;

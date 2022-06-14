@@ -579,9 +579,9 @@ const FilterItem = ({ option, filterName, RemoveTag, setRemoveTag, setMenuOpen, 
     <div
       className="cursor-pointer"
       onClick={() => {
-        if (slugValue.toLowerCase() !== option.toLowerCase()) {
+        // if (slugValue.toLowerCase() !== option.toLowerCase()) {
           handleClick(option, filterName);
-        }
+        // }
       }}
       onKeyPress={() => {}}
       role="button"
