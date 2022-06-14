@@ -642,7 +642,7 @@ body.cart .cart-final-details .secondary_btn {
   margin-right: 24px !important;
   height: 100%;
   width: 100%;
-  max-height: 500px;
+  height: 500px;
 }
 
 .premium_pos:last-child .premium_img_box {
@@ -874,6 +874,9 @@ body.cart .cart-final-details .secondary_btn {
 
   .by_mood_card img {
     height: 523px !important;
+  }
+  .premium_img_box {
+    height: 380px;
   }
 }
 
@@ -1508,6 +1511,12 @@ afterpay-placement {
     line-height: 28px !important;
     margin-bottom: 8px !important;
     font-weight: 600 !important;
+  }
+  .premium_img_box {
+    height: 500px;
+  }
+  .premium_img_box .object-cover {
+    object-position: top;
   }
 }
 
