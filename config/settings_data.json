@@ -339,6 +339,7 @@
           "content": "By entering your email, you agree to Wallnut's Privacy Policy and Terms of Service. You also agree to receive Wallnut offers, promotions, and other commercial messages. You may unsubscribe from our marketing emails at any time.",
           "logo_icon": "https:\/\/cdn.shopify.com\/s\/files\/1\/0627\/3476\/2207\/files\/wallnut-logo.svg?v=1652269777",
           "logo_title": "ARTWORK WITHOUT THE WORK",
+          "mob_logo_title": "Better way to art",
           "social_media_title": "CONNECT ON SOCIAL",
           "footer_text_align": "left",
           "footer_title_size": 13,
@@ -1945,7 +1946,7 @@
           "content": "We want to innovate the art experience. We were tired of having to choose between quality, style, and convenience, so we started Wallnut to set a new standard.",
           "button_text_1": "Shop Best sellers",
           "button_link_1": "shopify:\/\/collections\/best-selling-collection",
-          "button_text_2": "shop all",
+          "button_text_2": "",
           "button_link_2": "\/collections\/all"
         }
       },
