@@ -507,14 +507,6 @@ const FilterItem = ({ option, filterName, RemoveTag, setRemoveTag, setMenuOpen, 
     colorObj,
   } = allFilters;
   const [selected, setSelected] = useState(false);
-  //   useEffect(()=>{
-  // console.log('RemoveTag :>> ', RemoveTag);
-  //     let option=RemoveTag?.tagValue
-  //     let filterName= RemoveTag?.tagType
-  //     if(RemoveTag?.tagValue&& RemoveTag?.tagValue){
-  //     handleClick(option,filterName)}
-  //   },[RemoveTag])
-  // const [tempOptions, setTempOptions] = useState([])
 
   const handleClick = (option, filterName) => {
     const styleAndChairTypeFilters = removeFilterItems(
@@ -535,36 +527,35 @@ const FilterItem = ({ option, filterName, RemoveTag, setRemoveTag, setMenuOpen, 
       RemoveTag,
       colorObj
     );
-    const selectOption = { tagType: filterName, tagValue: option };
-    setRemoveTag(selectOption);
-    let tag = document.getElementById(option.replace('&', ' & ') + '-' + filterName);
-    console.log('option,filterName', option, filterName);
-    if (tag) {
-      tag.click();
-      setMenuOpen(filterName);
-    }
-    // console.log('object :>> ', option,'===============',filterName);
-    // let tempArr = [...allFilters[filterName]];
-    // tempArr = tempArr.includes(option)
-    //   ? tempArr.filter((item) => item !== option)
-    //   : [...tempArr, option];
-    // const styleAndChairTypeFilters = toggleFilters(
-    //   allFilters,
-    //   filterName,
-    //   tempArr,
-    //   chairType,
-    //   style,
-    //   color,
-    //   size,
-    //   subject,
-    //   mood,
-    //   decorStyle,
-    //   artStyle,
-    //   orientation,
-    //   medium
-    // );
 
-    setAllFilters(styleAndChairTypeFilters);
+    let isInSlug = false;
+
+    let arr = window.location.pathname.split('/');
+    let value = arr[arr.length - 1];
+    let splitValue = value.split('-');
+    if (splitValue.length > 1) {
+      if (value.startsWith('decor-style') && value.split('decor-style-')[1].split('-').join(' ') === option) {
+        isInSlug = true;
+      } else {
+        if (splitValue.length > 2 && splitValue.splice(1).join(' ') === option) {
+          isInSlug = true;
+        } else if (splitValue[1] === option) {
+          isInSlug = true;
+        }
+      }
+    }
+
+    if (!isInSlug) {
+      const selectOption = { tagType: filterName, tagValue: option };
+      setRemoveTag(selectOption);
+      let tag = document.getElementById(option.replace('&', ' & ') + '-' + filterName);
+      console.log('option,filterName', option, filterName);
+      if (tag) {
+        tag.click();
+        setMenuOpen(filterName);
+      }
+      setAllFilters(styleAndChairTypeFilters);
+    }
   };
 
   useEffect(() => {
@@ -580,7 +571,7 @@ const FilterItem = ({ option, filterName, RemoveTag, setRemoveTag, setMenuOpen, 
       className="cursor-pointer"
       onClick={() => {
         // if (slugValue.toLowerCase() !== option.toLowerCase()) {
-          handleClick(option, filterName);
+        handleClick(option, filterName);
         // }
       }}
       onKeyPress={() => {}}
@@ -600,7 +591,6 @@ FilterItem.propTypes = {
   option: PropTypes.string.isRequired,
   filterName: PropTypes.string.isRequired,
 };
-
 
 const FilterOptions = styled.span`
   font-family: 'GoodSans';

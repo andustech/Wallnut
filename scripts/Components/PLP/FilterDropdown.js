@@ -19,7 +19,7 @@ const FilterDropdown = ({
   collectionTitle,
   TagSelected,
   setTagSelected,
-  RemoveTag,
+  RemoveTag, 
   setRemoveTag,
   sortingApply,
   setSortingApply,

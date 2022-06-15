@@ -57,6 +57,7 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
   const [products, setProducts] = useState([]);
   const [tags, setTags] = useState([]);
   const [isCalled, setIsCalled] = useState(false);
+  const [isAllClearing, setIsClearing] = useState(false);
   const [indexName, setIndexName] = useState('shopify_products_title_asc');
 
   const searchClient = algoliasearch('G49A2XSYO1', 'aac1fbe78febb9f003c18df8aba2eba1');
@@ -75,7 +76,6 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
           setProducts(res.hits);
           setTotalProducts(res.nbHits);
         })
-        .catch((e) => console.log('=======e=====', e))
         .finally(() => {});
     }
     setIsCalled(true);
@@ -89,8 +89,6 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
         facetFilters: tags,
       })
       .then((res) => {
-        console.log('=========', res.hits);
-        console.log('=========', res.nbHits);
         setProducts([...products, ...res.hits]);
         setTotalProducts(res.nbHits);
         setPage(page + 1);
@@ -102,7 +100,7 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
   useEffect(() => {
 
   FilterProducts();
-  }, [allFilters, sortingApply, products, slugValue]);
+  }, [ allFilters,sortingApply, products, slugValue]);
 
   useEffect(() => {
     console.log('=======', allFilters);
@@ -118,10 +116,15 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
             ? 'Color'
             : k.charAt(0).toUpperCase() + k.slice(1);
         allFilters[k].forEach((itm) => {
-          tempTags.push('tags:' + filterName + '-' + itm);
+          if(k === 'subject'){
+            tempTags.push('tags:Abstract-' + itm);
+          }else{
+            tempTags.push('tags:' + filterName + '-' + itm);
+          }
         });
       }
     });
+    console.log('tempTags === ', tempTags)
     setTags(tempTags);
     index
       .search('', {
@@ -148,18 +151,18 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
     let splitValue = value.split('-');
     if (splitValue.length > 1) {
       if (value.startsWith('decor-style')) {
-        console.log('value', value);
         value = value.split('decor-style-')[1].split('-').join(' ');
-        console.log('value', value);
+        setAllFilters({...allFilters,['decorStyle']:[value]})
       } else {
         if (splitValue.length > 2) {
           value = splitValue.splice(1);
           value = value.join(' ');
+          const fltrType = splitValue[0].charAt(0).toUpperCase() + splitValue[0].slice(1)
+          setAllFilters({...allFilters,[splitValue[0]]:[value]})
         } else {
           value = splitValue[1];
           const fltrType = splitValue[0]
           const fltrName = splitValue[1].charAt(0).toUpperCase() + splitValue[1].slice(1)
-          console.log('value', fltrName, fltrType);
           setAllFilters({...allFilters,[fltrType]:[fltrName]})
         }
       }
@@ -196,7 +199,10 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
           let tempRes = TagSelected.filter(
             (i) => i.tagType === tempEntry.tagType && i.tagValue === tempEntry.tagValue
           );
-          if (tempRes.length === 0 && !isRemoving) {
+          if(isAllClearing){
+            setTagSelected([tempEntry]);
+          }
+          if (tempRes.length === 0 && !isRemoving && !isAllClearing) {
             setTagSelected([...TagSelected, tempEntry]);
           }
           // for (let index = 0; index < products.length; index++) {
@@ -280,6 +286,7 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
     }
     setFilterProducts(productFilter);
     setIsRemoving(false);
+    setIsClearing(false)
   };
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -404,6 +411,7 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
             isRemoving={isRemoving}
             slugRawValue={slugRawValue}
             totalProducts={totalProducts}
+            setIsClearing={setIsClearing}
           />
         </FiltersDesktop>
         <PLPItems
