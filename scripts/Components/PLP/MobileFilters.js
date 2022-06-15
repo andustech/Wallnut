@@ -260,7 +260,7 @@ const MobileFilters = ({
         </div>
         <div className="bg-transparent flex container">
           <div className="flex flex-col w-full gap-y-4 justify-items-center">
-            <FilterDropdown
+            {/* <FilterDropdown
               filterName="subject"
               setMenuOpen={setMenuOpen}
               filterType="subject"
@@ -287,7 +287,7 @@ const MobileFilters = ({
               slugValue={slugValue}
               count={allFilters.mood.length}
             />
-            <HorizontalBorder />
+            <HorizontalBorder /> */}
             <FilterDropdown
               filterName="colorObj"
               setMenuOpen={setMenuOpen}
@@ -302,7 +302,7 @@ const MobileFilters = ({
               count={allFilters.colorObj.length}
             />
             <HorizontalBorder />
-            <FilterDropdown
+            {/* <FilterDropdown
               filterName="decorStyle"
               setMenuOpen={setMenuOpen}
               filterType="decorStyle"
@@ -315,7 +315,7 @@ const MobileFilters = ({
               slugValue={slugValue}
               count={allFilters.decorStyle.length}
             />
-            <HorizontalBorder />
+            <HorizontalBorder /> */}
             <FilterDropdown
               filterName="artStyle"
               setMenuOpen={setMenuOpen}
