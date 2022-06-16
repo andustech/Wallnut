@@ -608,25 +608,11 @@ const mapRecommendedColors = (products) => {
   }, []);
 };
 
-export const getVariant = (recommendation, colorsArr, colorIndex) => {
-  if(colorIndex === 0) {
-    const productVariant = recommendation.variants.find(
-      (variant) => variant.option1 === colorsArr[0]
-    );
-    return productVariant;
-  }
-  else if(colorIndex === 1) {
+export const getVariant = (recommendation, colorsArr) => {
     const productVariant = recommendation.variants.find(
       (variant) => variant.option2 === colorsArr[0]
     );
     return productVariant;
-  }
-  else if(colorIndex === 2) {
-    const productVariant = recommendation.variants.find(
-      (variant) => variant.option3 === colorsArr[0]
-    );
-    return productVariant;
-  }
 };
 
 export const getVariantOptions = (variant) =>

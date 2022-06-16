@@ -134,52 +134,52 @@ const MobileFilters = ({
     // setAllFilters({ ...tempArr, slugValue });
   };
   const handleClearAll = () => {
-    if (slugValue !== null) {
-      let subjectFilter = subjectOption.filter((i) => i.toLowerCase() === slugValue.toLowerCase());
-      let orientationOptionFilter = orientationOption.filter(
-        (i) => i.toLowerCase() === slugValue.toLowerCase()
-      );
-      let mediumOptionFilter = mediumOption.filter(
-        (i) => i.toLowerCase() === slugValue.toLowerCase()
-      );
-      let decorOptionFilter = decorOption.filter(
-        (i) => i.toLowerCase() === slugValue.toLowerCase()
-      );
+    // if (slugValue !== null) {
+    //   let subjectFilter = subjectOption.filter((i) => i.toLowerCase() === slugValue.toLowerCase());
+    //   let orientationOptionFilter = orientationOption.filter(
+    //     (i) => i.toLowerCase() === slugValue.toLowerCase()
+    //   );
+    //   let mediumOptionFilter = mediumOption.filter(
+    //     (i) => i.toLowerCase() === slugValue.toLowerCase()
+    //   );
+    //   let decorOptionFilter = decorOption.filter(
+    //     (i) => i.toLowerCase() === slugValue.toLowerCase()
+    //   );
 
-      let artOptionFilter = artOption.filter((i) => i.toLowerCase() === slugValue.toLowerCase());
-      let moodOptionFilter = moodOption.filter((i) => i.toLowerCase() === slugValue.toLowerCase());
-      let colorObjectOptionFilter = colorObject.filter(
-        (i) => i.toLowerCase() === slugValue.toLowerCase()
-      );
-      let existingTagValue = {};
-      if (subjectFilter.length !== 0) {
-        existingTagValue = { tagType: 'subject', tagValue: subjectFilter[0] };
-      } else if (orientationOptionFilter.length !== 0) {
-        existingTagValue = { tagType: 'orientation', tagValue: orientationOptionFilter[0] };
-      } else if (mediumOptionFilter.length !== 0) {
-        existingTagValue = { tagType: 'medium', tagValue: mediumOptionFilter[0] };
-      } else if (decorOptionFilter.length !== 0) {
-        existingTagValue = { tagType: 'decorStyle', tagValue: decorOptionFilter[0] };
-      } else if (artOptionFilter.length !== 0) {
-        existingTagValue = { tagType: 'artStyle', tagValue: artOptionFilter[0] };
-      } else if (moodOptionFilter.length !== 0) {
-        existingTagValue = { tagType: 'mood', tagValue: moodOptionFilter[0] };
-      } else if (colorObjectOptionFilter.length !== 0) {
-        existingTagValue = { tagType: 'colorObj', tagValue: colorObjectOptionFilter[0] };
-      }
-      setTagSelected([existingTagValue]);
-      const tempselect = {
-        subject: [],
-        mood: [],
-        decorStyle: [],
-        artStyle: [],
-        orientation: [],
-        medium: [],
-        colorObj: [],
-      }
-      console.log('existingTagValue', existingTagValue)
-      setAllFilters({...tempselect,[existingTagValue.tagType]:[existingTagValue.tagValue]})
-    } else {
+    //   let artOptionFilter = artOption.filter((i) => i.toLowerCase() === slugValue.toLowerCase());
+    //   let moodOptionFilter = moodOption.filter((i) => i.toLowerCase() === slugValue.toLowerCase());
+    //   let colorObjectOptionFilter = colorObject.filter(
+    //     (i) => i.toLowerCase() === slugValue.toLowerCase()
+    //   );
+    //   let existingTagValue = {};
+    //   if (subjectFilter.length !== 0) {
+    //     existingTagValue = { tagType: 'subject', tagValue: subjectFilter[0] };
+    //   } else if (orientationOptionFilter.length !== 0) {
+    //     existingTagValue = { tagType: 'orientation', tagValue: orientationOptionFilter[0] };
+    //   } else if (mediumOptionFilter.length !== 0) {
+    //     existingTagValue = { tagType: 'medium', tagValue: mediumOptionFilter[0] };
+    //   } else if (decorOptionFilter.length !== 0) {
+    //     existingTagValue = { tagType: 'decorStyle', tagValue: decorOptionFilter[0] };
+    //   } else if (artOptionFilter.length !== 0) {
+    //     existingTagValue = { tagType: 'artStyle', tagValue: artOptionFilter[0] };
+    //   } else if (moodOptionFilter.length !== 0) {
+    //     existingTagValue = { tagType: 'mood', tagValue: moodOptionFilter[0] };
+    //   } else if (colorObjectOptionFilter.length !== 0) {
+    //     existingTagValue = { tagType: 'colorObj', tagValue: colorObjectOptionFilter[0] };
+    //   }
+    //   setTagSelected([existingTagValue]);
+    //   const tempselect = {
+    //     subject: [],
+    //     mood: [],
+    //     decorStyle: [],
+    //     artStyle: [],
+    //     orientation: [],
+    //     medium: [],
+    //     colorObj: [],
+    //   }
+    //   console.log('existingTagValue', existingTagValue)
+    //   setAllFilters({...tempselect,[existingTagValue.tagType]:[existingTagValue.tagValue]})
+    // } else {
       setAllFilters({
         subject: [],
         mood: [],
@@ -190,7 +190,7 @@ const MobileFilters = ({
         colorObj: [],
       });
       setTagSelected([]);
-    }
+    // }
   };
 
   const handleMenuOpen = () => {

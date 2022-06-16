@@ -12,28 +12,22 @@ import {
 } from '../utils';
 import ColorSwatch from './ColorSwatch';
 import Media from './Media';
-
 const getProductUrl = (product, colorOption) => {
   let productHandle = product.handle;
   if (colorOption) {
     const color = colorOption.replace(/\w\S*/g, (w) => w.replace(/^\w/, (c) => c.toUpperCase()));
-
     return `/products/${productHandle}?color=${color}`;
   }
   return `/products/${productHandle}`;
 };
-
 const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, collectionTitle }) => {
   const [hover, setHover] = useState(false);
-  const [currentOption, setCurrentOption] = useState(product.variant);
-
+  const [currentOption, setCurrentOption] = useState('Matte Black');
   //Define static colors for custom order
   let staticColors = ['Matte Black', 'Walnut Wood', 'Matte White'];
   const [colorOption, setColorOption] = useState(staticColors[0]);
-
   const PLPItemRef = useRef();
-  const colorIndex = product.options.indexOf('Frame Color');
-
+  const colorIndex = product.option_names.indexOf('Frame Color');
   useEffect(() => {
     const mediaQuery = window.matchMedia('(max-width: 768px)');
     const isObservable = isMobile(navigator) && mediaQuery.matches && PLPItemRef.current;
@@ -49,11 +43,9 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
       },
       { threshold: 1 }
     );
-
     if (isObservable) {
       intersectionObserver.observe(PLPItemRef.current);
     }
-
     window.addEventListener('resize', () => {
       if (!mediaQuery.matches && PLPItemRef.current) {
         intersectionObserver.unobserve(PLPItemRef.current);
@@ -62,24 +54,20 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
       }
     });
   }, []);
-
   const handleColorChange = (color) => {
-    const newVariant = product.variants.find((item) => {
-      if (colorIndex === 0) {
-        return item.option1 === color;
-      } else {
-        return item.option2 === color;
-      }
-    });
-    setCurrentOption(newVariant);
+    // const newVariant = product.variants.find((item) => {
+    //   if (colorIndex === 0) {
+    //     return item.option1 === color;
+    //   } else {
+    //     return item.option2 === color;
+    //   }
+    // });
+    setCurrentOption(color);
     setColorOption(color);
   };
-
   if (product.tags.includes('Gift card')) {
     if (colorFilters && colorFilters.length > 0) return null;
-
     const variantName = product.tags.includes('Extra Cover') ? chairCoverVariant : 'e-gift-card';
-
     return (
       <ItemContainer
         ref={PLPItemRef}
@@ -123,7 +111,6 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
       </ItemContainer>
     );
   }
-
   // let productImage = [];
   // if (product.media) {
   //   productImage = product.variants.find((item) => {
@@ -134,7 +121,6 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
   //     return currentOption.id === item.variant_ids[0];
   //   });
   // }
-
   const cdnUrl = 'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/';
   var imgColor = '';
   if (colorOption === 'Matte White') {
@@ -144,20 +130,16 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
   } else if (colorOption === 'Walnut Wood') {
     imgColor = 'walnut';
   }
-
   var productHandle = product.handle;
   var hasArt = productHandle.slice(-4);
   if (hasArt === '-art') {
     productHandle = productHandle.slice(0, -4)
   }
-
   var productImgSrc = 'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/'+productHandle+'-A-'+imgColor+'-2432.jpg'
-
   if (!productImgSrc) {
     productImgSrc =
       'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/600x900.png?v=1653804158';
   }
-
   return (
     <ItemContainer className="each-item">
       <div className="relative overflow-hidden bg-gray-50">
@@ -172,14 +154,14 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
             >
               <div className="top">
                 <Media
-                  alt={`${product.handle}-${currentOption.options.join(' ').toLowerCase().trim()}`}
+                  alt={`${product.handle}-${currentOption}`}
                   image={productImgSrc}
                   
                 />
               </div>
               <div className="bottom">
                 <Media
-                  alt={`${product.handle}-${currentOption.options.join(' ').toLowerCase().trim()}`}
+                  alt={`${product.handle}-${currentOption}`}
                   image={`${cdnUrl}${product.handle.slice(0, -3)}B-${imgColor}-1824.jpg`}
                 />
               </div>
@@ -190,7 +172,8 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
       <a className="no-underline" href={getProductUrl(product, colorOption, collectionTitle)}>
         <TitlePriceContainer>
           <h6 className="pro_title">{product.title}</h6>
-          <p className="pro_price">{getPriceInRanges(product.price_min, product.price_max)}</p>
+          
+          {/* <p className="pro_price">{getPriceInRanges(product.variants_min_price, product.variants_max_price)}</p> */}
         </TitlePriceContainer>
       </a>
       {!noColorSelector && (
@@ -218,14 +201,12 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
     </ItemContainer>
   );
 };
-
 PLPItem.defaultProps = {
   noColorSelector: false,
   colors: [],
   colorFilters: [],
   collectionTitle: '',
 };
-
 PLPItem.propTypes = {
   noColorSelector: PropTypes.bool,
   colorFilters: PropTypes.arrayOf(PropTypes.string),
@@ -253,7 +234,6 @@ PLPItem.propTypes = {
   }).isRequired,
   collectionTitle: PropTypes.string,
 };
-
 const ItemContainer = styled.div(() => [tw`flex flex-col cursor-pointer`, `max-width: 520px;`, `
   @media only screen and (max-width: 990px) {
     max-width: 300px;
@@ -265,31 +245,25 @@ const ItemContainer = styled.div(() => [tw`flex flex-col cursor-pointer`, `max-w
     max-width: 200px;
   }
 `]);
-
 const TitlePriceContainer = styled.div.attrs({
   className: 'flex justify-start flex-col text-left mt-2.5 md:mt-3.5 lg:mt-3', 
 })``;
-
 const HoverContainer = styled.div(({ isHovered }) => [
   tw`absolute w-full`,
   isHovered && tw`visible`,
   !isHovered && tw`hidden`,
   `bottom: 0;`,
 ]);
-
 const ImageContainer = styled.div.attrs ({
     className: 'list-img-wrap',
 })``;
-
 const ColorContainer = styled.div.attrs({
   className: 'flex w-full justify-between',
 })``;
-
 const ColorSwatchWrapper = styled.div.attrs(({ border }) => {
   const borderStyle = border ? 'border border-black' : '';
   return {
     className: `w-5 h-5 mr-1 lg:mr-0 xxl:mr-1 rounded-full grid justify-items-center items-center ${borderStyle} `,
   };
 })``;
-
 export default PLPItem;
