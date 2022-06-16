@@ -21,7 +21,7 @@ const MobileFilters = ({
   isOpenFilter,
   setIsOpenFilter,
   slugValue,
-  isRemoving,
+  isRemoving,totalProducts
 }) => {
   const { allFilters, setAllFilters, checkFilters } = useContext(plpContext);
   const {
@@ -357,7 +357,7 @@ const MobileFilters = ({
             />
             <HorizontalBorder />
             <ApplyProductDiv onClick={() => setIsOpenFilter(false)}>
-              APPLY {`(${products?.length} products)`}
+              APPLY {`(${totalProducts} products)`}
             </ApplyProductDiv>
           </div>
         </div>

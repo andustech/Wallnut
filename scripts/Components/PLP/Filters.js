@@ -30,9 +30,9 @@ const Filters = ({
   sizeOption,
   slugRawValue,
   totalProducts,
-  setIsClearing
+  setIsClearing,
 }) => {
-  const { allFilters, setAllFilters, checkFilters } = useContext(plpContext);
+  const { allFilters, setAllFilters, checkFilters, isLoading } = useContext(plpContext);
   const {
     style,
     chairType,
@@ -144,7 +144,6 @@ const Filters = ({
   }, [menuOpen]);
 
   const handleClearAll = () => {
-
     const tempselect = {
       subject: [],
       mood: [],
@@ -155,33 +154,33 @@ const Filters = ({
       colorObj: [],
     };
 
-      let arr = window.location.pathname.split('/');
-      let value = arr[arr.length - 1];
-      let splitValue = value.split('-');
-      if (splitValue.length > 1) {
-        if (value.startsWith('decor-style')) {
-          value = value.split('decor-style-')[1].split('-').join(' ');
-          tempselect['decorStyle'] = [value]
-        } else {
-          if (splitValue.length > 2) {
-            value = splitValue.splice(1);
-            value = value.join(' ');
-            const fltrType = splitValue[0].charAt(0).toUpperCase() + splitValue[0].slice(1);
-            tempselect[splitValue[0]] = [value]
-          } else {
-            value = splitValue[1];
-            const fltrType = splitValue[0];
-            const fltrName = splitValue[1].charAt(0).toUpperCase() + splitValue[1].slice(1);
-            tempselect[fltrType] = [fltrName]
-          }
-        }
+    let arr = window.location.pathname.split('/');
+    let value = arr[arr.length - 1];
+    let splitValue = value.split('-');
+    if (splitValue.length > 1) {
+      if (value.startsWith('decor-style')) {
+        value = value.split('decor-style-')[1].split('-').join(' ');
+        tempselect['decorStyle'] = [value];
       } else {
-        value = splitValue[0];
+        if (splitValue.length > 2) {
+          value = splitValue.splice(1);
+          value = value.join(' ');
+          const fltrType = splitValue[0].charAt(0).toUpperCase() + splitValue[0].slice(1);
+          tempselect[splitValue[0]] = [value];
+        } else {
+          value = splitValue[1];
+          const fltrType = splitValue[0];
+          const fltrName = splitValue[1].charAt(0).toUpperCase() + splitValue[1].slice(1);
+          tempselect[fltrType] = [fltrName];
+        }
       }
-      
-      console.log('tempselect', tempselect);
-      setIsClearing(true)
-      setAllFilters(tempselect);
+    } else {
+      value = splitValue[0];
+    }
+
+    console.log('tempselect', tempselect);
+    setIsClearing(true);
+    setAllFilters(tempselect);
     // } else {
     //   setAllFilters({
     //     subject: [],
@@ -206,28 +205,52 @@ const Filters = ({
   /* -------------------------Remove Tag with Filter selected item remove----------------------*/
   const removeSelectedTag = (item) => {
     // if (item.tagValue.toLowerCase() !== slugValue.toLowerCase()) {
-    setRemoveTag(item);
-    let tempRes = TagSelected.filter((i) => JSON.stringify(i) !== JSON.stringify(item));
+      console.log('++++',item)
+    let isInSlug = false;
+    let arr = window.location.pathname.split('/');
+    let value = arr[arr.length - 1];
+    let splitValue = value.split('-');
+    if (splitValue.length > 1) {
+      if (
+        value.startsWith('decor-style') &&
+        value.split('decor-style-')[1].split('-').join(' ').toLowerCase() === item.tagValue.toLowerCase()
+      ) {
+        isInSlug = true;
+      } else if (!value.startsWith('decor-style')) {
+        if (
+          splitValue.length > 2 &&
+          splitValue.splice(1).join(' ').toLocaleLowerCase() === item.tagValue.toLowerCase()
+        ) {
+          isInSlug = true;
+        } else if (splitValue[1].toLocaleLowerCase() === item.tagValue.toLowerCase()) {
+          isInSlug = true;
+        }
+      }
+    }
+    if (!isInSlug) {
+      setRemoveTag(item);
+      let tempRes = TagSelected.filter((i) => JSON.stringify(i) !== JSON.stringify(item));
 
-    setIsRemoving(true);
-    if (tempRes.length === 0) {
-      setAllFilters({
-        subject: [],
-        mood: [],
-        decorStyle: [],
-        artStyle: [],
-        orientation: [],
-        medium: [],
-        colorObj: [],
-      });
-      setTagSelected([]);
-    } else {
-      if (Object.keys(allFilters).length !== 0) {
-        const newArr = allFilters[item.tagType].filter((object) => {
-          return object !== item.tagValue;
+      setIsRemoving(true);
+      if (tempRes.length === 0) {
+        setAllFilters({
+          subject: [],
+          mood: [],
+          decorStyle: [],
+          artStyle: [],
+          orientation: [],
+          medium: [],
+          colorObj: [],
         });
-        setAllFilters({ ...allFilters, [item.tagType]: newArr });
-        setTagSelected([...tempRes]);
+        setTagSelected([]);
+      } else {
+        if (Object.keys(allFilters).length !== 0) {
+          const newArr = allFilters[item.tagType].filter((object) => {
+            return object !== item.tagValue;
+          });
+          setAllFilters({ ...allFilters, [item.tagType]: newArr });
+          setTagSelected([...tempRes]);
+        }
       }
     }
     // }
@@ -353,7 +376,7 @@ const Filters = ({
             </div>
           </div>
         </div>
-        {checkFilters && (
+        {checkFilters && !isLoading && (
           <div className="bg-transparent border-b w-full">
             <div className="bg-transparent container">
               <div

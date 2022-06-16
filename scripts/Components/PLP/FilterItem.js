@@ -492,7 +492,7 @@ const toggleFilters = (
 };
 
 const FilterItem = ({ option, filterName, RemoveTag, setRemoveTag, setMenuOpen, slugValue }) => {
-  const { allFilters, setAllFilters } = useContext(plpContext);
+  const { allFilters, setAllFilters, setIsLoading } = useContext(plpContext);
   const {
     style,
     chairType,
@@ -534,18 +534,19 @@ const FilterItem = ({ option, filterName, RemoveTag, setRemoveTag, setMenuOpen, 
     let value = arr[arr.length - 1];
     let splitValue = value.split('-');
     if (splitValue.length > 1) {
-      if (value.startsWith('decor-style') && value.split('decor-style-')[1].split('-').join(' ') === option) {
+      if (value.startsWith('decor-style') && value.split('decor-style-')[1].split('-').join(' ').toLowerCase() === option.toLowerCase()) {
         isInSlug = true;
-      } else {
-        if (splitValue.length > 2 && splitValue.splice(1).join(' ') === option) {
+      } else if(!value.startsWith('decor-style')){
+        if (splitValue.length > 2 && splitValue.splice(1).join(' ').toLocaleLowerCase() === option.toLowerCase()) {
           isInSlug = true;
-        } else if (splitValue[1] === option) {
+        } else if (splitValue[1].toLocaleLowerCase() === option.toLowerCase()) {
           isInSlug = true;
         }
       }
     }
 
     if (!isInSlug) {
+      setIsLoading(true)
       const selectOption = { tagType: filterName, tagValue: option };
       setRemoveTag(selectOption);
       let tag = document.getElementById(option.replace('&', ' & ') + '-' + filterName);
