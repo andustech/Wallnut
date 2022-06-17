@@ -1783,6 +1783,7 @@ afterpay-placement {
   text-transform: uppercase;
   min-width: 135px;
   text-align: right;
+  text-indent: 0;
 }
 #sortbyMobileDropdown {
   background-color: transparent;
