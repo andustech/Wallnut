@@ -21,11 +21,11 @@ const DeliverySection = ({ productBlock }) => {
     <div className="pdp-tabs-sec pt-16 text-sm justify-items-center max-w-screen-xxl font-extralight flex flex-row xl:w-10/12 gap-20">
       <div className="mb-4 w-6/12">
         <IconTitleContainer>
-          <div className="mb-6">
+          <div className="mb-6 items-center flex flex-row">
             {sprt_1_title && (
               <>
               <ShippingBox />
-              <h3 className="text-base ml-5 inline">
+              <h3 className="text-base ml-5">
                 {sprt_1_title}
               </h3>
               </>
@@ -50,11 +50,11 @@ const DeliverySection = ({ productBlock }) => {
       </div>
       <div className="mb-4 w-6/12">
         <IconTitleContainer>
-          <div className="mb-6">
+          <div className="mb-6 items-center flex flex-row">
             {sprt_2_title && (
               <>
               <ReturnIcon/>
-              <h3 className="text-base ml-5 inline">
+              <h3 className="text-base ml-5">
                 {sprt_2_title}
               </h3>
               </>
@@ -88,7 +88,8 @@ const IconTitleContainer = styled.div.attrs({
 })`
   grid-template-columns: 2fr 12fr;
   svg {
-    display: inline-block;
+    max-width: 29px;
+    width: 100%;
   }
   h3 {
     vertical-align: middle;
