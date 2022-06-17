@@ -3228,3 +3228,8 @@ form.needsclick.klaviyo-form > div {
     margin-right: 24px;
   }
 }
+.pdp-tabs-sec .smtext {
+  font-size: 13px !important;
+  padding-left: 20px;
+  line-height: 19px !important;
+}
