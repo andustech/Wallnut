@@ -78,7 +78,7 @@
 
 
     <!-- Create Customer -->
-    <div id="create-customer" class="desktop-push-2 desktop-5 tablet-3 mobile-3">
+    <div id="create-customer" class="desktop-push-3 desktop-6 tablet-3 mobile-3">
       <div class="template_header section_titile">
         <h3 class="font-bold text-black">{{ 'customer.register.title' | t }}</h3>
       </div>
@@ -110,6 +110,8 @@
 
       <div class="action_bottom">
         <input class="primary_btn" type="submit" value="{{ 'customer.register.submit' | t }}"/>
+        <hr class="hr-or" data-content="or">
+        <a class="primary_btn create-customer" href="/account/login">Sign in</a>
       </div>
       {% endform %}
     </div>
