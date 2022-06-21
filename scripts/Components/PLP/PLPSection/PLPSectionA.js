@@ -60,6 +60,18 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
   const [isCalled, setIsCalled] = useState(false);
   const [isAllClearing, setIsClearing] = useState(false);
   const [indexName, setIndexName] = useState('shopify_products_title_asc');
+  const  [pageTitle, setPageTitle] = useState(collectionTitle)
+
+  const options = {
+    artOption : artOption,
+  colorObject : colorObject,
+  decorStyle : decorOption,
+  mediumOption : mediumOption,
+  mood : moodOption,
+  orientationOption : orientationOption,
+  subject : subjectOption,
+  sizeOption : sizeOption
+  }
 
   const searchClient = algoliasearch('G49A2XSYO1', 'aac1fbe78febb9f003c18df8aba2eba1');
   const index = searchClient.initIndex(indexName);
@@ -105,7 +117,6 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
   }, [allFilters, sortingApply, products, slugValue]);
 
   useEffect(() => {
-    console.log('=======', allFilters);
     const tempTags = [];
     Object.keys(allFilters).forEach((k) => {
       if (allFilters[k].length !== 0) {
@@ -151,22 +162,28 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
     let arr = window.location.pathname.split('/');
     let value = arr[arr.length - 1];
     setSlugRawValue(value);
+    if(arr.length > 3){
+      console.log('++++++',value.split('-'))
+      setPageTitle(value.split('-').join(' ').replace('&',' & '))
+    
     let splitValue = value.split('-');
     if (splitValue.length > 1) {
       if (value.startsWith('decor-style')) {
         value = value.split('decor-style-')[1].split('-').join(' ');
         setAllFilters({ ...allFilters, ['decorStyle']: [value] });
+        options.decorStyle.splice(options.decorStyle.indexOf(value.substring(0, 1).toUpperCase() + value.substring(1)),1)
       } else {
         if (splitValue.length > 2) {
           value = splitValue.splice(1);
           value = value.join(' ');
-          const fltrType = splitValue[0].charAt(0).toUpperCase() + splitValue[0].slice(1);
+          // const fltrType = splitValue[0].charAt(0).toUpperCase() + splitValue[0].slice(1);
           setAllFilters({ ...allFilters, [splitValue[0]]: [value] });
         } else {
           value = splitValue[1];
           const fltrType = splitValue[0];
           const fltrName = splitValue[1].charAt(0).toUpperCase() + splitValue[1].slice(1);
           setAllFilters({ ...allFilters, [fltrType]: [fltrName] });
+          options[fltrType].splice(options[fltrType].indexOf(fltrName),1)
         }
       }
     } else {
@@ -176,6 +193,7 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
     if (value !== '' && value !== undefined) {
       setSlugValue(value);
     }
+  }
   };
 
   const FilterProducts = () => {
@@ -196,14 +214,32 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
             tagType: element,
             tagValue: filterValue.replace('-', ' '),
           };
-          console.log('tempEntry', tempEntry);
+          let isInSlug = false
+
+          let arr = window.location.pathname.split('/');
+          let value = arr[arr.length - 1];
+          let splitValue = value.split('-');
+
+          if (value.startsWith('decor-style') && element === 'decorStyle') {
+            if(value.split('decor-style-')[1].split('-').join(' ').toLowerCase() === tempEntry.tagValue.toLowerCase()){
+              isInSlug = true
+            }
+          }
+          else if (splitValue[0].toLowerCase() === element) {
+            if(splitValue[1].toLowerCase() === tempEntry.tagValue.toLowerCase()){
+              isInSlug = true
+            }
+          }
+
+          // console.log('tempEntry', tempEntry);
+
           let tempRes = TagSelected.filter(
             (i) => i.tagType === tempEntry.tagType && i.tagValue === tempEntry.tagValue
           );
           if (isAllClearing) {
             setTagSelected([tempEntry]);
           }
-          if (tempRes.length === 0 && !isRemoving && !isAllClearing) {
+          if (tempRes.length === 0 && !isRemoving && !isAllClearing && !isInSlug) {
             setTagSelected([...TagSelected, tempEntry]);
           }
         }
@@ -312,7 +348,7 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
             <option value="titleDescending">Descending</option>
           </select> */}
         </FilterMobile>
-        <PLPDescription filterRef={filterRef} {...{ collectionTitle, collectionDescription }} />
+        <PLPDescription filterRef={filterRef} collectionTitle={pageTitle} {...{ collectionDescription }} />
         <FiltersDesktop>
           <Filters
             colorFilters={colorFilters}
@@ -328,14 +364,14 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
             products={products}
             setIsRemoving={setIsRemoving}
             slugValue={slugValue}
-            artOption={artOption}
-            colorObject={colorObject}
-            decorOption={decorOption}
-            mediumOption={mediumOption}
-            moodOption={moodOption}
-            orientationOption={orientationOption}
-            subjectOption={subjectOption}
-            sizeOption={sizeOption}
+            artOption={options.artOption}
+            colorObject={options.colorObject}
+            decorOption={options.decorStyle}
+            mediumOption={options.mediumOption}
+            moodOption={options.mood}
+            orientationOption={options.orientationOption}
+            subjectOption={options.subject}
+            sizeOption={options.sizeOption}
             isRemoving={isRemoving}
             slugRawValue={slugRawValue}
             totalProducts={totalProducts}

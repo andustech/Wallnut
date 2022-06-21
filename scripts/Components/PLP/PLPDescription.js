@@ -8,7 +8,7 @@ const PLPDescription = ({ collectionTitle, collectionDescription, filterRef }) =
   <div ref={filterRef} className="pt-12 container">
     <div className="text-center">
       <SectionTiltle className="section_titile mb-0.5 md:mb-3">
-        <h3 className="font-bold text-black">{collectionTitle}</h3>
+        <h3 className="font-bold text-black capitalize">{collectionTitle}</h3>
       </SectionTiltle>
       <Description key="collection description">{parse(collectionDescription)}</Description>
     </div>
