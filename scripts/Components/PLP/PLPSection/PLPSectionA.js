@@ -53,6 +53,7 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
   const filterRef = useRef();
   const [slugValue, setSlugValue] = useState('');
   const [slugRawValue, setSlugRawValue] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const [products, setProducts] = useState([]);
   const [tags, setTags] = useState([]);
@@ -63,8 +64,9 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
   const searchClient = algoliasearch('G49A2XSYO1', 'aac1fbe78febb9f003c18df8aba2eba1');
   const index = searchClient.initIndex(indexName);
 
-  useEffect(()=>{
+  useEffect(() => {
     if (!isCalled) {
+      setIsLoading(true);
       index
         .search('', {
           page: page,
@@ -75,11 +77,12 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
           setIsCalled(true);
           setProducts(res.hits);
           setTotalProducts(res.nbHits);
+          setIsLoading(false);
         })
         .finally(() => {});
     }
     setIsCalled(true);
-  },[indexName])
+  }, [indexName]);
 
   const loadMore = () => {
     index
@@ -98,9 +101,8 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
   };
 
   useEffect(() => {
-
-  FilterProducts();
-  }, [ allFilters,sortingApply, products, slugValue]);
+    FilterProducts();
+  }, [allFilters, sortingApply, products, slugValue]);
 
   useEffect(() => {
     console.log('=======', allFilters);
@@ -116,15 +118,15 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
             ? 'Color'
             : k.charAt(0).toUpperCase() + k.slice(1);
         allFilters[k].forEach((itm) => {
-          if(k === 'subject'){
+          if (k === 'subject') {
             tempTags.push('tags:Abstract-' + itm);
-          }else{
+          } else {
             tempTags.push('tags:' + filterName + '-' + itm);
           }
         });
       }
     });
-    console.log('tempTags === ', tempTags)
+    console.log('tempTags === ', tempTags);
     setTags(tempTags);
     index
       .search('', {
@@ -135,6 +137,7 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
       .then((res) => {
         setProducts(res.hits);
         setTotalProducts(res.nbHits);
+        setIsLoading(false)
       })
       .catch((e) => console.log('=======e=====', e))
       .finally(() => {});
@@ -152,24 +155,24 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
     if (splitValue.length > 1) {
       if (value.startsWith('decor-style')) {
         value = value.split('decor-style-')[1].split('-').join(' ');
-        setAllFilters({...allFilters,['decorStyle']:[value]})
+        setAllFilters({ ...allFilters, ['decorStyle']: [value] });
       } else {
         if (splitValue.length > 2) {
           value = splitValue.splice(1);
           value = value.join(' ');
-          const fltrType = splitValue[0].charAt(0).toUpperCase() + splitValue[0].slice(1)
-          setAllFilters({...allFilters,[splitValue[0]]:[value]})
+          const fltrType = splitValue[0].charAt(0).toUpperCase() + splitValue[0].slice(1);
+          setAllFilters({ ...allFilters, [splitValue[0]]: [value] });
         } else {
           value = splitValue[1];
-          const fltrType = splitValue[0]
-          const fltrName = splitValue[1].charAt(0).toUpperCase() + splitValue[1].slice(1)
-          setAllFilters({...allFilters,[fltrType]:[fltrName]})
+          const fltrType = splitValue[0];
+          const fltrName = splitValue[1].charAt(0).toUpperCase() + splitValue[1].slice(1);
+          setAllFilters({ ...allFilters, [fltrType]: [fltrName] });
         }
       }
     } else {
       value = splitValue[0];
     }
-   
+
     if (value !== '' && value !== undefined) {
       setSlugValue(value);
     }
@@ -179,14 +182,12 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
     var productFilter = [];
     if (checkFilters || sortingApply) {
       if (sortingApply === 'titleAscending' || sortingApply === '' || sortingApply === 'SORT BY') {
-        setIndexName('shopify_products_title_asc')
-        setIsCalled(false)
-
+        setIndexName('shopify_products_title_asc');
+        setIsCalled(false);
       }
       if (sortingApply === 'titleDescending') {
-        setIndexName('shopify_products_title_desc')
-        setIsCalled(false)
-
+        setIndexName('shopify_products_title_desc');
+        setIsCalled(false);
       }
       Object.keys(allFilters).map((element) => {
         a: for (let index1 = 0; index1 < allFilters[element].length; index1++) {
@@ -199,94 +200,18 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
           let tempRes = TagSelected.filter(
             (i) => i.tagType === tempEntry.tagType && i.tagValue === tempEntry.tagValue
           );
-          if(isAllClearing){
+          if (isAllClearing) {
             setTagSelected([tempEntry]);
           }
           if (tempRes.length === 0 && !isRemoving && !isAllClearing) {
             setTagSelected([...TagSelected, tempEntry]);
           }
-          // for (let index = 0; index < products.length; index++) {
-          //   const productElement = products[index];
-
-          //   if (
-          //     (allFilters['subject'].length !== 0 && element === 'subject') ||
-          //     (allFilters['mood'].length !== 0 && element === 'mood') ||
-          //     (allFilters['decorStyle'].length !== 0 && element === 'decorStyle') ||
-          //     (allFilters['artStyle'].length !== 0 && element === 'artStyle') ||
-          //     (allFilters['medium'].length !== 0 && element === 'medium') ||
-          //     (allFilters['orientation'].length !== 0 && element === 'orientation') ||
-          //     (allFilters['colorObj'].length !== 0 && element === 'colorObj')
-          //   ) {
-          //     for (let index = 0; index < productElement.tags.length; index++) {
-          //       const elementTags = productElement.tags[index];
-
-          //       if (element === 'subject' && filterValue === 'Floral & Botanical') {
-          //         if (elementTags.includes('Subject-Floral&Botanical')) {
-          //           let findValue = productFilter.filter((i) => i.id === productElement.id);
-          //           if (findValue.length == 0) {
-          //             productFilter.push(productElement);
-          //           }
-          //         }
-          //       } else if (element === 'subject' && filterValue === 'Travel & Architecture') {
-          //         if (elementTags.includes('Subject-Travel&Architecture')) {
-          //           let findValue = productFilter.filter((i) => i.id === productElement.id);
-          //           if (findValue.length == 0) {
-          //             productFilter.push(productElement);
-          //           }
-          //         }
-          //       } else if (element === 'subject') {
-          //         if (elementTags.includes(`Subject-${filterValue}`)) {
-          //           let findValue = productFilter.filter((i) => i.id === productElement.id);
-          //           if (findValue.length == 0) {
-          //             productFilter.push(productElement);
-          //           }
-          //         }
-          //       } else if (element === 'artStyle') {
-          //         if (elementTags.includes(`Art Style-${filterValue}`)) {
-          //           let findValue = productFilter.filter((i) => i.id === productElement.id);
-          //           if (findValue.length == 0) {
-          //             productFilter.push(productElement);
-          //           }
-          //         }
-          //       } else if (element === 'colorObj') {
-          //         if (elementTags.includes(`Color-${filterValue}`)) {
-          //           let findValue = productFilter.filter((i) => i.id === productElement.id);
-          //           if (findValue.length == 0) {
-          //             productFilter.push(productElement);
-          //           }
-          //         }
-          //       } else if (element === 'decorStyle') {
-          //         console.log('filterValue', filterValue);
-          //         if (elementTags.includes(`Décor Style-${filterValue}`)) {
-          //           let findValue = productFilter.filter((i) => i.id === productElement.id);
-          //           if (findValue.length == 0) {
-          //             productFilter.push(productElement);
-          //           }
-          //         }
-          //       } else if (element === 'medium') {
-          //         if (elementTags.includes(filterValue)) {
-          //           let findValue = productFilter.filter((i) => i.id === productElement.id);
-          //           if (findValue.length == 0) {
-          //             productFilter.push(productElement);
-          //           }
-          //         }
-          //       }
-          //       // Default condition
-          //       else if (elementTags.includes(filterValue)) {
-          //         let findValue = productFilter.filter((i) => i.id === productElement.id);
-          //         if (findValue.length == 0) {
-          //           productFilter.push(productElement);
-          //         }
-          //       }
-          //     }
-          //   }
-          // }
         }
       });
     }
     setFilterProducts(productFilter);
     setIsRemoving(false);
-    setIsClearing(false)
+    setIsClearing(false);
   };
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -338,6 +263,8 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
     allFilters,
     setAllFilters,
     checkFilters,
+    setIsLoading,
+    isLoading
   };
   const sortingBy = (e) => {
     setSortingApply(e.target.value);
@@ -352,6 +279,7 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
           setTagSelected={setTagSelected}
           TagSelected={TagSelected}
           slugValue={slugValue}
+          totalProducts={totalProducts}
         />
       )}
       <div className="w-full">
@@ -414,15 +342,27 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
             setIsClearing={setIsClearing}
           />
         </FiltersDesktop>
-        <PLPItems
-          products={products}
-          collectionTitle={collectionTitle}
-          colorFilters={[]}
-          simpleLayout
-          holiday={collectionTitle === 'Seasonal Favorites'}
-          totalProducts={totalProducts}
-          loadMore={loadMore}
-        />
+        {isLoading ? (
+          <Loader>
+            <div className="pre-spinner">
+              <div className="spinner"></div>
+            </div>
+          </Loader>
+        ) : products.length > 0 ? (
+          <PLPItems
+            products={products}
+            collectionTitle={collectionTitle}
+            colorFilters={[]}
+            simpleLayout
+            holiday={collectionTitle === 'Seasonal Favorites'}
+            totalProducts={totalProducts}
+            loadMore={loadMore}
+          />
+        ) : (
+          <NotFound>
+            <h4>No Products Found!!</h4>
+          </NotFound>
+        )}
         <SeoCopy title={collectionTitle} />
       </div>
     </PLPContext.Provider>
@@ -433,6 +373,47 @@ const FiltersDesktop = styled.div`
   display: block;
   @media (max-width: 767px) {
     display: none;
+  }
+`;
+const NotFound = styled.div`
+  text-align: center;
+  margin-top: 125px;
+`;
+const Loader = styled.div`
+  justify-content: center;
+  display: flex;
+  & .pre-spinner {
+    width: 300px;
+    height: 300px;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    overflow: hidden;
+    & .spinner {
+      width: 75px;
+      height: 75px;
+      margin: 0;
+      background: transparent;
+      border-top: 4px solid black;
+      border-right: 4px solid transparent;
+      border-radius: 50%;
+      -webkit-animation: 1s spin linear infinite;
+      animation: 1s spin linear infinite;
+    }
   }
 `;
 const FilterMobile = styled.div`
