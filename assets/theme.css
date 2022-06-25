@@ -1930,6 +1930,10 @@ afterpay-placement {
     font-size: 28px !important;
     line-height: 39px !important;
   }
+  .customer_address_table input[type="checkbox"] {
+    width: auto;
+    min-width: auto;
+  }
 }
 
 @media only screen and (max-width: 575px) {
@@ -2799,7 +2803,8 @@ form {
   .fancybox-wrapper div#create-customer,
   #edit-address,
   #add-address {
-    width: 320px !important;
+    width: 100% !important;
+    padding: 15px !important;
   }
 }
 #add-address #address_form_new .customer_address_table tr td {
