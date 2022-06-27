@@ -6,20 +6,20 @@ const IndexBetterWay = ({ blocks }) => {
   const handleVideoPopup = () => {
     if (videoActive === 'fade-out') {
       setVideoActive('fade-in');
-      $('video')[0].play();
+      $('.video_items_container .videoBack video')[0].play();
       $('.close-button').addClass('md:hidden');
     } else {
       setVideoActive('fade-out');
-      $('video')[0].pause();
+      $('.video_items_container .videoBack video')[0].pause();
     }
   };
 
   $('.video_items_container .modal-body').mouseenter(function () {
-    $('video').attr('controls', true);
+    $('.video_items_container .videoBack video').attr('controls', true);
     $('.close-button').removeClass('md:hidden');
   });
   $('.video_items_container .modal-body').mouseleave(function () {
-    $('video').removeAttr('controls');
+    $('.video_items_container .videoBack video').removeAttr('controls');
     $('.close-button').addClass('md:hidden');
   });
 
@@ -31,7 +31,7 @@ const IndexBetterWay = ({ blocks }) => {
       )
     ) {
       setVideoActive('fade-out');
-      $('video')[0].pause();
+      $('.video_items_container .videoBack video')[0].pause();
     }
   });
 
@@ -89,7 +89,10 @@ const IndexBetterWay = ({ blocks }) => {
                       </div>
                     </div>
                     <div className="w-full md:w-6/12">
-                      <img src={settings.image} alt="how-it-works" className="w-full" />
+                      <video width="100%" height="100%" autoPlay muted loop>
+                        <source src={settings.image} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
                     </div>
                     {settings.video_link && (
                       <div
@@ -133,7 +136,10 @@ const IndexBetterWay = ({ blocks }) => {
                 ) : (
                   <div className="how_it_work_items_container flex items-center flex-col md:flex-row">
                     <div className="w-full md:w-6/12">
-                      <img src={settings.image} alt="how-it-works" className="w-full" />
+                      <video width="100%" height="100%" autoPlay muted loop>
+                        <source src={settings.image} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
                     </div>
                     <div className="how_it_work_content w-full md:w-6/12 md:pl-8 lg:px-13 xl:px-16 pt-6 md:pt-0-">
                       {settings.title && (

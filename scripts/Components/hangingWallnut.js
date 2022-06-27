@@ -53,7 +53,10 @@ const hangingWallnut = ({ settings, blocks }) => {
             return (
                 <>
                   <ValuePropColumn className={margin_class}>
-                    <img src={settings.image} className="mb-3 lg:mb-3.5" />
+                    <video width="100%" height="100%" muted autoPlay loop className="mb-3 lg:mb-3.5">
+                      <source src={settings.image} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
                     <div>
                       <h5 className="h5-attila-sans mb-2 text-black">{settings.title}</h5>
                       <p className="mb-0">{settings.content}</p>

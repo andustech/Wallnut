@@ -19,20 +19,20 @@ const HowItWorkTab = ({ productTypeBlock }) => {
   const handleVideoPopup = () => {
     if (videoActive === 'fade-out') {
       setVideoActive('fade-in');
-      $('.mobile-pdp-tabs video')[0].play();
+      $('.mobile-pdp-tabs .videoBack video')[0].play();
       $('.mobile-pdp-tabs .close-button').addClass('md:hidden');
     } else {
       setVideoActive('fade-out');
-      $('.mobile-pdp-tabs video')[0].pause();
+      $('.mobile-pdp-tabs .videoBack video')[0].pause();
     }
   };
 
   $('.mobile-pdp-tabs .videoBack .modal-body').mouseenter(function () {
-    $('.mobile-pdp-tabs video').attr('controls', true);
+    $('.mobile-pdp-tabs .videoBack video').attr('controls', true);
     $('.mobile-pdp-tabs .close-button').removeClass('md:hidden');
   });
   $('.mobile-pdp-tabs .videoBack .modal-body').mouseleave(function () {
-    $('.mobile-pdp-tabs video').removeAttr('controls');
+    $('.mobile-pdp-tabs .videoBack video').removeAttr('controls');
     $('.mobile-pdp-tabs .close-button').addClass('md:hidden');
   });
 
@@ -45,7 +45,7 @@ const HowItWorkTab = ({ productTypeBlock }) => {
     ) {
       setVideoActive('fade-out');
       if ($('.mobile-pdp-tabs video').length > 0) {
-        $('.mobile-pdp-tabs video')[0].pause();
+        $('.mobile-pdp-tabs .videoBack video')[0].pause();
       }
     }
   });
@@ -55,7 +55,11 @@ const HowItWorkTab = ({ productTypeBlock }) => {
       <Tab tabName={howitwork_tab_heading}>
         <div>
           {about_image && (
-            <img className="mb-6" src={about_image} alt="" />
+            <>
+              <div className="mb-6">
+                <VideoPlayer link={about_image} loop width="100%" height="100%" autoPlay muted/>
+              </div>
+            </>
           )}
           {about_desktop_heading && (
             <h3>{about_desktop_heading}</h3>
