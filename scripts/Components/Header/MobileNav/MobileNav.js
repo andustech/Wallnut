@@ -80,6 +80,7 @@ const MobileNav = ({ settings, themeSettings }) => {
       >
         <MobileNavIcon isOpen={open} setOpen={setOpen} />
       </div>
+      <img src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/close-img-black.png?v=1654240702" class="search_icon close cart-close hidden" />
     </MobileNavWrapper>
   );
 };

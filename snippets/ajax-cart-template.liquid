@@ -25,18 +25,18 @@
       <div class="ajaxcart__inner">
         {{#items}}
         <div class="ajaxcart__product text-left">
-          <div class="ajaxcart row border-none" data-line="{{line}}">
+          <div class="ajaxcart row border-none flex justify-between" data-line="{{line}}">
 
-              <div class="grid__item desktop-4 tablet-1 mobile-1">
+              <div class="grid__item desktop-3 mobile-1 tablet-1">
                 <a href="{{url}}" class="ajaxcart__product-image"><img src="{{img}}" alt=""></a>
               </div>
-              <div class="desktop-8 tablet-5 mobile-2">
+              <div class="desktop-9 custom-margin tablet-5 mobile-2 pl-4">
 
                 <div class="row">
-                  <div class="desktop-8 tablet-4 mobile-2 leading-none">
+                  <div class="desktop-8 tablet-4 mobile-2 leading-none mb-1">
                     <a href="{{url}}" class="ajaxcart__product-name">{{name}}</a>
                   </div>
-                  <div class="desktop-4 tablet-2 mobile-1 text-right">
+                  <div class="desktop-4 tablet-2 mobile-1 text-right mr-0 flex justify-end">
                     {{#if discountsApplied}}
                       <span class="visually-hidden">{% endraw %}{{ 'products.general.sale_price' | t }}{% raw %}</span>
                       <span class="ajaxcart__price onsale">{{{discountedPrice}}}</span>
@@ -47,9 +47,11 @@
                     {{/if}}
                   </div>
                   <div class="desktop-12 tablet-4 mobile-2">
-                    {{#if variation}}
-                      <p class="ajaxcart__product-meta text-xs">{{variation}}</p>
-                    {{/if}}
+                    {{#each optionValues}}
+                      {{#if this}}
+                        <p class="ajaxcart__product-meta text-xs mb-1">{{this.name}}: {{this.value}}</p>
+                      {{/if}}
+                    {{/each}}
                     {{#if sellingPlanAllocation}}
                       <p>{{ sellingPlanAllocationName }}</p>
                       {{/if}}
@@ -92,7 +94,7 @@
 
                 <div class="display-table">
                   <div class="display-table-cell">
-                    <div class="ajaxcart__qty mb-5">
+                    <div class="ajaxcart__qty mb-1.5">
                       <button type="button" class="ajaxcart__qty-adjust ajaxcart__qty--minus quantity-increment" data-id="{{id}}" data-qty="{{itemMinus}}" data-line="{{line}}">
                         <span>&minus;</span>
                       </button>
@@ -140,7 +142,7 @@
       </div>
       <div class="ajaxcart__footer row px-6 pl-0 pr-0">
         <div class="subtotal">
-          <p class="title normal-case font-normal">Subtotal {% endraw %}({{ cart.item_count }}){% raw %}:</p>
+          <p class="title normal-case font-normal">Subtotal {% endraw %}(<span class="cart-count-2">{{ cart.item_count }}</span>){% raw %}:</p>
           <p class="subtotal-price"><span id="miniCartTotal" class="cart-original-total">{{{subTotalPrice}}}</span></p>          
         </div>
         <div id="afterpay-div" class="flex free-shipping-drawer">          

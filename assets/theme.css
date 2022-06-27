@@ -1355,6 +1355,20 @@ afterpay-placement {
   .review_main_container .review_inner_items .right .review_card:last-child {
     margin-right: 20px;
   }
+  .drawer__header .drawer__header__inner {
+    border-bottom: 0 !important;
+    display: block !important;
+    text-align: center;
+  }
+  .drawer__header .drawer__header__inner .drawer__close {
+    display: none !important;
+  }
+  .ajaxcart__product .ajaxcart.row > .mobile-2 {
+    width: 81%;
+  }
+  .ajaxcart__product .ajaxcart.row > .mobile-1 {
+    width: 14%;
+  }
   .footer_opt_container {
     flex-direction: column;
   }
@@ -1507,6 +1521,12 @@ afterpay-placement {
   }
   .premium_img_box .object-cover {
     object-position: top;
+  }
+  .ajaxcart__product .ajaxcart.row > .mobile-2 {
+    width: 85%;
+  }
+  .ajaxcart__product .ajaxcart.row > .mobile-1 {
+    width: 18%;
   }
 }
 
@@ -1933,6 +1953,10 @@ afterpay-placement {
   .customer_address_table input[type="checkbox"] {
     width: auto;
     min-width: auto;
+  }
+  .drawer__header span.uppercase {
+    font-size: 12px !important;
+    line-height: 18px !important;
   }
 }
 
@@ -2576,6 +2600,8 @@ form#create_customer {
 .drawer__header span.uppercase {
   color: #000;
   letter-spacing: 0.04em;
+  font-size: 14px;
+  line-height: 20px;
 }
 .drawer .leading-none a {
   font-weight: 400;
@@ -2639,6 +2665,7 @@ form#create_customer {
   font-size: 10px;
   line-height: 14px;
   margin-bottom: 0 !important;
+  text-align: left;
 }
 .drawer-continue-shopping {
   margin-top: 30px;
@@ -3237,4 +3264,7 @@ form.needsclick.klaviyo-form > div {
   font-size: 13px !important;
   padding-left: 20px;
   line-height: 19px !important;
+}
+.ajaxcart__inner .custom-margin {
+  margin-right: -10px !important;
 }

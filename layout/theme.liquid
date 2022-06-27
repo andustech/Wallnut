@@ -296,6 +296,7 @@
       jQuery('body').on('ajaxCart.afterCartLoad', function(evt, cart) {
         // Bind to 'ajaxCart.afterCartLoad' to run any javascript after the cart has loaded in the DOM
         timber.RightDrawer.open();
+        $('.cart-count-2').html($('.cart-count').html());
       });
       jQuery('body').on('click','.drawer-continue-shopping', function(evt, cart) {
         evt.preventDefault();
@@ -347,11 +348,51 @@
 
       // Added to set position of gm submenu
       $(window).scroll(function () {
+        menuCartDrawerPosition();
+      });
+      menuCartDrawerPosition();
+
+      function menuCartDrawerPosition() {
         if ($(window).scrollTop() > 10) {
           $(".gm-submenu.gm-mega.gm-submenu-bordered").css({ "top": "75px" });
+          if ($(window).width() >= 1024) {
+            $("#CartDrawer").css({ "top": "75px" });
+          } else {
+            $("#CartDrawer").css({ "top": "50px" });
+          }
         }
         else {
           $(".gm-submenu.gm-mega.gm-submenu-bordered").css({ "top": "119px" });
+          if ($(window).width() >= 1024) {
+            $("#CartDrawer").css({ "top": "119px" });
+          } else if ($(window).width() >= 769) {
+            $("#CartDrawer").css({ "top": "94px" });
+          } else {
+            $("#CartDrawer").css({ "top": "88px" });
+          }
+        }
+      }
+
+      // Show close on cart drawer click
+      $('.site-header__cart-toggle').on('click', function() {
+        if ($(window).width() < 767) {
+          if ($('.toggle-button').hasClass('flex')) {
+            $('.toggle-button').removeClass('flex');
+            $('.toggle-button').addClass('hidden');
+            $('.cart-close').removeClass('hidden');
+          } else {
+            $('.toggle-button').removeClass('hidden');
+            $('.toggle-button').addClass('flex');
+            $('.cart-close').addClass('hidden');
+          }
+        }
+      });
+      $('.cart-close').on('click', function() {
+        if ($(window).width() < 767) {
+          $('.toggle-button').removeClass('hidden');
+          $('.toggle-button').addClass('flex');
+          $('.cart-close').addClass('hidden');
+          timber.RightDrawer.close();
         }
       });
 
@@ -407,6 +448,7 @@
 
       $( window ).resize(function() {
         bannerImageHeight();
+        menuCartDrawerPosition();
       });
 
       // Search layer and auto suggestion code for desktop and mobile

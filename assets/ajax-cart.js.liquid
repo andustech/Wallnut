@@ -401,6 +401,7 @@ var ajaxCart = (function (module, $) {
         img: prodImg,
         name: cartItem.product_title,
         variation: cartItem.variant_title,
+        optionValues: cartItem.options_with_values,
         properties: cartItem.properties,
         itemAdd: cartItem.quantity + 1,
         itemMinus: cartItem.quantity - 1,
