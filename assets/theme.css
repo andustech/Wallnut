@@ -3268,3 +3268,32 @@ form.needsclick.klaviyo-form > div {
 .ajaxcart__inner .custom-margin {
   margin-right: -10px !important;
 }
+
+
+/* === Instruction page css start === */
+.instructions-page {
+  margin-top: 74px;
+}
+.instructions-page .container {
+  max-width: 866px !important;
+}
+.instructions-page p.h3-attila-sans.font-medium {
+  font-size: 24px!important;
+  line-height: 30px !important;
+}
+@media only screen and (max-width: 991px) {
+  .instructions-page p.h3-attila-sans.font-medium {
+    font-size: 22px!important;
+    line-height: 32px!important;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .instructions-page {
+    margin-top: 52px;
+  }
+  .instructions-page p.h3-attila-sans.font-medium {
+    font-size: 18px!important;
+    line-height: 28px!important;
+  }
+}
+/* === Instruction page css end === */
