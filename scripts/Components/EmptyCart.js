@@ -13,11 +13,11 @@ const EmptyCart = (props) => {
   }, []);
 
   return (
-    <div className={`${count > 0 ? 'hidden' : ''} text-center`}>
-      <p className="mb-0 mt-16 uppercase text-black">Your cart is empty.</p>
+    <div className={`${count > 0 ? 'hidden' : ''} text-center mb-6 md:my-10`}>
+      <p className="mb-0 mt-16- mb-4 uppercase text-black">Your cart is empty.</p>
       <p className="uppercase text-black">Not sure where to start?</p>
-      <div className="absolute transform -translate-x-1/2 bottom-20 left-1/2">
-        <button className="primary_btn empty_shop_all_btn" type="button">
+      <div className="absolute- -transform -translate-x-1/2 -bottom-20 -left-1/2">
+        <button className="primary_btn empty_shop_all_btn w-auto" type="button">
           <a className="no-underline" href="https://wallnut.com/collections/all">
             SHOP ALL
           </a>
