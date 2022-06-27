@@ -23,6 +23,8 @@ import meetWallnut from './Components/meetWallnut';
 import howItWorksVideo from './Components/howItWorksVideo';
 import howItWorksMission from './Components/howItWorksMission';
 import hangingWallnut from './Components/hangingWallnut';
+import instructionsPdf from './Components/instructionsPdf';
+import instructionsVideos from './Components/instructionsVideos';
 // import ShopOurBestSellers from './Components/ShopOurBestSellers';
 
 //addClientIdToHeap();
@@ -71,6 +73,9 @@ const components = [
   { id: 'react-how-it-works-video', module: howItWorksVideo },
   { id: 'react-hanging-wallnut', module: hangingWallnut },
   { id: 'react-how-it-works-mission', module: howItWorksMission },
+  { id: 'react-instructions-pdf', module: instructionsPdf },
+  { id: 'react-instructions-videos', module: instructionsVideos },
+  { id: 'react-removal-videos', module: instructionsVideos },
   // { id: 'react-shop-our-best-sellers', module: ShopOurBestSellers },
 ];
 
