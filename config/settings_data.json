@@ -2120,6 +2120,74 @@
         "settings": {
           "heading": "PDF Instructions"
         }
+      },
+      "instructions-videos": {
+        "type": "instructions-videos",
+        "blocks": {
+          "99e6bce9-b0f1-41d3-9867-a433b02cec57": {
+            "type": "instructions_video",
+            "settings": {
+              "video_heading": "Placing your art",
+              "video_link": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/c1f73915df504be599db955f194b31f0.mp4"
+            }
+          },
+          "e712251d-0b42-4a99-9a7b-9ab17d8707d9": {
+            "type": "instructions_video",
+            "settings": {
+              "video_heading": "Hanging your Wallnut art with adhesive (24\" x 32\" and smaller)",
+              "video_link": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/55b3b6d09d844910a60384de0d82d40c.mp4"
+            }
+          },
+          "10aa0e4a-0233-467e-a03d-e57b44afa75a": {
+            "type": "instructions_video",
+            "settings": {
+              "video_heading": "Hanging your Wallnut art with nails (30\" x 40\" and larger)",
+              "video_link": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/f40d2936c3b64ba2b90fcfc91554211d.mp4"
+            }
+          }
+        },
+        "block_order": [
+          "99e6bce9-b0f1-41d3-9867-a433b02cec57",
+          "e712251d-0b42-4a99-9a7b-9ab17d8707d9",
+          "10aa0e4a-0233-467e-a03d-e57b44afa75a"
+        ],
+        "settings": {
+          "heading": "Instruction Videos"
+        }
+      },
+      "removal-videos": {
+        "type": "removal-videos",
+        "blocks": {
+          "03d2c815-3f47-46e5-8adc-6bb38bd404f1": {
+            "type": "removal_video",
+            "settings": {
+              "video_heading": "Adhesive removal",
+              "video_link": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/5aab1722cd6d4d2993c538f9c3d9be34.mp4"
+            }
+          },
+          "0fbcf534-f375-4d9f-8287-0c5df5d89979": {
+            "type": "removal_video",
+            "settings": {
+              "video_heading": "Nail removal",
+              "video_link": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/42be86f69b0d420a84682fb3e3fa70c6.mp4"
+            }
+          },
+          "8c21e49b-95ee-44c7-89c5-976b8ee633b6": {
+            "type": "removal_video",
+            "settings": {
+              "video_heading": "Re-applying adhesive",
+              "video_link": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/cc133ce1dc2c4035853e6be27a3b9ad3.mp4"
+            }
+          }
+        },
+        "block_order": [
+          "03d2c815-3f47-46e5-8adc-6bb38bd404f1",
+          "0fbcf534-f375-4d9f-8287-0c5df5d89979",
+          "8c21e49b-95ee-44c7-89c5-976b8ee633b6"
+        ],
+        "settings": {
+          "heading": "Removal Videos"
+        }
       }
     },
     "content_for_index": [
