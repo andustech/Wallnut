@@ -1,0 +1,49 @@
+<div id="react-instructions-pdf">
+    <script type="application/json">
+        {
+            "settings": {{ section.settings | json }},
+            "blocks": [
+              {% for block in section.blocks %}
+                  {
+                      "settings": {{ block.settings | json }},
+                      "type": {{ block.type | json }},
+                      "shopify_attributes": {{ block.shopify_attributes | json }}
+                  }
+                  {% if forloop.last != true %},{% endif %}
+              {% endfor %}
+            ]
+        }
+    </script>
+</div>
+
+{% schema %}
+  {
+    "name": "Instructions PDF",
+    "max_blocks": 40,
+    "blocks": [
+      {
+        "type": "instructions_pdf",
+        "name": "Instruction PDF",
+        "settings": [
+          {
+            "type": "text",
+            "id": "pdf_title",
+            "label": "PDF Name"
+          },
+          {
+            "type": "text",
+            "id": "pdf_link",
+            "label": "PDF Link"
+          }
+        ]
+      }
+    ],
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Section Heading"
+      }
+    ]
+  }
+{% endschema %}
