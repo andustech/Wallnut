@@ -2094,6 +2094,32 @@
         "settings": {
           "title": "Shop our best sellers"
         }
+      },
+      "instructions-pdf": {
+        "type": "instructions-pdf",
+        "blocks": {
+          "d829a974-b1a8-4d49-8df1-db9be8d9a6fe": {
+            "type": "instructions_pdf",
+            "settings": {
+              "pdf_title": "Frames 24\"x32\" and smaller",
+              "pdf_link": "https:\/\/cdn.shopify.com\/s\/files\/1\/0627\/3476\/2207\/files\/WALLNUT_INSTRUCTIONS_24x32_AND_SMALLER.pdf?v=1655965329"
+            }
+          },
+          "3958a728-006a-4be2-9de2-853786cfffd2": {
+            "type": "instructions_pdf",
+            "settings": {
+              "pdf_title": "Frames 30\"x40\" and larger",
+              "pdf_link": "https:\/\/cdn.shopify.com\/s\/files\/1\/0627\/3476\/2207\/files\/WALLNUT_INSTRUCTIONS_30X40_AND_LARGER.pdf?v=1655965329"
+            }
+          }
+        },
+        "block_order": [
+          "d829a974-b1a8-4d49-8df1-db9be8d9a6fe",
+          "3958a728-006a-4be2-9de2-853786cfffd2"
+        ],
+        "settings": {
+          "heading": "PDF Instructions"
+        }
       }
     },
     "content_for_index": [
