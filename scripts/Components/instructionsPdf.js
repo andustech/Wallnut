@@ -6,7 +6,7 @@ const instructionsPdf = ({ settings, blocks}) => {
   return (
     <>
         <section className='md:pb-6 pb-2 border-b md:mb-6 mb-4'>
-            <p class="h3-attila-sans font-medium md:mb-5 mb-3">{heading}</p>
+            <p className="h3-attila-sans font-medium md:mb-5 mb-3">{heading}</p>
             {blocks?.map((block)=>{
                 const {settings} = block;
                 return (

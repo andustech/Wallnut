@@ -138,7 +138,7 @@ const MobileNavSlider = ({ isOpen, links, themeSettings, settings }) => {
               <div className="soc_ico">
                 <a href={youtube_url} target="_blank">
                   <i>
-                    <img src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/youtube_-black.svg?v=1654786484" alt="Social Icons" class="h-auto w-auto" />
+                    <img src="https://cdn.shopify.com/s/files/1/0627/3476/2207/files/youtube_-black.svg?v=1654786484" alt="Social Icons" className="h-auto w-auto" />
                   </i>
                 </a>
               </div>

@@ -239,7 +239,7 @@ PLPItem.propTypes = {
     compare_at_price_min: PropTypes.number,
     price_max: PropTypes.number,
     price_min: PropTypes.number,
-    tags: PropTypes.arrayOf(PropTypes.string),
+    tags: PropTypes.string,
     variants: PropTypes.arrayOf(
       PropTypes.shape({
         option1: PropTypes.string,

@@ -7,7 +7,7 @@ const instructionsVideos = ({ settings, blocks }) => {
   return (
     <>
         <section className='border-b md:mb-6 mb-4'>
-            <p class="h3-attila-sans font-medium md:mb-5 mb-3">{heading}</p>
+            <p className="h3-attila-sans font-medium md:mb-5 mb-3">{heading}</p>
             {blocks?.map((block, index)=>{
                 const {settings} = block;
                 return (
