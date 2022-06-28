@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { fetchRecommendations, getVariant } from '../utils';
+import { fetchRecommendations } from '../utils';
 import PLPItem from './PLPItem';
 import { SectionTiltle } from './ProductFeature/ValuePropComponent';
 
@@ -31,31 +31,11 @@ const ProductRecommended = ({ product, title }) => {
           {recommendations &&
             <>
               {recommendations.map((product, index) => {
-                let colorsArr = [];
-                const colorIndex = product.options.findIndex(option => option.name === "Frame Color");
-                
-                var color = '';
-                {product.variants.map((variant, index) => {
-                  if(colorIndex === 0) {
-                    color = variant.option1;
-                  }
-                  else if(colorIndex === 1) {
-                    color = variant.option2;
-                  }
-                  else if(colorIndex === 2) {
-                    color = variant.option3;
-                  }
-
-                  if (colorsArr.indexOf(color) === -1 && colorsArr.length <= 3) {
-                    colorsArr.push(color);
-                  }
-                })}
-
-                const newProduct = { ...product, variant: getVariant(product, colorsArr, colorIndex) };
+                let colorsArr = ['Matte Black', 'Walnut Wood', 'Matte White'];
                 return (
                   <PLPItem
                     key={[product.id]}
-                    product={newProduct}
+                    product={product}
                     colors={colorsArr}
                   />
                 );

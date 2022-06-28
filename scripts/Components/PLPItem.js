@@ -7,8 +7,6 @@ import {
   getSingleViewImage,
   getPriceInRanges,
   isMobile,
-  herringboneGroups,
-  whiteGroups,
 } from '../utils';
 import ColorSwatch from './ColorSwatch';
 import Media from './Media';
@@ -25,14 +23,13 @@ const getProductUrl = (product, colorOption) => {
 
 const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, collectionTitle }) => {
   const [hover, setHover] = useState(false);
-  const [currentOption, setCurrentOption] = useState(product.variant);
+  const [currentOption, setCurrentOption] = useState('Matte Black');
 
   //Define static colors for custom order
   let staticColors = ['Matte Black', 'Walnut Wood', 'Matte White'];
   const [colorOption, setColorOption] = useState(staticColors[0]);
 
   const PLPItemRef = useRef();
-  const colorIndex = product.options.indexOf('Frame Color');
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(max-width: 768px)');
@@ -64,14 +61,7 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
   }, []);
 
   const handleColorChange = (color) => {
-    const newVariant = product.variants.find((item) => {
-      if (colorIndex === 0) {
-        return item.option1 === color;
-      } else {
-        return item.option2 === color;
-      }
-    });
-    setCurrentOption(newVariant);
+    setCurrentOption(color);
     setColorOption(color);
   };
 
@@ -124,17 +114,6 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
     );
   }
 
-  // let productImage = [];
-  // if (product.media) {
-  //   productImage = product.variants.find((item) => {
-  //     return currentOption.id === item.id;
-  //   });
-  // } else {
-  //   productImage = product.images.find((item) => {
-  //     return currentOption.id === item.variant_ids[0];
-  //   });
-  // }
-
   const cdnUrl = 'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/';
   var imgColor = '';
   if (colorOption === 'Matte White') {
@@ -172,13 +151,13 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
             >
               <div className="img-wrap">
                 <Media
-                  alt={`${product.handle}-${currentOption.options.join(' ').toLowerCase().trim()}`}
+                  alt={`${product.handle}-${currentOption.toLowerCase().trim()}`}
                   image={productImgSrc}
                 />
               </div>
               <div className="img-wrap hover">
                 <Media
-                  alt={`${product.handle}-${currentOption.options.join(' ').toLowerCase().trim()}`}
+                  alt={`${product.handle}-${currentOption.toLowerCase().trim()}`}
                   image={`${cdnUrl}${product.handle.slice(0, -3)}B-${imgColor}-1824.jpg`}
                 />
               </div>
@@ -268,13 +247,6 @@ const ItemContainer = styled.div(() => [tw`flex flex-col cursor-pointer`, `max-w
 const TitlePriceContainer = styled.div.attrs({
   className: 'flex justify-start flex-col text-left mt-2.5 md:mt-3.5 lg:mt-3', 
 })``;
-
-const HoverContainer = styled.div(({ isHovered }) => [
-  tw`absolute w-full`,
-  isHovered && tw`visible`,
-  !isHovered && tw`hidden`,
-  `bottom: 0;`,
-]);
 
 const ImageContainer = styled.div.attrs ({
     className: 'list-img-wrap',

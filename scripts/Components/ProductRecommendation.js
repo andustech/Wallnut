@@ -24,25 +24,6 @@ const ProductRecommendation = ({ blocks, settings }) => {
     fetchData();
   }, [blocks, setRecommendations]);
 
-  const getVariant = (recommendation, colorsArr, colorIndex) => {
-    if (colorIndex === 0) {
-      const productVariant = recommendation.variants.find(
-        (variant) => variant.option1 === colorsArr[0]
-      );
-      return productVariant;
-    } else if (colorIndex === 1) {
-      const productVariant = recommendation.variants.find(
-        (variant) => variant.option2 === colorsArr[0]
-      );
-      return productVariant;
-    } else if (colorIndex === 2) {
-      const productVariant = recommendation.variants.find(
-        (variant) => variant.option3 === colorsArr[0]
-      );
-      return productVariant;
-    }
-  };
-
   return (
     <ProductRecommendationContainer>
       <SectionTiltle className="section_titile mb-5 md:mb-10">
@@ -52,30 +33,9 @@ const ProductRecommendation = ({ blocks, settings }) => {
         <RecommendationContainer recommendations={recommendations}>
           {recommendations && (
             <>
-              {recommendations.map((product, index) => {
-                let colorsArr = [];
-                const colorIndex = product.options.findIndex((option) => option === 'Frame Color');
-                var color = '';
-                {
-                  product.variants.map((variant, index) => {
-                    if (colorIndex === 0) {
-                      color = variant.option1;
-                    } else if (colorIndex === 1) {
-                      color = variant.option2;
-                    } else if (colorIndex === 2) {
-                      color = variant.option3;
-                    }
-
-                    if (colorsArr.indexOf(color) === -1 && colorsArr.length <= 3) {
-                      colorsArr.push(color);
-                    }
-                  });
-                }
-                const newProduct = {
-                  ...product,
-                  variant: getVariant(product, colorsArr, colorIndex),
-                };
-                return <PLPItem key={[product.id]} product={newProduct} colors={colorsArr} />;
+              {recommendations.map((product) => {
+                let colorsArr = ['Matte Black', 'Walnut Wood', 'Matte White'];
+                return <PLPItem key={[product.id]} product={product} colors={colorsArr} />;
               })}
             </>
           )}
