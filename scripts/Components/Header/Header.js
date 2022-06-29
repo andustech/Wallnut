@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import MobileNav from './MobileNav';
 
+
 const Header = (props) => {
   const { themeSettings, mobileNavSettings, cartCount } = props;
   const [sticky, setSticky] = useState(false);
