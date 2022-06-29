@@ -3297,3 +3297,10 @@ form.needsclick.klaviyo-form > div {
   }
 }
 /* === Instruction page css end === */
+
+div#customer-wrapper, section.user-login {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 600px;
+  display: block;
+}
