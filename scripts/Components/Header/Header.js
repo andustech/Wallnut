@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Nav from './Nav';
 import MobileNav from './MobileNav';
-import CartHighlight from '../CartHighlight';
 
 const Header = (props) => {
-  const { themeSettings, newsettings, mobileNavSettings, cartCount } = props;
-  const [isShown, setIsShown] = useState(false);
+  const { themeSettings, mobileNavSettings, cartCount } = props;
   const [sticky, setSticky] = useState(false);
   const handleScroll = () => {
     setSticky(window.pageYOffset > 50);
