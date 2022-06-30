@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import PLPItem from '../PLPItem';
-import { getVariant } from '../../utils';
 import InfiniteScroll from 'react-infinite-scroll-component';
 var lastIndex = 16;
 
@@ -24,26 +23,8 @@ const PLPItems = ({ products }) => {
       <div className="grid justify-center container">
         <div className="grid grid-cols-1 justify-items-center gap-4 md:gap-6 mb-8 max-w-screen-xxl xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 mt-18">
           {productFilterManage.map((product) => {
-            let colorsArr = [];
-            const colorIndex = product.options.findIndex((option) => option === 'Frame Color');
-            var color = '';
-            {
-              product.variants.map((variant, index) => {
-                if (colorIndex === 0) {
-                  color = variant.option1;
-                } else if (colorIndex === 1) {
-                  color = variant.option2;
-                } else if (colorIndex === 2) {
-                  color = variant.option3;
-                }
-
-                if (colorsArr.indexOf(color) === -1 && colorsArr.length <= 3) {
-                  colorsArr.push(color);
-                }
-              });
-            }
-            const newProduct = { ...product, variant: getVariant(product, colorsArr, colorIndex) };
-            return <PLPItem product={newProduct} colors={colorsArr} key={[product.id]} />;
+            let colorsArr = ['Matte Black', 'Walnut Wood', 'Matte White'];
+            return <PLPItem product={product} colors={colorsArr} key={[product.id]} />;
           })}
         </div>
       </div>

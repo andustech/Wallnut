@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PubSub from 'pubsub-js';
 import { addEventToDataLayer } from './google-analytics';
-// import { trackHeapEvent } from './heap';
 import productImages from '../Components/ProductSection/product-images';
 
 export const convertPriceFromNumber = (price) => {
@@ -31,25 +30,6 @@ export const getDataByBlockSectionName = (sectionName, block, keyIndex = 2) =>
 
     return acc;
   }, {});
-
-// export const getAllBlockSectionData = (block, sectionName, keyIndex = 2) =>
-
-//   Object.keys(block.settings).reduce((acc, key) => {
-//     if (key.includes(`${sectionName ? `${sectionName}_` : ''}section_`)) {
-//       const splitSectionInfo = key.split('_');
-//       const sectionId = parseInt(splitSectionInfo[keyIndex - 1], 10);
-//       const sectionKey = splitSectionInfo[keyIndex];
-//       const sectionData = acc.find((section) => section.id === sectionId);
-
-//       if (sectionData) {
-//         sectionData[sectionKey] = block.settings[key];
-//       } else {
-//         acc.push({ id: sectionId, [sectionKey]: block.settings[key] });
-//       }
-//     }
-
-//     return acc;
-//   }, []);
 
 export const getQueryString = (filters) =>
   Object.keys(filters).reduce((acc, key) => {
@@ -180,16 +160,6 @@ const getVariantSwatchName = (variantName) => {
   }, variantName);
 };
 
-// export const getColorSwatchImageUrl = (variantName, product, variant) => {
-//   let kababCase = getVariantSwatchName(variantName).replace(/ /g, '-').toLowerCase();
-
-//   if (product.handle === 'extra-chair-cover') {
-//     kababCase = getVariantSwatchName(variant.option2).replace(/ /g, '-').toLowerCase();
-//   }
-
-//   return getS3url(`/color-swatches/${kababCase}.jpg`);
-// };
-
 export const getColorSwatchThumbImageUrl = (variantName) => {
   const kababCase = getVariantSwatchName(variantName).replace(/ /g, '-').toLowerCase();
   return `https://cdn.shopify.com/s/files/1/0627/3476/2207/files/color-thumb-${kababCase}.jpg`;
@@ -287,27 +257,6 @@ const mapRecommendedColors = (products) => {
 
     return acc;
   }, []);
-};
-
-export const getVariant = (recommendation, colorsArr, colorIndex) => {
-  if(colorIndex === 0) {
-    const productVariant = recommendation.variants.find(
-      (variant) => variant.option1 === colorsArr[0]
-    );
-    return productVariant;
-  }
-  else if(colorIndex === 1) {
-    const productVariant = recommendation.variants.find(
-      (variant) => variant.option2 === colorsArr[0]
-    );
-    return productVariant;
-  }
-  else if(colorIndex === 2) {
-    const productVariant = recommendation.variants.find(
-      (variant) => variant.option3 === colorsArr[0]
-    );
-    return productVariant;
-  }
 };
 
 export const getVariantOptions = (variant) =>
