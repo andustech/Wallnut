@@ -404,20 +404,7 @@ li.customer-account:after {
 {% comment %} Navigation inline, logo left {% endcomment %}
 .header-wrapper nav.inline_left,
 .header-wrapper nav.inline_left_right {
-  /* display: grid;
-  column-gap: 15px;
-  {% if nav_layout == 'inline_left' %}
-  grid-template-columns: 14% 60% 20% 6%;
-  {% elsif nav_layout == 'inline_left_right' %}
-  grid-template-columns: 25% 75%;
-  {% endif %}
-  padding-left: 15px;
-  padding-right: 15px;
-  align-items: center;
-  justify-items: stretch; */
   display: flex;
-  /* column-gap: 15px; */
-  /* grid-template-columns: 14% 51% 20% 6%; */
   justify-content: space-around;
   padding-left: 15px;
   padding-right: 15px;
@@ -437,19 +424,13 @@ li.customer-account:after {
   justify-content: center;
   margin-left: 150px;
 }
-
 #Shop {
   padding-left: 40px;
 }
-
-
-
 {% comment %} Left logo, right nav {% endcomment %}
 .header-wrapper nav.inline_left_right ul.nav {
   text-align: right;
 }
-
-
 {% comment %} Logo above Navigation {% endcomment %}
 .row.nav-container {
   display: grid;
@@ -460,21 +441,17 @@ li.customer-account:after {
   place-items: center;
   {% endif %}
 }
-
 #logo.above_left,
 #logo.above_center {
   padding: 10px 15px 0px;
 }
-
 .row.nav-container nav {
   padding-bottom: 0;
 }
-
 {% comment %} Navigation above center {% endcomment %}
 nav.above_center ul.nav {
-    text-align: center;
+  text-align: center;
 }
-
 </style>
 
 {% schema %}

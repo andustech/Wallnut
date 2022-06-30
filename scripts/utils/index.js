@@ -22,9 +22,6 @@ export const convertPriceFromNumber = (price) => {
 };
 
 export const getDataByBlockSectionName = (sectionName, block, keyIndex = 2) =>
-  // finds the block by prepended name. EX. section_1_titleOfBlock. sectionName would be section_1.
-  // It will find all the blocks with that beginning name and convert all the keys to and object.
-  // Ex. { section_1_titleOfBlock: 'valueOfTitleBlock' } = { titleOfBlock: 'valueOfTitleBlock' }.
   Object.keys(block.settings).reduce((acc, key) => {
     if (key.includes(`${sectionName}_`)) {
       const splitSectionInfo = key.split('_');
@@ -35,26 +32,24 @@ export const getDataByBlockSectionName = (sectionName, block, keyIndex = 2) =>
     return acc;
   }, {});
 
-export const getAllBlockSectionData = (block, sectionName, keyIndex = 2) =>
-  // takes block object and converts all the section into an array of objects with section keys.
-  // EX. { section_1_firstKey: 'hello', section_2_secondKey: 'world' } = [{ firstKey: 'hello' }, { seconfKey: 'world' }];
+// export const getAllBlockSectionData = (block, sectionName, keyIndex = 2) =>
 
-  Object.keys(block.settings).reduce((acc, key) => {
-    if (key.includes(`${sectionName ? `${sectionName}_` : ''}section_`)) {
-      const splitSectionInfo = key.split('_');
-      const sectionId = parseInt(splitSectionInfo[keyIndex - 1], 10);
-      const sectionKey = splitSectionInfo[keyIndex];
-      const sectionData = acc.find((section) => section.id === sectionId);
+//   Object.keys(block.settings).reduce((acc, key) => {
+//     if (key.includes(`${sectionName ? `${sectionName}_` : ''}section_`)) {
+//       const splitSectionInfo = key.split('_');
+//       const sectionId = parseInt(splitSectionInfo[keyIndex - 1], 10);
+//       const sectionKey = splitSectionInfo[keyIndex];
+//       const sectionData = acc.find((section) => section.id === sectionId);
 
-      if (sectionData) {
-        sectionData[sectionKey] = block.settings[key];
-      } else {
-        acc.push({ id: sectionId, [sectionKey]: block.settings[key] });
-      }
-    }
+//       if (sectionData) {
+//         sectionData[sectionKey] = block.settings[key];
+//       } else {
+//         acc.push({ id: sectionId, [sectionKey]: block.settings[key] });
+//       }
+//     }
 
-    return acc;
-  }, []);
+//     return acc;
+//   }, []);
 
 export const getQueryString = (filters) =>
   Object.keys(filters).reduce((acc, key) => {
@@ -107,298 +102,7 @@ export const isValidEmail = (email) => {
   return regx.test(String(email).toLowerCase());
 };
 
-export const colorGroups = [
-  {
-    groupName: 'neuterals',
-    colors: ['off white', 'dusty rose', 'sand', 'ash brown'],
-  },
-  {
-    groupName: 'grays',
-    colors: ['charcoal gray', 'light gray'],
-  },
-  {
-    groupName: 'blues',
-    colors: ['arctic blue', 'cerulean', 'dark denim blue'],
-  },
-  {
-    groupName: 'multicolor',
-    colors: ['houndstooth', 'gingham powder blue', 'sedona ivory', 'kali ikat blue'],
-  },
-  {
-    groupName: 'greens',
-    colors: ['soft chartreuse', 'light sage', 'dark sage'],
-  },
-  {
-    groupName: 'reds and yellows',
-    colors: ['maroon', 'chili red', 'burnt orange', 'mustard yellow'],
-  },
-];
-
-export const holidayPatternGroups = [
-  {
-    groupName: 'maroon',
-    colors: ['maroon', 'camellia cream', 'light gray', 'cowhide black and white'],
-  },
-  {
-    groupName: 'dark sage',
-    colors: ['dark sage', 'sedona ivory', 'dusty rose', 'shagreen storm gray'],
-  },
-  {
-    groupName: 'evergreen forest',
-    colors: ['evergreen forest', 'chili red', 'staccato salt and pepper', 'light sage'],
-  },
-  {
-    groupName: 'gingham rustic red',
-    colors: ['gingham rustic red', 'sand', 'herringbone off white', 'burnt orange'],
-  },
-];
-
-export const simpleLayoutColorGroups = [
-  {
-    groupName: 'off white',
-    colors: ['off white', 'charcoal gray', 'dusty rose', 'sand'],
-  },
-  {
-    groupName: 'sand',
-    colors: ['sand', 'off white', 'dusty rose', 'ash brown'],
-  },
-  {
-    groupName: 'charcoal gray',
-    colors: ['charcoal gray', 'dark denim blue', 'dusty rose', 'light gray'],
-  },
-  {
-    groupName: 'light gray',
-    colors: ['light gray', 'sand', 'off white', 'dusty rose'],
-  },
-];
-
-export const patternGroups = [
-  {
-    groupName: 'dusty rose',
-    colors: ['mustard yellow', 'woven mosaic storm gray', 'cerulean', 'gingham rustic red'],
-  },
-  {
-    groupName: 'herringbone off white',
-    colors: [
-      'herringbone off white',
-      'staccato salt and pepper',
-      'camellia cream',
-      'pinstripe dark gray',
-    ],
-  },
-  {
-    groupName: 'mezzo diamond sapphire',
-    colors: ['herringbone light gray', 'kali ikat blue', 'sand', 'burnt orange'],
-  },
-  {
-    groupName: 'herringbone denim',
-    colors: ['herringbone denim', 'cowhide black and white', 'sand', 'shagreen storm gray'],
-  },
-];
-
-export const herringboneGroups = [
-  {
-    groupName: 'herringbone cerulean',
-    colors: [
-      'herringbone cerulean',
-      'herringbone light gray',
-      'herringbone dark sage',
-      'herringbone sand',
-    ],
-  },
-  {
-    groupName: 'herringbone mustard yellow',
-    colors: [
-      'herringbone mustard yellow',
-      'herringbone denim',
-      'herringbone off white',
-      'herringbone charcoal gray',
-    ],
-  },
-  {
-    groupName: 'herringbone sand',
-    colors: [
-      'herringbone sand',
-      'herringbone light sage',
-      'herringbone charcoal gray',
-      'herringbone off white',
-    ],
-  },
-  {
-    groupName: 'herringbone dark sage',
-    colors: [
-      'herringbone dark sage',
-      'herringbone sand',
-      'herringbone cerulean',
-      'herringbone light sage',
-    ],
-  },
-  {
-    groupName: 'chair cover',
-    colors: ['herringbone-light-sage'],
-    link: '/products/scandinavian-lounge-extra-chair-cover?color=Herringbone%20Light%20Sage',
-  },
-];
-
-export const whiteGroups = [
-  {
-    groupName: 'pinstripe off white',
-    colors: ['pinstripe off white', 'off white', 'woven mosaic off white', 'camellia lily white'],
-  },
-  {
-    groupName: 'camellia lily white',
-    colors: ['camellia lily white', 'herringbone off white', 'pinstripe off white', 'off white'],
-  },
-
-  {
-    groupName: 'woven mosaic off white',
-    colors: [
-      'woven mosaic off white',
-      'pinstripe off white',
-      'camellia lily white',
-      'herringbone off white',
-    ],
-  },
-  {
-    groupName: 'herringbone off white',
-    colors: ['herringbone off white', 'woven mosaic off white', 'off white', 'pinstripe off white'],
-  },
-  {
-    groupName: 'chair cover',
-    colors: ['herringbone-off-white'],
-    link: '/products/scandinavian-lounge-extra-chair-cover?color=Herringbone%20Off%20White',
-  },
-];
-
-export const plpColorFilterGroups = {
-  All: [
-    'off white',
-    'woven mosaic storm gray',
-    'sand',
-    'mezzo diamond grayscale',
-    'dark denim blue',
-    'mezzo diamond sapphire',
-    'light gray',
-    'herringbone off white',
-    'charcoal gray',
-    'herringbone light gray',
-    'cerulean',
-    'herringbone denim',
-    'mustard yellow',
-    'herringbone charcoal gray',
-    'dark sage',
-    'cowhide black and white',
-    'light sage',
-    'camellia cream',
-    'burnt orange',
-    'camellia sunset orange',
-    'chili red',
-    'staccato salt and pepper',
-    'dusty rose',
-    'pinstripe dark gray',
-    'maroon',
-    'shagreen storm gray',
-    'arctic blue',
-    'gingham rustic red',
-    'soft chartreuse',
-    'sedona ivory',
-    'kali ikat blue',
-    'ash brown',
-    'gingham powder blue',
-    'houndstooth',
-    'evergreen forest',
-  ],
-  Yellow: ['mustard yellow', 'kali ikat blue'],
-  White: ['off white', 'herringbone off white', 'camellia cream', 'gingham powder blue'],
-  Gray: [
-    'light gray',
-    'charcoal gray',
-    'herringbone charcoal gray',
-    'herringbone light gray',
-    'woven mosaic storm gray',
-    'shagreen storm gray',
-    'mezzo diamond grayscale',
-  ],
-  Blue: [
-    'dark denim blue',
-    'cerulean',
-    'arctic blue',
-    'herringbone denim',
-    'mezzo diamond sapphire',
-    'kali ikat blue',
-  ],
-  Orange: ['burnt orange', 'camellia sunset orange'],
-  Green: ['light sage', 'dark sage', 'soft chartreuse', 'evergreen forest'],
-  Red: ['dusty rose', 'chili red', 'maroon', 'gingham rustic red'],
-  Brown: ['sand', 'ash brown'],
-  Black: ['cowhide black and white', 'staccato salt and pepper', 'houndstooth', 'sedona ivory'],
-  Multi: [
-    'woven mosaic storm gray',
-    'mezzo diamond grayscale',
-    'mezzo diamond sapphire',
-    'herringbone off white',
-    'herringbone light gray',
-    'herringbone denim',
-    'herringbone charcoal',
-    'cowhide black and white',
-    'camellia cream',
-    'camellia sunset orange',
-    'staccato salt and pepper',
-    'pinstripe dark gray',
-    'shagreen storm gray',
-    'gingham rustic red',
-    'gingham powder blue',
-    'sedona ivory',
-    'kali ikat blue',
-    'houndstooth',
-    'evergreen forest',
-  ],
-};
-
-export const plpColorFilterGroupIcons = {
-  Yellow: {
-    group: 'Yellow',
-    background: '#EDCD26',
-  },
-  White: {
-    group: 'White',
-    background: '#F6F4EB',
-  },
-  Gray: {
-    group: 'Gray',
-    background: 'gray',
-  },
-  Blue: {
-    group: 'Blue',
-    background: '#44618B',
-  },
-  Orange: {
-    group: 'Orange',
-    background: '#D38222',
-  },
-  Green: {
-    group: 'Green',
-    background: 'green',
-  },
-  Red: {
-    group: 'Red',
-    background: '#CE1213',
-  },
-  Brown: {
-    group: 'Brown',
-    background: '#7A5E4C',
-  },
-  Black: {
-    group: 'Black',
-    background: 'black',
-  },
-  Multi: {
-    group: 'Multi',
-    background: 'n/a',
-  },
-};
-
-export const legOptions = ['Walnut', 'Black'];
+// export const legOptions = ['Walnut', 'Black'];
 
 export const getOptionUrl = (option) => {
   const strArr = option.toLowerCase().replaceAll(' ', '-');
@@ -455,29 +159,6 @@ export const createReactComponents = (components) => {
   });
 };
 
-export const productIDs = [
-  {
-    id: 5743123169431,
-    title: 'The Scandinavian Dining Chair',
-    exclusiveHandle: 'the-scandinavian-dining-chair-exclusive',
-  },
-  {
-    id: 6199379722391,
-    title: 'The Classic Dining Chair',
-    exclusiveHandle: 'the-classic-dining-chair-exclusive',
-  },
-  {
-    id: 6199412359319,
-    title: 'The Scandinavian Lounge Chair',
-    exclusiveHandle: 'the-scandinavian-lounge-chair-exclusive',
-  },
-  {
-    id: 6199395844247,
-    title: 'The Classic Lounge Chair',
-    exclusiveHandle: 'the-classic-lounge-chair-exclusive',
-  },
-];
-
 export const getS3url = (objectUrl) => {
   const baseUrl = 'https://levity-products.s3.us-west-2.amazonaws.com';
 
@@ -499,15 +180,15 @@ const getVariantSwatchName = (variantName) => {
   }, variantName);
 };
 
-export const getColorSwatchImageUrl = (variantName, product, variant) => {
-  let kababCase = getVariantSwatchName(variantName).replace(/ /g, '-').toLowerCase();
+// export const getColorSwatchImageUrl = (variantName, product, variant) => {
+//   let kababCase = getVariantSwatchName(variantName).replace(/ /g, '-').toLowerCase();
 
-  if (product.handle === 'extra-chair-cover') {
-    kababCase = getVariantSwatchName(variant.option2).replace(/ /g, '-').toLowerCase();
-  }
+//   if (product.handle === 'extra-chair-cover') {
+//     kababCase = getVariantSwatchName(variant.option2).replace(/ /g, '-').toLowerCase();
+//   }
 
-  return getS3url(`/color-swatches/${kababCase}.jpg`);
-};
+//   return getS3url(`/color-swatches/${kababCase}.jpg`);
+// };
 
 export const getColorSwatchThumbImageUrl = (variantName) => {
   const kababCase = getVariantSwatchName(variantName).replace(/ /g, '-').toLowerCase();

@@ -13,10 +13,10 @@ import indexMoodSection from './Components/indexMoodSection';
 import indexTestimonialSection from './Components/indexTestimonialSection';
 import ChairCoverUpsell from './Components/ChairCoverUpsell';
 import AfterPayCopy from './Components/AfterPayCopy';
-import Sale from './Components/Sale';
+// import Sale from './Components/Sale';
 import Header from './Components/Header';
-import CyberMondaySale from './Components/CyberMondaySale';
-import BlackFridaySale from './Components/BlackFridaySale';
+// import CyberMondaySale from './Components/CyberMondaySale';
+// import BlackFridaySale from './Components/BlackFridaySale';
 import ProductRecommendation from './Components/ProductRecommendation';
 import howItWorks from './Components/howItWorks';
 import meetWallnut from './Components/meetWallnut';
@@ -60,9 +60,9 @@ import('./Components/About').then((data) => {
 const components = [
   { id: 'react-desktop-announcement', module: DesktopAnnouncement },
   { id: 'react-best-sellers', module: BestSellers },
-  { id: 'react-sale-hero', module: Sale },
-  { id: 'react-black-friday-sale-hero', module: BlackFridaySale },
-  { id: 'react-cyber-monday-sale-hero', module: CyberMondaySale },
+  // { id: 'react-sale-hero', module: Sale },
+  // { id: 'react-black-friday-sale-hero', module: BlackFridaySale },
+  // { id: 'react-cyber-monday-sale-hero', module: CyberMondaySale },
   { id: 'react-header', module: Header },
   { id: 'react-product-recommendation', module: ProductRecommendation },
   { id: 'react-index-betterway', module: IndexBetterWay },
