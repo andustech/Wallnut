@@ -38,9 +38,9 @@ import('./Components/EmptyCart').then((data) => {
   createReactComponents([{ id: 'react-empty-cart', module: data.default }]);
 });
 
-import('./Components/CustomLandingOne').then((data) => {
-  createReactComponents([{ id: 'react-custom-landing-one', module: data.default }]);
-});
+// import('./Components/CustomLandingOne').then((data) => {
+//   createReactComponents([{ id: 'react-custom-landing-one', module: data.default }]);
+// });
 
 import('./Components/About').then((data) => {
   createReactComponents([{ id: 'react-about-page', module: data.default }]);

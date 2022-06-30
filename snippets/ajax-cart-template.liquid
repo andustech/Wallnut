@@ -25,18 +25,16 @@
       <div class="ajaxcart__inner">
         {{#items}}
         <div class="ajaxcart__product text-left">
-          <div class="ajaxcart row border-none flex justify-between" data-line="{{line}}">
+          <div class="ajaxcart row border-none flex" data-line="{{line}}">
 
               <div class="grid__item desktop-3 mobile-1 tablet-1">
                 <a href="{{url}}" class="ajaxcart__product-image"><img src="{{img}}" alt=""></a>
               </div>
-              <div class="desktop-9 custom-margin tablet-5 mobile-2 pl-4">
+              <div class="custom-margin pl-4">
 
                 <div class="row">
-                  <div class="desktop-8 tablet-4 mobile-2 leading-none mb-1">
+                  <div class="flex items-center justify-between leading-none mb-1">
                     <a href="{{url}}" class="ajaxcart__product-name">{{name}}</a>
-                  </div>
-                  <div class="desktop-4 tablet-2 mobile-1 text-right mr-0 flex justify-end">
                     {{#if discountsApplied}}
                       <span class="visually-hidden">{% endraw %}{{ 'products.general.sale_price' | t }}{% raw %}</span>
                       <span class="ajaxcart__price onsale">{{{discountedPrice}}}</span>
