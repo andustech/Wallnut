@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 import {
   convertPriceFromNumber,
-  getSingleViewImage,
   getPriceInRanges,
   isMobile,
 } from '../utils';
@@ -65,54 +64,54 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
     setColorOption(color);
   };
 
-  if (product.tags.includes('Gift card')) {
-    if (colorFilters && colorFilters.length > 0) return null;
+  // if (product.tags.includes('Gift card')) {
+  //   if (colorFilters && colorFilters.length > 0) return null;
 
-    const variantName = product.tags.includes('Extra Cover') ? chairCoverVariant : 'e-gift-card';
+  //   const variantName = product.tags.includes('Extra Cover') ? chairCoverVariant : 'e-gift-card';
 
-    return (
-      <ItemContainer
-        ref={PLPItemRef}
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
-      >
-        <div className="relative overflow-hidden trend_card">
-          <a href={getProductUrl(product, colorOption, collectionTitle)}>
-            <div className="bg-grey">
-              <Media
-                alt={`${product.handle.replace(/-/g, ' ')}`}
-                image={getSingleViewImage(product, variantName)}
-              />
-            </div>
-          </a>
-        </div>
-        <a className="no-underline" href={getProductUrl(product, colorOption, collectionTitle)}>
-          <TitlePriceContainer>
-            <span className="">{product.title}</span>
-            <span className="">
-              {product.compare_at_price ? (
-                <div>
-                  <span className="text-errorRed">
-                    {convertPriceFromNumber(product.price_min)} -{' '}
-                    {convertPriceFromNumber(product.price_max)}
-                  </span>
-                  <span className="ml-2 text-grey-dark font-normal line-through">
-                    {convertPriceFromNumber(product.compare_at_price_min)} -
-                    {convertPriceFromNumber(product.compare_at_price_max)}
-                  </span>
-                </div>
-              ) : (
-                <>
-                  {convertPriceFromNumber(product.price_min)} -
-                  {convertPriceFromNumber(product.price_max)}
-                </>
-              )}
-            </span>
-          </TitlePriceContainer>
-        </a>
-      </ItemContainer>
-    );
-  }
+  //   return (
+  //     <ItemContainer
+  //       ref={PLPItemRef}
+  //       onMouseEnter={() => setHover(true)}
+  //       onMouseLeave={() => setHover(false)}
+  //     >
+  //       <div className="relative overflow-hidden trend_card">
+  //         <a href={getProductUrl(product, colorOption, collectionTitle)}>
+  //           <div className="bg-grey">
+  //             <Media
+  //               alt={`${product.handle.replace(/-/g, ' ')}`}
+  //               image={getSingleViewImage(product, variantName)}
+  //             />
+  //           </div>
+  //         </a>
+  //       </div>
+  //       <a className="no-underline" href={getProductUrl(product, colorOption, collectionTitle)}>
+  //         <TitlePriceContainer>
+  //           <span className="">{product.title}</span>
+  //           <span className="">
+  //             {product.compare_at_price ? (
+  //               <div>
+  //                 <span className="text-errorRed">
+  //                   {convertPriceFromNumber(product.price_min)} -{' '}
+  //                   {convertPriceFromNumber(product.price_max)}
+  //                 </span>
+  //                 <span className="ml-2 text-grey-dark font-normal line-through">
+  //                   {convertPriceFromNumber(product.compare_at_price_min)} -
+  //                   {convertPriceFromNumber(product.compare_at_price_max)}
+  //                 </span>
+  //               </div>
+  //             ) : (
+  //               <>
+  //                 {convertPriceFromNumber(product.price_min)} -
+  //                 {convertPriceFromNumber(product.price_max)}
+  //               </>
+  //             )}
+  //           </span>
+  //         </TitlePriceContainer>
+  //       </a>
+  //     </ItemContainer>
+  //   );
+  // }
 
   const cdnUrl = 'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/';
   var imgColor = '';

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PubSub from 'pubsub-js';
 import { addEventToDataLayer } from './google-analytics';
-import productImages from '../Components/ProductSection/product-images';
+// import productImages from '../Components/ProductSection/product-images';
 
 export const convertPriceFromNumber = (price) => {
   const stringPrice = price.toString();
@@ -176,20 +176,20 @@ const getVariantName = (variant) =>
     .join(' ')
     .replace(/ /g, '-');
 
-export const getSingleViewImage = (product, variant) => {
-  const variantName = variant?.options ? getVariantName(variant) : variant;
-  if (variant === 'e-gift-card') {
-    return getS3url(`/${product.handle}/${productImages[product.handle][variantName][0]}`);
-  }
+// export const getSingleViewImage = (product, variant) => {
+//   const variantName = variant?.options ? getVariantName(variant) : variant;
+//   if (variant === 'e-gift-card') {
+//     return getS3url(`/${product.handle}/${productImages[product.handle][variantName][0]}`);
+//   }
 
-  if (variant === 'extra-chair-cover') {
-    return getS3url(`/${product.handle}/${productImages[product.handle][variantName][0]}`);
-  }
+//   if (variant === 'extra-chair-cover') {
+//     return getS3url(`/${product.handle}/${productImages[product.handle][variantName][0]}`);
+//   }
 
-  return getS3url(
-    `/${product.handle}/${variantName}/${productImages[product.handle][variantName][0]}`
-  );
-};
+//   return getS3url(
+//     `/${product.handle}/${variantName}/${productImages[product.handle][variantName][0]}`
+//   );
+// };
 
 export const getCurrentImages = (product, variant) => {
   const variantName = getVariantName(variant);
