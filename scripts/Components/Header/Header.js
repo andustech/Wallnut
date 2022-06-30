@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Nav from './Nav';
 import MobileNav from './MobileNav';
-import CartHighlight from '../CartHighlight';
 
 const Header = (props) => {
-  const { themeSettings, newsettings, mobileNavSettings, cartCount } = props;
-  const [isShown, setIsShown] = useState(false);
+  const { cartCount, themeSettings } = props;
   const [sticky, setSticky] = useState(false);
   const handleScroll = () => {
     setSticky(window.pageYOffset > 50);
@@ -22,7 +19,7 @@ const Header = (props) => {
       <HeaderContainer sticky={sticky}>
         <nav className="flex w-full justify-between container mx-auto bg-white h-full my-3.5 lg:my-0">
           <div className="block lg:hidden flex-1 lg:flex-none">
-            <MobileNav settings={mobileNavSettings} themeSettings={themeSettings} />
+            <MobileNav themeSettings={themeSettings}/>
           </div>
           <a className="flex items-center justify-center flex-1 lg:flex-none" href="/">
             <LogoImage
@@ -32,12 +29,6 @@ const Header = (props) => {
           </a>
           <div className="hidden lg:flex">
             <ul className="nav_menu_opt flex text-center items-center">
-              {/* <li onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>
-                <LinkItem href="/collections/all">SIZE</LinkItem>
-                <NavWrapper isShown={isShown}>
-                  <Nav themeSettings={themeSettings} newsettings={newsettings} />
-                </NavWrapper>
-              </li> */}
               <li>
                 <LinkItem href="/about">SUBJECT</LinkItem>
               </li>
@@ -97,7 +88,6 @@ const Header = (props) => {
                   alt="cart"
                 />
                 <div className="cart-count font-serif text-sm">{cartCount}</div>
-                {/* <CartHighlight cartCount={cartCount} /> */}
               </a>
             </div>
           </div>
@@ -120,18 +110,6 @@ const HeaderContainer = styled.div.attrs(({ sticky }) => {
   }
 `;
 
-const NavWrapper = styled.div.attrs(({ isShown }) => {
-  const className = 'flex w-full';
-  return { className: isShown ? `${className}` : `${className} hidden` };
-})`
-  position: fixed;
-  background-color: #f5f5f5;
-  transform: translateY(21px);
-  z-index: 5;
-  left: 0;
-  justify-content: center;
-`;
-
 const LinkItem = styled.a.attrs({
   className: 'relative hover:no-underline text-blue-dark uppercase',
 })`
@@ -149,9 +127,6 @@ const LinkItem = styled.a.attrs({
 `;
 
 const LogoImage = styled.img`
-  // @media screen and (max-width: 1024px) {
-  //   max-width: 83px;
-  // }
   @media screen and (min-width: 1024px) {
     max-width: 130px;
   }
@@ -165,8 +140,6 @@ const LogoImage = styled.img`
 
 Header.propTypes = {
   themeSettings: PropTypes.shape({}).isRequired,
-  newsettings: PropTypes.shape({}).isRequired,
-  mobileNavSettings: PropTypes.shape({}).isRequired,
   cartCount: PropTypes.number.isRequired,
 };
 

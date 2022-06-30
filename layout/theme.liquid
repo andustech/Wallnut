@@ -204,9 +204,6 @@
 
 <script src="https://cdn.optimizely.com/js/20193727087.js"></script>
 
-{% if handle contains 'exclusive' %}
-  <meta name="robots" content="noindex">
-{% endif %}
 {% render 'webpack-scripts-modules' %}
 {% render 'webpack-scripts-global' %}
 
@@ -234,10 +231,10 @@
     {% section 'header' %}
 
     <!-- {% render 'collection-banner' %} -->
-    {% section 'collections-hero' %}
+    <!-- {% section 'collections-hero' %}
     {% section 'sales-hero' %}
     {% section 'black-friday-sales-hero' %}
-    {% section 'cyber-monday-sales-hero' %}
+    {% section 'cyber-monday-sales-hero' %} -->
 
     {% assign full_width_page = false %}
     {% if template == 'index' or template == 'blog' or template == 'article' or template contains 'collection.custom' or template contains 'list-collections' or template contains 'page.custom' or template contains 'product' %}

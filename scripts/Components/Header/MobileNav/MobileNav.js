@@ -4,37 +4,8 @@ import styled from 'styled-components';
 import MobileNavIcon from './MobileNavIcon';
 import MobileNavSlider from './MobileNavSlider';
 
-const MobileNav = ({ settings, themeSettings }) => {
-  const links = [
-    {
-      image: settings.image_link_1,
-      name: settings.text_link_1,
-      url: settings.url_link_1,
-    },
-    {
-      image: settings.image_link_2,
-      name: settings.text_link_2,
-      url: settings.url_link_2,
-    },
-    {
-      image: settings.image_link_3,
-      name: settings.text_link_3,
-      url: settings.url_link_3,
-    },
-    {
-      image: settings.image_link_4,
-      name: settings.text_link_4,
-      url: settings.url_link_4,
-    },
-    {
-      image: settings.image_link_5,
-      name: settings.text_link_5,
-      url: settings.url_link_5,
-    },
-  ];
-
+const MobileNav = ({themeSettings}) => {
   const [open, setOpen] = useState(false);
-
   const handleClick = () => {
     setOpen(!open);
   };
@@ -65,10 +36,7 @@ const MobileNav = ({ settings, themeSettings }) => {
   return (
     <MobileNavWrapper>
       <MobileNavSlider
-        isOpen={open}
-        links={links}
-        themeSettings={themeSettings}
-        settings={settings}
+        isOpen={open} themeSettings={themeSettings}
       />
       <BgOverlay isOpen={open} />
       <div
@@ -106,27 +74,6 @@ const BgOverlay = styled.div(({ isOpen }) => [
 
 MobileNav.propTypes = {
   themeSettings: PropTypes.shape({}).isRequired,
-  settings: PropTypes.shape({
-    image_link_1: PropTypes.string,
-    text_link_1: PropTypes.string,
-    url_link_1: PropTypes.string,
-    image_link_2: PropTypes.string,
-    text_link_2: PropTypes.string,
-    url_link_2: PropTypes.string,
-    image_link_3: PropTypes.string,
-    text_link_3: PropTypes.string,
-    url_link_3: PropTypes.string,
-    image_link_4: PropTypes.string,
-    text_link_4: PropTypes.string,
-    url_link_4: PropTypes.string,
-    image_link_5: PropTypes.string,
-    text_link_5: PropTypes.string,
-    url_link_5: PropTypes.string,
-    sale_hero_image: PropTypes.string,
-    sale_hero_link: PropTypes.string,
-    show_hero_button: PropTypes.bool,
-    show_hero_all: PropTypes.bool,
-  }).isRequired,
 };
 
 export default MobileNav;
