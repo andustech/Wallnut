@@ -491,13 +491,6 @@ const IncludesContainer = styled.div`
   }
 `;
 
-const AfterPayContainer = styled.div.attrs({})`
-  & .afterpay-paragraph {
-    white-space: nowrap;
-    margin-top: 10px;
-  }
-`;
-
 const StickyAddToCartInput = styled.input.attrs({
   className: 'AddtoCart pb-3 pt-3 my-0',
 })`

@@ -1,6 +1,5 @@
 import getOptimizelyVariant from '../../../utils/optimizely';
 import PLPSectionA from './PLPSectionA';
-// import PLPSectionC from './PLPSectionC';
 
 const optimizelyConfig = {
   experimentId: '21002541157',

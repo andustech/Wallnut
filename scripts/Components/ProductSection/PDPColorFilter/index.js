@@ -1,7 +1,7 @@
 import getOptimizelyVariant from '../../../utils/optimizely';
 import PDPColorFilterAA from './PDPColorFilterA/PDPColorFilterAA';
-import PDPColorFilterAB from './PDPColorFilterA/PDPColorFilterAB';
-import PDPColorFilterC from './PDPColorFilterC';
+// import PDPColorFilterAB from './PDPColorFilterA/PDPColorFilterAB';
+// import PDPColorFilterC from './PDPColorFilterC';
 
 const optimizelyConfig = {
   experimentId: '21131482616',
@@ -10,14 +10,14 @@ const optimizelyConfig = {
       id: '21100402250',
       component: PDPColorFilterAA,
     },
-    {
-      id: '21127801823',
-      component: PDPColorFilterC,
-    },
-    {
-      id: '21161390353',
-      component: PDPColorFilterAB,
-    },
+    // {
+    //   id: '21127801823',
+    //   component: PDPColorFilterC,
+    // },
+    // {
+    //   id: '21161390353',
+    //   component: PDPColorFilterAB,
+    // },
   ],
 };
 

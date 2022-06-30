@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import PLPItems from '../PLPItems';
 import Filters from '../Filters';
 import PLPDescription from '../PLPDescription';
-import SeoCopy from '../SEOCopy';
+// import SeoCopy from '../SEOCopy';
 import PLPContext from '../plpContext';
 import { mergedFetchedRecommendations } from '../../../utils';
 import FilterIcon from '../../Icons/filterIcon';
@@ -341,7 +341,7 @@ const PLPSection = ({ collectionTitle, collectionDescription, products }) => {
           simpleLayout
           holiday={collectionTitle === 'Seasonal Favorites'}
         />
-        <SeoCopy title={collectionTitle} />
+        {/* <SeoCopy title={collectionTitle} /> */}
       </div>
     </PLPContext.Provider>
   );
