@@ -489,7 +489,7 @@ export const handleAddToCart = (e, item, qty, variantID, callback) => {
   // }
 
   // trackHeapEvent('Add to cart', { item, qty, variantID });
-  addEventToDataLayer({ event: 'Add to cart' });
+  // addEventToDataLayer({ event: 'Add to cart' });
 
   $.ajax({
     type: 'POST',
