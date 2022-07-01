@@ -78,7 +78,7 @@ const Header = (props) => {
 
             <div id="mini-cart-container" className="block">
               <a
-                href="/cart"
+                href="#"
                 className="site-header__cart-toggle js-drawer-open-right block ml-6 relative"
                 aria-controls="CartDrawer"
                 aria-expanded="false"
