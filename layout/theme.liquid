@@ -292,6 +292,7 @@
       jQuery('body').on('ajaxCart.afterCartLoad', function(evt, cart) {
         // Bind to 'ajaxCart.afterCartLoad' to run any javascript after the cart has loaded in the DOM
         timber.RightDrawer.open();
+        console.log('open');
         $('.cart-count-2').html($('.cart-count').html());
       });
       jQuery('body').on('click','.drawer-continue-shopping', function(evt, cart) {
