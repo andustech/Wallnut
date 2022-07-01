@@ -484,6 +484,7 @@ export const sendKlaviyoEvent = (variantID, _learnq) => {
 export const handleAddToCart = (e, item, qty, variantID, callback) => {
   e.preventDefault();
 
+  console.log('handleAddToCart');
   // if (_learnq) {
   //   sendKlaviyoEvent(variantID, _learnq);
   // }
@@ -504,10 +505,13 @@ export const handleAddToCart = (e, item, qty, variantID, callback) => {
     },
     dataType: 'json',
     error: (err) => {
+      console.log('err == ');
       console.log(err);
     },
     success: () => {
       $('#mini-cart-container a').trigger('click');
+      console.log('success == ', document.getElementById('mini-cart-container'))
+      
       PubSub.publish('UPDATE_CART_COUNT', 1);
       if (callback) {
         callback();
