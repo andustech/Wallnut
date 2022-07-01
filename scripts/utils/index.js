@@ -509,13 +509,12 @@ export const handleAddToCart = (e, item, qty, variantID, callback) => {
       console.log(err);
     },
     success: () => {
-      $('#mini-cart-container a').trigger('click');
-      console.log('success == ', document.getElementById('mini-cart-container'))
-      
+      $('#mini-cart-container a').trigger('click')
       PubSub.publish('UPDATE_CART_COUNT', 1);
       if (callback) {
         callback();
       }
+      timber.RightDrawer.open();
     },
   });
 };
