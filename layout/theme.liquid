@@ -298,6 +298,14 @@
         evt.preventDefault();
         timber.RightDrawer.close();
       });
+      jQuery('body').on('click', '#mini-cart-container a', function(){
+        timber.init();
+        var clicked = false;
+        if (!clicked) {
+          jQuery('#mini-cart-container a').trigger('click');
+          clicked = true;
+        }
+      })
     </script>
   {% endif %}
 
