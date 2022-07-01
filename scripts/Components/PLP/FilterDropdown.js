@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import tw from 'twin.macro';
+// import tw from 'twin.macro';
 import { MenuIcon, PlusIcon, MultiSwatchIcon } from '../Icons';
 import FilterMenu from './FilterMenu';
 import plpContext from './plpContext';
-import { plpColorFilterGroupIcons } from '../../utils';
+// import { plpColorFilterGroupIcons } from '../../utils';
 
 const FilterDropdown = ({
   filterType,
@@ -36,56 +36,56 @@ const FilterDropdown = ({
       setMenuOpen(null);
     }
   };
-  if (filterType === 'colorpicker') {
-    return (
-      <div className="col-span-2">
-        <FilterContainer id="dropdown" onClick={handleClick}>
-          <FilterTitle>{filterTitle}</FilterTitle>
-          {color?.length > 0 && !color?.includes('All') && (
-            <div className="flex gap-2 mr-2 md:mr-7">
-              {color.map((colorItem, i) => {
-                const icon = plpColorFilterGroupIcons[colorItem];
-                const { group, background } = icon;
-                if (i < 3) {
-                  if (group !== 'Multi') {
-                    return <StyledColorSwatch key={group} group={group} background={background} />;
-                  }
-                  return (
-                    <StyledColorSwatch key={group} group={group}>
-                      <MultiSwatchIcon />
-                    </StyledColorSwatch>
-                  );
-                }
-                return null;
-              })}
-              {color.length >= 3 && (
-                <div className="self-center ml-0.5">
-                  <PlusIcon />
-                </div>
-              )}
-            </div>
-          )}
-          <IconContainer flip={menuOpen === 'colorpicker'}>
-            <MenuIcon />
-          </IconContainer>
-        </FilterContainer>
-        <FilterMenu
-          filterName={filterName}
-          menuOpen={menuOpen === filterType}
-          menuName={filterType}
-          type="colorpicker"
-          filters={colorFilters}
-          options={options}
-          colors={colors}
-          collectionTitle={collectionTitle}
-          setTagSelected={setTagSelected}
-          TagSelected={TagSelected}
-          sortingBy={sortingBy}
-          setMenuOpen={setMenuOpen}
-        />
-      </div>
-    );
-  }
+  // if (filterType === 'colorpicker') {
+  //   return (
+  //     <div className="col-span-2">
+  //       <FilterContainer id="dropdown" onClick={handleClick}>
+  //         <FilterTitle>{filterTitle}</FilterTitle>
+  //         {color?.length > 0 && !color?.includes('All') && (
+  //           <div className="flex gap-2 mr-2 md:mr-7">
+  //             {color.map((colorItem, i) => {
+  //               const icon = plpColorFilterGroupIcons[colorItem];
+  //               const { group, background } = icon;
+  //               if (i < 3) {
+  //                 if (group !== 'Multi') {
+  //                   return <StyledColorSwatch key={group} group={group} background={background} />;
+  //                 }
+  //                 return (
+  //                   <StyledColorSwatch key={group} group={group}>
+  //                     <MultiSwatchIcon />
+  //                   </StyledColorSwatch>
+  //                 );
+  //               }
+  //               return null;
+  //             })}
+  //             {color.length >= 3 && (
+  //               <div className="self-center ml-0.5">
+  //                 <PlusIcon />
+  //               </div>
+  //             )}
+  //           </div>
+  //         )}
+  //         <IconContainer flip={menuOpen === 'colorpicker'}>
+  //           <MenuIcon />
+  //         </IconContainer>
+  //       </FilterContainer>
+  //       <FilterMenu
+  //         filterName={filterName}
+  //         menuOpen={menuOpen === filterType}
+  //         menuName={filterType}
+  //         type="colorpicker"
+  //         filters={colorFilters}
+  //         options={options}
+  //         colors={colors}
+  //         collectionTitle={collectionTitle}
+  //         setTagSelected={setTagSelected}
+  //         TagSelected={TagSelected}
+  //         sortingBy={sortingBy}
+  //         setMenuOpen={setMenuOpen}
+  //       />
+  //     </div>
+  //   );
+  // }
 
   return (
     <div style={{ position: 'relative' }}>

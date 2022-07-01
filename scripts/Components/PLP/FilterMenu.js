@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 import FilterItem from './FilterItem';
 import plpContext from './plpContext';
-import { plpColorFilterGroupIcons } from '../../utils';
+// import { plpColorFilterGroupIcons } from '../../utils';
 import { MultiSwatchIcon } from '../Icons';
 
 const toggleColorFilter = (allFilters, collectionTitle, tempArr) => {
@@ -81,39 +81,39 @@ const FilterMenu = ({
     });
   };
 
-  if (type === 'colorpicker') {
-    return (
-      <MenuContainer id="filterMenu" {...{ menuOpen, menuName }}>
-        {Object.keys(plpColorFilterGroupIcons).map((color) => {
-          const { group, background } = plpColorFilterGroupIcons[color];
-          return (
-            <div key={group}>
-              <div
-                className={`h-9 w-9 border-solid border-2 rounded-full grid justify-items-center items-center ${
-                  allFilters.color.includes(group) ? ' border-blue' : 'border-white'
-                }`}
-                onClick={() => {
-                  handleClick(group);
-                }}
-                onKeyUp={() => {}}
-                role="button"
-                tabIndex="0"
-              >
-                {group !== 'Multi' ? (
-                  <StyledColorSwatch group={group} background={background} />
-                ) : (
-                  <StyledColorSwatch group={group}>
-                    <MultiSwatchIcon />
-                  </StyledColorSwatch>
-                )}
-              </div>
-              <p className="text-center text-xxs font-normal font-serif mt-1">{group}</p>
-            </div>
-          );
-        })}
-      </MenuContainer>
-    );
-  }
+  // if (type === 'colorpicker') {
+  //   return (
+  //     <MenuContainer id="filterMenu" {...{ menuOpen, menuName }}>
+  //       {Object.keys(plpColorFilterGroupIcons).map((color) => {
+  //         const { group, background } = plpColorFilterGroupIcons[color];
+  //         return (
+  //           <div key={group}>
+  //             <div
+  //               className={`h-9 w-9 border-solid border-2 rounded-full grid justify-items-center items-center ${
+  //                 allFilters.color.includes(group) ? ' border-blue' : 'border-white'
+  //               }`}
+  //               onClick={() => {
+  //                 handleClick(group);
+  //               }}
+  //               onKeyUp={() => {}}
+  //               role="button"
+  //               tabIndex="0"
+  //             >
+  //               {group !== 'Multi' ? (
+  //                 <StyledColorSwatch group={group} background={background} />
+  //               ) : (
+  //                 <StyledColorSwatch group={group}>
+  //                   <MultiSwatchIcon />
+  //                 </StyledColorSwatch>
+  //               )}
+  //             </div>
+  //             <p className="text-center text-xxs font-normal font-serif mt-1">{group}</p>
+  //           </div>
+  //         );
+  //       })}
+  //     </MenuContainer>
+  //   );
+  // }
 
   return (
     <StyleFilterMenuContainer>

@@ -1355,14 +1355,6 @@ afterpay-placement {
   .review_main_container .review_inner_items .right .review_card:last-child {
     margin-right: 20px;
   }
-  .drawer__header .drawer__header__inner {
-    border-bottom: 0 !important;
-    display: block !important;
-    text-align: center;
-  }
-  .drawer__header .drawer__header__inner .drawer__close {
-    display: none !important;
-  }
   .ajaxcart__product .ajaxcart.row > .mobile-2 {
     width: 81%;
   }
