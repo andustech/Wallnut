@@ -307,15 +307,18 @@ export const fetchProducts = async () => {
 export const fetchVariantById = async (variantId) => {
   try {
     const products = await fetchProducts();
+    console.log('products => ', products)
     const currentVariant = products.reduce((acc, product) => {
       const productVariant = product.variants.find((variant) => variant.id === variantId);
-
+      console.log('productVariant => ', productVariant)
       if (productVariant) {
         return productVariant;
       }
 
       return acc;
     }, {});
+
+    console.log('currentVariant => ', currentVariant)
 
     return currentVariant;
   } catch (err) {
@@ -469,6 +472,7 @@ export const getExtraChairCoverProducts = async (originalProduct) => {
 
 export const sendKlaviyoEvent = (variantID, _learnq) => {
   fetchVariantById(variantID).then((productData) => {
+    console.log('productData => ', productData);
     const klaviyoVariant = {
       name: productData.name,
       price: productData.price,
@@ -484,9 +488,10 @@ export const sendKlaviyoEvent = (variantID, _learnq) => {
 export const handleAddToCart = (e, item, qty, variantID, callback) => {
   e.preventDefault();
 
-  if (_learnq) {
-    sendKlaviyoEvent(variantID, _learnq);
-  }
+  // if (_learnq) {
+  //   console.log('variantID => ', variantID)
+  //   sendKlaviyoEvent(variantID, _learnq);
+  // }
 
   // trackHeapEvent('Add to cart', { item, qty, variantID });
   addEventToDataLayer({ event: 'Add to cart' });

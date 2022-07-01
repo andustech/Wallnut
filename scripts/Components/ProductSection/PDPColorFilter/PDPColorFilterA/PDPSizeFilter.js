@@ -106,7 +106,7 @@ const PDPSizeFilter = ({ product, selectedVariant, setSelectedVariant, setCurren
   }
 
   const clickOutside = (e) => {
-    if(sizeDropDownRef.current.contains(e.target)) {
+    if(sizeDropDownRef.current?.contains(e.target)) {
       // inside click
       return;
     } 
