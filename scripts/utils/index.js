@@ -484,12 +484,12 @@ export const sendKlaviyoEvent = (variantID, _learnq) => {
 export const handleAddToCart = (e, item, qty, variantID, callback) => {
   e.preventDefault();
 
-  // if (_learnq) {
-  //   sendKlaviyoEvent(variantID, _learnq);
-  // }
+  if (_learnq) {
+    sendKlaviyoEvent(variantID, _learnq);
+  }
 
   // trackHeapEvent('Add to cart', { item, qty, variantID });
-  // addEventToDataLayer({ event: 'Add to cart' });
+  addEventToDataLayer({ event: 'Add to cart' });
 
   $.ajax({
     type: 'POST',
