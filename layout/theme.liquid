@@ -22,11 +22,8 @@
 
 <!-- CSS
 ================================================== -->
-  <!-- {{ 'alice-carousel.css' | asset_url | stylesheet_tag }} -->
-  <!-- {{ 'stylesheet.css' | asset_url | stylesheet_tag }} -->
   <link href="{{'stylesheet.css' | asset_url}}" rel="stylesheet" type="text/css">
   <link href="{{'theme.css' | asset_url}}" rel="stylesheet" type="text/css">
-  <!-- {{ 'theme.css' | asset_url | stylesheet_tag }} -->
 
   <style>
   @font-face {
@@ -80,8 +77,6 @@
 <!-- JS
 ================================================== -->
   {{'//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js' | script_tag }}
-  <!-- <script async type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" ></script> -->
-
   <script>
     jQuery(document).on('mouseenter', '.list-img-wrap', function(){
       jQuery(this).find(".img-wrap").each(function(){
@@ -111,7 +106,6 @@
     });
   </script>
   {{ "eventemitter3.min.js" | asset_url | script_tag }}
-  <!-- {{ 'theme.js' | asset_url | script_tag }} -->
   <script async type="text/javascript" src="{{ 'theme.js' | asset_url }}" ></script>
   {{ 'option_selection.js' | shopify_asset_url | script_tag }}
 
@@ -146,10 +140,6 @@
   gtag('js', new Date());
   gtag('config', 'G-JB1SDL3RVS');
 </script>
-<!-- 
-<script
-  src="https://static-us.afterpay.com/javascript/present-afterpay.js"
-></script> -->
 <script async type="text/javascript" src="https://static-us.afterpay.com/javascript/present-afterpay.js" ></script>
 
 <script src="https://js.afterpay.com/afterpay-1.x.js" data-analytics-enabled
@@ -323,7 +313,6 @@
           clearInterval(myInterval);
         }
       }, 200);
-
      
       // Set autocomplete off for the Klaviyo newsletter input
       const myIntervalNewsletter = setInterval(function() {
@@ -332,19 +321,6 @@
           clearInterval(myIntervalNewsletter);
         }
       }, 200);
-
-      // Set menu link as active if that page is curretnly open
-      // const myIntervalMenuLinkActive = setInterval(function() {
-      //   if ($('.gm-menu').length > 0) {
-      //     var curr_href = window.location.pathname;
-      //     $('.navbar .gm-menu:not(.gm-menu-mobile) .gm-item.gm-level-0').each(function(){
-      //         if ($(this).find('a').attr('href') != '/' && $(this).find('a').attr('href') == curr_href) {
-      //           $(this).addClass('link-active');
-      //           clearInterval(myIntervalMenuLinkActive);
-      //         }
-      //     });
-      //   }
-      // }, 200);
 
       // Set height of main banner based on viewport
       function bannerImageHeight() {

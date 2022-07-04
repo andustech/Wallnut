@@ -5,7 +5,6 @@ import { subscribeToUpdatePrice } from './pub-sub';
 import { createReactComponents } from './utils';
 import { setOptimizelySession } from './utils/optimizely';
 
-// import BestSellers from './Components/BestSellers';
 import DesktopAnnouncement from './Components/DesktopAnnouncement';
 import IndexBetterWay from './Components/IndexBetterWay';
 import indexMoodSection from './Components/indexMoodSection';
@@ -38,17 +37,12 @@ import('./Components/EmptyCart').then((data) => {
   createReactComponents([{ id: 'react-empty-cart', module: data.default }]);
 });
 
-// import('./Components/CustomLandingOne').then((data) => {
-//   createReactComponents([{ id: 'react-custom-landing-one', module: data.default }]);
-// });
-
 import('./Components/About').then((data) => {
   createReactComponents([{ id: 'react-about-page', module: data.default }]);
 });
 
 const components = [
   { id: 'react-desktop-announcement', module: DesktopAnnouncement },
-  // { id: 'react-best-sellers', module: BestSellers },
   { id: 'react-header', module: Header },
   { id: 'react-product-recommendation', module: ProductRecommendation },
   { id: 'react-index-betterway', module: IndexBetterWay },
