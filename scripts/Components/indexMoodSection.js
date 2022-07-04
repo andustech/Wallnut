@@ -12,17 +12,6 @@ const indexMoodSection = ({ settings }) => {
     button_text_2,
     button_link_2,
   } = settings;
-  const bymoodData = [
-    {
-      img: 'https://i.ibb.co/Lgzd5b9/Rectangle-14.png',
-      link: 'Playful',
-    },
-
-    {
-      img: 'https://i.ibb.co/b27wX67/Rectangle-15.png',
-      link: 'Sophisticated',
-    },
-  ];
 
   return (
     <>
@@ -31,15 +20,6 @@ const indexMoodSection = ({ settings }) => {
           <SectionTiltle className="section_titile">
             {section_title && <h3 className="font-bold text-black">{section_title}</h3>}
           </SectionTiltle>
-
-          {/* <div className='mood_card_container flex '>
-            {bymoodData.map((value, i) => (
-              <a className='by_mood_card' key={i}>
-                <img src={value.img} />
-                <a href='#' className='premium_link bg-milk text-center'>{value.link}</a>
-              </a>  
-            ))}
-          </div> */}
 
           <div className="mood_card_container ">
           <div className=""> 

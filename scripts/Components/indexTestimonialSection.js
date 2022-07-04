@@ -1,6 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
-import { SectionTiltle } from './ProductFeature/ValuePropComponent';
 
 const indexTestimonialSection = ({ settings, blocks }) => {
   const { title, content } = settings;

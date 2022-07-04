@@ -1,4 +1,3 @@
-/* eslint-disable new-cap */
 import React from 'react';
 import PropTypes from 'prop-types';
 

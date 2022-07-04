@@ -153,16 +153,6 @@ const IndexBetterWay = ({ blocks }) => {
                           </a>
                         )}
                         {settings.link_text && (
-                          // <a href={settings.link_url} className="text-white hover:text-red-100 flex items-center">
-                          //   {settings.link_icon_position == 'before' &&
-                          //     <img src={settings.link_icon} alt="Video Play" className="mr-3" />
-                          //   }
-                          //   {settings.link_text}
-                          //   {settings.link_icon_position == 'after' &&
-                          //     <img src={settings.link_icon} alt="Video Play" className="ml-6" />
-                          //   }
-                          // </a>
-
                           <a
                             href={settings.link_url}
                             className="premium_link white_link relative link_hover"

@@ -176,21 +176,6 @@ const getVariantName = (variant) =>
     .join(' ')
     .replace(/ /g, '-');
 
-// export const getSingleViewImage = (product, variant) => {
-//   const variantName = variant?.options ? getVariantName(variant) : variant;
-//   if (variant === 'e-gift-card') {
-//     return getS3url(`/${product.handle}/${productImages[product.handle][variantName][0]}`);
-//   }
-
-//   if (variant === 'extra-chair-cover') {
-//     return getS3url(`/${product.handle}/${productImages[product.handle][variantName][0]}`);
-//   }
-
-//   return getS3url(
-//     `/${product.handle}/${variantName}/${productImages[product.handle][variantName][0]}`
-//   );
-// };
-
 export const getCurrentImages = (product, variant) => {
   const variantName = getVariantName(variant);
   const sizeIndex = product.options.indexOf('Size');
@@ -434,52 +419,6 @@ export const getPriceInRanges = (min, max) =>
 
 export const isMobile = (navigator) =>
   /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
-// export const getExtraChairCoverProducts = async (originalProduct) => {
-//   try {
-//     const products = await fetchProducts();
-//     const extraChairCoverProducts = products.filter((item) => item.title === 'Extra Chair Cover');
-//     const mainProduct = extraChairCoverProducts.find((item) => item.handle === 'extra-chair-cover');
-
-//     if (extraChairCoverProducts.length === 1) {
-//       return originalProduct;
-//     }
-
-//     const allVariants = extraChairCoverProducts.reduce((acc, product) => {
-//       const mapVariantsWithOriginalHandle = product.variants.map((variant) => ({
-//         ...variant,
-//         handle: product.handle,
-//       }));
-
-//       return [...acc, ...mapVariantsWithOriginalHandle];
-//     }, []);
-
-//     const uniqueVariantSkus = [...new Set(allVariants.map((variant) => variant.sku))];
-//     const variants = uniqueVariantSkus.map((variantSku) =>
-//       allVariants.find((item) => item.sku === variantSku)
-//     );
-
-//     return { ...mainProduct, variants };
-//   } catch (err) {
-//     console.log(err);
-
-//     return [];
-//   }
-// };
-
-// export const sendKlaviyoEvent = (variantID, _learnq) => {
-//   fetchVariantById(variantID).then((productData) => {
-//     const klaviyoVariant = {
-//       name: productData.name,
-//       price: productData.price,
-//       featuredImage: productData.featured_image.src,
-//       option1: productData.option1,
-//       option2: productData.option2,
-//     };
-
-//     _learnq.push(['track', 'Added to Cart', klaviyoVariant]);
-//   });
-// };
 
 export const handleAddToCart = (e, item, qty, variantID, callback) => {
   e.preventDefault();

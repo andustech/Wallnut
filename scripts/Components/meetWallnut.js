@@ -9,13 +9,10 @@ const meetWallnut = ({ settings, blocks }) => {
     if (videoActive === 'fade-out') {
       setVideoActive('fade-in');
       $('.video_items_container video')[0].play();
-      // $('video').removeAttr('controls');
       $('.video_items_container .close-button').addClass('md:hidden');
     } else {
       setVideoActive('fade-out');
       $('.video_items_container video')[0].pause();
-      // $('video').attr('controls', true);
-      // $('.close-button').removeClass('md:hidden');
     }
   };
 

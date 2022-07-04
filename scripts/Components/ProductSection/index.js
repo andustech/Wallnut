@@ -1,6 +1,5 @@
 import getOptimizelyVariant from '../../utils/optimizely';
 import ProductSectionA from './ProductSectionA';
-// import ProductSectionB from './ProductSectionB';
 
 const optimizelyConfig = {
   experimentId: '20999060237',

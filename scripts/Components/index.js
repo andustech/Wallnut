@@ -13,7 +13,7 @@ export { default as DesktopAnnouncement } from './DesktopAnnouncement';
 // export { default as BestSellers } from './BestSellers/BestSellers';
 export { default as EmptyCart } from './EmptyCart';
 // export { default as ChairCoverUpsell } from './ChairCoverUpsell/index';
-export { default as SweepstakesRules } from './SweepstakesRules';
+// export { default as SweepstakesRules } from './SweepstakesRules';
 export { default as PLPSection } from './PLP/PLPSection';
 export { default as AfterPayCopy } from './AfterPayCopy';
 // export { default as CustomLandingOne } from './CustomLandingOne';
