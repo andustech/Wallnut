@@ -109,32 +109,6 @@
         }
       });
     });
-    jQuery(document).on('touchstart', '.list-img-wrap', function(){
-      jQuery(this).find(".img-wrap").each(function(){
-        if(jQuery(this).hasClass("hover")) {
-          jQuery(this).animate({
-            'opacity': 1
-          }, "slow");
-        } else {
-          jQuery(this).animate({
-            'opacity': 0
-          }, "slow")
-        }
-      });
-    });
-    jQuery(document).on('touchend', '.list-img-wrap', function(){
-      jQuery(this).find(".img-wrap").each(function(){
-        if(jQuery(this).hasClass("hover")) {
-          jQuery(this).animate({
-            'opacity': 0
-          }, "slow");
-        } else {
-          jQuery(this).animate({
-            'opacity': 1
-          }, "slow")
-        }
-      });
-    });
   </script>
   {{ "eventemitter3.min.js" | asset_url | script_tag }}
   <!-- {{ 'theme.js' | asset_url | script_tag }} -->
@@ -350,56 +324,7 @@
         }
       }, 200);
 
-      // Added to set position of gm submenu
-      // $(window).scroll(function () {
-        // menuCartDrawerPosition();
-      // });
-      // menuCartDrawerPosition();
-
-      // function menuCartDrawerPosition() {
-      //   if ($(window).scrollTop() > 10) {
-      //     $(".gm-submenu.gm-mega.gm-submenu-bordered").css({ "top": "75px" });
-      //     if ($(window).width() >= 1024) {
-      //       $("#CartDrawer").css({ "top": "75px" });
-      //     } else {
-      //       $("#CartDrawer").css({ "top": "50px" });
-      //     }
-      //   }
-      //   else {
-      //     $(".gm-submenu.gm-mega.gm-submenu-bordered").css({ "top": "119px" });
-      //     if ($(window).width() >= 1024) {
-      //       $("#CartDrawer").css({ "top": "119px" });
-      //     } else if ($(window).width() >= 769) {
-      //       $("#CartDrawer").css({ "top": "94px" });
-      //     } else {
-      //       $("#CartDrawer").css({ "top": "88px" });
-      //     }
-      //   }
-      // }
-
-      // Show close on cart drawer click
-      // $('.site-header__cart-toggle').on('click', function() {
-      //   if ($(window).width() < 767) {
-      //     if ($('.toggle-button').hasClass('flex')) {
-      //       $('.toggle-button').removeClass('flex');
-      //       $('.toggle-button').addClass('hidden');
-      //       $('.cart-close').removeClass('hidden');
-      //     } else {
-      //       $('.toggle-button').removeClass('hidden');
-      //       $('.toggle-button').addClass('flex');
-      //       $('.cart-close').addClass('hidden');
-      //     }
-      //   }
-      // });
-      // $('.cart-close').on('click', function() {
-      //   if ($(window).width() < 767) {
-      //     $('.toggle-button').removeClass('hidden');
-      //     $('.toggle-button').addClass('flex');
-      //     $('.cart-close').addClass('hidden');
-      //     timber.RightDrawer.close();
-      //   }
-      // });
-
+     
       // Set autocomplete off for the Klaviyo newsletter input
       const myIntervalNewsletter = setInterval(function() {
       	if ($('body form.klaviyo-form').length > 0) {
@@ -409,17 +334,17 @@
       }, 200);
 
       // Set menu link as active if that page is curretnly open
-      const myIntervalMenuLinkActive = setInterval(function() {
-        if ($('.gm-menu').length > 0) {
-          var curr_href = window.location.pathname;
-          $('.navbar .gm-menu:not(.gm-menu-mobile) .gm-item.gm-level-0').each(function(){
-              if ($(this).find('a').attr('href') != '/' && $(this).find('a').attr('href') == curr_href) {
-                $(this).addClass('link-active');
-                clearInterval(myIntervalMenuLinkActive);
-              }
-          });
-        }
-      }, 200);
+      // const myIntervalMenuLinkActive = setInterval(function() {
+      //   if ($('.gm-menu').length > 0) {
+      //     var curr_href = window.location.pathname;
+      //     $('.navbar .gm-menu:not(.gm-menu-mobile) .gm-item.gm-level-0').each(function(){
+      //         if ($(this).find('a').attr('href') != '/' && $(this).find('a').attr('href') == curr_href) {
+      //           $(this).addClass('link-active');
+      //           clearInterval(myIntervalMenuLinkActive);
+      //         }
+      //     });
+      //   }
+      // }, 200);
 
       // Set height of main banner based on viewport
       function bannerImageHeight() {

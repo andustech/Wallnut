@@ -435,51 +435,51 @@ export const getPriceInRanges = (min, max) =>
 export const isMobile = (navigator) =>
   /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-export const getExtraChairCoverProducts = async (originalProduct) => {
-  try {
-    const products = await fetchProducts();
-    const extraChairCoverProducts = products.filter((item) => item.title === 'Extra Chair Cover');
-    const mainProduct = extraChairCoverProducts.find((item) => item.handle === 'extra-chair-cover');
+// export const getExtraChairCoverProducts = async (originalProduct) => {
+//   try {
+//     const products = await fetchProducts();
+//     const extraChairCoverProducts = products.filter((item) => item.title === 'Extra Chair Cover');
+//     const mainProduct = extraChairCoverProducts.find((item) => item.handle === 'extra-chair-cover');
 
-    if (extraChairCoverProducts.length === 1) {
-      return originalProduct;
-    }
+//     if (extraChairCoverProducts.length === 1) {
+//       return originalProduct;
+//     }
 
-    const allVariants = extraChairCoverProducts.reduce((acc, product) => {
-      const mapVariantsWithOriginalHandle = product.variants.map((variant) => ({
-        ...variant,
-        handle: product.handle,
-      }));
+//     const allVariants = extraChairCoverProducts.reduce((acc, product) => {
+//       const mapVariantsWithOriginalHandle = product.variants.map((variant) => ({
+//         ...variant,
+//         handle: product.handle,
+//       }));
 
-      return [...acc, ...mapVariantsWithOriginalHandle];
-    }, []);
+//       return [...acc, ...mapVariantsWithOriginalHandle];
+//     }, []);
 
-    const uniqueVariantSkus = [...new Set(allVariants.map((variant) => variant.sku))];
-    const variants = uniqueVariantSkus.map((variantSku) =>
-      allVariants.find((item) => item.sku === variantSku)
-    );
+//     const uniqueVariantSkus = [...new Set(allVariants.map((variant) => variant.sku))];
+//     const variants = uniqueVariantSkus.map((variantSku) =>
+//       allVariants.find((item) => item.sku === variantSku)
+//     );
 
-    return { ...mainProduct, variants };
-  } catch (err) {
-    console.log(err);
+//     return { ...mainProduct, variants };
+//   } catch (err) {
+//     console.log(err);
 
-    return [];
-  }
-};
+//     return [];
+//   }
+// };
 
-export const sendKlaviyoEvent = (variantID, _learnq) => {
-  fetchVariantById(variantID).then((productData) => {
-    const klaviyoVariant = {
-      name: productData.name,
-      price: productData.price,
-      featuredImage: productData.featured_image.src,
-      option1: productData.option1,
-      option2: productData.option2,
-    };
+// export const sendKlaviyoEvent = (variantID, _learnq) => {
+//   fetchVariantById(variantID).then((productData) => {
+//     const klaviyoVariant = {
+//       name: productData.name,
+//       price: productData.price,
+//       featuredImage: productData.featured_image.src,
+//       option1: productData.option1,
+//       option2: productData.option2,
+//     };
 
-    _learnq.push(['track', 'Added to Cart', klaviyoVariant]);
-  });
-};
+//     _learnq.push(['track', 'Added to Cart', klaviyoVariant]);
+//   });
+// };
 
 export const handleAddToCart = (e, item, qty, variantID, callback) => {
   e.preventDefault();
