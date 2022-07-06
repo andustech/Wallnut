@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import ReactDOM from 'react-dom';
 import PubSub from 'pubsub-js';
 // import { addEventToDataLayer } from './google-analytics';
@@ -133,7 +133,7 @@ export const createReactComponents = (components) => {
 
       if (jsonData) {
         // eslint-disable-next-line react/jsx-props-no-spreading
-        ReactDOM.render(<component.module {...JSON.parse(jsonData)} />, element);
+        ReactDOM.render(<Suspense fallback={<div>Loading...</div>}><component.module {...JSON.parse(jsonData)} /></Suspense>, element);
       }
     }
   });

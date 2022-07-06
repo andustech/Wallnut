@@ -1,7 +1,9 @@
+import React, {lazy} from 'react';
 import './base.css';
 import { createReactComponents } from './utils';
 // import SweepstakesRules from './Components/SweepstakesRules';
-import ProductFeature from './Components/ProductFeature';
+// import ProductFeature from './Components/ProductFeature';
+const ProductFeature = lazy(() => import('./Components/ProductFeature'));
 
 const components = [
   // { id: 'react-sweepstakes-rules', module: SweepstakesRules },
