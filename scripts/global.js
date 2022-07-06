@@ -11,7 +11,7 @@ import { setOptimizelySession } from './utils/optimizely';
 // import IndexBetterWay from './Components/IndexBetterWay';
 // import indexMoodSection from './Components/indexMoodSection';
 // import indexTestimonialSection from './Components/indexTestimonialSection';
-// import AfterPayCopy from './Components/AfterPayCopy';
+import AfterPayCopy from './Components/AfterPayCopy';
 // import Header from './Components/Header';
 // import ProductRecommendation from './Components/ProductRecommendation';
 // import howItWorks from './Components/howItWorks';
@@ -26,7 +26,7 @@ const DesktopAnnouncement = lazy(() => import('./Components/DesktopAnnouncement'
 const IndexBetterWay = lazy(() => import('./Components/IndexBetterWay'));
 const indexMoodSection = lazy(() => import('./Components/indexMoodSection'));
 const indexTestimonialSection = lazy(() => import('./Components/indexTestimonialSection'));
-const AfterPayCopy = lazy(() => import('./Components/AfterPayCopy'));
+// const AfterPayCopy = lazy(() => import('./Components/AfterPayCopy'));
 const Header = lazy(() => import('./Components/Header'));
 const ProductRecommendation = lazy(() => import('./Components/ProductRecommendation'));
 const howItWorks = lazy(() => import('./Components/howItWorks'));
