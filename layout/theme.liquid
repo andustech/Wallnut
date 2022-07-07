@@ -78,7 +78,9 @@
 ================================================== -->
   {{'//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js' | script_tag }}
   <script>
-    if ($(window).width() > 767) {
+    if (jQuery(document).width() > 767) {
+      console.log('767')
+      console.log('$(window).width() => ', jQuery(window).width())
       jQuery(document).on('mouseenter', '.list-img-wrap', function(){
         jQuery(this).find(".img-wrap").each(function(){
           if(jQuery(this).hasClass("hover")) {
