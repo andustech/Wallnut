@@ -167,7 +167,7 @@ const ProductSectionA = (props) => {
           );
         })}
       </div>
-      <ProductRecommended product={currentProduct} title="Here’s other products you might like." />
+      <ProductRecommended product={currentProduct} title="Here are other products you might like" />
       {settings.enable_product_reviews && (
         <>
           <div ref={reviewsRef}>
