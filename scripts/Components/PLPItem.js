@@ -31,7 +31,7 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
   const PLPItemRef = useRef();
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(max-width: 768px)');
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
     const isObservable = isMobile(navigator) && mediaQuery.matches && PLPItemRef.current;
     const intersectionObserver = new IntersectionObserver(
       (entries) => {
@@ -64,55 +64,6 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
     setColorOption(color);
   };
 
-  // if (product.tags.includes('Gift card')) {
-  //   if (colorFilters && colorFilters.length > 0) return null;
-
-  //   const variantName = product.tags.includes('Extra Cover') ? chairCoverVariant : 'e-gift-card';
-
-  //   return (
-  //     <ItemContainer
-  //       ref={PLPItemRef}
-  //       onMouseEnter={() => setHover(true)}
-  //       onMouseLeave={() => setHover(false)}
-  //     >
-  //       <div className="relative overflow-hidden trend_card">
-  //         <a href={getProductUrl(product, colorOption, collectionTitle)}>
-  //           <div className="bg-grey">
-  //             <Media
-  //               alt={`${product.handle.replace(/-/g, ' ')}`}
-  //               image={getSingleViewImage(product, variantName)}
-  //             />
-  //           </div>
-  //         </a>
-  //       </div>
-  //       <a className="no-underline" href={getProductUrl(product, colorOption, collectionTitle)}>
-  //         <TitlePriceContainer>
-  //           <span className="">{product.title}</span>
-  //           <span className="">
-  //             {product.compare_at_price ? (
-  //               <div>
-  //                 <span className="text-errorRed">
-  //                   {convertPriceFromNumber(product.price_min)} -{' '}
-  //                   {convertPriceFromNumber(product.price_max)}
-  //                 </span>
-  //                 <span className="ml-2 text-grey-dark font-normal line-through">
-  //                   {convertPriceFromNumber(product.compare_at_price_min)} -
-  //                   {convertPriceFromNumber(product.compare_at_price_max)}
-  //                 </span>
-  //               </div>
-  //             ) : (
-  //               <>
-  //                 {convertPriceFromNumber(product.price_min)} -
-  //                 {convertPriceFromNumber(product.price_max)}
-  //               </>
-  //             )}
-  //           </span>
-  //         </TitlePriceContainer>
-  //       </a>
-  //     </ItemContainer>
-  //   );
-  // }
-
   const cdnUrl = 'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/';
   var imgColor = '';
   if (colorOption === 'Matte White') {
@@ -136,6 +87,8 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
       'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/600x900.png?v=1653804158';
   }
 
+  const mobileMediaQuery = window.matchMedia('(min-width: 768px)');
+
   return (
     <ItemContainer className="each-item">
       <div className="relative overflow-hidden bg-gray-50">
@@ -154,12 +107,14 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
                   image={productImgSrc}
                 />
               </div>
-              <div className="img-wrap hover">
-                <Media
-                  alt={`${product.handle}-${currentOption.toLowerCase().trim()}`}
-                  image={`${cdnUrl}${product.handle.slice(0, -3)}B-${imgColor}-1824.jpg`}
-                />
-              </div>
+              { mobileMediaQuery.matches && (
+                <div className="img-wrap hover">
+                  <Media
+                    alt={`${product.handle}-${currentOption.toLowerCase().trim()}`}
+                    image={`${cdnUrl}${product.handle.slice(0, -3)}B-${imgColor}-1824.jpg`}
+                  />
+                </div>
+              )}
             </ImageContainer>
           )}
         </a>
