@@ -78,36 +78,37 @@
 ================================================== -->
   {{'//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js' | script_tag }}
   <script>
-    if (jQuery(document).width() > 767) {
-      console.log('767')
-      console.log('$(window).width() => ', jQuery(window).width())
-      jQuery(document).on('mouseenter', '.list-img-wrap', function(){
-        jQuery(this).find(".img-wrap").each(function(){
-          if(jQuery(this).hasClass("hover")) {
-            jQuery(this).animate({
-              'opacity': 1
-            }, "slow");
-          } else {
-            jQuery(this).animate({
-              'opacity': 0
-            }, "slow")
-          }
+    
+    jQuery(document).ready( function() {
+      if (jQuery(document).width() > 767) {
+        jQuery(document).on('mouseenter', '.list-img-wrap', function(){
+          jQuery(this).find(".img-wrap").each(function(){
+            if(jQuery(this).hasClass("hover")) {
+              jQuery(this).animate({
+                'opacity': 1
+              }, "slow");
+            } else {
+              jQuery(this).animate({
+                'opacity': 0
+              }, "slow")
+            }
+          });
         });
-      });
-      jQuery(document).on('mouseleave', '.list-img-wrap', function(){
-        jQuery(this).find(".img-wrap").each(function(){
-          if(jQuery(this).hasClass("hover")) {
-            jQuery(this).animate({
-              'opacity': 0
-            }, "slow");
-          } else {
-            jQuery(this).animate({
-              'opacity': 1
-            }, "slow")
-          }
+        jQuery(document).on('mouseleave', '.list-img-wrap', function(){
+          jQuery(this).find(".img-wrap").each(function(){
+            if(jQuery(this).hasClass("hover")) {
+              jQuery(this).animate({
+                'opacity': 0
+              }, "slow");
+            } else {
+              jQuery(this).animate({
+                'opacity': 1
+              }, "slow")
+            }
+          });
         });
-      });
-    }
+      }
+    });
   </script>
   {{ "eventemitter3.min.js" | asset_url | script_tag }}
   <script async type="text/javascript" src="{{ 'theme.js' | asset_url }}" ></script>
