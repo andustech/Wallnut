@@ -231,7 +231,7 @@ const MobileFilters = ({
   };
   return (
     <Filterpopup isOpenFilter={isOpenFilter}>
-      <div className="bg-transparent border-t border-b w-full">
+      <div className="bg-transparent border-t pb-9 w-full">
         <FilterBackDiv onClick={() => setIsOpenFilter(false)}>
           <svg
             width="5"
@@ -417,6 +417,10 @@ const HorizontalBorder = styled.div`
 `;
 
 const ApplyProductDiv = styled.div`
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
   background: #f1946a;
   font-family: 'GoodSans';
   font-size: 10px;
@@ -428,7 +432,6 @@ const ApplyProductDiv = styled.div`
   letter-spacing: 0.05em;
   color: #000000;
   padding: 10px 0;
-  margin: -16px 0 16px;
   text-transform: uppercase;
 `;
 export default MobileFilters;
