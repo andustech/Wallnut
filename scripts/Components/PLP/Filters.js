@@ -154,31 +154,31 @@ const Filters = ({
       colorObj: [],
     };
 
-    let arr = window.location.pathname.split('/');
-    let value = arr[arr.length - 1];
-    let splitValue = value.split('-');
-    if (splitValue.length > 1) {
-      if (value.startsWith('decor-style')) {
-        value = value.split('decor-style-')[1].split('-').join(' ');
-        tempselect['decorStyle'] = [value];
-      } else {
-        if (splitValue.length > 2) {
-          value = splitValue.splice(1);
-          value = value.join(' ');
-          const fltrType = splitValue[0].charAt(0).toUpperCase() + splitValue[0].slice(1);
-          tempselect[splitValue[0]] = [value];
-        } else {
-          value = splitValue[1];
-          const fltrType = splitValue[0];
-          const fltrName = splitValue[1].charAt(0).toUpperCase() + splitValue[1].slice(1);
-          tempselect[fltrType] = [fltrName];
-        }
-      }
-    } else {
-      value = splitValue[0];
-    }
+    // let arr = window.location.pathname.split('/');
+    // let value = arr[arr.length - 1];
+    // let splitValue = value.split('-');
+    // if (splitValue.length > 1) {
+    //   if (value.startsWith('decor-style')) {
+    //     value = value.split('decor-style-')[1].split('-').join(' ');
+    //     tempselect['decorStyle'] = [value];
+    //   } else {
+    //     if (splitValue.length > 2) {
+    //       value = splitValue.splice(1);
+    //       value = value.join(' ');
+    //       const fltrType = splitValue[0].charAt(0).toUpperCase() + splitValue[0].slice(1);
+    //       tempselect[splitValue[0]] = [value];
+    //     } else {
+    //       value = splitValue[1];
+    //       const fltrType = splitValue[0];
+    //       const fltrName = splitValue[1].charAt(0).toUpperCase() + splitValue[1].slice(1);
+    //       tempselect[fltrType] = [fltrName];
+    //     }
+    //   }
+    // } else {
+    //   value = splitValue[0];
+    // }
 
-    console.log('tempselect', tempselect);
+    // console.log('tempselect', tempselect);
     setIsClearing(true);
     setAllFilters(tempselect);
     // } else {
@@ -191,7 +191,7 @@ const Filters = ({
     //     medium: [],
     //     colorObj: [],
     //   });
-    //   setTagSelected([]);
+      setTagSelected([]);
     // }
   };
 
@@ -227,13 +227,17 @@ const Filters = ({
         }
       }
     }
-    if (!isInSlug) {
+    // if (!isInSlug) {
       setRemoveTag(item);
       let tempRes = TagSelected.filter((i) => JSON.stringify(i) !== JSON.stringify(item));
 
       setIsRemoving(true);
       if (tempRes.length === 0) {
         setAllFilters({
+          style: [],
+          chairType: [],
+          color: [],
+          size: [],
           subject: [],
           mood: [],
           decorStyle: [],
@@ -245,14 +249,17 @@ const Filters = ({
         setTagSelected([]);
       } else {
         if (Object.keys(allFilters).length !== 0) {
-          const newArr = allFilters[item.tagType].filter((object) => {
-            return object !== item.tagValue;
-          });
+          console.log('+++++------+++',allFilters[item.tagType],'----')
+          const newArr = allFilters[item.tagType].filter((object) =>  {
+            console.log('+++++------+++',object.toLowerCase(), item.tagValue.replace(' & ','&').toLowerCase())
+            if(object.toLowerCase() !== item.tagValue.replace(' & ','&').toLowerCase()){
+              return object
+            }});
           setAllFilters({ ...allFilters, [item.tagType]: newArr });
           setTagSelected([...tempRes]);
         }
       }
-    }
+    // }
     // }
   };
   const sortingBy = (e) => {

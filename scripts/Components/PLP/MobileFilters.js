@@ -375,7 +375,7 @@ const Filterpopup = styled.div`
   transition: 0.3s;
   top: 80px;
   overflow-y: scroll;
-  @media (min-width: 768px) {
+  @media (min-width: 1200px) {
     display: none;
   }
 `;

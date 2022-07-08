@@ -8,7 +8,7 @@ import SeoCopy from '../SEOCopy';
 import PLPContext from '../plpContext';
 import { mergedFetchedRecommendations } from '../../../utils';
 import FilterIcon from '../../Icons/filterIcon';
-import algoliasearch from 'algoliasearch/lite';
+import algoliasearch from 'algoliasearch';
 import MobileFilters from '../MobileFilters';
 import {
   artOption,
@@ -60,30 +60,60 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
   const [isCalled, setIsCalled] = useState(false);
   const [isAllClearing, setIsClearing] = useState(false);
   const [indexName, setIndexName] = useState('shopify_products_title_asc');
-  const  [pageTitle, setPageTitle] = useState(collectionTitle)
+  // const [indexName, setIndexName] = useState('shopify_products_new');
+  const [pageTitle, setPageTitle] = useState(collectionTitle);
+  const [options, setOptions] = useState({
+    artOption: artOption,
+    colorObject: colorObject,
+    decorStyle: decorOption,
+    mediumOption: mediumOption,
+    mood: moodOption,
+    orientationOption: orientationOption,
+    subject: subjectOption,
+    sizeOption: sizeOption,
+  });
 
-  const options = {
-    artOption : artOption,
-  colorObject : colorObject,
-  decorStyle : decorOption,
-  mediumOption : mediumOption,
-  mood : moodOption,
-  orientationOption : orientationOption,
-  subject : subjectOption,
-  sizeOption : sizeOption
-  }
+  // const options = {
+  //   artOption: artOption,
+  //   colorObject: colorObject,
+  //   decorStyle: decorOption,
+  //   mediumOption: mediumOption,
+  //   mood: moodOption,
+  //   orientationOption: orientationOption,
+  //   subject: subjectOption,
+  //   sizeOption: sizeOption,
+  // };
+
+  const resetOptions = {
+    artOption: artOption,
+    colorObject: colorObject,
+    decorStyle: decorOption,
+    mediumOption: mediumOption,
+    mood: moodOption,
+    orientationOption: orientationOption,
+    subject: subjectOption,
+    sizeOption: sizeOption,
+  };
+
+  let optionsToSend = options;
 
   const searchClient = algoliasearch('G49A2XSYO1', 'aac1fbe78febb9f003c18df8aba2eba1');
   const index = searchClient.initIndex(indexName);
 
+  // index.clearObjects().then(() => {
+  //   console.log('deleted!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+  // })
+  // .catch(e => {console.log('--------------')});
+
   useEffect(() => {
     if (!isCalled) {
       setIsLoading(true);
+      console.log('========', indexName);
       index
         .search('', {
           page: page,
           hitsPerPage: 16,
-          facetFilters: tags,
+          filters: tags.length > 0 ? tags.join(' AND ') : '',
         })
         .then((res) => {
           setIsCalled(true);
@@ -101,7 +131,7 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
       .search('', {
         page: page + 1,
         hitsPerPage: 16,
-        facetFilters: tags,
+        filters: tags.length > 0 ? tags.join(' AND ') : '',
       })
       .then((res) => {
         setProducts([...products, ...res.hits]);
@@ -118,7 +148,8 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
 
   useEffect(() => {
     const tempTags = [];
-    Object.keys(allFilters).forEach((k) => {
+    Object.keys(allFilters).forEach((k, indx) => {
+      let fltrStr = '';
       if (allFilters[k].length !== 0) {
         const filterName =
           k === 'decorStyle'
@@ -128,27 +159,50 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
             : k === 'colorObj'
             ? 'Color'
             : k.charAt(0).toUpperCase() + k.slice(1);
-        allFilters[k].forEach((itm) => {
+        allFilters[k].forEach((itm, index) => {
           if (k === 'subject') {
-            tempTags.push('tags:Abstract-' + itm);
-          } else {
-            tempTags.push('tags:' + filterName + '-' + itm);
+            // tempTags.push('tags:Abstract-' + itm);
+            if (index === allFilters[k].length - 1) {
+              fltrStr += "tags:'Abstract-" + itm + "'";
+            } else {
+              fltrStr += "tags:'Abstract-" + itm + "'%";
+            }
+          }
+          // else if(k === 'orientation'){
+          //   if (index === allFilters[k].length - 1) {
+          //     fltrStr += "tags:'" + itm + "'";
+          //   } else {
+          //     fltrStr += "tags:'" + itm + "'%";
+          //   }
+          // }
+          else {
+            // tempTags.push('tags:' + filterName + '-' + itm);
+            if (index === allFilters[k].length - 1) {
+              fltrStr += "tags:'" + filterName + '-' + itm + "'";
+            } else {
+              fltrStr += "tags:'" + filterName + '-' + itm + "'%";
+            }
           }
         });
+        fltrStr = fltrStr.replace(/%/g, ' OR ');
+        fltrStr = '(' + fltrStr + ')';
+        tempTags.push(fltrStr);
       }
     });
-    console.log('tempTags === ', tempTags);
+    console.log('tempTags === ', tempTags.join(' AND '));
     setTags(tempTags);
     index
       .search('', {
         page: 0,
         hitsPerPage: 16,
-        facetFilters: tempTags,
+        // facetFilters: tempTags,
+        filters: tempTags.join(' AND '),
+        // filters:"(tags:'Color-White' OR tags:'Color-Black') AND (tags:'Mood-Soothing') AND (tags:'Décor Style-Mid Century Modern')"
       })
       .then((res) => {
         setProducts(res.hits);
         setTotalProducts(res.nbHits);
-        setIsLoading(false)
+        setIsLoading(false);
       })
       .catch((e) => console.log('=======e=====', e))
       .finally(() => {});
@@ -158,42 +212,66 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
     slugToSelectedFilterValue();
   }, [slugValue]);
 
+  const camelize = (str) => {
+    return str.replace(/\W+(.)/g, function (match, chr) {
+      return chr.toUpperCase();
+    });
+  };
+
   const slugToSelectedFilterValue = () => {
     let arr = window.location.pathname.split('/');
     let value = arr[arr.length - 1];
     setSlugRawValue(value);
-    if(arr.length > 3){
-      console.log('++++++',value.split('-'))
-      setPageTitle(value.split('-').join(' ').replace('&',' & '))
-    
-    let splitValue = value.split('-');
-    if (splitValue.length > 1) {
-      if (value.startsWith('decor-style')) {
-        value = value.split('decor-style-')[1].split('-').join(' ');
-        setAllFilters({ ...allFilters, ['decorStyle']: [value] });
-        options.decorStyle.splice(options.decorStyle.indexOf(value.substring(0, 1).toUpperCase() + value.substring(1)),1)
-      } else {
-        if (splitValue.length > 2) {
-          value = splitValue.splice(1);
-          value = value.join(' ');
-          // const fltrType = splitValue[0].charAt(0).toUpperCase() + splitValue[0].slice(1);
-          setAllFilters({ ...allFilters, [splitValue[0]]: [value] });
-        } else {
-          value = splitValue[1];
-          const fltrType = splitValue[0];
-          const fltrName = splitValue[1].charAt(0).toUpperCase() + splitValue[1].slice(1);
-          setAllFilters({ ...allFilters, [fltrType]: [fltrName] });
-          options[fltrType].splice(options[fltrType].indexOf(fltrName),1)
-        }
-      }
-    } else {
-      value = splitValue[0];
-    }
+    if (arr.length > 3) {
+      // console.log('+++++', value.split('-'));
+      setPageTitle(value.split('-').join(' ').replace('&', ' & '));
 
-    if (value !== '' && value !== undefined) {
-      setSlugValue(value);
+      let splitValue = value.split('-');
+      if (splitValue.length > 1) {
+        if (value.startsWith('decor-style')) {
+          value = value.split('decor-style-')[1].split('-').join(' ');
+          setAllFilters({ ...allFilters, ['decorStyle']: [value] });
+          // optionsToSend.decorStyle.splice(
+          //   options.decorStyle.indexOf(value.substring(0, 1).toUpperCase() + value.substring(1)),
+          //   1
+          // );
+        } else {
+          console.log('========', splitValue);
+          if (splitValue.length > 2) {
+            value = splitValue.splice(1);
+            value = value.join(' ');
+            // const fltrType = splitValue[0].charAt(0).toUpperCase() + splitValue[0].slice(1);.
+            const tempOpt = resetOptions;
+            tempOpt[splitValue[0]] = resetOptions[splitValue[0]].filter((i) => i !== value)
+            // console.log('>>>>>>',value, splitValue[0]);
+            setAllFilters({ ...allFilters, [splitValue[0]]: [value] });
+            setOptions(tempOpt);
+          } else {
+            value = splitValue[1];
+            const fltrType = splitValue[0];
+            const fltrName = splitValue[1].charAt(0).toUpperCase() + splitValue[1].slice(1);
+            setAllFilters({ ...allFilters, [fltrType]: [fltrName] });
+            // options[fltrType].splice(options[fltrType].indexOf(fltrName), 1);
+            const tempOpt = resetOptions;
+            if(fltrName.includes('&')){
+              tempOpt[fltrType] = resetOptions[fltrType].filter((i) => i !== fltrName);
+              //   fltrName = fltrName.split('&')
+              //   fltrName[1] = camelize(fltrName[1])
+              //   fltrName = fltrName.join('&')
+            }else{
+              tempOpt[fltrType] = resetOptions[fltrType].filter((i) => i !== camelize(fltrName));
+            }
+            setOptions(tempOpt);
+          }
+        }
+      } else {
+        value = splitValue[0];
+      }
+
+      if (value !== '' && value !== undefined) {
+        setSlugValue(value);
+      }
     }
-  }
   };
 
   const FilterProducts = () => {
@@ -214,20 +292,30 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
             tagType: element,
             tagValue: filterValue.replace('-', ' '),
           };
-          let isInSlug = false
+          let isInSlug = false;
 
           let arr = window.location.pathname.split('/');
           let value = arr[arr.length - 1];
           let splitValue = value.split('-');
 
           if (value.startsWith('decor-style') && element === 'decorStyle') {
-            if(value.split('decor-style-')[1].split('-').join(' ').toLowerCase() === tempEntry.tagValue.toLowerCase()){
-              isInSlug = true
+            if (
+              value.split('decor-style-')[1].split('-').join(' ').toLowerCase() ===
+              tempEntry.tagValue.toLowerCase()
+            ) {
+              isInSlug = true;
             }
-          }
-          else if (splitValue[0].toLowerCase() === element) {
-            if(splitValue[1].toLowerCase() === tempEntry.tagValue.toLowerCase()){
-              isInSlug = true
+          } else if (splitValue[0].toLowerCase() === element) {
+            if (splitValue.length > 2) {
+              value = splitValue.splice(1);
+              value = value.join(' ');
+              if(allFilters[element][index1] === value){
+                isInSlug = true;
+              }
+            }else{
+              if (splitValue[1].toLowerCase() === tempEntry.tagValue.toLowerCase()) {
+                isInSlug = true;
+              }
             }
           }
 
@@ -300,7 +388,7 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
     setAllFilters,
     checkFilters,
     setIsLoading,
-    isLoading
+    isLoading,
   };
   const sortingBy = (e) => {
     setSortingApply(e.target.value);
@@ -348,7 +436,11 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
             <option value="titleDescending">Descending</option>
           </select> */}
         </FilterMobile>
-        <PLPDescription filterRef={filterRef} collectionTitle={pageTitle} {...{ collectionDescription }} />
+        <PLPDescription
+          filterRef={filterRef}
+          collectionTitle={pageTitle}
+          {...{ collectionDescription }}
+        />
         <FiltersDesktop>
           <Filters
             colorFilters={colorFilters}
@@ -407,7 +499,7 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
 
 const FiltersDesktop = styled.div`
   display: block;
-  @media (max-width: 767px) {
+  @media (max-width: 1199px) {
     display: none;
   }
 `;
@@ -463,7 +555,7 @@ const FilterMobile = styled.div`
     letter-spacing: 0.05em;
     font-family: 'GoodSans' !important;
   }
-  @media (min-width: 768px) {
+  @media (min-width: 1200px) {
     display: none;
   }
 `;

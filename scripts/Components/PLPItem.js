@@ -27,7 +27,6 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
   let staticColors = ['Matte Black', 'Walnut Wood', 'Matte White'];
   const [colorOption, setColorOption] = useState(staticColors[0]);
   const PLPItemRef = useRef();
-  const colorIndex = product.option_names.indexOf('Frame Color');
   useEffect(() => {
     const mediaQuery = window.matchMedia('(max-width: 768px)');
     const isObservable = isMobile(navigator) && mediaQuery.matches && PLPItemRef.current;

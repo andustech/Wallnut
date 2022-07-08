@@ -124,13 +124,13 @@ const FilterDropdownItem = styled.div.attrs({
 const FilterContainer = styled.div.attrs({
   className: 'flex items-center mr-3 xl:mr-4 cursor-pointer fltr-drpdwn ',
 })`
-  @media (max-width: 767px) {
+  @media (max-width: 1199px) {
     margin-right: 0 !important;
   }
 `;
 
 const FilterTitle = styled.span.attrs({
-  className: 'mr-3 xl:mr-5',
+  className: 'mr-2.5 xl:mr-4.5',
 })`
   font-family: 'GoodSans';
   font-weight: 400;
@@ -139,8 +139,10 @@ const FilterTitle = styled.span.attrs({
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: #000000;
-  @media (max-width: 767px) {
+  @media (max-width: 1199px) {
     width: 100%;
+  }
+  @media (max-width: 767px) {
     font-size: 10px;
     line-height: 18px;
   }
@@ -159,7 +161,7 @@ const StyledColorSwatch = styled.div.attrs({
 
 export const IconContainer = styled.div`
   transform: ${({ flip }) => (!flip ? 'rotate(0deg)' : 'rotate(180deg)')};
-  @media (max-width: 767px) {
+  @media (max-width: 1199px) {
     transform: ${({ flip }) => (flip ? 'rotate(0deg)' : 'rotate(270deg)')};
   }
 `;
