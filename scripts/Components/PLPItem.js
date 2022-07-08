@@ -80,7 +80,7 @@ const PLPItem = ({ product, colors = [], colorFilters = [], noColorSelector, col
     productHandle = productHandle.slice(0, -4)
   }
 
-  var productImgSrc = 'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/'+productHandle+'-A-'+imgColor+'-2432.jpg'
+  var productImgSrc = 'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/'+productHandle+'-A-'+imgColor+'-1824.jpg'
 
   if (!productImgSrc) {
     productImgSrc =
