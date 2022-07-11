@@ -5,10 +5,16 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en" class="no-js"> <!--<![endif]-->
 <head> 
   <meta charset="utf-8" />
+<!-- YOTTAA Scripts for Page Speed ================================================== -->
+	<script src="https://cdn.yottaa.com/rapid.min.js?key=RDUgJf17g5pbnQ"></script>
 
+    <script>
 
-<!-- Meta
-================================================== -->
+      Yo.configure('https://qoe-1.yottaa.net/api/v1/configure.rapid.js?key=RDUgJf17g5pbnQ');
+
+    </script>
+
+<!-- Meta ================================================== -->
   <title>
     {{ page_title }}{% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
   </title>
@@ -20,8 +26,7 @@
   {% render 'social-meta-tags' %}
   {% render 'structured-data' %}
 
-<!-- CSS
-================================================== -->
+<!-- CSS ================================================== -->
   <link href="{{'stylesheet.css' | asset_url}}" rel="stylesheet" type="text/css">
   <link href="{{'theme.css' | asset_url}}" rel="stylesheet" type="text/css">
 
