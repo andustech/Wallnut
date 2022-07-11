@@ -350,7 +350,7 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
   }, []);
 
   useEffect(() => {
-    if (isOpenFilter && document.body.clientWidth > 767) {
+    if (isOpenFilter) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
