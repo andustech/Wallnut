@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import FilterDropdown from './FilterDropdown';
 import plpContext from './plpContext';
@@ -431,7 +430,7 @@ const ApplyProductDiv = styled.div`
   justify-content: center;
   letter-spacing: 0.05em;
   color: #000000;
-  padding: 10px 0;
+  padding: 13px 0;
   text-transform: uppercase;
 `;
 export default MobileFilters;

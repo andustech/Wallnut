@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Carousel from '../Carousel';
 
 const ValuePropSection = ({settings, collection_handle_1, collection_handle_2, collection_handle_3}) => {
   const { title, subheading } = settings;
@@ -43,6 +44,24 @@ const ValuePropSection = ({settings, collection_handle_1, collection_handle_2, c
     },
   ];
 
+  const productImgs = [ 
+    {
+      url: coll_image_1,
+      alt: 'Image',
+      coll_text: collection_handle_1.title
+    },
+    {
+      url: coll_image_2,
+      alt: 'Image',
+      coll_text: collection_handle_2.title
+    },
+    {
+      url: coll_image_3,
+      alt: 'Image',
+      coll_text: collection_handle_3.title
+    },
+  ]
+
   return (
     <PremiumMainContainer className='premium_main_container section-padding'>
       <SectionTiltle className='section_titile'>
@@ -50,8 +69,7 @@ const ValuePropSection = ({settings, collection_handle_1, collection_handle_2, c
         { subheading && <p className="h3-attila-sans font-medium">{subheading}</p> }
       </SectionTiltle>
       <div className="container">
-        <ValuePropContainer>
-
+        <ValuePropContainer className="hidden sm:flex">
           { collection_handle_1.handle && 
             <ValuePropColumn className='premium_card_container premium_pos'>
                 <div className="premium_img_box">
@@ -88,6 +106,11 @@ const ValuePropSection = ({settings, collection_handle_1, collection_handle_2, c
               }
             </ValuePropColumn>
           }
+        </ValuePropContainer>
+        <ValuePropContainer className="sm:hidden">
+          <ValuePropColumn className='premium_card_container premium_pos'>
+              <Carousel images={productImgs} /> 
+            </ValuePropColumn>
         </ValuePropContainer>
       </div>
     </PremiumMainContainer>

@@ -168,13 +168,13 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
               fltrStr += "tags:'Abstract-" + itm + "'%";
             }
           }
-          // else if(k === 'orientation'){
-          //   if (index === allFilters[k].length - 1) {
-          //     fltrStr += "tags:'" + itm + "'";
-          //   } else {
-          //     fltrStr += "tags:'" + itm + "'%";
-          //   }
-          // }
+          else if(k === 'orientation' || k === 'medium'){
+            if (index === allFilters[k].length - 1) {
+              fltrStr += "tags:'" + itm + "'";
+            } else {
+              fltrStr += "tags:'" + itm + "'%";
+            }
+          }
           else {
             // tempTags.push('tags:' + filterName + '-' + itm);
             if (index === allFilters[k].length - 1) {

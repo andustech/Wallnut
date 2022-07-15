@@ -10,7 +10,6 @@ const CarouselA = (props) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const handleOnScroll = () => {
-    console.log('scroll thyu')
     const scrollPos = containerRef.current.scrollLeft;
     const threshold = 5;
     const eachImageWidth = containerRef.current.scrollWidth / containerRef.current.children.length;
@@ -29,18 +28,12 @@ const CarouselA = (props) => {
   const handleThumbnailClick = (i) => {
     setCurrentImageIndex(i);
   };
-
   
   const mobileHandleThumbnailClick = (i) => {
     const pos = containerRef.current.children[i].getBoundingClientRect();
     containerRef.current.scrollTo(containerRef.current.scrollLeft + pos.left, 0);
     setCurrentImageIndex(i);
   };
-
-  useEffect(() => {
-    handleThumbnailClick(0);
-    mobileHandleThumbnailClick(0);
-  }, [watchForReset]);
 
   return (
     <>
@@ -71,7 +64,37 @@ const CarouselA = (props) => {
           </CarouselContainer>
           <MobileCarouselContainer ref={containerRef} onScroll={handleOnScroll}>
             {images.map((image, i) => (
-              <Media key={i} image={image.url} alt={image.alt} currentImage={currentImageIndex === i}/>
+              <>
+              {(!image.btn_text && !image.coll_text) && 
+                  (
+                    <>
+                      <Media key={i} image={image.url} alt={image.alt} currentImage={currentImageIndex === i} />
+                    </>
+                  )
+                }
+                { image.btn_text && 
+                  (
+                    <MediaContainer> 
+                      <Media key={i} image={image.url} alt={image.alt} currentImage={currentImageIndex === i} />
+                      
+                          <a href={image.btn_link} className="premium_link bg-milk text-center">
+                            {image.btn_text}
+                          </a>
+                    </MediaContainer>
+                  )
+                }
+                {
+                  image.coll_text && 
+                  (
+                    <MediaContainer>
+                      <Media key={i} image={image.url} alt={image.alt} currentImage={currentImageIndex === i} />                        
+                      <a href={image.coll_text} className="premium_link bg-milk text-center absolute bottom-0 left-0">
+                        {image.coll_text}
+                      </a>
+                    </MediaContainer>
+                  )
+                }
+              </>
             ))}
           </MobileCarouselContainer>
         </div>
@@ -154,6 +177,12 @@ const MobileCarouselContainer = styled.div.attrs({
   @media (min-width: 768px) {
     display: none !important;
   }
+  img {
+    max-height: 500px;
+    &:last-child {
+      max-height: 208px;
+    }
+  }
 
   &::-webkit-scrollbar {
     display: none;
@@ -164,6 +193,14 @@ const MobileCarouselContainer = styled.div.attrs({
     vertical-align: top;
   }
 `;
+
+const MediaContainer = styled.div.attrs()`
+  // min-width: -moz-available;          /* WebKit-based browsers will ignore this. */
+  // min-width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+  // min-width: fill-available;
+  min-width: 100%;
+  position: relative;
+`
 
 const DesktopThumbContainer = styled.div.attrs({})`
   display: none;

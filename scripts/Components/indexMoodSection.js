@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { SectionTiltle } from './ProductFeature/ValuePropComponent';
+import Carousel from './Carousel';
 
 const indexMoodSection = ({ settings }) => {
   const {
@@ -12,17 +13,21 @@ const indexMoodSection = ({ settings }) => {
     button_text_2,
     button_link_2,
   } = settings;
-  const bymoodData = [
-    {
-      img: 'https://i.ibb.co/Lgzd5b9/Rectangle-14.png',
-      link: 'Playful',
-    },
 
+  let productImgs = [ 
     {
-      img: 'https://i.ibb.co/b27wX67/Rectangle-15.png',
-      link: 'Sophisticated',
+      url: image_1,
+      alt: 'Image',
+      btn_text: button_text_1,
+      btn_link: button_link_1
     },
-  ];
+    {
+      url: image_2,
+      alt: 'Image',
+      btn_text: button_text_2,
+      btn_link: button_link_2
+    },
+  ]
 
   return (
     <>
@@ -32,44 +37,41 @@ const indexMoodSection = ({ settings }) => {
             {section_title && <h3 className="font-bold text-black">{section_title}</h3>}
           </SectionTiltle>
 
-          {/* <div className='mood_card_container flex '>
-            {bymoodData.map((value, i) => (
-              <a className='by_mood_card' key={i}>
-                <img src={value.img} />
-                <a href='#' className='premium_link bg-milk text-center'>{value.link}</a>
-              </a>  
-            ))}
-          </div> */}
-
-          <div className="mood_card_container ">
-          <div className=""> 
-            <div className="by_mood_card">
-              <div>
-                {image_1 && <img src={image_1} />}
-              </div>
-              {button_text_1 && (
+          <div className="mood_card_container hidden sm:flex">
+            <div className=""> 
+              <div className="by_mood_card">
                 <div>
-                  <a href={button_link_1} className="premium_link bg-milk text-center">
-                    {button_text_1}
-                  </a>
+                  {image_1 && <img src={image_1} />}
+                  {/* <Carousel images={productImgs} />  */}
                 </div>
-              )}
+                {button_text_1 && (
+                  <div>
+                    <a href={button_link_1} className="premium_link bg-milk text-center">
+                      {button_text_1}
+                    </a>
+                  </div>
+                )}
+              </div>
+            </div>
+            <div className="">
+              <div className="by_mood_card">
+                <div>
+                  {image_2 && <img src={image_2} />}
+                </div>
+                {button_text_2 && (
+                  <div>
+                    <a href={button_link_2} className="premium_link bg-milk text-center">
+                      {button_text_2}
+                    </a>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
-          <div className="">
+          <div className="mood_card_container- sm:hidden">
             <div className="by_mood_card">
-              <div>
-                {image_2 && <img src={image_2} />}
-              </div>
-              {button_text_2 && (
-                <div>
-                  <a href={button_link_2} className="premium_link bg-milk text-center">
-                    {button_text_2}
-                  </a>
-                </div>
-              )}
+                <Carousel images={productImgs} /> 
             </div>
-          </div>
           </div>
         </ShopByMood>
       </div>
