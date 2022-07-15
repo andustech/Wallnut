@@ -545,6 +545,36 @@
           $(this).parents('[data-autocomplete-true]').find('.search__results-wrapper').show();
         }
       });
+      // Start BH item #190
+      $('.img-video img').each(function(el, index){
+        $(this).mouseenter(function (e) {
+          console.log('if',$(this).next('video'), e, $(this)[0], e.target, e.currentTarget, $(this) == e.target)
+          $(this).hide();
+          $(this).next('video').show();
+        });
+
+        $(this).mouseleave(function (e) {
+          console.log('else',$(this).next('video'),e, $(this)[0], e.target, e.currentTarget, $(this) == e.target)
+          $(this).show();
+          $(this).next('video').hide();
+        }
+        ).mouseleave();
+      }); 
+      $('.img-video video').each(function(el, index){
+        $(this).mouseenter(function (e) {
+          console.log('if',$(this).prev('img'), e, $(this)[0], e.target, e.currentTarget, $(this) == e.target)
+          $(this).show();
+          $(this).prev('img').hide();
+        });
+
+        $(this).mouseleave(function (e) {
+          console.log('else',$(this).prev('img'),e, $(this)[0], e.target, e.currentTarget, $(this) == e.target)
+          $(this).hide();
+          $(this).prev('img').show();
+        }
+        ).mouseleave();
+      });
+      // End BH item #190
     });
   </script>
 
@@ -556,11 +586,9 @@
   <script>
       document.documentElement.className =
          document.documentElement.className.replace("no-js","js");
-    jQuery( document ).ready(function() {
-  jQuery('.rte-accordion.row .item-heading').hide();
-});
-
-
+        jQuery( document ).ready(function() {
+          jQuery('.rte-accordion.row .item-heading').hide();
+        });
   </script>
 
   <!-- JS Variable Helpers -->

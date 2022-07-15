@@ -165,7 +165,7 @@ const CarouselContainer = styled.div.attrs({
 `;
 
 const MobileCarouselContainer = styled.div.attrs({
-  className: 'relative flex flex-row',
+  className: 'relative flex flex-row gap-4',
 })`
   height: 100%;
   overflow-x: scroll;
@@ -177,12 +177,17 @@ const MobileCarouselContainer = styled.div.attrs({
   @media (min-width: 768px) {
     display: none !important;
   }
+  /* Start BH item #245 */
   img {
-    max-height: 500px;
+    @media (max-width: 767px) {
+      max-height: 100%;
+    }
+    /*   max-height: 500px;
     &:last-child {
       max-height: 208px;
-    }
+    }*/
   }
+  /* End BH item #245 */
 
   &::-webkit-scrollbar {
     display: none;
@@ -198,7 +203,8 @@ const MediaContainer = styled.div.attrs()`
   // min-width: -moz-available;          /* WebKit-based browsers will ignore this. */
   // min-width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
   // min-width: fill-available;
-  min-width: 100%;
+  min-width: 80%;
+  max-width: 80%;
   position: relative;
 `
 

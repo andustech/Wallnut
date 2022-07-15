@@ -848,11 +848,6 @@ body.cart .cart-final-details .secondary_btn {
   justify-content: flex-start;
 }
 
-.by_mood_card {
-  /* width: 100%; */
-  /* max-width: 50%; */
-}
-
 .mood_card_container {
   display: flex;
 }
@@ -1453,14 +1448,6 @@ afterpay-placement {
     display: none;
   }
 
-  .premium_pos {
-    /* max-width: 90%; */
-  }
-
-  .mood_card_container > div {
-    /* max-width: 90%; */
-  }
-
   .premium_img {
     max-width: 100%;
     width: 100%;
@@ -1474,7 +1461,7 @@ afterpay-placement {
   .hkkjzZ .pro_price,
   .each-item .pro_price {
     font-size: 10px !important;
-    line-height: 18px !important;
+    line-height: 18px !important; 
   }
 
   .how-it-works .video-open {
@@ -1949,14 +1936,6 @@ afterpay-placement {
 
   .newsletter br {
     display: none;
-  }
-
-  .premium_pos {
-    /* max-width: 90%; */
-  }
-
-  .mood_card_container > div {
-    /* max-width: 90%; */
   }
 
   .premium_img {
@@ -2640,25 +2619,29 @@ button.ajaxcart__qty-adjust.quantity-increment,
   form.cart.ajaxcart .ajaxcart__footer {
     order: 1;
   }
-  form.cart.ajaxcart .ajaxcart__inner {
+  /* Start BH item #185 */
+  /* form.cart.ajaxcart .ajaxcart__inner {
     order: 2;
-  }
+  } */
+  /* End BH item #185 */
   #CartContainer > form > div.ajaxcart__footer.row {
     border-top: 0;
     padding-bottom: 24px;
     margin-top: 0;
     border-bottom: 1px solid #e2dacd;
   }
-  .drawer-continue-shopping.show-on-mobile {
+  /* Start BH item #185 */
+  /* .drawer-continue-shopping.show-on-mobile {
     display: block;
     border-top: 1px solid #e2dacd;
     padding-top: 30px;
     padding-bottom: 30px;
     margin: 0;
-  }
-  .drawer-continue-shopping.show-on-desktop {
+  } */
+  /* .drawer-continue-shopping.show-on-desktop {
     display: none;
-  }
+  } */
+  /* End BH item #185 */
 }
 
 .overflow-hidden {
@@ -3147,3 +3130,8 @@ body.cart .cart-item {
 .premium_card_container div[class^="Carousel__MobileThumbContainer"] {
   display: none;
 }
+/* Start BH item #245 */
+.ProductSelector__ProductSelectorContainer-sc-2mc0ts-0 .Carousel__MobileCarouselContainer-sc-w8pc6y-1 img:last-child, .ProductSelector__ProductSelectorContainer-sc-2mc0ts-0 .Carousel__MobileThumbContainer-sc-w8pc6y-4 span:last-child {
+  display: none !important;
+}
+/* End BH item #245 */
