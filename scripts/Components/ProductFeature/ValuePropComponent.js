@@ -107,12 +107,12 @@ const ValuePropSection = ({settings, collection_handle_1, collection_handle_2, c
             </ValuePropColumn>
           }
         </ValuePropContainer>
-        <ValuePropContainer className="sm:hidden">
-          <ValuePropColumn className='premium_card_container premium_pos'>
-              <Carousel images={productImgs} /> 
-            </ValuePropColumn>
-        </ValuePropContainer>
       </div>
+      <ValuePropContainer className="sm:hidden">
+        <ValuePropColumn className='premium_card_container premium_pos'>
+            <Carousel images={productImgs} /> 
+          </ValuePropColumn>
+      </ValuePropContainer>
     </PremiumMainContainer>
   );
 };

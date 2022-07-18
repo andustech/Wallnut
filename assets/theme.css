@@ -3135,3 +3135,9 @@ body.cart .cart-item {
   display: none !important;
 }
 /* End BH item #245 */
+/* Start BH item #131 */
+.prem-art .Carousel__MobileCarouselContainer-sc-w8pc6y-1, #react-index-mood-section .Carousel__MobileCarouselContainer-sc-w8pc6y-1 {
+  grid-gap: 0 !important;
+  gap: 0 !important;
+}
+/* End BH item #131 */

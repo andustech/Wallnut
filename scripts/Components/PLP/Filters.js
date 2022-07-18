@@ -1,22 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import tw from 'twin.macro';
 import FilterDropdown from './FilterDropdown';
 import plpContext from './plpContext';
 import { MenuIcon } from '../Icons';
 
 const Filters = ({
   stickyFilter,
-  colorFilters,
-  colors = [],
-  chairTypes,
-  collectionTitle,
   setTagSelected,
   TagSelected,
   setIsRemoving,
-  products,
-  sortingApply,
   setSortingApply,
   slugValue,
   artOption,
@@ -26,17 +19,11 @@ const Filters = ({
   moodOption,
   orientationOption,
   subjectOption,
-  isRemoving,
-  sizeOption,
-  slugRawValue,
   totalProducts,
   setIsClearing,
 }) => {
   const { allFilters, setAllFilters, checkFilters, isLoading } = useContext(plpContext);
   const {
-    style,
-    chairType,
-    color,
     size,
     subject,
     mood,
@@ -85,23 +72,7 @@ const Filters = ({
       filterName = 'colorObj';
     }
 
-    // const tempEntry = {
-    //   tagType: filterName,
-    //   tagValue: slugValue.substring(0, 1).toUpperCase() + slugValue.substring(1),
-    //   // .replace('&', ' & '),
-    // };
-    // let tempRes = TagSelected.filter(
-    //   (i) => i.tagType === tempEntry.tagType && i.tagValue === tempEntry.tagValue
-    // );
-    if (
-      // tempRes.length === 0 &&
-      // !isRemoving &&
-      // tempEntry.tagType !== '' &&
-      // tempEntry.tagValue !== ''
-      filterName !== ''
-    ) {
-      // setTagSelected([...TagSelected, tempEntry]);
-
+    if (filterName !== '') {
       if (filterName !== '') {
         const demo = {
           ...allFilters,
@@ -114,7 +85,6 @@ const Filters = ({
         setAllFilters(demo);
       }
     }
-    // setAllFilters({ ...tempArr, slugValue });
   };
   useEffect(() => {
     document.body.addEventListener('click', (e) => {
@@ -154,45 +124,9 @@ const Filters = ({
       colorObj: [],
     };
 
-    // let arr = window.location.pathname.split('/');
-    // let value = arr[arr.length - 1];
-    // let splitValue = value.split('-');
-    // if (splitValue.length > 1) {
-    //   if (value.startsWith('decor-style')) {
-    //     value = value.split('decor-style-')[1].split('-').join(' ');
-    //     tempselect['decorStyle'] = [value];
-    //   } else {
-    //     if (splitValue.length > 2) {
-    //       value = splitValue.splice(1);
-    //       value = value.join(' ');
-    //       const fltrType = splitValue[0].charAt(0).toUpperCase() + splitValue[0].slice(1);
-    //       tempselect[splitValue[0]] = [value];
-    //     } else {
-    //       value = splitValue[1];
-    //       const fltrType = splitValue[0];
-    //       const fltrName = splitValue[1].charAt(0).toUpperCase() + splitValue[1].slice(1);
-    //       tempselect[fltrType] = [fltrName];
-    //     }
-    //   }
-    // } else {
-    //   value = splitValue[0];
-    // }
-
-    // console.log('tempselect', tempselect);
     setIsClearing(true);
     setAllFilters(tempselect);
-    // } else {
-    //   setAllFilters({
-    //     subject: [],
-    //     mood: [],
-    //     decorStyle: [],
-    //     artStyle: [],
-    //     orientation: [],
-    //     medium: [],
-    //     colorObj: [],
-    //   });
-      setTagSelected([]);
-    // }
+    setTagSelected([]);
   };
 
   const handleMenuOpen = () => {
@@ -202,10 +136,7 @@ const Filters = ({
   };
 
   window.addEventListener('scroll', handleMenuOpen);
-  /* -------------------------Remove Tag with Filter selected item remove----------------------*/
   const removeSelectedTag = (item) => {
-    // if (item.tagValue.toLowerCase() !== slugValue.toLowerCase()) {
-      console.log('++++',item)
     let isInSlug = false;
     let arr = window.location.pathname.split('/');
     let value = arr[arr.length - 1];

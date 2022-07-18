@@ -161,7 +161,6 @@ const CarouselContainer = styled.div.attrs({
     scroll-snap-align: center;
     vertical-align: top;
   }
-  
 `;
 
 const MobileCarouselContainer = styled.div.attrs({
@@ -206,6 +205,10 @@ const MediaContainer = styled.div.attrs()`
   min-width: 80%;
   max-width: 80%;
   position: relative;
+  margin-left: 20px;
+  :last-child {
+    margin-right: 20px;
+  }
 `
 
 const DesktopThumbContainer = styled.div.attrs({})`

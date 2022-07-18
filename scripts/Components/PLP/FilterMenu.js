@@ -1,45 +1,8 @@
 import PropTypes from 'prop-types';
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import FilterItem from './FilterItem';
-import plpContext from './plpContext';
-// import { plpColorFilterGroupIcons } from '../../utils';
-import { MultiSwatchIcon } from '../Icons';
-
-const toggleColorFilter = (allFilters, collectionTitle, tempArr) => {
-  if (
-    (collectionTitle === 'Dining Chairs' && tempArr.length === 0) ||
-    (collectionTitle === 'Lounge Chairs' && tempArr.length === 0) ||
-    (window.location.href.includes('all') &&
-      allFilters.style.length > 0 &&
-      allFilters.color.length === 1 &&
-      tempArr.length === 0) ||
-    (window.location.href.includes('all') &&
-      allFilters.chairType.length > 0 &&
-      allFilters.color.length === 1 &&
-      tempArr.length === 0) ||
-    (window.location.href.includes('pattern-chairs') &&
-      allFilters.style.length > 0 &&
-      allFilters.color.length === 1 &&
-      tempArr.length === 0) ||
-    (window.location.href.includes('pattern-chairs') &&
-      allFilters.chairType.length > 0 &&
-      allFilters.color.length === 1 &&
-      tempArr.length === 0) ||
-    (window.location.href.includes('seasonal-favorites') &&
-      allFilters.style.length > 0 &&
-      allFilters.color.length === 1 &&
-      tempArr.length === 0) ||
-    (window.location.href.includes('seasonal-favorites') &&
-      allFilters.chairType.length > 0 &&
-      allFilters.color.length === 1 &&
-      tempArr.length === 0)
-  ) {
-    return ['All'];
-  }
-  return tempArr;
-};
 
 const FilterMenu = ({
   type,
@@ -48,69 +11,16 @@ const FilterMenu = ({
   menuName,
   filterName,
   collectionTitle,
-  TagSelected,
-  setTagSelected,
   RemoveTag,
   setRemoveTag,
   slugValue,
   setMenuOpen,
 }) => {
-  const { allFilters, setAllFilters } = useContext(plpContext);
-  const handleClick = (option) => {
-    let tempArr = [...allFilters[filterName]];
-
-    if (tempArr.includes('All')) {
-      tempArr = [option];
-    } else if (tempArr.includes(option)) {
-      tempArr = tempArr.filter((item) => item !== option);
-    } else {
-      tempArr = [...tempArr, option];
-    }
-    const colorFilter = toggleColorFilter(allFilters, collectionTitle, tempArr);
-    const tempArrCopy = [...colorFilter];
-    tempArrCopy.reverse();
-    setAllFilters({ ...allFilters, color: [...tempArrCopy] });
-
-    window.optimizely.push({
-      type: 'event',
-      eventName: 'plp-filter-color',
-      tags: {
-        revenue: 0, // Optional in cents as integer (500 == $5.00)
-        value: 0.0, // Optional as float
-      },
-    });
-  };
 
   if (type === 'colorpicker') {
     return (
       <MenuContainer id="filterMenu" {...{ menuOpen, menuName }}>
-        {/* {Object.keys(plpColorFilterGroupIcons).map((color) => {
-          const { group, background } = plpColorFilterGroupIcons[color];
-          return (
-            <div key={group}>
-              <div
-                className={`h-9 w-9 border-solid border-2 rounded-full grid justify-items-center items-center ${
-                  allFilters.color.includes(group) ? ' border-blue' : 'border-white'
-                }`}
-                onClick={() => {
-                  handleClick(group);
-                }}
-                onKeyUp={() => {}}
-                role="button"
-                tabIndex="0"
-              >
-                {group !== 'Multi' ? (
-                  <StyledColorSwatch group={group} background={background} />
-                ) : (
-                  <StyledColorSwatch group={group}>
-                    <MultiSwatchIcon />
-                  </StyledColorSwatch>
-                )}
-              </div>
-              <p className="text-center text-xxs font-normal font-serif mt-1">{group}</p>
-            </div>
-          );
-        })} */}
+        
       </MenuContainer>
     );
   }
@@ -171,16 +81,6 @@ const MenuContainer = styled.div(({ menuOpen, menuName }) => [
   `,
 ]);
 
-const StyledColorSwatch = styled.div.attrs({
-  className: 'bg-no-repeat h-8 w-8 rounded-full',
-})`
-  ${({ group, background = '' }) => {
-    if (group !== 'Multi') {
-      return `background-color: ${background}; background-size: 36px 36px;`;
-    }
-    return 'background-size: 36px 36px;';
-  }}
-`;
 const StyleFilterMenuContainer = styled.div`
   position: 'absolute';
   top: '41px';

@@ -6,7 +6,6 @@ import Filters from '../Filters';
 import PLPDescription from '../PLPDescription';
 import SeoCopy from '../SEOCopy';
 import PLPContext from '../plpContext';
-import { mergedFetchedRecommendations } from '../../../utils';
 import FilterIcon from '../../Icons/filterIcon';
 import algoliasearch from 'algoliasearch';
 import MobileFilters from '../MobileFilters';
@@ -60,7 +59,6 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
   const [isCalled, setIsCalled] = useState(false);
   const [isAllClearing, setIsClearing] = useState(false);
   const [indexName, setIndexName] = useState('shopify_products_title_asc');
-  // const [indexName, setIndexName] = useState('shopify_products_new');
   const [pageTitle, setPageTitle] = useState(collectionTitle);
   const [options, setOptions] = useState({
     artOption: artOption,
@@ -73,17 +71,6 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
     sizeOption: sizeOption,
   });
 
-  // const options = {
-  //   artOption: artOption,
-  //   colorObject: colorObject,
-  //   decorStyle: decorOption,
-  //   mediumOption: mediumOption,
-  //   mood: moodOption,
-  //   orientationOption: orientationOption,
-  //   subject: subjectOption,
-  //   sizeOption: sizeOption,
-  // };
-
   const resetOptions = {
     artOption: artOption,
     colorObject: colorObject,
@@ -95,15 +82,8 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
     sizeOption: sizeOption,
   };
 
-  let optionsToSend = options;
-
   const searchClient = algoliasearch('G49A2XSYO1', 'aac1fbe78febb9f003c18df8aba2eba1');
   const index = searchClient.initIndex(indexName);
-
-  // index.clearObjects().then(() => {
-  //   console.log('deleted!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-  // })
-  // .catch(e => {console.log('--------------')});
 
   useEffect(() => {
     if (!isCalled) {
@@ -160,15 +140,7 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
             ? 'Color'
             : k.charAt(0).toUpperCase() + k.slice(1);
         allFilters[k].forEach((itm, index) => {
-          if (k === 'subject') {
-            // tempTags.push('tags:Abstract-' + itm);
-            if (index === allFilters[k].length - 1) {
-              fltrStr += "tags:'Abstract-" + itm + "'";
-            } else {
-              fltrStr += "tags:'Abstract-" + itm + "'%";
-            }
-          }
-          else if(k === 'orientation' || k === 'medium'){
+          if(k === 'orientation' || k === 'medium'){
             if (index === allFilters[k].length - 1) {
               fltrStr += "tags:'" + itm + "'";
             } else {
@@ -176,7 +148,6 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
             }
           }
           else {
-            // tempTags.push('tags:' + filterName + '-' + itm);
             if (index === allFilters[k].length - 1) {
               fltrStr += "tags:'" + filterName + '-' + itm + "'";
             } else {
@@ -189,15 +160,12 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
         tempTags.push(fltrStr);
       }
     });
-    console.log('tempTags === ', tempTags.join(' AND '));
     setTags(tempTags);
     index
       .search('', {
         page: 0,
         hitsPerPage: 16,
-        // facetFilters: tempTags,
         filters: tempTags.join(' AND '),
-        // filters:"(tags:'Color-White' OR tags:'Color-Black') AND (tags:'Mood-Soothing') AND (tags:'Décor Style-Mid Century Modern')"
       })
       .then((res) => {
         setProducts(res.hits);
@@ -223,27 +191,22 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
     let value = arr[arr.length - 1];
     setSlugRawValue(value);
     if (arr.length > 3) {
-      // console.log('+++++', value.split('-'));
       setPageTitle(value.split('-').join(' ').replace('&', ' & '));
 
       let splitValue = value.split('-');
       if (splitValue.length > 1) {
         if (value.startsWith('decor-style')) {
           value = value.split('decor-style-')[1].split('-').join(' ');
+          const tempOpt = resetOptions;
+          tempOpt['decorStyle'] = resetOptions['decorStyle'].filter((i) => i.toLowerCase() !== value.toLowerCase())
           setAllFilters({ ...allFilters, ['decorStyle']: [value] });
-          // optionsToSend.decorStyle.splice(
-          //   options.decorStyle.indexOf(value.substring(0, 1).toUpperCase() + value.substring(1)),
-          //   1
-          // );
+          setOptions(tempOpt);
         } else {
-          console.log('========', splitValue);
           if (splitValue.length > 2) {
             value = splitValue.splice(1);
             value = value.join(' ');
-            // const fltrType = splitValue[0].charAt(0).toUpperCase() + splitValue[0].slice(1);.
             const tempOpt = resetOptions;
             tempOpt[splitValue[0]] = resetOptions[splitValue[0]].filter((i) => i !== value)
-            // console.log('>>>>>>',value, splitValue[0]);
             setAllFilters({ ...allFilters, [splitValue[0]]: [value] });
             setOptions(tempOpt);
           } else {
@@ -251,13 +214,9 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
             const fltrType = splitValue[0];
             const fltrName = splitValue[1].charAt(0).toUpperCase() + splitValue[1].slice(1);
             setAllFilters({ ...allFilters, [fltrType]: [fltrName] });
-            // options[fltrType].splice(options[fltrType].indexOf(fltrName), 1);
             const tempOpt = resetOptions;
             if(fltrName.includes('&')){
               tempOpt[fltrType] = resetOptions[fltrType].filter((i) => i !== fltrName);
-              //   fltrName = fltrName.split('&')
-              //   fltrName[1] = camelize(fltrName[1])
-              //   fltrName = fltrName.join('&')
             }else{
               tempOpt[fltrType] = resetOptions[fltrType].filter((i) => i !== camelize(fltrName));
             }
@@ -319,8 +278,6 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
             }
           }
 
-          // console.log('tempEntry', tempEntry);
-
           let tempRes = TagSelected.filter(
             (i) => i.tagType === tempEntry.tagType && i.tagValue === tempEntry.tagValue
           );
@@ -381,8 +338,6 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
     setChairTypes([...productTypes]);
   }, [products]);
 
-  const combinedProducts = mergedFetchedRecommendations(checkFilters ? filterProducts : products);
-
   const contextValue = {
     allFilters,
     setAllFilters,
@@ -430,11 +385,6 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
               <MenuIcon />
             </IconContainer>
           </div>
-          {/* <select id="sortbyMobileDropdown" name="sortBy" onChange={(e) => sortingBy(e)}>
-            <option>SORT BY</option>
-            <option value="titleAscending">Ascending</option>
-            <option value="titleDescending">Descending</option>
-          </select> */}
         </FilterMobile>
         <PLPDescription
           filterRef={filterRef}

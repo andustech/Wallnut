@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import tw from 'twin.macro';
 import { MenuIcon, PlusIcon, MultiSwatchIcon } from '../Icons';
 import FilterMenu from './FilterMenu';
 import plpContext from './plpContext';

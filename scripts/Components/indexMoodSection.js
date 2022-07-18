@@ -31,8 +31,9 @@ const indexMoodSection = ({ settings }) => {
 
   return (
     <>
-      <div className="container">
-        <ShopByMood className="section-padding">
+      
+      <ShopByMood className="section-padding">
+        <div className="container">
           <SectionTiltle className="section_titile">
             {section_title && <h3 className="font-bold text-black">{section_title}</h3>}
           </SectionTiltle>
@@ -68,13 +69,13 @@ const indexMoodSection = ({ settings }) => {
               </div>
             </div>
           </div>
-          <div className="mood_card_container- sm:hidden">
-            <div className="by_mood_card">
-                <Carousel images={productImgs} /> 
-            </div>
+        </div>
+        <div className="mood_card_container- sm:hidden">
+          <div className="by_mood_card">
+              <Carousel images={productImgs} /> 
           </div>
-        </ShopByMood>
-      </div>
+        </div>
+      </ShopByMood>
     </>
   );
 };
