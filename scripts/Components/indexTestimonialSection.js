@@ -1,9 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { SectionTiltle } from './ProductFeature/ValuePropComponent';
+import Carousel from './Carousel';
 
 const indexTestimonialSection = ({ settings, blocks }) => {
   const { title, content } = settings;
+
+  let productImgs = [];
 
   return (
     <>
@@ -33,6 +36,17 @@ const indexTestimonialSection = ({ settings, blocks }) => {
                 else
                   rating_img =
                     'https://cdn.shopify.com/s/files/1/0627/3476/2207/files/5-star.svg?v=1652253480';
+
+                let productImg = {
+                  url: settings.image,
+                  alt: 'Image',
+                  rating_img: rating_img,
+                  content: settings.content,
+                  name: settings.name
+                }
+
+                productImgs.push(productImg);
+
                 return (
                   <div className="review_card" key={`t-` + index}>
                     <div className="img">
@@ -46,7 +60,17 @@ const indexTestimonialSection = ({ settings, blocks }) => {
                   </div>
                 );
               })}
+              {console.log('productImgs ==> ', productImgs)}
             </div>
+          </div>
+        </div>
+        <div className="review_inner_items">
+          <div className="left">
+            {title && <h2 className="h4-attila-sans text-black">{title}</h2>}
+            {content && <p>{content}</p>}
+          </div>
+          <div className="right gap-6 ml-11">
+            <Carousel images={productImgs} /> 
           </div>
         </div>
       </div>

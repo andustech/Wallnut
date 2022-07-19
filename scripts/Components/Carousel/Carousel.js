@@ -94,6 +94,24 @@ const CarouselA = (props) => {
                     </MediaContainer>
                   )
                 }
+                {
+                  image.coll_text && 
+                  (
+                    <MediaContainer>
+                      <div className="img">
+                        <Media key={i} image={image.url} alt={image.alt} currentImage={currentImageIndex === i} />  
+                      </div>
+                      <a href={image.coll_text} className="premium_link bg-milk text-center absolute bottom-0 left-0">
+                        {image.coll_text}
+                      </a>
+                      <div className="rating_start">
+                        <img src={image.rating_img} alt="Rating" />
+                      </div>
+                      {image.content && <p className="">{image.content}</p>}
+                      {image.name && <span>{image.name}</span>}
+                    </MediaContainer>
+                  )
+                }
               </>
             ))}
           </MobileCarouselContainer>

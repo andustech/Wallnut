@@ -88,7 +88,6 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
   useEffect(() => {
     if (!isCalled) {
       setIsLoading(true);
-      console.log('========', indexName);
       index
         .search('', {
           page: page,
@@ -191,7 +190,7 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
     let value = arr[arr.length - 1];
     setSlugRawValue(value);
     if (arr.length > 3) {
-      setPageTitle(value.split('-').join(' ').replace('&', ' & '));
+      
 
       let splitValue = value.split('-');
       if (splitValue.length > 1) {
@@ -201,6 +200,8 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
           tempOpt['decorStyle'] = resetOptions['decorStyle'].filter((i) => i.toLowerCase() !== value.toLowerCase())
           setAllFilters({ ...allFilters, ['decorStyle']: [value] });
           setOptions(tempOpt);
+
+          setPageTitle(value.replace('&', ' & ')+' Art');
         } else {
           if (splitValue.length > 2) {
             value = splitValue.splice(1);
@@ -209,6 +210,8 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
             tempOpt[splitValue[0]] = resetOptions[splitValue[0]].filter((i) => i !== value)
             setAllFilters({ ...allFilters, [splitValue[0]]: [value] });
             setOptions(tempOpt);
+
+            setPageTitle(value.replace('&', ' & ')+' Art');
           } else {
             value = splitValue[1];
             const fltrType = splitValue[0];
@@ -221,7 +224,10 @@ const PLPSection = ({ collectionTitle, collectionDescription }) => {
               tempOpt[fltrType] = resetOptions[fltrType].filter((i) => i !== camelize(fltrName));
             }
             setOptions(tempOpt);
+
+            setPageTitle(value.replace('&', ' & ')+' Art');
           }
+          
         }
       } else {
         value = splitValue[0];
